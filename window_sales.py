@@ -55,10 +55,9 @@ def parse_when(text, today):
 def load_refreshes(path, metric):
     """Return [(refresh_time, value, rounding)] for each time the figure changed.
 
-    A change was seen somewhere between the previous poll and the row's own
-    time, so the refresh time is taken as the midpoint. Newer logs record the
-    previous poll (about a minute earlier); older ones only have the previous
-    row, which can be several minutes earlier.
+    The newest logs record fresh_at, the exact moment the figure was produced.
+    Older rows only know it changed between the previous poll and the row's own
+    time, so the refresh time is taken as the midpoint of that gap.
     """
     with open(path, newline='', encoding='utf-8') as f:
         rows = [r for r in csv.DictReader(f) if r['metric_type'] == metric]
@@ -67,9 +66,13 @@ def load_refreshes(path, metric):
         ts = parse_row_ts(row['timestamp'])
         val, err = parse_count(row['metric_value'])
         if val != prev_val:
-            before = row.get('prev_poll')
-            lo = parse_row_ts(before) if before else prev_ts
-            when = ts if lo is None else lo + (ts - lo) / 2
+            fresh = row.get('fresh_at')
+            if fresh:  # the moment BookMyShow's server produced this figure
+                when = parse_row_ts(fresh)
+            else:
+                before = row.get('prev_poll')
+                lo = parse_row_ts(before) if before else prev_ts
+                when = ts if lo is None else lo + (ts - lo) / 2
             refreshes.append((when, val, err))
         prev_ts, prev_val = ts, val
     return refreshes
