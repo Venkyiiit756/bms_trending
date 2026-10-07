@@ -2,7 +2,7 @@ import sys
 import json
 import os
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 try:
     from curl_cffi import requests as b_requests
@@ -12,6 +12,7 @@ except ImportError:
     from curl_cffi import requests as b_requests
 
 CSV_FILE = 'bms_booking_log.csv'
+IST = timezone(timedelta(hours=5, minutes=30))
 
 def init_csv():
     if not os.path.exists(CSV_FILE):
@@ -20,7 +21,8 @@ def init_csv():
             writer.writerow(['timestamp', 'movie_name', 'metric_type', 'metric_value', 'raw_text'])
 
 def log_to_csv(movie_name, metric_type, metric_value, raw_text):
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    timestamp = datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S%z')
+    timestamp = timestamp[:-2] + ':' + timestamp[-2:]  # +0530 -> +05:30
     with open(CSV_FILE, mode='a', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow([timestamp, movie_name, metric_type, metric_value, raw_text])
