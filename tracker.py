@@ -11,11 +11,20 @@ from datetime import datetime, timedelta, timezone
 CSV_FILE = 'bms_booking_log.csv'
 HEADERS_FILE = 'bms_api_headers.csv'
 CSV_HEADER = ['timestamp', 'movie_name', 'metric_type', 'metric_value', 'raw_text',
-              'prev_poll', 'kind']
+              'prev_poll', 'kind', 'fresh_at']
 HEADERS_HEADER = ['timestamp', 'status', 'metric_value', 'headers']
 IST = timezone(timedelta(hours=5, minutes=30))
 
-POLL_SECONDS = 60
+# Cloudflare caches the response for 10 minutes (its Age header counts up to 599),
+# so the figure can only change once per cache lifetime. We ask once when the cached
+# copy should expire instead of polling constantly, which is both lighter on the
+# server and avoids being rate-limited (HTTP 429).
+CACHE_TTL = 600
+EXPIRY_MARGIN = 2          # ask this many seconds after the expected expiry
+MIN_WAIT = 5
+MAX_QUICK_RETRIES = 4      # still cached after expiry this many times -> poll gently
+POLL_SECONDS = 60          # gentle fallback interval
+BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
 GIT_TIMEOUT = 120
@@ -65,9 +74,9 @@ def init_headers_file():
 
 
 def last_logged():
-    """(timestamp, (metric_type, metric_value)) of the newest row, or None."""
+    """(timestamp, (metric_type, metric_value)) of the newest data row, or None."""
     with open(CSV_FILE, newline='', encoding='utf-8') as f:
-        rows = list(csv.DictReader(f))
+        rows = [r for r in csv.DictReader(f) if r['metric_type'] != 'error']
     if not rows:
         return None
     row = rows[-1]
@@ -78,7 +87,7 @@ def last_logged():
 
 
 def fetch_once():
-    """One request to BookMyShow. Returns a dict, or None if nothing usable came back."""
+    """One request to BookMyShow. Returns a result dict, or {'error': True, ...}."""
     try:
         from curl_cffi import requests as b_requests
     except ImportError:
@@ -112,18 +121,17 @@ def fetch_once():
         status = api_response.status_code
         body = api_response.text
     except Exception as e:
-        print('API request error:', e, file=sys.stderr)
-        return None
+        return {'error': True, 'status': 0, 'detail': f'request error: {e}'}
 
     if status != 200:
-        print(f'API failed with status {status}', file=sys.stderr)
-        return None
+        retry_after = str(api_response.headers.get('retry-after') or '')
+        return {'error': True, 'status': status, 'detail': f'HTTP {status}',
+                'retry_after': int(retry_after) if retry_after.isdigit() else 0}
 
     try:
         data = json.loads(body)
     except ValueError:
-        print('Response is not JSON.', file=sys.stderr)
-        return None
+        return {'error': True, 'status': status, 'detail': 'response is not JSON'}
 
     movie_name = 'Drishyam 3'
     meta = data.get('meta', {})
@@ -131,8 +139,7 @@ def fetch_once():
         movie_name = meta['event'].get('eventName', movie_name)
 
     if not isinstance(data.get('widgets'), dict):
-        print('Unexpected response: widgets missing.', file=sys.stderr)
-        return None
+        return {'error': True, 'status': status, 'detail': 'unexpected response: widgets missing'}
 
     headers = {k.lower(): v for k, v in api_response.headers.items()}
     headers = {k: headers[k] for k in KEEP_HEADERS if k in headers}
@@ -155,27 +162,24 @@ def fetch_once():
                         'metric_value': metric_value, 'raw_text': text,
                         'status': status, 'headers': headers}
 
-    print('No trending widget or stats returned.', file=sys.stderr)
-    return None
+    return {'error': True, 'status': status, 'detail': 'no trending widget in response'}
 
 
 def fetch():
-    """Run fetch_once() in a child process; None on any failure or timeout."""
+    """Run fetch_once() in a child process; always returns a dict (see 'error')."""
     try:
         proc = subprocess.run(FETCH_CMD, capture_output=True, text=True, timeout=FETCH_TIMEOUT)
     except subprocess.TimeoutExpired:
-        print(f'Request timed out after {FETCH_TIMEOUT}s; skipping this poll', flush=True)
-        return None
+        return {'error': True, 'status': 0, 'detail': f'timed out after {FETCH_TIMEOUT}s'}
     if proc.stderr.strip():
         print(proc.stderr.strip(), flush=True)
     lines = proc.stdout.strip().splitlines()
     if proc.returncode != 0 or not lines:
-        print(f'Request process failed (exit {proc.returncode})', flush=True)
-        return None
+        return {'error': True, 'status': 0, 'detail': f'request process failed (exit {proc.returncode})'}
     try:
         return json.loads(lines[-1])
     except ValueError:
-        return None
+        return {'error': True, 'status': 0, 'detail': 'unreadable reply from request process'}
 
 
 def git(*args):
@@ -201,16 +205,35 @@ def commit_and_push():
     print('Giving up on this push; the next one will retry.', flush=True)
 
 
-def next_boundary(t):
-    return datetime.fromtimestamp((t.timestamp() // POLL_SECONDS + 1) * POLL_SECONDS, IST)
+def cache_hit(headers):
+    return headers.get('cf-cache-status') == 'HIT'
+
+
+def cache_age(headers):
+    age = str(headers.get('age', ''))
+    return int(age) if age.isdigit() else 0
+
+
+def fresh_time(t, headers):
+    """When BookMyShow's server produced this response: now for a fresh fetch
+    (EXPIRED/MISS), or now minus Age for a copy served from Cloudflare's cache."""
+    if cache_hit(headers):
+        return t - timedelta(seconds=cache_age(headers))
+    return t
+
+
+def backoff_wait(failures, retry_after):
+    wait = BACKOFF[min(failures, len(BACKOFF)) - 1]
+    return max(wait, min(retry_after, 3600))
 
 
 def run(minutes, commit):
-    """Poll every POLL_SECONDS for `minutes`; log only changes plus a heartbeat.
+    """Poll for `minutes`, once per cache expiry; log only changes plus a heartbeat.
 
-    A row is written when the figure changes (with the time of the previous
-    successful poll, so the change is known to within one poll) and every
-    HEARTBEAT_SECONDS when it has not, which shows the tracker is alive.
+    A data row is written when the figure changes (fresh_at is the moment
+    BookMyShow's server produced it) and every HEARTBEAT_SECONDS when it has not.
+    After a failure (429, 403, timeout...) we back off instead of retrying at once,
+    and write an 'error' row so a block shows up in the log.
     """
     init_csv()
     init_headers_file()
@@ -218,6 +241,9 @@ def run(minutes, commit):
     prev = last_logged()
     last_ts, last_key = prev if prev else (None, None)
     prev_poll = None
+    failures = 0
+    retries = 0
+    targeted = False   # was this poll aimed at an expected cache expiry?
 
     def stop(*_):
         raise KeyboardInterrupt
@@ -227,9 +253,27 @@ def run(minutes, commit):
         while True:
             result = fetch()
             t = now()
-            print(f"[{fmt(t)}] poll " + (f"ok {result['metric_value']}" if result else 'FAILED'),
-                  flush=True)
-            if result:
+            logged = False
+            if result.get('error'):
+                failures += 1
+                wait = backoff_wait(failures, result.get('retry_after', 0))
+                targeted = False
+                print(f"[{fmt(t)}] poll FAILED ({result['detail']}); failure {failures}, "
+                      f"waiting {wait}s", flush=True)
+                if LOG_HEADERS:
+                    write_rows(HEADERS_FILE, [[fmt(t), result['status'], '',
+                                               json.dumps({'error': result['detail']})]])
+                if failures == 1 or failures % 4 == 0:
+                    write_rows(CSV_FILE, [[fmt(t), '', 'error', result['status'],
+                                           f"{result['detail']} (failure {failures})",
+                                           '', 'error', '']])
+                    logged = True
+            else:
+                if failures:
+                    print(f"[{fmt(t)}] recovered after {failures} failed polls", flush=True)
+                failures = 0
+                headers = result['headers']
+                hit = cache_hit(headers)
                 key = (result['metric_type'], result['metric_value'])
                 kind = None
                 if last_key is None:
@@ -238,23 +282,39 @@ def run(minutes, commit):
                     kind = 'change'
                 elif (t - last_ts).total_seconds() >= HEARTBEAT_SECONDS:
                     kind = 'heartbeat'
+                print(f"[{fmt(t)}] poll ok {key[1]} "
+                      f"({headers.get('cf-cache-status', '?')}"
+                      f"{', age ' + str(cache_age(headers)) if hit else ''})", flush=True)
                 if kind:
-                    before = fmt(prev_poll or last_ts) if kind == 'change' else ''
-                    write_rows(CSV_FILE, [[fmt(t), result['movie_name'], key[0], key[1],
-                                           result['raw_text'], before, kind]])
+                    changed = kind in ('start', 'change')
+                    write_rows(CSV_FILE, [[
+                        fmt(t), result['movie_name'], key[0], key[1], result['raw_text'],
+                        fmt(prev_poll or last_ts) if kind == 'change' else '', kind,
+                        fmt(fresh_time(t, headers)) if changed else '']])
                     print(f"[{fmt(t)}] saved {kind}: {key[0]} {key[1]}", flush=True)
                     last_ts, last_key = t, key
+                    logged = True
                 if LOG_HEADERS:
                     write_rows(HEADERS_FILE, [[fmt(t), result['status'], key[1],
-                                               json.dumps(result['headers'], sort_keys=True)]])
+                                               json.dumps(headers, sort_keys=True)]])
                 prev_poll = t
-                if kind and commit:
-                    commit_and_push()
-            nxt = next_boundary(now())
-            if nxt >= end:
+                # Next ask: when the cached copy should expire. Still cached after we
+                # aimed at the expiry? Retry shortly, but give up the exact timing
+                # after a few tries and fall back to gentle polling.
+                if hit and targeted:
+                    retries += 1
+                elif not hit:
+                    retries = 0
+                wait = max(CACHE_TTL - cache_age(headers) + EXPIRY_MARGIN, MIN_WAIT)
+                if retries >= MAX_QUICK_RETRIES:
+                    wait = POLL_SECONDS
+                targeted = retries < MAX_QUICK_RETRIES
+            if logged and commit:
+                commit_and_push()
+            if now() + timedelta(seconds=wait) >= end:
                 print('Run window finished.', flush=True)
                 break
-            sleep(max((nxt - now()).total_seconds(), 0))
+            sleep(wait)
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:
