@@ -1,10 +1,11 @@
 name: BMS Trend Tracker
 
-# One long-running job polls every minute for up to RUN_MINUTES; tracker.py logs
-# only changes plus a heartbeat and pushes them. The last step then dispatches the
-# next run, which waits in the concurrency queue and starts as soon as this one
-# ends. The hourly schedule is only a backup in case the chain is ever broken
-# (GitHub often skips scheduled runs).
+# One job polls every minute for RUN_MINUTES (an hour by default, so its log is
+# readable soon after); tracker.py logs only changes plus a heartbeat and pushes
+# them. The last step then dispatches the next run, which waits in the
+# concurrency queue and starts as soon as this one ends. The hourly schedule is
+# only a backup in case the chain is ever broken (GitHub often skips scheduled
+# runs).
 on:
   schedule:
     - cron: '7 * * * *'
@@ -12,7 +13,7 @@ on:
     inputs:
       run_minutes:
         description: 'How long this run should keep polling (minutes, max 340)'
-        default: '340'
+        default: '60'
       chain:
         description: 'Start another run when this one finishes (set false for tests)'
         default: 'true'
@@ -22,7 +23,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  RUN_MINUTES: ${{ github.event.inputs.run_minutes || '340' }}
+  RUN_MINUTES: ${{ github.event.inputs.run_minutes || '60' }}
+  PYTHONUNBUFFERED: '1'
 
 jobs:
   run-tracker:

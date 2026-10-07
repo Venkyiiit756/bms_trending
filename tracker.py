@@ -8,12 +8,6 @@ import argparse
 import subprocess
 from datetime import datetime, timedelta, timezone
 
-try:
-    from curl_cffi import requests as b_requests
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "curl_cffi"])
-    from curl_cffi import requests as b_requests
-
 CSV_FILE = 'bms_booking_log.csv'
 HEADERS_FILE = 'bms_api_headers.csv'
 CSV_HEADER = ['timestamp', 'movie_name', 'metric_type', 'metric_value', 'raw_text',
@@ -23,6 +17,11 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 POLL_SECONDS = 60
 HEARTBEAT_SECONDS = 15 * 60
+FETCH_TIMEOUT = 60
+GIT_TIMEOUT = 120
+# Each request runs in its own short-lived process so one stuck connection can
+# never stall the polling loop.
+FETCH_CMD = [sys.executable, os.path.abspath(__file__), '--fetch-json']
 LOG_HEADERS = os.environ.get('LOG_HEADERS', '1') != '0'
 # Response headers that reveal how the figure is cached; nothing identifying.
 KEEP_HEADERS = ('date', 'age', 'cache-control', 'expires', 'etag', 'last-modified',
@@ -78,8 +77,13 @@ def last_logged():
     return ts, (row['metric_type'], row['metric_value'])
 
 
-def fetch():
+def fetch_once():
     """One request to BookMyShow. Returns a dict, or None if nothing usable came back."""
+    try:
+        from curl_cffi import requests as b_requests
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "curl_cffi"])
+        from curl_cffi import requests as b_requests
     session = b_requests.Session()
     base = 'https://in.bookmyshow.com'
     page = base + '/movies/hyderabad/drishyam-the-conclusion/ET00477911'
@@ -108,17 +112,17 @@ def fetch():
         status = api_response.status_code
         body = api_response.text
     except Exception as e:
-        print('API request error:', e)
+        print('API request error:', e, file=sys.stderr)
         return None
 
     if status != 200:
-        print(f'API failed with status {status}')
+        print(f'API failed with status {status}', file=sys.stderr)
         return None
 
     try:
         data = json.loads(body)
     except ValueError:
-        print('Response is not JSON.')
+        print('Response is not JSON.', file=sys.stderr)
         return None
 
     movie_name = 'Drishyam 3'
@@ -127,7 +131,7 @@ def fetch():
         movie_name = meta['event'].get('eventName', movie_name)
 
     if not isinstance(data.get('widgets'), dict):
-        print('Unexpected response: widgets missing.')
+        print('Unexpected response: widgets missing.', file=sys.stderr)
         return None
 
     headers = {k.lower(): v for k, v in api_response.headers.items()}
@@ -151,12 +155,35 @@ def fetch():
                         'metric_value': metric_value, 'raw_text': text,
                         'status': status, 'headers': headers}
 
-    print('No trending widget or stats returned.')
+    print('No trending widget or stats returned.', file=sys.stderr)
     return None
 
 
+def fetch():
+    """Run fetch_once() in a child process; None on any failure or timeout."""
+    try:
+        proc = subprocess.run(FETCH_CMD, capture_output=True, text=True, timeout=FETCH_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        print(f'Request timed out after {FETCH_TIMEOUT}s; skipping this poll', flush=True)
+        return None
+    if proc.stderr.strip():
+        print(proc.stderr.strip(), flush=True)
+    lines = proc.stdout.strip().splitlines()
+    if proc.returncode != 0 or not lines:
+        print(f'Request process failed (exit {proc.returncode})', flush=True)
+        return None
+    try:
+        return json.loads(lines[-1])
+    except ValueError:
+        return None
+
+
 def git(*args):
-    return subprocess.run(['git', *args], capture_output=True, text=True)
+    try:
+        return subprocess.run(['git', *args], capture_output=True, text=True, timeout=GIT_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        print(f'git {args[0]} timed out after {GIT_TIMEOUT}s', flush=True)
+        return subprocess.CompletedProcess(args, 124, '', 'timeout')
 
 
 def commit_and_push():
@@ -169,9 +196,9 @@ def commit_and_push():
         if (git('pull', '--rebase', '--autostash', 'origin', 'main').returncode == 0
                 and git('push', 'origin', 'HEAD:main').returncode == 0):
             return
-        print(f'Push failed (attempt {attempt}); retrying')
+        print(f'Push failed (attempt {attempt}); retrying', flush=True)
         sleep(attempt * 5)
-    print('Giving up on this push; the next one will retry.')
+    print('Giving up on this push; the next one will retry.', flush=True)
 
 
 def next_boundary(t):
@@ -200,6 +227,8 @@ def run(minutes, commit):
         while True:
             result = fetch()
             t = now()
+            print(f"[{fmt(t)}] poll " + (f"ok {result['metric_value']}" if result else 'FAILED'),
+                  flush=True)
             if result:
                 key = (result['metric_type'], result['metric_value'])
                 kind = None
@@ -213,7 +242,7 @@ def run(minutes, commit):
                     before = fmt(prev_poll or last_ts) if kind == 'change' else ''
                     write_rows(CSV_FILE, [[fmt(t), result['movie_name'], key[0], key[1],
                                            result['raw_text'], before, kind]])
-                    print(f"[{fmt(t)}] {kind}: {result['movie_name']} | {key[0]}: {key[1]}")
+                    print(f"[{fmt(t)}] saved {kind}: {key[0]} {key[1]}", flush=True)
                     last_ts, last_key = t, key
                 if LOG_HEADERS:
                     write_rows(HEADERS_FILE, [[fmt(t), result['status'], key[1],
@@ -223,11 +252,11 @@ def run(minutes, commit):
                     commit_and_push()
             nxt = next_boundary(now())
             if nxt >= end:
-                print('Run window finished.')
+                print('Run window finished.', flush=True)
                 break
             sleep(max((nxt - now()).total_seconds(), 0))
     except KeyboardInterrupt:
-        print('Interrupted; saving what we have.')
+        print('Interrupted; saving what we have.', flush=True)
     finally:
         if commit:
             commit_and_push()
@@ -238,5 +267,9 @@ if __name__ == '__main__':
     ap.add_argument('--minutes', type=float, default=0,
                     help='keep polling for this long (default: one poll)')
     ap.add_argument('--commit', action='store_true', help='git commit and push new rows')
+    ap.add_argument('--fetch-json', action='store_true', help=argparse.SUPPRESS)
     args = ap.parse_args()
-    run(args.minutes, args.commit)
+    if args.fetch_json:
+        print(json.dumps(fetch_once()))
+    else:
+        run(args.minutes, args.commit)
