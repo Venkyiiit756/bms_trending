@@ -22,12 +22,16 @@ HOUR = timedelta(hours=1)
 
 
 def parse_count(text):
-    """'7.49K' -> (7490.0, 5.0): the value and its rounding error in tickets."""
+    """'7.49K' -> (7490.0, 5.0): the value and its rounding error in tickets.
+
+    BookMyShow shows two decimals but drops trailing zeros ('14K' is 14.00K,
+    '12.1K' is 12.10K), so K and M figures are good to 0.01K / 0.01M.
+    """
     text = text.strip().upper()
     mult = {'K': 1e3, 'M': 1e6}.get(text[-1], 1)
-    num = text[:-1] if text[-1] in 'KM' else text
-    decimals = len(num.split('.')[1]) if '.' in num else 0
-    return float(num) * mult, 0.5 * 10 ** -decimals * mult
+    if mult == 1:
+        return float(text), 0.5
+    return float(text[:-1]) * mult, 0.005 * mult
 
 
 def parse_row_ts(text):
