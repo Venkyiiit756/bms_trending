@@ -1,0 +1,5 @@
+# synthetic fixture: same shape as the real files (leading "Allow: /" then a Disallow)
+User-agent: *
+Allow: /
+Disallow: /api/
+Crawl-delay: 1

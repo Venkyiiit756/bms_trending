@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><title>FIXTURE MOVIE - tracker (synthetic test page)</title></head>
+<body><div id="app">Connecting to server 0%</div>
+<script>
+// Simulates a client-rendered app: content appears after ~1.2 s, and the app also calls a robots-disallowed /api/ path.
+fetch('/api/secret').catch(()=>{});
+fetch('/data/public.json').catch(()=>{});
+setTimeout(() => {
+  document.getElementById('app').innerHTML = `
+   <p>Sat 3 Oct 2026 &middot; Updated 12:00 PM IST</p>
+   <p>Coverage: Pan India, 3 national chains, 120 cities</p>
+   <h2>Advance Booking (Without Block Seats)</h2>
+   <table><tr><th>Show Date</th><th>Shows</th><th>Occupancy</th><th>Tickets Sold</th><th>Gross (₹ L)</th><th>Cumulative Gross</th><th>Mood</th></tr>
+     <tr><td>2 Oct 2026</td><td>1,234</td><td>45.5%</td><td>3.4K</td><td>12.5</td><td>₹1.25 Cr</td><td>strong</td></tr>
+     <tr><td>3 Oct 2026</td><td>1,500</td><td>38%</td><td>2,45,000</td><td>8.1</td><td>₹2.06 Cr</td><td>ok</td></tr></table>
+   <h2>Tracked Collections (completed shows)</h2>
+   <table><tr><th>Date</th><th>Gross</th><th>Footfalls</th></tr>
+     <tr><td>2 Oct 2026</td><td>₹ - Cr</td><td>-</td></tr>
+     <tr><td>1 Oct 2026</td><td>₹4.5 Cr</td><td>1.2L</td></tr></table>`;
+}, 1200);
+</script></body></html>
