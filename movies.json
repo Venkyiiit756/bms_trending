@@ -1,0 +1,38 @@
+{
+  "movies": [
+    {
+      "key": "drishyam-the-conclusion",
+      "title": "Drishyam: The Conclusion",
+      "language": "Hindi",
+      "year": 2026,
+      "sites": {
+        "moviemint": {
+          "pages": [
+            {
+              "url": "https://moviemintbo.com/movie/drishyam-the-conclusion?date={yyyymmdd}",
+              "default_type": "unclassified"
+            }
+          ]
+        },
+        "sacnilk": {
+          "pages": [
+            {
+              "url": "https://www.sacnilk.com/livetracker/drishyam_3_hindi_2026_Advance-Booking-Live",
+              "default_type": "advance_booking"
+            },
+            {
+              "url": "https://www.sacnilk.com/news/drishyam_3_hindi_2026_Box_Office_Collection_Day_Wise_Worldwide",
+              "default_type": "estimated_boxoffice"
+            }
+          ]
+        },
+        "cinenation": {
+          "find_on": "https://www.thecinenation.live/",
+          "tokens": ["drishyam"],
+          "max_links": 1,
+          "default_type": "unclassified"
+        }
+      }
+    }
+  ]
+}

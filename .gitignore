@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+.venv/
+.pytest_cache/
+data/raw/
+data/discovery/
+data/.run.lock
+data/run.log
