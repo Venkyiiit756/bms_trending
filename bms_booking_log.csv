@@ -748,3 +748,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-13 02:09:08+05:30,Drishyam 3,24_hours,114.87K,114.87K tickets booked in last 24 hours,2026-10-13 01:54:48+05:30,change,2026-10-13 02:09:08+05:30
 2026-10-13 02:29:19+05:30,Drishyam 3,24_hours,114.87K,114.87K tickets booked in last 24 hours,,heartbeat,
 2026-10-13 02:39:28+05:30,Drishyam 3,24_hours,115.01K,115.01K tickets booked in last 24 hours,2026-10-13 02:38:28+05:30,change,2026-10-13 02:39:28+05:30
+2026-10-13 02:59:35+05:30,Drishyam 3,24_hours,115.01K,115.01K tickets booked in last 24 hours,,heartbeat,
