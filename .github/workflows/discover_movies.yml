@@ -4,8 +4,8 @@ name: Discover Hyderabad Movies
 # list of movies on BookMyShow's Hyderabad page. tracker.py picks up new movies
 # from hyderabad_movies.json at the start of its next hourly run.
 on:
-  schedule:
-    - cron: '0 0 * * *'   # 05:30 IST
+  # Daily schedule (cron '0 0 * * *', 05:30 IST) is off: Cloudflare blocks the explore page
+  # for GitHub runners (HTTP 403 / "Attention Required"), so discovery cannot run here yet.
   workflow_dispatch:
 
 concurrency:
