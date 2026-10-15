@@ -8,3 +8,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-15 15:55:37+05:30,Comrade Kalyan,24_hours,6.12K,6.12K tickets booked in last 24 hours,2026-10-15 15:03:43+05:30,change,2026-10-15 15:55:37+05:30
 2026-10-15 16:49:33+05:30,Comrade Kalyan,24_hours,5.88K,5.88K tickets booked in last 24 hours,2026-10-15 15:55:37+05:30,change,2026-10-15 16:49:33+05:30
 2026-10-15 17:43:31+05:30,Comrade Kalyan,24_hours,5.72K,5.72K tickets booked in last 24 hours,2026-10-15 16:49:33+05:30,change,2026-10-15 17:43:31+05:30
+2026-10-15 18:05:27+05:30,Comrade Kalyan,24_hours,5.52K,5.52K tickets booked in last 24 hours,2026-10-15 17:43:31+05:30,change,2026-10-15 18:05:27+05:30
