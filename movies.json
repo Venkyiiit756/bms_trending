@@ -10,16 +10,6 @@
     "headers_csv": "bms_api_headers.csv"
   },
   {
-    "key": "jailer2",
-    "name": "Jailer 2",
-    "eventcode": "ET00429213",
-    "region_code": "MUMBAI",
-    "region_slug": "mumbai",
-    "page_slug": "rajini-the-jailer-2",
-    "csv": "bms_booking_log_jailer2.csv",
-    "headers_csv": "bms_api_headers_jailer2.csv"
-  },
-  {
     "key": "jailer2_hyd",
     "name": "Jailer 2",
     "eventcode": "ET00518674",
@@ -28,16 +18,6 @@
     "page_slug": "jailer-2",
     "csv": "bms_booking_log_jailer2_hyd.csv",
     "headers_csv": "bms_api_headers_jailer2_hyd.csv"
-  },
-  {
-    "key": "jailer2_telugu",
-    "name": "Jailer 2",
-    "eventcode": "ET00518675",
-    "region_code": "HYD",
-    "region_slug": "hyderabad",
-    "page_slug": "jailer-2-telugu",
-    "csv": "bms_booking_log_jailer2_telugu.csv",
-    "headers_csv": "bms_api_headers_jailer2_telugu.csv"
   },
   {
     "key": "et00483565",
