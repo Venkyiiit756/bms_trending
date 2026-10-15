@@ -70,4 +70,4 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 ## Multiple movies (added 2026-10-15)
 - Movies live in `movies.json` (key, name, eventcode, region, page_slug, csv names). The workflow starts one `tracker.py --movie <key>` process per entry, staggered 20 s.
 - Drishyam keeps `bms_booking_log.csv`; each other movie has its own `csv` / `headers_csv` pair. `window_sales.py --csv <file>` works on any of them.
-- **Jailer 2 is not added yet**: its BookMyShow event code (`ET00......`, from the movie page URL) is unknown; the sandbox gets 403 from BookMyShow. Add an entry to `movies.json` with `csv` `bms_booking_log_jailer2.csv`.
+- **Jailer 2** (`ET00429213`, region MUMBAI, page `/movies/mumbai/rajini-the-jailer-2/`) logs to `bms_booking_log_jailer2.csv` and `bms_api_headers_jailer2.csv`. The region code `MUMBAI` is a guess; if the log shows `error` rows or no Trending widget, check it.

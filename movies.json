@@ -1,5 +1,22 @@
 [
-  {"key": "drishyam", "name": "Drishyam 3", "eventcode": "ET00477911",
-   "region_code": "HYD", "region_slug": "hyderabad", "page_slug": "drishyam-the-conclusion",
-   "csv": "bms_booking_log.csv", "headers_csv": "bms_api_headers.csv"}
+  {
+    "key": "drishyam",
+    "name": "Drishyam 3",
+    "eventcode": "ET00477911",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "drishyam-the-conclusion",
+    "csv": "bms_booking_log.csv",
+    "headers_csv": "bms_api_headers.csv"
+  },
+  {
+    "key": "jailer2",
+    "name": "Jailer 2",
+    "eventcode": "ET00429213",
+    "region_code": "MUMBAI",
+    "region_slug": "mumbai",
+    "page_slug": "rajini-the-jailer-2",
+    "csv": "bms_booking_log_jailer2.csv",
+    "headers_csv": "bms_api_headers_jailer2.csv"
+  }
 ]
