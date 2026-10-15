@@ -37,8 +37,7 @@
     "region_slug": "hyderabad",
     "page_slug": "ranabaali",
     "csv": "data/ET00483565.csv",
-    "headers_csv": "data/ET00483565_headers.csv",
-    "every": 3600
+    "headers_csv": "data/ET00483565_headers.csv"
   },
   {
     "key": "et00519564",
