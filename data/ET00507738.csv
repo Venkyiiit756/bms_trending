@@ -23,3 +23,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 00:49:00+05:30,Hanuman Ansh,24_hours,6.35K,6.35K tickets booked in last 24 hours,2026-10-16 00:36:54+05:30,change,2026-10-16 00:49:00+05:30
 2026-10-16 01:03:46+05:30,Hanuman Ansh,24_hours,6.36K,6.36K tickets booked in last 24 hours,2026-10-16 00:49:00+05:30,change,2026-10-16 01:03:46+05:30
 2026-10-16 01:25:22+05:30,Hanuman Ansh,24_hours,6.36K,6.36K tickets booked in last 24 hours,,heartbeat,
+2026-10-16 01:40:28+05:30,Hanuman Ansh,24_hours,6.35K,6.35K tickets booked in last 24 hours,2026-10-16 01:25:22+05:30,change,2026-10-16 01:40:28+05:30
