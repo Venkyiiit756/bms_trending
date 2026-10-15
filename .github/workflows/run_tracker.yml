@@ -49,14 +49,8 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        # One polling process per movie in movies.json, all for the same window.
-        pids=""
-        for key in $(python -c "import json;print(*[m['key'] for m in json.load(open('movies.json'))])"); do
-          python tracker.py --movie "$key" --minutes "$RUN_MINUTES" --commit 2>&1 | sed "s/^/[$key] /" &
-          pids="$pids $!"
-          sleep 20   # stagger so the movies don't hit the API together
-        done
-        wait
+        # One process polls every movie in movies.json, one request at a time.
+        python tracker.py --minutes "$RUN_MINUTES" --commit
 
     - name: Queue Next Run
       if: always() && github.event.inputs.chain != 'false'
