@@ -47,7 +47,8 @@
     "region_slug": "hyderabad",
     "page_slug": "ranabaali",
     "csv": "data/ET00483565.csv",
-    "headers_csv": "data/ET00483565_headers.csv"
+    "headers_csv": "data/ET00483565_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00519564",
@@ -57,7 +58,8 @@
     "region_slug": "hyderabad",
     "page_slug": "comrade-kalyan",
     "csv": "data/ET00519564.csv",
-    "headers_csv": "data/ET00519564_headers.csv"
+    "headers_csv": "data/ET00519564_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00521061",
@@ -67,7 +69,8 @@
     "region_slug": "hyderabad",
     "page_slug": "crazy-kalyanam",
     "csv": "data/ET00521061.csv",
-    "headers_csv": "data/ET00521061_headers.csv"
+    "headers_csv": "data/ET00521061_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00481645",
@@ -77,7 +80,8 @@
     "region_slug": "hyderabad",
     "page_slug": "street-fighter",
     "csv": "data/ET00481645.csv",
-    "headers_csv": "data/ET00481645_headers.csv"
+    "headers_csv": "data/ET00481645_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00507337",
@@ -87,7 +91,8 @@
     "region_slug": "hyderabad",
     "page_slug": "doraemon-castle-of-the-undersea-devil",
     "csv": "data/ET00507337.csv",
-    "headers_csv": "data/ET00507337_headers.csv"
+    "headers_csv": "data/ET00507337_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00507738",
@@ -97,7 +102,8 @@
     "region_slug": "hyderabad",
     "page_slug": "hanuman-ansh",
     "csv": "data/ET00507738.csv",
-    "headers_csv": "data/ET00507738_headers.csv"
+    "headers_csv": "data/ET00507738_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00520562",
@@ -107,7 +113,8 @@
     "region_slug": "hyderabad",
     "page_slug": "garividi-lakshmi",
     "csv": "data/ET00520562.csv",
-    "headers_csv": "data/ET00520562_headers.csv"
+    "headers_csv": "data/ET00520562_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00519781",
@@ -117,7 +124,8 @@
     "region_slug": "hyderabad",
     "page_slug": "dorothy-telugu",
     "csv": "data/ET00519781.csv",
-    "headers_csv": "data/ET00519781_headers.csv"
+    "headers_csv": "data/ET00519781_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00518078",
@@ -127,7 +135,8 @@
     "region_slug": "hyderabad",
     "page_slug": "premane-oorilo",
     "csv": "data/ET00518078.csv",
-    "headers_csv": "data/ET00518078_headers.csv"
+    "headers_csv": "data/ET00518078_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00436621",
@@ -137,7 +146,8 @@
     "region_slug": "hyderabad",
     "page_slug": "the-paradise",
     "csv": "data/ET00436621.csv",
-    "headers_csv": "data/ET00436621_headers.csv"
+    "headers_csv": "data/ET00436621_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00518692",
@@ -147,7 +157,8 @@
     "region_slug": "hyderabad",
     "page_slug": "thella-kaagitham",
     "csv": "data/ET00518692.csv",
-    "headers_csv": "data/ET00518692_headers.csv"
+    "headers_csv": "data/ET00518692_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00520052",
@@ -157,7 +168,8 @@
     "region_slug": "hyderabad",
     "page_slug": "mayookha",
     "csv": "data/ET00520052.csv",
-    "headers_csv": "data/ET00520052_headers.csv"
+    "headers_csv": "data/ET00520052_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00465242",
@@ -167,7 +179,8 @@
     "region_slug": "hyderabad",
     "page_slug": "baa-baa-black-sheep",
     "csv": "data/ET00465242.csv",
-    "headers_csv": "data/ET00465242_headers.csv"
+    "headers_csv": "data/ET00465242_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00515520",
@@ -177,7 +190,8 @@
     "region_slug": "hyderabad",
     "page_slug": "baththa",
     "csv": "data/ET00515520.csv",
-    "headers_csv": "data/ET00515520_headers.csv"
+    "headers_csv": "data/ET00515520_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00412717",
@@ -187,7 +201,8 @@
     "region_slug": "hyderabad",
     "page_slug": "premada-oorali",
     "csv": "data/ET00412717.csv",
-    "headers_csv": "data/ET00412717_headers.csv"
+    "headers_csv": "data/ET00412717_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00504928",
@@ -197,7 +212,8 @@
     "region_slug": "hyderabad",
     "page_slug": "heart-of-the-beast",
     "csv": "data/ET00504928.csv",
-    "headers_csv": "data/ET00504928_headers.csv"
+    "headers_csv": "data/ET00504928_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00514163",
@@ -207,7 +223,8 @@
     "region_slug": "hyderabad",
     "page_slug": "avengers-endgame-encore",
     "csv": "data/ET00514163.csv",
-    "headers_csv": "data/ET00514163_headers.csv"
+    "headers_csv": "data/ET00514163_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00497246",
@@ -217,7 +234,8 @@
     "region_slug": "hyderabad",
     "page_slug": "verity",
     "csv": "data/ET00497246.csv",
-    "headers_csv": "data/ET00497246_headers.csv"
+    "headers_csv": "data/ET00497246_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00312314",
@@ -227,7 +245,8 @@
     "region_slug": "hyderabad",
     "page_slug": "varsham-telugu",
     "csv": "data/ET00312314.csv",
-    "headers_csv": "data/ET00312314_headers.csv"
+    "headers_csv": "data/ET00312314_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00506964",
@@ -237,7 +256,8 @@
     "region_slug": "hyderabad",
     "page_slug": "other-mommy",
     "csv": "data/ET00506964.csv",
-    "headers_csv": "data/ET00506964_headers.csv"
+    "headers_csv": "data/ET00506964_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00518039",
@@ -247,7 +267,8 @@
     "region_slug": "hyderabad",
     "page_slug": "dorothy",
     "csv": "data/ET00518039.csv",
-    "headers_csv": "data/ET00518039_headers.csv"
+    "headers_csv": "data/ET00518039_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00447840",
@@ -257,7 +278,8 @@
     "region_slug": "hyderabad",
     "page_slug": "spider-man-brand-new-day",
     "csv": "data/ET00447840.csv",
-    "headers_csv": "data/ET00447840_headers.csv"
+    "headers_csv": "data/ET00447840_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00477243",
@@ -267,7 +289,8 @@
     "region_slug": "hyderabad",
     "page_slug": "digger",
     "csv": "data/ET00477243.csv",
-    "headers_csv": "data/ET00477243_headers.csv"
+    "headers_csv": "data/ET00477243_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00502504",
@@ -277,7 +300,8 @@
     "region_slug": "hyderabad",
     "page_slug": "prahaar",
     "csv": "data/ET00502504.csv",
-    "headers_csv": "data/ET00502504_headers.csv"
+    "headers_csv": "data/ET00502504_headers.csv",
+    "every": 3600
   },
   {
     "key": "et00513250",
@@ -287,6 +311,7 @@
     "region_slug": "hyderabad",
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
-    "headers_csv": "data/ET00513250_headers.csv"
+    "headers_csv": "data/ET00513250_headers.csv",
+    "every": 3600
   }
 ]

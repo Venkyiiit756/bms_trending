@@ -32,7 +32,7 @@ BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, .
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
-MISSING_RETRY = 1800       # a movie whose response has no counter is retried this often
+MISSING_RETRY = 3600       # a movie whose response has no counter is retried this often
 GIT_TIMEOUT = 120
 # Each request runs in its own short-lived process so one stuck connection can
 # never stall the polling loop.
@@ -270,6 +270,7 @@ class State:
         self.retries = 0
         self.targeted = False  # was this poll aimed at an expected cache expiry?
         self.due = due         # monotonic time of the next request
+        self.every = movie.get('every', 0)   # >0: poll only this often (seconds), not at every cache expiry
         self.files = [self.csv] + ([self.headers_csv] if LOG_HEADERS else [])
 
 
@@ -346,7 +347,7 @@ def poll(st, shared):
     if st.retries >= MAX_QUICK_RETRIES:
         wait = POLL_SECONDS
     st.targeted = st.retries < MAX_QUICK_RETRIES
-    st.due = mono + wait
+    st.due = mono + (st.every or wait)
     return logged
 
 
@@ -361,7 +362,15 @@ def run(keys, minutes, commit):
     movies = load_movies()
     end = time.monotonic() + minutes * 60
     start = time.monotonic()
-    states = [State(movies[k], start + i * MIN_GAP) for i, k in enumerate(keys)]
+    # Movies with an `every` interval (hourly sales are enough for them) are spread
+    # evenly over that interval; the rest start MIN_GAP apart and follow the cache.
+    slow = [k for k in keys if movies[k].get('every')]
+    fast = [k for k in keys if k not in slow]
+    due = {k: start + i * MIN_GAP for i, k in enumerate(fast)}
+    for i, k in enumerate(slow):
+        every = movies[k]['every']
+        due[k] = start + len(fast) * MIN_GAP + i * (every - 300) / len(slow)
+    states = [State(movies[k], due[k]) for k in keys]
     shared = {'failures': 0, 'block_until': 0.0}
     last_request = 0.0
     dirty = False
