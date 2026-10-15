@@ -1,3 +1,4 @@
 timestamp,status,metric_value,headers
 2026-10-15 12:16:58+05:30,429,,"{""error"": ""HTTP 429""}"
 2026-10-15 12:19:43+05:30,429,,"{""error"": ""HTTP 429""}"
+2026-10-15 12:22:27+05:30,200,,"{""error"": ""no trending widget in response""}"
