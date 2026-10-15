@@ -8,8 +8,14 @@ import argparse
 import subprocess
 from datetime import datetime, timedelta, timezone
 
-CSV_FILE = 'bms_booking_log.csv'
-HEADERS_FILE = 'bms_api_headers.csv'
+# Movies to track live in movies.json; run one process per movie with --movie KEY.
+MOVIES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'movies.json')
+MOVIE = {'key': 'drishyam', 'eventcode': 'ET00477911', 'name': 'Drishyam 3',
+         'region_code': 'HYD', 'region_slug': 'hyderabad',
+         'page_slug': 'drishyam-the-conclusion',
+         'csv': 'bms_booking_log.csv', 'headers_csv': 'bms_api_headers.csv'}
+CSV_FILE = MOVIE['csv']
+HEADERS_FILE = MOVIE['headers_csv']
 CSV_HEADER = ['timestamp', 'movie_name', 'metric_type', 'metric_value', 'raw_text',
               'prev_poll', 'kind', 'fresh_at']
 HEADERS_HEADER = ['timestamp', 'status', 'metric_value', 'headers']
@@ -30,11 +36,23 @@ FETCH_TIMEOUT = 60
 GIT_TIMEOUT = 120
 # Each request runs in its own short-lived process so one stuck connection can
 # never stall the polling loop.
-FETCH_CMD = [sys.executable, os.path.abspath(__file__), '--fetch-json']
+FETCH_CMD = [sys.executable, os.path.abspath(__file__), '--fetch-json']  # --movie added in select_movie
 LOG_HEADERS = os.environ.get('LOG_HEADERS', '1') != '0'
 # Response headers that reveal how the figure is cached; nothing identifying.
 KEEP_HEADERS = ('date', 'age', 'cache-control', 'expires', 'etag', 'last-modified',
                 'cf-cache-status', 'x-cache', 'via', 'server-timing')
+
+
+def select_movie(key):
+    """Point the module at one entry of movies.json (files, event code, region)."""
+    global MOVIE, CSV_FILE, HEADERS_FILE
+    with open(MOVIES_FILE, encoding='utf-8') as f:
+        movies = {m['key']: m for m in json.load(f)}
+    if key not in movies:
+        sys.exit(f"Unknown movie '{key}'. Known: {', '.join(movies)}")
+    MOVIE = {**MOVIE, **movies[key]}
+    CSV_FILE, HEADERS_FILE = MOVIE['csv'], MOVIE['headers_csv']
+    FETCH_CMD[:] = [sys.executable, os.path.abspath(__file__), '--fetch-json', '--movie', key]
 
 
 def now():
@@ -95,7 +113,7 @@ def fetch_once():
         from curl_cffi import requests as b_requests
     session = b_requests.Session()
     base = 'https://in.bookmyshow.com'
-    page = base + '/movies/hyderabad/drishyam-the-conclusion/ET00477911'
+    page = f"{base}/movies/{MOVIE['region_slug']}/{MOVIE['page_slug']}/{MOVIE['eventcode']}"
 
     app_headers = {
         'Accept': 'application/json, text/plain, */*',
@@ -104,8 +122,8 @@ def fetch_once():
         'x-platform': 'AND',
         'x-platform-code': 'ANDROID',
         'x-app-code': 'MOBAND2',
-        'x-region-code': 'HYD',
-        'x-region-slug': 'hyderabad',
+        'x-region-code': MOVIE['region_code'],
+        'x-region-slug': MOVIE['region_slug'],
         'x-app-version': '18.2.8',
         'x-app-version-code': '18281',
         'Origin': base
@@ -113,7 +131,7 @@ def fetch_once():
 
     try:
         api_response = session.get(
-            base + '/api/movies/v1/synopsis/secondary?eventcode=ET00477911&channel=mobile',
+            f"{base}/api/movies/v1/synopsis/secondary?eventcode={MOVIE['eventcode']}&channel=mobile",
             headers=app_headers,
             impersonate="chrome",
             timeout=25
@@ -133,7 +151,7 @@ def fetch_once():
     except ValueError:
         return {'error': True, 'status': status, 'detail': 'response is not JSON'}
 
-    movie_name = 'Drishyam 3'
+    movie_name = MOVIE['name']
     meta = data.get('meta', {})
     if isinstance(meta, dict) and 'event' in meta:
         movie_name = meta['event'].get('eventName', movie_name)
@@ -327,8 +345,10 @@ if __name__ == '__main__':
     ap.add_argument('--minutes', type=float, default=0,
                     help='keep polling for this long (default: one poll)')
     ap.add_argument('--commit', action='store_true', help='git commit and push new rows')
+    ap.add_argument('--movie', default='drishyam', help='key from movies.json')
     ap.add_argument('--fetch-json', action='store_true', help=argparse.SUPPRESS)
     args = ap.parse_args()
+    select_movie(args.movie)
     if args.fetch_json:
         print(json.dumps(fetch_once()))
     else:

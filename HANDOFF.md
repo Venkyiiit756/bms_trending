@@ -66,3 +66,8 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - A running job's log can't be read until it finishes. To diagnose a stall, cancel the run (the last step starts a replacement), then read the log.
 - A cloud session may push only to its own branch; merge via PR (squash). Cancel or start runs with the Actions tools.
 - Preferences of the owner: IST times, numbers in **K**, short answers. Tables should be compact: a bordered grid, data only, no titles, footnotes or delta columns (Thu/Fri/Sat style). Images are made with matplotlib (`pip install matplotlib`). Values at half-hour marks are interpolated between readings, and only when two readings under 25 minutes apart bracket the time.
+
+## Multiple movies (added 2026-10-15)
+- Movies live in `movies.json` (key, name, eventcode, region, page_slug, csv names). The workflow starts one `tracker.py --movie <key>` process per entry, staggered 20 s.
+- Drishyam keeps `bms_booking_log.csv`; each other movie has its own `csv` / `headers_csv` pair. `window_sales.py --csv <file>` works on any of them.
+- **Jailer 2** (`ET00429213`, region MUMBAI, page `/movies/mumbai/rajini-the-jailer-2/`) logs to `bms_booking_log_jailer2.csv` and `bms_api_headers_jailer2.csv`. The region code `MUMBAI` is a guess; if the log shows `error` rows or no Trending widget, check it.
