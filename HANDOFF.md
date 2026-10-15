@@ -82,3 +82,4 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 
 - 2026-10-15: stopped tracking `jailer2` (Mumbai, the Hindi version, ~4K/h) and `jailer2_telugu` (identical figures to `jailer2_hyd`). Their CSVs stay in the repo. Jailer 2 is now tracked only as `jailer2_hyd` (ET00518674, Hyderabad, the common Telugu version).
 - 2026-10-15 (later): `jailer2` (Mumbai, `ET00429213`, the Hindi version) is tracked again at the owner's request. Jailer 2 is now `jailer2_hyd` (Telugu/common) plus `jailer2` (Hindi). `jailer2_telugu` stays dropped (duplicate).
+- 2026-10-15: Ranabaali (`ET00483565`) moved to the 10-minute cadence (no `every`) at the owner's request.
