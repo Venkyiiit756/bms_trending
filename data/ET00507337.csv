@@ -32,3 +32,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 03:14:29+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-16 03:25:21+05:30,Doraemon: Castle of the Undersea Devil,24_hours,8.05K,8.05K tickets booked in last 24 hours,,heartbeat,
 2026-10-16 03:37:23+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-16 04:03:28+05:30,Doraemon: Castle of the Undersea Devil,24_hours,8.06K,8.06K tickets booked in last 24 hours,2026-10-16 03:25:21+05:30,change,2026-10-16 04:03:28+05:30
