@@ -1,1 +1,2 @@
 timestamp,status,metric_value,headers
+2026-10-15 12:15:28+05:30,200,3.69K,"{""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""MISS"", ""date"": ""Thu, 15 Oct 2026 06:45:28 GMT"", ""last-modified"": ""Thu, 15 Oct 2026 06:45:28 GMT""}"
