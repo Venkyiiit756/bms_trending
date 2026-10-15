@@ -1,0 +1,39 @@
+name: Discover Hyderabad Movies
+
+# Once a day, early morning IST (before the day's bookings pick up), refresh the
+# list of movies on BookMyShow's Hyderabad page. tracker.py picks up new movies
+# from hyderabad_movies.json at the start of its next hourly run.
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 05:30 IST
+  workflow_dispatch:
+
+concurrency:
+  group: bms-discover
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install -r requirements.txt
+    - name: Discover movies
+      run: |
+        python discover.py || {
+          pip install playwright && playwright install --with-deps chromium && python discover.py
+        }
+    - name: Commit list
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add hyderabad_movies.json
+        git diff --cached --quiet && exit 0
+        git commit -m "Update Hyderabad movie list [skip ci]"
+        for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
