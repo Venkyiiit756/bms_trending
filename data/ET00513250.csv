@@ -3,3 +3,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-15 14:58:16+05:30,Nayyi Navelli,24_hours,6.59K,6.59K tickets booked in last 24 hours,2026-10-15 13:19:59+05:30,change,2026-10-15 14:58:16+05:30
 2026-10-15 15:54:19+05:30,Nayyi Navelli,24_hours,7.3K,7.3K tickets booked in last 24 hours,2026-10-15 14:58:16+05:30,change,2026-10-15 15:54:19+05:30
 2026-10-15 16:48:19+05:30,Nayyi Navelli,24_hours,7.76K,7.76K tickets booked in last 24 hours,2026-10-15 15:54:19+05:30,change,2026-10-15 16:48:19+05:30
+2026-10-15 17:42:15+05:30,Nayyi Navelli,24_hours,8.21K,8.21K tickets booked in last 24 hours,2026-10-15 16:48:19+05:30,change,2026-10-15 17:42:15+05:30
