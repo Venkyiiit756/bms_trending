@@ -38,5 +38,255 @@
     "page_slug": "jailer-2-telugu",
     "csv": "bms_booking_log_jailer2_telugu.csv",
     "headers_csv": "bms_api_headers_jailer2_telugu.csv"
+  },
+  {
+    "key": "et00483565",
+    "name": "Ranabaali",
+    "eventcode": "ET00483565",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ranabaali",
+    "csv": "data/ET00483565.csv",
+    "headers_csv": "data/ET00483565_headers.csv"
+  },
+  {
+    "key": "et00519564",
+    "name": "Comrade Kalyan",
+    "eventcode": "ET00519564",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "comrade-kalyan",
+    "csv": "data/ET00519564.csv",
+    "headers_csv": "data/ET00519564_headers.csv"
+  },
+  {
+    "key": "et00521061",
+    "name": "Crazy Kalyanam",
+    "eventcode": "ET00521061",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "crazy-kalyanam",
+    "csv": "data/ET00521061.csv",
+    "headers_csv": "data/ET00521061_headers.csv"
+  },
+  {
+    "key": "et00481645",
+    "name": "Street Fighter",
+    "eventcode": "ET00481645",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "street-fighter",
+    "csv": "data/ET00481645.csv",
+    "headers_csv": "data/ET00481645_headers.csv"
+  },
+  {
+    "key": "et00507337",
+    "name": "Doraemon: Castle of the Undersea Devil",
+    "eventcode": "ET00507337",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "doraemon-castle-of-the-undersea-devil",
+    "csv": "data/ET00507337.csv",
+    "headers_csv": "data/ET00507337_headers.csv"
+  },
+  {
+    "key": "et00507738",
+    "name": "Hanuman Ansh",
+    "eventcode": "ET00507738",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hanuman-ansh",
+    "csv": "data/ET00507738.csv",
+    "headers_csv": "data/ET00507738_headers.csv"
+  },
+  {
+    "key": "et00520562",
+    "name": "Garividi Lakshmi",
+    "eventcode": "ET00520562",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "garividi-lakshmi",
+    "csv": "data/ET00520562.csv",
+    "headers_csv": "data/ET00520562_headers.csv"
+  },
+  {
+    "key": "et00519781",
+    "name": "Dorothy (Telugu)",
+    "eventcode": "ET00519781",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dorothy-telugu",
+    "csv": "data/ET00519781.csv",
+    "headers_csv": "data/ET00519781_headers.csv"
+  },
+  {
+    "key": "et00518078",
+    "name": "Premane Oorilo",
+    "eventcode": "ET00518078",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "premane-oorilo",
+    "csv": "data/ET00518078.csv",
+    "headers_csv": "data/ET00518078_headers.csv"
+  },
+  {
+    "key": "et00436621",
+    "name": "The Paradise",
+    "eventcode": "ET00436621",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-paradise",
+    "csv": "data/ET00436621.csv",
+    "headers_csv": "data/ET00436621_headers.csv"
+  },
+  {
+    "key": "et00518692",
+    "name": "Thella Kaagitham",
+    "eventcode": "ET00518692",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "thella-kaagitham",
+    "csv": "data/ET00518692.csv",
+    "headers_csv": "data/ET00518692_headers.csv"
+  },
+  {
+    "key": "et00520052",
+    "name": "Mayookha",
+    "eventcode": "ET00520052",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mayookha",
+    "csv": "data/ET00520052.csv",
+    "headers_csv": "data/ET00520052_headers.csv"
+  },
+  {
+    "key": "et00465242",
+    "name": "Baa Baa Black Sheep",
+    "eventcode": "ET00465242",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "baa-baa-black-sheep",
+    "csv": "data/ET00465242.csv",
+    "headers_csv": "data/ET00465242_headers.csv"
+  },
+  {
+    "key": "et00515520",
+    "name": "Baththa",
+    "eventcode": "ET00515520",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "baththa",
+    "csv": "data/ET00515520.csv",
+    "headers_csv": "data/ET00515520_headers.csv"
+  },
+  {
+    "key": "et00412717",
+    "name": "Premada Oorali",
+    "eventcode": "ET00412717",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "premada-oorali",
+    "csv": "data/ET00412717.csv",
+    "headers_csv": "data/ET00412717_headers.csv"
+  },
+  {
+    "key": "et00504928",
+    "name": "Heart of the Beast",
+    "eventcode": "ET00504928",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "heart-of-the-beast",
+    "csv": "data/ET00504928.csv",
+    "headers_csv": "data/ET00504928_headers.csv"
+  },
+  {
+    "key": "et00514163",
+    "name": "Avengers Endgame: Encore",
+    "eventcode": "ET00514163",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "avengers-endgame-encore",
+    "csv": "data/ET00514163.csv",
+    "headers_csv": "data/ET00514163_headers.csv"
+  },
+  {
+    "key": "et00497246",
+    "name": "Verity",
+    "eventcode": "ET00497246",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "verity",
+    "csv": "data/ET00497246.csv",
+    "headers_csv": "data/ET00497246_headers.csv"
+  },
+  {
+    "key": "et00312314",
+    "name": "Varsham (Telugu)",
+    "eventcode": "ET00312314",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "varsham-telugu",
+    "csv": "data/ET00312314.csv",
+    "headers_csv": "data/ET00312314_headers.csv"
+  },
+  {
+    "key": "et00506964",
+    "name": "Other Mommy",
+    "eventcode": "ET00506964",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "other-mommy",
+    "csv": "data/ET00506964.csv",
+    "headers_csv": "data/ET00506964_headers.csv"
+  },
+  {
+    "key": "et00518039",
+    "name": "Dorothy",
+    "eventcode": "ET00518039",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dorothy",
+    "csv": "data/ET00518039.csv",
+    "headers_csv": "data/ET00518039_headers.csv"
+  },
+  {
+    "key": "et00447840",
+    "name": "Spider-Man: Brand New Day",
+    "eventcode": "ET00447840",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "spider-man-brand-new-day",
+    "csv": "data/ET00447840.csv",
+    "headers_csv": "data/ET00447840_headers.csv"
+  },
+  {
+    "key": "et00477243",
+    "name": "Digger",
+    "eventcode": "ET00477243",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "digger",
+    "csv": "data/ET00477243.csv",
+    "headers_csv": "data/ET00477243_headers.csv"
+  },
+  {
+    "key": "et00502504",
+    "name": "Prahaar",
+    "eventcode": "ET00502504",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "prahaar",
+    "csv": "data/ET00502504.csv",
+    "headers_csv": "data/ET00502504_headers.csv"
+  },
+  {
+    "key": "et00513250",
+    "name": "Nayyi Navelli",
+    "eventcode": "ET00513250",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nayyi-navelli",
+    "csv": "data/ET00513250.csv",
+    "headers_csv": "data/ET00513250_headers.csv"
   }
 ]

@@ -14,8 +14,6 @@ MOVIE = {'key': 'drishyam', 'eventcode': 'ET00477911', 'name': 'Drishyam 3',
          'region_code': 'HYD', 'region_slug': 'hyderabad',
          'page_slug': 'drishyam-the-conclusion',
          'csv': 'bms_booking_log.csv', 'headers_csv': 'bms_api_headers.csv'}
-CSV_FILE = MOVIE['csv']
-HEADERS_FILE = MOVIE['headers_csv']
 CSV_HEADER = ['timestamp', 'movie_name', 'metric_type', 'metric_value', 'raw_text',
               'prev_poll', 'kind', 'fresh_at']
 HEADERS_HEADER = ['timestamp', 'status', 'metric_value', 'headers']
@@ -33,26 +31,31 @@ POLL_SECONDS = 60          # gentle fallback interval
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
+MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
+MISSING_RETRY = 1800       # a movie whose response has no counter is retried this often
 GIT_TIMEOUT = 120
 # Each request runs in its own short-lived process so one stuck connection can
 # never stall the polling loop.
-FETCH_CMD = [sys.executable, os.path.abspath(__file__), '--fetch-json']  # --movie added in select_movie
 LOG_HEADERS = os.environ.get('LOG_HEADERS', '1') != '0'
 # Response headers that reveal how the figure is cached; nothing identifying.
 KEEP_HEADERS = ('date', 'age', 'cache-control', 'expires', 'etag', 'last-modified',
                 'cf-cache-status', 'x-cache', 'via', 'server-timing')
 
 
-def select_movie(key):
-    """Point the module at one entry of movies.json (files, event code, region)."""
-    global MOVIE, CSV_FILE, HEADERS_FILE
+
+
+def load_movies():
     with open(MOVIES_FILE, encoding='utf-8') as f:
-        movies = {m['key']: m for m in json.load(f)}
+        return {m['key']: m for m in json.load(f)}
+
+
+def select_movie(key):
+    """Point this (child) process at one entry of movies.json."""
+    global MOVIE
+    movies = load_movies()
     if key not in movies:
         sys.exit(f"Unknown movie '{key}'. Known: {', '.join(movies)}")
     MOVIE = {**MOVIE, **movies[key]}
-    CSV_FILE, HEADERS_FILE = MOVIE['csv'], MOVIE['headers_csv']
-    FETCH_CMD[:] = [sys.executable, os.path.abspath(__file__), '--fetch-json', '--movie', key]
 
 
 def now():
@@ -73,27 +76,30 @@ def write_rows(path, rows, mode='a'):
         csv.writer(f).writerows(rows)
 
 
-def init_csv():
+
+def init_csv(path):
     """Create the log, or upgrade a file written with the older 5-column layout."""
-    if os.path.exists(CSV_FILE):
-        with open(CSV_FILE, newline='', encoding='utf-8') as f:
+    if os.path.exists(path):
+        with open(path, newline='', encoding='utf-8') as f:
             rows = list(csv.reader(f))
         if rows and rows[0] == CSV_HEADER:
             return
         old = rows[1:]
-        write_rows(CSV_FILE, [CSV_HEADER] + [r + [''] * (len(CSV_HEADER) - len(r)) for r in old], 'w')
+        write_rows(path, [CSV_HEADER] + [r + [''] * (len(CSV_HEADER) - len(r)) for r in old], 'w')
     else:
-        write_rows(CSV_FILE, [CSV_HEADER], 'w')
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        write_rows(path, [CSV_HEADER], 'w')
 
 
-def init_headers_file():
-    if LOG_HEADERS and not os.path.exists(HEADERS_FILE):
-        write_rows(HEADERS_FILE, [HEADERS_HEADER], 'w')
+def init_headers_file(path):
+    if LOG_HEADERS and not os.path.exists(path):
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        write_rows(path, [HEADERS_HEADER], 'w')
 
 
-def last_logged():
+def last_logged(path):
     """(timestamp, (metric_type, metric_value)) of the newest data row, or None."""
-    with open(CSV_FILE, newline='', encoding='utf-8') as f:
+    with open(path, newline='', encoding='utf-8') as f:
         rows = [r for r in csv.DictReader(f) if r['metric_type'] != 'error']
     if not rows:
         return None
@@ -183,10 +189,12 @@ def fetch_once():
     return {'error': True, 'status': status, 'detail': 'no trending widget in response'}
 
 
-def fetch():
-    """Run fetch_once() in a child process; always returns a dict (see 'error')."""
+
+def fetch(key):
+    """Run fetch_once() for one movie in a child process; always returns a dict."""
+    cmd = [sys.executable, os.path.abspath(__file__), '--fetch-json', '--movie', key]
     try:
-        proc = subprocess.run(FETCH_CMD, capture_output=True, text=True, timeout=FETCH_TIMEOUT)
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=FETCH_TIMEOUT)
     except subprocess.TimeoutExpired:
         return {'error': True, 'status': 0, 'detail': f'timed out after {FETCH_TIMEOUT}s'}
     if proc.stderr.strip():
@@ -208,9 +216,8 @@ def git(*args):
         return subprocess.CompletedProcess(args, 124, '', 'timeout')
 
 
-def commit_and_push():
-    files = [p for p in (CSV_FILE, HEADERS_FILE) if os.path.exists(p)]
-    git('add', *files)
+def commit_and_push(files):
+    git('add', *[p for p in files if os.path.exists(p)])
     if git('diff', '--cached', '--quiet').returncode == 0:
         return
     git('commit', '-m', 'Update booking logs [skip ci]')
@@ -245,99 +252,144 @@ def backoff_wait(failures, retry_after):
     return max(wait, min(retry_after, 3600))
 
 
-def run(minutes, commit):
-    """Poll for `minutes`, once per cache expiry; log only changes plus a heartbeat.
 
-    A data row is written when the figure changes (fresh_at is the moment
-    BookMyShow's server produced it) and every HEARTBEAT_SECONDS when it has not.
-    After a failure (429, 403, timeout...) we back off instead of retrying at once,
-    and write an 'error' row so a block shows up in the log.
+class State:
+    """Polling state of one movie."""
+
+    def __init__(self, movie, due):
+        self.key = movie['key']
+        self.csv = movie['csv']
+        self.headers_csv = movie['headers_csv']
+        init_csv(self.csv)
+        init_headers_file(self.headers_csv)
+        prev = last_logged(self.csv)
+        self.last_ts, self.last_key = prev if prev else (None, None)
+        self.prev_poll = None
+        self.failures = 0      # consecutive access failures (429, 403, timeout...)
+        self.missing = 0       # consecutive responses without a counter
+        self.retries = 0
+        self.targeted = False  # was this poll aimed at an expected cache expiry?
+        self.due = due         # monotonic time of the next request
+        self.files = [self.csv] + ([self.headers_csv] if LOG_HEADERS else [])
+
+
+def poll(st, shared):
+    """Request one movie, log the outcome, schedule its next request.
+
+    Returns True if a CSV row was written. `shared['block_until']` (monotonic) is
+    raised after an access failure so that every movie backs off, not just this one.
     """
-    init_csv()
-    init_headers_file()
-    end = now() + timedelta(minutes=minutes)
-    prev = last_logged()
-    last_ts, last_key = prev if prev else (None, None)
-    prev_poll = None
-    failures = 0
-    retries = 0
-    targeted = False   # was this poll aimed at an expected cache expiry?
+    result = fetch(st.key)
+    t = now()
+    mono = time.monotonic()
+    logged = False
+    if result.get('error'):
+        no_counter = result['status'] == 200
+        if no_counter:       # this movie only: no Trending widget (yet)
+            st.missing += 1
+            wait = MISSING_RETRY
+            n = st.missing
+        else:                # access problem: likely shared by all movies
+            shared['failures'] += 1
+            wait = backoff_wait(shared['failures'], result.get('retry_after', 0))
+            shared['block_until'] = max(shared['block_until'], mono + wait)
+            st.failures += 1
+            n = st.failures
+        st.targeted = False
+        print(f"[{fmt(t)}] {st.key}: poll FAILED ({result['detail']}); #{n}, "
+              f"next try in {wait}s", flush=True)
+        if LOG_HEADERS:
+            write_rows(st.headers_csv, [[fmt(t), result['status'], '',
+                                         json.dumps({'error': result['detail']})]])
+        if n == 1 or n % 4 == 0:
+            write_rows(st.csv, [[fmt(t), '', 'error', result['status'],
+                                 f"{result['detail']} (failure {n})", '', 'error', '']])
+            logged = True
+        st.due = mono + wait
+        return logged
+
+    if st.failures or shared['failures']:
+        print(f"[{fmt(t)}] {st.key}: recovered", flush=True)
+    st.failures = st.missing = shared['failures'] = 0
+    headers = result['headers']
+    hit = cache_hit(headers)
+    key = (result['metric_type'], result['metric_value'])
+    kind = None
+    if st.last_key is None:
+        kind = 'start'
+    elif key != st.last_key:
+        kind = 'change'
+    elif (t - st.last_ts).total_seconds() >= HEARTBEAT_SECONDS:
+        kind = 'heartbeat'
+    print(f"[{fmt(t)}] {st.key}: ok {key[1]} ({headers.get('cf-cache-status', '?')}"
+          f"{', age ' + str(cache_age(headers)) if hit else ''})", flush=True)
+    if kind:
+        changed = kind in ('start', 'change')
+        write_rows(st.csv, [[
+            fmt(t), result['movie_name'], key[0], key[1], result['raw_text'],
+            fmt(st.prev_poll or st.last_ts) if kind == 'change' else '', kind,
+            fmt(fresh_time(t, headers)) if changed else '']])
+        print(f"[{fmt(t)}] {st.key}: saved {kind}: {key[0]} {key[1]}", flush=True)
+        st.last_ts, st.last_key = t, key
+        logged = True
+    if LOG_HEADERS:
+        write_rows(st.headers_csv, [[fmt(t), result['status'], key[1],
+                                     json.dumps(headers, sort_keys=True)]])
+    st.prev_poll = t
+    # Next ask: when the cached copy should expire. Still cached after we aimed at
+    # the expiry? Retry shortly, but give up the exact timing after a few tries.
+    if hit and st.targeted:
+        st.retries += 1
+    elif not hit:
+        st.retries = 0
+    wait = max(CACHE_TTL - cache_age(headers) + EXPIRY_MARGIN, MIN_WAIT)
+    if st.retries >= MAX_QUICK_RETRIES:
+        wait = POLL_SECONDS
+    st.targeted = st.retries < MAX_QUICK_RETRIES
+    st.due = mono + wait
+    return logged
+
+
+def run(keys, minutes, commit):
+    """Poll the given movies for `minutes`, one request at a time.
+
+    Each movie is asked once at its expected cache expiry (new figures arrive every
+    ~10 minutes). Requests are at least MIN_GAP seconds apart, and an access failure
+    (429...) pauses all movies. A data row is written when a figure changes, every
+    HEARTBEAT_SECONDS when it does not, and for failures.
+    """
+    movies = load_movies()
+    end = time.monotonic() + minutes * 60
+    start = time.monotonic()
+    states = [State(movies[k], start + i * MIN_GAP) for i, k in enumerate(keys)]
+    shared = {'failures': 0, 'block_until': 0.0}
+    last_request = 0.0
+    dirty = False
 
     def stop(*_):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM, stop)
 
+    files = [p for s in states for p in s.files]
     try:
         while True:
-            result = fetch()
-            t = now()
-            logged = False
-            if result.get('error'):
-                failures += 1
-                wait = backoff_wait(failures, result.get('retry_after', 0))
-                targeted = False
-                print(f"[{fmt(t)}] poll FAILED ({result['detail']}); failure {failures}, "
-                      f"waiting {wait}s", flush=True)
-                if LOG_HEADERS:
-                    write_rows(HEADERS_FILE, [[fmt(t), result['status'], '',
-                                               json.dumps({'error': result['detail']})]])
-                if failures == 1 or failures % 4 == 0:
-                    write_rows(CSV_FILE, [[fmt(t), '', 'error', result['status'],
-                                           f"{result['detail']} (failure {failures})",
-                                           '', 'error', '']])
-                    logged = True
-            else:
-                if failures:
-                    print(f"[{fmt(t)}] recovered after {failures} failed polls", flush=True)
-                failures = 0
-                headers = result['headers']
-                hit = cache_hit(headers)
-                key = (result['metric_type'], result['metric_value'])
-                kind = None
-                if last_key is None:
-                    kind = 'start'
-                elif key != last_key:
-                    kind = 'change'
-                elif (t - last_ts).total_seconds() >= HEARTBEAT_SECONDS:
-                    kind = 'heartbeat'
-                print(f"[{fmt(t)}] poll ok {key[1]} "
-                      f"({headers.get('cf-cache-status', '?')}"
-                      f"{', age ' + str(cache_age(headers)) if hit else ''})", flush=True)
-                if kind:
-                    changed = kind in ('start', 'change')
-                    write_rows(CSV_FILE, [[
-                        fmt(t), result['movie_name'], key[0], key[1], result['raw_text'],
-                        fmt(prev_poll or last_ts) if kind == 'change' else '', kind,
-                        fmt(fresh_time(t, headers)) if changed else '']])
-                    print(f"[{fmt(t)}] saved {kind}: {key[0]} {key[1]}", flush=True)
-                    last_ts, last_key = t, key
-                    logged = True
-                if LOG_HEADERS:
-                    write_rows(HEADERS_FILE, [[fmt(t), result['status'], key[1],
-                                               json.dumps(headers, sort_keys=True)]])
-                prev_poll = t
-                # Next ask: when the cached copy should expire. Still cached after we
-                # aimed at the expiry? Retry shortly, but give up the exact timing
-                # after a few tries and fall back to gentle polling.
-                if hit and targeted:
-                    retries += 1
-                elif not hit:
-                    retries = 0
-                wait = max(CACHE_TTL - cache_age(headers) + EXPIRY_MARGIN, MIN_WAIT)
-                if retries >= MAX_QUICK_RETRIES:
-                    wait = POLL_SECONDS
-                targeted = retries < MAX_QUICK_RETRIES
-            if logged and commit:
-                commit_and_push()
-            if now() + timedelta(seconds=wait) >= end:
+            st = min(states, key=lambda s: s.due)
+            go = max(st.due, shared['block_until'], last_request + MIN_GAP)
+            if go >= end:
                 print('Run window finished.', flush=True)
                 break
-            sleep(wait)
+            if go > time.monotonic():
+                if dirty and commit:       # save while idle rather than at the end
+                    commit_and_push(files)
+                    dirty = False
+                sleep(max(0, go - time.monotonic()))
+            last_request = time.monotonic()
+            dirty = poll(st, shared) or dirty
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:
         if commit:
-            commit_and_push()
+            commit_and_push(files)
 
 
 if __name__ == '__main__':
@@ -345,11 +397,16 @@ if __name__ == '__main__':
     ap.add_argument('--minutes', type=float, default=0,
                     help='keep polling for this long (default: one poll)')
     ap.add_argument('--commit', action='store_true', help='git commit and push new rows')
-    ap.add_argument('--movie', default='drishyam', help='key from movies.json')
+    ap.add_argument('--movie', action='append',
+                    help='key from movies.json (repeatable); default: all movies')
     ap.add_argument('--fetch-json', action='store_true', help=argparse.SUPPRESS)
     args = ap.parse_args()
-    select_movie(args.movie)
     if args.fetch_json:
+        select_movie(args.movie[0])
         print(json.dumps(fetch_once()))
     else:
-        run(args.minutes, args.commit)
+        keys = args.movie or list(load_movies())
+        unknown = [k for k in keys if k not in load_movies()]
+        if unknown:
+            sys.exit(f"Unknown movie(s): {', '.join(unknown)}")
+        run(keys, args.minutes, args.commit)
