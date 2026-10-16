@@ -73,3 +73,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 23:43:45+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-16 23:52:21+05:30,Street Fighter,24_hours,15.54K,15.54K tickets booked in last 24 hours,2026-10-16 23:30:58+05:30,change,2026-10-16 23:52:21+05:30
 2026-10-17 00:04:28+05:30,Street Fighter,24_hours,15.55K,15.55K tickets booked in last 24 hours,2026-10-16 23:52:21+05:30,change,2026-10-17 00:04:28+05:30
+2026-10-17 00:27:03+05:30,Street Fighter,24_hours,15.59K,15.59K tickets booked in last 24 hours,2026-10-17 00:04:28+05:30,change,2026-10-17 00:27:03+05:30
