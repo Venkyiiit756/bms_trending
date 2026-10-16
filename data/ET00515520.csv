@@ -25,3 +25,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 18:58:04+05:30,Baththa,24_hours,7K,7K tickets booked in last 24 hours,2026-10-16 17:55:50+05:30,change,2026-10-16 18:58:04+05:30
 2026-10-16 19:52:02+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-16 20:20:53+05:30,Baththa,24_hours,7.01K,7.01K tickets booked in last 24 hours,2026-10-16 18:58:04+05:30,change,2026-10-16 20:20:53+05:30
+2026-10-16 21:42:25+05:30,Baththa,24_hours,7.18K,7.18K tickets booked in last 24 hours,2026-10-16 20:20:53+05:30,change,2026-10-16 21:42:25+05:30
