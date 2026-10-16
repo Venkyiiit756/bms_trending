@@ -47,3 +47,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 08:03:01+05:30,Doraemon: Castle of the Undersea Devil,24_hours,7.98K,7.98K tickets booked in last 24 hours,2026-10-16 07:32:06+05:30,change,2026-10-16 08:03:01+05:30
 2026-10-16 08:56:58+05:30,Doraemon: Castle of the Undersea Devil,24_hours,7.9K,7.9K tickets booked in last 24 hours,2026-10-16 08:03:01+05:30,change,2026-10-16 08:56:58+05:30
 2026-10-16 09:50:55+05:30,Doraemon: Castle of the Undersea Devil,24_hours,7.7K,7.7K tickets booked in last 24 hours,2026-10-16 08:56:58+05:30,change,2026-10-16 09:50:55+05:30
+2026-10-16 10:12:45+05:30,Doraemon: Castle of the Undersea Devil,24_hours,7.59K,7.59K tickets booked in last 24 hours,2026-10-16 09:50:55+05:30,change,2026-10-16 10:12:45+05:30
