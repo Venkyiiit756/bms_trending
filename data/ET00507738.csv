@@ -48,3 +48,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-16 12:43:15+05:30,Hanuman Ansh,24_hours,5.42K,5.42K tickets booked in last 24 hours,2026-10-16 11:49:15+05:30,change,2026-10-16 12:43:15+05:30
 2026-10-16 13:37:13+05:30,Hanuman Ansh,24_hours,5.19K,5.19K tickets booked in last 24 hours,2026-10-16 12:43:15+05:30,change,2026-10-16 13:37:13+05:30
 2026-10-16 14:34:39+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-10-16 15:28:39+05:30,,error,200,no trending widget in response (failure 1),,error,
