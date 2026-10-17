@@ -30,3 +30,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-17 15:04:51+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-17 16:36:40+05:30,Prahaar,1_hour,2.94K,2.94K tickets booked in last 1 hour,2026-10-17 13:23:09+05:30,change,2026-10-17 16:36:40+05:30
 2026-10-17 17:30:32+05:30,Prahaar,1_hour,2.75K,2.75K tickets booked in last 1 hour,2026-10-17 16:36:40+05:30,change,2026-10-17 17:30:32+05:30
+2026-10-17 18:28:48+05:30,Prahaar,1_hour,3.33K,3.33K tickets booked in last 1 hour,2026-10-17 17:30:32+05:30,change,2026-10-17 18:28:48+05:30
