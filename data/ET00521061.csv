@@ -153,3 +153,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-18 00:54:15+05:30,Crazy Kalyanam,24_hours,5.13K,5.13K tickets booked in last 24 hours,2026-10-18 00:25:57+05:30,change,2026-10-18 00:54:15+05:30
 2026-10-18 01:05:32+05:30,Crazy Kalyanam,24_hours,5.14K,5.14K tickets booked in last 24 hours,2026-10-18 00:54:15+05:30,change,2026-10-18 01:05:32+05:30
 2026-10-18 01:28:50+05:30,Crazy Kalyanam,24_hours,5.17K,5.17K tickets booked in last 24 hours,2026-10-18 01:05:32+05:30,change,2026-10-18 01:28:50+05:30
+2026-10-18 01:46:39+05:30,Crazy Kalyanam,24_hours,5.19K,5.19K tickets booked in last 24 hours,2026-10-18 01:28:50+05:30,change,2026-10-18 01:46:39+05:30
