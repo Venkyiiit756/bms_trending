@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyderabad Movie Trends</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#5b6675;--line:#d9dfe7;--brand:#1f3a5f;--ok:#0a7d33}
+@media (prefers-color-scheme:dark){:root{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa6b5;--line:#2b3644;--brand:#4b78b8;--ok:#4cc27a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:18px 16px 4px;max-width:980px;margin:0 auto}
+h1{margin:0;font-size:20px}
+.sub{color:var(--mute);font-size:13px;margin-top:2px}
+main{max-width:980px;margin:0 auto;padding:12px 16px 40px;display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,button,a.btn{font:inherit;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button:disabled{opacity:.4;cursor:default}
+.hours{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.hours button{padding:5px 9px;font-size:13px}
+.hours button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;align-items:start}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left}
+th{background:var(--brand);color:#fff}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ok);font-weight:600}
+.mute{color:var(--mute);font-size:13px}
+.note{font-size:12.5px;color:var(--mute)}
+ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Hyderabad movie trends</h1>
+  <div class="sub">Tickets booked per movie, snapshot every hour (IST)</div>
+</header>
+<main>
+  <section class="card">
+    <div class="row">
+      <label for="day">Date</label><select id="day"></select>
+      <button id="prev">&larr; Earlier</button><button id="next">Later &rarr;</button>
+      <button id="latest" class="primary">Latest</button>
+    </div>
+    <div class="hours" id="hours"></div>
+  </section>
+
+  <section class="card" id="view" hidden>
+    <div class="row"><strong id="title"></strong><span class="mute" id="when"></span></div>
+    <div class="grid" style="margin-top:12px">
+      <div id="img1"></div>
+      <div id="img24"></div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <a class="btn" id="dlcsv" download>Download this hour (CSV)</a>
+      <a class="btn" id="dlimg1" download>Image: last 1 hour</a>
+      <a class="btn" id="dlimg24" download>Image: last 24 hours</a>
+    </div>
+    <div style="overflow-x:auto;margin-top:12px"><table id="tbl"></table></div>
+    <p class="note">Each value is the movie's latest reading at or before the hour (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. Whether the counter covers only Hyderabad is unverified.</p>
+  </section>
+
+  <section class="card">
+    <strong>Full history by movie</strong>
+    <div class="mute">Every reading since tracking began (time in IST, metric, value).</div>
+    <ul class="dl" id="hist"></ul>
+  </section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let M=null, cur=null;
+const fmt=n=>n.replace(/(\d\d)(\d\d)$/,'$1:$2');
+async function init(){
+  M=await (await fetch('manifest.json',{cache:'no-store'})).json();
+  const days=Object.keys(M.snapshots).sort().reverse();
+  $('#day').innerHTML=days.map(d=>`<option>${d}</option>`).join('');
+  $('#day').onchange=()=>{drawHours();pick(lastHour($('#day').value))};
+  $('#prev').onclick=()=>step(-1); $('#next').onclick=()=>step(1);
+  $('#latest').onclick=()=>{const d=days[0];$('#day').value=d;drawHours();pick(lastHour(d))};
+  $('#hist').innerHTML=M.history.map(h=>`<li><a class="btn" style="display:block" href="${h.file}" download>${h.name}</a></li>`).join('');
+  if(days.length){drawHours();pick(lastHour(days[0]))}
+}
+const hoursOf=d=>M.snapshots[d];
+const lastHour=d=>hoursOf(d).slice(-1)[0];
+function drawHours(){
+  const d=$('#day').value;
+  $('#hours').innerHTML=hoursOf(d).map(h=>`<button data-h="${h}">${fmt(h)}</button>`).join('');
+  document.querySelectorAll('#hours button').forEach(b=>b.onclick=()=>pick(b.dataset.h));
+}
+function step(dir){
+  const d=$('#day').value, hs=hoursOf(d), i=hs.indexOf(cur)+dir;
+  if(i>=0&&i<hs.length) return pick(hs[i]);
+  const days=Object.keys(M.snapshots).sort(), di=days.indexOf(d)+dir;
+  if(di>=0&&di<days.length){$('#day').value=days[di];drawHours();const h=hoursOf(days[di]);pick(dir<0?h[h.length-1]:h[0])}
+}
+async function pick(h){
+  cur=h; const d=$('#day').value, base=`snapshots/${d}/${d}_${h}`;
+  document.querySelectorAll('#hours button').forEach(b=>b.classList.toggle('on',b.dataset.h===h));
+  $('#view').hidden=false;
+  $('#title').textContent=`${d}  ${fmt(h)} IST`;
+  $('#when').textContent='';
+  const has=M.files[`${d}/${d}_${h}`]||{};
+  const setImg=(id,suffix,label)=>{
+    $(id).innerHTML=has[suffix]?`<div class="mute" style="margin-bottom:4px">${label}</div><img src="${base}_${suffix}.png" alt="${label}">`:`<div class="mute">${label}: none at this hour</div>`;
+  };
+  setImg('#img1','last-1-hour','Tickets in the last 1 hour');
+  setImg('#img24','last-24-hours','Tickets in the last 24 hours');
+  const a=(id,href,ok)=>{const e=$(id);ok?(e.href=href,e.style.display=''):e.style.display='none'};
+  a('#dlcsv',`${base}.csv`,true); a('#dlimg1',`${base}_last-1-hour.png`,has['last-1-hour']); a('#dlimg24',`${base}_last-24-hours.png`,has['last-24-hours']);
+  const txt=await (await fetch(`${base}.csv`)).text();
+  const rows=txt.trim().split('\n').slice(1).map(l=>l.split(','));
+  const t=$('#tbl');
+  t.innerHTML='<tr><th>Movie</th><th>Figure</th><th>Value</th><th>Reading time</th></tr>'+
+    rows.map(r=>`<tr><td>${r[1]}</td><td>${r[2]==='1_hour'?'last 1 hour':'last 24 hours'}</td><td class="num">${r[3]}</td><td>${r[4].slice(5)}</td></tr>`).join('');
+}
+init().catch(e=>{document.body.insertAdjacentHTML('beforeend','<p style="padding:16px">Could not load data: '+e+'</p>')});
+</script>
+</body>
+</html>

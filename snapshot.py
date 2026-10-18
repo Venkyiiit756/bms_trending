@@ -70,7 +70,8 @@ def draw(rows, head, path):
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(2.9, 0.3 * (len(rows) + 1) + 0.1), dpi=300)
     ax.axis('off')
-    tb = ax.table(cellText=[[n, v] for n, v, _ in rows], colLabels=['Movie', head],
+    short = lambda n: n.split(':')[0] if len(n) > 22 else n   # keep long titles inside the cell
+    tb = ax.table(cellText=[[short(n), v] for n, v, _ in rows], colLabels=['Movie', head],
                   cellLoc='center', loc='center', colWidths=[.64, .36])
     tb.auto_set_font_size(False)
     tb.set_fontsize(8.5)
