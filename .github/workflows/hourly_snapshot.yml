@@ -1,0 +1,36 @@
+name: Hourly Snapshot Images
+
+# Five minutes past every hour, save the "movies vs tickets in the last hour" table image
+# for each full hour (IST) under snapshots/. snapshot.py also fills in any recent hour
+# that was missed, because GitHub often delays or skips scheduled runs.
+on:
+  schedule:
+    - cron: '5 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: bms-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install matplotlib
+    - name: Make snapshots
+      run: python snapshot.py
+    - name: Commit images
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add snapshots
+        git diff --cached --quiet && exit 0
+        git commit -m "Hourly snapshot images [skip ci]"
+        for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
