@@ -70,7 +70,7 @@
     "page_slug": "street-fighter",
     "csv": "data/ET00481645.csv",
     "headers_csv": "data/ET00481645_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00507337",
@@ -103,7 +103,7 @@
     "page_slug": "garividi-lakshmi",
     "csv": "data/ET00520562.csv",
     "headers_csv": "data/ET00520562_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00519781",
@@ -191,7 +191,7 @@
     "page_slug": "premada-oorali",
     "csv": "data/ET00412717.csv",
     "headers_csv": "data/ET00412717_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00504928",
@@ -290,7 +290,7 @@
     "page_slug": "prahaar",
     "csv": "data/ET00502504.csv",
     "headers_csv": "data/ET00502504_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00513250",
@@ -301,6 +301,6 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 3600
+    "every": 1800
   }
 ]

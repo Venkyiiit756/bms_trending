@@ -91,3 +91,5 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 ## Website (added 2026-10-18)
 - `site_src/index.html` + `build_site.py` build `site/` (hour picker, images, table, CSV downloads, per-movie history). `site/` is git-ignored; the hourly snapshot workflow builds it and pushes it to a SEPARATE public repo (`SITE_REPO`, default `Venkyiiit756/hyd-movie-trends`) using the `SITE_TOKEN` secret (fine-grained token with Contents write on that repo). That repo serves GitHub Pages, so the site URL does not mention this repo. No login: the repos are public.
 - Without `SITE_TOKEN` the publish step just skips.
+
+- 2026-10-18: snapshots now every 30 min (cron `5,35 * * * *`, files `..._HH00` / `..._HH30`). Movies currently showing an hourly figure (Premada Oorali, Prahaar, Nayyi Navelli, Street Fighter, Garividi Lakshmi) have `every: 1800`; the other extras stay hourly. Figures stay rolling-1-hour counts, not 30-minute sales.

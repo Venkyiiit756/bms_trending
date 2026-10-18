@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Save a table image of the Hyderabad movies' hourly ticket figures at each full hour (IST).
+"""Save a table image of the Hyderabad movies' ticket figures every 30 minutes (:00 and :30, IST).
 
-For every hour boundary (11:00, 12:00, ...) it takes each tracked movie's latest reading
+For every half-hour boundary (11:00, 11:30, 12:00, ...) it takes each tracked movie's latest reading
 at or before that time (no older than MAX_AGE) and writes, under snapshots/<date>/:
     <date>_<HHMM>_last-1-hour.png   movies showing "tickets booked in last 1 hour"
     <date>_<HHMM>_last-24-hours.png movies showing the 24-hour figure instead (night, small films)
     <date>_<HHMM>.csv               the same numbers as data
-and refreshes snapshots/latest-last-1-hour.png. Missing hours of the last LOOKBACK
-hours are filled in, so a late or skipped run is made up by the next one.
+and refreshes snapshots/latest-last-1-hour.png. Missing steps of the last LOOKBACK
+steps are filled in, so a late or skipped run is made up by the next one.
 
     python snapshot.py                    # catch up on all missing hours
     python snapshot.py --at "2026-10-18 11:00"
@@ -23,7 +23,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, 'snapshots')
 MAX_AGE = timedelta(minutes=75)     # a reading older than this is not shown
-LOOKBACK = 6                        # hours of catch-up
+LOOKBACK = 12                       # half-hour steps of catch-up (= 6 hours)
 # Friendlier names where several events share a title
 NAMES = {'drishyam': 'Drishyam', 'jailer2_hyd': 'Jailer 2 (Telugu)', 'jailer2': 'Jailer 2 (Hindi)'}
 
@@ -112,15 +112,15 @@ def snapshot(at, data):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--at', help="IST hour, 'YYYY-MM-DD HH:00'; default: all missing recent hours")
+    ap.add_argument('--at', help="IST time, 'YYYY-MM-DD HH:00' or 'HH:30'; default: all missing recent half-hours")
     args = ap.parse_args()
     data = {m['key']: readings(os.path.join(ROOT, m['csv'])) for m in movies()}
     now = datetime.now(IST)
     if args.at:
         hours = [datetime.strptime(args.at, '%Y-%m-%d %H:%M').replace(tzinfo=IST)]
     else:
-        top = now.replace(minute=0, second=0, microsecond=0)
-        hours = [top - timedelta(hours=i) for i in range(LOOKBACK - 1, -1, -1)]
+        top = now.replace(minute=0 if now.minute < 30 else 30, second=0, microsecond=0)
+        hours = [top - timedelta(minutes=30 * i) for i in range(LOOKBACK - 1, -1, -1)]
     latest = None
     for at in hours:
         csv_path = os.path.join(OUT, f'{at:%Y-%m-%d}', f'{at:%Y-%m-%d_%H%M}.csv')
