@@ -120,6 +120,7 @@ def main():
     over = spend() > BUDGET
 
     for m, tier, best in auto:
+        c = catalog.get(m['eventcode'], {})
         old = 'paused' if m.get('paused') else m.get('every')
         new = tier
         name = (catalog.get(m['eventcode']) or {}).get('name') or m['name']
