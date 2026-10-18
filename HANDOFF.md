@@ -87,3 +87,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 ## Hourly snapshot images (added 2026-10-18)
 - `snapshot.py` + `.github/workflows/hourly_snapshot.yml` (cron `5 * * * *`, also manual dispatch) write `snapshots/<date>/<date>_<HHMM>_last-1-hour.png` (+ `_last-24-hours.png`, `.csv`) and `snapshots/latest-last-1-hour.png`. See `snapshots/README.md`. Each run also fills missing hours of the last 6.
 - Names: `NAMES` in `snapshot.py` (Jailer 2 Telugu/Hindi). Movies come from `movies.json`.
+
+## Website (added 2026-10-18)
+- `site_src/index.html` + `build_site.py` build `site/` (hour picker, images, table, CSV downloads, per-movie history). `site/` is git-ignored; the hourly snapshot workflow builds it and pushes it to a SEPARATE public repo (`SITE_REPO`, default `Venkyiiit756/hyd-movie-trends`) using the `SITE_TOKEN` secret (fine-grained token with Contents write on that repo). That repo serves GitHub Pages, so the site URL does not mention this repo. No login: the repos are public.
+- Without `SITE_TOKEN` the publish step just skips.

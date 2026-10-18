@@ -24,6 +24,10 @@ jobs:
       with:
         python-version: '3.10'
     - run: pip install matplotlib
+    - name: Remember site repo
+      run: echo "SITE_REPO=${SITE_REPO:-Venkyiiit756/hyd-movie-trends}" >> "$GITHUB_ENV"
+      env:
+        SITE_REPO: ${{ vars.SITE_REPO }}
     - name: Make snapshots
       run: python snapshot.py
     - name: Commit images
@@ -34,3 +38,23 @@ jobs:
         git diff --cached --quiet && exit 0
         git commit -m "Hourly snapshot images [skip ci]"
         for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+
+    # Publish the finished website to a separate public repo (GitHub Pages), so the
+    # site never links to this repository. Needs the SITE_TOKEN secret; skipped without it.
+    - name: Build website
+      run: python build_site.py
+    - name: Publish website
+      env:
+        SITE_TOKEN: ${{ secrets.SITE_TOKEN }}
+      run: |
+        if [ -z "$SITE_TOKEN" ]; then echo "SITE_TOKEN not set; skipping website publish"; exit 0; fi
+        git clone --depth 1 "https://x-access-token:${SITE_TOKEN}@github.com/${SITE_REPO}.git" ../site_repo
+        cd ../site_repo
+        git rm -rq --ignore-unmatch . >/dev/null 2>&1 || true
+        cp -r "$GITHUB_WORKSPACE/site/." .
+        git add -A
+        git diff --cached --quiet && exit 0
+        git config user.name "site-bot"
+        git config user.email "site-bot@users.noreply.github.com"
+        git commit -qm "Update site"
+        for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
