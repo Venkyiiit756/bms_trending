@@ -163,3 +163,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-18 16:39:35+05:30,Street Fighter,1_hour,1.04K,1.04K tickets booked in last 1 hour,2026-10-18 16:28:06+05:30,change,2026-10-18 16:39:35+05:30
 2026-10-18 17:36:59+05:30,Street Fighter,24_hours,21.17K,21.17K tickets booked in last 24 hours,2026-10-18 16:39:35+05:30,change,2026-10-18 17:36:59+05:30
 2026-10-18 17:48:31+05:30,Street Fighter,1_hour,1.01K,1.01K tickets booked in last 1 hour,2026-10-18 17:36:59+05:30,change,2026-10-18 17:48:31+05:30
+2026-10-18 17:59:43+05:30,Street Fighter,24_hours,21.09K,21.09K tickets booked in last 24 hours,2026-10-18 17:48:31+05:30,change,2026-10-18 17:59:43+05:30
