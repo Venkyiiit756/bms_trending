@@ -385,3 +385,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-18 07:48:46+05:30,Ranabaali,1_hour,1.55K,1.55K tickets booked in last 1 hour,2026-10-18 07:38:28+05:30,change,2026-10-18 07:48:46+05:30
 2026-10-18 07:58:49+05:30,Ranabaali,1_hour,1.95K,1.95K tickets booked in last 1 hour,2026-10-18 07:48:46+05:30,change,2026-10-18 07:58:49+05:30
 2026-10-18 08:09:07+05:30,Ranabaali,1_hour,2.35K,2.35K tickets booked in last 1 hour,2026-10-18 07:58:49+05:30,change,2026-10-18 08:09:07+05:30
+2026-10-18 08:22:22+05:30,Ranabaali,1_hour,2.73K,2.73K tickets booked in last 1 hour,2026-10-18 08:12:04+05:30,change,2026-10-18 08:22:22+05:30
