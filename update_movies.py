@@ -68,7 +68,8 @@ def main():
     for code, c in sorted(catalog.items()):
         if code in have:
             continue
-        name = c.get('name') if c.get('name') and c['name'] != code else code
+        name = c.get('name') if c.get('name') and c['name'] != code else (
+            (c.get('page_slug') or code).replace('-', ' ').title())
         movies.append({'key': code.lower(), 'name': name, 'eventcode': code, 'region_code': 'HYD',
                        'region_slug': 'hyderabad', 'page_slug': c.get('page_slug') or 'movie',
                        'csv': f'data/{code}.csv', 'headers_csv': f'data/{code}_headers.csv',
@@ -119,6 +120,7 @@ def main():
     over = spend() > BUDGET
 
     for m, tier, best in auto:
+        c = catalog.get(m['eventcode'], {})
         old = 'paused' if m.get('paused') else m.get('every')
         new = tier
         name = (catalog.get(m['eventcode']) or {}).get('name') or m['name']
@@ -132,6 +134,8 @@ def main():
                 m['every'] = tier
         if name and name != m['eventcode']:
             m['name'] = name
+        elif m['name'] == m['eventcode'] and (c.get('page_slug') or m.get('page_slug')) not in (None, 'movie'):
+            m['name'] = (c.get('page_slug') or m['page_slug']).replace('-', ' ').title()
         if old != new and not (old == 3600 and new == 3600):
             label = {None: 'every ~10 min', 1800: 'every 30 min', 3600: 'hourly', 21600: 'every 6 h', 'paused': 'paused'}
             log.append(f'**{m["name"]}** ({m["eventcode"]}): {label.get(old, old)} -> {label[new]}'

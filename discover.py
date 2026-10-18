@@ -80,6 +80,7 @@ def fetch(code):
     if r.status_code in (403, 429):
         raise Blocked(f'HTTP {r.status_code}')
     if r.status_code != 200:
+        print(f'{code}: HTTP {r.status_code}', flush=True)
         return None
     try:
         return r.json()
