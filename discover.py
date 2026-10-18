@@ -1,91 +1,144 @@
 #!/usr/bin/env python3
-"""List the movies currently on BookMyShow's Hyderabad page -> hyderabad_movies.json.
+"""Find Hyderabad's movies by following the "other movies" list inside each movie's own response.
 
-First tries the plain HTML of the explore page (cheap). If that holds no movie
-links (page rendered by JavaScript), falls back to a headless browser that
-scrolls until the list stops growing. Entries are kept once seen (last_seen is
-refreshed), so a movie that drops off the page is still tracked until pruned.
+The explore page is blocked for GitHub runners, but every synopsis response we already read
+for ticket counts carries a widget listing ~10 other movies (event codes and links). Starting
+from the movies we track, this crawls those lists (a few gentle requests, spaced out) until
+nothing new turns up, and writes catalog.json:
+
+    {eventcode: {name, page_slug, first_seen, last_listed, last_checked, figure}}
+
+`last_listed` is the last date the movie appeared in another movie's list. update_movies.py
+uses the catalog to add new movies to movies.json and to retire ones that have disappeared.
+Stops at the first 403/429 and keeps what it has.
 """
 import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 
 IST = timezone(timedelta(hours=5, minutes=30))
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'hyderabad_movies.json')
-URL = 'https://in.bookmyshow.com/explore/movies-hyderabad'
-LINK = re.compile(r'/movies/hyderabad/([a-z0-9-]+)/(ET\d{8})')
-MIN_EXPECTED = 5
+ROOT = os.path.dirname(os.path.abspath(__file__))
+CATALOG = os.path.join(ROOT, 'catalog.json')
+BASE = 'https://in.bookmyshow.com'
+HEADERS = {'Accept': 'application/json, text/plain, */*', 'x-platform': 'AND', 'x-platform-code': 'ANDROID',
+           'x-app-code': 'MOBAND2', 'x-region-code': 'HYD', 'x-region-slug': 'hyderabad',
+           'x-app-version': '18.2.8', 'x-app-version-code': '18281', 'Origin': BASE}
+LINK = re.compile(r'/([a-z0-9][a-z0-9-]*)/(ET\d{8})')
+MAX_FETCHES = 80
+GAP = 8                      # seconds between requests
 
 
-def from_html():
-    from curl_cffi import requests
-    r = requests.get(URL, impersonate='chrome', timeout=40)
-    print(f'html fetch: HTTP {r.status_code}, {len(r.text)} bytes', flush=True)
-    if r.status_code != 200:
-        return {}
-    return {code: slug for slug, code in LINK.findall(r.text)}
+class Blocked(Exception):
+    pass
 
 
-def from_browser():
-    from playwright.sync_api import sync_playwright
+def today():
+    return datetime.now(IST).strftime('%Y-%m-%d')
+
+
+def related(data, own):
+    """{eventcode: slug} for the other movies listed inside a synopsis response."""
     found = {}
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
-        page.goto(URL, wait_until='domcontentloaded', timeout=60000)
-        page.wait_for_timeout(5000)
-        stable = 0
-        for _ in range(40):                      # finite scroll, stop when stable
-            hrefs = page.eval_on_selector_all(
-                "main a[href*='/movies/']", 'els => els.map(e => e.href)')
-            before = len(found)
-            for h in hrefs:
-                m = LINK.search(h)
-                if m:
-                    found[m.group(2)] = m.group(1)
-            stable = stable + 1 if len(found) == before else 0
-            if stable >= 3:
-                break
-            page.mouse.wheel(0, 3000)
-            page.wait_for_timeout(1500)
-        print(f'browser title: {page.title()!r}', flush=True)
-        browser.close()
+
+    def walk(node):
+        if isinstance(node, dict):
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+        elif isinstance(node, str):
+            for slug, code in LINK.findall(node):
+                if code != own:
+                    found.setdefault(code, slug)
+    widgets = data.get('widgets') if isinstance(data.get('widgets'), dict) else {}
+    for w in widgets.values():
+        if isinstance(w, dict) and isinstance(w.get('listData'), list):
+            walk(w['listData'])
     return found
 
 
-def main():
-    found, method = {}, 'html'
-    try:
-        found = from_html()
-    except Exception as e:
-        print(f'html discovery failed: {e}', flush=True)
-    if len(found) < MIN_EXPECTED:
-        method = 'browser'
-        try:
-            found = from_browser()
-        except Exception as e:
-            print(f'browser discovery failed: {e}', flush=True)
-    print(f'{method}: {len(found)} movies', flush=True)
-    if len(found) < MIN_EXPECTED:
-        sys.exit('Discovery found too few movies; leaving the list unchanged.')
+def trending(data):
+    for w in (data.get('widgets') or {}).values():
+        obj = (w or {}).get('objectData') or {}
+        if (obj.get('action') or {}).get('label') == 'Trending':
+            text = ''.join(c.get('text', '') for c in (obj.get('text') or {}).get('components', []))
+            if 'last 1 hour' in text.lower():
+                return '1_hour'
+            if 'last 24 hours' in text.lower():
+                return '24_hours'
+    return 'none'
 
-    now = datetime.now(IST).strftime('%Y-%m-%d')
-    old = {}
-    if os.path.exists(OUT):
-        with open(OUT, encoding='utf-8') as f:
-            old = {m['eventcode']: m for m in json.load(f)}
-    new = [c for c in found if c not in old]
-    for code, slug in found.items():
-        entry = old.get(code, {'eventcode': code, 'first_seen': now})
-        entry.update(page_slug=slug, last_seen=now)
-        old[code] = entry
-    with open(OUT, 'w', encoding='utf-8') as f:
-        json.dump(sorted(old.values(), key=lambda m: m['eventcode']), f, indent=2)
-    print(f'{len(old)} movies in list; new today: {len(new)}', flush=True)
-    for code in found:
-        print(f'  {code}  {found[code]}')
+
+def fetch(code):
+    from curl_cffi import requests
+    r = requests.get(f'{BASE}/api/movies/v1/synopsis/secondary?eventcode={code}&channel=mobile',
+                     headers=HEADERS, impersonate='chrome', timeout=30)
+    if r.status_code in (403, 429):
+        raise Blocked(f'HTTP {r.status_code}')
+    if r.status_code != 200:
+        return None
+    try:
+        return r.json()
+    except ValueError:
+        return None
+
+
+def known_codes():
+    with open(os.path.join(ROOT, 'movies.json'), encoding='utf-8') as f:
+        return {m['eventcode']: m for m in json.load(f)}
+
+
+def main():
+    catalog = json.load(open(CATALOG, encoding='utf-8')) if os.path.exists(CATALOG) else {}
+    tracked = known_codes()
+    day = today()
+    for code, m in tracked.items():
+        catalog.setdefault(code, {'name': m['name'], 'page_slug': m['page_slug'], 'first_seen': day,
+                                  'last_listed': None, 'last_checked': None, 'figure': None})
+    queue = list(tracked)
+    seen, fetches, blocked = set(), 0, False
+    while queue and fetches < MAX_FETCHES:
+        code = queue.pop(0)
+        if code in seen:
+            continue
+        seen.add(code)
+        try:
+            data = fetch(code)
+        except Blocked as e:
+            print(f'blocked ({e}); keeping what was found', flush=True)
+            blocked = True
+            break
+        except Exception as e:
+            print(f'{code}: request error {e}', flush=True)
+            data = None
+        fetches += 1
+        time.sleep(GAP)
+        if not data:
+            continue
+        entry = catalog.setdefault(code, {'first_seen': day, 'last_listed': None})
+        meta = data.get('meta') if isinstance(data.get('meta'), dict) else {}
+        name = (meta.get('event') or {}).get('eventName') if isinstance(meta.get('event'), dict) else None
+        if name:
+            entry['name'] = name
+        entry['figure'] = trending(data)
+        entry['last_checked'] = day
+        for other, slug in related(data, code).items():
+            o = catalog.setdefault(other, {'first_seen': day, 'last_listed': None, 'name': other,
+                                           'page_slug': slug, 'last_checked': None, 'figure': None})
+            o['last_listed'] = day
+            o.setdefault('page_slug', slug)
+            if other not in seen and other not in queue:
+                queue.append(other)
+    new = [c for c in catalog if c not in tracked]
+    print(f'{fetches} requests; catalog {len(catalog)} movies; {len(new)} not tracked yet', flush=True)
+    if fetches == 0 and blocked:
+        sys.exit('Nothing fetched; leaving the catalog unchanged.')
+    with open(CATALOG, 'w', encoding='utf-8') as f:
+        json.dump(dict(sorted(catalog.items())), f, indent=1)
 
 
 if __name__ == '__main__':

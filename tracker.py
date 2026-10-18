@@ -351,6 +351,22 @@ def poll(st, shared):
     return logged
 
 
+def recently_polled(movie):
+    """True if the movie's log has a row newer than its `every` interval (minus a margin)."""
+    path = movie['csv']
+    if not os.path.exists(path):
+        return False
+    last = None
+    with open(path, newline='', encoding='utf-8') as f:
+        for row in csv.reader(f):
+            last = row
+    try:
+        stamp = datetime.fromisoformat(last[0])
+    except (TypeError, ValueError, IndexError):
+        return False
+    return (now() - stamp).total_seconds() < movie['every'] - 900
+
+
 def run(keys, minutes, commit):
     """Poll the given movies for `minutes`, one request at a time.
 
@@ -364,11 +380,15 @@ def run(keys, minutes, commit):
     start = time.monotonic()
     # Movies with an `every` interval (hourly sales are enough for them) are spread
     # evenly over that interval; the rest start MIN_GAP apart and follow the cache.
+    keys = [k for k in keys if not movies[k].get('paused')]
+    # Movies checked less than once an hour (every > 3600 s) are skipped by runs that start
+    # too soon after their last logged row, so they are polled about once per interval.
+    keys = [k for k in keys if not (movies[k].get('every', 0) > 3600 and recently_polled(movies[k]))]
     slow = [k for k in keys if movies[k].get('every')]
     fast = [k for k in keys if k not in slow]
     due = {k: start + i * MIN_GAP for i, k in enumerate(fast)}
     for i, k in enumerate(slow):
-        every = movies[k]['every']
+        every = min(movies[k]['every'], 3600)
         due[k] = start + len(fast) * MIN_GAP + i * (every - 300) / len(slow)
     states = [State(movies[k], due[k]) for k in keys]
     shared = {'failures': 0, 'block_until': 0.0}
@@ -414,7 +434,7 @@ if __name__ == '__main__':
         select_movie(args.movie[0])
         print(json.dumps(fetch_once()))
     else:
-        keys = args.movie or list(load_movies())
+        keys = args.movie or [k for k, m in load_movies().items() if not m.get('paused')]
         unknown = [k for k in keys if k not in load_movies()]
         if unknown:
             sys.exit(f"Unknown movie(s): {', '.join(unknown)}")

@@ -93,3 +93,9 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - Without `SITE_TOKEN` the publish step just skips.
 
 - 2026-10-18: snapshots now every 30 min (cron `5,35 * * * *`, files `..._HH00` / `..._HH30`). Movies currently showing an hourly figure (Premada Oorali, Prahaar, Nayyi Navelli, Street Fighter, Garividi Lakshmi) have `every: 1800`; the other extras stay hourly. Figures stay rolling-1-hour counts, not 30-minute sales.
+
+## Automatic movie discovery and tiers (added 2026-10-18)
+- The explore page is blocked for runners, but each synopsis response has a widget (`widgets/*/listData`) with ~10 other movies (event codes + links). `discover.py` crawls those lists from the tracked movies (<= 80 requests, 8 s apart, stops on 403/429) and writes `catalog.json`.
+- `update_movies.py` adds new movies to `movies.json` (hourly at first, `added` date) and sets tiers from the collected data: >= 8K/h and top 4 -> every cache expiry (~10 min); >= 3K/h -> `every: 1800`; has a figure -> 3600; no counter for 3 days -> `every: 21600`; not listed for 7 days and no counter -> `paused`. Entries with `"manual": true` (Drishyam, Jailer 2 x2, Ranabaali) are never changed. Request budget 80/h. Changes are logged in `MOVIE_CHANGES.md`.
+- `.github/workflows/discover_movies.yml` runs both daily at 06:00 IST (`30 0 * * *`) and can be dispatched by hand. `tracker.py` skips `paused` movies and polls `every > 3600` movies only when their last logged row is older than the interval.
+- Open question: the "other movies" list is BookMyShow's own suggestion, so it may miss movies or include ones without shows today; no counter -> they just drop to the slow tier.
