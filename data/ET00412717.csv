@@ -41,3 +41,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-17 21:07:43+05:30,Premada Oorali,1_hour,8.11K,8.11K tickets booked in last 1 hour,2026-10-17 20:07:59+05:30,change,2026-10-17 21:07:43+05:30
 2026-10-18 07:48:17+05:30,Premada Oorali,1_hour,1.82K,1.82K tickets booked in last 1 hour,2026-10-17 21:07:43+05:30,change,2026-10-18 07:48:17+05:30
 2026-10-18 08:42:12+05:30,Premada Oorali,1_hour,3.98K,3.98K tickets booked in last 1 hour,2026-10-18 07:48:17+05:30,change,2026-10-18 08:42:12+05:30
+2026-10-18 09:36:04+05:30,Premada Oorali,1_hour,7.43K,7.43K tickets booked in last 1 hour,2026-10-18 08:42:12+05:30,change,2026-10-18 09:36:04+05:30
