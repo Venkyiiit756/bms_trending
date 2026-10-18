@@ -1,11 +1,12 @@
 name: Discover Hyderabad Movies
 
-# Once a day, early morning IST (before the day's bookings pick up), refresh the
-# list of movies on BookMyShow's Hyderabad page. tracker.py picks up new movies
-# from hyderabad_movies.json at the start of its next hourly run.
+# Every morning (06:00 IST) find Hyderabad's current movies by following the "other movies"
+# list inside each movie's own response (the explore page itself is blocked for runners),
+# then add new movies to movies.json and re-tier how often each one is polled.
+# tracker.py picks the changes up when its next hourly run starts. See MOVIE_CHANGES.md.
 on:
-  # Daily schedule (cron '0 0 * * *', 05:30 IST) is off: Cloudflare blocks the explore page
-  # for GitHub runners (HTTP 403 / "Attention Required"), so discovery cannot run here yet.
+  schedule:
+    - cron: '30 0 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -15,7 +16,7 @@ concurrency:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
@@ -25,15 +26,14 @@ jobs:
         python-version: '3.10'
     - run: pip install -r requirements.txt
     - name: Discover movies
-      run: |
-        python discover.py || {
-          pip install playwright && playwright install --with-deps chromium && python discover.py
-        }
-    - name: Commit list
+      run: python discover.py
+    - name: Update polling plan
+      run: python update_movies.py
+    - name: Commit changes
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add hyderabad_movies.json
+        git add catalog.json movies.json MOVIE_CHANGES.md
         git diff --cached --quiet && exit 0
-        git commit -m "Update Hyderabad movie list [skip ci]"
-        for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+        git commit -m "Update movie list and polling plan [skip ci]"
+        for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done

@@ -7,7 +7,8 @@
     "region_slug": "hyderabad",
     "page_slug": "drishyam-the-conclusion",
     "csv": "bms_booking_log.csv",
-    "headers_csv": "bms_api_headers.csv"
+    "headers_csv": "bms_api_headers.csv",
+    "manual": true
   },
   {
     "key": "jailer2",
@@ -17,7 +18,8 @@
     "region_slug": "mumbai",
     "page_slug": "rajini-the-jailer-2",
     "csv": "bms_booking_log_jailer2.csv",
-    "headers_csv": "bms_api_headers_jailer2.csv"
+    "headers_csv": "bms_api_headers_jailer2.csv",
+    "manual": true
   },
   {
     "key": "jailer2_hyd",
@@ -27,7 +29,8 @@
     "region_slug": "hyderabad",
     "page_slug": "jailer-2",
     "csv": "bms_booking_log_jailer2_hyd.csv",
-    "headers_csv": "bms_api_headers_jailer2_hyd.csv"
+    "headers_csv": "bms_api_headers_jailer2_hyd.csv",
+    "manual": true
   },
   {
     "key": "et00483565",
@@ -37,7 +40,8 @@
     "region_slug": "hyderabad",
     "page_slug": "ranabaali",
     "csv": "data/ET00483565.csv",
-    "headers_csv": "data/ET00483565_headers.csv"
+    "headers_csv": "data/ET00483565_headers.csv",
+    "manual": true
   },
   {
     "key": "et00519564",
