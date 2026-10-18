@@ -1,1 +1,2 @@
 timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
+2026-10-18 14:59:55+05:30,,error,200,no trending widget in response (failure 1),,error,
