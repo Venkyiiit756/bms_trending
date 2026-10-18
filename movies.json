@@ -74,7 +74,7 @@
     "page_slug": "street-fighter",
     "csv": "data/ET00481645.csv",
     "headers_csv": "data/ET00481645_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00507337",
@@ -107,7 +107,7 @@
     "page_slug": "garividi-lakshmi",
     "csv": "data/ET00520562.csv",
     "headers_csv": "data/ET00520562_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00519781",
@@ -118,7 +118,7 @@
     "page_slug": "dorothy-telugu",
     "csv": "data/ET00519781.csv",
     "headers_csv": "data/ET00519781_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00518078",
@@ -129,7 +129,7 @@
     "page_slug": "premane-oorilo",
     "csv": "data/ET00518078.csv",
     "headers_csv": "data/ET00518078_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00436621",
@@ -140,7 +140,7 @@
     "page_slug": "the-paradise",
     "csv": "data/ET00436621.csv",
     "headers_csv": "data/ET00436621_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00518692",
@@ -151,7 +151,7 @@
     "page_slug": "thella-kaagitham",
     "csv": "data/ET00518692.csv",
     "headers_csv": "data/ET00518692_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00520052",
@@ -162,7 +162,7 @@
     "page_slug": "mayookha",
     "csv": "data/ET00520052.csv",
     "headers_csv": "data/ET00520052_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00465242",
@@ -173,7 +173,7 @@
     "page_slug": "baa-baa-black-sheep",
     "csv": "data/ET00465242.csv",
     "headers_csv": "data/ET00465242_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00515520",
@@ -206,7 +206,7 @@
     "page_slug": "heart-of-the-beast",
     "csv": "data/ET00504928.csv",
     "headers_csv": "data/ET00504928_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00514163",
@@ -217,7 +217,7 @@
     "page_slug": "avengers-endgame-encore",
     "csv": "data/ET00514163.csv",
     "headers_csv": "data/ET00514163_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00497246",
@@ -228,7 +228,7 @@
     "page_slug": "verity",
     "csv": "data/ET00497246.csv",
     "headers_csv": "data/ET00497246_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00312314",
@@ -239,7 +239,7 @@
     "page_slug": "varsham-telugu",
     "csv": "data/ET00312314.csv",
     "headers_csv": "data/ET00312314_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00506964",
@@ -250,7 +250,7 @@
     "page_slug": "other-mommy",
     "csv": "data/ET00506964.csv",
     "headers_csv": "data/ET00506964_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00518039",
@@ -261,7 +261,7 @@
     "page_slug": "dorothy",
     "csv": "data/ET00518039.csv",
     "headers_csv": "data/ET00518039_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00447840",
@@ -272,7 +272,7 @@
     "page_slug": "spider-man-brand-new-day",
     "csv": "data/ET00447840.csv",
     "headers_csv": "data/ET00447840_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00477243",
@@ -283,7 +283,7 @@
     "page_slug": "digger",
     "csv": "data/ET00477243.csv",
     "headers_csv": "data/ET00477243_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00502504",
@@ -306,5 +306,101 @@
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
     "every": 1800
+  },
+  {
+    "key": "et00396541",
+    "name": "ET00396541",
+    "eventcode": "ET00396541",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mufasa-the-lion-king",
+    "csv": "data/ET00396541.csv",
+    "headers_csv": "data/ET00396541_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00421831",
+    "name": "ET00421831",
+    "eventcode": "ET00421831",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "lilo-stitch",
+    "csv": "data/ET00421831.csv",
+    "headers_csv": "data/ET00421831_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00506502",
+    "name": "ET00506502",
+    "eventcode": "ET00506502",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "whalefall",
+    "csv": "data/ET00506502.csv",
+    "headers_csv": "data/ET00506502_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00509483",
+    "name": "ET00509483",
+    "eventcode": "ET00509483",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "shaun-the-sheep-the-beast-of-mossy-bottom",
+    "csv": "data/ET00509483.csv",
+    "headers_csv": "data/ET00509483_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00510332",
+    "name": "ET00510332",
+    "eventcode": "ET00510332",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "danger-devdas",
+    "csv": "data/ET00510332.csv",
+    "headers_csv": "data/ET00510332_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00511431",
+    "name": "ET00511431",
+    "eventcode": "ET00511431",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-eken-kerala-e-kurukshetra",
+    "csv": "data/ET00511431.csv",
+    "headers_csv": "data/ET00511431_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00520054",
+    "name": "ET00520054",
+    "eventcode": "ET00520054",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "impure",
+    "csv": "data/ET00520054.csv",
+    "headers_csv": "data/ET00520054_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
+  },
+  {
+    "key": "et00521125",
+    "name": "ET00521125",
+    "eventcode": "ET00521125",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "chakkora-lunar-love-bird",
+    "csv": "data/ET00521125.csv",
+    "headers_csv": "data/ET00521125_headers.csv",
+    "every": 3600,
+    "added": "2026-10-18"
   }
 ]
