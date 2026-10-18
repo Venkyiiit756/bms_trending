@@ -55,3 +55,4 @@ timestamp,status,metric_value,headers
 2026-10-18 09:26:53+05:30,200,,"{""error"": ""no trending widget in response""}"
 2026-10-18 10:25:11+05:30,200,,"{""error"": ""no trending widget in response""}"
 2026-10-18 11:19:11+05:30,200,,"{""error"": ""no trending widget in response""}"
+2026-10-18 12:13:07+05:30,429,,"{""error"": ""HTTP 429""}"
