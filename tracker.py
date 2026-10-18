@@ -351,6 +351,29 @@ def poll(st, shared):
     return logged
 
 
+def next_snapshot_time(t):
+    """The next :05 or :35 (IST wall clock) after t, when a snapshot should be requested."""
+    base = t.replace(minute=5, second=0, microsecond=0)
+    for step in (0, 30, 60):
+        cand = base + timedelta(minutes=step)
+        if cand > t:
+            return cand
+
+
+def request_snapshot():
+    """Ask GitHub to run the snapshot workflow (scheduled runs are unreliable; dispatches are not)."""
+    if os.environ.get('SNAPSHOT_DISPATCH') != '1':
+        return
+    try:
+        res = subprocess.run(['gh', 'workflow', 'run', 'hourly_snapshot.yml', '--repo',
+                              os.environ.get('GITHUB_REPOSITORY', ''), '--ref', 'main'],
+                             capture_output=True, text=True, timeout=60)
+        print(f'[{fmt(now())}] snapshot requested' if res.returncode == 0
+              else f'[{fmt(now())}] snapshot request failed: {res.stderr.strip()[:200]}', flush=True)
+    except Exception as e:
+        print(f'[{fmt(now())}] snapshot request error: {e}', flush=True)
+
+
 def recently_polled(movie):
     """True if the movie's log has a row newer than its `every` interval (minus a margin)."""
     path = movie['csv']
@@ -394,6 +417,7 @@ def run(keys, minutes, commit):
     shared = {'failures': 0, 'block_until': 0.0}
     last_request = 0.0
     dirty = False
+    next_snap = next_snapshot_time(now())
 
     def stop(*_):
         raise KeyboardInterrupt
@@ -414,6 +438,12 @@ def run(keys, minutes, commit):
                 sleep(max(0, go - time.monotonic()))
             last_request = time.monotonic()
             dirty = poll(st, shared) or dirty
+            if now() >= next_snap:
+                if dirty and commit:
+                    commit_and_push(files)     # so the snapshot sees the newest rows
+                    dirty = False
+                request_snapshot()
+                next_snap = next_snapshot_time(now())
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:
