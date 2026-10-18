@@ -980,3 +980,4 @@ timestamp,status,metric_value,headers
 2026-10-19 05:15:54+05:30,200,1M,"{""age"": ""1244"", ""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Sun, 18 Oct 2026 23:45:54 GMT"", ""last-modified"": ""Sun, 18 Oct 2026 23:28:24 GMT""}"
 2026-10-19 05:17:09+05:30,200,1M,"{""age"": ""1318"", ""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Sun, 18 Oct 2026 23:47:09 GMT"", ""last-modified"": ""Sun, 18 Oct 2026 23:40:42 GMT""}"
 2026-10-19 05:17:54+05:30,200,1M,"{""age"": ""1363"", ""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Sun, 18 Oct 2026 23:47:54 GMT"", ""last-modified"": ""Sun, 18 Oct 2026 23:40:42 GMT""}"
+2026-10-19 05:18:54+05:30,429,,"{""error"": ""HTTP 429""}"
