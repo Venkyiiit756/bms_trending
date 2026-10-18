@@ -1,6 +1,6 @@
-# Hourly snapshots (Hyderabad)
+# Snapshots every 30 minutes (Hyderabad)
 
-One set of files per full hour, IST, made automatically at about 5 minutes past the hour.
+One set of files per half hour (:00 and :30), IST, made automatically about 5 minutes later.
 
 ```
 snapshots/
@@ -11,9 +11,9 @@ snapshots/
     2026-10-18_1100.csv                        same numbers as data (movie, metric, value, reading time)
 ```
 
-- The file name time (`1100`) is the snapshot hour. Each movie's value is its latest reading at or before that
-  hour, no older than 75 minutes (small movies are polled hourly, so they can be up to ~55 minutes old; the CSV
-  has each reading's exact time).
+- The file name time (`1130`) is the snapshot time. Each movie's value is its latest reading at or before that
+  time, no older than 75 minutes (the CSV has each reading's exact time). The figure is always BookMyShow's rolling
+  "last 1 hour" count, just sampled every 30 minutes, so consecutive snapshots overlap. It is not 30-minute sales.
 - A movie appears in the **last-1-hour** table only while BookMyShow shows the hourly figure for it. Late at night
   and for small films it shows the 24-hour figure instead (second image). Movies with no "Trending" line are left out.
 - Counter scope is unverified (the Hyderabad page may not mean Hyderabad-only counts). Figures are tickets booked, not revenue.

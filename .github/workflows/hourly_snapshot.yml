@@ -1,11 +1,11 @@
 name: Hourly Snapshot Images
 
-# Five minutes past every hour, save the "movies vs tickets in the last hour" table image
-# for each full hour (IST) under snapshots/. snapshot.py also fills in any recent hour
+# Five minutes past every half hour, save the "movies vs tickets in the last hour" table image
+# for each half hour (IST) under snapshots/. snapshot.py also fills in any recent hour
 # that was missed, because GitHub often delays or skips scheduled runs.
 on:
   schedule:
-    - cron: '5 * * * *'
+    - cron: '5,35 * * * *'
   workflow_dispatch:
 
 concurrency:

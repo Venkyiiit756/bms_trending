@@ -35,7 +35,7 @@ ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-column
 <body>
 <header>
   <h1>Hyderabad movie trends</h1>
-  <div class="sub">Tickets booked per movie, snapshot every hour (IST)</div>
+  <div class="sub">Tickets booked per movie, snapshot every 30 minutes (IST)</div>
 </header>
 <main>
   <section class="card">
@@ -59,7 +59,7 @@ ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-column
       <a class="btn" id="dlimg24" download>Image: last 24 hours</a>
     </div>
     <div style="overflow-x:auto;margin-top:12px"><table id="tbl"></table></div>
-    <p class="note">Each value is the movie's latest reading at or before the hour (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. Whether the counter covers only Hyderabad is unverified.</p>
+    <p class="note">Each figure is BookMyShow's rolling count, so the 30-minute snapshots overlap and show the trend more often (they are not 30-minute sales). Each value is the movie's latest reading at or before the snapshot time (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. Whether the counter covers only Hyderabad is unverified.</p>
   </section>
 
   <section class="card">
