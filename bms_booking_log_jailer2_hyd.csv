@@ -589,3 +589,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-19 11:54:26+05:30,Jailer 2,1_hour,49.27K,49.27K tickets booked in last 1 hour,2026-10-19 11:44:23+05:30,change,2026-10-19 11:54:26+05:30
 2026-10-19 12:09:00+05:30,Jailer 2,1_hour,49.13K,49.13K tickets booked in last 1 hour,2026-10-19 11:58:58+05:30,change,2026-10-19 12:09:00+05:30
 2026-10-19 12:19:03+05:30,Jailer 2,1_hour,48.97K,48.97K tickets booked in last 1 hour,2026-10-19 12:09:00+05:30,change,2026-10-19 12:19:03+05:30
+2026-10-19 12:29:05+05:30,Jailer 2,1_hour,48.39K,48.39K tickets booked in last 1 hour,2026-10-19 12:19:03+05:30,change,2026-10-19 12:29:05+05:30
