@@ -1164,3 +1164,4 @@ timestamp,status,metric_value,headers
 2026-10-19 22:32:49+05:30,200,41.85K,"{""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Mon, 19 Oct 2026 17:02:49 GMT"", ""last-modified"": ""Mon, 19 Oct 2026 17:02:49 GMT""}"
 2026-10-19 22:43:37+05:30,200,32.5K,"{""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""EXPIRED"", ""date"": ""Mon, 19 Oct 2026 17:13:37 GMT"", ""last-modified"": ""Mon, 19 Oct 2026 17:13:37 GMT""}"
 2026-10-19 22:53:40+05:30,200,32.5K,"{""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Mon, 19 Oct 2026 17:23:40 GMT"", ""last-modified"": ""Mon, 19 Oct 2026 17:23:40 GMT""}"
+2026-10-19 22:56:24+05:30,200,32.5K,"{""age"": ""766"", ""cache-control"": ""max-age=0, no-store, no-cache"", ""cf-cache-status"": ""HIT"", ""date"": ""Mon, 19 Oct 2026 17:26:24 GMT"", ""last-modified"": ""Mon, 19 Oct 2026 17:23:40 GMT""}"
