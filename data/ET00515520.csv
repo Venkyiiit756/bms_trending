@@ -72,3 +72,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-19 22:51:40+05:30,Baththa,24_hours,8.13K,8.13K tickets booked in last 24 hours,2026-10-19 22:01:31+05:30,change,2026-10-19 22:51:40+05:30
 2026-10-20 00:57:12+05:30,Baththa,24_hours,8.26K,8.26K tickets booked in last 24 hours,2026-10-19 22:51:40+05:30,change,2026-10-20 00:57:12+05:30
 2026-10-20 01:48:38+05:30,Baththa,24_hours,8.28K,8.28K tickets booked in last 24 hours,2026-10-20 00:57:12+05:30,change,2026-10-20 01:48:38+05:30
+2026-10-20 02:53:04+05:30,Baththa,24_hours,8.3K,8.3K tickets booked in last 24 hours,2026-10-20 01:48:38+05:30,change,2026-10-20 02:53:04+05:30
