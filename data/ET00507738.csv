@@ -225,3 +225,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-20 11:56:37+05:30,Hanuman Ansh,24_hours,8.71K,8.71K tickets booked in last 24 hours,2026-10-20 10:58:12+05:30,change,2026-10-20 11:56:37+05:30
 2026-10-20 12:49:48+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-20 13:00:25+05:30,Hanuman Ansh,24_hours,9.38K,9.38K tickets booked in last 24 hours,2026-10-20 11:56:37+05:30,change,2026-10-20 13:00:25+05:30
+2026-10-20 13:11:29+05:30,Hanuman Ansh,24_hours,9.47K,9.47K tickets booked in last 24 hours,2026-10-20 13:00:25+05:30,change,2026-10-20 13:11:29+05:30
