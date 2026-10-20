@@ -686,3 +686,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-20 06:14:25+05:30,Ranabaali,24_hours,117.61K,117.61K tickets booked in last 24 hours,2026-10-20 06:07:11+05:30,change,2026-10-20 05:58:43+05:30
 2026-10-20 06:15:25+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-20 06:22:17+05:30,Ranabaali,24_hours,117.59K,117.59K tickets booked in last 24 hours,2026-10-20 06:14:25+05:30,change,2026-10-20 06:22:17+05:30
+2026-10-20 06:33:19+05:30,Ranabaali,24_hours,117.6K,117.6K tickets booked in last 24 hours,2026-10-20 06:22:17+05:30,change,2026-10-20 06:33:19+05:30
