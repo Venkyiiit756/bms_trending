@@ -52,7 +52,7 @@
     "page_slug": "comrade-kalyan",
     "csv": "data/ET00519564.csv",
     "headers_csv": "data/ET00519564_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00521061",
@@ -305,7 +305,7 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00396541",
@@ -402,5 +402,17 @@
     "headers_csv": "data/ET00521125_headers.csv",
     "every": 3600,
     "added": "2026-10-18"
+  },
+  {
+    "key": "et00496545",
+    "name": "Clayface",
+    "eventcode": "ET00496545",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "clayface",
+    "csv": "data/ET00496545.csv",
+    "headers_csv": "data/ET00496545_headers.csv",
+    "every": 3600,
+    "added": "2026-10-20"
   }
 ]

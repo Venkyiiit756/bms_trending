@@ -2,6 +2,11 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-20
+- added **Clayface** (ET00496545), polled hourly
+- **Comrade Kalyan** (ET00519564): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Nayyi Navelli** (ET00513250): every 30 min -> hourly (best hourly figure in 24 h: 2.9K)
+
 ## 2026-10-18
 - added **ET00396541** (ET00396541), polled hourly
 - added **ET00421831** (ET00421831), polled hourly
