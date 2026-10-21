@@ -77,6 +77,11 @@ details p,details li{color:var(--mute)}
 .empty{padding:18px;text-align:center;color:var(--mute)}
 .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
+.post summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.post summary::-webkit-details-marker{display:none}
+.post summary .first{color:var(--mute);font-size:13px;flex-basis:100%}
+.thumb{display:grid;gap:6px}
+.form optgroup{font-weight:700}
 </style>
 </head>
 <body>
@@ -89,7 +94,8 @@ details p,details li{color:var(--mute)}
 <nav role="tablist">
   <button role="tab" data-tab="now" aria-selected="true">Now</button>
   <button role="tab" data-tab="studio">Studio</button>
-  <button role="tab" data-tab="kit">Post kit</button>
+  <button role="tab" data-tab="explore">Explore</button>
+  <button role="tab" data-tab="kit">Auto posts</button>
   <button role="tab" data-tab="data">Data</button>
 </nav>
 
@@ -123,12 +129,23 @@ details p,details li{color:var(--mute)}
 <section id="studio">
   <div class="card grid2">
     <div class="form">
+      <div class="row" style="gap:6px"><select id="sPreset" aria-label="Saved presets" style="flex:1;min-width:0"></select><button id="sSave" title="Save these settings as a preset">Save</button><button id="sDel" title="Delete the selected preset">Delete</button></div>
       <label>Image
         <select id="sType">
-          <option value="board">Leaderboard: last hour</option>
-          <option value="trend">Same time across days</option>
-          <option value="line">One movie: today vs yesterday</option>
-          <option value="peak">Busiest hour of a day</option>
+          <optgroup label="One moment">
+            <option value="board">Leaderboard: last hour</option>
+            <option value="movers">Biggest movers vs yesterday</option>
+          </optgroup>
+          <optgroup label="Through the day">
+            <option value="daytable">Day by hour: table</option>
+            <option value="multiline">Movies compared: chart</option>
+            <option value="line">One movie: today vs yesterday</option>
+            <option value="peak">Busiest hour of a day</option>
+          </optgroup>
+          <optgroup label="Across days">
+            <option value="trend">Same time across days</option>
+            <option value="week">One movie across days: grid</option>
+          </optgroup>
         </select>
       </label>
       <div class="row" style="gap:10px">
@@ -142,13 +159,16 @@ details p,details li{color:var(--mute)}
           <option value="none">No comparison</option>
         </select>
       </label>
+      <label id="sHoursWrap">Hours
+        <select id="sHours"><option value="all">Every hour, 9 AM–11 PM</option><option value="two" selected>Every 2 hours, 8 AM–10 PM</option><option value="day">Daytime, 9 AM–5 PM</option><option value="eve">Evening, 5–11 PM</option></select>
+      </label>
       <label id="sDaysWrap">Days<select id="sDays"><option>3</option><option selected>4</option><option>5</option><option>7</option></select></label>
       <label id="sMovieWrap">Movie<select id="sMovie"></select></label>
       <label id="sTopWrap">Movies
         <select id="sTop"><option value="3">Top 3</option><option value="5">Top 5</option><option value="7" selected>Top 7</option><option value="10">Top 10</option><option value="pick">Choose…</option></select>
       </label>
       <div class="chips" id="sPick" hidden></div>
-      <label>Style<div class="seg" id="sStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button></div></label>
+      <label>Style<div class="seg" id="sStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></label>
       <label>Size<div class="seg" id="sSize"><button data-v="1200x1200" aria-pressed="true">Square</button><button data-v="1200x675" aria-pressed="false">Wide</button><button data-v="1080x1350" aria-pressed="false">Tall</button></div></label>
       <label class="check"><input type="checkbox" id="sFoot" checked> Source and handle at the bottom</label>
     </div>
@@ -157,17 +177,35 @@ details p,details li{color:var(--mute)}
       <div class="row"><button class="primary" id="sDownload">Download image</button><button id="sCopyAlt">Copy alt text</button></div>
       <div class="row spread"><div class="seg" id="sCapKind" style="width:220px"><button data-v="long" aria-pressed="true">Detailed</button><button data-v="short" aria-pressed="false">Short</button></div><span class="count" id="sCount"></span></div>
       <textarea id="sCaption" aria-label="Caption"></textarea>
-      <div class="row"><button id="sCopy">Copy caption</button><a class="btn" id="sX" target="_blank" rel="noopener">Open in X</a></div>
+      <div class="row"><button id="sCopy">Copy caption</button><a class="btn" id="sX" target="_blank" rel="noopener">Open in X</a><button id="sLink">Copy link to these settings</button></div>
       <div class="mute">On a phone: download the image, tap "Open in X" (the caption is filled in), then attach the image.</div>
     </div>
   </div>
 </section>
 
-<!-- POST KIT -->
+<!-- EXPLORE -->
+<section id="explore">
+  <div class="card">
+    <div class="row" style="gap:10px">
+      <label class="mute" style="display:grid;gap:4px">From<select id="eFrom"></select></label>
+      <label class="mute" style="display:grid;gap:4px">To<select id="eTo"></select></label>
+      <label class="mute" style="display:grid;gap:4px">Detail<select id="eStep"><option value="60">Hourly</option><option value="30">Every 30 min</option></select></label>
+    </div>
+    <div class="mute" style="margin:10px 0 4px">Movies (hourly figure)</div>
+    <div class="chips" id="ePick"></div>
+  </div>
+  <div class="card">
+    <canvas id="ecv" width="1400" height="620" aria-label="Chart of tickets in the last hour"></canvas>
+    <div class="row" style="margin-top:10px"><button id="eImg">Make a post image</button><button id="eCsv">Download this table (CSV)</button></div>
+    <div style="max-height:440px;overflow:auto;margin-top:10px" id="eTable"></div>
+  </div>
+</section>
+
+<!-- AUTO POSTS -->
 <section id="kit">
   <div class="card">
-    <h2>Hourly post kit</h2>
-    <div class="mute">Made automatically every hour, 8 AM to 11 PM IST. Posted to X when the account is connected; otherwise post it from here.</div>
+    <h2>Auto posts</h2>
+    <div class="mute">Made automatically every hour, 8 AM to 11 PM IST. Posted to X when the account is connected; otherwise post them from here. "Edit in Studio" opens an image with the same settings so you can change it.</div>
     <div id="posts" style="margin-top:8px"></div>
   </div>
 </section>
@@ -230,8 +268,6 @@ function latestPoint(){const ds=days();for(let i=ds.length-1;i>=0;i--){const ts=
 function fill(sel,items,val,label=x=>x){sel.innerHTML=items.map(x=>`<option value="${x}">${label(x)}</option>`).join('');if(val!=null&&items.includes(val))sel.value=val}
 
 /* ---------- tabs ---------- */
-function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));if(location.hash!=='#'+tab)history.replaceState(null,'','#'+tab);if(tab==='studio')render()}
-$$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 
 /* ---------- NOW ---------- */
 function nowDraw(){
@@ -254,142 +290,268 @@ $('#nowToStudio').onclick=()=>{S.type='board';$('#sType').value='board';studioDa
 
 /* ---------- STUDIO state ---------- */
 const S={type:'board',style:'color',size:'1200x1200',cap:'long'};
-function seg(id,key){$$(`#${id} button`).forEach(b=>b.onclick=()=>{$$(`#${id} button`).forEach(x=>x.setAttribute('aria-pressed',x===b));S[key]=b.dataset.v;render()})}
+const THEMES={
+  color:{bg:'#ffffff',title:'#1f3a5f',sub:'#6b7684',ink:'#222222',head:'#1f3a5f',headInk:'#ffffff',zebra:'#f4f7fb',row:'#ffffff',border:'#1f3a5f',up:'#0a7d33',down:'#c0392b',grid:'#e3e8ef',axis:'#b8c2cf',first:'#1f3a5f',rank:'#6b7684',heat:[31,58,95],pal:['#1f3a5f','#c0392b','#0a7d33','#b9770e'],ghost:'#9aa6b5'},
+  mono:{bg:'#ffffff',title:'#111111',sub:'#555555',ink:'#111111',head:'#ececec',headInk:'#111111',zebra:'#ffffff',row:'#ffffff',border:'#111111',up:'#111111',down:'#111111',grid:'#e5e5e5',axis:'#999999',first:'#111111',rank:'#555555',heat:[0,0,0],pal:['#111111','#666666','#999999','#3d3d3d'],ghost:'#b3b3b3'},
+  dark:{bg:'#0f1720',title:'#ffffff',sub:'#9aa6b5',ink:'#e8edf3',head:'#2b4a75',headInk:'#ffffff',zebra:'#16202c',row:'#0f1720',border:'#3a4b61',up:'#4cc27a',down:'#ff7a6b',grid:'#223042',axis:'#3a4b61',first:'#cfe0f5',rank:'#9aa6b5',heat:[127,179,255],pal:['#7fb3ff','#ff7a6b','#4cc27a','#f5b041'],ghost:'#6b7a8f'}};
+const T=()=>THEMES[S.style]||THEMES.color;
+function seg(id,key){$$(`#${id} button`).forEach(b=>b.onclick=()=>{setSeg(id,b.dataset.v);S[key]=b.dataset.v;render()})}
+function setSeg(id,v){$$(`#${id} button`).forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===v))}
 seg('sStyle','style');seg('sSize','size');
-$$('#sCapKind button').forEach(b=>b.onclick=()=>{$$('#sCapKind button').forEach(x=>x.setAttribute('aria-pressed',x===b));S.cap=b.dataset.v;setCaption()});
+$$('#sCapKind button').forEach(b=>b.onclick=()=>{setSeg('sCapKind',b.dataset.v);S.cap=b.dataset.v;setCaption();writeHash()});
 function studioDayTime(d,t){fill($('#sDay'),days().slice().reverse(),d,dayLabel);fill($('#sTime'),times($('#sDay').value).slice().reverse(),t,timeLabel);moviesFor();render()}
-$('#sDay').onchange=()=>{const ts=times($('#sDay').value);fill($('#sTime'),ts.slice().reverse(),$('#sTime').value,timeLabel);moviesFor();render()};
-['#sTime','#sCmp','#sDays','#sMovie'].forEach(s=>$(s).onchange=()=>{if(s==='#sTime')moviesFor();render()});
+$('#sDay').onchange=()=>{const ts=times($('#sDay').value);fill($('#sTime'),ts.slice().reverse(),$('#sTime').value||ts[ts.length-1],timeLabel);moviesFor();render()};
+['#sTime','#sCmp','#sDays','#sMovie','#sHours'].forEach(s=>$(s).onchange=()=>{if(s==='#sTime')moviesFor();render()});
 $('#sType').onchange=()=>{S.type=$('#sType').value;moviesFor();render()};
-$('#sTop').onchange=()=>{$('#sPick').hidden=$('#sTop').value!=='pick';render()};
+$('#sTop').onchange=()=>{moviesFor();render()};
 $('#sFoot').onchange=render;
+const DAYTYPES=['peak','daytable','multiline'], MAXCOLS={daytable:4,multiline:4};
+function dayBest(d){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};return best}
 function candidates(){const d=$('#sDay').value,t=$('#sTime').value;
-  if(S.type==='peak'){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name])best[r.name]=r.n;return Object.entries(best).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
+  if(DAYTYPES.includes(S.type)||S.type==='week'||S.type==='line'){const b=dayBest(d);if(S.type==='line'||S.type==='multiline'){/* only movies with data up to the chosen time */}return Object.entries(b).sort((a,c)=>c[1].n-a[1].n).map(x=>x[0])}
   return hourly(d,t).map(r=>r.name)}
-function moviesFor(){const c=candidates();
-  const keep=new Set($$('#sPick input:checked').map(i=>i.value));
-  $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<5?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure at this time.</span>';
+function moviesFor(){const c=candidates();const ty=S.type;
+  const keep=new Set($$('#sPick input:checked').map(i=>i.value));const def=MAXCOLS[ty]?3:5;
+  $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<def?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure here.</span>';
   $$('#sPick input').forEach(i=>i.onchange=render);
   const cur=$('#sMovie').value;fill($('#sMovie'),c,cur);
-  const ty=S.type;$('#sTimeWrap').hidden=ty==='peak';$('#sCmpWrap').hidden=ty!=='board';$('#sDaysWrap').hidden=ty!=='trend';$('#sMovieWrap').hidden=ty!=='line';$('#sTopWrap').hidden=ty==='line';$('#sPick').hidden=ty==='line'||$('#sTop').value!=='pick'}
-function chosen(){const c=candidates();if($('#sTop').value==='pick'){const p=new Set($$('#sPick input:checked').map(i=>i.value));return c.filter(n=>p.has(n))}return c.slice(0,+$('#sTop').value)}
+  const vis={time:!['peak','daytable','week'].includes(ty),cmp:ty==='board',days:['trend','week'].includes(ty),movie:['line','week'].includes(ty),top:!['line','week'].includes(ty),hours:['daytable','week'].includes(ty)};
+  $('#sTimeWrap').hidden=!vis.time;$('#sCmpWrap').hidden=!vis.cmp;$('#sDaysWrap').hidden=!vis.days;$('#sMovieWrap').hidden=!vis.movie;$('#sTopWrap').hidden=!vis.top;$('#sHoursWrap').hidden=!vis.hours;
+  $('#sPick').hidden=!vis.top||$('#sTop').value!=='pick';
+  $('#sTimeWrap').firstChild.textContent=ty==='multiline'||ty==='line'?'Until':'Time'}
+function chosen(){const c=candidates();let out;if($('#sTop').value==='pick'){const p=new Set($$('#sPick input:checked').map(i=>i.value));out=c.filter(n=>p.has(n))}else out=c.slice(0,+$('#sTop').value);return MAXCOLS[S.type]?out.slice(0,MAXCOLS[S.type]):out}
+const HOURSETS={all:[9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],two:[8,10,12,14,16,18,20,22],day:[9,10,11,12,13,14,15,16,17],eve:[17,18,19,20,21,22,23]};
+const hh=h=>String(h).padStart(2,'0')+'00';
 
 /* ---------- canvas drawing ---------- */
 const FONT='Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
 function fit(ctx,text,maxW,size,weight){let s=size;ctx.font=`${weight} ${s}px ${FONT}`;while(ctx.measureText(text).width>maxW&&s>8){s-=1;ctx.font=`${weight} ${s}px ${FONT}`}return s}
 function frame(ctx,W,H,title,subtitle){
-  ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);const u=Math.min(W,H*1.25)/1200;
+  const th=T();ctx.fillStyle=th.bg;ctx.fillRect(0,0,W,H);const u=Math.min(W,H*1.25)/1200;
   const ty=H*(H>W?0.075:0.085);
   ctx.textAlign='center';ctx.textBaseline='middle';
-  fit(ctx,title,W*0.88,Math.round(46*u),800);ctx.fillStyle=NAVY;ctx.fillText(title,W/2,ty);
-  fit(ctx,subtitle,W*0.88,Math.round(28*u),500);ctx.fillStyle=MUTE;ctx.fillText(subtitle,W/2,ty+52*u);
+  fit(ctx,title,W*0.88,Math.round(46*u),800);ctx.fillStyle=th.title;ctx.fillText(title,W/2,ty);
+  fit(ctx,subtitle,W*0.88,Math.round(28*u),500);ctx.fillStyle=th.sub;ctx.fillText(subtitle,W/2,ty+52*u);
   let bottom=H*0.96;
-  if($('#sFoot').checked){const f=`Source: BookMyShow app${HANDLE?' · '+HANDLE:''}`;fit(ctx,f,W*0.9,Math.round(22*u),500);ctx.fillStyle=MUTE;ctx.fillText(f,W/2,H-H*0.04);bottom=H-H*0.075}
+  if($('#sFoot').checked){const f=`Source: BookMyShow app${HANDLE?' · '+HANDLE:''}`;fit(ctx,f,W*0.9,Math.round(22*u),500);ctx.fillStyle=th.sub;ctx.fillText(f,W/2,H-H*0.04);bottom=H-H*0.075}
   return {top:ty+52*u+38*u,bottom,u}}
-function table(ctx,W,box,header,rows,colors,widths){
-  const mono=S.style==='mono';const x0=W*0.06,w=W*0.88,n=rows.length+1;
+// colors[r][c]: text colour (or null); bgs[r][c]: optional cell fill
+function table(ctx,W,box,header,rows,colors,widths,bgs){
+  const th=T();const x0=W*0.06,w=W*0.88,n=rows.length+1;
   const avail=box.bottom-box.top;let rh=Math.min(avail/n,108*box.u);
   const y0=box.top+(avail-rh*n)/2;const fs=Math.min(rh*0.42,38*box.u);
   let xs=[x0];widths.forEach(f=>xs.push(xs[xs.length-1]+f*w));
   for(let r=0;r<n;r++){const y=y0+r*rh;
-    ctx.fillStyle=r===0?(mono?'#ececec':NAVY):(mono?'#fff':(r%2?ZEBRA:'#fff'));ctx.fillRect(x0,y,w,rh);
+    ctx.fillStyle=r===0?th.head:(r%2?th.zebra:th.row);ctx.fillRect(x0,y,w,rh);
+    if(r>0&&bgs&&bgs[r-1])bgs[r-1].forEach((bg,ci)=>{if(bg){ctx.fillStyle=bg;ctx.fillRect(xs[ci],y,xs[ci+1]-xs[ci],rh)}});
     const cells=r===0?header:rows[r-1];
     cells.forEach((c,ci)=>{const cx=(xs[ci]+xs[ci+1])/2;const maxw=xs[ci+1]-xs[ci]-16*box.u;
-      const weight=r===0?700:(ci===0||ci===1?700:700);
-      fit(ctx,String(c),maxw,Math.round(r===0?fs*0.9:fs),weight);
-      ctx.fillStyle=r===0?(mono?'#111':'#fff'):(mono?'#111':(colors&&colors[r-1]&&colors[r-1][ci])||INK);
+      fit(ctx,String(c),maxw,Math.round(r===0?fs*0.9:fs),700);
+      ctx.fillStyle=r===0?th.headInk:((colors&&colors[r-1]&&colors[r-1][ci])||th.ink);
       ctx.textAlign='center';ctx.fillText(String(c),cx,y+rh/2)})}
-  ctx.strokeStyle=mono?'#111':NAVY;ctx.lineWidth=Math.max(1.5,2*box.u);
+  ctx.strokeStyle=th.border;ctx.lineWidth=Math.max(1.5,2*box.u);
   for(let r=0;r<=n;r++){ctx.beginPath();ctx.moveTo(x0,y0+r*rh);ctx.lineTo(x0+w,y0+r*rh);ctx.stroke()}
   xs.forEach(x=>{ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y0+rh*n);ctx.stroke()})}
-function chart(ctx,W,box,lines){
-  const mono=S.style==='mono';const x0=W*0.13,x1=W*0.94,y0=box.top+20*box.u,y1=box.bottom-60*box.u;
+// lines: [{label, pts:[[x,v]], color, main, end}] ; xmax hours on the axis; ticks:[[x,label]]
+function chart(ctx,W,box,lines,opt={}){
+  const th=T();const xmax=opt.xmax||24,ticks=opt.ticks||[0,3,6,9,12,15,18,21,24].map(h=>[h,h===0||h===24?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p']);
+  const x0=W*0.12,x1=W*0.94,y0=box.top+70*box.u,y1=box.bottom-60*box.u;
   const all=lines.flatMap(l=>l.pts.map(p=>p[1]));const ymax=Math.max(1,...all)*1.12;
-  const step=[1,2,5,10,20,25,50,100].find(s=>ymax/s<=6)||100;
+  const step=[1,2,5,10,20,25,50,100,200].find(s=>ymax/s<=6)||200;
   ctx.textBaseline='middle';ctx.font=`500 ${Math.round(22*box.u)}px ${FONT}`;
-  for(let v=0;v<=ymax;v+=step){const y=y1-(v/ymax)*(y1-y0);ctx.strokeStyle='#e3e8ef';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=MUTE;ctx.textAlign='right';ctx.fillText(v+'K',x0-12*box.u,y)}
-  ctx.textAlign='center';[0,3,6,9,12,15,18,21,24].forEach(h=>{const x=x0+(h/24)*(x1-x0);ctx.fillStyle=MUTE;ctx.fillText(h===0||h===24?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p',x,y1+30*box.u)});
-  ctx.strokeStyle='#b8c2cf';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
-  lines.forEach(l=>{ctx.strokeStyle=mono?(l.main?'#111':'#9a9a9a'):l.color;ctx.lineWidth=l.main?5*box.u:3.5*box.u;ctx.lineJoin='round';ctx.beginPath();let pen=false,last=null;
-    for(const [h,v] of l.pts){if(last!==null&&h-last>0.75)pen=false;const x=x0+(h/24)*(x1-x0),y=y1-(v/ymax)*(y1-y0);pen?ctx.lineTo(x,y):ctx.moveTo(x,y);pen=true;last=h}ctx.stroke();
-    if(l.main&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];const x=x0+(h/24)*(x1-x0),y=y1-(v/ymax)*(y1-y0);ctx.fillStyle=mono?'#111':NAVY;ctx.beginPath();ctx.arc(x,y,7*box.u,0,7);ctx.fill();ctx.font=`800 ${Math.round(26*box.u)}px ${FONT}`;ctx.textAlign=h>20?'right':'left';ctx.fillText(v.toFixed(1)+'K',x+(h>20?-14:14)*box.u,y-26*box.u)}});
-  // legend
-  let lx=x0+10*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(24*box.u)}px ${FONT}`;
-  lines.forEach(l=>{ctx.strokeStyle=mono?(l.main?'#111':'#9a9a9a'):l.color;ctx.lineWidth=l.main?5*box.u:3.5*box.u;ctx.beginPath();ctx.moveTo(lx,y0);ctx.lineTo(lx+40*box.u,y0);ctx.stroke();ctx.fillStyle=INK;ctx.fillText(l.label,lx+50*box.u,y0);lx+=ctx.measureText(l.label).width+110*box.u})}
+  for(let v=0;v<=ymax;v+=step){const y=y1-(v/ymax)*(y1-y0);ctx.strokeStyle=th.grid;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=th.sub;ctx.textAlign='right';ctx.fillText(v+'K',x0-12*box.u,y)}
+  ctx.textAlign='center';ticks.forEach(([h,lab])=>{const x=x0+(h/xmax)*(x1-x0);ctx.fillStyle=th.sub;ctx.fillText(lab,x,y1+30*box.u)});
+  ctx.strokeStyle=th.axis;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
+  const X=h=>x0+(h/xmax)*(x1-x0),Y=v=>y1-(v/ymax)*(y1-y0);
+  lines.forEach(l=>{ctx.strokeStyle=l.color;ctx.lineWidth=(l.main?5:3.5)*box.u;ctx.lineJoin='round';ctx.beginPath();let pen=false,last=null;
+    for(const [h,v] of l.pts){if(last!==null&&h-last>(opt.gap||0.75))pen=false;pen?ctx.lineTo(X(h),Y(v)):ctx.moveTo(X(h),Y(v));pen=true;last=h}ctx.stroke();
+    if(l.end&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];ctx.fillStyle=l.color;ctx.beginPath();ctx.arc(X(h),Y(v),7*box.u,0,7);ctx.fill();
+      ctx.font=`800 ${Math.round(24*box.u)}px ${FONT}`;ctx.textAlign=h>xmax*0.85?'right':'left';ctx.fillText(v.toFixed(1)+'K',X(h)+(h>xmax*0.85?-14:14)*box.u,Y(v)-24*box.u)}});
+  // legend (wraps)
+  let lx=x0,ly=box.top+18*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(24*box.u)}px ${FONT}`;
+  lines.forEach(l=>{const w=ctx.measureText(l.label).width+90*box.u;if(lx+w>x1){lx=x0;ly+=34*box.u}
+    ctx.strokeStyle=l.color;ctx.lineWidth=(l.main?5:3.5)*box.u;ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(lx+36*box.u,ly);ctx.stroke();ctx.fillStyle=th.ink;ctx.fillText(l.label,lx+46*box.u,ly);lx+=w})}
+function empty(ctx,W,H,msg){ctx.fillStyle=T().sub;ctx.textAlign='center';ctx.font=`500 ${Math.round(30*Math.min(W,H)/1200)}px ${FONT}`;ctx.fillText(msg||'No hourly figures here',W/2,H/2)}
+const heat=(v,max)=>{if(v==null||!max)return null;const [r,g,b]=T().heat;const a=S.style==='mono'?0.05+0.25*(v/max):0.06+0.34*(v/max);return `rgba(${r},${g},${b},${a.toFixed(3)})`};
 
 /* ---------- STUDIO render ---------- */
 let CAP={long:'',short:''},ALT='';
+const tags=(...names)=>[...new Set(names.map(tag).filter(Boolean)),'#BoxOffice'].join(' ');
 function render(){
   if(!$('#studio').classList.contains('on')&&render._init)return;render._init=true;
   const cv=$('#cv'),ctx=cv.getContext('2d');const [W,H]=S.size.split('x').map(Number);cv.width=W;cv.height=H;
   const d=$('#sDay').value,t=$('#sTime').value;if(!d)return;
-  const mono=S.style==='mono';const win=windowLabel(t);let box;
-  const color=(a,b)=>mono||a==null||b==null||a===b?INK:(a>b?UP:DOWN);
-  if(S.type==='board'){
-    const names=chosen();const now=snap(d,t);const [cd,ct]=$('#sCmp').value==='day'?[addDays(d,-1),t]:$('#sCmp').value==='hour'?shiftHHMM(d,t,-60):[null,null];const prev=cd?snap(cd,ct):{};
-    const head=['#','Movie','Last hour'];const cmpHead=$('#sCmp').value==='day'?`vs ${dayName(cd)}`:$('#sCmp').value==='hour'?'vs 1 hr ago':null;if(cmpHead)head.push(cmpHead);
-    const rows=[],cols=[],lines=[];names.forEach((n,i)=>{const v=now[n];if(!v||v.k!==1)return;const p=prev[n]&&prev[n].k===1?pct(v.n,prev[n].n):null;const r=[i+1,n,v.t];const c=[MUTE,NAVY,INK];if(cmpHead){r.push(pctTxt(p));c.push(mono?INK:p>0?UP:p<0?DOWN:INK)}rows.push(r);cols.push(c);lines.push({n,v,p})});
-    box=frame(ctx,W,H,'Tickets booked in the last hour',`${dayLabel(d)} · ${win} IST`);
-    if(rows.length)table(ctx,W,box,head,rows,cols,cmpHead?[.09,.45,.23,.23]:[.1,.58,.32]);else empty(ctx,W,H);
-    const vs=cmpHead==='vs 1 hr ago'?'vs 1 hr ago':`vs ${dayName(cd||d)}`;
-    const top=lines[0];
-    CAP.long=build(`🎟️ Tickets booked on BookMyShow, ${win} (${dayLabel(d)})`,lines.map((l,i)=>`${i+1}. ${l.n}: ${l.v.t}${cmpHead&&l.p!==null?` (${pctTxt(l.p)} ${vs})`:''}`),lines.slice(0,2).map(l=>tag(l.n)));
-    CAP.short=top?`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmpHead&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}. Full table below.\n\n${[tag(top.n),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
-    ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}: `+lines.map(l=>`${l.n} ${l.v.t}${cmpHead&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')} ${vs}`:''}`).join('; ');
+  const th=T();const win=windowLabel(t);let box;
+  const color=(a,b)=>a==null||b==null||a===b?th.ink:(a>b?th.up:th.down);
+  const chg=p=>p>0?th.up:p<0?th.down:th.ink;
+  CAP={long:'',short:''};ALT='';
+  if(S.type==='board'||S.type==='movers'){
+    const mv=S.type==='movers';const now=snap(d,t);
+    const cmode=mv?'day':$('#sCmp').value;const [cd,ct]=cmode==='day'?[addDays(d,-1),t]:cmode==='hour'?shiftHHMM(d,t,-60):[null,null];const prev=cd?snap(cd,ct):{};
+    const vs=cmode==='hour'?'vs 1 hr ago':`vs ${dayName(cd||d)}`;
+    let list=hourly(d,t).map(r=>({n:r.name,v:r,p:prev[r.name]&&prev[r.name].k===1?pct(r.n,prev[r.name].n):null}));
+    if(mv)list=list.filter(l=>l.p!==null).sort((a,b)=>b.p-a.p);
+    const pickset=new Set(chosen());list=mv?($('#sTop').value==='pick'?list.filter(l=>pickset.has(l.n)):list.slice(0,+$('#sTop').value)):list.filter(l=>pickset.has(l.n));
+    const head=['#','Movie','Last hour'];if(cmode!=='none')head.push(vs);
+    const rows=list.map((l,i)=>{const r=[i+1,l.n,l.v.t];if(cmode!=='none')r.push(pctTxt(l.p));return r});
+    const cols=list.map(l=>[th.rank,th.first,th.ink,chg(l.p)]);
+    box=frame(ctx,W,H,mv?'Biggest movers':'Tickets booked in the last hour',mv?`Change vs same time ${dayName(cd)} · hour ${win}, ${dayLabel(d)}`:`${dayLabel(d)} · ${win} IST`);
+    if(rows.length)table(ctx,W,box,head,rows,cols,cmode!=='none'?[.09,.45,.23,.23]:[.1,.58,.32]);else empty(ctx,W,H);
+    const lines=list.map((l,i)=>`${i+1}. ${l.n}: ${l.v.t}${cmode!=='none'&&l.p!==null?` (${pctTxt(l.p)} ${vs})`:''}`);
+    const top=list[0];
+    CAP.long=build(mv?`🎟️ Biggest movers on BookMyShow, ${win} (${dayLabel(d)}), change ${vs}`:`🎟️ Tickets booked on BookMyShow, ${win} (${dayLabel(d)})`,lines,list.slice(0,2).map(l=>l.n));
+    CAP.short=top?(mv?`Biggest riser on BookMyShow at ${timeLabel(t)}: ${top.n}, ${top.v.t} tickets in the hour (${pctTxt(top.p)} ${vs}).\n\n${tags(top.n)}`
+      :`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmode!=='none'&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}.\n\n${tags(top.n)}`):'';
+    ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}`+(cmode!=='none'?`, with change ${vs}`:'')+': '+list.map(l=>`${l.n} ${l.v.t}${cmode!=='none'&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')}`:''}`).join('; ');
   } else if(S.type==='trend'){
     const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
-    const rows=[],cols=[];names.forEach(n=>{const vals=ds.map(x=>{const v=snap(x,t)[n];return v&&v.k===1?v:null});rows.push([n,...vals.map(v=>v?v.t:'—')]);cols.push([NAVY,...vals.map((v,i)=>i===0||!v||!vals[i-1]?INK:color(v.n,vals[i-1].n))])});
+    const rows=[],cols=[];names.forEach(n=>{const vals=ds.map(x=>{const v=snap(x,t)[n];return v&&v.k===1?v:null});rows.push([n,...vals.map(v=>v?v.t:'—')]);cols.push([th.first,...vals.map((v,i)=>i===0||!v||!vals[i-1]?th.ink:color(v.n,vals[i-1].n))])});
     box=frame(ctx,W,H,'Same time, different days',`Tickets in the hour ${win} IST`);
-    const w0=nd>5?.28:.32;table(ctx,W,box,['Movie',...ds.map(short)],rows,cols,[w0,...ds.map(()=>(1-w0)/nd)]);
-    CAP.long=build(`🎟️ Same time, last ${nd} days: tickets booked on BookMyShow, ${win}`,rows.map(r=>`${r[0]}: ${r.slice(1).join(' → ')}`),[tag(names[0]||'')]);
-    CAP.short=rows[0]?`${rows[0][0]} at ${win}, last ${nd} days on BookMyShow: ${rows[0].slice(1).join(' → ')} tickets in the hour.\n\n${[tag(rows[0][0]),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    const w0=nd>5?.28:.32;if(rows.length)table(ctx,W,box,['Movie',...ds.map(short)],rows,cols,[w0,...ds.map(()=>(1-w0)/nd)]);else empty(ctx,W,H);
+    CAP.long=build(`🎟️ Same time, last ${nd} days: tickets booked on BookMyShow, ${win}`,rows.map(r=>`${r[0]}: ${r.slice(1).join(' → ')}`),[names[0]||'']);
+    CAP.short=rows[0]?`${rows[0][0]} at ${win}, last ${nd} days on BookMyShow: ${rows[0].slice(1).join(' → ')} tickets in the hour.\n\n${tags(rows[0][0])}`:'';
     ALT=`Table of tickets booked in the hour ${win} on ${ds.map(dayLabel).join(', ')}: `+rows.map(r=>`${r[0]} `+r.slice(1).join(', ')).join('; ');
   } else if(S.type==='line'){
     const n=$('#sMovie').value;const y=addDays(d,-1);
     const pts=(day,upto)=>times(day).filter(x=>!upto||x<=upto).map(x=>{const v=snap(day,x)[n];if(!v||v.k!==1)return null;const [h,m]=hm(x);return [h+m/60,v.n/1000]}).filter(Boolean);
-    const today=pts(d,t),yd=pts(y,null);
     box=frame(ctx,W,H,`${n}: tickets booked per hour`,`${dayLabel(d)} vs ${dayLabel(y)} · until ${timeLabel(t)} IST`);
-    chart(ctx,W,box,[{label:dayName(y),pts:yd,color:'#9aa6b5'},{label:dayName(d),pts:today,color:NAVY,main:true}]);
+    chart(ctx,W,box,[{label:dayName(y),pts:pts(y,null),color:th.ghost},{label:dayName(d),pts:pts(d,t),color:th.pal[0],main:true,end:true}]);
     const now=snap(d,t)[n],pv=snap(y,t)[n];const p=now&&pv&&pv.k===1&&now.k===1?pct(now.n,pv.n):null;
-    CAP.long=now?`🎟️ ${n} on BookMyShow, ${dayLabel(d)} vs ${dayLabel(y)}: ${now.t} tickets in the hour ${win}${p!==null?` (${pctTxt(p)} vs ${dayName(y)} at this time)`:''}.\n\n${[tag(n),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
-    CAP.short=now?`${n}: ${now.t} tickets/hour on BookMyShow at ${timeLabel(t)}${p!==null?` (${pctTxt(p)} vs ${dayName(y)})`:''}. ${tag(n)}`:'';
-    ALT=`Line chart of tickets booked in the last hour for ${n} through ${dayLabel(d)} (dark line) and ${dayLabel(y)} (grey line).`;
-  } else {
-    const names=chosen();const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};
+    CAP.long=now&&now.k===1?`🎟️ ${n} on BookMyShow, ${dayLabel(d)} vs ${dayLabel(y)}: ${now.t} tickets in the hour ${win}${p!==null?` (${pctTxt(p)} vs ${dayName(y)} at this time)`:''}.\n\n${tags(n)}`:'';
+    CAP.short=now&&now.k===1?`${n}: ${now.t} tickets/hour on BookMyShow at ${timeLabel(t)}${p!==null?` (${pctTxt(p)} vs ${dayName(y)})`:''}. ${tag(n)}`:'';
+    ALT=`Line chart of tickets booked in the last hour for ${n} through ${dayLabel(d)} (bold line) and ${dayLabel(y)} (faint line).`;
+  } else if(S.type==='multiline'){
+    const names=chosen();
+    const pts=n=>times(d).filter(x=>x<=t).map(x=>{const v=snap(d,x)[n];if(!v||v.k!==1)return null;const [h,m]=hm(x);return [h+m/60,v.n/1000]}).filter(Boolean);
+    box=frame(ctx,W,H,'Tickets booked per hour',`${dayLabel(d)} · until ${timeLabel(t)} IST`);
+    if(names.length)chart(ctx,W,box,names.map((n,i)=>({label:n,pts:pts(n),color:th.pal[i%4],main:i===0,end:true})));else empty(ctx,W,H);
+    const now=snap(d,t);const ls=names.map(n=>now[n]&&now[n].k===1?`${n}: ${now[n].t}`:null).filter(Boolean);
+    CAP.long=build(`🎟️ Tickets booked per hour on BookMyShow, ${dayLabel(d)} (latest hour ${win})`,ls,names.slice(0,2));
+    CAP.short=names.length?`${names.join(' vs ')} on BookMyShow, ${dayLabel(d)}: tickets booked per hour through the day.\n\n${tags(...names.slice(0,2))}`:'';
+    ALT=`Line chart of tickets booked in the last hour through ${dayLabel(d)} for ${names.join(', ')}. Latest hour ${win}: `+ls.join('; ');
+  } else if(S.type==='daytable'){
+    const names=chosen();const hs=HOURSETS[$('#sHours').value];
+    const grid=hs.map(h=>names.map(n=>{const v=snap(d,hh(h))[n];return v&&v.k===1?v:null}));
+    const peak=names.map((_,j)=>Math.max(0,...grid.map(r=>r[j]?r[j].n:0)));
+    const rows=hs.map((h,i)=>[timeLabel(hh(h)),...grid[i].map(v=>v?v.t:'—')]);
+    const cols=hs.map((h,i)=>[th.rank,...grid[i].map((v,j)=>v&&v.n===peak[j]&&peak[j]>0?th.up:th.ink)]);
+    box=frame(ctx,W,H,'Tickets booked, hour by hour',`${dayLabel(d)} · each figure = the hour before that time`);
+    const w0=.2;if(names.length)table(ctx,W,box,['Time',...names],rows,cols,[w0,...names.map(()=>(1-w0)/names.length)]);else empty(ctx,W,H);
+    const pk=names.map((n,j)=>{const i=grid.findIndex(r=>r[j]&&r[j].n===peak[j]);return i>=0?`${n}: peak ${grid[i][j].t} (${windowLabel(hh(hs[i]))})`:null}).filter(Boolean);
+    CAP.long=build(`🎟️ Hour by hour on BookMyShow, ${dayLabel(d)}`,pk,names.slice(0,2));
+    CAP.short=pk[0]?`${pk[0]} on ${dayLabel(d)}. Hour-by-hour table below.\n\n${tags(...names.slice(0,2))}`:'';
+    ALT=`Table of tickets booked in the hour before each time on ${dayLabel(d)}, for ${names.join(', ')}: `+rows.map(r=>r.join(' ')).join('; ');
+  } else if(S.type==='week'){
+    const n=$('#sMovie').value;const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const hs=HOURSETS[$('#sHours').value];
+    const grid=hs.map(h=>ds.map(x=>{const v=snap(x,hh(h))[n];return v&&v.k===1?v:null}));
+    const max=Math.max(0,...grid.flat().map(v=>v?v.n:0));
+    const rows=hs.map((h,i)=>[timeLabel(hh(h)),...grid[i].map(v=>v?v.t:'—')]);
+    const bgs=grid.map(r=>[null,...r.map(v=>v?heat(v.n,max):null)]);
+    box=frame(ctx,W,H,`${n}: hour by hour, day by day`,`Tickets booked in the hour before each time · ${short(ds[0])}–${short(ds[ds.length-1])}`);
+    const w0=.2;table(ctx,W,box,['Time',...ds.map(short)],rows,hs.map(()=>[th.rank]),[w0,...ds.map(()=>(1-w0)/nd)],bgs);
+    let best=null;grid.forEach((r,i)=>r.forEach((v,j)=>{if(v&&(!best||v.n>best.v.n))best={v,i,j}}));
+    CAP.long=best?`🎟️ ${n} on BookMyShow, hour by hour over ${nd} days. Busiest: ${best.v.t} tickets, ${windowLabel(hh(hs[best.i]))} on ${dayLabel(ds[best.j])}.\n\n${tags(n)}`:'';
+    CAP.short=best?`${n}'s week on BookMyShow, hour by hour. Peak ${best.v.t} tickets/hour (${short(ds[best.j])}).\n\n${tags(n)}`:'';
+    ALT=`Grid of tickets booked per hour for ${n}, rows are times and columns are ${ds.map(dayLabel).join(', ')}: `+rows.map(r=>r.join(' ')).join('; ');
+  } else { // peak
+    const names=chosen();const best=dayBest(d);
     const rows=names.filter(n=>best[n]).map(n=>[n,best[n].t,windowLabel(best[n].tt)]);
     box=frame(ctx,W,H,'Busiest hour of the day',`${dayLabel(d)} · tickets booked in the peak hour`);
-    if(rows.length)table(ctx,W,box,['Movie','Peak hour','When'],rows,rows.map(()=>[NAVY,INK,INK]),[.42,.22,.36]);else empty(ctx,W,H);
-    CAP.long=build(`🎟️ Busiest hour on BookMyShow, ${dayLabel(d)}`,rows.map((r,i)=>`${i+1}. ${r[0]}: ${r[1]} (${r[2]})`),[tag(rows[0]?rows[0][0]:'')]);
-    CAP.short=rows[0]?`${rows[0][0]}'s busiest hour on BookMyShow on ${dayLabel(d)}: ${rows[0][1]} tickets (${rows[0][2]}).\n\n${[tag(rows[0][0]),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    if(rows.length)table(ctx,W,box,['Movie','Peak hour','When'],rows,rows.map(()=>[th.first,th.ink,th.ink]),[.42,.22,.36]);else empty(ctx,W,H);
+    CAP.long=build(`🎟️ Busiest hour on BookMyShow, ${dayLabel(d)}`,rows.map((r,i)=>`${i+1}. ${r[0]}: ${r[1]} (${r[2]})`),[rows[0]?rows[0][0]:'']);
+    CAP.short=rows[0]?`${rows[0][0]}'s busiest hour on BookMyShow on ${dayLabel(d)}: ${rows[0][1]} tickets (${rows[0][2]}).\n\n${tags(rows[0][0])}`:'';
     ALT=`Table of each movie's busiest hour on ${dayLabel(d)}: `+rows.map(r=>`${r[0]} ${r[1]} (${r[2]})`).join('; ');
   }
-  setCaption();
+  setCaption();writeHash();
 }
-function empty(ctx,W,H){ctx.fillStyle=MUTE;ctx.textAlign='center';ctx.font=`500 ${Math.round(30*Math.min(W,H)/1200)}px ${FONT}`;ctx.fillText('No hourly figures at this time',W/2,H/2)}
-function build(head,lines,tags){tags=[...tags.filter(Boolean),'#BoxOffice'];let L=lines.slice(0,7);let txt;do{txt=`${head}\n\n${L.join('\n')}\n\n${tags.join(' ')}`;if(xlen(txt)<=272||L.length<=2)break;L.pop()}while(true);return txt}
-function setCaption(){const t=CAP[S.cap]||'';$('#sCaption').value=t;cnt();}
+function build(head,lines,names){let L=lines.slice(0,7);let txt;const tg=tags(...names.filter(Boolean));do{txt=`${head}\n\n${L.join('\n')}\n\n${tg}`;if(xlen(txt)<=272||L.length<=2)break;L.pop()}while(true);return txt}
+function setCaption(){const t=CAP[S.cap]||'';$('#sCaption').value=t;cnt()}
 function cnt(){const t=$('#sCaption').value;const n=xlen(t);$('#sCount').textContent=`${n}/280`;$('#sCount').classList.toggle('over',n>280);$('#sX').href='https://x.com/intent/tweet?text='+encodeURIComponent(t)}
 $('#sCaption').oninput=cnt;
 $('#sCopy').onclick=()=>copy($('#sCaption').value,'Caption copied');
 $('#sCopyAlt').onclick=()=>copy(ALT,'Alt text copied');
-$('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${d}_${S.type==='peak'?'day':t}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
+$('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${d}_${$('#sTimeWrap').hidden?'day':t}_${S.style}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
 
-/* ---------- POST KIT ---------- */
+/* ---------- settings in the link, and presets ---------- */
+function state(){const st={type:S.type,d:$('#sDay').value,t:$('#sTime').value,cmp:$('#sCmp').value,days:$('#sDays').value,movie:$('#sMovie').value,top:$('#sTop').value,hours:$('#sHours').value,style:S.style,size:S.size,foot:$('#sFoot').checked?1:0,cap:S.cap};
+  if(st.top==='pick')st.pick=$$('#sPick input:checked').map(i=>i.value).join('|');return st}
+function writeHash(){if(!$('#studio').classList.contains('on'))return;history.replaceState(null,'','#studio?'+new URLSearchParams(state()).toString())}
+function apply(st,keepDate){
+  if(st.type){S.type=st.type;$('#sType').value=st.type}
+  ['style','size','cap'].forEach(k=>{if(st[k]){S[k]=st[k];setSeg({style:'sStyle',size:'sSize',cap:'sCapKind'}[k],st[k])}});
+  if(st.cmp)$('#sCmp').value=st.cmp;if(st.days)$('#sDays').value=st.days;if(st.hours)$('#sHours').value=st.hours;if(st.top)$('#sTop').value=st.top;
+  if(st.foot!=null)$('#sFoot').checked=String(st.foot)==='1';
+  if(!keepDate&&st.d&&D.days[st.d])studioDayTime(st.d,times(st.d).includes(st.t)?st.t:times(st.d).slice(-1)[0]);else moviesFor();
+  if(st.pick){const p=new Set(st.pick.split('|'));$$('#sPick input').forEach(i=>i.checked=p.has(i.value))}
+  if(st.movie&&[...$('#sMovie').options].some(o=>o.value===st.movie))$('#sMovie').value=st.movie;
+  moviesFor();if(st.pick){const p=new Set(st.pick.split('|'));$$('#sPick input').forEach(i=>i.checked=p.has(i.value))}
+  render()}
+$('#sLink').onclick=()=>copy(location.href.split('#')[0]+'#studio?'+new URLSearchParams(state()).toString(),'Link copied');
+const PKEY='studioPresets';
+function presets(){try{return JSON.parse(localStorage.getItem(PKEY)||'{}')}catch(e){return {}}}
+function drawPresets(sel){const P=presets();$('#sPreset').innerHTML='<option value="">Presets…</option>'+Object.keys(P).sort().map(k=>`<option>${k.replace(/</g,'&lt;')}</option>`).join('');if(sel)$('#sPreset').value=sel;$('#sDel').disabled=!$('#sPreset').value}
+$('#sPreset').onchange=()=>{const P=presets();const st=P[$('#sPreset').value];$('#sDel').disabled=!st;if(st)apply(st,true)};
+$('#sSave').onclick=()=>{const name=(prompt('Name for this preset (date and time are not saved):')||'').trim();if(!name)return;const st=state();delete st.d;delete st.t;const P=presets();P[name]=st;try{localStorage.setItem(PKEY,JSON.stringify(P));drawPresets(name);toast('Preset saved')}catch(e){toast('Could not save in this browser')}};
+$('#sDel').onclick=()=>{const k=$('#sPreset').value;if(!k)return;const P=presets();delete P[k];try{localStorage.setItem(PKEY,JSON.stringify(P))}catch(e){}drawPresets();toast('Preset deleted')};
+
+/* ---------- EXPLORE ---------- */
+const E={};
+function exploreInit(){const ds=days();fill($('#eFrom'),ds,ds[Math.max(0,ds.length-3)],dayLabel);fill($('#eTo'),ds,ds[ds.length-1],dayLabel);
+  const [ld,lt]=latestPoint();let ref=hourly(ld,lt);if(ref.length<3){const b=dayBest(ld);ref=Object.entries(b).sort((a,c)=>c[1].n-a[1].n).map(([name])=>({name}))}
+  E.sel=new Set(ref.slice(0,3).map(r=>r.name));exploreMovies();
+  ['#eFrom','#eTo','#eStep'].forEach(s=>$(s).onchange=()=>{exploreMovies();explore()})}
+function exploreRange(){let a=$('#eFrom').value,b=$('#eTo').value;if(a>b)[a,b]=[b,a];return days().filter(x=>x>=a&&x<=b)}
+function exploreMovies(){const seen={};exploreRange().forEach(x=>times(x).forEach(t=>hourly(x,t).forEach(r=>{seen[r.name]=Math.max(seen[r.name]||0,r.n)})));
+  const names=Object.keys(seen).sort((a,b)=>seen[b]-seen[a]);
+  $('#ePick').innerHTML=names.map(n=>`<label class="mute" style="display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--ink);white-space:nowrap"><input type="checkbox" value="${n}" ${E.sel.has(n)?'checked':''}> ${n}</label>`).join('');
+  $$('#ePick input').forEach(i=>i.onchange=()=>{i.checked?E.sel.add(i.value):E.sel.delete(i.value);explore()})}
+function explore(){if(!$('#explore').classList.contains('on'))return;
+  const ds=exploreRange(),step=+$('#eStep').value,names=[...E.sel].slice(0,6);
+  const slots=[];ds.forEach((x,di)=>times(x).forEach(t=>{const [h,m]=hm(t);if(step===60&&m!==0)return;slots.push({d:x,t,x:di*24+h+m/60})}));
+  const cv=$('#ecv'),ctx=cv.getContext('2d');const W=cv.width,H=cv.height;const keep=S.style;S.style='color';
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  const lines=names.map((n,i)=>({label:n,color:['#1f3a5f','#c0392b','#0a7d33','#b9770e','#8e44ad','#117a8b'][i],main:i===0,end:true,
+    pts:slots.map(s=>{const v=snap(s.d,s.t)[n];return v&&v.k===1?[s.x,v.n/1000]:null}).filter(Boolean)}));
+  const ticks=ds.map((x,i)=>[i*24+12,short(x)]);
+  if(names.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85},lines,{xmax:ds.length*24,ticks,gap:step===60?1.5:0.75});else empty(ctx,W,H,'Pick at least one movie');
+  ds.forEach((x,i)=>{if(i){const xx=W*0.12+(i*24/(ds.length*24))*(W*0.82);ctx.strokeStyle='#d9dfe7';ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(xx,40);ctx.lineTo(xx,H-80);ctx.stroke();ctx.setLineDash([])}});
+  S.style=keep;
+  const rows=slots.slice().reverse().filter(s=>names.some(n=>{const v=snap(s.d,s.t)[n];return v&&v.k===1}));
+  E.csv=[['date','time_ist',...names],...rows.map(s=>[s.d,timeLabel(s.t),...names.map(n=>{const v=snap(s.d,s.t)[n];return v&&v.k===1?v.n:''})])];
+  $('#eTable').innerHTML=names.length?`<table><thead><tr><th>When</th>${names.map(n=>`<th class="n">${n}</th>`).join('')}</tr></thead><tbody>${rows.map(s=>`<tr><td>${short(s.d)} · ${timeLabel(s.t)}</td>${names.map(n=>{const v=snap(s.d,s.t)[n];return `<td class="n">${v&&v.k===1?v.t:'—'}</td>`}).join('')}</tr>`).join('')}</tbody></table>`:'';
+}
+$('#eCsv').onclick=()=>{if(!E.csv)return;const blob=new Blob([E.csv.map(r=>r.map(c=>/[,"]/.test(c)?`"${String(c).replace(/"/g,'""')}"`:c).join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`movies_${exploreRange()[0]}_${exploreRange().slice(-1)[0]}.csv`;a.click()};
+$('#eImg').onclick=()=>{const ds=exploreRange();const d=ds[ds.length-1];const names=[...E.sel];
+  if(ds.length>1&&names.length===1)apply({type:'week',d,t:times(d).slice(-1)[0],movie:names[0],days:String(Math.min(7,Math.max(3,ds.length)))},false);
+  else apply({type:'multiline',d,t:times(d).slice(-1)[0],top:'pick',pick:names.slice(0,4).join('|')},false);
+  show('studio')};
+
+/* ---------- AUTO POSTS ---------- */
+function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
+  if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
+  if([12,15,18,21].includes(h))return {type:'trend',d,t:T2,days:'4',top:'7'};
+  if([14,20,23].includes(h)){const top=hourly(d,T2)[0];return {type:'line',d,t:T2,movie:top?top.name:''}}
+  return {type:'peak',d:addDays(d,-1),t:'2330',top:'7'}}
 function kit(){
   const P=M.posts||[];if(!P.length){$('#posts').innerHTML='<div class="empty">No posts yet. The first one appears after the next full hour between 8 AM and 11 PM IST.</div>';return}
   $('#posts').innerHTML=P.slice(0,24).map((p,i)=>{
     const [d,t]=p.slot.split(' ');const st=p.status==='posted'?`<a class="chip ok" href="https://x.com/i/web/status/${p.tweet}" target="_blank" rel="noopener">Posted ↗</a>`
-      :p.status.startsWith('error')?`<span class="chip err" title="${p.status.replace(/"/g,'&quot;')}">Not posted (error): post manually</span>`:`<span class="chip">Not posted: post manually</span>`;
-    return `<div class="post"><div class="row spread"><strong>${dayLabel(d)} · ${timeLabel(t.replace(':',''))}</strong>${st}</div>
-      <div class="thumbs">${p.images.map((f,j)=>`<a href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png" title="Download image ${j+1}"><img src="${f}" alt="${(p.alt[j]||'').replace(/"/g,'&quot;')}" loading="lazy"></a>`).join('')}</div>
-      <textarea readonly id="cap${i}" rows="7">${p.text.replace(/</g,'&lt;')}</textarea>
-      <div class="row"><button data-c="${i}">Copy caption</button><button data-a="${i}">Copy alt text</button><a class="btn" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=${encodeURIComponent(p.text)}">Open in X</a>
-      ${p.images.map((f,j)=>`<a class="btn" href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png">Image ${j+1}</a>`).join('')}</div></div>`}).join('');
+      :p.status.startsWith('error')?`<span class="chip err" title="${p.status.replace(/"/g,'&quot;')}">Not posted (error)</span>`:`<span class="chip">Not posted</span>`;
+    const first=(p.text.split('\n').find(l=>/^1\./.test(l))||'').replace(/</g,'&lt;');
+    return `<details class="post" ${i===0?'open':''}><summary><strong>${dayLabel(d)} · ${timeLabel(t.replace(':',''))}</strong>${st}<span class="first">${first}</span></summary>
+      <div class="thumbs" style="margin-top:10px">${p.images.map((f,j)=>`<div class="thumb"><a href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png" title="Download image ${j+1}"><img src="${f}" alt="${(p.alt[j]||'').replace(/"/g,'&quot;')}" loading="lazy"></a><button data-e="${i}:${j}">Edit in Studio</button></div>`).join('')}</div>
+      <textarea readonly rows="7" style="margin-top:10px">${p.text.replace(/</g,'&lt;')}</textarea>
+      <div class="row" style="margin-top:8px"><button data-c="${i}">Copy caption</button><button data-a="${i}">Copy alt text</button><a class="btn" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=${encodeURIComponent(p.text)}">Open in X</a>
+      ${p.images.map((f,j)=>`<a class="btn" href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png">Image ${j+1}</a>`).join('')}</div></details>`}).join('');
   $$('button[data-c]').forEach(b=>b.onclick=()=>copy(P[b.dataset.c].text,'Caption copied'));
   $$('button[data-a]').forEach(b=>b.onclick=()=>copy(P[b.dataset.a].alt.join('\n\n'),'Alt text copied'));
+  $$('button[data-e]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.e.split(':').map(Number);const st=postSettings(P[i],j);show('studio');apply(st,false)});
 }
 
 /* ---------- init ---------- */
+function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore()}
+$$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
   [M,D]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json())]);
   HANDLE=M.handle||'';$('#handle').textContent=HANDLE;
@@ -401,8 +563,14 @@ async function init(){
   outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
   nowSet(...def);
   try{await document.fonts.load(`700 40px Inter`)}catch(e){}
-  studioDayTime(...def);kit();
-  const tab=location.hash.slice(1);if(['now','studio','kit','data'].includes(tab))show(tab);
+  studioDayTime(...def);drawPresets();exploreInit();kit();
+  route();
+  addEventListener('hashchange',route);
+}
+function route(){
+  const [tab,q]=location.hash.slice(1).split('?');
+  if(tab==='studio'&&q){show('studio');apply(Object.fromEntries(new URLSearchParams(q)),false)}
+  else if(['now','studio','explore','kit','data'].includes(tab))show(tab);
 }
 init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
 </script>
