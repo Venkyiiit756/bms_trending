@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hyderabad Movie Trends</title>
+<title>Movie Ticket Trends</title>
 <style>
 :root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#5b6675;--line:#d9dfe7;--brand:#1f3a5f;--ok:#0a7d33}
 @media (prefers-color-scheme:dark){:root{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa6b5;--line:#2b3644;--brand:#4b78b8;--ok:#4cc27a}}
@@ -30,12 +30,18 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ok);font-w
 .mute{color:var(--mute);font-size:13px}
 .note{font-size:12.5px;color:var(--mute)}
 ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
+.post{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.post .imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:8px 0}
+.post textarea{width:100%;min-height:120px;font:13px/1.4 ui-monospace,Menlo,monospace;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line)}
+.warn{color:#c0392b;font-weight:600}
 </style>
 </head>
 <body>
 <header>
-  <h1>Hyderabad movie trends</h1>
-  <div class="sub">Tickets booked per movie, snapshot every 30 minutes (IST)</div>
+  <h1>Movie ticket trends</h1>
+  <div class="sub">Tickets booked per movie on BookMyShow, snapshot every 30 minutes (IST) · <span id="handle"></span></div>
+  <div class="sub" id="health"></div>
 </header>
 <main>
   <section class="card">
@@ -59,7 +65,13 @@ ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-column
       <a class="btn" id="dlimg24" download>Image: last 24 hours</a>
     </div>
     <div style="overflow-x:auto;margin-top:12px"><table id="tbl"></table></div>
-    <p class="note">Each figure is BookMyShow's rolling count, so the 30-minute snapshots overlap and show the trend more often (they are not 30-minute sales). Each value is the movie's latest reading at or before the snapshot time (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. Whether the counter covers only Hyderabad is unverified.</p>
+    <p class="note">Each figure is BookMyShow's rolling count, so the 30-minute snapshots overlap and show the trend more often (they are not 30-minute sales). Each value is the movie's latest reading at or before the snapshot time (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. The counter is per movie listing (all its languages and formats, for example Jailer 2 = Tamil, Telugu and Kannada; the Hindi version is listed separately) and is not city-specific. Stale cached readings are filtered out.</p>
+  </section>
+
+  <section class="card" id="postsCard" hidden>
+    <strong>Post kit</strong>
+    <div class="mute">Hourly posts for X: images, caption and alt text. Posted automatically when the account is connected; otherwise download and post.</div>
+    <div id="posts"></div>
   </section>
 
   <section class="card">
@@ -79,6 +91,10 @@ async function init(){
   $('#day').onchange=()=>{drawHours();pick(lastHour($('#day').value))};
   $('#prev').onclick=()=>step(-1); $('#next').onclick=()=>step(1);
   $('#latest').onclick=()=>{const d=days[0];$('#day').value=d;drawHours();pick(lastHour(d))};
+  $('#handle').textContent=M.handle||'';
+  try{const H=await (await fetch('health.json',{cache:'no-store'})).json();
+    $('#health').innerHTML=H.ok?`Latest reading ${H.newest} IST`:`<span class="warn">Data delayed: latest reading ${H.newest||'unknown'} IST</span>`;}catch(e){}
+  drawPosts();
   $('#hist').innerHTML=M.history.map(h=>`<li><a class="btn" style="display:block" href="${h.file}" download>${h.name}</a></li>`).join('');
   if(days.length){drawHours();pick(lastHour(days[0]))}
 }
@@ -114,6 +130,19 @@ async function pick(h){
   const t=$('#tbl');
   t.innerHTML='<tr><th>Movie</th><th>Figure</th><th>Value</th><th>Reading time</th></tr>'+
     rows.map(r=>`<tr><td>${r[1]}</td><td>${r[2]==='1_hour'?'last 1 hour':'last 24 hours'}</td><td class="num">${r[3]}</td><td>${r[4].slice(5)}</td></tr>`).join('');
+}
+function drawPosts(){
+  const P=M.posts||[]; if(!P.length) return;
+  $('#postsCard').hidden=false;
+  $('#posts').innerHTML=P.slice(0,12).map((p,i)=>{
+    const st=p.status==='posted'?`<a class="tag" href="https://x.com/i/web/status/${p.tweet}" target="_blank" rel="noopener">posted</a>`
+      :`<span class="tag">${p.status.startsWith('error')?'not posted (error)':'kit'}</span>`;
+    const imgs=p.images.map(f=>`<a href="${f}" download><img src="${f}" alt="" loading="lazy"></a>`).join('');
+    return `<div class="post"><div class="row"><strong>${p.slot} IST</strong>${st}
+      <button data-i="${i}" class="copy">Copy caption</button></div>
+      <div class="imgs">${imgs}</div><textarea readonly id="cap${i}">${p.text.replace(/</g,'&lt;')}</textarea></div>`;}).join('');
+  document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{
+    const t=$('#cap'+b.dataset.i); try{await navigator.clipboard.writeText(t.value);b.textContent='Copied'}catch(e){t.select()}});
 }
 init().catch(e=>{document.body.insertAdjacentHTML('beforeend','<p style="padding:16px">Could not load data: '+e+'</p>')});
 </script>

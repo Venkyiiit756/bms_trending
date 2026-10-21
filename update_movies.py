@@ -65,9 +65,16 @@ def main():
     log = []
     have = {m['eventcode'] for m in movies}
 
+    # one movie can have several listings (one per language page) with the same counter;
+    # track one listing per group
+    groups = {catalog.get(m['eventcode'], {}).get('group') for m in movies} - {None}
     for code, c in sorted(catalog.items()):
         if code in have:
             continue
+        if c.get('group') and c['group'] in groups:
+            continue
+        if c.get('group'):
+            groups.add(c['group'])
         name = c.get('name') if c.get('name') and c['name'] != code else (
             (c.get('page_slug') or code).replace('-', ' ').title())
         movies.append({'key': code.lower(), 'name': name, 'eventcode': code, 'region_code': 'HYD',

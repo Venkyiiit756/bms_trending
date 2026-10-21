@@ -88,6 +88,26 @@ def fetch(code):
         return None
 
 
+def details(code):
+    """Name, group, languages and release date from the movie's init/dynamic response, or None."""
+    from curl_cffi import requests
+    r = requests.get(f'{BASE}/api/movies/v1/synopsis/init/dynamic?eventcode={code}&channel=mobile',
+                     headers=HEADERS, impersonate='chrome', timeout=30)
+    if r.status_code in (403, 429):
+        raise Blocked(f'HTTP {r.status_code}')
+    try:
+        ev = (r.json().get('meta') or {}).get('event') or {}
+    except ValueError:
+        return None
+    if not ev.get('eventName'):
+        return None
+    return {'name': ev['eventName'], 'group': ev.get('eventGroupCode'),
+            'languages': [l.title() for l in ev.get('eventLanguage') or []], 'release': ev.get('releaseDate')}
+
+
+MAX_DETAILS = 30
+
+
 def known_codes():
     with open(os.path.join(ROOT, 'movies.json'), encoding='utf-8') as f:
         return {m['eventcode']: m for m in json.load(f)}
@@ -134,8 +154,25 @@ def main():
             o.setdefault('page_slug', slug)
             if other not in seen and other not in queue:
                 queue.append(other)
+    # one-off details (real name, listing group, languages, release date) for movies that lack them
+    lookups = 0
+    for code, entry in catalog.items():
+        if blocked or lookups >= MAX_DETAILS or entry.get('group'):
+            continue
+        try:
+            d = details(code)
+        except Blocked as e:
+            print(f'blocked ({e}) during details', flush=True)
+            break
+        except Exception as e:
+            print(f'{code}: details error {e}', flush=True)
+            d = None
+        lookups += 1
+        time.sleep(GAP)
+        if d:
+            entry.update(d)
     new = [c for c in catalog if c not in tracked]
-    print(f'{fetches} requests; catalog {len(catalog)} movies; {len(new)} not tracked yet', flush=True)
+    print(f'{fetches} + {lookups} requests; catalog {len(catalog)} movies; {len(new)} not tracked yet', flush=True)
     if fetches == 0 and blocked:
         sys.exit('Nothing fetched; leaving the catalog unchanged.')
     with open(CATALOG, 'w', encoding='utf-8') as f:
