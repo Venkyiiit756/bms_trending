@@ -2,6 +2,17 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-21
+- added **Titans** (ET00519195), polled hourly
+- **Nayyi Navelli** (ET00513250): hourly -> every 30 min (best hourly figure in 24 h: 5.4K)
+- **Mufasa The Lion King** (ET00396541): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Lilo Stitch** (ET00421831): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Whalefall** (ET00506502): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Shaun The Sheep The Beast Of Mossy Bottom** (ET00509483): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Danger Devdas** (ET00510332): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Impure** (ET00520054): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Chakkora Lunar Love Bird** (ET00521125): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-20
 - added **Clayface** (ET00496545), polled hourly
 - **Comrade Kalyan** (ET00519564): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

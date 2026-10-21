@@ -305,7 +305,7 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00396541",
@@ -316,7 +316,7 @@
     "page_slug": "mufasa-the-lion-king",
     "csv": "data/ET00396541.csv",
     "headers_csv": "data/ET00396541_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -328,7 +328,7 @@
     "page_slug": "lilo-stitch",
     "csv": "data/ET00421831.csv",
     "headers_csv": "data/ET00421831_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -340,7 +340,7 @@
     "page_slug": "whalefall",
     "csv": "data/ET00506502.csv",
     "headers_csv": "data/ET00506502_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -352,7 +352,7 @@
     "page_slug": "shaun-the-sheep-the-beast-of-mossy-bottom",
     "csv": "data/ET00509483.csv",
     "headers_csv": "data/ET00509483_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -364,7 +364,7 @@
     "page_slug": "danger-devdas",
     "csv": "data/ET00510332.csv",
     "headers_csv": "data/ET00510332_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -388,7 +388,7 @@
     "page_slug": "impure",
     "csv": "data/ET00520054.csv",
     "headers_csv": "data/ET00520054_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -400,7 +400,7 @@
     "page_slug": "chakkora-lunar-love-bird",
     "csv": "data/ET00521125.csv",
     "headers_csv": "data/ET00521125_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
@@ -414,5 +414,17 @@
     "headers_csv": "data/ET00496545_headers.csv",
     "every": 3600,
     "added": "2026-10-20"
+  },
+  {
+    "key": "et00519195",
+    "name": "Titans",
+    "eventcode": "ET00519195",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "titans",
+    "csv": "data/ET00519195.csv",
+    "headers_csv": "data/ET00519195_headers.csv",
+    "every": 3600,
+    "added": "2026-10-21"
   }
 ]
