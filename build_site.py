@@ -18,6 +18,7 @@ ROOT = series.ROOT
 SITE = os.path.join(ROOT, 'site')
 SNAP = os.path.join(ROOT, 'snapshots')
 BUILD = os.path.join(ROOT, 'build')
+DATA_DAYS = 21
 
 
 def slug(s):
@@ -74,6 +75,27 @@ def main():
                     prev = (r.kind, r.text)
         history.append({'name': name, 'file': rel})
     history.sort(key=lambda h: h['name'])
+
+    # compact half-hour data for the in-browser views and image studio (last DATA_DAYS days)
+    names, rows_by_day = [], {}
+    keep = sorted(snaps)[-DATA_DAYS:]
+    for date in keep:
+        for hhmm in sorted(set(snaps[date])):
+            with open(os.path.join(SNAP, date, f'{date}_{hhmm}.csv'), newline='', encoding='utf-8') as f:
+                for r in csv.DictReader(f):
+                    r['movie'] = series.ALIASES.get(r['movie'], r['movie'])
+                    if r['movie'] not in names:
+                        names.append(r['movie'])
+                    try:
+                        num = round(series.value(r['value']))
+                    except ValueError:
+                        continue
+                    rows_by_day.setdefault(date, {}).setdefault(hhmm, []).append(
+                        [names.index(r['movie']), 1 if r['metric'] == '1_hour' else 24, num, r['value'],
+                         r['reading_time_ist'][11:16]])
+    os.makedirs(os.path.join(SITE, 'data'), exist_ok=True)
+    with open(os.path.join(SITE, 'data', 'snapshots.json'), 'w', encoding='utf-8') as f:
+        json.dump({'movies': names, 'days': rows_by_day}, f, separators=(',', ':'), ensure_ascii=False)
 
     posts_path = os.path.join(ROOT, 'posts_log.json')
     posts = json.load(open(posts_path, encoding='utf-8')) if os.path.exists(posts_path) else []

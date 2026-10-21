@@ -45,6 +45,11 @@ def pct(cur, prev):
     return f'▲{d}%' if d > 0 else (f'▼{-d}%' if d < 0 else '0%')
 
 
+def xlen(text):
+    """Length as X counts it: emoji and CJK characters count twice."""
+    return sum(2 if ord(c) > 0x2fff else 1 for c in text)
+
+
 def hourly(readings, at):
     r = series.latest(readings, at, MAX_AGE)
     return r if r and r.kind == '1_hour' else None
@@ -77,12 +82,14 @@ def build(slot, data, names):
     # 1. leaderboard
     if not board:
         top = []
-    rows = [[series.short_name(n, 22), r.text, pct(r.value, y.value if y else None)] for n, r, y, _ in top]
-    colors = [[None, cards.INK, cards.change_color(r.value, y.value if y else None)] for _, r, y, _ in top]
+    yname = f'{slot - timedelta(days=1):%a}'
+    rows = [[str(i), series.short_name(n, 22), r.text, pct(r.value, y.value if y else None)]
+            for i, (n, r, y, _) in enumerate(top, 1)]
+    colors = [[cards.MUTE, None, cards.INK, cards.change_color(r.value, y.value if y else None)] for _, r, y, _ in top]
     p1 = os.path.join(folder, '1.png')
     if board:
         cards.square_table(p1, 'Tickets booked in the last hour', f'{day} · {win} IST', FOOTER,
-                           ['Movie', 'Last hour', 'vs yesterday'], rows, colors, widths=[.48, .26, .26])
+                           ['#', 'Movie', 'Last hour', f'vs {yname}'], rows, colors, widths=[.09, .45, .23, .23])
         images.append(p1)
         alts.append(f'Table of tickets booked on BookMyShow in the last hour ({win}, {day}), with change against '
                     'the same hour yesterday: ' + '; '.join(
@@ -149,17 +156,18 @@ def build(slot, data, names):
         return None
     # caption (X counts 280 characters; keep a margin)
     if not board:          # morning recap only
-        text = f"Yesterday's busiest hour on BookMyShow ({y0:%a %d %b}):\n\n" + '\n'.join(
+        text = f"🎟️ Busiest hour on BookMyShow, {y0:%a %d %b}\n\n" + '\n'.join(
             f'{i}. {n}: {b.text} ({w})' for i, (n, b, w) in enumerate(peaks[:5], 1)) + '\n\n#BoxOffice'
         rel = lambda p: os.path.relpath(p, os.path.join(ROOT, 'build'))
         return {'slot': f'{slot:%Y-%m-%d %H:%M}', 'text': text[:280], 'images': [rel(p) for p in images],
                 'alt': [a[:1000] for a in alts], 'status': 'kit', 'tweet': None}
-    lines = [f'{i}. {n}: {r.text}' + (f' ({pct(r.value, y.value)})' if y else '') for i, (n, r, y, _) in enumerate(top[:5], 1)]
-    tags = ' '.join(t for t in (tag(top[0][0]), '#BoxOffice') if t)
-    head = f'Tickets booked on BookMyShow in the last hour ({win}, {slot:%d %b}), change vs same time yesterday:'
+    lines = [f'{i}. {n}: {r.text}' + (f' ({pct(r.value, y.value)} vs {yname})' if y else '')
+             for i, (n, r, y, _) in enumerate(top, 1)]
+    tags = ' '.join(dict.fromkeys(t for t in [tag(x[0]) for x in top[:2]] + ['#BoxOffice'] if t))
+    head = f'🎟️ Tickets booked on BookMyShow, {win} ({day})'
     while True:
         text = head + '\n\n' + '\n'.join(lines) + '\n\n' + tags
-        if len(text) <= 270 or len(lines) <= 2:
+        if xlen(text) <= 272 or len(lines) <= 2:
             break
         lines.pop()
     rel = lambda p: os.path.relpath(p, os.path.join(ROOT, 'build'))

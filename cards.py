@@ -25,7 +25,8 @@ def _style(tb, colors, first_col_left=False):
             t.set_color('white')
             continue
         x.set_facecolor(ZEBRA if r % 2 else 'white')
-        t.set_color(NAVY if c == 0 else (colors[r - 1][c] if colors else INK))
+        given = colors[r - 1][c] if colors else None
+        t.set_color(given or (NAVY if c == 0 or (colors and c == 1 and colors[r - 1][0] == MUTE) else INK))
 
 
 def compact_table(path, title, header, rows, colors=None, widths=None):
@@ -74,7 +75,7 @@ def square_table(path, title, subtitle, footer, header, rows, colors=None, width
     plt.close(fig)
 
 
-def square_lines(path, title, subtitle, footer, series, ylabel='Tickets booked in the hour before (K)'):
+def square_lines(path, title, subtitle, footer, series, ylabel='Tickets booked in the last hour (thousands)'):
     """series: [(label, [(hour_float, value_k)], color, width)] plotted on a 24-hour axis."""
     fig, (x, y, w, h) = _square(title, subtitle, footer)
     ax = fig.add_axes([x + 0.06, y + 0.05, w - 0.06, h - 0.08])

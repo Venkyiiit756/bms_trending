@@ -4,147 +4,407 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Movie Ticket Trends</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f3a5f'/%3E%3Cpath d='M8 22l5-6 4 3 7-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#5b6675;--line:#d9dfe7;--brand:#1f3a5f;--ok:#0a7d33}
-@media (prefers-color-scheme:dark){:root{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa6b5;--line:#2b3644;--brand:#4b78b8;--ok:#4cc27a}}
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#5b6675;--line:#d9dfe7;--brand:#1f3a5f;--brand-ink:#fff;--soft:#eef3f9;--up:#0a7d33;--down:#c0392b;--focus:#4b78b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa6b5;--line:#2b3644;--brand:#4b78b8;--soft:#1d2733;--up:#4cc27a;--down:#ff7a6b}}
+:root[data-theme="dark"]{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa6b5;--line:#2b3644;--brand:#4b78b8;--soft:#1d2733;--up:#4cc27a;--down:#ff7a6b}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{padding:18px 16px 4px;max-width:980px;margin:0 auto}
-h1{margin:0;font-size:20px}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{padding:18px 0 8px}
+h1{margin:0;font-size:21px;letter-spacing:-.01em}
 .sub{color:var(--mute);font-size:13px;margin-top:2px}
-main{max-width:980px;margin:0 auto;padding:12px 16px 40px;display:grid;gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.status{display:inline-flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--up);display:inline-block}
+.dot.bad{background:var(--down)}
+nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:10px 0 14px;overflow-x:auto}
+nav button{border:0;background:none;color:var(--mute);font:600 14px Inter,system-ui,sans-serif;padding:10px 12px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand)}
+main section{display:none}
+main section.on{display:grid;gap:14px;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-select,button,a.btn{font:inherit;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
-button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.spread{justify-content:space-between}
+select,button,a.btn,input[type=number]{font:inherit;font-size:14px;padding:7px 11px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none;line-height:1.2}
+button.primary,a.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 button:disabled{opacity:.4;cursor:default}
-.hours{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.hours button{padding:5px 9px;font-size:13px}
-.hours button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;align-items:start}
-img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
-table{border-collapse:collapse;width:100%;font-size:14px}
-th,td{border:1px solid var(--line);padding:6px 8px;text-align:left}
-th{background:var(--brand);color:#fff}
-td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ok);font-weight:600}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+h2{font-size:16px;margin:0}
+.big{font-size:18px;font-weight:700}
 .mute{color:var(--mute);font-size:13px}
-.note{font-size:12.5px;color:var(--mute)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left}
+th{color:var(--mute);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.rank{color:var(--mute);width:28px}
+td.movie{font-weight:600}
+.up{color:var(--up);font-weight:600}.down{color:var(--down);font-weight:600}
+@media (max-width:560px){.hide-sm{display:none}}
+.grid2{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}.grid2>.preview{order:-1}}
+.form{display:grid;gap:10px}
+.form label{display:grid;gap:4px;font-size:12.5px;color:var(--mute);font-weight:600}
+.form select,.form input[type=number]{width:100%}
+.form input[type=checkbox]{width:auto;margin:0}
+.form label.check{display:flex;gap:8px;align-items:center;font-weight:500;color:var(--ink);font-size:14px}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;border-radius:0;padding:7px 6px;font-size:13px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;max-height:170px;overflow:auto}
+.form .chips label{display:flex;gap:6px;align-items:center;font-weight:500;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:13px;white-space:nowrap}
+canvas{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff;display:block}
+textarea{width:100%;min-height:150px;font:13.5px/1.45 Inter,system-ui,sans-serif;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);resize:vertical}
+.count{font-size:12px;color:var(--mute)}
+.count.over{color:var(--down);font-weight:700}
+.post{display:grid;gap:10px;padding:14px 0;border-top:1px solid var(--line)}
+.post:first-of-type{border-top:0;padding-top:4px}
+.thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:640px}
+.thumbs a{display:block;aspect-ratio:1/1;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.thumbs img{width:100%;height:100%;object-fit:contain;display:block}
+.chip{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.chip.ok{border-color:var(--up);color:var(--up)}
+.chip.err{border-color:var(--down);color:var(--down)}
 ul.dl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
-.post{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
-.post .imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:8px 0}
-.post textarea{width:100%;min-height:120px;font:13px/1.4 ui-monospace,Menlo,monospace;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
-.tag{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line)}
-.warn{color:#c0392b;font-weight:600}
+ul.dl a{display:block}
+details{font-size:14px}
+details p,details li{color:var(--mute)}
+.empty{padding:18px;text-align:center;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
 </style>
 </head>
 <body>
+<div class="wrap">
 <header>
   <h1>Movie ticket trends</h1>
-  <div class="sub">Tickets booked per movie on BookMyShow, snapshot every 30 minutes (IST) · <span id="handle"></span></div>
-  <div class="sub" id="health"></div>
+  <div class="sub">Tickets booked per movie on BookMyShow, every 30 minutes (IST) · <span id="handle"></span></div>
+  <div class="sub status" id="health"></div>
 </header>
+<nav role="tablist">
+  <button role="tab" data-tab="now" aria-selected="true">Now</button>
+  <button role="tab" data-tab="studio">Studio</button>
+  <button role="tab" data-tab="kit">Post kit</button>
+  <button role="tab" data-tab="data">Data</button>
+</nav>
+
 <main>
-  <section class="card">
+<!-- NOW -->
+<section id="now" class="on">
+  <div class="card">
     <div class="row">
-      <label for="day">Date</label><select id="day"></select>
-      <button id="prev">&larr; Earlier</button><button id="next">Later &rarr;</button>
-      <button id="latest" class="primary">Latest</button>
+      <select id="nowDay" aria-label="Date"></select>
+      <select id="nowTime" aria-label="Time"></select>
+      <button id="nowPrev" aria-label="Earlier">&larr;</button>
+      <button id="nowNext" aria-label="Later">&rarr;</button>
+      <button id="nowLatest" class="primary">Latest</button>
     </div>
-    <div class="hours" id="hours"></div>
-  </section>
-
-  <section class="card" id="view" hidden>
-    <div class="row"><strong id="title"></strong><span class="mute" id="when"></span></div>
-    <div class="grid" style="margin-top:12px">
-      <div id="img1"></div>
-      <div id="img24"></div>
+  </div>
+  <div class="card">
+    <div class="row spread">
+      <div><div class="big" id="nowTitle"></div><div class="mute" id="nowSub"></div></div>
+      <div class="row"><button id="nowToStudio">Make image</button><a class="btn" id="nowCsv" download>CSV</a></div>
     </div>
-    <div class="row" style="margin-top:12px">
-      <a class="btn" id="dlcsv" download>Download this hour (CSV)</a>
-      <a class="btn" id="dlimg1" download>Image: last 1 hour</a>
-      <a class="btn" id="dlimg24" download>Image: last 24 hours</a>
+    <div id="nowHour" style="margin-top:10px"></div>
+  </div>
+  <div class="card" id="now24card">
+    <h2>Showing the 24-hour figure instead</h2>
+    <div class="mute">BookMyShow shows "last 24 hours" for smaller films and, late at night, for most films.</div>
+    <div id="now24" style="margin-top:8px"></div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section id="studio">
+  <div class="card grid2">
+    <div class="form">
+      <label>Image
+        <select id="sType">
+          <option value="board">Leaderboard: last hour</option>
+          <option value="trend">Same time across days</option>
+          <option value="line">One movie: today vs yesterday</option>
+          <option value="peak">Busiest hour of a day</option>
+        </select>
+      </label>
+      <div class="row" style="gap:10px">
+        <label style="flex:1">Date<select id="sDay"></select></label>
+        <label style="flex:1" id="sTimeWrap">Time<select id="sTime"></select></label>
+      </div>
+      <label id="sCmpWrap">Compare with
+        <select id="sCmp">
+          <option value="day">Same time yesterday</option>
+          <option value="hour">One hour earlier</option>
+          <option value="none">No comparison</option>
+        </select>
+      </label>
+      <label id="sDaysWrap">Days<select id="sDays"><option>3</option><option selected>4</option><option>5</option><option>7</option></select></label>
+      <label id="sMovieWrap">Movie<select id="sMovie"></select></label>
+      <label id="sTopWrap">Movies
+        <select id="sTop"><option value="3">Top 3</option><option value="5">Top 5</option><option value="7" selected>Top 7</option><option value="10">Top 10</option><option value="pick">Choose…</option></select>
+      </label>
+      <div class="chips" id="sPick" hidden></div>
+      <label>Style<div class="seg" id="sStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button></div></label>
+      <label>Size<div class="seg" id="sSize"><button data-v="1200x1200" aria-pressed="true">Square</button><button data-v="1200x675" aria-pressed="false">Wide</button><button data-v="1080x1350" aria-pressed="false">Tall</button></div></label>
+      <label class="check"><input type="checkbox" id="sFoot" checked> Source and handle at the bottom</label>
     </div>
-    <div style="overflow-x:auto;margin-top:12px"><table id="tbl"></table></div>
-    <p class="note">Each figure is BookMyShow's rolling count, so the 30-minute snapshots overlap and show the trend more often (they are not 30-minute sales). Each value is the movie's latest reading at or before the snapshot time (up to 75 minutes old; smaller films are checked hourly, so their reading time can be earlier). A movie shows in the "last 1 hour" table only while BookMyShow shows that figure for it; at night and for small films it shows the 24-hour figure instead. Counts are tickets booked, not revenue. The counter is per movie listing (all its languages and formats, for example Jailer 2 = Tamil, Telugu and Kannada; the Hindi version is listed separately) and is not city-specific. Stale cached readings are filtered out.</p>
-  </section>
+    <div class="preview" style="display:grid;gap:10px">
+      <canvas id="cv" width="1200" height="1200" aria-label="Image preview"></canvas>
+      <div class="row"><button class="primary" id="sDownload">Download image</button><button id="sCopyAlt">Copy alt text</button></div>
+      <div class="row spread"><div class="seg" id="sCapKind" style="width:220px"><button data-v="long" aria-pressed="true">Detailed</button><button data-v="short" aria-pressed="false">Short</button></div><span class="count" id="sCount"></span></div>
+      <textarea id="sCaption" aria-label="Caption"></textarea>
+      <div class="row"><button id="sCopy">Copy caption</button><a class="btn" id="sX" target="_blank" rel="noopener">Open in X</a></div>
+      <div class="mute">On a phone: download the image, tap "Open in X" (the caption is filled in), then attach the image.</div>
+    </div>
+  </div>
+</section>
 
-  <section class="card" id="postsCard" hidden>
-    <strong>Post kit</strong>
-    <div class="mute">Hourly posts for X: images, caption and alt text. Posted automatically when the account is connected; otherwise download and post.</div>
-    <div id="posts"></div>
-  </section>
+<!-- POST KIT -->
+<section id="kit">
+  <div class="card">
+    <h2>Hourly post kit</h2>
+    <div class="mute">Made automatically every hour, 8 AM to 11 PM IST. Posted to X when the account is connected; otherwise post it from here.</div>
+    <div id="posts" style="margin-top:8px"></div>
+  </div>
+</section>
 
-  <section class="card">
-    <strong>Full history by movie</strong>
-    <div class="mute">Every reading since tracking began (time in IST, metric, value).</div>
+<!-- DATA -->
+<section id="data">
+  <div class="card">
+    <h2>Full history by movie</h2>
+    <div class="mute">Every change since tracking began (IST time, figure, value, tickets). Stale cached readings removed.</div>
     <ul class="dl" id="hist"></ul>
-  </section>
+    <div class="row" style="margin-top:10px"><a class="btn" href="data/snapshots.json" download>All half-hour snapshots, last 3 weeks (JSON)</a></div>
+  </div>
+  <div class="card">
+    <details open>
+      <summary><strong>About the data</strong></summary>
+      <ul>
+        <li>The figure is BookMyShow's own "tickets booked in the last 1 hour" for each movie. It is a rolling count, so readings 30 minutes apart overlap; they are not 30-minute sales.</li>
+        <li>Smaller films, and most films late at night, show "last 24 hours" instead; those are listed separately and never mixed with hourly figures.</li>
+        <li>The count is per BookMyShow listing, across all its languages and formats, and is not city-specific. "Jailer 2" covers Tamil, Telugu and Kannada; "Jailer 2 (Hindi)" is listed separately.</li>
+        <li>Each snapshot uses the latest reading at or before that time; the reading time is shown. Figures are rounded by BookMyShow (e.g. 14.92K) and are tickets, not revenue.</li>
+        <li>Unofficial: collected from the BookMyShow app's public data. Not affiliated with BookMyShow.</li>
+      </ul>
+    </details>
+  </div>
+</section>
 </main>
+</div>
+<div class="toast" id="toast"></div>
+
 <script>
-const $=s=>document.querySelector(s);
-let M=null, cur=null;
-const fmt=n=>n.replace(/(\d\d)(\d\d)$/,'$1:$2');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let M={}, D={movies:[],days:{}}, HANDLE='';
+const NAVY='#1f3a5f', ZEBRA='#f4f7fb', INK='#222222', MUTE='#6b7684', UP='#0a7d33', DOWN='#c0392b', BAND='#dfe8f5';
+const DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+/* ---------- helpers ---------- */
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1600)}
+async function copy(t,msg){try{await navigator.clipboard.writeText(t);toast(msg||'Copied')}catch(e){prompt('Copy:',t)}}
+const pd=d=>{const [y,m,dd]=d.split('-').map(Number);return new Date(Date.UTC(y,m-1,dd))};
+const iso=dt=>dt.toISOString().slice(0,10);
+const addDays=(d,n)=>{const x=pd(d);x.setUTCDate(x.getUTCDate()+n);return iso(x)};
+const dayName=d=>DAY[pd(d).getUTCDay()];
+const dayLabel=d=>{const x=pd(d);return `${DAY[x.getUTCDay()]} ${x.getUTCDate()} ${MON[x.getUTCMonth()]}`};
+const short=d=>{const x=pd(d);return `${DAY[x.getUTCDay()]} ${x.getUTCDate()}`};
+const hm=s=>[+s.slice(0,2),+s.slice(2)];
+function clock(h,m){const ap=h<12||h===24?'AM':'PM';const hh=h%12||12;return [m?`${hh}:${String(m).padStart(2,'0')}`:`${hh}`,ap]}
+function windowLabel(hhmm){let [h,m]=hm(hhmm);let s=h*60+m-60;if(s<0)s+=1440;const [a,ap1]=clock(Math.floor(s/60),s%60),[b,ap2]=clock(h,m);return ap1===ap2?`${a}–${b} ${ap2}`:`${a} ${ap1}–${b} ${ap2}`}
+function timeLabel(hhmm){const [h,m]=hm(hhmm);const [a,ap]=clock(h,m);return `${a}${m?'':':00'} ${ap}`.replace(':00:00',':00')}
+function shiftHHMM(d,hhmm,mins){let [h,m]=hm(hhmm);let t=h*60+m+mins,dd=d;while(t<0){t+=1440;dd=addDays(dd,-1)}while(t>=1440){t-=1440;dd=addDays(dd,1)}return [dd,String(Math.floor(t/60)).padStart(2,'0')+String(t%60).padStart(2,'0')]}
+function snap(d,hhmm){const r=(D.days[d]||{})[hhmm]||[];const o={};for(const [i,k,n,t,rt] of r)o[D.movies[i]]={k,n,t,rt};return o}
+function hourly(d,hhmm){return Object.entries(snap(d,hhmm)).filter(([,v])=>v.k===1).map(([name,v])=>({name,...v})).sort((a,b)=>b.n-a.n)}
+function daily(d,hhmm){return Object.entries(snap(d,hhmm)).filter(([,v])=>v.k===24).map(([name,v])=>({name,...v})).sort((a,b)=>b.n-a.n)}
+function pct(a,b){if(!b)return null;return Math.round((a-b)/b*100)}
+const pctTxt=p=>p===null?'—':p>0?`▲${p}%`:p<0?`▼${-p}%`:'0%';
+const tag=n=>{const t=n.split('(')[0].replace(/[^A-Za-z0-9]/g,'');return t&&!/^\d+$/.test(t)?'#'+t:''};
+const xlen=s=>[...s].reduce((a,c)=>a+(c.codePointAt(0)>0x2fff?2:1),0);   // X counts emoji/CJK as 2
+const days=()=>Object.keys(D.days).sort();
+const times=d=>Object.keys(D.days[d]||{}).sort();
+function latestPoint(){const ds=days();for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);if(ts.length)return [ds[i],ts[ts.length-1]]}return [null,null]}
+function fill(sel,items,val,label=x=>x){sel.innerHTML=items.map(x=>`<option value="${x}">${label(x)}</option>`).join('');if(val!=null&&items.includes(val))sel.value=val}
+
+/* ---------- tabs ---------- */
+function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));if(location.hash!=='#'+tab)history.replaceState(null,'','#'+tab);if(tab==='studio')render()}
+$$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
+
+/* ---------- NOW ---------- */
+function nowDraw(){
+  const d=$('#nowDay').value,t=$('#nowTime').value;if(!d||!t)return;
+  $('#nowTitle').textContent=`${dayLabel(d)} · ${timeLabel(t)} IST`;
+  $('#nowSub').textContent=`Tickets booked in the hour ${windowLabel(t)}, compared with the same time the day before`;
+  $('#nowCsv').href=`snapshots/${d}/${d}_${t}.csv`;
+  const rows=hourly(d,t), prev=snap(addDays(d,-1),t);
+  $('#nowHour').innerHTML=rows.length?`<table><thead><tr><th>#</th><th>Movie</th><th class="n">Last hour</th><th class="n">vs ${dayName(addDays(d,-1))}</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${rows.map((r,i)=>{const p=prev[r.name]&&prev[r.name].k===1?pct(r.n,prev[r.name].n):null;return `<tr><td class="rank">${i+1}</td><td class="movie">${r.name}</td><td class="n"><b>${r.t}</b></td><td class="n ${p>0?'up':p<0?'down':''}">${pctTxt(p)}</td><td class="n hide-sm mute">${r.rt}</td></tr>`}).join('')}</tbody></table>`
+    :`<div class="empty">No movie shows an hourly figure at this time (usually between midnight and about 7 AM). Try an earlier time.</div>`;
+  const r24=daily(d,t);$('#now24card').hidden=!r24.length;
+  $('#now24').innerHTML=`<table><thead><tr><th>Movie</th><th class="n">Last 24 hours</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${r24.map(r=>`<tr><td class="movie">${r.name}</td><td class="n"><b>${r.t}</b></td><td class="n hide-sm mute">${r.rt}</td></tr>`).join('')}</tbody></table>`;
+}
+function nowSet(d,t){fill($('#nowDay'),days().slice().reverse(),d,dayLabel);fill($('#nowTime'),times($('#nowDay').value).slice().reverse(),t,timeLabel);nowDraw()}
+function nowStep(dir){const d=$('#nowDay').value,t=$('#nowTime').value;const ts=times(d);let i=ts.indexOf(t)+dir;if(i>=0&&i<ts.length)return nowSet(d,ts[i]);const ds=days();const j=ds.indexOf(d)+dir;if(j>=0&&j<ds.length){const t2=times(ds[j]);nowSet(ds[j],dir>0?t2[0]:t2[t2.length-1])}}
+$('#nowDay').onchange=()=>{const ts=times($('#nowDay').value);nowSet($('#nowDay').value,ts[ts.length-1])};
+$('#nowTime').onchange=nowDraw;$('#nowPrev').onclick=()=>nowStep(-1);$('#nowNext').onclick=()=>nowStep(1);
+$('#nowLatest').onclick=()=>{const [d,t]=latestPoint();nowSet(d,t)};
+$('#nowToStudio').onclick=()=>{S.type='board';$('#sType').value='board';studioDayTime($('#nowDay').value,$('#nowTime').value);show('studio')};
+
+/* ---------- STUDIO state ---------- */
+const S={type:'board',style:'color',size:'1200x1200',cap:'long'};
+function seg(id,key){$$(`#${id} button`).forEach(b=>b.onclick=()=>{$$(`#${id} button`).forEach(x=>x.setAttribute('aria-pressed',x===b));S[key]=b.dataset.v;render()})}
+seg('sStyle','style');seg('sSize','size');
+$$('#sCapKind button').forEach(b=>b.onclick=()=>{$$('#sCapKind button').forEach(x=>x.setAttribute('aria-pressed',x===b));S.cap=b.dataset.v;setCaption()});
+function studioDayTime(d,t){fill($('#sDay'),days().slice().reverse(),d,dayLabel);fill($('#sTime'),times($('#sDay').value).slice().reverse(),t,timeLabel);moviesFor();render()}
+$('#sDay').onchange=()=>{const ts=times($('#sDay').value);fill($('#sTime'),ts.slice().reverse(),$('#sTime').value,timeLabel);moviesFor();render()};
+['#sTime','#sCmp','#sDays','#sMovie'].forEach(s=>$(s).onchange=()=>{if(s==='#sTime')moviesFor();render()});
+$('#sType').onchange=()=>{S.type=$('#sType').value;moviesFor();render()};
+$('#sTop').onchange=()=>{$('#sPick').hidden=$('#sTop').value!=='pick';render()};
+$('#sFoot').onchange=render;
+function candidates(){const d=$('#sDay').value,t=$('#sTime').value;
+  if(S.type==='peak'){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name])best[r.name]=r.n;return Object.entries(best).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
+  return hourly(d,t).map(r=>r.name)}
+function moviesFor(){const c=candidates();
+  const keep=new Set($$('#sPick input:checked').map(i=>i.value));
+  $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<5?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure at this time.</span>';
+  $$('#sPick input').forEach(i=>i.onchange=render);
+  const cur=$('#sMovie').value;fill($('#sMovie'),c,cur);
+  const ty=S.type;$('#sTimeWrap').hidden=ty==='peak';$('#sCmpWrap').hidden=ty!=='board';$('#sDaysWrap').hidden=ty!=='trend';$('#sMovieWrap').hidden=ty!=='line';$('#sTopWrap').hidden=ty==='line';$('#sPick').hidden=ty==='line'||$('#sTop').value!=='pick'}
+function chosen(){const c=candidates();if($('#sTop').value==='pick'){const p=new Set($$('#sPick input:checked').map(i=>i.value));return c.filter(n=>p.has(n))}return c.slice(0,+$('#sTop').value)}
+
+/* ---------- canvas drawing ---------- */
+const FONT='Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+function fit(ctx,text,maxW,size,weight){let s=size;ctx.font=`${weight} ${s}px ${FONT}`;while(ctx.measureText(text).width>maxW&&s>8){s-=1;ctx.font=`${weight} ${s}px ${FONT}`}return s}
+function frame(ctx,W,H,title,subtitle){
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);const u=Math.min(W,H*1.25)/1200;
+  const ty=H*(H>W?0.075:0.085);
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  fit(ctx,title,W*0.88,Math.round(46*u),800);ctx.fillStyle=NAVY;ctx.fillText(title,W/2,ty);
+  fit(ctx,subtitle,W*0.88,Math.round(28*u),500);ctx.fillStyle=MUTE;ctx.fillText(subtitle,W/2,ty+52*u);
+  let bottom=H*0.96;
+  if($('#sFoot').checked){const f=`Source: BookMyShow app${HANDLE?' · '+HANDLE:''}`;fit(ctx,f,W*0.9,Math.round(22*u),500);ctx.fillStyle=MUTE;ctx.fillText(f,W/2,H-H*0.04);bottom=H-H*0.075}
+  return {top:ty+52*u+38*u,bottom,u}}
+function table(ctx,W,box,header,rows,colors,widths){
+  const mono=S.style==='mono';const x0=W*0.06,w=W*0.88,n=rows.length+1;
+  const avail=box.bottom-box.top;let rh=Math.min(avail/n,108*box.u);
+  const y0=box.top+(avail-rh*n)/2;const fs=Math.min(rh*0.42,38*box.u);
+  let xs=[x0];widths.forEach(f=>xs.push(xs[xs.length-1]+f*w));
+  for(let r=0;r<n;r++){const y=y0+r*rh;
+    ctx.fillStyle=r===0?(mono?'#ececec':NAVY):(mono?'#fff':(r%2?ZEBRA:'#fff'));ctx.fillRect(x0,y,w,rh);
+    const cells=r===0?header:rows[r-1];
+    cells.forEach((c,ci)=>{const cx=(xs[ci]+xs[ci+1])/2;const maxw=xs[ci+1]-xs[ci]-16*box.u;
+      const weight=r===0?700:(ci===0||ci===1?700:700);
+      fit(ctx,String(c),maxw,Math.round(r===0?fs*0.9:fs),weight);
+      ctx.fillStyle=r===0?(mono?'#111':'#fff'):(mono?'#111':(colors&&colors[r-1]&&colors[r-1][ci])||INK);
+      ctx.textAlign='center';ctx.fillText(String(c),cx,y+rh/2)})}
+  ctx.strokeStyle=mono?'#111':NAVY;ctx.lineWidth=Math.max(1.5,2*box.u);
+  for(let r=0;r<=n;r++){ctx.beginPath();ctx.moveTo(x0,y0+r*rh);ctx.lineTo(x0+w,y0+r*rh);ctx.stroke()}
+  xs.forEach(x=>{ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y0+rh*n);ctx.stroke()})}
+function chart(ctx,W,box,lines){
+  const mono=S.style==='mono';const x0=W*0.13,x1=W*0.94,y0=box.top+20*box.u,y1=box.bottom-60*box.u;
+  const all=lines.flatMap(l=>l.pts.map(p=>p[1]));const ymax=Math.max(1,...all)*1.12;
+  const step=[1,2,5,10,20,25,50,100].find(s=>ymax/s<=6)||100;
+  ctx.textBaseline='middle';ctx.font=`500 ${Math.round(22*box.u)}px ${FONT}`;
+  for(let v=0;v<=ymax;v+=step){const y=y1-(v/ymax)*(y1-y0);ctx.strokeStyle='#e3e8ef';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=MUTE;ctx.textAlign='right';ctx.fillText(v+'K',x0-12*box.u,y)}
+  ctx.textAlign='center';[0,3,6,9,12,15,18,21,24].forEach(h=>{const x=x0+(h/24)*(x1-x0);ctx.fillStyle=MUTE;ctx.fillText(h===0||h===24?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p',x,y1+30*box.u)});
+  ctx.strokeStyle='#b8c2cf';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
+  lines.forEach(l=>{ctx.strokeStyle=mono?(l.main?'#111':'#9a9a9a'):l.color;ctx.lineWidth=l.main?5*box.u:3.5*box.u;ctx.lineJoin='round';ctx.beginPath();let pen=false,last=null;
+    for(const [h,v] of l.pts){if(last!==null&&h-last>0.75)pen=false;const x=x0+(h/24)*(x1-x0),y=y1-(v/ymax)*(y1-y0);pen?ctx.lineTo(x,y):ctx.moveTo(x,y);pen=true;last=h}ctx.stroke();
+    if(l.main&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];const x=x0+(h/24)*(x1-x0),y=y1-(v/ymax)*(y1-y0);ctx.fillStyle=mono?'#111':NAVY;ctx.beginPath();ctx.arc(x,y,7*box.u,0,7);ctx.fill();ctx.font=`800 ${Math.round(26*box.u)}px ${FONT}`;ctx.textAlign=h>20?'right':'left';ctx.fillText(v.toFixed(1)+'K',x+(h>20?-14:14)*box.u,y-26*box.u)}});
+  // legend
+  let lx=x0+10*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(24*box.u)}px ${FONT}`;
+  lines.forEach(l=>{ctx.strokeStyle=mono?(l.main?'#111':'#9a9a9a'):l.color;ctx.lineWidth=l.main?5*box.u:3.5*box.u;ctx.beginPath();ctx.moveTo(lx,y0);ctx.lineTo(lx+40*box.u,y0);ctx.stroke();ctx.fillStyle=INK;ctx.fillText(l.label,lx+50*box.u,y0);lx+=ctx.measureText(l.label).width+110*box.u})}
+
+/* ---------- STUDIO render ---------- */
+let CAP={long:'',short:''},ALT='';
+function render(){
+  if(!$('#studio').classList.contains('on')&&render._init)return;render._init=true;
+  const cv=$('#cv'),ctx=cv.getContext('2d');const [W,H]=S.size.split('x').map(Number);cv.width=W;cv.height=H;
+  const d=$('#sDay').value,t=$('#sTime').value;if(!d)return;
+  const mono=S.style==='mono';const win=windowLabel(t);let box;
+  const color=(a,b)=>mono||a==null||b==null||a===b?INK:(a>b?UP:DOWN);
+  if(S.type==='board'){
+    const names=chosen();const now=snap(d,t);const [cd,ct]=$('#sCmp').value==='day'?[addDays(d,-1),t]:$('#sCmp').value==='hour'?shiftHHMM(d,t,-60):[null,null];const prev=cd?snap(cd,ct):{};
+    const head=['#','Movie','Last hour'];const cmpHead=$('#sCmp').value==='day'?`vs ${dayName(cd)}`:$('#sCmp').value==='hour'?'vs 1 hr ago':null;if(cmpHead)head.push(cmpHead);
+    const rows=[],cols=[],lines=[];names.forEach((n,i)=>{const v=now[n];if(!v||v.k!==1)return;const p=prev[n]&&prev[n].k===1?pct(v.n,prev[n].n):null;const r=[i+1,n,v.t];const c=[MUTE,NAVY,INK];if(cmpHead){r.push(pctTxt(p));c.push(mono?INK:p>0?UP:p<0?DOWN:INK)}rows.push(r);cols.push(c);lines.push({n,v,p})});
+    box=frame(ctx,W,H,'Tickets booked in the last hour',`${dayLabel(d)} · ${win} IST`);
+    if(rows.length)table(ctx,W,box,head,rows,cols,cmpHead?[.09,.45,.23,.23]:[.1,.58,.32]);else empty(ctx,W,H);
+    const vs=cmpHead==='vs 1 hr ago'?'vs 1 hr ago':`vs ${dayName(cd||d)}`;
+    const top=lines[0];
+    CAP.long=build(`🎟️ Tickets booked on BookMyShow, ${win} (${dayLabel(d)})`,lines.map((l,i)=>`${i+1}. ${l.n}: ${l.v.t}${cmpHead&&l.p!==null?` (${pctTxt(l.p)} ${vs})`:''}`),lines.slice(0,2).map(l=>tag(l.n)));
+    CAP.short=top?`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmpHead&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}. Full table below.\n\n${[tag(top.n),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}: `+lines.map(l=>`${l.n} ${l.v.t}${cmpHead&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')} ${vs}`:''}`).join('; ');
+  } else if(S.type==='trend'){
+    const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
+    const rows=[],cols=[];names.forEach(n=>{const vals=ds.map(x=>{const v=snap(x,t)[n];return v&&v.k===1?v:null});rows.push([n,...vals.map(v=>v?v.t:'—')]);cols.push([NAVY,...vals.map((v,i)=>i===0||!v||!vals[i-1]?INK:color(v.n,vals[i-1].n))])});
+    box=frame(ctx,W,H,'Same time, different days',`Tickets in the hour ${win} IST`);
+    const w0=nd>5?.28:.32;table(ctx,W,box,['Movie',...ds.map(short)],rows,cols,[w0,...ds.map(()=>(1-w0)/nd)]);
+    CAP.long=build(`🎟️ Same time, last ${nd} days: tickets booked on BookMyShow, ${win}`,rows.map(r=>`${r[0]}: ${r.slice(1).join(' → ')}`),[tag(names[0]||'')]);
+    CAP.short=rows[0]?`${rows[0][0]} at ${win}, last ${nd} days on BookMyShow: ${rows[0].slice(1).join(' → ')} tickets in the hour.\n\n${[tag(rows[0][0]),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    ALT=`Table of tickets booked in the hour ${win} on ${ds.map(dayLabel).join(', ')}: `+rows.map(r=>`${r[0]} `+r.slice(1).join(', ')).join('; ');
+  } else if(S.type==='line'){
+    const n=$('#sMovie').value;const y=addDays(d,-1);
+    const pts=(day,upto)=>times(day).filter(x=>!upto||x<=upto).map(x=>{const v=snap(day,x)[n];if(!v||v.k!==1)return null;const [h,m]=hm(x);return [h+m/60,v.n/1000]}).filter(Boolean);
+    const today=pts(d,t),yd=pts(y,null);
+    box=frame(ctx,W,H,`${n}: tickets booked per hour`,`${dayLabel(d)} vs ${dayLabel(y)} · until ${timeLabel(t)} IST`);
+    chart(ctx,W,box,[{label:dayName(y),pts:yd,color:'#9aa6b5'},{label:dayName(d),pts:today,color:NAVY,main:true}]);
+    const now=snap(d,t)[n],pv=snap(y,t)[n];const p=now&&pv&&pv.k===1&&now.k===1?pct(now.n,pv.n):null;
+    CAP.long=now?`🎟️ ${n} on BookMyShow, ${dayLabel(d)} vs ${dayLabel(y)}: ${now.t} tickets in the hour ${win}${p!==null?` (${pctTxt(p)} vs ${dayName(y)} at this time)`:''}.\n\n${[tag(n),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    CAP.short=now?`${n}: ${now.t} tickets/hour on BookMyShow at ${timeLabel(t)}${p!==null?` (${pctTxt(p)} vs ${dayName(y)})`:''}. ${tag(n)}`:'';
+    ALT=`Line chart of tickets booked in the last hour for ${n} through ${dayLabel(d)} (dark line) and ${dayLabel(y)} (grey line).`;
+  } else {
+    const names=chosen();const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};
+    const rows=names.filter(n=>best[n]).map(n=>[n,best[n].t,windowLabel(best[n].tt)]);
+    box=frame(ctx,W,H,'Busiest hour of the day',`${dayLabel(d)} · tickets booked in the peak hour`);
+    if(rows.length)table(ctx,W,box,['Movie','Peak hour','When'],rows,rows.map(()=>[NAVY,INK,INK]),[.42,.22,.36]);else empty(ctx,W,H);
+    CAP.long=build(`🎟️ Busiest hour on BookMyShow, ${dayLabel(d)}`,rows.map((r,i)=>`${i+1}. ${r[0]}: ${r[1]} (${r[2]})`),[tag(rows[0]?rows[0][0]:'')]);
+    CAP.short=rows[0]?`${rows[0][0]}'s busiest hour on BookMyShow on ${dayLabel(d)}: ${rows[0][1]} tickets (${rows[0][2]}).\n\n${[tag(rows[0][0]),'#BoxOffice'].filter(Boolean).join(' ')}`:'';
+    ALT=`Table of each movie's busiest hour on ${dayLabel(d)}: `+rows.map(r=>`${r[0]} ${r[1]} (${r[2]})`).join('; ');
+  }
+  setCaption();
+}
+function empty(ctx,W,H){ctx.fillStyle=MUTE;ctx.textAlign='center';ctx.font=`500 ${Math.round(30*Math.min(W,H)/1200)}px ${FONT}`;ctx.fillText('No hourly figures at this time',W/2,H/2)}
+function build(head,lines,tags){tags=[...tags.filter(Boolean),'#BoxOffice'];let L=lines.slice(0,7);let txt;do{txt=`${head}\n\n${L.join('\n')}\n\n${tags.join(' ')}`;if(xlen(txt)<=272||L.length<=2)break;L.pop()}while(true);return txt}
+function setCaption(){const t=CAP[S.cap]||'';$('#sCaption').value=t;cnt();}
+function cnt(){const t=$('#sCaption').value;const n=xlen(t);$('#sCount').textContent=`${n}/280`;$('#sCount').classList.toggle('over',n>280);$('#sX').href='https://x.com/intent/tweet?text='+encodeURIComponent(t)}
+$('#sCaption').oninput=cnt;
+$('#sCopy').onclick=()=>copy($('#sCaption').value,'Caption copied');
+$('#sCopyAlt').onclick=()=>copy(ALT,'Alt text copied');
+$('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${d}_${S.type==='peak'?'day':t}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
+
+/* ---------- POST KIT ---------- */
+function kit(){
+  const P=M.posts||[];if(!P.length){$('#posts').innerHTML='<div class="empty">No posts yet. The first one appears after the next full hour between 8 AM and 11 PM IST.</div>';return}
+  $('#posts').innerHTML=P.slice(0,24).map((p,i)=>{
+    const [d,t]=p.slot.split(' ');const st=p.status==='posted'?`<a class="chip ok" href="https://x.com/i/web/status/${p.tweet}" target="_blank" rel="noopener">Posted ↗</a>`
+      :p.status.startsWith('error')?`<span class="chip err" title="${p.status.replace(/"/g,'&quot;')}">Not posted (error): post manually</span>`:`<span class="chip">Not posted: post manually</span>`;
+    return `<div class="post"><div class="row spread"><strong>${dayLabel(d)} · ${timeLabel(t.replace(':',''))}</strong>${st}</div>
+      <div class="thumbs">${p.images.map((f,j)=>`<a href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png" title="Download image ${j+1}"><img src="${f}" alt="${(p.alt[j]||'').replace(/"/g,'&quot;')}" loading="lazy"></a>`).join('')}</div>
+      <textarea readonly id="cap${i}" rows="7">${p.text.replace(/</g,'&lt;')}</textarea>
+      <div class="row"><button data-c="${i}">Copy caption</button><button data-a="${i}">Copy alt text</button><a class="btn" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=${encodeURIComponent(p.text)}">Open in X</a>
+      ${p.images.map((f,j)=>`<a class="btn" href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png">Image ${j+1}</a>`).join('')}</div></div>`}).join('');
+  $$('button[data-c]').forEach(b=>b.onclick=()=>copy(P[b.dataset.c].text,'Caption copied'));
+  $$('button[data-a]').forEach(b=>b.onclick=()=>copy(P[b.dataset.a].alt.join('\n\n'),'Alt text copied'));
+}
+
+/* ---------- init ---------- */
 async function init(){
-  M=await (await fetch('manifest.json',{cache:'no-store'})).json();
-  const days=Object.keys(M.snapshots).sort().reverse();
-  $('#day').innerHTML=days.map(d=>`<option>${d}</option>`).join('');
-  $('#day').onchange=()=>{drawHours();pick(lastHour($('#day').value))};
-  $('#prev').onclick=()=>step(-1); $('#next').onclick=()=>step(1);
-  $('#latest').onclick=()=>{const d=days[0];$('#day').value=d;drawHours();pick(lastHour(d))};
-  $('#handle').textContent=M.handle||'';
-  try{const H=await (await fetch('health.json',{cache:'no-store'})).json();
-    $('#health').innerHTML=H.ok?`Latest reading ${H.newest} IST`:`<span class="warn">Data delayed: latest reading ${H.newest||'unknown'} IST</span>`;}catch(e){}
-  drawPosts();
-  $('#hist').innerHTML=M.history.map(h=>`<li><a class="btn" style="display:block" href="${h.file}" download>${h.name}</a></li>`).join('');
-  if(days.length){drawHours();pick(lastHour(days[0]))}
+  [M,D]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json())]);
+  HANDLE=M.handle||'';$('#handle').textContent=HANDLE;
+  try{const H=await (await fetch('health.json',{cache:'no-store'})).json();const [d,t]=(H.newest||' ').split(' ');
+    $('#health').innerHTML=`<span class="dot ${H.ok?'':'bad'}"></span>${H.ok?'Live':'Delayed'} · latest reading ${d?dayLabel(d)+' '+timeLabel(t.replace(':','')):'unknown'} IST`}catch(e){}
+  $('#hist').innerHTML=(M.history||[]).map(h=>`<li><a class="btn" href="${h.file}" download>${h.name}</a></li>`).join('');
+  // default view: latest snapshot that has at least 3 hourly figures (night snapshots are near empty)
+  const ds=days();let def=latestPoint();
+  outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
+  nowSet(...def);
+  try{await document.fonts.load(`700 40px Inter`)}catch(e){}
+  studioDayTime(...def);kit();
+  const tab=location.hash.slice(1);if(['now','studio','kit','data'].includes(tab))show(tab);
 }
-const hoursOf=d=>M.snapshots[d];
-const lastHour=d=>hoursOf(d).slice(-1)[0];
-function drawHours(){
-  const d=$('#day').value;
-  $('#hours').innerHTML=hoursOf(d).map(h=>`<button data-h="${h}">${fmt(h)}</button>`).join('');
-  document.querySelectorAll('#hours button').forEach(b=>b.onclick=()=>pick(b.dataset.h));
-}
-function step(dir){
-  const d=$('#day').value, hs=hoursOf(d), i=hs.indexOf(cur)+dir;
-  if(i>=0&&i<hs.length) return pick(hs[i]);
-  const days=Object.keys(M.snapshots).sort(), di=days.indexOf(d)+dir;
-  if(di>=0&&di<days.length){$('#day').value=days[di];drawHours();const h=hoursOf(days[di]);pick(dir<0?h[h.length-1]:h[0])}
-}
-async function pick(h){
-  cur=h; const d=$('#day').value, base=`snapshots/${d}/${d}_${h}`;
-  document.querySelectorAll('#hours button').forEach(b=>b.classList.toggle('on',b.dataset.h===h));
-  $('#view').hidden=false;
-  $('#title').textContent=`${d}  ${fmt(h)} IST`;
-  $('#when').textContent='';
-  const has=M.files[`${d}/${d}_${h}`]||{};
-  const setImg=(id,suffix,label)=>{
-    $(id).innerHTML=has[suffix]?`<div class="mute" style="margin-bottom:4px">${label}</div><img src="${base}_${suffix}.png" alt="${label}">`:`<div class="mute">${label}: none at this hour</div>`;
-  };
-  setImg('#img1','last-1-hour','Tickets in the last 1 hour');
-  setImg('#img24','last-24-hours','Tickets in the last 24 hours');
-  const a=(id,href,ok)=>{const e=$(id);ok?(e.href=href,e.style.display=''):e.style.display='none'};
-  a('#dlcsv',`${base}.csv`,true); a('#dlimg1',`${base}_last-1-hour.png`,has['last-1-hour']); a('#dlimg24',`${base}_last-24-hours.png`,has['last-24-hours']);
-  const txt=await (await fetch(`${base}.csv`)).text();
-  const rows=txt.trim().split('\n').slice(1).map(l=>l.split(','));
-  const t=$('#tbl');
-  t.innerHTML='<tr><th>Movie</th><th>Figure</th><th>Value</th><th>Reading time</th></tr>'+
-    rows.map(r=>`<tr><td>${r[1]}</td><td>${r[2]==='1_hour'?'last 1 hour':'last 24 hours'}</td><td class="num">${r[3]}</td><td>${r[4].slice(5)}</td></tr>`).join('');
-}
-function drawPosts(){
-  const P=M.posts||[]; if(!P.length) return;
-  $('#postsCard').hidden=false;
-  $('#posts').innerHTML=P.slice(0,12).map((p,i)=>{
-    const st=p.status==='posted'?`<a class="tag" href="https://x.com/i/web/status/${p.tweet}" target="_blank" rel="noopener">posted</a>`
-      :`<span class="tag">${p.status.startsWith('error')?'not posted (error)':'kit'}</span>`;
-    const imgs=p.images.map(f=>`<a href="${f}" download><img src="${f}" alt="" loading="lazy"></a>`).join('');
-    return `<div class="post"><div class="row"><strong>${p.slot} IST</strong>${st}
-      <button data-i="${i}" class="copy">Copy caption</button></div>
-      <div class="imgs">${imgs}</div><textarea readonly id="cap${i}">${p.text.replace(/</g,'&lt;')}</textarea></div>`;}).join('');
-  document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{
-    const t=$('#cap'+b.dataset.i); try{await navigator.clipboard.writeText(t.value);b.textContent='Copied'}catch(e){t.select()}});
-}
-init().catch(e=>{document.body.insertAdjacentHTML('beforeend','<p style="padding:16px">Could not load data: '+e+'</p>')});
+init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
 </script>
 </body>
 </html>
