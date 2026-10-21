@@ -1,0 +1,235 @@
+== ET00518674 synopsis/secondary: HTTP 200, 8662 bytes
+   Hindi: /widgets/20/listData[]/analytics/label, /widgets/20/listData[]/ctaUrl, /widgets/20/listData[]/title
+== ET00518674 synopsis/init/dynamic: HTTP 200, 16545 bytes
+   meta.event: {"eventCode": "ET00518674", "eventGroupCode": "EG00515691", "eventName": "Jailer 2", "eventGroupName": "Jailer 2", "eventCensor": "UA16+", "eventType": "MT", "eventImageCode": "jailer-2-et00518674-1791715459", "eventGenre": "Action|Thriller", "eventDefaultCode": "ET00518674", "releaseDate": "Oct 15, 2026", "bookButton": true, "eventLanguage": ["TAMIL", "TELUGU", "KANNADA"], "eventDimension": "2D, 4DX, EPIQ, HDR By Barco, DOLBY CINEMA 2D, IMAX 2D"}
+   Kannada: /meta/event/eventLanguage[]
+   Tamil: /header/shareText, /meta/event/eventLanguage[], /pageCta[]/meta/options[]/formats[]/language, /pageCta[]/meta/options[]/language
+   Telugu: /meta/event/eventLanguage[], /pageCta[]/meta/options[]/formats[]/language, /pageCta[]/meta/options[]/language, /widgets/0/objectData/meta/languages[]/description
+   /meta/event/eventLanguage[0] = TAMIL
+   /meta/event/eventLanguage[1] = TELUGU
+   /meta/event/eventLanguage[2] = KANNADA
+   /pageCta[0]/meta/options[0]/language = Tamil
+   /pageCta[0]/meta/options[0]/formats[0]/dimension = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/eventCode = ET00518674
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/format = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/refEventCode = ET00518674
+   /pageCta[0]/meta/options[0]/formats[0]/language = Tamil
+   /pageCta[0]/meta/options[0]/formats[1]/dimension = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[0]/formats[1]/eventCode = ET00520975
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/format = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[0]/formats[1]/refEventCode = ET00520975
+   /pageCta[0]/meta/options[0]/formats[1]/language = Tamil
+   /pageCta[0]/meta/options[0]/formats[2]/dimension = Select all
+   /pageCta[0]/meta/options[0]/formats[2]/eventCode = *
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/event_code = ET00518674|ET00520975
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/format = all_formats
+   /pageCta[0]/meta/options[0]/formats[2]/refEventCode = ET00520975
+   /pageCta[0]/meta/options[0]/formats[2]/language = Tamil
+   /pageCta[0]/meta/options[1]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[0]/dimension = 2D
+   /pageCta[0]/meta/options[1]/formats[0]/eventCode = ET00518675
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/format = 2D
+   /pageCta[0]/meta/options[1]/formats[0]/refEventCode = ET00518675
+   /pageCta[0]/meta/options[1]/formats[0]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[1]/dimension = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[1]/formats[1]/eventCode = ET00521930
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/format = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[1]/formats[1]/refEventCode = ET00521930
+   /pageCta[0]/meta/options[1]/formats[1]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[2]/dimension = EPIQ
+   /pageCta[0]/meta/options[1]/formats[2]/eventCode = ET00521961
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/format = EPIQ
+   /pageCta[0]/meta/options[1]/formats[2]/refEventCode = ET00521961
+   /pageCta[0]/meta/options[1]/formats[2]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[3]/dimension = HDR By Barco
+   /pageCta[0]/meta/options[1]/formats[3]/eventCode = ET00521980
+   /pageCta[0]/meta/options[1]/formats[3]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[3]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[3]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[1]/formats[3]/analytics/format = HDR By Barco
+   /pageCta[0]/meta/options[1]/formats[3]/refEventCode = ET00521980
+   /pageCta[0]/meta/options[1]/formats[3]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[4]/dimension = 4DX
+   /pageCta[0]/meta/options[1]/formats[4]/eventCode = ET00522342
+   /pageCta[0]/meta/options[1]/formats[4]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[4]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[4]/analytics/event_code = ET00518674
+   /pageCta[0]/meta/options[1]/formats[4]/analytics/format = 4DX
+   /pageCta[0]/meta/options[1]/formats[4]/refEventCode = ET00522342
+   /pageCta[0]/meta/options[1]/formats[4]/language = Telugu
+   /pageCta[0]/meta/options[1]/formats[5]/dimension = Select all
+   /pageCta[0]/meta/options[1]/formats[5]/eventCode = *
+   /pageCta[0]/meta/options[1]/formats[5]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[5]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[5]/analytics/event_code = ET00521961|ET00522342|ET00521980|ET00518675|ET00521930
+   /pageCta[0]/meta/options[1]/formats[5]/analytics/format = all_formats
+   /pageCta[0]/meta/options[1]/formats[5]/refEventCode = ET00522342
+   /pageCta[0]/meta/options[1]/formats[5]/language = Telugu
+   /widgets/0/objectData/meta/languages[0]/id = 1
+   /widgets/0/objectData/meta/languages[0]/label = తెలుగు
+   /widgets/0/objectData/meta/languages[0]/description = Telugu
+   /widgets/0/objectData/meta/languages[1]/id = 2
+   /widgets/0/objectData/meta/languages[1]/label = தமிழ்
+   /widgets/0/objectData/meta/languages[1]/description = Tamil
+   /widgets/0/objectData/meta/videos[0]/languageId = 1
+   /widgets/0/objectData/meta/videos[1]/languageId = 2
+== ET00518674 synopsis/init/static: HTTP 200, 31240 bytes
+   Kannada: /analytics/language, /widgets/6/objectData/expandableSubtitle[]
+   Tamil: /analytics/language, /analytics/title, /header/shareText, /widgets/6/objectData/expandableSubtitle[]
+   Telugu: /analytics/language, /widgets/6/objectData/expandableSubtitle[]
+   /widgets/6/objectData/expandableFormats[0] = 2D
+   /widgets/6/objectData/expandableFormats[1] = 4DX
+   /widgets/6/objectData/expandableFormats[2] = EPIQ
+   /widgets/6/objectData/expandableFormats[3] = HDR BY BARCO
+   /widgets/6/objectData/expandableFormats[4] = DOLBY CINEMA 2D
+   /widgets/6/objectData/expandableFormats[5] = IMAX 2D
+   /widgets/6/objectData/expandableFormatsLimit = 5
+   /analytics/language = Tamil, Telugu, Kannada
+   /analytics/format = 2D, 4DX, EPIQ, HDR By Barco, DOLBY CINEMA 2D, IMAX 2D
+== ET00518675 synopsis/secondary: HTTP 200, 9013 bytes
+== ET00518675 synopsis/init/dynamic: HTTP 200, 16548 bytes
+   meta.event: {"eventCode": "ET00518675", "eventGroupCode": "EG00515691", "eventName": "Jailer 2", "eventGroupName": "Jailer 2", "eventCensor": "UA16+", "eventType": "MT", "eventImageCode": "jailer-2-et00518675-1791715466", "eventGenre": "Action|Thriller", "eventDefaultCode": "ET00518674", "releaseDate": "Oct 15, 2026", "bookButton": true, "eventLanguage": ["TAMIL", "TELUGU", "KANNADA"], "eventDimension": "2D, 4DX, EPIQ, HDR By Barco, DOLBY CINEMA 2D, IMAX 2D"}
+   Kannada: /meta/event/eventLanguage[]
+   Tamil: /meta/event/eventLanguage[], /pageCta[]/meta/options[]/formats[]/language, /pageCta[]/meta/options[]/language, /widgets/0/objectData/meta/languages[]/description
+   Telugu: /header/shareText, /meta/event/eventLanguage[], /pageCta[]/meta/options[]/formats[]/language, /pageCta[]/meta/options[]/language
+   /meta/event/eventLanguage[0] = TAMIL
+   /meta/event/eventLanguage[1] = TELUGU
+   /meta/event/eventLanguage[2] = KANNADA
+   /pageCta[0]/meta/options[0]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[0]/dimension = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/eventCode = ET00518675
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/format = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/refEventCode = ET00518675
+   /pageCta[0]/meta/options[0]/formats[0]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[1]/dimension = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[0]/formats[1]/eventCode = ET00521930
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[0]/formats[1]/analytics/format = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[0]/formats[1]/refEventCode = ET00521930
+   /pageCta[0]/meta/options[0]/formats[1]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[2]/dimension = EPIQ
+   /pageCta[0]/meta/options[0]/formats[2]/eventCode = ET00521961
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[0]/formats[2]/analytics/format = EPIQ
+   /pageCta[0]/meta/options[0]/formats[2]/refEventCode = ET00521961
+   /pageCta[0]/meta/options[0]/formats[2]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[3]/dimension = HDR By Barco
+   /pageCta[0]/meta/options[0]/formats[3]/eventCode = ET00521980
+   /pageCta[0]/meta/options[0]/formats[3]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[3]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[3]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[0]/formats[3]/analytics/format = HDR By Barco
+   /pageCta[0]/meta/options[0]/formats[3]/refEventCode = ET00521980
+   /pageCta[0]/meta/options[0]/formats[3]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[4]/dimension = 4DX
+   /pageCta[0]/meta/options[0]/formats[4]/eventCode = ET00522342
+   /pageCta[0]/meta/options[0]/formats[4]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[4]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[4]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[0]/formats[4]/analytics/format = 4DX
+   /pageCta[0]/meta/options[0]/formats[4]/refEventCode = ET00522342
+   /pageCta[0]/meta/options[0]/formats[4]/language = Telugu
+   /pageCta[0]/meta/options[0]/formats[5]/dimension = Select all
+   /pageCta[0]/meta/options[0]/formats[5]/eventCode = *
+   /pageCta[0]/meta/options[0]/formats[5]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[5]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[5]/analytics/event_code = ET00521930|ET00521961|ET00522342|ET00521980|ET00518675
+   /pageCta[0]/meta/options[0]/formats[5]/analytics/format = all_formats
+   /pageCta[0]/meta/options[0]/formats[5]/refEventCode = ET00522342
+   /pageCta[0]/meta/options[0]/formats[5]/language = Telugu
+   /pageCta[0]/meta/options[1]/language = Tamil
+   /pageCta[0]/meta/options[1]/formats[0]/dimension = 2D
+   /pageCta[0]/meta/options[1]/formats[0]/eventCode = ET00518674
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[1]/formats[0]/analytics/format = 2D
+   /pageCta[0]/meta/options[1]/formats[0]/refEventCode = ET00518674
+   /pageCta[0]/meta/options[1]/formats[0]/language = Tamil
+   /pageCta[0]/meta/options[1]/formats[1]/dimension = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[1]/formats[1]/eventCode = ET00520975
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/event_code = ET00518675
+   /pageCta[0]/meta/options[1]/formats[1]/analytics/format = DOLBY CINEMA 2D
+   /pageCta[0]/meta/options[1]/formats[1]/refEventCode = ET00520975
+   /pageCta[0]/meta/options[1]/formats[1]/language = Tamil
+   /pageCta[0]/meta/options[1]/formats[2]/dimension = Select all
+   /pageCta[0]/meta/options[1]/formats[2]/eventCode = *
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/event_code = ET00520975|ET00518674
+   /pageCta[0]/meta/options[1]/formats[2]/analytics/format = all_formats
+   /pageCta[0]/meta/options[1]/formats[2]/refEventCode = ET00520975
+   /pageCta[0]/meta/options[1]/formats[2]/language = Tamil
+   /widgets/0/objectData/meta/languages[0]/id = 1
+   /widgets/0/objectData/meta/languages[0]/label = తెలుగు
+   /widgets/0/objectData/meta/languages[0]/description = Telugu
+   /widgets/0/objectData/meta/languages[1]/id = 2
+   /widgets/0/objectData/meta/languages[1]/label = தமிழ்
+   /widgets/0/objectData/meta/languages[1]/description = Tamil
+   /widgets/0/objectData/meta/videos[0]/languageId = 1
+   /widgets/0/objectData/meta/videos[1]/languageId = 2
+== ET00518675 synopsis/init/static: HTTP 200, 26343 bytes
+   Kannada: /analytics/language, /widgets/6/objectData/expandableSubtitle[]
+   Tamil: /analytics/language, /widgets/6/objectData/expandableSubtitle[]
+   Telugu: /analytics/language, /analytics/title, /header/shareText, /widgets/6/objectData/expandableSubtitle[]
+   /widgets/6/objectData/expandableFormats[0] = 2D
+   /widgets/6/objectData/expandableFormats[1] = 4DX
+   /widgets/6/objectData/expandableFormats[2] = EPIQ
+   /widgets/6/objectData/expandableFormats[3] = HDR BY BARCO
+   /widgets/6/objectData/expandableFormats[4] = DOLBY CINEMA 2D
+   /widgets/6/objectData/expandableFormats[5] = IMAX 2D
+   /widgets/6/objectData/expandableFormatsLimit = 5
+   /analytics/language = Tamil, Telugu, Kannada
+   /analytics/format = 2D, 4DX, EPIQ, HDR By Barco, DOLBY CINEMA 2D, IMAX 2D
+== ET00429213 synopsis/secondary: HTTP 200, 8795 bytes
+== ET00429213 synopsis/init/dynamic: HTTP 200, 14665 bytes
+   meta.event: {"eventCode": "ET00429213", "eventGroupCode": "EG00427297", "eventName": "Rajini: The Jailer 2", "eventGroupName": "Rajini: The Jailer 2", "eventCensor": "UA16+", "eventType": "MT", "eventImageCode": "rajini-the-jailer-2-et00429213-1791879746", "eventGenre": "Action|Thriller", "eventDefaultCode": "ET00429213", "releaseDate": "Oct 15, 2026", "bookButton": true, "eventLanguage": ["HINDI"], "eventDimension": "2D, DOLBY CINEMA 2D"}
+   Hindi: /header/shareText, /meta/event/eventLanguage[], /pageCta[]/meta/options[]/formats[]/language, /pageCta[]/meta/options[]/language
+   /meta/event/eventLanguage[0] = HINDI
+   /pageCta[0]/meta/options[0]/language = Hindi
+   /pageCta[0]/meta/options[0]/formats[0]/dimension = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/eventCode = ET00429213
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/screen_name = movie_synopsis
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_name = language_format_selected
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/event_code = ET00429213
+   /pageCta[0]/meta/options[0]/formats[0]/analytics/format = 2D
+   /pageCta[0]/meta/options[0]/formats[0]/refEventCode = ET00429213
+   /pageCta[0]/meta/options[0]/formats[0]/language = Hindi
+   /widgets/0/objectData/meta/languages[0]/id = 1
+   /widgets/0/objectData/meta/languages[0]/label = हिन्दी
+   /widgets/0/objectData/meta/languages[0]/description = Hindi
+   /widgets/0/objectData/meta/videos[0]/languageId = 1
+   /widgets/0/objectData/meta/videos[1]/languageId = 1
+== ET00429213 synopsis/init/static: HTTP 200, 31147 bytes
+   Hindi: /analytics/language, /analytics/title, /header/shareText, /widgets/6/objectData/expandableSubtitle[]
+   /widgets/6/objectData/expandableFormats[0] = 2D
+   /widgets/6/objectData/expandableFormats[1] = DOLBY CINEMA 2D
+   /widgets/6/objectData/expandableFormatsLimit = 5
+   /analytics/language = Hindi
+   /analytics/format = 2D, DOLBY CINEMA 2D
