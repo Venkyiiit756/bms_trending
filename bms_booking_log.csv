@@ -1972,3 +1972,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-22 03:21:37+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-22 03:21:53+05:30,Drishyam 3,24_hours,36.1K,36.1K tickets booked in last 24 hours,2026-10-22 03:10:05+05:30,change,2026-10-22 03:21:53+05:30
 2026-10-22 03:32:40+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-22 03:37:30+05:30,Drishyam 3,24_hours,36.1K,36.1K tickets booked in last 24 hours,,heartbeat,
