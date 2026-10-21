@@ -1,137 +1,89 @@
 #!/usr/bin/env python3
-"""Save a table image of the Hyderabad movies' ticket figures every 30 minutes (:00 and :30, IST).
+"""Snapshot of every tracked movie's ticket figures each half hour (:00 and :30, IST).
 
-For every half-hour boundary (11:00, 11:30, 12:00, ...) it takes each tracked movie's latest reading
-at or before that time (no older than MAX_AGE) and writes, under snapshots/<date>/:
-    <date>_<HHMM>_last-1-hour.png   movies showing "tickets booked in last 1 hour"
-    <date>_<HHMM>_last-24-hours.png movies showing the 24-hour figure instead (night, small films)
-    <date>_<HHMM>.csv               the same numbers as data
-and refreshes snapshots/latest-last-1-hour.png. Missing steps of the last LOOKBACK
-steps are filled in, so a late or skipped run is made up by the next one.
+For each half-hour boundary it takes each movie's latest clean reading at or before that time
+(no older than MAX_AGE; stale cached copies are dropped, see series.py) and writes:
+    snapshots/<date>/<date>_<HHMM>.csv                 the numbers (kept in this repo)
+    build/snapshots/<date>/<date>_<HHMM>_last-1-hour.png    table image, movies showing the 1-hour figure
+    build/snapshots/<date>/<date>_<HHMM>_last-24-hours.png  table image, movies showing the 24-hour figure
+Images go to build/ only; the website repository keeps them. Missing half-hours of the last
+LOOKBACK steps are filled in, so a late or skipped run is made up by the next one.
 
-    python snapshot.py                    # catch up on all missing hours
+    python snapshot.py                    # catch up on all missing half-hours
     python snapshot.py --at "2026-10-18 11:00"
 """
 import argparse
 import csv
-import json
 import os
 import shutil
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 
-IST = timezone(timedelta(hours=5, minutes=30))
-ROOT = os.path.dirname(os.path.abspath(__file__))
+import cards
+import series
+from series import IST
+
+ROOT = series.ROOT
 OUT = os.path.join(ROOT, 'snapshots')
-MAX_AGE = timedelta(minutes=75)     # a reading older than this is not shown
+IMG = os.path.join(ROOT, 'build', 'snapshots')
+MAX_AGE = timedelta(minutes=75)     # small films are polled hourly
 LOOKBACK = 12                       # half-hour steps of catch-up (= 6 hours)
-# Friendlier names where several events share a title
-NAMES = {'drishyam': 'Drishyam', 'jailer2_hyd': 'Jailer 2 (Telugu)', 'jailer2': 'Jailer 2 (Hindi)'}
-
-
-def movies():
-    with open(os.path.join(ROOT, 'movies.json'), encoding='utf-8') as f:
-        return json.load(f)
-
-
-def readings(path):
-    """[(time, metric_type, value, movie_name)] of data rows, oldest first."""
-    if not os.path.exists(path):
-        return []
-    with open(path, newline='', encoding='utf-8') as f:
-        return [(datetime.fromisoformat(r['timestamp']), r['metric_type'], r['metric_value'], r['movie_name'])
-                for r in csv.DictReader(f) if r['metric_type'] in ('1_hour', '24_hours')]
-
-
-def value_k(text):
-    t = text.upper()
-    return float(t[:-1]) * (1000 if t[-1] == 'K' else 1e6 if t[-1] == 'M' else 1) if t[-1] in 'KM' else float(t)
 
 
 def collect(at, data):
-    """{'1_hour': [(name, value, reading_time)], '24_hours': [...]} as of `at`."""
+    """{'1_hour': [(name, text, reading_time)], '24_hours': [...]} as of `at`, biggest first."""
     out = {'1_hour': [], '24_hours': []}
-    for m in movies():
-        rows = [r for r in data[m['key']] if r[0] <= at]
-        if not rows:
-            continue
-        t, kind, val, title = rows[-1]
-        if at - t > MAX_AGE:
-            continue
-        name = NAMES.get(m['key']) or title or m['name']
-        out[kind].append((name, val, t))
+    for key, name, _, _ in series.movies():
+        r = series.latest(data.get(key, []), at, MAX_AGE)
+        if r:
+            out[r.kind].append((name, r.text, r.time, r.value))
     for k in out:
-        out[k].sort(key=lambda r: -value_k(r[1]))
+        out[k].sort(key=lambda x: -x[3])
     return out
 
 
-def draw(rows, head, path):
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(2.9, 0.3 * (len(rows) + 1) + 0.1), dpi=300)
-    ax.axis('off')
-    short = lambda n: n.split(':')[0] if len(n) > 22 else n   # keep long titles inside the cell
-    tb = ax.table(cellText=[[short(n), v] for n, v, _ in rows], colLabels=['Movie', head],
-                  cellLoc='center', loc='center', colWidths=[.64, .36])
-    tb.auto_set_font_size(False)
-    tb.set_fontsize(8.5)
-    pal = ['#c0392b', '#1f3a5f', '#0a7d33', '#8e44ad', '#b9770e', '#117a8b', '#555']
-    for (r, c), x in tb.get_celld().items():
-        x.set_edgecolor('#222')
-        x.set_linewidth(0.8)
-        x.set_height(1 / (len(rows) + 1))
-        t = x.get_text()
-        t.set_fontweight('bold')
-        if r == 0:
-            x.set_facecolor('#1f3a5f')
-            t.set_color('white')
-            continue
-        x.set_facecolor('#f6f8fb' if r % 2 else 'white')
-        t.set_color('#0a7d33' if c else pal[(r - 1) % len(pal)])
-    plt.savefig(path, bbox_inches='tight', pad_inches=0.03)
-    plt.close(fig)
-
-
 def snapshot(at, data):
-    day = os.path.join(OUT, f'{at:%Y-%m-%d}')
-    stem = os.path.join(day, f'{at:%Y-%m-%d_%H%M}')
-    os.makedirs(day, exist_ok=True)
+    stem = f'{at:%Y-%m-%d}/{at:%Y-%m-%d_%H%M}'
+    os.makedirs(os.path.join(OUT, f'{at:%Y-%m-%d}'), exist_ok=True)
+    os.makedirs(os.path.join(IMG, f'{at:%Y-%m-%d}'), exist_ok=True)
     got = collect(at, data)
-    names = {'1_hour': ('last-1-hour', 'Last 1 hr'), '24_hours': ('last-24-hours', 'Last 24 hrs')}
-    for kind, (suffix, head) in names.items():
+    when = f'{at:%a %d %b}'
+    titles = {'1_hour': ('last-1-hour', 'Last 1 hr', f'{when} · {series.window_label(at)}'),
+              '24_hours': ('last-24-hours', 'Last 24 hrs', f'{when} · up to {at:%-I:%M %p}')}
+    images = []
+    for kind, (suffix, head, title) in titles.items():
         if got[kind]:
-            draw(got[kind], head, f'{stem}_{suffix}.png')
-    with open(stem + '.csv', 'w', newline='', encoding='utf-8') as f:
+            path = os.path.join(IMG, f'{stem}_{suffix}.png')
+            cards.compact_table(path, title, ['Movie', head], [[series.short_name(n), v] for n, v, _, _ in got[kind]])
+            images.append(path)
+    with open(os.path.join(OUT, stem + '.csv'), 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
         w.writerow(['snapshot_time_ist', 'movie', 'metric', 'value', 'reading_time_ist'])
         for kind in got:
-            for name, val, t in got[kind]:
-                w.writerow([f'{at:%Y-%m-%d %H:%M}', name, kind, val, f'{t:%Y-%m-%d %H:%M}'])
-    return stem, got
+            for name, val, t, _ in got[kind]:
+                w.writerow([f'{at:%Y-%m-%d %H:%M}', name, kind, val, f'{t.astimezone(IST):%Y-%m-%d %H:%M}'])
+    return got, images
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--at', help="IST time, 'YYYY-MM-DD HH:00' or 'HH:30'; default: all missing recent half-hours")
     args = ap.parse_args()
-    data = {m['key']: readings(os.path.join(ROOT, m['csv'])) for m in movies()}
+    data = {key: series.load(path) for key, _, path, _ in series.movies()}
     now = datetime.now(IST)
     if args.at:
-        hours = [datetime.strptime(args.at, '%Y-%m-%d %H:%M').replace(tzinfo=IST)]
+        steps = [datetime.strptime(args.at, '%Y-%m-%d %H:%M').replace(tzinfo=IST)]
     else:
         top = now.replace(minute=0 if now.minute < 30 else 30, second=0, microsecond=0)
-        hours = [top - timedelta(minutes=30 * i) for i in range(LOOKBACK - 1, -1, -1)]
+        steps = [top - timedelta(minutes=30 * i) for i in range(LOOKBACK - 1, -1, -1)]
     latest = None
-    for at in hours:
-        csv_path = os.path.join(OUT, f'{at:%Y-%m-%d}', f'{at:%Y-%m-%d_%H%M}.csv')
-        if not args.at and os.path.exists(csv_path):
+    for at in steps:
+        if not args.at and os.path.exists(os.path.join(OUT, f'{at:%Y-%m-%d}', f'{at:%Y-%m-%d_%H%M}.csv')):
             continue
-        stem, got = snapshot(at, data)
+        got, images = snapshot(at, data)
         print(f'{at:%Y-%m-%d %H:%M}: {len(got["1_hour"])} hourly, {len(got["24_hours"])} 24-hour movies')
-        if got['1_hour']:
-            latest = stem + '_last-1-hour.png'
+        latest = next((p for p in images if p.endswith('last-1-hour.png')), latest)
     if latest:
-        shutil.copyfile(latest, os.path.join(OUT, 'latest-last-1-hour.png'))
+        shutil.copyfile(latest, os.path.join(ROOT, 'build', 'latest-last-1-hour.png'))
 
 
 if __name__ == '__main__':

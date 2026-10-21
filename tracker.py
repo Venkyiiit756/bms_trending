@@ -32,6 +32,7 @@ BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, .
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
+COMMIT_EVERY = 600         # push collected rows at most this often (plus before each snapshot)
 MISSING_RETRY = 3600       # a movie whose response has no counter is retried this often
 GIT_TIMEOUT = 120
 # Each request runs in its own short-lived process so one stuck connection can
@@ -417,6 +418,7 @@ def run(keys, minutes, commit):
     shared = {'failures': 0, 'block_until': 0.0}
     last_request = 0.0
     dirty = False
+    last_commit = time.monotonic()
     next_snap = next_snapshot_time(now())
 
     def stop(*_):
@@ -432,9 +434,11 @@ def run(keys, minutes, commit):
                 print('Run window finished.', flush=True)
                 break
             if go > time.monotonic():
-                if dirty and commit:       # save while idle rather than at the end
+                # save while idle, at most every COMMIT_EVERY seconds (fewer, larger commits)
+                if dirty and commit and time.monotonic() - last_commit >= COMMIT_EVERY:
                     commit_and_push(files)
                     dirty = False
+                    last_commit = time.monotonic()
                 sleep(max(0, go - time.monotonic()))
             last_request = time.monotonic()
             dirty = poll(st, shared) or dirty
@@ -442,6 +446,7 @@ def run(keys, minutes, commit):
                 if dirty and commit:
                     commit_and_push(files)     # so the snapshot sees the newest rows
                     dirty = False
+                    last_commit = time.monotonic()
                 request_snapshot()
                 next_snap = next_snapshot_time(now())
     except KeyboardInterrupt:

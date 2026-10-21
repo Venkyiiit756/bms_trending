@@ -25,6 +25,7 @@ concurrency:
 env:
   RUN_MINUTES: ${{ github.event.inputs.run_minutes || '60' }}
   PYTHONUNBUFFERED: '1'
+  LOG_HEADERS: '0'      # cache-header diagnostics no longer needed (see HANDOFF.md)
 
 jobs:
   run-tracker:

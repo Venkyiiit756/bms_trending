@@ -1,8 +1,8 @@
 name: Hourly Snapshot Images
 
-# Five minutes past every half hour, save the "movies vs tickets in the last hour" table image
-# for each half hour (IST) under snapshots/. snapshot.py also fills in any recent hour
-# that was missed, because GitHub often delays or skips scheduled runs.
+# Requested by the running tracker at :05 and :35 IST (cron below is only a backup).
+# Each run: snapshot tables for missed half-hours, the hourly X post (08:00-23:00), a health
+# check, and the website. Images live only in the website repository.
 on:
   schedule:
     - cron: '5,35 * * * *'
@@ -15,32 +15,42 @@ concurrency:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
+      issues: write
+    env:
+      SITE_REPO: ${{ vars.SITE_REPO || 'Venkyiiit756/hyd-movie-trends' }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-    - run: pip install matplotlib
-    - name: Remember site repo
-      run: echo "SITE_REPO=${SITE_REPO:-Venkyiiit756/hyd-movie-trends}" >> "$GITHUB_ENV"
-      env:
-        SITE_REPO: ${{ vars.SITE_REPO }}
+    - run: pip install matplotlib requests requests-oauthlib
     - name: Make snapshots
       run: python snapshot.py
-    - name: Commit images
+    - name: Hourly post (X)
+      env:
+        X_API_KEY: ${{ secrets.X_API_KEY }}
+        X_API_SECRET: ${{ secrets.X_API_SECRET }}
+        X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+        X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+      run: python posts.py
+    - name: Health check
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python health.py
+    - name: Commit snapshot data and post log
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add snapshots
+        git add snapshots posts_log.json 2>/dev/null || git add snapshots
         git diff --cached --quiet && exit 0
-        git commit -m "Hourly snapshot images [skip ci]"
+        git commit -m "Snapshot data and post log [skip ci]"
         for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
 
-    # Publish the finished website to a separate public repo (GitHub Pages), so the
-    # site never links to this repository. Needs the SITE_TOKEN secret; skipped without it.
+    # Publish to the separate public site repository (GitHub Pages). Adds new files only and
+    # prunes dated folders older than 45 days. Needs the SITE_TOKEN secret; skipped without it.
     - name: Build website
       run: python build_site.py
     - name: Publish website
@@ -50,8 +60,16 @@ jobs:
         if [ -z "$SITE_TOKEN" ]; then echo "SITE_TOKEN not set; skipping website publish"; exit 0; fi
         git clone --depth 1 "https://x-access-token:${SITE_TOKEN}@github.com/${SITE_REPO}.git" ../site_repo
         cd ../site_repo
-        git rm -rq --ignore-unmatch . >/dev/null 2>&1 || true
         cp -r "$GITHUB_WORKSPACE/site/." .
+        python3 - <<'PY'
+        import os, re, shutil, datetime
+        cutoff = (datetime.date.today() - datetime.timedelta(days=45)).isoformat()
+        for top in ('snapshots', 'posts'):
+            if os.path.isdir(top):
+                for d in os.listdir(top):
+                    if re.fullmatch(r'\d{4}-\d\d-\d\d', d) and d < cutoff:
+                        shutil.rmtree(os.path.join(top, d))
+        PY
         git add -A
         git diff --cached --quiet && exit 0
         git config user.name "site-bot"
