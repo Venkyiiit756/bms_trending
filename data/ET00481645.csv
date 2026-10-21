@@ -300,3 +300,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-21 04:58:40+05:30,Street Fighter,24_hours,10.78K,10.78K tickets booked in last 24 hours,,heartbeat,
 2026-10-21 05:14:05+05:30,Street Fighter,24_hours,10.77K,10.77K tickets booked in last 24 hours,2026-10-21 04:58:40+05:30,change,2026-10-21 05:14:05+05:30
 2026-10-21 05:42:30+05:30,Street Fighter,24_hours,10.77K,10.77K tickets booked in last 24 hours,,heartbeat,
+2026-10-21 05:50:56+05:30,,error,0,"request error: Failed to perform, curl: (28) Operation timed out after 25002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details. (failure 1)",,error,
