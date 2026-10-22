@@ -282,5 +282,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-10-22 20:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 7–8 PM (Thu 22 Oct)\n\n1. Jailer 2: 22.48K (0% vs Wed)\n2. Jailer 2 (Hindi): 2.81K (▼10% vs Wed)\n3. Ranabaali: 2.36K (▼40% vs Wed)\n4. Drishyam: 2.22K (▲13% vs Wed)\n5. Prahaar: 1.53K (▲22% vs Wed)\n\n#Jailer2 #BoxOffice",
+  "images": [
+   "posts/2026-10-22/2000/1.png",
+   "posts/2026-10-22/2000/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (7–8 PM, Thu 22 Oct), with change against the same hour yesterday: Jailer 2 22.48K, 0% vs yesterday; Jailer 2 (Hindi) 2.81K, ▼10% vs yesterday; Ranabaali 2.36K, ▼40% vs yesterday; Drishyam 2.22K, ▲13% vs yesterday; Prahaar 1.53K, ▲22% vs yesterday",
+   "Line chart of tickets booked in the last hour for Jailer 2 through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
