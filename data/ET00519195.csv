@@ -14,3 +14,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-22 13:11:19+05:30,Titans,24_hours,5.91K,5.91K tickets booked in last 24 hours,2026-10-22 12:17:18+05:30,change,2026-10-22 13:11:19+05:30
 2026-10-22 13:55:10+05:30,Titans,24_hours,6.48K,6.48K tickets booked in last 24 hours,2026-10-22 13:11:19+05:30,change,2026-10-22 13:55:10+05:30
 2026-10-22 14:47:08+05:30,Titans,24_hours,6.95K,6.95K tickets booked in last 24 hours,2026-10-22 13:55:10+05:30,change,2026-10-22 14:47:08+05:30
+2026-10-22 15:23:37+05:30,Titans,24_hours,7.31K,7.31K tickets booked in last 24 hours,2026-10-22 14:47:08+05:30,change,2026-10-22 15:23:37+05:30
