@@ -40,3 +40,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-21 22:11:24+05:30,The Eken Kerala E Kurukshetra,24_hours,11.13K,11.13K tickets booked in last 24 hours,2026-10-21 21:18:36+05:30,change,2026-10-21 22:11:24+05:30
 2026-10-22 07:50:23+05:30,The Eken Kerala E Kurukshetra,24_hours,10.64K,10.64K tickets booked in last 24 hours,2026-10-21 22:11:24+05:30,change,2026-10-22 07:50:23+05:30
 2026-10-22 09:34:53+05:30,The Eken Kerala E Kurukshetra,24_hours,10.44K,10.44K tickets booked in last 24 hours,2026-10-22 07:50:23+05:30,change,2026-10-22 09:34:53+05:30
+2026-10-22 10:26:10+05:30,The Eken Kerala E Kurukshetra,24_hours,10.36K,10.36K tickets booked in last 24 hours,2026-10-22 09:34:53+05:30,change,2026-10-22 10:26:10+05:30
