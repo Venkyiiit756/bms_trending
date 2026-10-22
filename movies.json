@@ -63,7 +63,7 @@
     "page_slug": "crazy-kalyanam",
     "csv": "data/ET00521061.csv",
     "headers_csv": "data/ET00521061_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00481645",
@@ -294,7 +294,7 @@
     "page_slug": "prahaar",
     "csv": "data/ET00502504.csv",
     "headers_csv": "data/ET00502504_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00513250",
@@ -305,7 +305,7 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00396541",
@@ -426,5 +426,161 @@
     "headers_csv": "data/ET00519195_headers.csv",
     "every": 3600,
     "added": "2026-10-21"
+  },
+  {
+    "key": "et00114750",
+    "name": "Doosra",
+    "eventcode": "ET00114750",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "doosra",
+    "csv": "data/ET00114750.csv",
+    "headers_csv": "data/ET00114750_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00451914",
+    "name": "Namit Malhotras Ramayana",
+    "eventcode": "ET00451914",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "namit-malhotras-ramayana",
+    "csv": "data/ET00451914.csv",
+    "headers_csv": "data/ET00451914_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00495822",
+    "name": "Udta Teer",
+    "eventcode": "ET00495822",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "udta-teer",
+    "csv": "data/ET00495822.csv",
+    "headers_csv": "data/ET00495822_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00509047",
+    "name": "418",
+    "eventcode": "ET00509047",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "418",
+    "csv": "data/ET00509047.csv",
+    "headers_csv": "data/ET00509047_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00517731",
+    "name": "Pehla Pyaar Doosri Baar",
+    "eventcode": "ET00517731",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "pehla-pyaar-doosri-baar",
+    "csv": "data/ET00517731.csv",
+    "headers_csv": "data/ET00517731_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00517732",
+    "name": "Haiku",
+    "eventcode": "ET00517732",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "haiku",
+    "csv": "data/ET00517732.csv",
+    "headers_csv": "data/ET00517732_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00517992",
+    "name": "Tum Mere Ho",
+    "eventcode": "ET00517992",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "tum-mere-ho",
+    "csv": "data/ET00517992.csv",
+    "headers_csv": "data/ET00517992_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00518916",
+    "name": "Tom And Jerry Forbidden Compass",
+    "eventcode": "ET00518916",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "tom-and-jerry-forbidden-compass",
+    "csv": "data/ET00518916.csv",
+    "headers_csv": "data/ET00518916_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00519221",
+    "name": "321 Love Marriage Vs Arranged",
+    "eventcode": "ET00519221",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "321-love-marriage-vs-arranged",
+    "csv": "data/ET00519221.csv",
+    "headers_csv": "data/ET00519221_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00520032",
+    "name": "Prema Dairilo",
+    "eventcode": "ET00520032",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "prema-dairilo",
+    "csv": "data/ET00520032.csv",
+    "headers_csv": "data/ET00520032_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00520164",
+    "name": "Tu Hai Meri Kiran",
+    "eventcode": "ET00520164",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "tu-hai-meri-kiran",
+    "csv": "data/ET00520164.csv",
+    "headers_csv": "data/ET00520164_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00520774",
+    "name": "Little Thomas",
+    "eventcode": "ET00520774",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "little-thomas",
+    "csv": "data/ET00520774.csv",
+    "headers_csv": "data/ET00520774_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
+  },
+  {
+    "key": "et00523016",
+    "name": "Udumbanchola Vision",
+    "eventcode": "ET00523016",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "udumbanchola-vision",
+    "csv": "data/ET00523016.csv",
+    "headers_csv": "data/ET00523016_headers.csv",
+    "every": 3600,
+    "added": "2026-10-22"
   }
 ]

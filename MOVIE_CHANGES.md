@@ -2,6 +2,24 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-22
+- added **Doosra** (ET00114750), polled hourly
+- added **Namit Malhotras Ramayana** (ET00451914), polled hourly
+- added **Udta Teer** (ET00495822), polled hourly
+- added **418** (ET00509047), polled hourly
+- added **Pehla Pyaar Doosri Baar** (ET00517731), polled hourly
+- added **Haiku** (ET00517732), polled hourly
+- added **Tum Mere Ho** (ET00517992), polled hourly
+- added **Tom And Jerry Forbidden Compass** (ET00518916), polled hourly
+- added **321 Love Marriage Vs Arranged** (ET00519221), polled hourly
+- added **Prema Dairilo** (ET00520032), polled hourly
+- added **Tu Hai Meri Kiran** (ET00520164), polled hourly
+- added **Little Thomas** (ET00520774), polled hourly
+- added **Udumbanchola Vision** (ET00523016), polled hourly
+- **Crazy Kalyanam** (ET00521061): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Prahaar** (ET00502504): every 30 min -> hourly (best hourly figure in 24 h: 1.6K)
+- **Nayyi Navelli** (ET00513250): every 30 min -> hourly (best hourly figure in 24 h: 1.8K)
+
 ## 2026-10-21
 - added **Titans** (ET00519195), polled hourly
 - **Nayyi Navelli** (ET00513250): hourly -> every 30 min (best hourly figure in 24 h: 5.4K)
