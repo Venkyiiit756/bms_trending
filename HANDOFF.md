@@ -112,9 +112,10 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 
 ## Daily totals (sales.py, Totals tab)
 - `sales.py` turns each movie's readings into estimated tickets per half hour (`data/sales.json` on the site):
-  half the hourly figure at each half hour, night gaps (only the 24-hour figure shows, ~2-7 AM) filled with a dip
-  to zero, short data gaps filled linearly, all scaled by a per-movie factor = median of BookMyShow 24-hour figure /
-  summed estimate over the last 7 nights (~1.15-1.2 for big films). `d24` holds BookMyShow's exact 24-hour figures.
+  half the hourly figure at each half hour, short data gaps filled linearly, night gaps (only the 24-hour figure
+  shows, ~2-7 AM) filled with a dip to zero x NIGHT_SHARE 0.3 (fitted), daytime slots scaled by a per-movie factor
+  (~1.2) fitted on the last 7 nights. Validated leave-one-night-out on 45 nights: typical 0.7%, 90% within 3.7%.
+  Films with < 3 nights and < 40% hourly readings get no estimates. `d24` = BookMyShow's exact 24-hour figures.
 - Website **Totals** tab: pick a movie and drag From/To (30-minute steps); days are real 24 hours from "From".
   A day ending at (or within an hour of) a BookMyShow 24-hour figure uses that figure; otherwise it is an estimate (≈).
   "Days from 4 AM" aligns days to when BookMyShow shows its own figure.

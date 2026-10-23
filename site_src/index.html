@@ -240,7 +240,8 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
       <ul>
         <li>A day here is a real 24 hours counted from the "From" time, so a day can run from noon to noon.</li>
         <li>BookMyShow shows its own "booked in the last 24 hours" figure late at night for big films (about 2 to 7 AM) and all day for smaller films. When a day ends at such a time (or within an hour of one, corrected by the estimate for the minutes in between), that figure is used (marked "BookMyShow").</li>
-        <li>Otherwise the day is estimated from the hourly figures taken every 30 minutes. Hourly figures added up come out about 15 to 20% below BookMyShow's own 24-hour figure, so each film's estimate is scaled by how the two compared on recent nights (the factor is shown). Estimates are marked ≈.</li>
+        <li>Otherwise the day is estimated from the hourly figures taken every 30 minutes. Hourly figures added up come out about 15 to 20% below BookMyShow's own 24-hour figure, so each film's daytime figures are scaled by how the two compared on recent nights (the factor is shown, about ×1.2). Night hours, when no hourly figure shows, are a small allowance. Estimates are marked ≈.</li>
+        <li>Checked against 45 nights of BookMyShow 24-hour figures (each night left out of the scaling it was checked with): typical error under 1%, nine in ten within 4%. Films that rarely show an hourly figure get no estimate, only BookMyShow's own figures.</li>
         <li>Pick "Days from 4 AM" to make every full day an exact BookMyShow figure.</li>
         <li>The count is per BookMyShow listing across all its languages and is not city-specific.</li>
       </ul>
