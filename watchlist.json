@@ -1,1 +1,71 @@
-[]
+[
+ {
+  "code": "ET00475942",
+  "name": "Aadarsha Kutumbam House No: 47 (Venkatesh, Trivikram)",
+  "page_slug": "aadarsha-kutumbam-house-no-47-ak-47"
+ },
+ {
+  "code": "ET00523155",
+  "name": "Ramayana (Telugu 3D)",
+  "page_slug": "namit-malhotras-ramayana-3dtelugu"
+ },
+ {
+  "name": "Fauzi (Prabhas)",
+  "match": [
+   "fauzi"
+  ]
+ },
+ {
+  "name": "Bhogi (Sharwanand)",
+  "match": [
+   "bhogi"
+  ]
+ },
+ {
+  "name": "Aakasamlo Oka Tara (Dulquer Salmaan)",
+  "match": [
+   "aakasamlo",
+   "akasamlo"
+  ]
+ },
+ {
+  "name": "Haindhava (Bellamkonda Sai Srinivas)",
+  "match": [
+   "haindhava",
+   "haindava"
+  ]
+ },
+ {
+  "name": "Vrushakarma (Naga Chaitanya)",
+  "match": [
+   "vrushakarma",
+   "vrushakarmaa"
+  ]
+ },
+ {
+  "name": "Swayambhu (Nikhil)",
+  "match": [
+   "swayambhu"
+  ]
+ },
+ {
+  "name": "King100 (Nagarjuna)",
+  "match": [
+   "king100",
+   "king-100"
+  ]
+ },
+ {
+  "name": "NBK111 (Balakrishna)",
+  "match": [
+   "nbk111",
+   "nbk-111"
+  ]
+ },
+ {
+  "name": "Mysaa (Rashmika Mandanna)",
+  "match": [
+   "mysaa"
+  ]
+ }
+]

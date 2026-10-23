@@ -13,8 +13,10 @@ uses the catalog to add new movies to movies.json and to retire ones that have d
 Stops at the first 403/429 and keeps what it has.
 
 Booking alerts: each movie's page says whether it can be booked (`meta.event.bookButton`) and
-its release date. Upcoming movies that cannot be booked yet, and every code in watchlist.json,
-are re-checked on each run; when booking opens (or a movie releasing later is first found
+its release date. Each run also reads Hyderabad's "upcoming movies" page (about a week ahead).
+Upcoming movies that cannot be booked yet, and watchlist.json entries (an event code, or name
+words matched against listed movies, so a film is watched as soon as BookMyShow lists it), are
+re-checked on each run; a watched film's first listing is reported too; when booking opens (or a movie releasing later is first found
 already bookable: advance booking) it is written to build/booking_alerts.json, and the
 workflow opens a GitHub issue for it.
 """
@@ -30,6 +32,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CATALOG = os.path.join(ROOT, 'catalog.json')
 WATCHLIST = os.path.join(ROOT, 'watchlist.json')
 ALERTS = os.path.join(ROOT, 'build', 'booking_alerts.json')
+UPCOMING = '/explore/upcoming-movies-hyderabad'
 BASE = 'https://in.bookmyshow.com'
 HEADERS = {'Accept': 'application/json, text/plain, */*', 'x-platform': 'AND', 'x-platform-code': 'ANDROID',
            'x-app-code': 'MOBAND2', 'x-region-code': 'HYD', 'x-region-slug': 'hyderabad',
@@ -130,6 +133,28 @@ def needs_details(entry, day):
     return not entry.get('book') and r is not None and r >= day - timedelta(days=2)
 
 
+def upcoming_page():
+    """{eventcode: slug} from Hyderabad's upcoming-movies page."""
+    from curl_cffi import requests
+    r = requests.get(BASE + UPCOMING, headers=HEADERS, impersonate='chrome', timeout=30)
+    if r.status_code in (403, 429):
+        raise Blocked(f'HTTP {r.status_code}')
+    return {code: slug for slug, code in LINK.findall(r.text)} if r.status_code == 200 else {}
+
+
+def watched_codes(watch, catalog, day):
+    """Watchlist codes, plus listed movies whose page slug or name contains a watchlist word."""
+    out = [w['code'] for w in watch if w.get('code')]
+    words = [m.lower() for w in watch for m in w.get('match', [])]
+    for code, e in catalog.items():
+        text = f"{e.get('page_slug', '')} {e.get('name', '')}".lower()
+        r = release_day(e.get('release'))
+        if code not in out and any(m in text for m in words) and (r is None or r >= day - timedelta(days=7)):
+            out.append(code)
+    # done once bookable (the opening is reported by then)
+    return [c for c in out if not catalog.get(c, {}).get('book_opened') and catalog.get(c, {}).get('book') is not True]
+
+
 def booking_alert(code, entry, before, day):
     """An alert if this lookup shows booking newly open, else None."""
     if not entry.get('book') or before is True or entry.get('book_opened'):
@@ -165,20 +190,33 @@ def main():
     # 1. details (real name, listing group, languages, release date, bookable) come first, because
     # BookMyShow often stops the run after about ten requests: watchlist, then movies never looked
     # up, then upcoming movies that cannot be booked yet (movies found by this run's crawl: next run)
+    blocked = False
+    try:
+        for code, slug in upcoming_page().items():
+            e = catalog.setdefault(code, {'first_seen': day, 'last_listed': None, 'name': code, 'page_slug': slug,
+                                          'last_checked': None, 'figure': None})
+            e['upcoming'] = day
+        time.sleep(GAP)
+    except Blocked as e:
+        print(f'blocked ({e}) on the upcoming page', flush=True)
+        blocked = True
+    except Exception as e:
+        print(f'upcoming page error {e}', flush=True)
     watch = json.load(open(WATCHLIST, encoding='utf-8')) if os.path.exists(WATCHLIST) else []
     for w in watch:
-        catalog.setdefault(w['code'], {'first_seen': day, 'last_listed': None, 'name': w.get('name', w['code']),
-                                       'page_slug': w.get('page_slug', 'movie'), 'last_checked': None,
-                                       'figure': None})
-    watched = [w['code'] for w in watch]
+        if w.get('code'):
+            catalog.setdefault(w['code'], {'first_seen': day, 'last_listed': None, 'name': w.get('name', w['code']),
+                                           'page_slug': w.get('page_slug', 'movie'), 'last_checked': None,
+                                           'figure': None})
     d0 = datetime.strptime(day, '%Y-%m-%d').date()
+    watched = watched_codes(watch, catalog, d0)
     pending = [c for c, e in catalog.items() if c not in watched and needs_details(e, d0)]
     pending.sort(key=lambda c: catalog[c].get('last_listed') or '', reverse=True)   # still listed first
     order = watched + pending
-    lookups, alerts, blocked = 0, [], False
+    lookups, alerts = 0, []
     for code in order:
         entry = catalog[code]
-        if lookups >= MAX_DETAILS:
+        if blocked or lookups >= MAX_DETAILS:
             break
         try:
             d = details(code)
@@ -195,6 +233,12 @@ def main():
             before = entry.get('book')
             entry.update(d)
             alert = booking_alert(code, entry, before, d0)
+            if not alert and code in watched and not entry['book'] and not entry.get('listed_alert'):
+                entry['listed_alert'] = day      # a watched film is now on BookMyShow, not bookable yet
+                alert = {'code': code, 'kind': 'Listed on BookMyShow, bookings not open yet',
+                         'name': entry.get('name', code), 'release': entry.get('release'),
+                         'languages': entry.get('languages', []),
+                         'url': f"{BASE}/movies/hyderabad/{entry.get('page_slug', 'movie')}/{code}"}
             if alert:
                 alerts.append(alert)
                 print(f"booking alert: {alert['kind']}: {alert['name']} (release {alert['release']})", flush=True)
@@ -250,8 +294,10 @@ def post_alerts():
     alerts = json.load(open(ALERTS, encoding='utf-8')) if os.path.exists(ALERTS) else []
     for a in alerts:
         title = f"{a['kind']}: {a['name']}" + (f" (releases {a['release']})" if a.get('release') else '')
-        body = (f"BookMyShow shows a **Book tickets** button for **{a['name']}** "
-                f"({', '.join(a['languages']) or 'languages unknown'}), release date {a.get('release') or 'unknown'}.\n\n"
+        what = ('is listed, but has no **Book tickets** button yet' if a['kind'].startswith('Listed')
+                else 'shows a **Book tickets** button')
+        body = (f"On BookMyShow, **{a['name']}** {what} "
+                f"({', '.join(a['languages']) or 'languages unknown'}; release date {a.get('release') or 'unknown'}).\n\n"
                 f"{a['url']}\n\nNoticed by movie discovery on {today()} (it runs three times a day). "
                 f"New movies are added to tracking automatically; their ticket counts start at the next hourly run.")
         res = subprocess.run(['gh', 'issue', 'create', '--title', title, '--body', body],

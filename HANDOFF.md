@@ -128,7 +128,9 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   20:40 IST); the daily cron stays as a backup (GitHub ran it 4-5 h late every day).
 - `probe.py` / `probe.yml` (manual): prints the booking-related fields BookMyShow returns for given event codes.
 - Booking alerts (`discover.py`): every movie's `meta.event.bookButton` and release date are stored in catalog.json.
-  Upcoming movies not bookable yet and every code in `watchlist.json` (`[{"code": "ET...", "name": "..."}]`) are
-  re-checked each discovery run; when booking opens (or a movie releasing later is first found already bookable)
+  Each run also reads Hyderabad's upcoming-movies page (`UPCOMING`, about a week ahead). Upcoming movies not
+  bookable yet and `watchlist.json` entries (`{"code": "ET...", "name": ...}` or `{"name": ..., "match": [words]}`;
+  words are matched against listed movies' page slugs/names) are re-checked each discovery run; a watched film's
+  first listing is reported as "Listed on BookMyShow, bookings not open yet"; when booking opens (or a movie releasing later is first found already bookable)
   the workflow opens a GitHub issue "Bookings opened: ..." / "Advance bookings open: ..." (once per movie).
   BookMyShow returns 429 after ~10 discovery requests, so details (12 max, 12 s apart) run before the crawl.
