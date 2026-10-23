@@ -31,6 +31,7 @@ POLL_SECONDS = 60          # gentle fallback interval
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
+DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
 SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
@@ -370,18 +371,32 @@ def next_sweep_time(t):
     return cand if cand > ist else cand + timedelta(days=1)
 
 
-def request_snapshot():
-    """Ask GitHub to run the snapshot workflow (scheduled runs are unreliable; dispatches are not)."""
+def next_discover_time(t):
+    """The next DISCOVER_AT time (IST wall clock) after t."""
+    ist = t.astimezone(IST)
+    for days in (0, 1):
+        for h, m in DISCOVER_AT:
+            cand = (ist + timedelta(days=days)).replace(hour=h, minute=m, second=0, microsecond=0)
+            if cand > ist:
+                return cand
+
+
+def request_workflow(workflow, label):
+    """Ask GitHub to run a workflow (scheduled runs are late or skipped; dispatches are not)."""
     if os.environ.get('SNAPSHOT_DISPATCH') != '1':
         return
     try:
-        res = subprocess.run(['gh', 'workflow', 'run', 'hourly_snapshot.yml', '--repo',
+        res = subprocess.run(['gh', 'workflow', 'run', workflow, '--repo',
                               os.environ.get('GITHUB_REPOSITORY', ''), '--ref', 'main'],
                              capture_output=True, text=True, timeout=60)
-        print(f'[{fmt(now())}] snapshot requested' if res.returncode == 0
-              else f'[{fmt(now())}] snapshot request failed: {res.stderr.strip()[:200]}', flush=True)
+        print(f'[{fmt(now())}] {label} requested' if res.returncode == 0
+              else f'[{fmt(now())}] {label} request failed: {res.stderr.strip()[:200]}', flush=True)
     except Exception as e:
-        print(f'[{fmt(now())}] snapshot request error: {e}', flush=True)
+        print(f'[{fmt(now())}] {label} request error: {e}', flush=True)
+
+
+def request_snapshot():
+    request_workflow('hourly_snapshot.yml', 'snapshot')
 
 
 def recently_polled(movie):
@@ -429,6 +444,7 @@ def run(keys, minutes, commit):
     dirty = False
     last_commit = time.monotonic()
     next_snap = next_snapshot_time(now())
+    next_discover = next_discover_time(now())
     sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
 
     def stop(*_):
@@ -468,6 +484,9 @@ def run(keys, minutes, commit):
                     last_commit = time.monotonic()
                 request_snapshot()
                 next_snap = next_snapshot_time(now())
+            if now() >= next_discover:
+                request_workflow('discover_movies.yml', 'movie discovery')
+                next_discover = next_discover_time(now())
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:

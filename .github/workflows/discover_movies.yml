@@ -1,6 +1,7 @@
 name: Discover Hyderabad Movies
 
-# Every morning (06:00 IST) find Hyderabad's current movies by following the "other movies"
+# Three times a day (06:40, 13:40, 20:40 IST, started by tracker.py; the daily cron below is a backup
+# because GitHub's own schedule runs late or not at all) find Hyderabad's current movies by following the "other movies"
 # list inside each movie's own response (the explore page itself is blocked for runners),
 # then add new movies to movies.json and re-tier how often each one is polled.
 # tracker.py picks the changes up when its next hourly run starts. See MOVIE_CHANGES.md.

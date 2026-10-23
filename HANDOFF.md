@@ -124,3 +124,6 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - Night sweep (`tracker.py`, `SWEEP_AT` 03:45 IST): every movie with an `every` interval is asked once just
   before 4 AM, so every movie has BookMyShow's own 24-hour figure for each 4 AM-4 AM day (~25 extra requests a day).
   Before this, hourly-tier movies (e.g. Ramayana) often had no reading between ~2 and 8 AM.
+- Discovery runs three times a day: `tracker.py` dispatches `discover_movies.yml` at DISCOVER_AT (06:40, 13:40,
+  20:40 IST); the daily cron stays as a backup (GitHub skipped it on 21 Oct and often ran it 4-5 h late).
+- `probe.py` / `probe.yml` (manual): prints the booking-related fields BookMyShow returns for given event codes.
