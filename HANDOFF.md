@@ -121,3 +121,6 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   "Days from 4 AM" aligns days to when BookMyShow shows its own figure.
 - Studio types using it: `board24` (last 24 hours leaderboard), `days24` (tickets per day across days),
   `totals` / `totalsbar` (one movie, per day and total; link params `ra`/`rb` = range, empty = tracking start / latest).
+- Night sweep (`tracker.py`, `SWEEP_AT` 03:45 IST): every movie with an `every` interval is asked once just
+  before 4 AM, so every movie has BookMyShow's own 24-hour figure for each 4 AM-4 AM day (~25 extra requests a day).
+  Before this, hourly-tier movies (e.g. Ramayana) often had no reading between ~2 and 8 AM.
