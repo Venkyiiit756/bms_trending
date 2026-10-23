@@ -12,6 +12,7 @@ import os
 import re
 import shutil
 
+import interest
 import sales
 import series
 
@@ -97,6 +98,17 @@ def main():
     os.makedirs(os.path.join(SITE, 'data'), exist_ok=True)
     with open(os.path.join(SITE, 'data', 'snapshots.json'), 'w', encoding='utf-8') as f:
         json.dump({'movies': names, 'days': rows_by_day}, f, separators=(',', ':'), ensure_ascii=False)
+    # "interested" counts of upcoming films (see interest.py), with release / bookable from the catalog
+    catalog = json.load(open(os.path.join(ROOT, 'catalog.json'), encoding='utf-8'))
+    films = []
+    for code, m in interest.series().items():
+        c = catalog.get(code, {})
+        films.append({'code': code, 'name': c.get('name') or m['name'], 'release': c.get('release') or m['release'],
+                      'book': c.get('book'), 'languages': c.get('languages', []),
+                      'url': f"https://in.bookmyshow.com/movies/hyderabad/{c.get('page_slug', 'movie')}/{code}",
+                      'points': [[t.astimezone(series.IST).strftime('%Y-%m-%d %H:%M'), v] for t, v in m['points']]})
+    with open(os.path.join(SITE, 'data', 'interest.json'), 'w', encoding='utf-8') as f:
+        json.dump({'films': films}, f, separators=(',', ':'), ensure_ascii=False)
     # tickets per half hour since tracking began, for daily totals (see sales.py)
     with open(os.path.join(SITE, 'data', 'sales.json'), 'w', encoding='utf-8') as f:
         json.dump(sales.build(), f, separators=(',', ':'), ensure_ascii=False)
