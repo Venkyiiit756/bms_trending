@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-24
+- added **Chatrapathi** (ET00322950), polled hourly
+- added **Rebel (2024)** (ET00395765), polled hourly
+- added **Avengers: Doomsday** (ET00439706), polled hourly
+- added **Spirit** (ET00452121), polled hourly
+- added **Fauzi** (ET00467913), polled hourly
+- added **Valmiki Ramayana** (ET00493199), polled hourly
+- added **Scene** (ET00516631), polled hourly
+- added **Jailer 2 Telugu** (ET00518675), polled hourly
+- added **Donga Naa Koduku** (ET00521157), polled hourly
+- added **Haiku Telugu** (ET00523167), polled hourly
+
 ## 2026-10-23
 - added **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942), polled hourly
 - added **Sense And Sensibility** (ET00507314), polled hourly

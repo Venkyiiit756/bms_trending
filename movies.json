@@ -513,7 +513,7 @@
   },
   {
     "key": "et00518916",
-    "name": "Tom And Jerry Forbidden Compass",
+    "name": "Tom and Jerry: Forbidden Compass",
     "eventcode": "ET00518916",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -525,7 +525,7 @@
   },
   {
     "key": "et00519221",
-    "name": "321 Love Marriage Vs Arranged",
+    "name": "321 [Love Marriage Vs Arranged]",
     "eventcode": "ET00519221",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -621,7 +621,7 @@
   },
   {
     "key": "et00507314",
-    "name": "Sense And Sensibility",
+    "name": "Sense and Sensibility",
     "eventcode": "ET00507314",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -657,7 +657,7 @@
   },
   {
     "key": "et00517728",
-    "name": "Bts World Tour Arirang In Buenos Aires Live Viewing Delayed",
+    "name": "BTS World Tour Arirang in Buenos Aires: Live Viewing (Delayed)",
     "eventcode": "ET00517728",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -726,5 +726,125 @@
     "headers_csv": "data/ET00523104_headers.csv",
     "every": 3600,
     "added": "2026-10-23"
+  },
+  {
+    "key": "et00322950",
+    "name": "Chatrapathi",
+    "eventcode": "ET00322950",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "chatrapathi-2005",
+    "csv": "data/ET00322950.csv",
+    "headers_csv": "data/ET00322950_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00395765",
+    "name": "Rebel (2024)",
+    "eventcode": "ET00395765",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "rebel-2024",
+    "csv": "data/ET00395765.csv",
+    "headers_csv": "data/ET00395765_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00439706",
+    "name": "Avengers: Doomsday",
+    "eventcode": "ET00439706",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "avengers-doomsday",
+    "csv": "data/ET00439706.csv",
+    "headers_csv": "data/ET00439706_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00452121",
+    "name": "Spirit",
+    "eventcode": "ET00452121",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "spirit",
+    "csv": "data/ET00452121.csv",
+    "headers_csv": "data/ET00452121_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00467913",
+    "name": "Fauzi",
+    "eventcode": "ET00467913",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "fauzi",
+    "csv": "data/ET00467913.csv",
+    "headers_csv": "data/ET00467913_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00493199",
+    "name": "Valmiki Ramayana",
+    "eventcode": "ET00493199",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "valmiki-ramayana",
+    "csv": "data/ET00493199.csv",
+    "headers_csv": "data/ET00493199_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00516631",
+    "name": "Scene",
+    "eventcode": "ET00516631",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "scene",
+    "csv": "data/ET00516631.csv",
+    "headers_csv": "data/ET00516631_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00518675",
+    "name": "Jailer 2 Telugu",
+    "eventcode": "ET00518675",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "jailer-2-telugu",
+    "csv": "data/ET00518675.csv",
+    "headers_csv": "data/ET00518675_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00521157",
+    "name": "Donga Naa Koduku",
+    "eventcode": "ET00521157",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "donga-naa-koduku",
+    "csv": "data/ET00521157.csv",
+    "headers_csv": "data/ET00521157_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00523167",
+    "name": "Haiku Telugu",
+    "eventcode": "ET00523167",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "haiku-telugu",
+    "csv": "data/ET00523167.csv",
+    "headers_csv": "data/ET00523167_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
   }
 ]
