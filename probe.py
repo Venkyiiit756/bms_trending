@@ -93,6 +93,28 @@ def upcoming(limit):
         time.sleep(discover.GAP)
 
 
+def widgets(codes):
+    """Every widget of both synopsis responses: id/type and the start of its JSON (where is "interested"?)."""
+    from curl_cffi import requests
+    for code in codes:
+        for kind, url in URLS.items():
+            r = requests.get(discover.BASE + url.format(code), headers=discover.HEADERS, impersonate='chrome', timeout=30)
+            print(f'===== {code} {kind}: HTTP {r.status_code}, {len(r.text)} bytes', flush=True)
+            if r.status_code != 200:
+                continue
+            data = r.json()
+            for m in re.finditer(r'.{0,160}(?:nterest|K\+? )[^"]{0,60}', r.text):
+                if 'nterest' in m.group(0):
+                    print('   TEXT:', m.group(0)[-220:])
+            ws = data.get('widgets') or {}
+            items = ws.items() if isinstance(ws, dict) else enumerate(ws)
+            for k, w in items:
+                print(f'   widget {k}: {json.dumps(w, ensure_ascii=False)[:260]}')
+            if kind == 'init':
+                print('   widgetsOrder:', json.dumps(data.get('widgetsOrder'), ensure_ascii=False)[:1500])
+            time.sleep(discover.GAP)
+
+
 def search(queries):
     """Try endpoints that might list upcoming movies or search by name; print the movies found."""
     from curl_cffi import requests
@@ -111,7 +133,9 @@ def search(queries):
 
 
 if __name__ == '__main__':
-    if sys.argv[1:2] == ['--upcoming']:
+    if sys.argv[1:2] == ['--widgets']:
+        widgets(sys.argv[2:])
+    elif sys.argv[1:2] == ['--upcoming']:
         upcoming(int(sys.argv[2]) if len(sys.argv) > 2 else 10)
     elif sys.argv[1:2] == ['--search']:
         search(sys.argv[2:])
