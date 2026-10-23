@@ -135,6 +135,25 @@ def interest(codes):
             time.sleep(discover.GAP)
 
 
+def page(paths):
+    """For each page: API URLs, paging hints and movie codes inside it (where do more upcoming films come from?)."""
+    from curl_cffi import requests
+    for path in paths:
+        r = requests.get(discover.BASE + path, headers=discover.HEADERS, impersonate='chrome', timeout=30)
+        codes = sorted(set(re.findall(r'ET\d{8}', r.text)))
+        print(f'===== {path}: HTTP {r.status_code}, {len(r.text)} bytes, {len(codes)} codes', flush=True)
+        for u in sorted(set(re.findall(r'(?:https?://[a-z.]*bookmyshow\.com)?/(?:api|serv|pwa)/[A-Za-z0-9_./?=&%-]{3,160}', r.text)))[:40]:
+            print('   API', u)
+        for k in sorted(set(re.findall(r'"(page\w*|offset|limit|hasMore\w*|next\w*|cursor|totalCount|count)"\s*:\s*("?[^,"}]{0,40}"?)', r.text)))[:30]:
+            print('   KEY', k)
+        for m in re.finditer(r'doomsday|avengers|fauzi|coming soon', r.text, re.I):
+            print('   HIT', r.text[max(0, m.start()-80):m.end()+80].replace('\n', ' '))
+            break
+        if r.status_code in (403, 429):
+            return
+        time.sleep(discover.GAP)
+
+
 def search(queries):
     """Try endpoints that might list upcoming movies or search by name; print the movies found."""
     from curl_cffi import requests
@@ -153,7 +172,9 @@ def search(queries):
 
 
 if __name__ == '__main__':
-    if sys.argv[1:2] == ['--interest']:
+    if sys.argv[1:2] == ['--page']:
+        page(sys.argv[2:])
+    elif sys.argv[1:2] == ['--interest']:
         interest(sys.argv[2:])
     elif sys.argv[1:2] == ['--widgets']:
         widgets(sys.argv[2:])

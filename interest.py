@@ -65,7 +65,8 @@ def release_day(text):
 
 
 def targets(day=None):
-    """[(code, name, release)] to follow: catalog films not released yet (release date after today),
+    """[(code, name, release)] to follow: catalog films not released yet (release date after today, or
+    no date yet but on an upcoming / coming-soon page in the last 3 days),
     plus watchlist codes, nearest release first."""
     day = day or datetime.now(IST).date()
     catalog_path = os.path.join(ROOT, 'catalog.json')
@@ -73,11 +74,13 @@ def targets(day=None):
     watch_path = os.path.join(ROOT, 'watchlist.json')
     watch = json.load(open(watch_path, encoding='utf-8')) if os.path.exists(watch_path) else []
     out, groups = {}, set()
-    for code, e in sorted(catalog.items(), key=lambda kv: release_day(kv[1].get('release')) or day):
+    far = day + timedelta(days=3650)       # undated films last
+    for code, e in sorted(catalog.items(), key=lambda kv: release_day(kv[1].get('release')) or far):
         r = release_day(e.get('release'))
-        if r is None or r <= day - timedelta(days=AFTER_RELEASE):
+        listed = (e.get('upcoming') or '') >= (day - timedelta(days=3)).isoformat()   # on an upcoming page lately
+        if (r is None and not listed) or (r is not None and r <= day - timedelta(days=AFTER_RELEASE)):
             continue
-        if e.get('group') in groups:        # one listing per film (same count)
+        if e.get('group') and e.get('group') in groups:        # one listing per film (same count)
             continue
         groups.add(e.get('group'))
         out[code] = (code, e.get('name', code), e.get('release') or '')

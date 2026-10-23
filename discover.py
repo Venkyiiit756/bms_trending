@@ -13,7 +13,8 @@ uses the catalog to add new movies to movies.json and to retire ones that have d
 Stops at the first 403/429 and keeps what it has.
 
 Booking alerts: each movie's page says whether it can be booked (`meta.event.bookButton`) and
-its release date. Each run also reads Hyderabad's "upcoming movies" page (about a week ahead).
+its release date. Each run also reads Hyderabad's "upcoming movies" (about a week ahead) and
+"coming soon" (further out, e.g. Avengers: Doomsday) pages.
 Upcoming movies that cannot be booked yet, and watchlist.json entries (an event code, or name
 words matched against listed movies, so a film is watched as soon as BookMyShow lists it), are
 re-checked on each run; a watched film's first listing is reported too; when booking opens (or a movie releasing later is first found
@@ -32,7 +33,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CATALOG = os.path.join(ROOT, 'catalog.json')
 WATCHLIST = os.path.join(ROOT, 'watchlist.json')
 ALERTS = os.path.join(ROOT, 'build', 'booking_alerts.json')
-UPCOMING = '/explore/upcoming-movies-hyderabad'
+UPCOMING = ['/explore/upcoming-movies-hyderabad', '/explore/coming-soon-hyderabad']   # next week; further out
+LISTED = re.compile(r'"url":"[^"]*/([a-z0-9][a-z0-9-]*)/(ET\d{8})","name":"([^"]+)"')
 BASE = 'https://in.bookmyshow.com'
 HEADERS = {'Accept': 'application/json, text/plain, */*', 'x-platform': 'AND', 'x-platform-code': 'ANDROID',
            'x-app-code': 'MOBAND2', 'x-region-code': 'HYD', 'x-region-slug': 'hyderabad',
@@ -133,13 +135,18 @@ def needs_details(entry, day):
     return not entry.get('book') and r is not None and r >= day - timedelta(days=2)
 
 
-def upcoming_page():
-    """{eventcode: slug} from Hyderabad's upcoming-movies page."""
+def upcoming_page(path):
+    """{eventcode: (slug, name or None)} from one of Hyderabad's upcoming / coming-soon pages."""
     from curl_cffi import requests
-    r = requests.get(BASE + UPCOMING, headers=HEADERS, impersonate='chrome', timeout=30)
+    r = requests.get(BASE + path, headers=HEADERS, impersonate='chrome', timeout=30)
     if r.status_code in (403, 429):
         raise Blocked(f'HTTP {r.status_code}')
-    return {code: slug for slug, code in LINK.findall(r.text)} if r.status_code == 200 else {}
+    if r.status_code != 200:
+        return {}
+    found = {code: (slug, None) for slug, code in LINK.findall(r.text)}
+    for slug, code, name in LISTED.findall(r.text):      # the page's list markup carries names
+        found[code] = (slug, name)
+    return found
 
 
 def watched_codes(watch, catalog, day):
@@ -192,11 +199,14 @@ def main():
     # up, then upcoming movies that cannot be booked yet (movies found by this run's crawl: next run)
     blocked = False
     try:
-        for code, slug in upcoming_page().items():
-            e = catalog.setdefault(code, {'first_seen': day, 'last_listed': None, 'name': code, 'page_slug': slug,
-                                          'last_checked': None, 'figure': None})
-            e['upcoming'] = day
-        time.sleep(GAP)
+        for path in UPCOMING:
+            for code, (slug, name) in upcoming_page(path).items():
+                e = catalog.setdefault(code, {'first_seen': day, 'last_listed': None, 'name': code, 'page_slug': slug,
+                                              'last_checked': None, 'figure': None})
+                e['upcoming'] = day
+                if name and e.get('name', code) == code:
+                    e['name'] = name
+            time.sleep(GAP)
     except Blocked as e:
         print(f'blocked ({e}) on the upcoming page', flush=True)
         blocked = True
