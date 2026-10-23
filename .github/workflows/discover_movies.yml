@@ -20,6 +20,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: write
+      issues: write
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
@@ -38,3 +39,7 @@ jobs:
         git diff --cached --quiet && exit 0
         git commit -m "Update movie list and polling plan [skip ci]"
         for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+    - name: Booking alerts (one GitHub issue per movie whose bookings just opened)
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python discover.py --post-alerts
