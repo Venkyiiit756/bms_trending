@@ -93,7 +93,7 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "24_hours"
+  "figure": "1_hour"
  },
  "ET00481645": {
   "name": "Street Fighter",
@@ -347,7 +347,7 @@
   "name": "Mayookha",
   "page_slug": "mayookha",
   "first_seen": "2026-10-18",
-  "last_listed": "2026-10-21",
+  "last_listed": "2026-10-23",
   "last_checked": null,
   "figure": null
  },

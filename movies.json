@@ -460,7 +460,7 @@
     "page_slug": "udta-teer",
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-22"
   },
   {
@@ -472,7 +472,7 @@
     "page_slug": "418",
     "csv": "data/ET00509047.csv",
     "headers_csv": "data/ET00509047_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-22"
   },
   {

@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-23
+- **Udta Teer** (ET00495822): hourly -> every 30 min (best hourly figure in 24 h: 4.5K)
+- **418** (ET00509047): hourly -> every 30 min (best hourly figure in 24 h: 3.8K)
+
+## 2026-10-23
 - added **Jayaho Ramanuja** (ET00521605), polled hourly
 - added **Lohitaksha** (ET00523468), polled hourly
 
