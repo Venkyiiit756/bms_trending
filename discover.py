@@ -233,7 +233,12 @@ def main():
             before = entry.get('book')
             entry.update(d)
             alert = booking_alert(code, entry, before, d0)
-            if not alert and code in watched and not entry['book'] and not entry.get('listed_alert'):
+            same_film = [c for c, e in catalog.items()
+                         if c != code and e.get('group') and e.get('group') == entry.get('group')
+                         and (e.get('book_opened') or e.get('listed_alert'))]
+            if alert and same_film:
+                alert = None     # another listing (format/language) of a film already reported
+            if not alert and not same_film and code in watched and not entry['book'] and not entry.get('listed_alert'):
                 entry['listed_alert'] = day      # a watched film is now on BookMyShow, not bookable yet
                 alert = {'code': code, 'kind': 'Listed on BookMyShow, bookings not open yet',
                          'name': entry.get('name', code), 'release': entry.get('release'),
