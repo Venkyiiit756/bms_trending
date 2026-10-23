@@ -19,3 +19,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-23 14:50:05+05:30,418,1_hour,2.98K,2.98K tickets booked in last 1 hour,2026-10-23 14:06:38+05:30,change,2026-10-23 14:50:05+05:30
 2026-10-23 17:20:02+05:30,418,1_hour,2.41K,2.41K tickets booked in last 1 hour,2026-10-23 14:50:05+05:30,change,2026-10-23 17:20:02+05:30
 2026-10-23 18:01:38+05:30,418,1_hour,2.94K,2.94K tickets booked in last 1 hour,2026-10-23 17:20:02+05:30,change,2026-10-23 18:01:38+05:30
+2026-10-23 19:01:19+05:30,418,1_hour,3.37K,3.37K tickets booked in last 1 hour,2026-10-23 18:01:38+05:30,change,2026-10-23 19:01:19+05:30
