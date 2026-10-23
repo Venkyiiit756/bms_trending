@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV = os.path.join(ROOT, 'data', 'interest.csv')
 FIELDS = ['timestamp', 'eventcode', 'movie_name', 'text', 'interested', 'release']
 INTEREST_EVERY = 3 * 3600
-AFTER_RELEASE = 3            # days a film stays a target after its release date
+AFTER_RELEASE = 0            # released films show ratings, not the interested count
 MAX_TARGETS = 30
 COUNT = re.compile(r'([\d.]+)\s*([KkMm]?)\+?\s+(?:are\s+)?interested')
 
@@ -65,7 +65,7 @@ def release_day(text):
 
 
 def targets(day=None):
-    """[(code, name, release)] to follow: catalog films releasing from AFTER_RELEASE days ago onwards,
+    """[(code, name, release)] to follow: catalog films not released yet (release date after today),
     plus watchlist codes, nearest release first."""
     day = day or datetime.now(IST).date()
     catalog_path = os.path.join(ROOT, 'catalog.json')
@@ -75,7 +75,7 @@ def targets(day=None):
     out, groups = {}, set()
     for code, e in sorted(catalog.items(), key=lambda kv: release_day(kv[1].get('release')) or day):
         r = release_day(e.get('release'))
-        if r is None or r < day - timedelta(days=AFTER_RELEASE):
+        if r is None or r <= day - timedelta(days=AFTER_RELEASE):
             continue
         if e.get('group') in groups:        # one listing per film (same count)
             continue

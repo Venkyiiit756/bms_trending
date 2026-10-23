@@ -137,7 +137,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 
 ## Interest ("I'm interested") counts (interest.py)
 - Source: app endpoint `/api/movies/v1/synopsis/init/static?eventcode=...` -> text " 35.5K+ are interested ".
-- `tracker.py` asks each film from `interest.targets()` (catalog films releasing from 3 days ago onwards + watchlist
+- `tracker.py` asks each film from `interest.targets()` (catalog films not released yet + watchlist
   codes, one listing per BookMyShow group, max 30) every 3 h inside its paced loop (`InterestJob`), rows in
   `data/interest.csv`. Site: `data/interest.json`, "Upcoming" tab, Studio type `interest` ("Most awaited").
 - Replaces the separate `bms-interest-tracker` repo (Puppeteer scrape of web pages, fixed 2025 list, 1/19 working).

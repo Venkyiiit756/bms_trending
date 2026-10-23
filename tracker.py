@@ -29,7 +29,7 @@ CACHE_TTL = 600
 EXPIRY_MARGIN = 2          # ask this many seconds after the expected expiry
 MIN_WAIT = 5
 MAX_QUICK_RETRIES = 4      # still cached after expiry this many times -> poll gently
-POLL_SECONDS = 60          # gentle fallback interval
+POLL_SECONDS = 180         # gentle fallback interval (also for a copy already past CACHE_TTL)
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
@@ -350,7 +350,9 @@ def poll(st, shared):
     elif not hit:
         st.retries = 0
     wait = max(CACHE_TTL - cache_age(headers) + EXPIRY_MARGIN, MIN_WAIT)
-    if st.retries >= MAX_QUICK_RETRIES:
+    if st.retries >= MAX_QUICK_RETRIES or (hit and cache_age(headers) >= CACHE_TTL):
+        # the edge keeps serving a stale copy: asking again within seconds only adds requests
+        # (it caused 429 blocks: one movie asked every 15-60 s while its copy stayed stale)
         wait = POLL_SECONDS
     st.targeted = st.retries < MAX_QUICK_RETRIES
     st.due = mono + (st.every or wait)
