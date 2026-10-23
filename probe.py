@@ -2,7 +2,8 @@
 """Print the booking-related fields BookMyShow returns for some movies (a diagnostic, run by hand).
 
     python probe.py ET00451914 ET00447840
-    python probe.py --search fauzi king100      # look for upcoming movies / search by name
+    python probe.py --search fauzi king100      # try endpoints that list or search movies
+    python probe.py --upcoming 10               # movies on the upcoming pages, with details for 10
 
 For each movie: both synopsis responses' top-level keys, meta.event, and every field whose key
 or text mentions booking, buttons, release, sale or status. Used to find what marks a movie
@@ -62,6 +63,36 @@ SEARCH = ['/api/explore/v1/discover/upcoming-movies-hyderabad',
           '/serv/getData?cmd=QUICKSEARCH&q={q}&region=HYD']
 
 
+PAGES = ['/explore/upcoming-movies-hyderabad?languages=telugu', '/explore/upcoming-movies-hyderabad',
+         '/explore/movies-hyderabad?languages=telugu']
+
+
+def upcoming(limit):
+    """Every movie code on the upcoming-movies pages, then name / languages / release / bookable for each."""
+    from curl_cffi import requests
+    codes = {}
+    for path in PAGES:
+        r = requests.get(discover.BASE + path, headers=discover.HEADERS, impersonate='chrome', timeout=30)
+        found = re.findall(r'ET\d{8}', r.text)
+        print(f'===== {path}: HTTP {r.status_code}, {len(set(found))} codes', flush=True)
+        for c in found:
+            codes.setdefault(c, path)
+        if r.status_code in (403, 429):
+            break
+        time.sleep(discover.GAP)
+    known = json.load(open(discover.CATALOG, encoding='utf-8'))
+    todo = [c for c in codes if not known.get(c, {}).get('group')]
+    print(f'{len(codes)} codes, {len(todo)} not in the catalog with details; looking up {min(limit, len(todo))}')
+    for c in todo[:limit]:
+        try:
+            d = discover.details(c)
+        except discover.Blocked as e:
+            print(f'blocked ({e})')
+            break
+        print(f"   {c} {json.dumps(d, ensure_ascii=False) if d else 'no details'}", flush=True)
+        time.sleep(discover.GAP)
+
+
 def search(queries):
     """Try endpoints that might list upcoming movies or search by name; print the movies found."""
     from curl_cffi import requests
@@ -80,7 +111,9 @@ def search(queries):
 
 
 if __name__ == '__main__':
-    if sys.argv[1:2] == ['--search']:
+    if sys.argv[1:2] == ['--upcoming']:
+        upcoming(int(sys.argv[2]) if len(sys.argv) > 2 else 10)
+    elif sys.argv[1:2] == ['--search']:
         search(sys.argv[2:])
     else:
         main(sys.argv[1:])
