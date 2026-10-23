@@ -27,6 +27,7 @@ nav button{border:0;background:none;color:var(--mute);font:600 14px Inter,system
 nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand)}
 main section{display:none}
 main section.on{display:grid;gap:14px;padding-bottom:40px}
+main section>*{min-width:0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .spread{justify-content:space-between}
@@ -106,6 +107,7 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
   <button role="tab" data-tab="studio">Studio</button>
   <button role="tab" data-tab="explore">Explore</button>
   <button role="tab" data-tab="totals">Totals</button>
+  <button role="tab" data-tab="upcoming">Upcoming</button>
   <button role="tab" data-tab="kit">Auto posts</button>
   <button role="tab" data-tab="data">Data</button>
 </nav>
@@ -162,6 +164,9 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
             <option value="days24">Tickets per day across days</option>
             <option value="totals">One movie: tickets per day and total</option>
             <option value="totalsbar">One movie: tickets per day, chart</option>
+          </optgroup>
+          <optgroup label="Upcoming films">
+            <option value="interest">Most awaited: interested</option>
           </optgroup>
         </select>
       </label>
@@ -249,6 +254,16 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
   </div>
 </section>
 
+<!-- UPCOMING -->
+<section id="upcoming">
+  <div class="card">
+    <div class="row spread"><div><h2>Upcoming films: how many are interested</h2>
+      <div class="mute">People who tapped "I'm interested" on BookMyShow, as BookMyShow shows it (rounded, e.g. 35.5K+). Checked every 3 hours for films releasing soon or in the last 3 days.</div></div>
+      <button id="uImg">Make image</button></div>
+    <div id="uTable" style="margin-top:10px;overflow-x:auto"></div>
+  </div>
+</section>
+
 <!-- AUTO POSTS -->
 <section id="kit">
   <div class="card">
@@ -285,7 +300,7 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-let M={}, D={movies:[],days:{}}, SL={movies:[]}, HANDLE='';
+let M={}, D={movies:[],days:{}}, SL={movies:[]}, IN={films:[]}, HANDLE='';
 const NAVY='#1f3a5f', ZEBRA='#f4f7fb', INK='#222222', MUTE='#6b7684', UP='#0a7d33', DOWN='#c0392b', BAND='#dfe8f5';
 const DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -357,6 +372,7 @@ const DAYTYPES=['peak','daytable','multiline'], MAXCOLS={daytable:4,multiline:4}
 function dayBest(d){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};return best}
 const SALESTYPES=['board24','days24','totals','totalsbar'];
 function candidates(){const d=$('#sDay').value,t=$('#sTime').value;
+  if(S.type==='interest')return inRows().map(r=>r.f.name);
   if(S.type==='totals'||S.type==='totalsbar')return SL.movies.filter(m=>m.slots.length>48).map(m=>m.name);
   if(S.type==='board24'||S.type==='days24'){const ms=istMs(d,t);return SL.movies.map(m=>({n:m.name,r:day24(m,slIdx(m,ms))})).filter(x=>x.r).sort((a,b)=>b.r.v-a.r.v).map(x=>x.n)}
   if(DAYTYPES.includes(S.type)||S.type==='week'||S.type==='line'){const b=dayBest(d);if(S.type==='line'||S.type==='multiline'){/* only movies with data up to the chosen time */}return Object.entries(b).sort((a,c)=>c[1].n-a[1].n).map(x=>x[0])}
@@ -366,8 +382,8 @@ function moviesFor(){const c=candidates();const ty=S.type;
   $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<def?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure here.</span>';
   $$('#sPick input').forEach(i=>i.onchange=render);
   const cur=$('#sMovie').value;fill($('#sMovie'),c,cur);
-  const tot=ty==='totals'||ty==='totalsbar';
-  const vis={date:!tot,time:!['peak','daytable','week'].includes(ty)&&!tot,cmp:ty==='board',days:['trend','week','days24'].includes(ty),movie:['line','week'].includes(ty)||tot,top:!['line','week'].includes(ty)&&!tot,hours:['daytable','week'].includes(ty)};
+  const tot=ty==='totals'||ty==='totalsbar',inr=ty==='interest';
+  const vis={date:!tot&&!inr,time:!['peak','daytable','week'].includes(ty)&&!tot&&!inr,cmp:ty==='board',days:['trend','week','days24'].includes(ty),movie:['line','week'].includes(ty)||tot,top:!['line','week'].includes(ty)&&!tot,hours:['daytable','week'].includes(ty)};
   $('#sDay').parentElement.hidden=!vis.date;$('#sRangeWrap').hidden=!tot;
   $('#sTimeWrap').hidden=!vis.time;$('#sCmpWrap').hidden=!vis.cmp;$('#sDaysWrap').hidden=!vis.days;$('#sMovieWrap').hidden=!vis.movie;$('#sTopWrap').hidden=!vis.top;$('#sHoursWrap').hidden=!vis.hours;
   $('#sPick').hidden=!vis.top||$('#sTop').value!=='pick';
@@ -456,6 +472,16 @@ function render(){
     CAP.short=top?(mv?`Biggest riser on BookMyShow at ${timeLabel(t)}: ${top.n}, ${top.v.t} tickets in the hour (${pctTxt(top.p)} ${vs}).\n\n${tags(top.n)}`
       :`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmode!=='none'&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}.\n\n${tags(top.n)}`):'';
     ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}`+(cmode!=='none'?`, with change ${vs}`:'')+': '+list.map(l=>`${l.n} ${l.v.t}${cmode!=='none'&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')}`:''}`).join('; ');
+  } else if(S.type==='interest'){
+    const pick=new Set(chosen());const list=inRows().filter(r=>pick.has(r.f.name));
+    const asof=list.length?list.reduce((a,r)=>r.t>a?r.t:a,''):'';
+    const nm=n=>n.length>24?n.replace(/\s*\([^)]*\)\s*$/,''):n;
+    const rows=list.map((r,i)=>[i+1,nm(r.f.name),r.rel.short,fmt(r.v)+'+',r.g1!=null?'+'+fmt(r.g1):'—']);
+    box=frame(ctx,W,H,'Most awaited on BookMyShow',asof?`People who marked "interested" · ${whenLabel(keyMs(asof.replace(':','')))} IST`:'');
+    if(rows.length)table(ctx,W,box,['#','Film','Release','Interested','Last 24h'],rows,list.map(()=>[th.rank,th.first,th.ink,th.ink,th.up]),[.08,.4,.18,.17,.17]);else empty(ctx,W,H,'No interest figures yet');
+    CAP.long=build('🍿 Most awaited on BookMyShow (people who marked "interested")',list.map((r,i)=>`${i+1}. ${r.f.name}: ${fmt(r.v)}+${r.g1?` (+${fmt(r.g1)} in 24h)`:''}, ${r.rel.short}`),list.slice(0,2).map(r=>r.f.name));
+    CAP.short=list[0]?`${list[0].f.name} leads BookMyShow interest: ${fmt(list[0].v)}+ people marked interested${list[0].g1?` (+${fmt(list[0].g1)} in 24h)`:''}. Releases ${list[0].rel.short}.\n\n${tags(list[0].f.name)}`:'';
+    ALT='Table of upcoming films by the number of people who marked interested on BookMyShow: '+list.map(r=>`${r.f.name} ${fmt(r.v)}+, releases ${r.rel.short}`).join('; ');
   } else if(S.type==='board24'){
     const ms=istMs(d,t);const pickset=new Set(chosen());
     const list=SL.movies.filter(m=>pickset.has(m.name)).map(m=>{const i=slIdx(m,ms);const r=day24(m,i),pv=day24(m,i-48);return {n:m.name,r,p:r&&pv?pct(r.v,pv.v):null}}).filter(l=>l.r).sort((a,b)=>b.r.v-a.r.v);
@@ -704,6 +730,19 @@ $('#tCsv').onclick=()=>{if(!TT.res)return;const m=TT.m;const rows=[['day','from_
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));a.download=`${m.name.replace(/[^A-Za-z0-9]+/g,'_')}_daily_${msParts(slMs(m,TT.a))[0]}_${msParts(slMs(m,TT.b))[0]}.csv`;a.click()};
 $('#tImg').onclick=()=>{if(!TT.m)return;const L=TT.m.slots.length-1;apply({type:'totals',movie:TT.m.name,ra:TT.a===0?'':msKey(slMs(TT.m,TT.a)),rb:TT.b===L?'':msKey(slMs(TT.m,TT.b))},false);show('studio')};
 
+/* ---------- UPCOMING: interested counts (data/interest.json, see interest.py) ---------- */
+const inMs=s=>keyMs(s.slice(0,10)+' '+s.slice(11,13)+s.slice(14,16));
+function inAt(f,ms){let best=null;for(const p of f.points){if(inMs(p[0])<=ms)best=p;else break}return best}
+function releaseInfo(text){const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(text||'');if(!m)return {short:'—',long:'—',days:null};
+  const d=iso(new Date(Date.UTC(+m[3],MON.indexOf(m[1]),+m[2])));const today=msParts(Date.now())[0];const days=Math.round((pd(d)-pd(today))/864e5);
+  return {short:`${pd(d).getUTCDate()} ${m[1]}`,long:`${dayLabel(d)} · ${days>1?`in ${days} days`:days===1?'tomorrow':days===0?'today':'released'}`,days}}
+function inRows(){return IN.films.filter(f=>f.points.length).map(f=>{const L=f.points[f.points.length-1],ms=inMs(L[0]);const d1=inAt(f,ms-864e5),d7=inAt(f,ms-7*864e5);
+  return {f,v:L[1],t:L[0],g1:d1&&inMs(d1[0])>ms-1.5*864e5?L[1]-d1[1]:null,g7:d7?L[1]-d7[1]:null,rel:releaseInfo(f.release)}}).sort((a,b)=>b.v-a.v)}
+function upcoming(){const R=inRows();
+  $('#uTable').innerHTML=R.length?`<table><thead><tr><th>#</th><th>Film</th><th>Release</th><th class="n">Interested</th><th class="n">Last 24h</th><th class="n hide-sm">Last 7 days</th><th class="hide-sm">Bookings</th></tr></thead><tbody>${R.map((r,i)=>`<tr><td class="rank">${i+1}</td><td class="movie"><a href="${r.f.url}" target="_blank" rel="noopener" style="color:inherit">${r.f.name}</a><div class="mute">${(r.f.languages||[]).slice(0,4).join(', ')}</div></td><td>${r.rel.long}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.g1>0?'up':''}">${r.g1!=null?'+'+fmt(r.g1):'—'}</td><td class="n hide-sm">${r.g7!=null?'+'+fmt(r.g7):'—'}</td><td class="hide-sm">${r.f.book?'<span class="src ok">Open</span>':r.f.book===false?'<span class="src">Not yet</span>':''}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:8px">Counts are rounded by BookMyShow, so small changes show in steps (0.1K below 100K, 1K above). Latest check ${whenLabel(inMs(R.reduce((a,r)=>r.t>a?r.t:a,'')))} IST.</div>`
+    :'<div class="empty">No interest figures yet. The tracker checks upcoming films every 3 hours.</div>'}
+$('#uImg').onclick=()=>{apply({type:'interest',top:'7'},false);show('studio')};
+
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
   if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
@@ -728,11 +767,12 @@ function kit(){
 
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
-  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals()}
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming')upcoming()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
-  [M,D,SL]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
-    fetch('data/sales.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({movies:[]}))]);
+  [M,D,SL,IN]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
+    fetch('data/sales.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({movies:[]})),
+    fetch('data/interest.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({films:[]}))]);
   HANDLE=M.handle||'';$('#handle').textContent=HANDLE;
   try{const H=await (await fetch('health.json',{cache:'no-store'})).json();const [d,t]=(H.newest||' ').split(' ');
     $('#health').innerHTML=`<span class="dot ${H.ok?'':'bad'}"></span>${H.ok?'Live':'Delayed'} · latest reading ${d?dayLabel(d)+' '+timeLabel(t.replace(':','')):'unknown'} IST`}catch(e){}
@@ -749,7 +789,7 @@ async function init(){
 function route(){
   const [tab,q]=location.hash.slice(1).split('?');
   if(tab==='studio'&&q){show('studio');apply(Object.fromEntries(new URLSearchParams(q)),false)}
-  else if(['now','studio','explore','totals','kit','data'].includes(tab))show(tab);
+  else if(['now','studio','explore','totals','upcoming','kit','data'].includes(tab))show(tab);
 }
 init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
 </script>

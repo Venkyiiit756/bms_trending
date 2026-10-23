@@ -8,6 +8,8 @@ import argparse
 import subprocess
 from datetime import datetime, timedelta, timezone
 
+import interest
+
 # Movies to track live in movies.json; run one process per movie with --movie KEY.
 MOVIES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'movies.json')
 MOVIE = {'key': 'drishyam', 'eventcode': 'ET00477911', 'name': 'Drishyam 3',
@@ -355,6 +357,50 @@ def poll(st, shared):
     return logged
 
 
+class InterestJob:
+    """The "interested" count of one upcoming film (interest.py), asked every INTEREST_EVERY seconds."""
+
+    def __init__(self, code, name, release, due):
+        self.code, self.name, self.release, self.due = code, name, release, due
+        self.every = 0                 # not part of the night sweep
+        self.files = [interest.CSV]
+
+
+def poll_interest(job, shared):
+    """Ask one film's interested count (child process, like fetch()); True if a row was written."""
+    cmd = [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'interest.py'), '--fetch', job.code]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=FETCH_TIMEOUT)
+        result = json.loads(proc.stdout.strip().splitlines()[-1])
+    except (subprocess.TimeoutExpired, ValueError, IndexError):
+        result = {'error': True, 'status': 0, 'detail': 'request process failed'}
+    mono = time.monotonic()
+    if result.get('error'):
+        if result['status'] == 200:        # no count on the page: try again next interval
+            job.due = mono + interest.INTEREST_EVERY
+        else:                              # access problem: every request backs off
+            shared['failures'] += 1
+            wait = backoff_wait(shared['failures'], result.get('retry_after', 0))
+            shared['block_until'] = max(shared['block_until'], mono + wait)
+            job.due = mono + wait
+        print(f"[{fmt(now())}] interest {job.name}: {result['detail']}", flush=True)
+        return False
+    shared['failures'] = 0
+    interest.append(now(), job.code, job.name, result['text'], result['value'], job.release)
+    print(f"[{fmt(now())}] interest {job.name}: {result['text']}", flush=True)
+    job.due = mono + interest.INTEREST_EVERY
+    return True
+
+
+def interest_jobs(start):
+    """Jobs for interest.targets(), due when their last row is INTEREST_EVERY old (new ones a minute apart)."""
+    last, jobs = interest.last_polled(), []
+    for i, (code, name, release) in enumerate(interest.targets()):
+        age = (now() - last[code]).total_seconds() if code in last else interest.INTEREST_EVERY
+        jobs.append(InterestJob(code, name, release, start + 120 + i * 60 + max(0, interest.INTEREST_EVERY - age)))
+    return jobs
+
+
 def next_snapshot_time(t):
     """The next :05 or :35 (IST wall clock) after t, when a snapshot should be requested."""
     base = t.replace(minute=5, second=0, microsecond=0)
@@ -439,6 +485,7 @@ def run(keys, minutes, commit):
         every = min(movies[k]['every'], 3600)
         due[k] = start + len(fast) * MIN_GAP + i * (every - 300) / len(slow)
     states = [State(movies[k], due[k]) for k in keys]
+    jobs = interest_jobs(start)
     shared = {'failures': 0, 'block_until': 0.0}
     last_request = 0.0
     dirty = False
@@ -451,7 +498,7 @@ def run(keys, minutes, commit):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM, stop)
 
-    files = [p for s in states for p in s.files]
+    files = [p for s in states for p in s.files] + [interest.CSV]
     try:
         while True:
             if time.monotonic() >= sweep_mono:
@@ -460,7 +507,7 @@ def run(keys, minutes, commit):
                         s.due = min(s.due, time.monotonic())
                 print(f'[{fmt(now())}] night sweep: asking every movie before 4 AM', flush=True)
                 sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
-            st = min(states, key=lambda s: s.due)
+            st = min(states + jobs, key=lambda s: s.due)
             go = max(st.due, shared['block_until'], last_request + MIN_GAP)
             if min(go, sweep_mono) >= end:
                 print('Run window finished.', flush=True)
@@ -476,7 +523,7 @@ def run(keys, minutes, commit):
                     continue
                 sleep(max(0, go - time.monotonic()))
             last_request = time.monotonic()
-            dirty = poll(st, shared) or dirty
+            dirty = (poll_interest(st, shared) if isinstance(st, InterestJob) else poll(st, shared)) or dirty
             if now() >= next_snap:
                 if dirty and commit:
                     commit_and_push(files)     # so the snapshot sees the newest rows

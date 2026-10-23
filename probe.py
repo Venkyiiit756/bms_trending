@@ -93,6 +93,48 @@ def upcoming(limit):
         time.sleep(discover.GAP)
 
 
+def widgets(codes):
+    """Every widget of both synopsis responses: id/type and the start of its JSON (where is "interested"?)."""
+    from curl_cffi import requests
+    for code in codes:
+        for kind, url in URLS.items():
+            r = requests.get(discover.BASE + url.format(code), headers=discover.HEADERS, impersonate='chrome', timeout=30)
+            print(f'===== {code} {kind}: HTTP {r.status_code}, {len(r.text)} bytes', flush=True)
+            if r.status_code != 200:
+                continue
+            data = r.json()
+            for m in re.finditer(r'.{0,160}(?:nterest|K\+? )[^"]{0,60}', r.text):
+                if 'nterest' in m.group(0):
+                    print('   TEXT:', m.group(0)[-220:])
+            ws = data.get('widgets') or {}
+            items = ws.items() if isinstance(ws, dict) else enumerate(ws)
+            for k, w in items:
+                print(f'   widget {k}: {json.dumps(w, ensure_ascii=False)[:260]}')
+            if kind == 'init':
+                print('   widgetsOrder:', json.dumps(data.get('widgetsOrder'), ensure_ascii=False)[:1500])
+            time.sleep(discover.GAP)
+
+
+def interest(codes):
+    """Look for the "X interested" count: the static synopsis endpoint and the movie's web page."""
+    from curl_cffi import requests
+    cat = json.load(open(discover.CATALOG, encoding='utf-8'))
+    for code in codes:
+        slug = cat.get(code, {}).get('page_slug', 'movie')
+        for url in [f'/api/movies/v1/synopsis/init/static?eventcode={code}&channel=mobile',
+                    f'/api/movies/v1/synopsis/static?eventcode={code}&channel=mobile',
+                    f'/movies/hyderabad/{slug}/{code}']:
+            r = requests.get(discover.BASE + url, headers=discover.HEADERS, impersonate='chrome', timeout=30)
+            print(f'===== {url}: HTTP {r.status_code}, {len(r.text)} bytes', flush=True)
+            hits = [m.group(0) for m in re.finditer(r'[^<>{}]{0,120}[Ii]nterested[^<>{}]{0,80}', r.text)
+                    if re.search(r'\d', m.group(0))]
+            for h in hits[:12]:
+                print('   ', h.strip()[:220])
+            if r.status_code in (403, 429):
+                return
+            time.sleep(discover.GAP)
+
+
 def search(queries):
     """Try endpoints that might list upcoming movies or search by name; print the movies found."""
     from curl_cffi import requests
@@ -111,7 +153,11 @@ def search(queries):
 
 
 if __name__ == '__main__':
-    if sys.argv[1:2] == ['--upcoming']:
+    if sys.argv[1:2] == ['--interest']:
+        interest(sys.argv[2:])
+    elif sys.argv[1:2] == ['--widgets']:
+        widgets(sys.argv[2:])
+    elif sys.argv[1:2] == ['--upcoming']:
         upcoming(int(sys.argv[2]) if len(sys.argv) > 2 else 10)
     elif sys.argv[1:2] == ['--search']:
         search(sys.argv[2:])
