@@ -31,6 +31,8 @@ POLL_SECONDS = 60          # gentle fallback interval
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
+SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
+                           # BookMyShow's own 24-hour figure (at night every movie shows it)
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
 COMMIT_EVERY = 600         # push collected rows at most this often (plus before each snapshot)
 MISSING_RETRY = 3600       # a movie whose response has no counter is retried this often
@@ -361,6 +363,13 @@ def next_snapshot_time(t):
             return cand
 
 
+def next_sweep_time(t):
+    """The next SWEEP_AT (IST wall clock) after t."""
+    ist = t.astimezone(IST)
+    cand = ist.replace(hour=SWEEP_AT[0], minute=SWEEP_AT[1], second=0, microsecond=0)
+    return cand if cand > ist else cand + timedelta(days=1)
+
+
 def request_snapshot():
     """Ask GitHub to run the snapshot workflow (scheduled runs are unreliable; dispatches are not)."""
     if os.environ.get('SNAPSHOT_DISPATCH') != '1':
@@ -420,6 +429,7 @@ def run(keys, minutes, commit):
     dirty = False
     last_commit = time.monotonic()
     next_snap = next_snapshot_time(now())
+    sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
 
     def stop(*_):
         raise KeyboardInterrupt
@@ -428,9 +438,15 @@ def run(keys, minutes, commit):
     files = [p for s in states for p in s.files]
     try:
         while True:
+            if time.monotonic() >= sweep_mono:
+                for s in states:
+                    if s.every:
+                        s.due = min(s.due, time.monotonic())
+                print(f'[{fmt(now())}] night sweep: asking every movie before 4 AM', flush=True)
+                sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
             st = min(states, key=lambda s: s.due)
             go = max(st.due, shared['block_until'], last_request + MIN_GAP)
-            if go >= end:
+            if min(go, sweep_mono) >= end:
                 print('Run window finished.', flush=True)
                 break
             if go > time.monotonic():
@@ -439,6 +455,9 @@ def run(keys, minutes, commit):
                     commit_and_push(files)
                     dirty = False
                     last_commit = time.monotonic()
+                if sweep_mono < go:
+                    sleep(max(0, sweep_mono - time.monotonic()))
+                    continue
                 sleep(max(0, go - time.monotonic()))
             last_request = time.monotonic()
             dirty = poll(st, shared) or dirty
