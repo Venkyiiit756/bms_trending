@@ -1,0 +1,24 @@
+name: Probe BookMyShow fields
+
+# Manual diagnostic: prints the booking-related fields BookMyShow returns for the given movies.
+on:
+  workflow_dispatch:
+    inputs:
+      codes:
+        description: 'Event codes, space separated'
+        required: true
+        default: 'ET00451914 ET00518674 ET00447840'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install -r requirements.txt
+    - run: python probe.py $CODES
+      env:
+        CODES: ${{ inputs.codes }}
