@@ -36,7 +36,7 @@ HEADERS = {'Accept': 'application/json, text/plain, */*', 'x-platform': 'AND', '
            'x-app-version': '18.2.8', 'x-app-version-code': '18281', 'Origin': BASE}
 LINK = re.compile(r'/([a-z0-9][a-z0-9-]*)/(ET\d{8})')
 MAX_FETCHES = 80
-GAP = 8                      # seconds between requests
+GAP = 12                     # seconds between requests
 
 
 class Blocked(Exception):
@@ -147,7 +147,7 @@ def booking_alert(code, entry, before, day):
             'url': f"{BASE}/movies/hyderabad/{entry.get('page_slug', 'movie')}/{code}"}
 
 
-MAX_DETAILS = 30
+MAX_DETAILS = 12
 
 
 def known_codes():
@@ -162,8 +162,45 @@ def main():
     for code, m in tracked.items():
         catalog.setdefault(code, {'name': m['name'], 'page_slug': m['page_slug'], 'first_seen': day,
                                   'last_listed': None, 'last_checked': None, 'figure': None})
-    queue = list(tracked)
-    seen, fetches, blocked = set(), 0, False
+    # 1. details (real name, listing group, languages, release date, bookable) come first, because
+    # BookMyShow often stops the run after about ten requests: watchlist, then movies never looked
+    # up, then upcoming movies that cannot be booked yet (movies found by this run's crawl: next run)
+    watch = json.load(open(WATCHLIST, encoding='utf-8')) if os.path.exists(WATCHLIST) else []
+    for w in watch:
+        catalog.setdefault(w['code'], {'first_seen': day, 'last_listed': None, 'name': w.get('name', w['code']),
+                                       'page_slug': w.get('page_slug', 'movie'), 'last_checked': None,
+                                       'figure': None})
+    watched = [w['code'] for w in watch]
+    d0 = datetime.strptime(day, '%Y-%m-%d').date()
+    pending = [c for c, e in catalog.items() if c not in watched and needs_details(e, d0)]
+    pending.sort(key=lambda c: catalog[c].get('last_listed') or '', reverse=True)   # still listed first
+    order = watched + pending
+    lookups, alerts, blocked = 0, [], False
+    for code in order:
+        entry = catalog[code]
+        if lookups >= MAX_DETAILS:
+            break
+        try:
+            d = details(code)
+        except Blocked as e:
+            print(f'blocked ({e}) during details', flush=True)
+            blocked = True
+            break
+        except Exception as e:
+            print(f'{code}: details error {e}', flush=True)
+            d = None
+        lookups += 1
+        time.sleep(GAP)
+        if d:
+            before = entry.get('book')
+            entry.update(d)
+            alert = booking_alert(code, entry, before, d0)
+            if alert:
+                alerts.append(alert)
+                print(f"booking alert: {alert['kind']}: {alert['name']} (release {alert['release']})", flush=True)
+    # 2. crawl the "other movies" lists for new movies
+    queue = [] if blocked else list(tracked)
+    seen, fetches = set(), 0
     while queue and fetches < MAX_FETCHES:
         code = queue.pop(0)
         if code in seen:
@@ -196,44 +233,12 @@ def main():
             o.setdefault('page_slug', slug)
             if other not in seen and other not in queue:
                 queue.append(other)
-    # details (real name, listing group, languages, release date, bookable): watchlist first, then
-    # movies never looked up, then upcoming movies that cannot be booked yet
-    watch = json.load(open(WATCHLIST, encoding='utf-8')) if os.path.exists(WATCHLIST) else []
-    for w in watch:
-        catalog.setdefault(w['code'], {'first_seen': day, 'last_listed': None, 'name': w.get('name', w['code']),
-                                       'page_slug': w.get('page_slug', 'movie'), 'last_checked': None,
-                                       'figure': None})
-    watched = [w['code'] for w in watch]
-    d0 = datetime.strptime(day, '%Y-%m-%d').date()
-    order = watched + [c for c, e in catalog.items() if c not in watched and needs_details(e, d0)]
-    lookups, alerts = 0, []
-    for code in order:
-        entry = catalog[code]
-        if blocked or lookups >= MAX_DETAILS:
-            break
-        try:
-            d = details(code)
-        except Blocked as e:
-            print(f'blocked ({e}) during details', flush=True)
-            break
-        except Exception as e:
-            print(f'{code}: details error {e}', flush=True)
-            d = None
-        lookups += 1
-        time.sleep(GAP)
-        if d:
-            before = entry.get('book')
-            entry.update(d)
-            alert = booking_alert(code, entry, before, d0)
-            if alert:
-                alerts.append(alert)
-                print(f"booking alert: {alert['kind']}: {alert['name']} (release {alert['release']})", flush=True)
     os.makedirs(os.path.dirname(ALERTS), exist_ok=True)
     with open(ALERTS, 'w', encoding='utf-8') as f:
         json.dump(alerts, f, indent=1)
     new = [c for c in catalog if c not in tracked]
     print(f'{fetches} + {lookups} requests; catalog {len(catalog)} movies; {len(new)} not tracked yet', flush=True)
-    if fetches == 0 and blocked:
+    if fetches == 0 and lookups == 0 and blocked:
         sys.exit('Nothing fetched; leaving the catalog unchanged.')
     with open(CATALOG, 'w', encoding='utf-8') as f:
         json.dump(dict(sorted(catalog.items())), f, indent=1)
