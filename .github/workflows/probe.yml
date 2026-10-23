@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       codes:
-        description: 'Event codes, space separated'
+        description: 'Event codes, space separated (or: --search name1 name2)'
         required: true
         default: 'ET00451914 ET00518674 ET00447840'
 

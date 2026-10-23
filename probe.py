@@ -2,6 +2,7 @@
 """Print the booking-related fields BookMyShow returns for some movies (a diagnostic, run by hand).
 
     python probe.py ET00451914 ET00447840
+    python probe.py --search fauzi king100      # look for upcoming movies / search by name
 
 For each movie: both synopsis responses' top-level keys, meta.event, and every field whose key
 or text mentions booking, buttons, release, sale or status. Used to find what marks a movie
@@ -52,5 +53,34 @@ def main(codes):
             time.sleep(discover.GAP)
 
 
+SEARCH = ['/api/explore/v1/discover/upcoming-movies-hyderabad',
+          '/api/explore/v1/discover/movies-hyderabad?categories=upcoming',
+          '/api/explore/v1/discover/movies-hyderabad',
+          '/explore/upcoming-movies-hyderabad',
+          '/api/le/search?q={q}&region=HYD',
+          '/quickbook-search.bms?cat=MT&q={q}',
+          '/serv/getData?cmd=QUICKSEARCH&q={q}&region=HYD']
+
+
+def search(queries):
+    """Try endpoints that might list upcoming movies or search by name; print the movies found."""
+    from curl_cffi import requests
+    link = re.compile(r'([a-z0-9-]{3,80})/(ET\d{8})')
+    for path in SEARCH:
+        for q in (queries if '{q}' in path else ['']):
+            url = discover.BASE + path.format(q=q)
+            r = requests.get(url, headers=discover.HEADERS, impersonate='chrome', timeout=30)
+            found = sorted(set(link.findall(r.text)))
+            print(f'===== {url}: HTTP {r.status_code}, {len(r.text)} bytes, {len(found)} movie links')
+            for slug, code in found[:60]:
+                print(f'   {code} {slug}')
+            if r.status_code in (403, 429):
+                return
+            time.sleep(discover.GAP)
+
+
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    if sys.argv[1:2] == ['--search']:
+        search(sys.argv[2:])
+    else:
+        main(sys.argv[1:])
