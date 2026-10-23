@@ -109,3 +109,14 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - **Posts** (`posts.py`, `xpost.py`): every hour 08:00-23:00 IST (16/day) a leaderboard image (last hour, change vs same time yesterday) plus a rotating second image (08:00 yesterday's busiest hour; 12/15/18/21:00 four-day same-time table; 14/20/23:00 top movie's line today vs yesterday), caption and alt text. Logged in `posts_log.json` (30 days). Posted to X when the secrets `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_SECRET` exist; otherwise shown as a kit on the website. Guard: figures at most 30 min old at the post time; never published more than 35 min late.
 - **Health** (`health.py`): opens a GitHub issue "Data collection looks stalled" (emails the owner) when the main movies have had no reading for 45 min; closes it when data is back. Writes `health.json` for the site. Limitation: it runs from the snapshot workflow, which the tracker triggers; if the tracker chain itself dies, only the unreliable cron backup can run it.
 - **Images** are no longer committed here; they go to `build/` and only the website repo keeps them (folders older than 45 days pruned). Tracker pushes at most every 10 minutes (`COMMIT_EVERY`) and no longer logs cache headers (`LOG_HEADERS=0`).
+
+## Daily totals (sales.py, Totals tab)
+- `sales.py` turns each movie's readings into estimated tickets per half hour (`data/sales.json` on the site):
+  half the hourly figure at each half hour, night gaps (only the 24-hour figure shows, ~2-7 AM) filled with a dip
+  to zero, short data gaps filled linearly, all scaled by a per-movie factor = median of BookMyShow 24-hour figure /
+  summed estimate over the last 7 nights (~1.15-1.2 for big films). `d24` holds BookMyShow's exact 24-hour figures.
+- Website **Totals** tab: pick a movie and drag From/To (30-minute steps); days are real 24 hours from "From".
+  A day ending at (or within an hour of) a BookMyShow 24-hour figure uses that figure; otherwise it is an estimate (≈).
+  "Days from 4 AM" aligns days to when BookMyShow shows its own figure.
+- Studio types using it: `board24` (last 24 hours leaderboard), `days24` (tickets per day across days),
+  `totals` / `totalsbar` (one movie, per day and total; link params `ra`/`rb` = range, empty = tracking start / latest).

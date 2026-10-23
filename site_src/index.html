@@ -82,6 +82,16 @@ details p,details li{color:var(--mute)}
 .post summary .first{color:var(--mute);font-size:13px;flex-basis:100%}
 .thumb{display:grid;gap:6px}
 .form optgroup{font-weight:700}
+.range{display:grid;gap:12px;margin-top:12px}
+.range label{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center;font-size:13px;color:var(--mute);font-weight:600}
+.range label b{color:var(--ink);font-weight:700;min-width:150px}
+.range input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--brand)}
+.range button{padding:4px 9px;font-size:13px}
+@media (max-width:560px){nav button{padding:10px 8px;font-size:13.5px}}
+.kpi{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.src{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.src.ok{border-color:var(--up);color:var(--up)}
+tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
 </style>
 </head>
 <body>
@@ -95,6 +105,7 @@ details p,details li{color:var(--mute)}
   <button role="tab" data-tab="now" aria-selected="true">Now</button>
   <button role="tab" data-tab="studio">Studio</button>
   <button role="tab" data-tab="explore">Explore</button>
+  <button role="tab" data-tab="totals">Totals</button>
   <button role="tab" data-tab="kit">Auto posts</button>
   <button role="tab" data-tab="data">Data</button>
 </nav>
@@ -146,6 +157,12 @@ details p,details li{color:var(--mute)}
             <option value="trend">Same time across days</option>
             <option value="week">One movie across days: grid</option>
           </optgroup>
+          <optgroup label="24 hours and totals">
+            <option value="board24">Leaderboard: last 24 hours</option>
+            <option value="days24">Tickets per day across days</option>
+            <option value="totals">One movie: tickets per day and total</option>
+            <option value="totalsbar">One movie: tickets per day, chart</option>
+          </optgroup>
         </select>
       </label>
       <div class="row" style="gap:10px">
@@ -164,6 +181,7 @@ details p,details li{color:var(--mute)}
       </label>
       <label id="sDaysWrap">Days<select id="sDays"><option>3</option><option selected>4</option><option>5</option><option>7</option></select></label>
       <label id="sMovieWrap">Movie<select id="sMovie"></select></label>
+      <div id="sRangeWrap" class="mute" style="display:grid;gap:6px"><span id="sRange"></span><div class="row" style="gap:6px"><button id="sRangeAll" type="button">Since tracking began</button><button id="sRangeEdit" type="button">Change dates…</button></div></div>
       <label id="sTopWrap">Movies
         <select id="sTop"><option value="3">Top 3</option><option value="5">Top 5</option><option value="7" selected>Top 7</option><option value="10">Top 10</option><option value="pick">Choose…</option></select>
       </label>
@@ -201,6 +219,35 @@ details p,details li{color:var(--mute)}
   </div>
 </section>
 
+<!-- TOTALS -->
+<section id="totals">
+  <div class="card">
+    <label class="mute" style="display:grid;gap:4px;max-width:340px;font-weight:600;font-size:12.5px">Movie<select id="tMovie"></select></label>
+    <div class="range">
+      <label>From <b id="tFromL"></b><button data-n="tFrom:-2" aria-label="From one hour earlier">−1h</button><button data-n="tFrom:2" aria-label="From one hour later">+1h</button><input type="range" id="tFrom" min="0" max="1" step="1" aria-label="From"></label>
+      <label>To <b id="tToL"></b><button data-n="tTo:-2" aria-label="To one hour earlier">−1h</button><button data-n="tTo:2" aria-label="To one hour later">+1h</button><input type="range" id="tTo" min="0" max="1" step="1" aria-label="To"></label>
+    </div>
+    <div class="row" style="margin-top:10px;gap:6px"><button data-q="all">Since tracking began</button><button data-q="7">Last 7 days</button><button data-q="3">Last 3 days</button><button data-q="align" title="Days run 4 AM to 4 AM, when BookMyShow shows its own 24-hour figure">Days from 4 AM (exact)</button></div>
+  </div>
+  <div class="card">
+    <div class="row spread"><div><div class="kpi" id="tTotal"></div><div class="mute" id="tSub"></div></div><div class="row"><button id="tImg">Make image</button><button id="tCsv">CSV</button></div></div>
+    <canvas id="tcv" width="1400" height="560" style="margin-top:10px" aria-label="Bar chart of tickets per day"></canvas>
+    <div id="tTable" style="margin-top:10px;overflow-x:auto"></div>
+  </div>
+  <div class="card">
+    <details>
+      <summary><strong>How these totals are worked out</strong></summary>
+      <ul>
+        <li>A day here is a real 24 hours counted from the "From" time, so a day can run from noon to noon.</li>
+        <li>BookMyShow shows its own "booked in the last 24 hours" figure late at night for big films (about 2 to 7 AM) and all day for smaller films. When a day ends at such a time (or within an hour of one, corrected by the estimate for the minutes in between), that figure is used (marked "BookMyShow").</li>
+        <li>Otherwise the day is estimated from the hourly figures taken every 30 minutes. Hourly figures added up come out about 15 to 20% below BookMyShow's own 24-hour figure, so each film's estimate is scaled by how the two compared on recent nights (the factor is shown). Estimates are marked ≈.</li>
+        <li>Pick "Days from 4 AM" to make every full day an exact BookMyShow figure.</li>
+        <li>The count is per BookMyShow listing across all its languages and is not city-specific.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
 <!-- AUTO POSTS -->
 <section id="kit">
   <div class="card">
@@ -216,7 +263,7 @@ details p,details li{color:var(--mute)}
     <h2>Full history by movie</h2>
     <div class="mute">Every change since tracking began (IST time, figure, value, tickets). Stale cached readings removed.</div>
     <ul class="dl" id="hist"></ul>
-    <div class="row" style="margin-top:10px"><a class="btn" href="data/snapshots.json" download>All half-hour snapshots, last 3 weeks (JSON)</a></div>
+    <div class="row" style="margin-top:10px"><a class="btn" href="data/snapshots.json" download>All half-hour snapshots, last 3 weeks (JSON)</a><a class="btn" href="data/sales.json" download>Tickets per half hour since tracking began (JSON)</a></div>
   </div>
   <div class="card">
     <details open>
@@ -237,7 +284,7 @@ details p,details li{color:var(--mute)}
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-let M={}, D={movies:[],days:{}}, HANDLE='';
+let M={}, D={movies:[],days:{}}, SL={movies:[]}, HANDLE='';
 const NAVY='#1f3a5f', ZEBRA='#f4f7fb', INK='#222222', MUTE='#6b7684', UP='#0a7d33', DOWN='#c0392b', BAND='#dfe8f5';
 const DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -289,7 +336,7 @@ $('#nowLatest').onclick=()=>{const [d,t]=latestPoint();nowSet(d,t)};
 $('#nowToStudio').onclick=()=>{S.type='board';$('#sType').value='board';studioDayTime($('#nowDay').value,$('#nowTime').value);show('studio')};
 
 /* ---------- STUDIO state ---------- */
-const S={type:'board',style:'color',size:'1200x1200',cap:'long'};
+const S={type:'board',style:'color',size:'1200x1200',cap:'long',ra:null,rb:null};
 const THEMES={
   color:{bg:'#ffffff',title:'#1f3a5f',sub:'#6b7684',ink:'#222222',head:'#1f3a5f',headInk:'#ffffff',zebra:'#f4f7fb',row:'#ffffff',border:'#1f3a5f',up:'#0a7d33',down:'#c0392b',grid:'#e3e8ef',axis:'#b8c2cf',first:'#1f3a5f',rank:'#6b7684',heat:[31,58,95],pal:['#1f3a5f','#c0392b','#0a7d33','#b9770e'],ghost:'#9aa6b5'},
   mono:{bg:'#ffffff',title:'#111111',sub:'#555555',ink:'#111111',head:'#ececec',headInk:'#111111',zebra:'#ffffff',row:'#ffffff',border:'#111111',up:'#111111',down:'#111111',grid:'#e5e5e5',axis:'#999999',first:'#111111',rank:'#555555',heat:[0,0,0],pal:['#111111','#666666','#999999','#3d3d3d'],ghost:'#b3b3b3'},
@@ -307,7 +354,10 @@ $('#sTop').onchange=()=>{moviesFor();render()};
 $('#sFoot').onchange=render;
 const DAYTYPES=['peak','daytable','multiline'], MAXCOLS={daytable:4,multiline:4};
 function dayBest(d){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};return best}
+const SALESTYPES=['board24','days24','totals','totalsbar'];
 function candidates(){const d=$('#sDay').value,t=$('#sTime').value;
+  if(S.type==='totals'||S.type==='totalsbar')return SL.movies.filter(m=>m.slots.length>48).map(m=>m.name);
+  if(S.type==='board24'||S.type==='days24'){const ms=istMs(d,t);return SL.movies.map(m=>({n:m.name,r:day24(m,slIdx(m,ms))})).filter(x=>x.r).sort((a,b)=>b.r.v-a.r.v).map(x=>x.n)}
   if(DAYTYPES.includes(S.type)||S.type==='week'||S.type==='line'){const b=dayBest(d);if(S.type==='line'||S.type==='multiline'){/* only movies with data up to the chosen time */}return Object.entries(b).sort((a,c)=>c[1].n-a[1].n).map(x=>x[0])}
   return hourly(d,t).map(r=>r.name)}
 function moviesFor(){const c=candidates();const ty=S.type;
@@ -315,7 +365,9 @@ function moviesFor(){const c=candidates();const ty=S.type;
   $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<def?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure here.</span>';
   $$('#sPick input').forEach(i=>i.onchange=render);
   const cur=$('#sMovie').value;fill($('#sMovie'),c,cur);
-  const vis={time:!['peak','daytable','week'].includes(ty),cmp:ty==='board',days:['trend','week'].includes(ty),movie:['line','week'].includes(ty),top:!['line','week'].includes(ty),hours:['daytable','week'].includes(ty)};
+  const tot=ty==='totals'||ty==='totalsbar';
+  const vis={date:!tot,time:!['peak','daytable','week'].includes(ty)&&!tot,cmp:ty==='board',days:['trend','week','days24'].includes(ty),movie:['line','week'].includes(ty)||tot,top:!['line','week'].includes(ty)&&!tot,hours:['daytable','week'].includes(ty)};
+  $('#sDay').parentElement.hidden=!vis.date;$('#sRangeWrap').hidden=!tot;
   $('#sTimeWrap').hidden=!vis.time;$('#sCmpWrap').hidden=!vis.cmp;$('#sDaysWrap').hidden=!vis.days;$('#sMovieWrap').hidden=!vis.movie;$('#sTopWrap').hidden=!vis.top;$('#sHoursWrap').hidden=!vis.hours;
   $('#sPick').hidden=!vis.top||$('#sTop').value!=='pick';
   $('#sTimeWrap').firstChild.textContent=ty==='multiline'||ty==='line'?'Until':'Time'}
@@ -403,6 +455,44 @@ function render(){
     CAP.short=top?(mv?`Biggest riser on BookMyShow at ${timeLabel(t)}: ${top.n}, ${top.v.t} tickets in the hour (${pctTxt(top.p)} ${vs}).\n\n${tags(top.n)}`
       :`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmode!=='none'&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}.\n\n${tags(top.n)}`):'';
     ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}`+(cmode!=='none'?`, with change ${vs}`:'')+': '+list.map(l=>`${l.n} ${l.v.t}${cmode!=='none'&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')}`:''}`).join('; ');
+  } else if(S.type==='board24'){
+    const ms=istMs(d,t);const pickset=new Set(chosen());
+    const list=SL.movies.filter(m=>pickset.has(m.name)).map(m=>{const i=slIdx(m,ms);const r=day24(m,i),pv=day24(m,i-48);return {n:m.name,r,p:r&&pv?pct(r.v,pv.v):null}}).filter(l=>l.r).sort((a,b)=>b.r.v-a.r.v);
+    const est=list.some(l=>!l.r.exact);const vs=`vs ${dayName(addDays(d,-1))}`;
+    const rows=list.map((l,i)=>[i+1,l.n,fmtV(l.r),pctTxt(l.p)]);
+    box=frame(ctx,W,H,'Tickets booked in the last 24 hours',`24 hours to ${timeLabel(t)}, ${dayLabel(d)} IST${est?' · ≈ estimated':''}`);
+    if(rows.length)table(ctx,W,box,['#','Movie','Last 24 hours',vs],rows,list.map(l=>[th.rank,th.first,th.ink,chg(l.p)]),[.09,.43,.25,.23]);else empty(ctx,W,H,'No 24-hour figures here');
+    CAP.long=build(`🎟️ Tickets booked on BookMyShow in the 24 hours to ${timeLabel(t)}, ${dayLabel(d)}`,list.map((l,i)=>`${i+1}. ${l.n}: ${fmtV(l.r)}${l.p!==null?` (${pctTxt(l.p)} ${vs})`:''}`),list.slice(0,2).map(l=>l.n));
+    CAP.short=list[0]?`${list[0].n}: ${fmtV(list[0].r)} tickets booked on BookMyShow in the 24 hours to ${timeLabel(t)}, ${dayLabel(d)}${list[0].p!==null?` (${pctTxt(list[0].p)} ${vs})`:''}.\n\n${tags(list[0].n)}`:'';
+    ALT=`Table of tickets booked on BookMyShow in the 24 hours to ${timeLabel(t)}, ${dayLabel(d)}, with change against the day before: `+list.map(l=>`${l.n} ${fmtV(l.r)}`).join('; ')+(est?'. Figures marked ≈ are estimates from hourly figures.':'');
+  } else if(S.type==='days24'){
+    const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
+    const grid=names.map(n=>{const m=slm(n);return ds.map(x=>day24(m,slIdx(m,istMs(x,t))))});
+    const rows=names.map((n,i)=>[n,...grid[i].map(fmtV)]);
+    const cols=grid.map(r=>[th.first,...r.map((v,i)=>i===0||!v||!r[i-1]?th.ink:color(v.v,r[i-1].v))]);
+    const est=grid.flat().some(r=>r&&!r.exact);
+    box=frame(ctx,W,H,'Tickets booked per day',`Each day = 24 hours to ${timeLabel(t)} IST${est?' · ≈ estimated':''}`);
+    const w0=nd>5?.28:.32;if(rows.length)table(ctx,W,box,['Movie',...ds.map(short)],rows,cols,[w0,...ds.map(()=>(1-w0)/nd)]);else empty(ctx,W,H,'No 24-hour figures here');
+    CAP.long=build(`🎟️ Tickets booked per day on BookMyShow, last ${nd} days (24 hours to ${timeLabel(t)})`,rows.map(r=>`${r[0]}: ${r.slice(1).join(' → ')}`),names.slice(0,2));
+    CAP.short=rows[0]?`${rows[0][0]}, tickets booked per day on BookMyShow (24 hours to ${timeLabel(t)}): ${rows[0].slice(1).join(' → ')}.\n\n${tags(rows[0][0])}`:'';
+    ALT=`Table of tickets booked per day, each day being the 24 hours to ${timeLabel(t)}, on ${ds.map(dayLabel).join(', ')}: `+rows.map(r=>`${r[0]} `+r.slice(1).join(', ')).join('; ');
+  } else if(S.type==='totals'||S.type==='totalsbar'){
+    const n=$('#sMovie').value;const m=slm(n);
+    if(!m){box=frame(ctx,W,H,'Tickets per day','');empty(ctx,W,H,'No data for this movie')}else{
+    const [a,b]=rangeOf(m,S.ra,S.rb);let res=dayRows(m,a,b);
+    $('#sRange').textContent=`${whenLabel(slMs(m,a))} → ${whenLabel(slMs(m,b))} IST`;
+    const tot=`${res.exact?'':'≈'}${fmt(res.total)}`;const nd=res.rows.length;
+    box=frame(ctx,W,H,`${n}: ${tot} tickets`,`${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))} IST · ${nd} day${nd>1?'s':''}${res.exact?'':' · ≈ estimated'}`);
+    if(S.type==='totals'){const R=res.rows.slice(-14);const skip=res.rows.length-R.length;
+      const rows=R.map((x,k)=>[`Day ${skip+k+1}`,`${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}`,fmtV(x.r),x.run!=null?fmt(x.run):'—']);
+      rows.push(['Total','',tot,'']);
+      const cols=rows.map((r,k)=>k===rows.length-1?[th.first,th.ink,th.first,th.ink]:[th.rank,th.ink,th.first,th.ink]);
+      table(ctx,W,box,['Day','From → to','Tickets','Total so far'],rows,cols,[.14,.44,.2,.22])}
+    else bars(ctx,W,box,dayItems(m,res).slice(-14));
+    const lines=res.rows.map((x,k)=>`Day ${k+1} (${x.full?short(msParts(slMs(m,x.a))[0]):Math.round((x.b-x.a)/2)+'h'}): ${fmtV(x.r)}`);
+    CAP.long=build(`🎟️ ${n} on BookMyShow: ${tot} tickets booked from ${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))}`,lines.slice(-7),[n]);
+    CAP.short=`${n}: ${tot} tickets booked on BookMyShow in ${nd} day${nd>1?'s':''} (${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))}).\n\n${tags(n)}`;
+    ALT=`${S.type==='totals'?'Table':'Bar chart'} of tickets booked per day for ${n} on BookMyShow, ${whenLabel(slMs(m,a))} to ${whenLabel(slMs(m,b))}: `+lines.join('; ')+`. Total ${tot}.`+(res.exact?'':' Figures marked ≈ are estimates from hourly figures.')}
   } else if(S.type==='trend'){
     const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
     const rows=[],cols=[];names.forEach(n=>{const vals=ds.map(x=>{const v=snap(x,t)[n];return v&&v.k===1?v:null});rows.push([n,...vals.map(v=>v?v.t:'—')]);cols.push([th.first,...vals.map((v,i)=>i===0||!v||!vals[i-1]?th.ink:color(v.n,vals[i-1].n))])});
@@ -470,14 +560,16 @@ function cnt(){const t=$('#sCaption').value;const n=xlen(t);$('#sCount').textCon
 $('#sCaption').oninput=cnt;
 $('#sCopy').onclick=()=>copy($('#sCaption').value,'Caption copied');
 $('#sCopyAlt').onclick=()=>copy(ALT,'Alt text copied');
-$('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${d}_${$('#sTimeWrap').hidden?'day':t}_${S.style}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
+$('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${S.type.startsWith('totals')?$('#sMovie').value.replace(/[^A-Za-z0-9]+/g,'_'):d+'_'+($('#sTimeWrap').hidden?'day':t)}_${S.style}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
 
 /* ---------- settings in the link, and presets ---------- */
 function state(){const st={type:S.type,d:$('#sDay').value,t:$('#sTime').value,cmp:$('#sCmp').value,days:$('#sDays').value,movie:$('#sMovie').value,top:$('#sTop').value,hours:$('#sHours').value,style:S.style,size:S.size,foot:$('#sFoot').checked?1:0,cap:S.cap};
-  if(st.top==='pick')st.pick=$$('#sPick input:checked').map(i=>i.value).join('|');return st}
+  if(st.top==='pick')st.pick=$$('#sPick input:checked').map(i=>i.value).join('|');
+  if(S.type==='totals'||S.type==='totalsbar'){st.ra=S.ra||'';st.rb=S.rb||'';delete st.d;delete st.t}return st}
 function writeHash(){if(!$('#studio').classList.contains('on'))return;history.replaceState(null,'','#studio?'+new URLSearchParams(state()).toString())}
 function apply(st,keepDate){
   if(st.type){S.type=st.type;$('#sType').value=st.type}
+  if('ra' in st)S.ra=st.ra||null;if('rb' in st)S.rb=st.rb||null;
   ['style','size','cap'].forEach(k=>{if(st[k]){S[k]=st[k];setSeg({style:'sStyle',size:'sSize',cap:'sCapKind'}[k],st[k])}});
   if(st.cmp)$('#sCmp').value=st.cmp;if(st.days)$('#sDays').value=st.days;if(st.hours)$('#sHours').value=st.hours;if(st.top)$('#sTop').value=st.top;
   if(st.foot!=null)$('#sFoot').checked=String(st.foot)==='1';
@@ -486,6 +578,8 @@ function apply(st,keepDate){
   if(st.movie&&[...$('#sMovie').options].some(o=>o.value===st.movie))$('#sMovie').value=st.movie;
   moviesFor();if(st.pick){const p=new Set(st.pick.split('|'));$$('#sPick input').forEach(i=>i.checked=p.has(i.value))}
   render()}
+$('#sRangeAll').onclick=()=>{S.ra=S.rb=null;render()};
+$('#sRangeEdit').onclick=()=>{const m=slm($('#sMovie').value);if(m){$('#tMovie').value=m.name;const [a,b]=rangeOf(m,S.ra,S.rb);totalsQuick('all');$('#tFrom').value=a;$('#tTo').value=b}show('totals');totals()};
 $('#sLink').onclick=()=>copy(location.href.split('#')[0]+'#studio?'+new URLSearchParams(state()).toString(),'Link copied');
 const PKEY='studioPresets';
 function presets(){try{return JSON.parse(localStorage.getItem(PKEY)||'{}')}catch(e){return {}}}
@@ -526,6 +620,89 @@ $('#eImg').onclick=()=>{const ds=exploreRange();const d=ds[ds.length-1];const na
   else apply({type:'multiline',d,t:times(d).slice(-1)[0],top:'pick',pick:names.slice(0,4).join('|')},false);
   show('studio')};
 
+/* ---------- SALES: tickets per half hour (data/sales.json, see sales.py) ---------- */
+const HALF=1800000;
+const istMs=(d,hhmm)=>Date.UTC(+d.slice(0,4),+d.slice(5,7)-1,+d.slice(8,10),+hhmm.slice(0,2),+hhmm.slice(2))-19800000;
+const msParts=ms=>{const x=new Date(ms+19800000);return [iso(x),String(x.getUTCHours()).padStart(2,'0')+String(x.getUTCMinutes()).padStart(2,'0')]};
+const msKey=ms=>msParts(ms).join(' ');
+const keyMs=k=>{const [d,t]=k.split(' ');return istMs(d,t)};
+const whenLabel=ms=>{const [d,t]=msParts(ms);return `${short(d)} ${MON[pd(d).getUTCMonth()]}, ${timeLabel(t)}`};
+const whenShort=ms=>{const [d,t]=msParts(ms);return `${short(d)}, ${timeLabel(t).replace(':00','')}`};
+const slm=n=>SL.movies.find(m=>m.name===n);
+const slStart=m=>keyMs(m.start);
+const slMs=(m,i)=>slStart(m)+i*HALF;
+const slIdx=(m,ms)=>Math.round((ms-slStart(m))/HALF);
+const fmt=v=>v>=1e6?(v/1e6).toFixed(2)+'M':v>=1e5?Math.round(v/1e3)+'K':v>=1e3?(v/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(Math.round(v));
+const fmtV=r=>r?(r.exact?'':'≈')+fmt(r.v):'—';
+// estimated tickets in (slot a, slot b]; null when more than 10% of it has no data
+function slSum(m,a,b){let s=0,miss=0;for(let i=a+1;i<=b;i++){const v=i>=0&&i<m.slots.length?m.slots[i]:-1;if(v<0)miss++;else s+=v}
+  const n=b-a;if(!n||miss>n*0.1)return null;return {v:s*n/(n-miss),exact:false}}
+// tickets in the 24 hours ending at slot i: BookMyShow's figure when it showed one, else the estimate
+// (a BookMyShow figure up to an hour away is used too, corrected by the estimated half hours in between)
+function day24(m,i){const e=m.d24[i];if(e!=null)return {v:e,exact:true};
+  const raw=(a,b)=>{let s=0;for(let j=a+1;j<=b;j++){const v=m.slots[j];if(v==null||v<0)return null;s+=v}return s};
+  for(const k of [1,-1,2,-2]){const f=m.d24[i+k];if(f==null)continue;
+    const lo=Math.min(i,i+k),hi=Math.max(i,i+k);const now=raw(lo,hi),then=raw(lo-48,hi-48);if(now==null||then==null)continue;
+    return {v:k>0?f-now+then:f+now-then,exact:true}}
+  return slSum(m,i-48,i)}
+// real 24-hour days from slot a to slot b (the last one may be shorter)
+function dayRows(m,a,b){const rows=[];let run=0,ok=true;
+  for(let s=a;s<b;s+=48){const e=Math.min(s+48,b);const full=e-s===48;const r=full?day24(m,e):slSum(m,s,e);
+    if(r)run+=r.v;else ok=false;rows.push({a:s,b:e,full,r,run:r?run:null})}
+  return {rows,total:run,ok,exact:ok&&rows.every(x=>x.r&&x.r.exact)}}
+// S.ra / S.rb: 'YYYY-MM-DD HHMM' or null (tracking start / latest)
+function rangeOf(m,ra,rb){const L=m.slots.length-1;let a=ra?slIdx(m,keyMs(ra)):0,b=rb?slIdx(m,keyMs(rb)):L;a=Math.max(0,Math.min(a,L-1));b=Math.max(a+1,Math.min(b,L));return [a,b]}
+// bar chart: items [{label, sub, r, partial}]
+function bars(ctx,W,box,items){
+  const th=T();const x0=W*0.1,x1=W*0.96,y0=box.top+60*box.u,y1=box.bottom-84*box.u;
+  const max=Math.max(1,...items.map(i=>i.r?i.r.v:0))*1.15;const n=items.length,bw=(x1-x0)/Math.max(n,1);
+  const step=[1,2,5,10,20,25,50,100,200,250,500].map(x=>x*1000).find(x=>max/x<=5)||1e6;
+  ctx.textBaseline='middle';ctx.font=`500 ${Math.round(22*box.u)}px ${FONT}`;
+  for(let v=0;v<=max;v+=step){const y=y1-(v/max)*(y1-y0);ctx.strokeStyle=th.grid;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=th.sub;ctx.textAlign='right';ctx.fillText(fmt(v),x0-12*box.u,y)}
+  items.forEach((it,k)=>{const cx=x0+(k+0.5)*bw,w=Math.min(bw*0.7,120*box.u);
+    if(it.r){const y=y1-(it.r.v/max)*(y1-y0);ctx.globalAlpha=it.partial?0.35:it.r.exact?1:0.6;ctx.fillStyle=th.pal[0];ctx.fillRect(cx-w/2,y,w,y1-y);ctx.globalAlpha=1;
+      fit(ctx,fmtV(it.r),bw*0.96,Math.round(26*box.u),800);ctx.fillStyle=th.ink;ctx.textAlign='center';ctx.fillText(fmtV(it.r),cx,y-20*box.u)}
+    fit(ctx,it.label,bw*0.95,Math.round(22*box.u),700);ctx.fillStyle=th.ink;ctx.textAlign='center';ctx.fillText(it.label,cx,y1+28*box.u);
+    fit(ctx,it.sub,bw*0.95,Math.round(19*box.u),500);ctx.fillStyle=th.sub;ctx.fillText(it.sub,cx,y1+56*box.u)});
+  ctx.strokeStyle=th.axis;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
+  // legend
+  const kinds=[];if(items.some(i=>i.r&&i.r.exact&&!i.partial))kinds.push(['BookMyShow 24-hour figure',1]);if(items.some(i=>i.r&&!i.r.exact&&!i.partial))kinds.push(['≈ estimate from hourly figures',0.6]);if(items.some(i=>i.partial&&i.r))kinds.push(['part of a day',0.35]);
+  let lx=x0;const ly=box.top+18*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(22*box.u)}px ${FONT}`;
+  kinds.forEach(([lab,a])=>{ctx.globalAlpha=a;ctx.fillStyle=th.pal[0];ctx.fillRect(lx,ly-11*box.u,22*box.u,22*box.u);ctx.globalAlpha=1;ctx.fillStyle=th.ink;ctx.fillText(lab,lx+32*box.u,ly);lx+=ctx.measureText(lab).width+70*box.u})}
+const dayItems=(m,res)=>res.rows.map((x,k)=>({label:`Day ${k+1}`,sub:x.full?short(msParts(slMs(m,x.a))[0]):`${Math.round((x.b-x.a)/2)}h so far`,r:x.r,partial:!x.full}));
+
+/* ---------- TOTALS tab ---------- */
+function totalsInit(){
+  fill($('#tMovie'),SL.movies.filter(m=>m.slots.length>48).map(m=>m.name),null);
+  $('#tMovie').onchange=()=>totalsQuick('all');
+  ['#tFrom','#tTo'].forEach(id=>$(id).oninput=()=>{const f=$('#tFrom'),t=$('#tTo');if(+f.value>=+t.value){id==='#tFrom'?t.value=+f.value+1:f.value=+t.value-1}totals()});
+  $$('#totals [data-n]').forEach(b=>b.onclick=()=>{const [id,n]=b.dataset.n.split(':');const e=$('#'+id);e.value=+e.value+ +n;e.oninput()});
+  $$('#totals [data-q]').forEach(b=>b.onclick=()=>totalsQuick(b.dataset.q));
+  totalsQuick('all')}
+function totalsQuick(q){const m=slm($('#tMovie').value);if(!m)return;const L=m.slots.length-1,f=$('#tFrom'),t=$('#tTo');
+  f.max=t.max=L;
+  if(q==='all'){f.value=0;t.value=L}
+  else if(q==='align'){let i=0;while(i<L&&msParts(slMs(m,i))[1]!=='0400')i++;f.value=i<L?i:0;if(+t.value<=+f.value)t.value=L}
+  else{t.value=L;f.value=Math.max(0,L-48*+q)}
+  totals()}
+function totals(){
+  const m=slm($('#tMovie').value);if(!m)return;const a=+$('#tFrom').value,b=+$('#tTo').value;
+  $('#tFromL').textContent=whenLabel(slMs(m,a))+(a===0?' (tracking began)':'');$('#tToL').textContent=whenLabel(slMs(m,b))+(b===m.slots.length-1?' (latest)':'');
+  const res=dayRows(m,a,b);TT.m=m;TT.a=a;TT.b=b;TT.res=res;
+  const full=res.rows.filter(x=>x.full).length,hrs=Math.round((b-a)%48/2);
+  const miss=res.rows.filter(x=>!x.r),lastOnly=miss.length===1&&miss[0]===res.rows[res.rows.length-1]&&!miss[0].full;
+  $('#tTotal').textContent=`${res.exact?'':'≈ '}${fmt(res.total)} tickets`;
+  $('#tSub').dataset.miss=res.ok?'':lastOnly?`Latest ${Math.round((miss[0].b-miss[0].a)/2)} hours not in the total yet (BookMyShow shows only its 24-hour figure then). `:`${miss.length} day${miss.length>1?'s':''} without data not in the total. `;
+  $('#tSub').textContent=`${m.name} · ${whenLabel(slMs(m,a))} to ${whenLabel(slMs(m,b))} IST · ${full} full day${full===1?'':'s'}${hrs?` + ${hrs} hour${hrs===1?'':'s'}`:''} · estimate factor ×${m.factor}`;if($('#tSub').dataset.miss)$('#tSub').textContent=$('#tSub').dataset.miss+$('#tSub').textContent;
+  if($('#totals').classList.contains('on')){const cv=$('#tcv'),ctx=cv.getContext('2d');const keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);
+    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u:0.85},dayItems(m,res));S.style=keep}
+  $('#tTable').innerHTML=`<table><thead><tr><th>Day</th><th>From → to (IST)</th><th class="n">Tickets</th><th class="n">Total so far</th><th class="hide-sm">Source</th></tr></thead><tbody>${res.rows.map((x,k)=>`<tr><td class="rank">${k+1}</td><td>${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}${x.full?'':` <span class="mute">(${Math.round((x.b-x.a)/2)}h)</span>`}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n">${x.run!=null?fmt(x.run):'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}
+    <tr class="tot"><td></td><td>Total</td><td class="n">${res.exact?'':'≈'}${fmt(res.total)}</td><td></td><td class="hide-sm"></td></tr></tbody></table>`}
+const TT={};
+$('#tCsv').onclick=()=>{if(!TT.res)return;const m=TT.m;const rows=[['day','from_ist','to_ist','hours','tickets','total_so_far','source'],...TT.res.rows.map((x,k)=>[k+1,msKey(slMs(m,x.a)),msKey(slMs(m,x.b)),(x.b-x.a)/2,x.r?Math.round(x.r.v):'',x.run!=null?Math.round(x.run):'',!x.r?'no data':x.r.exact?'bookmyshow_24h':'estimate'])];
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));a.download=`${m.name.replace(/[^A-Za-z0-9]+/g,'_')}_daily_${msParts(slMs(m,TT.a))[0]}_${msParts(slMs(m,TT.b))[0]}.csv`;a.click()};
+$('#tImg').onclick=()=>{if(!TT.m)return;const L=TT.m.slots.length-1;apply({type:'totals',movie:TT.m.name,ra:TT.a===0?'':msKey(slMs(TT.m,TT.a)),rb:TT.b===L?'':msKey(slMs(TT.m,TT.b))},false);show('studio')};
+
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
   if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
@@ -550,10 +727,11 @@ function kit(){
 
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
-  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore()}
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
-  [M,D]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json())]);
+  [M,D,SL]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
+    fetch('data/sales.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({movies:[]}))]);
   HANDLE=M.handle||'';$('#handle').textContent=HANDLE;
   try{const H=await (await fetch('health.json',{cache:'no-store'})).json();const [d,t]=(H.newest||' ').split(' ');
     $('#health').innerHTML=`<span class="dot ${H.ok?'':'bad'}"></span>${H.ok?'Live':'Delayed'} · latest reading ${d?dayLabel(d)+' '+timeLabel(t.replace(':','')):'unknown'} IST`}catch(e){}
@@ -563,14 +741,14 @@ async function init(){
   outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
   nowSet(...def);
   try{await document.fonts.load(`700 40px Inter`)}catch(e){}
-  studioDayTime(...def);drawPresets();exploreInit();kit();
+  studioDayTime(...def);drawPresets();exploreInit();totalsInit();kit();
   route();
   addEventListener('hashchange',route);
 }
 function route(){
   const [tab,q]=location.hash.slice(1).split('?');
   if(tab==='studio'&&q){show('studio');apply(Object.fromEntries(new URLSearchParams(q)),false)}
-  else if(['now','studio','explore','kit','data'].includes(tab))show(tab);
+  else if(['now','studio','explore','totals','kit','data'].includes(tab))show(tab);
 }
 init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
 </script>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the website files in site/ for the public site repository.
 
-site/ = index.html + manifest.json + snapshots/<day>/*.csv + history/<movie>.csv
+site/ = index.html + manifest.json + snapshots/<day>/*.csv + history/<movie>.csv + data/*.json
         + the images made in this run (build/snapshots, build/posts, latest image, health.json).
 Older images are not rebuilt: the site repository keeps them (the publish step only adds files
 and prunes folders older than KEEP_DAYS).
@@ -12,6 +12,7 @@ import os
 import re
 import shutil
 
+import sales
 import series
 
 ROOT = series.ROOT
@@ -96,6 +97,9 @@ def main():
     os.makedirs(os.path.join(SITE, 'data'), exist_ok=True)
     with open(os.path.join(SITE, 'data', 'snapshots.json'), 'w', encoding='utf-8') as f:
         json.dump({'movies': names, 'days': rows_by_day}, f, separators=(',', ':'), ensure_ascii=False)
+    # tickets per half hour since tracking began, for daily totals (see sales.py)
+    with open(os.path.join(SITE, 'data', 'sales.json'), 'w', encoding='utf-8') as f:
+        json.dump(sales.build(), f, separators=(',', ':'), ensure_ascii=False)
 
     posts_path = os.path.join(ROOT, 'posts_log.json')
     posts = json.load(open(posts_path, encoding='utf-8')) if os.path.exists(posts_path) else []
