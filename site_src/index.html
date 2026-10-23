@@ -690,7 +690,7 @@ function totals(){
   const m=slm($('#tMovie').value);if(!m)return;const a=+$('#tFrom').value,b=+$('#tTo').value;
   $('#tFromL').textContent=whenLabel(slMs(m,a))+(a===0?' (tracking began)':'');$('#tToL').textContent=whenLabel(slMs(m,b))+(b===m.slots.length-1?' (latest)':'');
   const res=dayRows(m,a,b);TT.m=m;TT.a=a;TT.b=b;TT.res=res;
-  const full=res.rows.filter(x=>x.full).length,hrs=Math.round((b-a)%48/2);
+  const full=res.rows.filter(x=>x.full).length,hrs=Math.floor((b-a)%48/2);
   const miss=res.rows.filter(x=>!x.r),lastOnly=miss.length===1&&miss[0]===res.rows[res.rows.length-1]&&!miss[0].full;
   $('#tTotal').textContent=`${res.exact?'':'≈ '}${fmt(res.total)} tickets`;
   $('#tSub').dataset.miss=res.ok?'':lastOnly?`Latest ${Math.round((miss[0].b-miss[0].a)/2)} hours not in the total yet (BookMyShow shows only its 24-hour figure then). `:`${miss.length} day${miss.length>1?'s':''} without data not in the total. `;
