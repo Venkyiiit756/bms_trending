@@ -82,8 +82,8 @@
   "page_slug": "the-paradise",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": null,
-  "figure": null
+  "last_checked": "2026-10-23",
+  "figure": "none"
  },
  "ET00447840": {
   "name": "Spider-Man: Brand New Day",
@@ -130,6 +130,22 @@
   "last_listed": null,
   "last_checked": null,
   "figure": null
+ },
+ "ET00475942": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+  "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23",
+  "group": "EG00473423",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 30, 2026",
+  "book": false,
+  "listed_alert": "2026-10-23"
  },
  "ET00477243": {
   "name": "Digger",
@@ -215,7 +231,8 @@
    "Hindi"
   ],
   "release": "Oct 23, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-23"
  },
  "ET00497246": {
   "name": "Verity",
@@ -223,7 +240,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00494473",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 02, 2026",
+  "book": true
  },
  "ET00502504": {
   "name": "Prahaar",
@@ -231,7 +254,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00499611",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 16, 2026",
+  "book": true
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -257,13 +286,30 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00507314": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00507314",
+  "page_slug": "sense-and-sensibility",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
  "ET00507337": {
   "name": "Doraemon: Castle of the Undersea Devil",
   "page_slug": "doraemon-castle-of-the-undersea-devil",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00504262",
+  "languages": [
+   "Hindi",
+   "Telugu",
+   "Tamil"
+  ],
+  "release": "Oct 02, 2026",
+  "book": true
  },
  "ET00507738": {
   "name": "Hanuman Ansh",
@@ -271,15 +317,32 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00504662",
+  "languages": [
+   "Hindi",
+   "Telugu"
+  ],
+  "release": "Aug 07, 2026",
+  "book": true
  },
  "ET00509047": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00509047",
+  "name": "418",
   "page_slug": "418",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "upcoming": "2026-10-23",
+  "group": "EG00505951",
+  "languages": [
+   "Telugu",
+   "Hindi",
+   "Kannada",
+   "Tamil"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00509483": {
   "first_seen": "2026-10-18",
@@ -311,7 +374,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00510112",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 16, 2026",
+  "book": true
  },
  "ET00514163": {
   "name": "Avengers Endgame: Encore",
@@ -321,6 +390,15 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00514196": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00514196",
+  "page_slug": "nenu-naa-lalli",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
  "ET00515520": {
   "name": "Baththa",
   "page_slug": "baththa",
@@ -329,29 +407,67 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00515684": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00515684",
+  "page_slug": "killer",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
+ "ET00517728": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00517728",
+  "page_slug": "bts-world-tour-arirang-in-buenos-aires-live-viewing-delayed",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
  "ET00517731": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00517731",
+  "name": "Pehla Pyaar Doosri Baar",
   "page_slug": "pehla-pyaar-doosri-baar",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00514650",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00517732": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00517732",
+  "name": "Haiku",
   "page_slug": "haiku",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00514653",
+  "languages": [
+   "Tamil",
+   "Telugu",
+   "Malayalam"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00517992": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00517992",
+  "name": "Tum Mere Ho",
   "page_slug": "tum-mere-ho",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00514942",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00518039": {
   "name": "Dorothy",
@@ -366,8 +482,8 @@
   "page_slug": "premane-oorilo",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "last_checked": null,
-  "figure": null
+  "last_checked": "2026-10-23",
+  "figure": "none"
  },
  "ET00518674": {
   "name": "Jailer 2",
@@ -375,7 +491,15 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "1_hour"
+  "figure": "1_hour",
+  "group": "EG00515691",
+  "languages": [
+   "Tamil",
+   "Telugu",
+   "Kannada"
+  ],
+  "release": "Oct 15, 2026",
+  "book": true
  },
  "ET00518692": {
   "name": "Thella Kaagitham",
@@ -473,6 +597,15 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00520789": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00520789",
+  "page_slug": "the-influencer-project",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
  "ET00521061": {
   "name": "Crazy Kalyanam",
   "page_slug": "crazy-kalyanam",
@@ -497,6 +630,33 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00522234": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00522234",
+  "page_slug": "chandrahaasa",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
+ "ET00522243": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00522243",
+  "page_slug": "the-calcutta-files",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
+ "ET00522567": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00522567",
+  "page_slug": "chandrayan",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
  "ET00523016": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
@@ -504,6 +664,35 @@
   "page_slug": "udumbanchola-vision",
   "last_checked": null,
   "figure": null
+ },
+ "ET00523104": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "ET00523104",
+  "page_slug": "mr-lucky",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23"
+ },
+ "ET00523155": {
+  "first_seen": "2026-10-23",
+  "last_listed": null,
+  "name": "Namit Malhotra's Ramayana",
+  "page_slug": "namit-malhotras-ramayana-3dtelugu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-23",
+  "group": "EG00449671",
+  "languages": [
+   "Hindi",
+   "Kannada",
+   "Tamil",
+   "Telugu",
+   "Malayalam"
+  ],
+  "release": "Nov 05, 2026",
+  "book": true,
+  "book_opened": "2026-10-23"
  },
  "ET00523468": {
   "first_seen": "2026-10-23",

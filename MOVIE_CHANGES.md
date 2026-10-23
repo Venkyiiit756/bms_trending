@@ -3,6 +3,18 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-23
+- added **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942), polled hourly
+- added **Sense And Sensibility** (ET00507314), polled hourly
+- added **Nenu Naa Lalli** (ET00514196), polled hourly
+- added **Killer** (ET00515684), polled hourly
+- added **Bts World Tour Arirang In Buenos Aires Live Viewing Delayed** (ET00517728), polled hourly
+- added **The Influencer Project** (ET00520789), polled hourly
+- added **Chandrahaasa** (ET00522234), polled hourly
+- added **The Calcutta Files** (ET00522243), polled hourly
+- added **Chandrayan** (ET00522567), polled hourly
+- added **Mr Lucky** (ET00523104), polled hourly
+
+## 2026-10-23
 - **Udta Teer** (ET00495822): hourly -> every 30 min (best hourly figure in 24 h: 4.5K)
 - **418** (ET00509047): hourly -> every 30 min (best hourly figure in 24 h: 3.8K)
 
