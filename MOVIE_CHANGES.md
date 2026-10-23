@@ -2,6 +2,10 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-23
+- added **Jayaho Ramanuja** (ET00521605), polled hourly
+- added **Lohitaksha** (ET00523468), polled hourly
+
 ## 2026-10-22
 - added **Doosra** (ET00114750), polled hourly
 - added **Namit Malhotras Ramayana** (ET00451914), polled hourly

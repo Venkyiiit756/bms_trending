@@ -582,5 +582,29 @@
     "headers_csv": "data/ET00523016_headers.csv",
     "every": 3600,
     "added": "2026-10-22"
+  },
+  {
+    "key": "et00521605",
+    "name": "Jayaho Ramanuja",
+    "eventcode": "ET00521605",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "jayaho-ramanuja",
+    "csv": "data/ET00521605.csv",
+    "headers_csv": "data/ET00521605_headers.csv",
+    "every": 3600,
+    "added": "2026-10-23"
+  },
+  {
+    "key": "et00523468",
+    "name": "Lohitaksha",
+    "eventcode": "ET00523468",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "lohitaksha",
+    "csv": "data/ET00523468.csv",
+    "headers_csv": "data/ET00523468_headers.csv",
+    "every": 3600,
+    "added": "2026-10-23"
   }
 ]
