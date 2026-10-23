@@ -127,3 +127,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - Discovery runs three times a day: `tracker.py` dispatches `discover_movies.yml` at DISCOVER_AT (06:40, 13:40,
   20:40 IST); the daily cron stays as a backup (GitHub skipped it on 21 Oct and often ran it 4-5 h late).
 - `probe.py` / `probe.yml` (manual): prints the booking-related fields BookMyShow returns for given event codes.
+- Booking alerts (`discover.py`): every movie's `meta.event.bookButton` and release date are stored in catalog.json.
+  Upcoming movies not bookable yet and every code in `watchlist.json` (`[{"code": "ET...", "name": "..."}]`) are
+  re-checked each discovery run; when booking opens (or a movie releasing later is first found already bookable)
+  the workflow opens a GitHub issue "Bookings opened: ..." / "Advance bookings open: ..." (once per movie).
