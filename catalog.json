@@ -2,10 +2,16 @@
  "ET00114750": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00114750",
+  "name": "Doosra",
   "page_slug": "doosra",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00090859",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00312314": {
   "name": "Varsham (Telugu)",
@@ -18,10 +24,19 @@
  "ET00396541": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
-  "name": "ET00396541",
+  "name": "Mufasa: The Lion King",
   "page_slug": "mufasa-the-lion-king",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00395029",
+  "languages": [
+   "English",
+   "Telugu",
+   "Hindi",
+   "Tamil"
+  ],
+  "release": "Dec 20, 2024",
+  "book": true
  },
  "ET00412717": {
   "name": "Premada Oorali",
@@ -34,18 +49,33 @@
  "ET00421831": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
-  "name": "ET00421831",
+  "name": "Lilo & Stitch",
   "page_slug": "lilo-stitch",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00419977",
+  "languages": [
+   "English",
+   "Telugu",
+   "Tamil",
+   "Hindi"
+  ],
+  "release": "May 23, 2025",
+  "book": true
  },
  "ET00429213": {
-  "name": "Jailer 2",
+  "name": "Rajini: The Jailer 2",
   "page_slug": "rajini-the-jailer-2",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "1_hour"
+  "figure": "1_hour",
+  "group": "EG00427297",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 15, 2026",
+  "book": true
  },
  "ET00436621": {
   "name": "The Paradise",
@@ -61,15 +91,37 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00445652",
+  "languages": [
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu",
+   "Kannada",
+   "Malayalam"
+  ],
+  "release": "Jul 30, 2026",
+  "book": true
  },
  "ET00451914": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00451914",
+  "name": "Namit Malhotra's Ramayana",
   "page_slug": "namit-malhotras-ramayana",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00449671",
+  "languages": [
+   "Hindi",
+   "Kannada",
+   "Tamil",
+   "Telugu",
+   "Malayalam"
+  ],
+  "release": "Nov 05, 2026",
+  "book": true,
+  "book_opened": "2026-10-23"
  },
  "ET00465242": {
   "name": "Baa Baa Black Sheep",
@@ -88,12 +140,18 @@
   "figure": null
  },
  "ET00477911": {
-  "name": "Drishyam 3",
+  "name": "Drishyam The Conclusion",
   "page_slug": "drishyam-the-conclusion",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "1_hour"
+  "figure": "1_hour",
+  "group": "EG00475391",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 02, 2026",
+  "book": true
  },
  "ET00481645": {
   "name": "Street Fighter",
@@ -101,7 +159,16 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00479093",
+  "languages": [
+   "English",
+   "Hindi",
+   "Telugu",
+   "Tamil"
+  ],
+  "release": "Oct 16, 2026",
+  "book": true
  },
  "ET00483565": {
   "name": "Ranabaali",
@@ -109,23 +176,46 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "1_hour"
+  "figure": "1_hour",
+  "group": "EG00480978",
+  "languages": [
+   "Telugu",
+   "Kannada",
+   "Malayalam",
+   "Tamil",
+   "Hindi"
+  ],
+  "release": "Oct 16, 2026",
+  "book": true
  },
  "ET00495822": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00495822",
+  "name": "Udta Teer",
   "page_slug": "udta-teer",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00493064",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00496545": {
   "first_seen": "2026-10-20",
   "last_listed": "2026-10-23",
-  "name": "ET00496545",
+  "name": "Clayface",
   "page_slug": "clayface",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00493778",
+  "languages": [
+   "English",
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00497246": {
   "name": "Verity",
