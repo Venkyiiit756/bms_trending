@@ -128,7 +128,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   20:40 IST); the daily cron stays as a backup (GitHub ran it 4-5 h late every day).
 - `probe.py` / `probe.yml` (manual): prints the booking-related fields BookMyShow returns for given event codes.
 - Booking alerts (`discover.py`): every movie's `meta.event.bookButton` and release date are stored in catalog.json.
-  Each run also reads Hyderabad's upcoming-movies page (`UPCOMING`, about a week ahead). Upcoming movies not
+  Each run also reads Hyderabad's upcoming-movies (about a week ahead) and coming-soon (further out) pages (`UPCOMING`). Upcoming movies not
   bookable yet and `watchlist.json` entries (`{"code": "ET...", "name": ...}` or `{"name": ..., "match": [words]}`;
   words are matched against listed movies' page slugs/names) are re-checked each discovery run; a watched film's
   first listing is reported as "Listed on BookMyShow, bookings not open yet"; when booking opens (or a movie releasing later is first found already bookable)
@@ -137,7 +137,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 
 ## Interest ("I'm interested") counts (interest.py)
 - Source: app endpoint `/api/movies/v1/synopsis/init/static?eventcode=...` -> text " 35.5K+ are interested ".
-- `tracker.py` asks each film from `interest.targets()` (catalog films not released yet + watchlist
+- `tracker.py` asks each film from `interest.targets()` (catalog films not released yet, incl. undated ones on an upcoming/coming-soon page in the last 3 days, + watchlist
   codes, one listing per BookMyShow group, max 30) every 3 h inside its paced loop (`InterestJob`), rows in
   `data/interest.csv`. Site: `data/interest.json`, "Upcoming" tab, Studio type `interest` ("Most awaited").
 - Replaces the separate `bms-interest-tracker` repo (Puppeteer scrape of web pages, fixed 2025 list, 1/19 working).
