@@ -61,3 +61,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-24 15:08:51+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-24 15:18:38+05:30,Clayface,24_hours,13.88K,13.88K tickets booked in last 24 hours,2026-10-24 14:58:33+05:30,change,2026-10-24 15:18:38+05:30
 2026-10-24 15:28:53+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-24 16:38:26+05:30,Clayface,24_hours,13.87K,13.87K tickets booked in last 24 hours,2026-10-24 15:18:38+05:30,change,2026-10-24 16:38:26+05:30
