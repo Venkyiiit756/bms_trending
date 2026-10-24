@@ -24,7 +24,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV = os.path.join(ROOT, 'data', 'interest.csv')
 FIELDS = ['timestamp', 'eventcode', 'movie_name', 'text', 'interested', 'release']
-INTEREST_EVERY = 3 * 3600
+INTEREST_EVERY = 3600
 AFTER_RELEASE = 0            # released films show ratings, not the interested count
 MAX_TARGETS = 30
 COUNT = re.compile(r'([\d.]+)\s*([KkMm]?)\+?\s+(?:are\s+)?interested')
