@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-24
+- **Jailer 2 Telugu** (ET00518675): hourly -> every 30 min (best hourly figure in 24 h: 7.2K)
+
+## 2026-10-24
 - added **Chatrapathi** (ET00322950), polled hourly
 - added **Rebel (2024)** (ET00395765), polled hourly
 - added **Avengers: Doomsday** (ET00439706), polled hourly

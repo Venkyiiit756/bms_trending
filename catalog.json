@@ -366,7 +366,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00503889",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 09, 2026",
+  "book": false
  },
  "ET00507314": {
   "first_seen": "2026-10-23",
@@ -429,18 +435,30 @@
  "ET00509483": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "name": "ET00509483",
+  "name": "Shaun the Sheep: The Beast of Mossy Bottom",
   "page_slug": "shaun-the-sheep-the-beast-of-mossy-bottom",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00506385",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 16, 2026",
+  "book": false
  },
  "ET00510332": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-21",
-  "name": "ET00510332",
+  "name": "Danger Devdas",
   "page_slug": "danger-devdas",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00507220",
+  "languages": [
+   "Odia"
+  ],
+  "release": "Oct 16, 2026",
+  "book": false
  },
  "ET00511431": {
   "first_seen": "2026-10-18",
@@ -487,7 +505,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00512348",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Oct 01, 2026",
+  "book": false
  },
  "ET00515684": {
   "first_seen": "2026-10-23",
@@ -574,7 +598,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00515048",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 02, 2026",
+  "book": false
  },
  "ET00518674": {
   "name": "Jailer 2",
@@ -657,7 +687,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00516643",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 09, 2026",
+  "book": false
  },
  "ET00519781": {
   "name": "Dorothy (Telugu)",
@@ -698,10 +734,16 @@
  "ET00520054": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "name": "ET00520054",
+  "name": "Impure",
   "page_slug": "impure",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00517195",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 02, 2026",
+  "book": false
  },
  "ET00520164": {
   "first_seen": "2026-10-22",

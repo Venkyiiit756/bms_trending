@@ -345,7 +345,7 @@
   },
   {
     "key": "et00509483",
-    "name": "Shaun The Sheep The Beast Of Mossy Bottom",
+    "name": "Shaun the Sheep: The Beast of Mossy Bottom",
     "eventcode": "ET00509483",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -820,7 +820,7 @@
     "page_slug": "jailer-2-telugu",
     "csv": "data/ET00518675.csv",
     "headers_csv": "data/ET00518675_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-24"
   },
   {
