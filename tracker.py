@@ -395,11 +395,18 @@ def poll_interest(job, shared):
 
 
 def interest_jobs(start):
-    """Jobs for interest.targets(), due when their last row is INTEREST_EVERY old (new ones a minute apart)."""
-    last, jobs = interest.last_polled(), []
-    for i, (code, name, release) in enumerate(interest.targets()):
+    """Jobs for interest.targets(), due when their last row is INTEREST_EVERY old. Overdue ones (longest
+    waiting first) start 30 s apart right away: runs often end early on a 429, so a film queued late
+    in a run would never get its turn."""
+    last, jobs, k = interest.last_polled(), [], 0
+    targets = sorted(interest.targets(), key=lambda t: last.get(t[0]) or datetime.min.replace(tzinfo=IST))
+    for code, name, release in targets:
         age = (now() - last[code]).total_seconds() if code in last else interest.INTEREST_EVERY
-        jobs.append(InterestJob(code, name, release, start + 120 + i * 60 + max(0, interest.INTEREST_EVERY - age)))
+        if age >= interest.INTEREST_EVERY:
+            due, k = start + 20 + k * 30, k + 1
+        else:
+            due = start + interest.INTEREST_EVERY - age
+        jobs.append(InterestJob(code, name, release, due))
     return jobs
 
 
