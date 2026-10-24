@@ -167,6 +167,8 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
           </optgroup>
           <optgroup label="Upcoming films">
             <option value="interest">Most awaited: interested</option>
+            <option value="interestline">Interest over time: chart</option>
+            <option value="interesttable">Interest hour by hour: table</option>
           </optgroup>
         </select>
       </label>
@@ -184,7 +186,8 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
       <label id="sHoursWrap">Hours
         <select id="sHours"><option value="all">Every hour, 9 AM–11 PM</option><option value="two" selected>Every 2 hours, 8 AM–10 PM</option><option value="day">Daytime, 9 AM–5 PM</option><option value="eve">Evening, 5–11 PM</option></select>
       </label>
-      <label id="sDaysWrap">Days<select id="sDays"><option>3</option><option selected>4</option><option>5</option><option>7</option></select></label>
+      <label id="sIModeWrap">Show<select id="sIMode"><option value="growth">Gained since the start</option><option value="total">Total</option></select></label>
+      <label id="sDaysWrap">Days<select id="sDays"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>7</option></select></label>
       <label id="sMovieWrap">Movie<select id="sMovie"></select></label>
       <div id="sRangeWrap" class="mute" style="display:grid;gap:6px"><span id="sRange"></span><div class="row" style="gap:6px"><button id="sRangeAll" type="button">Since tracking began</button><button id="sRangeEdit" type="button">Change dates…</button></div></div>
       <label id="sTopWrap">Movies
@@ -262,6 +265,18 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
       <button id="uImg">Make image</button></div>
     <div id="uTable" style="margin-top:10px;overflow-x:auto"></div>
   </div>
+  <div class="card">
+    <div class="row spread"><h2>Interest over time</h2><div class="row"><button id="iImg">Make image: chart</button><button id="iImgT">Make image: hour by hour</button><button id="iCsv">CSV</button></div></div>
+    <div class="row" style="gap:10px;margin-top:10px">
+      <label class="mute" style="display:grid;gap:4px">From<select id="iFrom"></select></label>
+      <label class="mute" style="display:grid;gap:4px">To<select id="iTo"></select></label>
+      <label class="mute" style="display:grid;gap:4px">Show<select id="iMode"><option value="growth">Gained since the start</option><option value="total">Total</option></select></label>
+    </div>
+    <div class="mute" style="margin:10px 0 4px">Films (up to 6)</div>
+    <div class="chips" id="iPick"></div>
+    <canvas id="icv" width="1400" height="620" style="margin-top:10px" aria-label="Chart of people interested over time"></canvas>
+    <div style="max-height:440px;overflow:auto;margin-top:10px" id="iTable"></div>
+  </div>
 </section>
 
 <!-- AUTO POSTS -->
@@ -279,7 +294,7 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
     <h2>Full history by movie</h2>
     <div class="mute">Every change since tracking began (IST time, figure, value, tickets). Stale cached readings removed.</div>
     <ul class="dl" id="hist"></ul>
-    <div class="row" style="margin-top:10px"><a class="btn" href="data/snapshots.json" download>All half-hour snapshots, last 3 weeks (JSON)</a><a class="btn" href="data/sales.json" download>Tickets per half hour since tracking began (JSON)</a></div>
+    <div class="row" style="margin-top:10px"><a class="btn" href="data/snapshots.json" download>All half-hour snapshots, last 3 weeks (JSON)</a><a class="btn" href="data/sales.json" download>Tickets per half hour since tracking began (JSON)</a><a class="btn" href="data/interest.csv" download>Interested counts, every reading (CSV)</a></div>
   </div>
   <div class="card">
     <details open>
@@ -364,15 +379,15 @@ seg('sStyle','style');seg('sSize','size');
 $$('#sCapKind button').forEach(b=>b.onclick=()=>{setSeg('sCapKind',b.dataset.v);S.cap=b.dataset.v;setCaption();writeHash()});
 function studioDayTime(d,t){fill($('#sDay'),days().slice().reverse(),d,dayLabel);fill($('#sTime'),times($('#sDay').value).slice().reverse(),t,timeLabel);moviesFor();render()}
 $('#sDay').onchange=()=>{const ts=times($('#sDay').value);fill($('#sTime'),ts.slice().reverse(),$('#sTime').value||ts[ts.length-1],timeLabel);moviesFor();render()};
-['#sTime','#sCmp','#sDays','#sMovie','#sHours'].forEach(s=>$(s).onchange=()=>{if(s==='#sTime')moviesFor();render()});
+['#sTime','#sCmp','#sDays','#sMovie','#sHours','#sIMode'].forEach(s=>$(s).onchange=()=>{if(s==='#sTime')moviesFor();render()});
 $('#sType').onchange=()=>{S.type=$('#sType').value;moviesFor();render()};
 $('#sTop').onchange=()=>{moviesFor();render()};
 $('#sFoot').onchange=render;
-const DAYTYPES=['peak','daytable','multiline'], MAXCOLS={daytable:4,multiline:4};
+const DAYTYPES=['peak','daytable','multiline'], MAXCOLS={daytable:4,multiline:4,interestline:4,interesttable:4};
 function dayBest(d){const best={};for(const tt of times(d))for(const r of hourly(d,tt))if(!best[r.name]||r.n>best[r.name].n)best[r.name]={...r,tt};return best}
 const SALESTYPES=['board24','days24','totals','totalsbar'];
 function candidates(){const d=$('#sDay').value,t=$('#sTime').value;
-  if(S.type==='interest')return inRows().map(r=>r.f.name);
+  if(S.type==='interest'||S.type==='interestline'||S.type==='interesttable')return inRows().map(r=>r.f.name);
   if(S.type==='totals'||S.type==='totalsbar')return SL.movies.filter(m=>m.slots.length>48).map(m=>m.name);
   if(S.type==='board24'||S.type==='days24'){const ms=istMs(d,t);return SL.movies.map(m=>({n:m.name,r:day24(m,slIdx(m,ms))})).filter(x=>x.r).sort((a,b)=>b.r.v-a.r.v).map(x=>x.n)}
   if(DAYTYPES.includes(S.type)||S.type==='week'||S.type==='line'){const b=dayBest(d);if(S.type==='line'||S.type==='multiline'){/* only movies with data up to the chosen time */}return Object.entries(b).sort((a,c)=>c[1].n-a[1].n).map(x=>x[0])}
@@ -382,10 +397,11 @@ function moviesFor(){const c=candidates();const ty=S.type;
   $('#sPick').innerHTML=c.map((n,i)=>`<label><input type="checkbox" value="${n}" ${keep.size?(keep.has(n)?'checked':''):(i<def?'checked':'')}> ${n}</label>`).join('')||'<span class="mute">No movies with an hourly figure here.</span>';
   $$('#sPick input').forEach(i=>i.onchange=render);
   const cur=$('#sMovie').value;fill($('#sMovie'),c,cur);
-  const tot=ty==='totals'||ty==='totalsbar',inr=ty==='interest';
-  const vis={date:!tot&&!inr,time:!['peak','daytable','week'].includes(ty)&&!tot&&!inr,cmp:ty==='board',days:['trend','week','days24'].includes(ty),movie:['line','week'].includes(ty)||tot,top:!['line','week'].includes(ty)&&!tot,hours:['daytable','week'].includes(ty)};
+  const tot=ty==='totals'||ty==='totalsbar',inr=ty==='interest',ina=ty==='interestline'||ty==='interesttable';
+  const vis={date:!tot&&!inr,time:!['peak','daytable','week'].includes(ty)&&!tot&&!inr&&!ina,cmp:ty==='board',days:['trend','week','days24','interestline'].includes(ty),movie:['line','week'].includes(ty)||tot,top:!['line','week'].includes(ty)&&!tot,hours:['daytable','week','interesttable'].includes(ty)};
   $('#sDay').parentElement.hidden=!vis.date;$('#sRangeWrap').hidden=!tot;
   $('#sTimeWrap').hidden=!vis.time;$('#sCmpWrap').hidden=!vis.cmp;$('#sDaysWrap').hidden=!vis.days;$('#sMovieWrap').hidden=!vis.movie;$('#sTopWrap').hidden=!vis.top;$('#sHoursWrap').hidden=!vis.hours;
+  $('#sIModeWrap').hidden=ty!=='interestline';
   $('#sPick').hidden=!vis.top||$('#sTop').value!=='pick';
   $('#sTimeWrap').firstChild.textContent=ty==='multiline'||ty==='line'?'Until':'Time'}
 function chosen(){const c=candidates();let out;if($('#sTop').value==='pick'){const p=new Set($$('#sPick input:checked').map(i=>i.value));out=c.filter(n=>p.has(n))}else out=c.slice(0,+$('#sTop').value);return MAXCOLS[S.type]?out.slice(0,MAXCOLS[S.type]):out}
@@ -425,17 +441,18 @@ function table(ctx,W,box,header,rows,colors,widths,bgs){
 function chart(ctx,W,box,lines,opt={}){
   const th=T();const xmax=opt.xmax||24,ticks=opt.ticks||[0,3,6,9,12,15,18,21,24].map(h=>[h,h===0||h===24?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p']);
   const x0=W*0.12,x1=W*0.94,y0=box.top+70*box.u,y1=box.bottom-60*box.u;
-  const all=lines.flatMap(l=>l.pts.map(p=>p[1]));const ymax=Math.max(1,...all)*1.12;
-  const step=[1,2,5,10,20,25,50,100,200].find(s=>ymax/s<=6)||200;
+  const all=lines.flatMap(l=>l.pts.map(p=>p[1]));const ymin=opt.ymin||0;const ymax=Math.max(opt.floor||1,...all)*(ymin?1.03:1.12);const span=ymax-ymin;
+  const steps=opt.steps||[1,2,5,10,20,25,50,100,200];const step=steps.find(s=>span/s<=6)||steps[steps.length-1];
+  const yfmt=opt.yfmt||(v=>v+'K');
   ctx.textBaseline='middle';ctx.font=`500 ${Math.round(22*box.u)}px ${FONT}`;
-  for(let v=0;v<=ymax;v+=step){const y=y1-(v/ymax)*(y1-y0);ctx.strokeStyle=th.grid;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=th.sub;ctx.textAlign='right';ctx.fillText(v+'K',x0-12*box.u,y)}
+  for(let v=Math.ceil(ymin/step-1e-9)*step;v<=ymax+1e-9;v=Math.round((v+step)*1e6)/1e6){const y=y1-((v-ymin)/span)*(y1-y0);ctx.strokeStyle=th.grid;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=th.sub;ctx.textAlign='right';ctx.fillText(yfmt(v),x0-12*box.u,y)}
   ctx.textAlign='center';ticks.forEach(([h,lab])=>{const x=x0+(h/xmax)*(x1-x0);ctx.fillStyle=th.sub;ctx.fillText(lab,x,y1+30*box.u)});
   ctx.strokeStyle=th.axis;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
-  const X=h=>x0+(h/xmax)*(x1-x0),Y=v=>y1-(v/ymax)*(y1-y0);
+  const X=h=>x0+(h/xmax)*(x1-x0),Y=v=>y1-((v-ymin)/span)*(y1-y0);
   lines.forEach(l=>{ctx.strokeStyle=l.color;ctx.lineWidth=(l.main?5:3.5)*box.u;ctx.lineJoin='round';ctx.beginPath();let pen=false,last=null;
     for(const [h,v] of l.pts){if(last!==null&&h-last>(opt.gap||0.75))pen=false;pen?ctx.lineTo(X(h),Y(v)):ctx.moveTo(X(h),Y(v));pen=true;last=h}ctx.stroke();
     if(l.end&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];ctx.fillStyle=l.color;ctx.beginPath();ctx.arc(X(h),Y(v),7*box.u,0,7);ctx.fill();
-      ctx.font=`800 ${Math.round(24*box.u)}px ${FONT}`;ctx.textAlign=h>xmax*0.85?'right':'left';ctx.fillText(v.toFixed(1)+'K',X(h)+(h>xmax*0.85?-14:14)*box.u,Y(v)-24*box.u)}});
+      ctx.font=`800 ${Math.round(24*box.u)}px ${FONT}`;ctx.textAlign=h>xmax*0.85?'right':'left';ctx.fillText(opt.yfmt?opt.yfmt(v):v.toFixed(1)+'K',X(h)+(h>xmax*0.85?-14:14)*box.u,Y(v)-24*box.u)}});
   // legend (wraps)
   let lx=x0,ly=box.top+18*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(24*box.u)}px ${FONT}`;
   lines.forEach(l=>{const w=ctx.measureText(l.label).width+90*box.u;if(lx+w>x1){lx=x0;ly+=34*box.u}
@@ -472,6 +489,28 @@ function render(){
     CAP.short=top?(mv?`Biggest riser on BookMyShow at ${timeLabel(t)}: ${top.n}, ${top.v.t} tickets in the hour (${pctTxt(top.p)} ${vs}).\n\n${tags(top.n)}`
       :`${top.n} led BookMyShow bookings ${win} on ${dayLabel(d)}: ${top.v.t} tickets in the hour${cmode!=='none'&&top.p!==null?` (${pctTxt(top.p)} ${vs})`:''}.\n\n${tags(top.n)}`):'';
     ALT=`Table of tickets booked on BookMyShow in the hour ${win}, ${dayLabel(d)}`+(cmode!=='none'?`, with change ${vs}`:'')+': '+list.map(l=>`${l.n} ${l.v.t}${cmode!=='none'&&l.p!==null?`, ${pctTxt(l.p).replace('▲','up ').replace('▼','down ')}`:''}`).join('; ');
+  } else if(S.type==='interestline'){
+    const nd=+$('#sDays').value,mode=$('#sIMode').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
+    const lines=inLines(ds,names,mode,th.pal);
+    box=frame(ctx,W,H,mode==='growth'?'Interest gained':'People interested',`${nd===1?dayLabel(d):short(ds[0])+' to '+dayLabel(d)} · marked "interested" on BookMyShow`);
+    if(lines.length)chart(ctx,W,box,lines,{xmax:nd*24,ticks:inTicks(ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,names.length?'No interest readings in this period':'Pick at least one film');
+    const sp=lines.map(l=>({n:l.name,...inSpan(l.name,ds)}));
+    const ls=sp.map(x=>`${x.n}: ${fmt(x.last)}+${x.last>x.first?` (+${fmt(x.last-x.first)})`:''}`);
+    CAP.long=build(`🍿 Interest on BookMyShow, ${nd===1?dayLabel(d):`last ${nd} days`}: people who marked "interested"`,ls,sp.slice(0,2).map(x=>x.n));
+    CAP.short=sp[0]?`${sp[0].n}: ${fmt(sp[0].last)}+ interested on BookMyShow${sp[0].last>sp[0].first?` (+${fmt(sp[0].last-sp[0].first)} ${nd===1?'today':`in ${nd} days`})`:''}.\n\n${tags(sp[0].n)}`:'';
+    ALT=`Line chart of people who marked interested on BookMyShow, ${nd===1?dayLabel(d):short(ds[0])+' to '+dayLabel(d)}: `+ls.join('; ');
+  } else if(S.type==='interesttable'){
+    const names=chosen();const hs=HOURSETS[$('#sHours').value];
+    const grid=hs.map(h=>names.map(n=>{const f=IN.films.find(x=>x.name===n);const ms=istMs(d,hh(h));const p=f&&inAt(f,ms);return p&&inMs(p[0])>ms-190*60000?p[1]:null}));
+    const rows=hs.map((h,i)=>[timeLabel(hh(h)),...grid[i].map(v=>v==null?'—':fmt(v)+'+')]);
+    const cols=hs.map((h,i)=>[th.rank,...grid[i].map((v,j)=>{const prev=grid.slice(0,i).map(r=>r[j]).filter(x=>x!=null).pop();return v!=null&&prev!=null&&v>prev?th.up:th.ink})]);
+    box=frame(ctx,W,H,'People interested, hour by hour',`${dayLabel(d)} · marked "interested" on BookMyShow, as of each time`);
+    const any=grid.flat().some(v=>v!=null);const w0=.2;
+    if(names.length&&any)table(ctx,W,box,['Time',...names.map(inName)],rows,cols,[w0,...names.map(()=>(1-w0)/names.length)]);else empty(ctx,W,H,'No interest readings on this day');
+    const ls=names.map((n,j)=>{const v=grid.map(r=>r[j]).filter(x=>x!=null);return v.length?`${n}: ${fmt(v[v.length-1])}+${v[v.length-1]>v[0]?` (+${fmt(v[v.length-1]-v[0])} today)`:''}`:null}).filter(Boolean);
+    CAP.long=build(`🍿 Interest on BookMyShow, ${dayLabel(d)}: people who marked "interested"`,ls,names.slice(0,2));
+    CAP.short=ls[0]?`${ls[0]} on ${dayLabel(d)}. Hour-by-hour table below.\n\n${tags(...names.slice(0,2))}`:'';
+    ALT=`Table of people who marked interested on BookMyShow by hour on ${dayLabel(d)}, for ${names.join(', ')}: `+rows.map(r=>r.join(' ')).join('; ');
   } else if(S.type==='interest'){
     const pick=new Set(chosen());const list=inRows().filter(r=>pick.has(r.f.name));
     const asof=list.length?list.reduce((a,r)=>r.t>a?r.t:a,''):'';
@@ -590,7 +629,7 @@ $('#sCopyAlt').onclick=()=>copy(ALT,'Alt text copied');
 $('#sDownload').onclick=()=>{const d=$('#sDay').value,t=$('#sTime').value;const a=document.createElement('a');a.download=`${S.type}_${S.type.startsWith('totals')?$('#sMovie').value.replace(/[^A-Za-z0-9]+/g,'_'):d+'_'+($('#sTimeWrap').hidden?'day':t)}_${S.style}_${S.size}.png`;a.href=$('#cv').toDataURL('image/png');a.click()};
 
 /* ---------- settings in the link, and presets ---------- */
-function state(){const st={type:S.type,d:$('#sDay').value,t:$('#sTime').value,cmp:$('#sCmp').value,days:$('#sDays').value,movie:$('#sMovie').value,top:$('#sTop').value,hours:$('#sHours').value,style:S.style,size:S.size,foot:$('#sFoot').checked?1:0,cap:S.cap};
+function state(){const st={type:S.type,d:$('#sDay').value,t:$('#sTime').value,cmp:$('#sCmp').value,days:$('#sDays').value,movie:$('#sMovie').value,top:$('#sTop').value,hours:$('#sHours').value,imode:$('#sIMode').value,style:S.style,size:S.size,foot:$('#sFoot').checked?1:0,cap:S.cap};
   if(st.top==='pick')st.pick=$$('#sPick input:checked').map(i=>i.value).join('|');
   if(S.type==='totals'||S.type==='totalsbar'){st.ra=S.ra||'';st.rb=S.rb||'';delete st.d;delete st.t}return st}
 function writeHash(){if(!$('#studio').classList.contains('on'))return;history.replaceState(null,'','#studio?'+new URLSearchParams(state()).toString())}
@@ -598,7 +637,7 @@ function apply(st,keepDate){
   if(st.type){S.type=st.type;$('#sType').value=st.type}
   if('ra' in st)S.ra=st.ra||null;if('rb' in st)S.rb=st.rb||null;
   ['style','size','cap'].forEach(k=>{if(st[k]){S[k]=st[k];setSeg({style:'sStyle',size:'sSize',cap:'sCapKind'}[k],st[k])}});
-  if(st.cmp)$('#sCmp').value=st.cmp;if(st.days)$('#sDays').value=st.days;if(st.hours)$('#sHours').value=st.hours;if(st.top)$('#sTop').value=st.top;
+  if(st.cmp)$('#sCmp').value=st.cmp;if(st.days)$('#sDays').value=st.days;if(st.hours)$('#sHours').value=st.hours;if(st.imode)$('#sIMode').value=st.imode;if(st.top)$('#sTop').value=st.top;
   if(st.foot!=null)$('#sFoot').checked=String(st.foot)==='1';
   if(!keepDate&&st.d&&D.days[st.d])studioDayTime(st.d,times(st.d).includes(st.t)?st.t:times(st.d).slice(-1)[0]);else moviesFor();
   if(st.pick){const p=new Set(st.pick.split('|'));$$('#sPick input').forEach(i=>i.checked=p.has(i.value))}
@@ -743,6 +782,44 @@ function upcoming(){const R=inRows();
     :'<div class="empty">No interest figures yet. The tracker checks upcoming films every hour.</div>'}
 $('#uImg').onclick=()=>{apply({type:'interest',top:'7'},false);show('studio')};
 
+/* interest over time: chart and hour-by-hour table (page and Studio) */
+const inName=n=>n.length>24?n.replace(/\s*\([^)]*\)\s*$/,''):n;
+const inDays=()=>[...new Set(IN.films.flatMap(f=>f.points.map(p=>p[0].slice(0,10))))].sort();
+function inPts(f,ds){return f.points.map(p=>{const k=ds.indexOf(p[0].slice(0,10));return k<0?null:[k*24+(+p[0].slice(11,13))+(+p[0].slice(14,16))/60,p[1]]}).filter(Boolean)}
+function inSpan(n,ds){const f=IN.films.find(x=>x.name===n);const p=f?inPts(f,ds):[];return {first:p.length?p[0][1]:0,last:p.length?p[p.length-1][1]:0}}
+function inLines(ds,names,mode,colors){return names.map((n,i)=>{const f=IN.films.find(x=>x.name===n);if(!f)return null;
+  let pts=inPts(f,ds).map(p=>[p[0],p[1]/1000]);if(mode==='growth'&&pts.length){const b=pts[0][1];pts=pts.map(p=>[p[0],Math.round((p[1]-b)*1e4)/1e4])}
+  return {name:n,label:inName(n),pts,color:colors[i%colors.length],main:i===0,end:true}}).filter(l=>l&&l.pts.length)}
+function inAxis(lines,mode){const o={steps:[0.01,0.02,0.05,0.1,0.2,0.5,1,2,5,10,20,25,50,100,200],yfmt:v=>mode==='growth'&&v>0?'+'+fmt(v*1000):fmt(v*1000),floor:mode==='growth'?0.1:1};
+  if(mode==='total'&&lines.length){const all=lines.flatMap(l=>l.pts.map(p=>p[1])),lo=Math.min(...all),hi=Math.max(...all);const lasts=lines.map(l=>l.pts[l.pts.length-1][1]);
+    if(Math.max(...lasts)/Math.max(0.001,Math.min(...lasts))<3)o.ymin=Math.max(0,lo-Math.max((hi-lo)*0.25,hi*0.01))}   // films of similar size: zoom the axis
+  return o}
+function inTicks(ds){const hl=h=>{const x=h%24;return x===0?'12a':x<12?x+'a':x===12?'12p':(x-12)+'p'};
+  return ds.length<=2?[...Array(ds.length*8+1)].map((_,i)=>[i*3,hl(i*3)]):ds.map((x,i)=>[i*24+12,short(x)])}
+const IS={sel:new Set()},PAL6=['#1f3a5f','#c0392b','#0a7d33','#b9770e','#8e44ad','#117a8b'];
+function inRange(){let a=$('#iFrom').value,b=$('#iTo').value;if(a>b)[a,b]=[b,a];return inDays().filter(x=>x>=a&&x<=b)}
+function interestInit(){const ds=inDays();if(!ds.length)return;fill($('#iFrom'),ds,ds[Math.max(0,ds.length-3)],dayLabel);fill($('#iTo'),ds,ds[ds.length-1],dayLabel);
+  IS.sel=new Set(inRows().slice(0,3).map(r=>r.f.name));
+  $('#iPick').innerHTML=inRows().map(r=>`<label class="mute" style="display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--ink);white-space:nowrap"><input type="checkbox" value="${r.f.name.replace(/"/g,'&quot;')}" ${IS.sel.has(r.f.name)?'checked':''}> ${inName(r.f.name)} <span style="color:var(--mute)">${fmt(r.v)}+</span></label>`).join('');
+  $$('#iPick input').forEach(i=>i.onchange=()=>{i.checked?IS.sel.add(i.value):IS.sel.delete(i.value);interestHist()});
+  ['#iFrom','#iTo','#iMode'].forEach(s=>$(s).onchange=interestHist)}
+function interestHist(){if(!$('#upcoming').classList.contains('on')||!$('#iFrom').value)return;
+  const ds=inRange(),mode=$('#iMode').value,names=inRows().map(r=>r.f.name).filter(n=>IS.sel.has(n)).slice(0,6);
+  const cv=$('#icv'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  const lines=inLines(ds,names,mode,PAL6);
+  if(lines.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85},lines,{xmax:ds.length*24,ticks:inTicks(ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,names.length?'No readings in this period':'Pick at least one film');
+  S.style=keep;
+  // hour-by-hour table: the latest reading of each film in each clock hour, newest first
+  const rows={},base={};
+  names.forEach(n=>{const f=IN.films.find(x=>x.name===n);f.points.forEach(p=>{const d=p[0].slice(0,10);if(!ds.includes(d))return;if(!(n in base))base[n]=p[1];const k=p[0].slice(0,13);(rows[k]=rows[k]||{})[n]=p})});
+  const keys=Object.keys(rows).sort().reverse();IS.csv=[['date','time_ist',...names],...keys.map(k=>[k.slice(0,10),k.slice(11,13)+':00',...names.map(n=>rows[k][n]?rows[k][n][1]:'')])];
+  $('#iTable').innerHTML=names.length&&keys.length?`<table><thead><tr><th>Hour</th>${names.map(n=>`<th class="n">${inName(n)}</th>`).join('')}</tr></thead><tbody>${keys.map(k=>`<tr><td>${short(k.slice(0,10))} · ${timeLabel(k.slice(11,13)+'00')}</td>${names.map(n=>{const p=rows[k][n];return `<td class="n">${p?(mode==='growth'?(p[1]>base[n]?'<span class="up">+'+fmt(p[1]-base[n])+'</span>':'0'):fmt(p[1])+'+'):'—'}</td>`}).join('')}</tr>`).join('')}</tbody></table>`:'';
+}
+$('#iCsv').onclick=()=>{if(!IS.csv)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([IS.csv.map(r=>r.map(c=>/[,"]/.test(c)?`"${String(c).replace(/"/g,'""')}"`:c).join(',')).join('\n')],{type:'text/csv'}));a.download=`interest_${$('#iFrom').value}_${$('#iTo').value}.csv`;a.click()};
+function inToStudio(type){const ds=inRange(),names=inRows().map(r=>r.f.name).filter(n=>IS.sel.has(n)).slice(0,4);
+  apply({type,d:ds[ds.length-1],days:String(Math.min(7,Math.max(1,ds.length))),imode:$('#iMode').value,hours:'all',top:'pick',pick:names.join('|')},false);show('studio')}
+$('#iImg').onclick=()=>inToStudio('interestline');$('#iImgT').onclick=()=>inToStudio('interesttable');
+
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
   if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
@@ -767,7 +844,7 @@ function kit(){
 
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
-  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming')upcoming()}
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
   [M,D,SL,IN]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
@@ -782,7 +859,7 @@ async function init(){
   outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
   nowSet(...def);
   try{await document.fonts.load(`700 40px Inter`)}catch(e){}
-  studioDayTime(...def);drawPresets();exploreInit();totalsInit();kit();
+  studioDayTime(...def);drawPresets();exploreInit();totalsInit();interestInit();kit();
   route();
   addEventListener('hashchange',route);
 }
