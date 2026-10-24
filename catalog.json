@@ -19,7 +19,13 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00312207",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Jan 14, 2004",
+  "book": true
  },
  "ET00322950": {
   "first_seen": "2026-10-24",
@@ -28,7 +34,13 @@
   "page_slug": "chatrapathi-2005",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00322588",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Sep 30, 2005",
+  "book": true
  },
  "ET00395765": {
   "first_seen": "2026-10-24",
@@ -37,7 +49,16 @@
   "page_slug": "rebel-2024",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00394269",
+  "languages": [
+   "Arabic",
+   "Hindi",
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Apr 12, 2024",
+  "book": false
  },
  "ET00396541": {
   "first_seen": "2026-10-18",
@@ -62,7 +83,13 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00410984",
+  "languages": [
+   "Kannada"
+  ],
+  "release": "Sep 25, 2026",
+  "book": false
  },
  "ET00421831": {
   "first_seen": "2026-10-18",
@@ -102,7 +129,20 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00434659",
+  "languages": [
+   "Telugu",
+   "Hindi",
+   "English",
+   "Kannada",
+   "Tamil",
+   "Malayalam",
+   "Bengali",
+   "Spanish"
+  ],
+  "release": "Sep 24, 2026",
+  "book": false
  },
  "ET00439706": {
   "first_seen": "2026-10-24",
@@ -267,6 +307,15 @@
   ],
   "release": "Oct 16, 2026",
   "book": true,
+  "upcoming": "2026-10-24"
+ },
+ "ET00493076": {
+  "first_seen": "2026-10-24",
+  "last_listed": null,
+  "name": "ET00493076",
+  "page_slug": "namit-malhotras-ramayana-3dhindi",
+  "last_checked": null,
+  "figure": null,
   "upcoming": "2026-10-24"
  },
  "ET00493199": {
@@ -463,10 +512,16 @@
  "ET00511431": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-21",
-  "name": "ET00511431",
+  "name": "The Eken: Kerala-e-Kurukshetra",
   "page_slug": "the-eken-kerala-e-kurukshetra",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00508316",
+  "languages": [
+   "Bengali"
+  ],
+  "release": "Oct 15, 2026",
+  "book": true
  },
  "ET00513250": {
   "name": "Nayyi Navelli",
@@ -701,7 +756,13 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-21",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00516889",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 02, 2026",
+  "book": false
  },
  "ET00520032": {
   "first_seen": "2026-10-22",

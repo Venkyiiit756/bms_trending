@@ -85,7 +85,7 @@
     "page_slug": "doraemon-castle-of-the-undersea-devil",
     "csv": "data/ET00507337.csv",
     "headers_csv": "data/ET00507337_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00507738",
@@ -184,7 +184,7 @@
     "page_slug": "baththa",
     "csv": "data/ET00515520.csv",
     "headers_csv": "data/ET00515520_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00412717",
@@ -369,7 +369,7 @@
   },
   {
     "key": "et00511431",
-    "name": "The Eken Kerala E Kurukshetra",
+    "name": "The Eken: Kerala-e-Kurukshetra",
     "eventcode": "ET00511431",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -844,6 +844,18 @@
     "page_slug": "haiku-telugu",
     "csv": "data/ET00523167.csv",
     "headers_csv": "data/ET00523167_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00493076",
+    "name": "Namit Malhotras Ramayana 3Dhindi",
+    "eventcode": "ET00493076",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "namit-malhotras-ramayana-3dhindi",
+    "csv": "data/ET00493076.csv",
+    "headers_csv": "data/ET00493076_headers.csv",
     "every": 3600,
     "added": "2026-10-24"
   }

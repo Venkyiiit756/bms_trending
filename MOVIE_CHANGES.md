@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-24
+- added **Namit Malhotras Ramayana 3Dhindi** (ET00493076), polled hourly
+- **Doraemon: Castle of the Undersea Devil** (ET00507337): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Baththa** (ET00515520): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-10-24
 - **Jailer 2 Telugu** (ET00518675): hourly -> every 30 min (best hourly figure in 24 h: 7.2K)
 
 ## 2026-10-24
