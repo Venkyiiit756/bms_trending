@@ -96,7 +96,7 @@
     "page_slug": "hanuman-ansh",
     "csv": "data/ET00507738.csv",
     "headers_csv": "data/ET00507738_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00520562",
@@ -184,7 +184,7 @@
     "page_slug": "baththa",
     "csv": "data/ET00515520.csv",
     "headers_csv": "data/ET00515520_headers.csv",
-    "every": 21600
+    "every": 3600
   },
   {
     "key": "et00412717",
@@ -849,13 +849,37 @@
   },
   {
     "key": "et00493076",
-    "name": "Namit Malhotras Ramayana 3Dhindi",
+    "name": "Namit Malhotra's Ramayana",
     "eventcode": "ET00493076",
     "region_code": "HYD",
     "region_slug": "hyderabad",
     "page_slug": "namit-malhotras-ramayana-3dhindi",
     "csv": "data/ET00493076.csv",
     "headers_csv": "data/ET00493076_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00401459",
+    "name": "Paradise",
+    "eventcode": "ET00401459",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "paradise",
+    "csv": "data/ET00401459.csv",
+    "headers_csv": "data/ET00401459_headers.csv",
+    "every": 3600,
+    "added": "2026-10-24"
+  },
+  {
+    "key": "et00494565",
+    "name": "Raaka",
+    "eventcode": "ET00494565",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "raaka",
+    "csv": "data/ET00494565.csv",
+    "headers_csv": "data/ET00494565_headers.csv",
     "every": 3600,
     "added": "2026-10-24"
   }

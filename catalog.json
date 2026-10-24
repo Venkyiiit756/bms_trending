@@ -25,7 +25,8 @@
    "Telugu"
   ],
   "release": "Jan 14, 2004",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-24"
  },
  "ET00322950": {
   "first_seen": "2026-10-24",
@@ -76,6 +77,15 @@
   ],
   "release": "Dec 20, 2024",
   "book": true
+ },
+ "ET00401459": {
+  "first_seen": "2026-10-24",
+  "last_listed": null,
+  "name": "Paradise",
+  "page_slug": "paradise",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-24"
  },
  "ET00412717": {
   "name": "Premada Oorali",
@@ -209,7 +219,14 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00449868",
+  "languages": [
+   "Hindi",
+   "Telugu"
+  ],
+  "release": "Oct 29, 2027",
+  "book": false
  },
  "ET00465242": {
   "name": "Baa Baa Black Sheep",
@@ -217,7 +234,13 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00462826",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 09, 2026",
+  "book": false
  },
  "ET00467913": {
   "first_seen": "2026-10-24",
@@ -257,7 +280,13 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00474727",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 02, 2026",
+  "book": false
  },
  "ET00477911": {
   "name": "Drishyam The Conclusion",
@@ -312,17 +341,43 @@
  "ET00493076": {
   "first_seen": "2026-10-24",
   "last_listed": null,
-  "name": "ET00493076",
+  "name": "Namit Malhotra's Ramayana",
   "page_slug": "namit-malhotras-ramayana-3dhindi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00449671",
+  "languages": [
+   "Hindi",
+   "Malayalam",
+   "Tamil",
+   "Kannada",
+   "Telugu"
+  ],
+  "release": "Nov 05, 2026",
+  "book": true,
+  "book_opened": "2026-10-24"
  },
  "ET00493199": {
   "first_seen": "2026-10-24",
   "last_listed": null,
   "name": "Valmiki Ramayana",
   "page_slug": "valmiki-ramayana",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-24",
+  "group": "EG00490482",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Dec 31, 2026",
+  "book": false
+ },
+ "ET00494565": {
+  "first_seen": "2026-10-24",
+  "last_listed": null,
+  "name": "Raaka",
+  "page_slug": "raaka",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-24"
@@ -393,7 +448,13 @@
   "first_seen": "2026-10-18",
   "last_listed": null,
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00501924",
+  "languages": [
+   "English"
+  ],
+  "release": "Sep 25, 2026",
+  "book": false
  },
  "ET00506502": {
   "first_seen": "2026-10-18",
@@ -430,7 +491,13 @@
   "page_slug": "sense-and-sensibility",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00504239",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 30, 2026",
+  "book": false
  },
  "ET00507337": {
   "name": "Doraemon: Castle of the Undersea Devil",
@@ -535,7 +602,8 @@
    "Hindi"
   ],
   "release": "Oct 16, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-24"
  },
  "ET00514163": {
   "name": "Avengers Endgame: Encore",
