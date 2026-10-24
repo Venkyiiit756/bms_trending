@@ -349,10 +349,16 @@
  "ET00506502": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "name": "ET00506502",
+  "name": "Whalefall",
   "page_slug": "whalefall",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00503445",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 16, 2026",
+  "book": false
  },
  "ET00506964": {
   "name": "Other Mommy",
@@ -729,10 +735,16 @@
  "ET00520774": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00520774",
+  "name": "Little Thomas",
   "page_slug": "little-thomas",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00518022",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00520789": {
   "first_seen": "2026-10-23",
@@ -749,15 +761,27 @@
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
   "last_checked": "2026-10-23",
-  "figure": "none"
+  "figure": "none",
+  "group": "EG00518328",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 16, 2026",
+  "book": true
  },
  "ET00521125": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-23",
-  "name": "ET00521125",
+  "name": "Chakkora: Lunar Love Bird",
   "page_slug": "chakkora-lunar-love-bird",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00518393",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 09, 2026",
+  "book": false
  },
  "ET00521157": {
   "first_seen": "2026-10-24",
@@ -771,10 +795,16 @@
  "ET00521605": {
   "first_seen": "2026-10-23",
   "last_listed": "2026-10-23",
-  "name": "ET00521605",
+  "name": "Jayaho Ramanuja",
   "page_slug": "jayaho-ramanuja",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00518915",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 24, 2026",
+  "book": true
  },
  "ET00522234": {
   "first_seen": "2026-10-23",
@@ -806,10 +836,16 @@
  "ET00523016": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
-  "name": "ET00523016",
+  "name": "Udumbanchola Vision",
   "page_slug": "udumbanchola-vision",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00520485",
+  "languages": [
+   "Malayalam"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00523104": {
   "first_seen": "2026-10-23",
@@ -852,9 +888,15 @@
  "ET00523468": {
   "first_seen": "2026-10-23",
   "last_listed": "2026-10-23",
-  "name": "ET00523468",
+  "name": "Lohitaksha",
   "page_slug": "lohitaksha",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00520964",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  }
 }
