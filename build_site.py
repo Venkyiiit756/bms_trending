@@ -107,8 +107,17 @@ def main():
                       'book': c.get('book'), 'languages': c.get('languages', []),
                       'url': f"https://in.bookmyshow.com/movies/hyderabad/{c.get('page_slug', 'movie')}/{code}",
                       'points': [[t.astimezone(series.IST).strftime('%Y-%m-%d %H:%M'), v] for t, v in m['points']]})
+    # one entry per BookMyShow film: other listings of it (formats / languages) show the same count
+    best = {}
+    for fl in films:
+        key = catalog.get(fl['code'], {}).get('group') or fl['code']
+        if key not in best or len(fl['points']) > len(best[key]['points']):
+            best[key] = fl
+    films = list(best.values())
     with open(os.path.join(SITE, 'data', 'interest.json'), 'w', encoding='utf-8') as f:
         json.dump({'films': films}, f, separators=(',', ':'), ensure_ascii=False)
+    if os.path.exists(interest.CSV):
+        shutil.copy(interest.CSV, os.path.join(SITE, 'data', 'interest.csv'))
     # tickets per half hour since tracking began, for daily totals (see sales.py)
     with open(os.path.join(SITE, 'data', 'sales.json'), 'w', encoding='utf-8') as f:
         json.dump(sales.build(), f, separators=(',', ':'), ensure_ascii=False)

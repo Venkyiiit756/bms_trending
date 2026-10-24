@@ -141,3 +141,6 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   codes, one listing per BookMyShow group, max 30) every hour inside its paced loop (`InterestJob`), rows in
   `data/interest.csv`. Site: `data/interest.json`, "Upcoming" tab, Studio type `interest` ("Most awaited").
 - Replaces the separate `bms-interest-tracker` repo (Puppeteer scrape of web pages, fixed 2025 list, 1/19 working).
+- Interest history on the site: Upcoming tab "Interest over time" (chart of gain-since-start or total, hour-by-hour table, CSV) and
+  Studio types `interestline` / `interesttable`. `build_site.py` keeps one entry per BookMyShow group (other listings of the same film
+  show the same count) and copies `data/interest.csv` to the site.
