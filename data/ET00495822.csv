@@ -224,3 +224,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-26 00:16:33+05:30,Udta Teer,1_hour,1.24K,1.24K tickets booked in last 1 hour,2026-10-26 00:01:24+05:30,change,2026-10-26 00:16:33+05:30
 2026-10-26 00:35:44+05:30,Udta Teer,24_hours,104.07K,104.07K tickets booked in last 24 hours,2026-10-26 00:16:33+05:30,change,2026-10-26 00:35:44+05:30
 2026-10-26 00:53:35+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-26 01:10:35+05:30,Udta Teer,24_hours,103.82K,103.82K tickets booked in last 24 hours,2026-10-26 00:35:44+05:30,change,2026-10-26 01:10:35+05:30
