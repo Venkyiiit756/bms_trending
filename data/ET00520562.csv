@@ -431,3 +431,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-25 15:08:01+05:30,Garividi Lakshmi,1_hour,1.07K,1.07K tickets booked in last 1 hour,2026-10-25 14:46:54+05:30,change,2026-10-25 15:08:01+05:30
 2026-10-25 15:18:33+05:30,Garividi Lakshmi,24_hours,13.73K,13.73K tickets booked in last 24 hours,2026-10-25 15:08:01+05:30,change,2026-10-25 15:18:33+05:30
 2026-10-25 15:30:08+05:30,Garividi Lakshmi,24_hours,13.78K,13.78K tickets booked in last 24 hours,2026-10-25 15:18:33+05:30,change,2026-10-25 15:30:08+05:30
+2026-10-25 15:49:17+05:30,Garividi Lakshmi,24_hours,13.8K,13.8K tickets booked in last 24 hours,2026-10-25 15:30:08+05:30,change,2026-10-25 15:49:17+05:30
