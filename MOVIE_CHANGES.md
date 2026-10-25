@@ -2,6 +2,20 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-25
+- added **Thaytha** (ET00513216), polled hourly
+- added **Bhavantara** (ET00521457), polled hourly
+- **Street Fighter** (ET00481645): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Doosra** (ET00114750): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Haiku** (ET00517732): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Tum Mere Ho** (ET00517992): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Tom and Jerry: Forbidden Compass** (ET00518916): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **321 [Love Marriage Vs Arranged]** (ET00519221): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Prema Dairilo** (ET00520032): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Tu Hai Meri Kiran** (ET00520164): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Little Thomas** (ET00520774): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Udumbanchola Vision** (ET00523016): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-24
 - added **Paradise** (ET00401459), polled hourly
 - added **Raaka** (ET00494565), polled hourly

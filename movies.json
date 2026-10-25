@@ -74,7 +74,7 @@
     "page_slug": "street-fighter",
     "csv": "data/ET00481645.csv",
     "headers_csv": "data/ET00481645_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00507337",
@@ -436,7 +436,7 @@
     "page_slug": "doosra",
     "csv": "data/ET00114750.csv",
     "headers_csv": "data/ET00114750_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -496,7 +496,7 @@
     "page_slug": "haiku",
     "csv": "data/ET00517732.csv",
     "headers_csv": "data/ET00517732_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -508,7 +508,7 @@
     "page_slug": "tum-mere-ho",
     "csv": "data/ET00517992.csv",
     "headers_csv": "data/ET00517992_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -520,7 +520,7 @@
     "page_slug": "tom-and-jerry-forbidden-compass",
     "csv": "data/ET00518916.csv",
     "headers_csv": "data/ET00518916_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -532,7 +532,7 @@
     "page_slug": "321-love-marriage-vs-arranged",
     "csv": "data/ET00519221.csv",
     "headers_csv": "data/ET00519221_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -544,7 +544,7 @@
     "page_slug": "prema-dairilo",
     "csv": "data/ET00520032.csv",
     "headers_csv": "data/ET00520032_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -556,7 +556,7 @@
     "page_slug": "tu-hai-meri-kiran",
     "csv": "data/ET00520164.csv",
     "headers_csv": "data/ET00520164_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -568,7 +568,7 @@
     "page_slug": "little-thomas",
     "csv": "data/ET00520774.csv",
     "headers_csv": "data/ET00520774_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -580,7 +580,7 @@
     "page_slug": "udumbanchola-vision",
     "csv": "data/ET00523016.csv",
     "headers_csv": "data/ET00523016_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -882,5 +882,29 @@
     "headers_csv": "data/ET00494565_headers.csv",
     "every": 3600,
     "added": "2026-10-24"
+  },
+  {
+    "key": "et00513216",
+    "name": "Thaytha",
+    "eventcode": "ET00513216",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "thaytha",
+    "csv": "data/ET00513216.csv",
+    "headers_csv": "data/ET00513216_headers.csv",
+    "every": 3600,
+    "added": "2026-10-25"
+  },
+  {
+    "key": "et00521457",
+    "name": "Bhavantara",
+    "eventcode": "ET00521457",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bhavantara",
+    "csv": "data/ET00521457.csv",
+    "headers_csv": "data/ET00521457_headers.csv",
+    "every": 3600,
+    "added": "2026-10-25"
   }
 ]
