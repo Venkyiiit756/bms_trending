@@ -609,7 +609,13 @@
   "page_slug": "thaytha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-25"
+  "upcoming": "2026-10-25",
+  "group": "EG00510077",
+  "languages": [
+   "Kannada"
+  ],
+  "release": "Oct 30, 2026",
+  "book": false
  },
  "ET00513250": {
   "name": "Nayyi Navelli",
@@ -679,7 +685,13 @@
   "page_slug": "killer",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-25"
+  "upcoming": "2026-10-25",
+  "group": "EG00512512",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 30, 2026",
+  "book": false
  },
  "ET00516631": {
   "first_seen": "2026-10-24",
@@ -688,7 +700,13 @@
   "page_slug": "scene",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-25"
+  "upcoming": "2026-10-25",
+  "group": "EG00513478",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Nov 06, 2026",
+  "book": false
  },
  "ET00517728": {
   "first_seen": "2026-10-23",
