@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-25
+- added **Dune: Part Three** (ET00491771), polled hourly
+
+## 2026-10-25
 - added **Thaytha** (ET00513216), polled hourly
 - added **Bhavantara** (ET00521457), polled hourly
 - **Street Fighter** (ET00481645): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

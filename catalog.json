@@ -255,7 +255,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24",
+  "upcoming": "2026-10-25",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -342,6 +342,15 @@
   ],
   "release": "Oct 16, 2026",
   "book": true,
+  "upcoming": "2026-10-25"
+ },
+ "ET00491771": {
+  "first_seen": "2026-10-25",
+  "last_listed": null,
+  "name": "Dune: Part Three",
+  "page_slug": "dune-part-three",
+  "last_checked": null,
+  "figure": null,
   "upcoming": "2026-10-25"
  },
  "ET00493076": {
@@ -797,7 +806,8 @@
    "Kannada"
   ],
   "release": "Oct 15, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-25"
  },
  "ET00518675": {
   "first_seen": "2026-10-24",
@@ -1097,7 +1107,7 @@
   "page_slug": "namit-malhotras-ramayana-3dtelugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24",
+  "upcoming": "2026-10-25",
   "group": "EG00449671",
   "languages": [
    "Hindi",

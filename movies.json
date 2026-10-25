@@ -906,5 +906,17 @@
     "headers_csv": "data/ET00521457_headers.csv",
     "every": 3600,
     "added": "2026-10-25"
+  },
+  {
+    "key": "et00491771",
+    "name": "Dune: Part Three",
+    "eventcode": "ET00491771",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dune-part-three",
+    "csv": "data/ET00491771.csv",
+    "headers_csv": "data/ET00491771_headers.csv",
+    "every": 3600,
+    "added": "2026-10-25"
   }
 ]
