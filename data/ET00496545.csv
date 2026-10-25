@@ -142,3 +142,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-25 20:46:42+05:30,Clayface,24_hours,11.87K,11.87K tickets booked in last 24 hours,2026-10-25 20:36:32+05:30,change,2026-10-25 20:46:42+05:30
 2026-10-25 20:56:52+05:30,Clayface,24_hours,11.84K,11.84K tickets booked in last 24 hours,2026-10-25 20:46:42+05:30,change,2026-10-25 20:56:52+05:30
 2026-10-25 21:26:05+05:30,Clayface,24_hours,11.63K,11.63K tickets booked in last 24 hours,2026-10-25 20:56:52+05:30,change,2026-10-25 21:26:05+05:30
+2026-10-25 21:45:23+05:30,Clayface,24_hours,11.48K,11.48K tickets booked in last 24 hours,2026-10-25 21:26:05+05:30,change,2026-10-25 21:45:23+05:30
