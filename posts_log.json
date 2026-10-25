@@ -824,5 +824,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-10-25 14:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 1–2 PM (Sun 25 Oct)\n\n1. Jailer 2: 21.53K (▼5% vs Sat)\n2. Udta Teer: 7.6K (▲29% vs Sat)\n3. Premada Oorali: 5.55K (▲5% vs Sat)\n4. Jailer 2 (Hindi): 3.76K (▲19% vs Sat)\n5. 418: 3.38K (▼6% vs Sat)\n\n#Jailer2 #UdtaTeer #BoxOffice",
+  "images": [
+   "posts/2026-10-25/1400/1.png",
+   "posts/2026-10-25/1400/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (1–2 PM, Sun 25 Oct), with change against the same hour yesterday: Jailer 2 21.53K, ▼5% vs yesterday; Udta Teer 7.6K, ▲29% vs yesterday; Premada Oorali 5.55K, ▲5% vs yesterday; Jailer 2 (Hindi) 3.76K, ▲19% vs yesterday; 418 3.38K, ▼6% vs yesterday; Drishyam 3.24K, ▲13% vs yesterday; Ranabaali 3.1K, ▲22% vs yesterday",
+   "Line chart of tickets booked in the last hour for Jailer 2 through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
