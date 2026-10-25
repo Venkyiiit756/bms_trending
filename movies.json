@@ -918,5 +918,17 @@
     "headers_csv": "data/ET00491771_headers.csv",
     "every": 3600,
     "added": "2026-10-25"
+  },
+  {
+    "key": "et00471138",
+    "name": "Varanasi",
+    "eventcode": "ET00471138",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "varanasi",
+    "csv": "data/ET00471138.csv",
+    "headers_csv": "data/ET00471138_headers.csv",
+    "every": 3600,
+    "added": "2026-10-25"
   }
 ]
