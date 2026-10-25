@@ -2418,3 +2418,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-25 10:27:55+05:30,Drishyam 3,1_hour,2.01K,2.01K tickets booked in last 1 hour,2026-10-25 10:17:53+05:30,change,2026-10-25 10:27:55+05:30
 2026-10-25 10:38:24+05:30,Drishyam 3,1_hour,2.2K,2.2K tickets booked in last 1 hour,2026-10-25 10:28:22+05:30,change,2026-10-25 10:38:24+05:30
 2026-10-25 10:48:56+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-25 10:49:09+05:30,Drishyam 3,1_hour,2.26K,2.26K tickets booked in last 1 hour,2026-10-25 10:38:24+05:30,change,2026-10-25 10:49:09+05:30
