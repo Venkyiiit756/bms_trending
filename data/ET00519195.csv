@@ -126,3 +126,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-26 12:46:41+05:30,Titans,24_hours,7.25K,7.25K tickets booked in last 24 hours,2026-10-26 12:37:05+05:30,change,2026-10-26 12:46:41+05:30
 2026-10-26 12:57:08+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-26 13:06:13+05:30,Titans,24_hours,7.15K,7.15K tickets booked in last 24 hours,2026-10-26 12:46:41+05:30,change,2026-10-26 13:06:13+05:30
+2026-10-26 13:16:55+05:30,Titans,24_hours,6.99K,6.99K tickets booked in last 24 hours,2026-10-26 13:06:13+05:30,change,2026-10-26 13:16:55+05:30
