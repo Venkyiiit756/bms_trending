@@ -930,5 +930,17 @@
     "headers_csv": "data/ET00471138_headers.csv",
     "every": 3600,
     "added": "2026-10-25"
+  },
+  {
+    "key": "et00524017",
+    "name": "Cult",
+    "eventcode": "ET00524017",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "cult",
+    "csv": "data/ET00524017.csv",
+    "headers_csv": "data/ET00524017_headers.csv",
+    "every": 3600,
+    "added": "2026-10-26"
   }
 ]

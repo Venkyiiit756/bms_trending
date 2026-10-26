@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-26
+- added **Cult** (ET00524017), polled hourly
+
+## 2026-10-26
 - **Jayaho Ramanuja** (ET00521605): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Lohitaksha** (ET00523468): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

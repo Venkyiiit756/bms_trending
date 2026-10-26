@@ -216,7 +216,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-10-25"
+  "upcoming": "2026-10-26"
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -860,7 +860,8 @@
    "English"
   ],
   "release": "Oct 23, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-26"
  },
  "ET00519195": {
   "first_seen": "2026-10-21",
@@ -1164,5 +1165,14 @@
   ],
   "release": "Oct 23, 2026",
   "book": true
+ },
+ "ET00524017": {
+  "first_seen": "2026-10-26",
+  "last_listed": null,
+  "name": "Cult",
+  "page_slug": "cult",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-26"
  }
 }
