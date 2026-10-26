@@ -1,4 +1,13 @@
 {
+ "ET00031160": {
+  "first_seen": "2026-10-26",
+  "last_listed": null,
+  "name": "Drishyam",
+  "page_slug": "drishyam",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-26"
+ },
  "ET00114750": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-23",
@@ -723,6 +732,15 @@
   ],
   "release": "Oct 30, 2026",
   "book": false
+ },
+ "ET00516584": {
+  "first_seen": "2026-10-26",
+  "last_listed": null,
+  "name": "Wildwood",
+  "page_slug": "wildwood",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-26"
  },
  "ET00516631": {
   "first_seen": "2026-10-24",

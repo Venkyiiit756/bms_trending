@@ -472,7 +472,7 @@
     "page_slug": "418",
     "csv": "data/ET00509047.csv",
     "headers_csv": "data/ET00509047_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-22"
   },
   {
@@ -940,6 +940,30 @@
     "page_slug": "cult",
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
+    "every": 3600,
+    "added": "2026-10-26"
+  },
+  {
+    "key": "et00031160",
+    "name": "Drishyam",
+    "eventcode": "ET00031160",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "drishyam",
+    "csv": "data/ET00031160.csv",
+    "headers_csv": "data/ET00031160_headers.csv",
+    "every": 3600,
+    "added": "2026-10-26"
+  },
+  {
+    "key": "et00516584",
+    "name": "Wildwood",
+    "eventcode": "ET00516584",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "wildwood",
+    "csv": "data/ET00516584.csv",
+    "headers_csv": "data/ET00516584_headers.csv",
     "every": 3600,
     "added": "2026-10-26"
   }

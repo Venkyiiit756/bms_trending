@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-26
+- added **Drishyam** (ET00031160), polled hourly
+- added **Wildwood** (ET00516584), polled hourly
+- **418** (ET00509047): every 30 min -> hourly (best hourly figure in 24 h: 2.5K)
+
+## 2026-10-26
 - added **Cult** (ET00524017), polled hourly
 
 ## 2026-10-26
