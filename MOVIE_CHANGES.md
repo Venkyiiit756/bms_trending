@@ -2,6 +2,21 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-26
+- **Jayaho Ramanuja** (ET00521605): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Lohitaksha** (ET00523468): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Sense and Sensibility** (ET00507314): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Nenu Naa Lalli** (ET00514196): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Killer** (ET00515684): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **BTS World Tour Arirang in Buenos Aires: Live Viewing (Delayed)** (ET00517728): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Influencer Project** (ET00520789): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Chandrahaasa** (ET00522234): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Calcutta Files** (ET00522243): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Chandrayan** (ET00522567): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mr Lucky** (ET00523104): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Jailer 2 Telugu** (ET00518675): every 30 min -> hourly (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-25
 - added **Varanasi** (ET00471138), polled hourly
 

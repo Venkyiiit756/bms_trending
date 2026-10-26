@@ -592,7 +592,7 @@
     "page_slug": "jayaho-ramanuja",
     "csv": "data/ET00521605.csv",
     "headers_csv": "data/ET00521605_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -604,7 +604,7 @@
     "page_slug": "lohitaksha",
     "csv": "data/ET00523468.csv",
     "headers_csv": "data/ET00523468_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -616,7 +616,7 @@
     "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
     "csv": "data/ET00475942.csv",
     "headers_csv": "data/ET00475942_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -628,7 +628,7 @@
     "page_slug": "sense-and-sensibility",
     "csv": "data/ET00507314.csv",
     "headers_csv": "data/ET00507314_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -640,7 +640,7 @@
     "page_slug": "nenu-naa-lalli",
     "csv": "data/ET00514196.csv",
     "headers_csv": "data/ET00514196_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -652,7 +652,7 @@
     "page_slug": "killer",
     "csv": "data/ET00515684.csv",
     "headers_csv": "data/ET00515684_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -664,7 +664,7 @@
     "page_slug": "bts-world-tour-arirang-in-buenos-aires-live-viewing-delayed",
     "csv": "data/ET00517728.csv",
     "headers_csv": "data/ET00517728_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -676,7 +676,7 @@
     "page_slug": "the-influencer-project",
     "csv": "data/ET00520789.csv",
     "headers_csv": "data/ET00520789_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -688,7 +688,7 @@
     "page_slug": "chandrahaasa",
     "csv": "data/ET00522234.csv",
     "headers_csv": "data/ET00522234_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -700,7 +700,7 @@
     "page_slug": "the-calcutta-files",
     "csv": "data/ET00522243.csv",
     "headers_csv": "data/ET00522243_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -712,7 +712,7 @@
     "page_slug": "chandrayan",
     "csv": "data/ET00522567.csv",
     "headers_csv": "data/ET00522567_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -724,7 +724,7 @@
     "page_slug": "mr-lucky",
     "csv": "data/ET00523104.csv",
     "headers_csv": "data/ET00523104_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
@@ -820,7 +820,7 @@
     "page_slug": "jailer-2-telugu",
     "csv": "data/ET00518675.csv",
     "headers_csv": "data/ET00518675_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-24"
   },
   {
