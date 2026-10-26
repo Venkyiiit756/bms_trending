@@ -399,3 +399,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-26 08:24:19+05:30,Nayyi Navelli,24_hours,10.75K,10.75K tickets booked in last 24 hours,2026-10-26 08:15:24+05:30,change,2026-10-26 08:24:19+05:30
 2026-10-26 08:34:26+05:30,Nayyi Navelli,24_hours,10.74K,10.74K tickets booked in last 24 hours,2026-10-26 08:24:19+05:30,change,2026-10-26 08:34:26+05:30
 2026-10-26 08:53:45+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-26 08:59:30+05:30,Nayyi Navelli,24_hours,10.7K,10.7K tickets booked in last 24 hours,2026-10-26 08:34:26+05:30,change,2026-10-26 08:59:30+05:30

@@ -254,3 +254,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-26 08:14:54+05:30,Udta Teer,24_hours,102.24K,102.24K tickets booked in last 24 hours,2026-10-26 08:03:46+05:30,change,2026-10-26 08:14:54+05:30
 2026-10-26 08:24:55+05:30,Udta Teer,24_hours,102.06K,102.06K tickets booked in last 24 hours,2026-10-26 08:14:54+05:30,change,2026-10-26 08:24:55+05:30
 2026-10-26 08:44:54+05:30,Udta Teer,24_hours,101.66K,101.66K tickets booked in last 24 hours,2026-10-26 08:24:55+05:30,change,2026-10-26 08:44:54+05:30
+2026-10-26 09:00:00+05:30,Udta Teer,24_hours,101.39K,101.39K tickets booked in last 24 hours,2026-10-26 08:44:54+05:30,change,2026-10-26 09:00:00+05:30
