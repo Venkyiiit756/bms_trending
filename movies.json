@@ -748,7 +748,7 @@
     "page_slug": "rebel-2024",
     "csv": "data/ET00395765.csv",
     "headers_csv": "data/ET00395765_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -760,7 +760,7 @@
     "page_slug": "avengers-doomsday",
     "csv": "data/ET00439706.csv",
     "headers_csv": "data/ET00439706_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -772,7 +772,7 @@
     "page_slug": "spirit",
     "csv": "data/ET00452121.csv",
     "headers_csv": "data/ET00452121_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -784,7 +784,7 @@
     "page_slug": "fauzi",
     "csv": "data/ET00467913.csv",
     "headers_csv": "data/ET00467913_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -796,7 +796,7 @@
     "page_slug": "valmiki-ramayana",
     "csv": "data/ET00493199.csv",
     "headers_csv": "data/ET00493199_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -808,7 +808,7 @@
     "page_slug": "scene",
     "csv": "data/ET00516631.csv",
     "headers_csv": "data/ET00516631_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -820,7 +820,7 @@
     "page_slug": "jailer-2-telugu",
     "csv": "data/ET00518675.csv",
     "headers_csv": "data/ET00518675_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-24"
   },
   {
@@ -832,7 +832,7 @@
     "page_slug": "donga-naa-koduku",
     "csv": "data/ET00521157.csv",
     "headers_csv": "data/ET00521157_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -844,7 +844,7 @@
     "page_slug": "haiku-telugu",
     "csv": "data/ET00523167.csv",
     "headers_csv": "data/ET00523167_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -868,7 +868,7 @@
     "page_slug": "paradise",
     "csv": "data/ET00401459.csv",
     "headers_csv": "data/ET00401459_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -880,7 +880,7 @@
     "page_slug": "raaka",
     "csv": "data/ET00494565.csv",
     "headers_csv": "data/ET00494565_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -966,5 +966,17 @@
     "headers_csv": "data/ET00516584_headers.csv",
     "every": 3600,
     "added": "2026-10-26"
+  },
+  {
+    "key": "et00517730",
+    "name": "BTS World Tour Arirang in Sao Paulo: Live Viewing (Delayed)",
+    "eventcode": "ET00517730",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bts-world-tour-arirang-in-sao-paulo-live-viewing-delayed",
+    "csv": "data/ET00517730.csv",
+    "headers_csv": "data/ET00517730_headers.csv",
+    "every": 3600,
+    "added": "2026-10-27"
   }
 ]

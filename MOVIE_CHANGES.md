@@ -2,6 +2,20 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-27
+- added **BTS World Tour Arirang in Sao Paulo: Live Viewing (Delayed)** (ET00517730), polled hourly
+- **Rebel (2024)** (ET00395765): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Avengers: Doomsday** (ET00439706): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Spirit** (ET00452121): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Fauzi** (ET00467913): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Valmiki Ramayana** (ET00493199): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Scene** (ET00516631): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Jailer 2 Telugu** (ET00518675): hourly -> every 30 min (best hourly figure in 24 h: 7.5K)
+- **Donga Naa Koduku** (ET00521157): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Haiku Telugu** (ET00523167): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Paradise** (ET00401459): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Raaka** (ET00494565): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-26
 - added **Drishyam** (ET00031160), polled hourly
 - added **Wildwood** (ET00516584), polled hourly
