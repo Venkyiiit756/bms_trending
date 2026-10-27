@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-27
+- added **Geriga** (ET00524278), polled hourly
+- **Chatrapathi** (ET00322950): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-10-27
 - added **BTS World Tour Arirang in Sao Paulo: Live Viewing (Delayed)** (ET00517730), polled hourly
 - **Rebel (2024)** (ET00395765): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Avengers: Doomsday** (ET00439706): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

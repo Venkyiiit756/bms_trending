@@ -736,7 +736,7 @@
     "page_slug": "chatrapathi-2005",
     "csv": "data/ET00322950.csv",
     "headers_csv": "data/ET00322950_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -976,6 +976,18 @@
     "page_slug": "bts-world-tour-arirang-in-sao-paulo-live-viewing-delayed",
     "csv": "data/ET00517730.csv",
     "headers_csv": "data/ET00517730_headers.csv",
+    "every": 3600,
+    "added": "2026-10-27"
+  },
+  {
+    "key": "et00524278",
+    "name": "Geriga",
+    "eventcode": "ET00524278",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "geriga",
+    "csv": "data/ET00524278.csv",
+    "headers_csv": "data/ET00524278_headers.csv",
     "every": 3600,
     "added": "2026-10-27"
   }
