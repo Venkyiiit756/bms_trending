@@ -1761,3 +1761,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-27 22:35:39+05:30,Jailer 2,1_hour,3.96K,3.96K tickets booked in last 1 hour,2026-10-27 22:32:39+05:30,change,2026-10-27 22:35:39+05:30
 2026-10-27 22:49:10+05:30,Jailer 2,1_hour,3.63K,3.63K tickets booked in last 1 hour,2026-10-27 22:35:39+05:30,change,2026-10-27 22:49:10+05:30
 2026-10-27 23:05:13+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-27 23:06:15+05:30,Jailer 2,1_hour,2.7K,2.7K tickets booked in last 1 hour,2026-10-27 22:49:10+05:30,change,2026-10-27 23:06:15+05:30
