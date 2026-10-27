@@ -41,3 +41,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-27 09:33:38+05:30,Pehla Pyaar Doosri Baar,24_hours,6.74K,6.74K tickets booked in last 24 hours,2026-10-27 07:41:49+05:30,change,2026-10-27 09:33:38+05:30
 2026-10-27 12:48:46+05:30,Pehla Pyaar Doosri Baar,24_hours,7.03K,7.03K tickets booked in last 24 hours,2026-10-27 09:33:38+05:30,change,2026-10-27 12:48:46+05:30
 2026-10-27 13:44:56+05:30,Pehla Pyaar Doosri Baar,24_hours,7.22K,7.22K tickets booked in last 24 hours,2026-10-27 12:48:46+05:30,change,2026-10-27 13:44:56+05:30
+2026-10-27 16:35:48+05:30,Pehla Pyaar Doosri Baar,24_hours,7.82K,7.82K tickets booked in last 24 hours,2026-10-27 13:44:56+05:30,change,2026-10-27 16:35:48+05:30
