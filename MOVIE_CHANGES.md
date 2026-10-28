@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-28
+- added **Dilwale Dulhania Le Jayenge** (ET00000652), polled hourly
+- added **Dhood** (ET00518466), polled hourly
+- added **Patakka Guddiyan** (ET00524295), polled hourly
+- **Baththa** (ET00515520): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Premada Oorali** (ET00412717): every 30 min -> hourly (best hourly figure in 24 h: 1.8K)
+- **Danger Devdas** (ET00510332): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Thaytha** (ET00513216): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bhavantara** (ET00521457): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dune: Part Three** (ET00491771): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Varanasi** (ET00471138): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-27
 - added **Geriga** (ET00524278), polled hourly
 - **Chatrapathi** (ET00322950): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

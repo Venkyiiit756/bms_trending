@@ -184,7 +184,7 @@
     "page_slug": "baththa",
     "csv": "data/ET00515520.csv",
     "headers_csv": "data/ET00515520_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00412717",
@@ -195,7 +195,7 @@
     "page_slug": "premada-oorali",
     "csv": "data/ET00412717.csv",
     "headers_csv": "data/ET00412717_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00504928",
@@ -365,7 +365,8 @@
     "csv": "data/ET00510332.csv",
     "headers_csv": "data/ET00510332_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00511431",
@@ -892,7 +893,7 @@
     "page_slug": "thaytha",
     "csv": "data/ET00513216.csv",
     "headers_csv": "data/ET00513216_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-25"
   },
   {
@@ -904,7 +905,7 @@
     "page_slug": "bhavantara",
     "csv": "data/ET00521457.csv",
     "headers_csv": "data/ET00521457_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-25"
   },
   {
@@ -916,7 +917,7 @@
     "page_slug": "dune-part-three",
     "csv": "data/ET00491771.csv",
     "headers_csv": "data/ET00491771_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-25"
   },
   {
@@ -928,7 +929,7 @@
     "page_slug": "varanasi",
     "csv": "data/ET00471138.csv",
     "headers_csv": "data/ET00471138_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-25"
   },
   {
@@ -990,5 +991,41 @@
     "headers_csv": "data/ET00524278_headers.csv",
     "every": 3600,
     "added": "2026-10-27"
+  },
+  {
+    "key": "et00000652",
+    "name": "Dilwale Dulhania Le Jayenge",
+    "eventcode": "ET00000652",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dilwale-dulhania-le-jayenge",
+    "csv": "data/ET00000652.csv",
+    "headers_csv": "data/ET00000652_headers.csv",
+    "every": 3600,
+    "added": "2026-10-28"
+  },
+  {
+    "key": "et00518466",
+    "name": "Dhood",
+    "eventcode": "ET00518466",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dhood",
+    "csv": "data/ET00518466.csv",
+    "headers_csv": "data/ET00518466_headers.csv",
+    "every": 3600,
+    "added": "2026-10-28"
+  },
+  {
+    "key": "et00524295",
+    "name": "Patakka Guddiyan",
+    "eventcode": "ET00524295",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "patakka-guddiyan",
+    "csv": "data/ET00524295.csv",
+    "headers_csv": "data/ET00524295_headers.csv",
+    "every": 3600,
+    "added": "2026-10-28"
   }
 ]
