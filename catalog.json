@@ -2,11 +2,17 @@
  "ET00000652": {
   "first_seen": "2026-10-28",
   "last_listed": null,
-  "name": "ET00000652",
+  "name": "Dilwale Dulhania Le Jayenge",
   "page_slug": "dilwale-dulhania-le-jayenge",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-28"
+  "upcoming": "2026-10-28",
+  "group": "EG00003727",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 20, 1995",
+  "book": true
  },
  "ET00031160": {
   "first_seen": "2026-10-26",
@@ -195,11 +201,11 @@
   "group": "EG00437704",
   "languages": [
    "English",
+   "Hindi",
    "Telugu",
-   "Tamil",
-   "Hindi"
+   "Tamil"
   ],
-  "release": "Dec 18, 2026",
+  "release": "Dec 17, 2026",
   "book": false,
   "listed_alert": "2026-10-24"
  },
@@ -865,10 +871,16 @@
  "ET00518466": {
   "first_seen": "2026-10-28",
   "last_listed": "2026-10-28",
-  "name": "ET00518466",
+  "name": "Dhood",
   "page_slug": "dhood",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00515463",
+  "languages": [
+   "Rajasthani"
+  ],
+  "release": "Oct 23, 2026",
+  "book": true
  },
  "ET00518674": {
   "name": "Jailer 2",

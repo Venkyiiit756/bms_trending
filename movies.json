@@ -377,7 +377,7 @@
     "page_slug": "the-eken-kerala-e-kurukshetra",
     "csv": "data/ET00511431.csv",
     "headers_csv": "data/ET00511431_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-18"
   },
   {
