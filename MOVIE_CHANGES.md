@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-28
+- added **Queen Budapest** (ET00524517), polled hourly
+
+## 2026-10-28
 - added **Itllu Arjuna** (ET00514068), polled hourly
 
 ## 2026-10-28

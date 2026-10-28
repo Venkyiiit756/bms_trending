@@ -322,8 +322,9 @@
    "Telugu"
   ],
   "release": "Oct 30, 2026",
-  "book": false,
-  "listed_alert": "2026-10-23"
+  "book": true,
+  "listed_alert": "2026-10-23",
+  "book_opened": "2026-10-28"
  },
  "ET00477243": {
   "name": "Digger",
@@ -570,7 +571,8 @@
    "English"
   ],
   "release": "Oct 30, 2026",
-  "book": false
+  "book": true,
+  "book_opened": "2026-10-28"
  },
  "ET00507337": {
   "name": "Doraemon: Castle of the Undersea Devil",
@@ -670,7 +672,7 @@
   "page_slug": "thaytha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-27",
+  "upcoming": "2026-10-28",
   "group": "EG00510077",
   "languages": [
    "Kannada"
@@ -700,7 +702,13 @@
   "page_slug": "itllu-arjuna",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-28"
+  "upcoming": "2026-10-28",
+  "group": "EG00510914",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Dec 31, 2026",
+  "book": false
  },
  "ET00514163": {
   "name": "Avengers Endgame: Encore",
@@ -1251,7 +1259,7 @@
   "page_slug": "cult",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-26"
+  "upcoming": "2026-10-28"
  },
  "ET00524278": {
   "first_seen": "2026-10-27",
@@ -1267,6 +1275,15 @@
   "last_listed": null,
   "name": "Patakka Guddiyan",
   "page_slug": "patakka-guddiyan",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-28"
+ },
+ "ET00524517": {
+  "first_seen": "2026-10-28",
+  "last_listed": null,
+  "name": "Queen Budapest",
+  "page_slug": "queen-budapest",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-28"
