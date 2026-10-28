@@ -1027,5 +1027,17 @@
     "headers_csv": "data/ET00524295_headers.csv",
     "every": 3600,
     "added": "2026-10-28"
+  },
+  {
+    "key": "et00514068",
+    "name": "Itllu Arjuna",
+    "eventcode": "ET00514068",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "itllu-arjuna",
+    "csv": "data/ET00514068.csv",
+    "headers_csv": "data/ET00514068_headers.csv",
+    "every": 3600,
+    "added": "2026-10-28"
   }
 ]

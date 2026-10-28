@@ -201,9 +201,9 @@
   "group": "EG00437704",
   "languages": [
    "English",
-   "Hindi",
    "Telugu",
-   "Tamil"
+   "Tamil",
+   "Hindi"
   ],
   "release": "Dec 17, 2026",
   "book": false,
@@ -693,6 +693,15 @@
   "book": true,
   "upcoming": "2026-10-28"
  },
+ "ET00514068": {
+  "first_seen": "2026-10-28",
+  "last_listed": null,
+  "name": "Itllu Arjuna",
+  "page_slug": "itllu-arjuna",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-28"
+ },
  "ET00514163": {
   "name": "Avengers Endgame: Encore",
   "page_slug": "avengers-endgame-encore",
@@ -752,7 +761,8 @@
    "Telugu"
   ],
   "release": "Oct 30, 2026",
-  "book": false
+  "book": true,
+  "book_opened": "2026-10-28"
  },
  "ET00516584": {
   "first_seen": "2026-10-26",
@@ -1148,7 +1158,7 @@
   "page_slug": "chandrahaasa",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-27"
+  "upcoming": "2026-10-28"
  },
  "ET00522243": {
   "first_seen": "2026-10-23",

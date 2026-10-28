@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-28
+- added **Itllu Arjuna** (ET00514068), polled hourly
+
+## 2026-10-28
 - **The Eken: Kerala-e-Kurukshetra** (ET00511431): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 
 ## 2026-10-28
