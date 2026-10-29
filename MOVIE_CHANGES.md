@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-29
+- added **Udayam Kathu** (ET00524621), polled hourly
+- **Garividi Lakshmi** (ET00520562): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Titans** (ET00519195): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-10-29
 - added **ENE Repeat** (ET00506990), polled hourly
 - added **Kaal Kothri (Punjabi)** (ET00524390), polled hourly
 

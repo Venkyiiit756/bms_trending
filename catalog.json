@@ -565,7 +565,13 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-29"
+  "upcoming": "2026-10-29",
+  "group": "EG00503915",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 19, 2026",
+  "book": false
  },
  "ET00507314": {
   "first_seen": "2026-10-23",
@@ -574,7 +580,7 @@
   "page_slug": "sense-and-sensibility",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-28",
+  "upcoming": "2026-10-29",
   "group": "EG00504239",
   "languages": [
    "English"
@@ -1330,5 +1336,14 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-28"
+ },
+ "ET00524621": {
+  "first_seen": "2026-10-29",
+  "last_listed": null,
+  "name": "Udayam Kathu",
+  "page_slug": "udayam-kathu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-29"
  }
 }

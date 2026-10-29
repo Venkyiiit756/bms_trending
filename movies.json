@@ -107,7 +107,7 @@
     "page_slug": "garividi-lakshmi",
     "csv": "data/ET00520562.csv",
     "headers_csv": "data/ET00520562_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00519781",
@@ -429,7 +429,7 @@
     "page_slug": "titans",
     "csv": "data/ET00519195.csv",
     "headers_csv": "data/ET00519195_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-21"
   },
   {
@@ -1101,6 +1101,18 @@
     "page_slug": "kaal-kothri-punjabi",
     "csv": "data/ET00524390.csv",
     "headers_csv": "data/ET00524390_headers.csv",
+    "every": 3600,
+    "added": "2026-10-29"
+  },
+  {
+    "key": "et00524621",
+    "name": "Udayam Kathu",
+    "eventcode": "ET00524621",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "udayam-kathu",
+    "csv": "data/ET00524621.csv",
+    "headers_csv": "data/ET00524621_headers.csv",
     "every": 3600,
     "added": "2026-10-29"
   }
