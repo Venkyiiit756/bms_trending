@@ -809,7 +809,13 @@
   "page_slug": "bts-world-tour-arirang-in-buenos-aires-live-viewing-delayed",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24"
+  "upcoming": "2026-10-24",
+  "group": "EG00514645",
+  "languages": [
+   "Korean"
+  ],
+  "release": "Oct 25, 2026",
+  "book": false
  },
  "ET00517730": {
   "first_seen": "2026-10-27",
