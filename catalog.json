@@ -167,7 +167,7 @@
   ],
   "release": "Oct 15, 2026",
   "book": true,
-  "upcoming": "2026-10-28"
+  "upcoming": "2026-10-29"
  },
  "ET00436621": {
   "name": "The Paradise",
@@ -301,7 +301,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-28",
+  "upcoming": "2026-10-29",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -558,6 +558,15 @@
   "release": "Oct 09, 2026",
   "book": false
  },
+ "ET00506990": {
+  "first_seen": "2026-10-29",
+  "last_listed": null,
+  "name": "ENE Repeat",
+  "page_slug": "ene-repeat",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-29"
+ },
  "ET00507314": {
   "first_seen": "2026-10-23",
   "last_listed": null,
@@ -603,7 +612,8 @@
    "Telugu"
   ],
   "release": "Aug 07, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-10-29"
  },
  "ET00509047": {
   "first_seen": "2026-10-22",
@@ -1299,6 +1309,15 @@
   "last_listed": null,
   "name": "Patakka Guddiyan",
   "page_slug": "patakka-guddiyan",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-29"
+ },
+ "ET00524390": {
+  "first_seen": "2026-10-29",
+  "last_listed": null,
+  "name": "Kaal Kothri (Punjabi)",
+  "page_slug": "kaal-kothri-punjabi",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-29"

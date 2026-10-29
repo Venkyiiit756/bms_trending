@@ -1079,5 +1079,29 @@
     "headers_csv": "data/ET00524286_headers.csv",
     "every": 3600,
     "added": "2026-10-29"
+  },
+  {
+    "key": "et00506990",
+    "name": "ENE Repeat",
+    "eventcode": "ET00506990",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ene-repeat",
+    "csv": "data/ET00506990.csv",
+    "headers_csv": "data/ET00506990_headers.csv",
+    "every": 3600,
+    "added": "2026-10-29"
+  },
+  {
+    "key": "et00524390",
+    "name": "Kaal Kothri (Punjabi)",
+    "eventcode": "ET00524390",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "kaal-kothri-punjabi",
+    "csv": "data/ET00524390.csv",
+    "headers_csv": "data/ET00524390_headers.csv",
+    "every": 3600,
+    "added": "2026-10-29"
   }
 ]

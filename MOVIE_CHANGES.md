@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-29
+- added **ENE Repeat** (ET00506990), polled hourly
+- added **Kaal Kothri (Punjabi)** (ET00524390), polled hourly
+
+## 2026-10-29
 - added **Yaaran De Yaar** (ET00524195), polled hourly
 - added **Gaamini** (ET00524286), polled hourly
 - **Baththa** (ET00515520): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
