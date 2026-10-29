@@ -1626,5 +1626,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-10-29 14:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 1–2 PM (Thu 29 Oct)\n\n1. Jailer 2: 4.52K (▼9% vs Wed)\n2. Udta Teer: 2.13K (▼7% vs Wed)\n3. Namit Malhotra's Ramayana: 1.24K (▼2% vs Wed)\n\n#Jailer2 #UdtaTeer #BoxOffice",
+  "images": [
+   "posts/2026-10-29/1400/1.png",
+   "posts/2026-10-29/1400/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (1–2 PM, Thu 29 Oct), with change against the same hour yesterday: Jailer 2 4.52K, ▼9% vs yesterday; Udta Teer 2.13K, ▼7% vs yesterday; Namit Malhotra's Ramayana 1.24K, ▼2% vs yesterday",
+   "Line chart of tickets booked in the last hour for Jailer 2 through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
