@@ -2,6 +2,19 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-29
+- added **Yaaran De Yaar** (ET00524195), polled hourly
+- added **Gaamini** (ET00524286), polled hourly
+- **Baththa** (ET00515520): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Whalefall** (ET00506502): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Shaun the Sheep: The Beast of Mossy Bottom** (ET00509483): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Impure** (ET00520054): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Udta Teer** (ET00495822): every 30 min -> hourly (best hourly figure in 24 h: 2.6K)
+- **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): every 6 h -> every 30 min (best hourly figure in 24 h: 3.9K)
+- **Cult** (ET00524017): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Drishyam** (ET00031160): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Wildwood** (ET00516584): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-28
 - added **Queen Budapest** (ET00524517), polled hourly
 

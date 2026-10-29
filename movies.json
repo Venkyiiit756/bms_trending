@@ -184,7 +184,8 @@
     "page_slug": "baththa",
     "csv": "data/ET00515520.csv",
     "headers_csv": "data/ET00515520_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00412717",
@@ -341,7 +342,8 @@
     "csv": "data/ET00506502.csv",
     "headers_csv": "data/ET00506502_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00509483",
@@ -353,7 +355,8 @@
     "csv": "data/ET00509483.csv",
     "headers_csv": "data/ET00509483_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00510332",
@@ -390,7 +393,8 @@
     "csv": "data/ET00520054.csv",
     "headers_csv": "data/ET00520054_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00521125",
@@ -461,7 +465,7 @@
     "page_slug": "udta-teer",
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-22"
   },
   {
@@ -617,7 +621,7 @@
     "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
     "csv": "data/ET00475942.csv",
     "headers_csv": "data/ET00475942_headers.csv",
-    "every": 21600,
+    "every": 1800,
     "added": "2026-10-23"
   },
   {
@@ -941,7 +945,7 @@
     "page_slug": "cult",
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-26"
   },
   {
@@ -953,7 +957,7 @@
     "page_slug": "drishyam",
     "csv": "data/ET00031160.csv",
     "headers_csv": "data/ET00031160_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-26"
   },
   {
@@ -965,7 +969,7 @@
     "page_slug": "wildwood",
     "csv": "data/ET00516584.csv",
     "headers_csv": "data/ET00516584_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-26"
   },
   {
@@ -1051,5 +1055,29 @@
     "headers_csv": "data/ET00524517_headers.csv",
     "every": 3600,
     "added": "2026-10-28"
+  },
+  {
+    "key": "et00524195",
+    "name": "Yaaran De Yaar",
+    "eventcode": "ET00524195",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "yaaran-de-yaar",
+    "csv": "data/ET00524195.csv",
+    "headers_csv": "data/ET00524195_headers.csv",
+    "every": 3600,
+    "added": "2026-10-29"
+  },
+  {
+    "key": "et00524286",
+    "name": "Gaamini",
+    "eventcode": "ET00524286",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "gaamini",
+    "csv": "data/ET00524286.csv",
+    "headers_csv": "data/ET00524286_headers.csv",
+    "every": 3600,
+    "added": "2026-10-29"
   }
 ]
