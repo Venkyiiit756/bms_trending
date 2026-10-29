@@ -69,3 +69,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-30 01:41:36+05:30,Aadarsha Kutumbam House No: 47 (AK 47),24_hours,93.71K,93.71K tickets booked in last 24 hours,2026-10-30 01:30:43+05:30,change,2026-10-30 01:41:36+05:30
 2026-10-30 02:04:21+05:30,Aadarsha Kutumbam House No: 47 (AK 47),24_hours,93.71K,93.71K tickets booked in last 24 hours,,heartbeat,
 2026-10-30 02:14:18+05:30,Aadarsha Kutumbam House No: 47 (AK 47),24_hours,93.9K,93.9K tickets booked in last 24 hours,2026-10-30 02:04:21+05:30,change,2026-10-30 02:14:18+05:30
+2026-10-30 02:31:38+05:30,Aadarsha Kutumbam House No: 47 (AK 47),24_hours,93.92K,93.92K tickets booked in last 24 hours,2026-10-30 02:14:18+05:30,change,2026-10-30 02:31:38+05:30
