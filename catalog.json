@@ -126,11 +126,17 @@
  "ET00403215": {
   "first_seen": "2026-10-30",
   "last_listed": null,
-  "name": "ET00403215",
+  "name": "Nakhrewaalii",
   "page_slug": "nakhrewaalii",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-30"
+  "upcoming": "2026-10-30",
+  "group": "EG00401585",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 30, 2026",
+  "book": true
  },
  "ET00412717": {
   "name": "Premada Oorali",
@@ -294,7 +300,13 @@
   "page_slug": "arasan",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-30"
+  "upcoming": "2026-10-30",
+  "group": "EG00464193",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Nov 06, 2026",
+  "book": false
  },
  "ET00467913": {
   "first_seen": "2026-10-24",
@@ -415,7 +427,13 @@
   "page_slug": "seyon",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-30"
+  "upcoming": "2026-10-30",
+  "group": "EG00485261",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Oct 31, 2026",
+  "book": false
  },
  "ET00491771": {
   "first_seen": "2026-10-25",
@@ -578,7 +596,13 @@
   "page_slug": "wild-horse-nine",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-30"
+  "upcoming": "2026-10-30",
+  "group": "EG00503703",
+  "languages": [
+   "English"
+  ],
+  "release": "Nov 06, 2026",
+  "book": false
  },
  "ET00506964": {
   "name": "Other Mommy",
