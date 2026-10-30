@@ -331,7 +331,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-29",
+  "upcoming": "2026-10-30",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -530,7 +530,7 @@
   ],
   "release": "Oct 23, 2026",
   "book": true,
-  "upcoming": "2026-10-29"
+  "upcoming": "2026-10-30"
  },
  "ET00497246": {
   "name": "Verity",
@@ -1432,6 +1432,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-28"
+ },
+ "ET00524518": {
+  "first_seen": "2026-10-30",
+  "last_listed": null,
+  "name": "Godzilla Minus Zero",
+  "page_slug": "godzilla-minus-zero",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-30"
  },
  "ET00524621": {
   "first_seen": "2026-10-29",

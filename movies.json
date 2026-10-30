@@ -467,7 +467,7 @@
     "page_slug": "udta-teer",
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-22"
   },
   {
@@ -951,7 +951,7 @@
     "page_slug": "cult",
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-26"
   },
   {
@@ -1215,6 +1215,18 @@
     "page_slug": "summer-holidays",
     "csv": "data/ET00524282.csv",
     "headers_csv": "data/ET00524282_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00524518",
+    "name": "Godzilla Minus Zero",
+    "eventcode": "ET00524518",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "godzilla-minus-zero",
+    "csv": "data/ET00524518.csv",
+    "headers_csv": "data/ET00524518_headers.csv",
     "every": 3600,
     "added": "2026-10-30"
   }

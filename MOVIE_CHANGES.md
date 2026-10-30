@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-30
+- added **Godzilla Minus Zero** (ET00524518), polled hourly
+- **Udta Teer** (ET00495822): hourly -> every 30 min (best hourly figure in 24 h: 3.8K)
+- **Cult** (ET00524017): every 6 h -> hourly (best hourly figure in 24 h: 1.3K)
+
+## 2026-10-30
 - added **Nakhrewaalii** (ET00403215), polled hourly
 - added **Arasan** (ET00466626), polled hourly
 - added **Seyon** (ET00487903), polled hourly
