@@ -406,7 +406,8 @@
     "csv": "data/ET00521125.csv",
     "headers_csv": "data/ET00521125_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00496545",
@@ -430,7 +431,8 @@
     "csv": "data/ET00519195.csv",
     "headers_csv": "data/ET00519195_headers.csv",
     "every": 21600,
-    "added": "2026-10-21"
+    "added": "2026-10-21",
+    "paused": true
   },
   {
     "key": "et00114750",
@@ -550,7 +552,8 @@
     "csv": "data/ET00520032.csv",
     "headers_csv": "data/ET00520032_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00520164",
@@ -574,7 +577,8 @@
     "csv": "data/ET00520774.csv",
     "headers_csv": "data/ET00520774_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00523016",
@@ -586,7 +590,8 @@
     "csv": "data/ET00523016.csv",
     "headers_csv": "data/ET00523016_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00521605",
@@ -610,7 +615,8 @@
     "csv": "data/ET00523468.csv",
     "headers_csv": "data/ET00523468_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00475942",
@@ -981,7 +987,7 @@
     "page_slug": "bts-world-tour-arirang-in-sao-paulo-live-viewing-delayed",
     "csv": "data/ET00517730.csv",
     "headers_csv": "data/ET00517730_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-27"
   },
   {
@@ -993,7 +999,7 @@
     "page_slug": "geriga",
     "csv": "data/ET00524278.csv",
     "headers_csv": "data/ET00524278_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-27"
   },
   {
@@ -1115,5 +1121,101 @@
     "headers_csv": "data/ET00524621_headers.csv",
     "every": 3600,
     "added": "2026-10-29"
+  },
+  {
+    "key": "et00403215",
+    "name": "Nakhrewaalii",
+    "eventcode": "ET00403215",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nakhrewaalii",
+    "csv": "data/ET00403215.csv",
+    "headers_csv": "data/ET00403215_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00466626",
+    "name": "Arasan",
+    "eventcode": "ET00466626",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "arasan",
+    "csv": "data/ET00466626.csv",
+    "headers_csv": "data/ET00466626_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00487903",
+    "name": "Seyon",
+    "eventcode": "ET00487903",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "seyon",
+    "csv": "data/ET00487903.csv",
+    "headers_csv": "data/ET00487903_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00506776",
+    "name": "Wild Horse Nine",
+    "eventcode": "ET00506776",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "wild-horse-nine",
+    "csv": "data/ET00506776.csv",
+    "headers_csv": "data/ET00506776_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00513761",
+    "name": "Dante",
+    "eventcode": "ET00513761",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dante",
+    "csv": "data/ET00513761.csv",
+    "headers_csv": "data/ET00513761_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00517348",
+    "name": "Mookuthi Amman 2",
+    "eventcode": "ET00517348",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mookuthi-amman-2",
+    "csv": "data/ET00517348.csv",
+    "headers_csv": "data/ET00517348_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00522331",
+    "name": "Mohra",
+    "eventcode": "ET00522331",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mohra",
+    "csv": "data/ET00522331.csv",
+    "headers_csv": "data/ET00522331_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
+  },
+  {
+    "key": "et00524282",
+    "name": "Summer Holidays",
+    "eventcode": "ET00524282",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "summer-holidays",
+    "csv": "data/ET00524282.csv",
+    "headers_csv": "data/ET00524282_headers.csv",
+    "every": 3600,
+    "added": "2026-10-30"
   }
 ]

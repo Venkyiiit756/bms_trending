@@ -2,6 +2,24 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-30
+- added **Nakhrewaalii** (ET00403215), polled hourly
+- added **Arasan** (ET00466626), polled hourly
+- added **Seyon** (ET00487903), polled hourly
+- added **Wild Horse Nine** (ET00506776), polled hourly
+- added **Dante** (ET00513761), polled hourly
+- added **Mookuthi Amman 2** (ET00517348), polled hourly
+- added **Mohra** (ET00522331), polled hourly
+- added **Summer Holidays** (ET00524282), polled hourly
+- **Chakkora: Lunar Love Bird** (ET00521125): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Titans** (ET00519195): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Prema Dairilo** (ET00520032): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Little Thomas** (ET00520774): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Udumbanchola Vision** (ET00523016): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Lohitaksha** (ET00523468): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **BTS World Tour Arirang in Sao Paulo: Live Viewing (Delayed)** (ET00517730): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Geriga** (ET00524278): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-29
 - added **Udayam Kathu** (ET00524621), polled hourly
 - **Garividi Lakshmi** (ET00520562): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
