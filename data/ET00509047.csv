@@ -422,3 +422,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-30 13:45:41+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-30 13:53:53+05:30,418,24_hours,7.88K,7.88K tickets booked in last 24 hours,2026-10-30 13:33:45+05:30,change,2026-10-30 13:53:53+05:30
 2026-10-30 14:17:01+05:30,418,24_hours,7.86K,7.86K tickets booked in last 24 hours,2026-10-30 13:53:53+05:30,change,2026-10-30 14:17:01+05:30
+2026-10-30 14:24:54+05:30,418,24_hours,7.84K,7.84K tickets booked in last 24 hours,2026-10-30 14:17:01+05:30,change,2026-10-30 14:24:54+05:30
