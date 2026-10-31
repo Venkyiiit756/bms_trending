@@ -96,3 +96,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-31 11:17:53+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-31 11:46:22+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-10-31 12:27:52+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-10-31 12:37:21+05:30,Jailer 2 Telugu,1_hour,7.86K,7.86K tickets booked in last 1 hour,2026-10-31 10:47:45+05:30,change,2026-10-31 12:37:21+05:30
