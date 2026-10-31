@@ -2247,3 +2247,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-01 01:57:38+05:30,Ranabaali,24_hours,5.97K,5.97K tickets booked in last 24 hours,2026-11-01 01:47:16+05:30,change,2026-11-01 01:57:38+05:30
 2026-11-01 02:08:39+05:30,Ranabaali,24_hours,5.98K,5.98K tickets booked in last 24 hours,2026-11-01 01:57:38+05:30,change,2026-11-01 02:08:39+05:30
 2026-11-01 02:27:14+05:30,Ranabaali,24_hours,5.98K,5.98K tickets booked in last 24 hours,,heartbeat,
+2026-11-01 02:48:51+05:30,Ranabaali,24_hours,5.98K,5.98K tickets booked in last 24 hours,,heartbeat,
