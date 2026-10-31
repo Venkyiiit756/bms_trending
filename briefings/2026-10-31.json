@@ -1,58 +1,65 @@
 {
  "date": "2026-10-31",
- "generated_at": "2026-10-31T20:35:16+05:30",
- "mode": "template",
- "model": null,
+ "generated_at": "2026-10-31T21:50:25+05:30",
+ "mode": "claude",
+ "model": "claude-haiku-5-5",
  "window": "4 AM Fri 30 Oct to 4 AM Sat 31 Oct IST",
  "day": "Fri 30 Oct",
- "headline": "Aadarsha Kutumbam led Fri 30 Oct with 217K tickets (▲130% vs the day before); Jailer 2 followed with 119K.",
+ "headline": "Aadarsha Kutumbam led yesterday with 217K tickets booked, up 130% on the day before, with Jailer 2 next at 119K.",
  "bullets": [
-  "Top films, 4 AM to 4 AM: 1. Aadarsha Kutumbam 217K · 2. Jailer 2 119K · 3. Udta Teer 50.5K",
-  "Aadarsha Kutumbam rose 130% (94.2K to 217K).",
-  "Busiest single hour: Aadarsha Kutumbam with 14.52K around 6:33 PM.",
-  "Most awaited: Namit Malhotra's Ramayana with 526K+ interested (+15K in 24 hours, out Thu 5 Nov)",
-  "Rising interest: Avengers: Doomsday +8K to 468K+."
+  "Aadarsha Kutumbam led with 217K tickets booked, up 130% from 94.2K the day before.",
+  "Jailer 2 was second at 119K, with its busiest hour at 9:37 PM (9.47K).",
+  "Namit Malhotra's Ramayana was fourth at 39.5K, up 38% on the day before.",
+  "Namit Malhotra's Ramayana also led interest at 527K+, gaining 15K in 24 hours, with bookings open.",
+  "Eight films were tracked, from Drishyam at 17.8K down to Prahaar at 7K."
  ],
  "drafts": [
   {
    "story": "leaderboard",
-   "film": null,
-   "text": "🎟️ Tickets booked on BookMyShow, Fri 30 Oct (4 AM to 4 AM)\n\n1. Aadarsha Kutumbam: 217K (▲130%)\n2. Jailer 2: 119K (▲38%)\n3. Udta Teer: 50.5K (▲29%)\n\n#AadarshaKutumbam #Jailer2 #BoxOffice",
+   "film": "Aadarsha Kutumbam",
+   "text": "🎟️ Yesterday's #BoxOffice top spot went to Aadarsha Kutumbam with 217K tickets booked, ahead of Jailer 2 at 119K. Counts are BookMyShow tickets, 4 AM to 4 AM IST. #MovieNews",
    "studio": {
     "type": "board24",
     "d": "2026-10-31",
     "t": "0400",
     "top": "5"
    },
-   "length": 187
+   "length": 175
   },
   {
    "story": "mover",
-   "film": "Aadarsha Kutumbam House No: 47 (AK 47)",
-   "text": "📈 Aadarsha Kutumbam: 217K tickets on Fri 30 Oct, ▲130% vs the day before (94.2K).\n\nBusiest hour: 14.52K around 6:33 PM.\n\n#AadarshaKutumbam #BoxOffice",
+   "film": "Aadarsha Kutumbam",
+   "text": "📈 Aadarsha Kutumbam nearly doubled its day-before count: 217K tickets booked yesterday, up 130% from 94.2K. Its busiest hour was 6:33 PM with 14.52K. #BoxOffice #MovieNews",
    "studio": null,
-   "length": 150
+   "length": 172
   },
   {
    "story": "interest",
-   "film": null,
-   "text": "🍿 Most awaited on BookMyShow (people who marked \"interested\")\n\n1. Namit Malhotra's Ramayana: 526K+ (+15K in 24h)\n2. Avengers: Doomsday: 468K+ (+8K in 24h)\n3. Scene: 159K+ (+7K in 24h)\n\n#NamitMalhotrasRamayana #AvengersDoomsday #BoxOffice",
+   "film": "Namit Malhotra's Ramayana",
+   "text": "👀 Namit Malhotra's Ramayana has 527K+ people interested, up 15K in 24 hours, and bookings are open ahead of its Thu 5 Nov release. #BoxOffice #MovieNews",
    "studio": {
     "type": "interest",
     "top": "5"
    },
-   "length": 238
+   "length": 153
   }
  ],
  "flags": [
-  "Aadarsha Kutumbam: 217K yesterday, +130% vs the day before"
+  "Aadarsha Kutumbam: 217K yesterday, +130% vs the day before",
+  "Spirit shows a release date of Fri 29 Oct but days_to_release of 363 and bookings not open yet; please check the date.",
+  "Health shows newest reading Sat 31 Oct 9:44 PM with minutes_old_at_8am of 0, which doesn't fit an 8 AM check; the data timing needs confirming."
  ],
  "notes": [
   "Tickets are counted from BookMyShow counters (one listing per film, not revenue).",
   "Figures marked ≈ are estimates from hourly figures (about ±3%).",
   "Interest counts are rounded by BookMyShow."
  ],
- "attempts": [],
+ "attempts": [
+  {
+   "attempt": 1,
+   "problems": []
+  }
+ ],
  "tables": {
   "films": [
    {
@@ -131,7 +138,7 @@
   "interest": [
    {
     "name": "Namit Malhotra's Ramayana",
-    "interested": "526K+",
+    "interested": "527K+",
     "gained_24h": "+15K",
     "release": "Thu 5 Nov",
     "days_to_release": 5,
@@ -147,8 +154,8 @@
    },
    {
     "name": "Scene",
-    "interested": "159K+",
-    "gained_24h": "+7K",
+    "interested": "161K+",
+    "gained_24h": "+9K",
     "release": "Fri 6 Nov",
     "days_to_release": 6,
     "bookings": "not open yet"
@@ -162,19 +169,19 @@
     "bookings": "not open yet"
    },
    {
+    "name": "King",
+    "interested": "99.2K+",
+    "gained_24h": null,
+    "release": null,
+    "days_to_release": null,
+    "bookings": null
+   },
+   {
     "name": "Varanasi",
     "interested": "85K+",
     "gained_24h": "+100",
     "release": "Wed 7 Apr",
     "days_to_release": 158,
-    "bookings": "not open yet"
-   },
-   {
-    "name": "Dune: Part Three",
-    "interested": "64.5K+",
-    "gained_24h": "+1K",
-    "release": "Fri 18 Dec",
-    "days_to_release": 48,
     "bookings": "not open yet"
    }
   ]
