@@ -137,3 +137,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-31 22:15:00+05:30,Jailer 2 Telugu,1_hour,9.8K,9.8K tickets booked in last 1 hour,2026-10-31 21:56:13+05:30,change,2026-10-31 22:15:00+05:30
 2026-10-31 22:54:42+05:30,Jailer 2 Telugu,1_hour,7.1K,7.1K tickets booked in last 1 hour,2026-10-31 22:15:00+05:30,change,2026-10-31 22:54:42+05:30
 2026-10-31 23:04:38+05:30,Jailer 2 Telugu,1_hour,6.4K,6.4K tickets booked in last 1 hour,2026-10-31 22:54:42+05:30,change,2026-10-31 23:04:38+05:30
+2026-10-31 23:14:40+05:30,Jailer 2 Telugu,1_hour,7.1K,7.1K tickets booked in last 1 hour,2026-10-31 23:04:38+05:30,change,2026-10-31 23:14:40+05:30
