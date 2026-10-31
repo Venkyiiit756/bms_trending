@@ -856,7 +856,7 @@ function upcoming(){const R=inRows();
 $('#uImg').onclick=()=>{apply({type:'interest',top:'7'},false);show('studio')};
 
 /* interest over time: chart and hour-by-hour table (page and Studio) */
-const inName=n=>n.length>24?n.replace(/\s*\([^)]*\)\s*$/,''):n;
+const inName=n=>n.length>24?n.replace(/\s*\([^)]*\)\s*$/,'').replace(/\s*House No: \d+\s*$/,''):n;
 const inDays=()=>[...new Set(IN.films.flatMap(f=>f.points.map(p=>p[0].slice(0,10))))].sort();
 function inPts(f,ds){return f.points.map(p=>{const k=ds.indexOf(p[0].slice(0,10));return k<0?null:[k*24+(+p[0].slice(11,13))+(+p[0].slice(14,16))/60,p[1]]}).filter(Boolean)}
 function inSpan(n,ds){const f=IN.films.find(x=>x.name===n);const p=f?inPts(f,ds):[];return {first:p.length?p[0][1]:0,last:p.length?p[p.length-1][1]:0}}
@@ -897,7 +897,7 @@ $('#iImg').onclick=()=>inToStudio('interestline');$('#iImgT').onclick=()=>inToSt
 const nrm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'');
 const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const MV={name:null,list:[],hr:{},d:{}};
-const mvLink=n=>`<a class="ml" href="#movie?f=${encodeURIComponent(n)}">${n}</a>`;
+const mvLink=(n,label)=>`<a class="ml" href="#movie?f=${encodeURIComponent(n)}">${label||n}</a>`;
 function bestPoint(){const ds=days();for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--)if(hourly(ds[i],ts[j]).length>=3)return [ds[i],ts[j]]}return latestPoint()}
 function mvBuild(){
   const out=new Map();
@@ -981,7 +981,7 @@ function mvDraw(){
   const cmp=m?mvCmp(name):null;MV.d.cmp=cmp;$('#mSecCmp').hidden=!cmp;
   if(cmp){secs.push(['mSecCmp','Vs other films']);
     $('#mCmpSub').textContent=cmp.sub;
-    $('#mtCmp').innerHTML=`<table><thead><tr><th>#</th><th>Film</th><th class="n">Yesterday</th><th class="n">vs day before</th><th class="n hide-sm">Last hour now</th></tr></thead><tbody>${cmp.rows.map(r=>`<tr${r.name===name?' class="me"':''}><td class="rank">${r.rank}</td><td class="movie">${r.name===name?r.name:mvLink(r.name)}</td><td class="n"><b>${fmtV(r.y)}</b></td><td class="n ${r.p>0?'up':r.p<0?'down':''}">${r.p===null?'—':pctTxt(r.p)}</td><td class="n hide-sm">${r.h||'—'}</td></tr>`).join('')}</tbody></table>`}
+    $('#mtCmp').innerHTML=`<table><thead><tr><th>#</th><th>Film</th><th class="n">Yesterday</th><th class="n">vs day before</th><th class="n hide-sm">Last hour now</th></tr></thead><tbody>${cmp.rows.map(r=>`<tr${r.name===name?' class="me"':''}><td class="rank">${r.rank}</td><td class="movie" title="${r.name.replace(/"/g,'&quot;')}">${r.name===name?inName(r.name):mvLink(r.name,inName(r.name))}</td><td class="n"><b>${fmtV(r.y)}</b></td><td class="n ${r.p>0?'up':r.p<0?'down':''}">${r.p===null?'—':pctTxt(r.p)}</td><td class="n hide-sm">${r.h||'—'}</td></tr>`).join('')}</tbody></table>`}
   // 5. interest
   $('#mSecInt').hidden=!f;
   if(f){secs.push(['mSecInt','Interest']);mvIntDraw()}
@@ -1063,6 +1063,7 @@ function mvStudio(kind){const e=MV.e,[bd,bt]=MV.bp;if(!e)return;
   else if(kind==='int'){const ds=MV.d.int.ds;apply({type:'interestline',d:ds[ds.length-1],days:String(ds.length),imode:$('#mIntMode').value,top:'pick',pick:e.f.name},false)}
   show('studio')}
 function mvInit(){if(!MV.list.length&&(SL.movies.length||IN.films.length))mvBuild();
+  if(innerWidth<620)$('#mGridDays').value='3';
   $('#mSel').onchange=()=>{MV.name=$('#mSel').value;mvDraw()};
   $$('#mStyle button').forEach(b=>b.onclick=()=>{S.style=b.dataset.v;setSeg('mStyle',b.dataset.v);setSeg('sStyle',b.dataset.v)});
   $$('#mHourMode button').forEach(b=>b.onclick=()=>{setSeg('mHourMode',b.dataset.v);mvHoursDraw()});
