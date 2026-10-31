@@ -1,53 +1,53 @@
 {
  "date": "2026-10-31",
- "generated_at": "2026-10-31T21:50:25+05:30",
+ "generated_at": "2026-10-31T21:57:16+05:30",
  "mode": "claude",
  "model": "claude-haiku-5-5",
  "window": "4 AM Fri 30 Oct to 4 AM Sat 31 Oct IST",
  "day": "Fri 30 Oct",
- "headline": "Aadarsha Kutumbam led yesterday with 217K tickets booked, up 130% on the day before, with Jailer 2 next at 119K.",
+ "headline": "Aadarsha Kutumbam led yesterday with 217K tickets, up 130% on the day before, with Jailer 2 second at 119K.",
  "bullets": [
-  "Aadarsha Kutumbam led with 217K tickets booked, up 130% from 94.2K the day before.",
-  "Jailer 2 was second at 119K, with its busiest hour at 9:37 PM (9.47K).",
-  "Namit Malhotra's Ramayana was fourth at 39.5K, up 38% on the day before.",
-  "Namit Malhotra's Ramayana also led interest at 527K+, gaining 15K in 24 hours, with bookings open.",
-  "Eight films were tracked, from Drishyam at 17.8K down to Prahaar at 7K."
+  "Aadarsha Kutumbam took the top spot with 217K tickets, up 130% from 94.2K the day before, and its busiest hour was 6:33 PM at 14.52K.",
+  "Jailer 2 was second with 119K tickets, up 38% on the day before, though it is down 68% on the same day last week.",
+  "Namit Malhotra's Ramayana had 39.5K tickets, up 38% on the day before, and it gained the most interest at +15K in 24 hours; bookings are open for its Thu 5 Nov release.",
+  "Avengers: Doomsday has 468K+ people interested (+8K in 24 hours), but bookings are not open yet for its Thu 17 Dec release.",
+  "Prahaar was the lowest of the eight tracked films at 7K tickets, down 58% on the same day last week."
  ],
  "drafts": [
   {
    "story": "leaderboard",
    "film": "Aadarsha Kutumbam",
-   "text": "🎟️ Yesterday's #BoxOffice top spot went to Aadarsha Kutumbam with 217K tickets booked, ahead of Jailer 2 at 119K. Counts are BookMyShow tickets, 4 AM to 4 AM IST. #MovieNews",
+   "text": "🎬 Yesterday's #1 on BookMyShow: Aadarsha Kutumbam with 217K tickets, ahead of Jailer 2 at 119K. Here's how the top 8 Hyderabad films stacked up 👇 #BoxOffice #Movies",
    "studio": {
     "type": "board24",
     "d": "2026-10-31",
     "t": "0400",
     "top": "5"
    },
-   "length": 175
+   "length": 166
   },
   {
    "story": "mover",
    "film": "Aadarsha Kutumbam",
-   "text": "📈 Aadarsha Kutumbam nearly doubled its day-before count: 217K tickets booked yesterday, up 130% from 94.2K. Its busiest hour was 6:33 PM with 14.52K. #BoxOffice #MovieNews",
+   "text": "📈 Aadarsha Kutumbam was the biggest mover yesterday, up 130% on the day before to 217K tickets. Its busiest hour was 6:33 PM with 14.52K tickets. #BoxOffice #Movies",
    "studio": null,
-   "length": 172
+   "length": 165
   },
   {
    "story": "interest",
    "film": "Namit Malhotra's Ramayana",
-   "text": "👀 Namit Malhotra's Ramayana has 527K+ people interested, up 15K in 24 hours, and bookings are open ahead of its Thu 5 Nov release. #BoxOffice #MovieNews",
+   "text": "🔥 Namit Malhotra's Ramayana has 527K+ people interested and gained 15K in the last 24 hours. Bookings are open for its Thu 5 Nov release. #BoxOffice #Movies",
    "studio": {
     "type": "interest",
     "top": "5"
    },
-   "length": 153
+   "length": 157
   }
  ],
  "flags": [
   "Aadarsha Kutumbam: 217K yesterday, +130% vs the day before",
-  "Spirit shows a release date of Fri 29 Oct but days_to_release of 363 and bookings not open yet; please check the date.",
-  "Health shows newest reading Sat 31 Oct 9:44 PM with minutes_old_at_8am of 0, which doesn't fit an 8 AM check; the data timing needs confirming."
+  "Spirit shows a release date of Fri 29 Oct, which is before this window, yet it still has bookings not open and 363 days to release. Please check its release date.",
+  "health.newest_reading is 'Sat 31 Oct 9:56 PM', which is after this window ends and after the 8 AM briefing, yet minutes_old_at_8am is 0. Please check the timestamp."
  ],
  "notes": [
   "Tickets are counted from BookMyShow counters (one listing per film, not revenue).",
@@ -60,6 +60,12 @@
    "problems": []
   }
  ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 3652,
+  "output_tokens": 1916,
+  "cost_cents": 0.132
+ },
  "tables": {
   "films": [
    {
