@@ -56,7 +56,7 @@ def _films(today):
         readings = [r for r in series.load(paths.get(m['name'], '')) if r.kind == '1_hour'
                     and t4 - timedelta(days=1) < r.time <= t4]
         peak = max(readings, key=lambda r: r.value) if readings else None
-        f = {'name': m['name'], 'yesterday': ('' if y['exact'] else '≈') + fmt(y['v']), 'yesterday_value': round(y['v']),
+        f = {'name': m['name'], 'short': series.short_name(m['name'], 26), 'yesterday': ('' if y['exact'] else '≈') + fmt(y['v']), 'yesterday_value': round(y['v']),
              'exact': y['exact'], 'vs_day_before': pct(y['v'], b['v']) if b else None,
              'vs_week_ago': pct(y['v'], w['v']) if w else None}
         if b:
@@ -95,7 +95,7 @@ def _interest(today):
         if re.fullmatch(r'ET\d+', name):
             continue
         rel = interest.release_day(c.get('release') or m['release'])
-        e = {'name': name, 'interested': f'{fmt(v)}+', 'interested_value': v,
+        e = {'name': name, 'short': series.short_name(name, 26), 'interested': f'{fmt(v)}+', 'interested_value': v,
              'bookings': 'open' if c.get('book') else 'not open yet' if c.get('book') is False else None}
         if ago:
             g = v - ago[-1][1]

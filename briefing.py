@@ -172,6 +172,13 @@ Hard rules:
 - Figures that start with ≈ are estimates; keep the ≈.
 - Posts: at most 272 characters, friendly and clear, 2-3 hashtags including #BoxOffice, emoji allowed.
 - Do not invent films, dates, or hashtags for films not in the facts.
+- Call each film by its "short" name from the facts (never the long "name").
+- Never promise or mention anything outside the facts (links, a full list, a thread, an image being posted).
+- Percentages always carry a % sign and no plus or minus sign next to words like up, down, rose or fell
+  (write "up 130%" or "down 68%", never "up +130%", "fell -68" or "up 38").
+- "flags" is only for real problems you notice in the facts (an inconsistent date, a figure that looks wrong, stale data
+  when health.minutes_old_at_8am is above 90). Do not repeat anything already listed in the facts' own flags, and use
+  an empty list when everything looks fine.
 
 Reply with ONLY a JSON object:
 {"headline": "<one sentence, at most 140 characters>",
