@@ -250,7 +250,14 @@
   "page_slug": "the-cat-in-the-hat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-31"
+  "upcoming": "2026-10-31",
+  "group": "EG00449638",
+  "languages": [
+   "English",
+   "Hindi"
+  ],
+  "release": "Nov 06, 2026",
+  "book": false
  },
  "ET00451914": {
   "first_seen": "2026-10-22",
