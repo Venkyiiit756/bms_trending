@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-10-31
+- added **The Cat in the Hat** (ET00451881), polled hourly
+- added **Appakutty** (ET00518647), polled hourly
+- added **Disco** (ET00521913), polled hourly
+- **Namit Malhotra's Ramayana** (ET00451914): hourly -> every 30 min (best hourly figure in 24 h: 3.2K)
+- **Namit Malhotra's Ramayana** (ET00493076): hourly -> every 30 min (best hourly figure in 24 h: 3.1K)
+- **Dilwale Dulhania Le Jayenge** (ET00000652): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dhood** (ET00518466): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Patakka Guddiyan** (ET00524295): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Itllu Arjuna** (ET00514068): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Queen Budapest** (ET00524517): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-30
 - added **Godzilla Minus Zero** (ET00524518), polled hourly
 - **Udta Teer** (ET00495822): hourly -> every 30 min (best hourly figure in 24 h: 3.8K)

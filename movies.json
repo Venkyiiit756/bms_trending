@@ -455,7 +455,7 @@
     "page_slug": "namit-malhotras-ramayana",
     "csv": "data/ET00451914.csv",
     "headers_csv": "data/ET00451914_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-22"
   },
   {
@@ -867,7 +867,7 @@
     "page_slug": "namit-malhotras-ramayana-3dhindi",
     "csv": "data/ET00493076.csv",
     "headers_csv": "data/ET00493076_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-24"
   },
   {
@@ -1011,7 +1011,7 @@
     "page_slug": "dilwale-dulhania-le-jayenge",
     "csv": "data/ET00000652.csv",
     "headers_csv": "data/ET00000652_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1023,7 +1023,7 @@
     "page_slug": "dhood",
     "csv": "data/ET00518466.csv",
     "headers_csv": "data/ET00518466_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1035,7 +1035,7 @@
     "page_slug": "patakka-guddiyan",
     "csv": "data/ET00524295.csv",
     "headers_csv": "data/ET00524295_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1047,7 +1047,7 @@
     "page_slug": "itllu-arjuna",
     "csv": "data/ET00514068.csv",
     "headers_csv": "data/ET00514068_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1059,7 +1059,7 @@
     "page_slug": "queen-budapest",
     "csv": "data/ET00524517.csv",
     "headers_csv": "data/ET00524517_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1229,5 +1229,41 @@
     "headers_csv": "data/ET00524518_headers.csv",
     "every": 3600,
     "added": "2026-10-30"
+  },
+  {
+    "key": "et00451881",
+    "name": "The Cat in the Hat",
+    "eventcode": "ET00451881",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-cat-in-the-hat",
+    "csv": "data/ET00451881.csv",
+    "headers_csv": "data/ET00451881_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
+  },
+  {
+    "key": "et00518647",
+    "name": "Appakutty",
+    "eventcode": "ET00518647",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "appakutty",
+    "csv": "data/ET00518647.csv",
+    "headers_csv": "data/ET00518647_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
+  },
+  {
+    "key": "et00521913",
+    "name": "Disco",
+    "eventcode": "ET00521913",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "disco",
+    "csv": "data/ET00521913.csv",
+    "headers_csv": "data/ET00521913_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
   }
 ]
