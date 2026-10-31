@@ -680,3 +680,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-01 02:51:21+05:30,Clayface,24_hours,5.39K,5.39K tickets booked in last 24 hours,2026-11-01 02:44:17+05:30,change,2026-11-01 02:51:21+05:30
 2026-11-01 04:07:39+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-01 04:11:05+05:30,Clayface,24_hours,5.39K,5.39K tickets booked in last 24 hours,,heartbeat,
+2026-11-01 04:30:23+05:30,Clayface,24_hours,5.39K,5.39K tickets booked in last 24 hours,,heartbeat,
