@@ -1277,5 +1277,29 @@
     "headers_csv": "data/ET00502500_headers.csv",
     "every": 3600,
     "added": "2026-10-31"
+  },
+  {
+    "key": "et00455480",
+    "name": "King",
+    "eventcode": "ET00455480",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "king",
+    "csv": "data/ET00455480.csv",
+    "headers_csv": "data/ET00455480_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
+  },
+  {
+    "key": "et00518312",
+    "name": "Ramayana Telugu",
+    "eventcode": "ET00518312",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ramayana-telugu",
+    "csv": "data/ET00518312.csv",
+    "headers_csv": "data/ET00518312_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
   }
 ]

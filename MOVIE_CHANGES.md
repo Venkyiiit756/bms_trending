@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-31
+- added **King** (ET00455480), polled hourly
+- added **Ramayana Telugu** (ET00518312), polled hourly
+
+## 2026-10-31
 - added **Eetha** (ET00502500), polled hourly
 - **Nayyi Navelli** (ET00513250): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 

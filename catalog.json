@@ -295,6 +295,15 @@
   "release": "Oct 29, 2027",
   "book": false
  },
+ "ET00455480": {
+  "first_seen": "2026-10-31",
+  "last_listed": null,
+  "name": "King",
+  "page_slug": "king",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-31"
+ },
  "ET00465242": {
   "name": "Baa Baa Black Sheep",
   "page_slug": "baa-baa-black-sheep",
@@ -569,7 +578,13 @@
   "page_slug": "eetha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-31"
+  "upcoming": "2026-10-31",
+  "group": "EG00499608",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Dec 04, 2026",
+  "book": false
  },
  "ET00502504": {
   "name": "Prahaar",
@@ -1010,6 +1025,15 @@
   ],
   "release": "Oct 02, 2026",
   "book": false
+ },
+ "ET00518312": {
+  "first_seen": "2026-10-31",
+  "last_listed": null,
+  "name": "ET00518312",
+  "page_slug": "ramayana-telugu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-31"
  },
  "ET00518466": {
   "first_seen": "2026-10-28",
