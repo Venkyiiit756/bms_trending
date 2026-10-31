@@ -1267,7 +1267,7 @@ function briefing(){const B=BR;if(!B||!B.headline)return;
   (B.drafts||[]).forEach((d,i)=>{upd(i);$('#bt'+i).oninput=()=>upd(i)});
   $$('#briefDrafts [data-bc]').forEach(b=>b.onclick=()=>copy($('#bt'+b.dataset.bc).value,'Post copied'));
   $$('#briefDrafts [data-bs]').forEach(b=>b.onclick=()=>{apply(B.drafts[+b.dataset.bs].studio,false);show('studio')});
-  $('#briefNote').textContent=(B.notes||[]).join(' ')}
+  const U=B.usage;$('#briefNote').textContent=(B.notes||[]).join(' ')+(U?` Model ${B.model||''}: ${U.input_tokens.toLocaleString()} tokens in, ${U.output_tokens.toLocaleString()} out${U.cost_cents!=null?`, about ${U.cost_cents}¢`:''}.`:'')}
 
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);

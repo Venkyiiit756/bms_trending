@@ -31,6 +31,8 @@ OUT = os.path.join(ROOT, 'briefing.json')
 ARCHIVE = os.path.join(ROOT, 'briefings')
 KEEP_DAYS = 30
 MODEL = os.environ.get('ANTHROPIC_MODEL', 'claude-haiku-5-5')      # the cheapest current model; the verifier guards the quality
+TRACE = {'calls': [], 'replies': []}          # what was sent / received this run, saved next to the briefing
+PRICES = {'claude-haiku-5-5': (0.10, 0.50), 'claude-sonnet-5-5': (2.0, 10.0)}   # $ per million tokens (input, output)
 POST_LIMIT = 272                    # X allows 280; keep a margin
 BANNED = re.compile(r'\b(collections?|gross(ed)?|crores?|revenue|box[- ]office collection|earn(ed|ings)?)\b', re.I)
 QTY = re.compile(r'(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s?([KkMm](?![A-Za-z])|%)')
@@ -197,9 +199,13 @@ def _call(messages, key):
     client = anthropic.Anthropic(api_key=key, max_retries=3, timeout=120)
     r = client.messages.create(model=MODEL, max_tokens=4000, system=SYSTEM, messages=messages,
                                output_config={'effort': 'low'})
+    TRACE['calls'].append({'input_tokens': r.usage.input_tokens, 'output_tokens': r.usage.output_tokens,
+                           'stop_reason': r.stop_reason})
     if r.stop_reason == 'refusal':
         raise RuntimeError('the model declined this request')
-    return ''.join(b.text for b in r.content if b.type == 'text')
+    text = ''.join(b.text for b in r.content if b.type == 'text')
+    TRACE['replies'].append(text)
+    return text
 
 
 def _json(text):
@@ -284,6 +290,8 @@ def run(today, use_llm=True, force=False, out_path=OUT):
                 return None
         except ValueError:
             pass
+    TRACE['calls'].clear()
+    TRACE['replies'].clear()
     f = briefing_facts.facts(today)
     base = template(f)
     for txt in [base['headline'], *base['bullets'], *[d['text'] for d in base['drafts']]]:
@@ -298,10 +306,15 @@ def run(today, use_llm=True, force=False, out_path=OUT):
     for d in body['drafts']:
         d['studio'] = studio_for(d, f)
         d['length'] = xlen(d['text'])
+    tin = sum(c['input_tokens'] for c in TRACE['calls'])
+    tout = sum(c['output_tokens'] for c in TRACE['calls'])
+    price = PRICES.get(MODEL)
+    usage = {'calls': len(TRACE['calls']), 'input_tokens': tin, 'output_tokens': tout,
+             'cost_cents': round((tin * price[0] + tout * price[1]) / 1e4, 3) if price and TRACE['calls'] else None}
     res = {'date': f['date'], 'generated_at': datetime.now(series.IST).isoformat(timespec='seconds'), 'mode': mode,
            'model': MODEL if mode.startswith('claude') else None, 'window': f['window'], 'day': f['day'],
            'headline': body['headline'], 'bullets': body['bullets'], 'drafts': body['drafts'], 'flags': body['flags'],
-           'notes': f['notes'], 'attempts': log,
+           'notes': f['notes'], 'attempts': log, 'usage': usage if TRACE['calls'] else None,
            'tables': {'films': [{k: x.get(k) for k in ('rank', 'name', 'yesterday', 'vs_day_before', 'vs_week_ago', 'busiest_hour', 'busiest_hour_at')}
                                 for x in f['films'][:8]],
                       'interest': [{k: e.get(k) for k in ('name', 'interested', 'gained_24h', 'release', 'days_to_release', 'bookings')}
@@ -312,8 +325,12 @@ def run(today, use_llm=True, force=False, out_path=OUT):
         os.makedirs(ARCHIVE, exist_ok=True)
         with open(os.path.join(ARCHIVE, f"{f['date']}.json"), 'w', encoding='utf-8') as fh:
             json.dump(res, fh, indent=1, ensure_ascii=False)
+        if TRACE['calls']:       # the full conversation, for anyone who wants to check the work
+            with open(os.path.join(ARCHIVE, f"{f['date']}.trace.json"), 'w', encoding='utf-8') as fh:
+                json.dump({'model': MODEL, 'system_prompt': SYSTEM, 'facts': f, 'calls': TRACE['calls'],
+                           'replies': TRACE['replies'], 'attempts': log}, fh, indent=1, ensure_ascii=False)
         for fn in os.listdir(ARCHIVE):
-            m = re.fullmatch(r'(\d{4}-\d\d-\d\d)\.json', fn)
+            m = re.fullmatch(r'(\d{4}-\d\d-\d\d)(\.trace)?\.json', fn)
             if m and date.fromisoformat(m.group(1)) < today - timedelta(days=KEEP_DAYS):
                 os.remove(os.path.join(ARCHIVE, fn))
     print(f"briefing {f['date']}: mode {mode}; {len(res['bullets'])} bullets, {len(res['drafts'])} draft posts, {len(res['flags'])} flags", flush=True)
