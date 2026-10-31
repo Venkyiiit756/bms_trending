@@ -69,6 +69,13 @@ def build(slot, data, names):
             y = hourly(data[key], slot - timedelta(days=1))
             now_rows.append((name, r, y, key))
     now_rows.sort(key=lambda x: -x[1].value)
+    seen, unique = set(), []                      # one row per film: other listings of it show the same name
+    for row in now_rows:
+        k = re.sub(r'[^a-z0-9]+', '', row[0].lower())
+        if k not in seen:
+            seen.add(k)
+            unique.append(row)
+    now_rows = unique
     board = len(now_rows) >= MIN_MOVIES
     if not board and slot.hour not in PEAK_HOURS:
         return None
@@ -83,13 +90,20 @@ def build(slot, data, names):
     if not board:
         top = []
     yname = f'{slot - timedelta(days=1):%a}'
-    rows = [[str(i), series.short_name(n, 22), r.text, pct(r.value, y.value if y else None)]
+    rows = [[str(i), series.short_name(n, 26), r.text, pct(r.value, y.value if y else None)]
             for i, (n, r, y, _) in enumerate(top, 1)]
     colors = [[cards.MUTE, None, cards.INK, cards.change_color(r.value, y.value if y else None)] for _, r, y, _ in top]
     p1 = os.path.join(folder, '1.png')
     if board:
+        tiles = [('Top film', series.short_name(top[0][0], 20), top[0][1].text + ' in the hour', None),
+                 (f'Top {len(top)} together', f'{sum(r.value for _, r, _, _ in top) / 1000:.1f}K', 'tickets in the hour', None)]
+        moves = [((r.value - y.value) / y.value, n) for n, r, y, _ in top if y and y.value]
+        if moves:
+            m, mn = max(moves)
+            tiles.append(('Biggest rise' if m > 0 else 'Smallest drop', series.short_name(mn, 20), f'{m * 100:+.0f}% vs {yname}',
+                          cards.UP if m > 0 else cards.DOWN))
         cards.square_table(p1, 'Tickets booked in the last hour', f'{day} · {win} IST', FOOTER,
-                           ['#', 'Movie', 'Last hour', f'vs {yname}'], rows, colors, widths=[.09, .45, .23, .23])
+                           ['#', 'Movie', 'Last hour', f'vs {yname}'], rows, colors, widths=[.09, .45, .23, .23], tiles=tiles)
         images.append(p1)
         alts.append(f'Table of tickets booked on BookMyShow in the last hour ({win}, {day}), with change against '
                     'the same hour yesterday: ' + '; '.join(
@@ -103,7 +117,7 @@ def build(slot, data, names):
         rows, colors = [], []
         for n, _, _, key in top:
             vals = [hourly(data[key], d) for d in days]
-            rows.append([series.short_name(n, 18)] + [v.text if v else '—' for v in vals])
+            rows.append([series.short_name(n, 20)] + [v.text if v else '—' for v in vals])
             colors.append([None] + [cards.INK if i == 0 else
                                     cards.change_color(v.value if v else None, vals[i - 1].value if vals[i - 1] else None)
                                     for i, v in enumerate(vals)])
@@ -126,9 +140,23 @@ def build(slot, data, names):
             return out
         today0 = slot.replace(hour=0, minute=0)
         yday0 = today0 - timedelta(days=1)
-        cards.square_lines(p2, f'{name}: tickets booked per hour', f'Today vs yesterday · until {slot:%-I %p} IST',
-                           FOOTER, [(f'Yesterday ({yday0:%a})', pts(yday0, today0), '#9aa6b5', 2.0),
-                                    (f'Today ({today0:%a})', pts(today0, slot), cards.NAVY, 3.0)])
+        yp, tp = pts(yday0, today0), pts(today0, slot)
+        good = [p for p in tp if p[1] == p[1]]
+        tiles = None
+        if good:
+            now_h, now_v = good[-1]
+            peak_h, peak_v = max(good, key=lambda p: p[1])
+            near = [p for p in yp if p[1] == p[1] and abs(p[0] - now_h) <= 0.5]
+            tiles = [('Right now', f'{now_v:.2f}K', 'tickets in the last hour', None),
+                     ('Peak so far today', f'{peak_v:.2f}K', f'at {int(peak_h) % 12 or 12}{"AM" if peak_h < 12 else "PM"}', None)]
+            if near:
+                yv = near[min(range(len(near)), key=lambda i: abs(near[i][0] - now_h))][1]
+                if yv:
+                    d = (now_v - yv) / yv * 100
+                    tiles.append(('Same time yesterday', f'{yv:.2f}K', f'{d:+.0f}% today', cards.UP if d > 0 else cards.DOWN))
+        cards.square_lines(p2, f'{series.short_name(name, 26)}: tickets per hour', f'Today vs yesterday · until {slot:%-I %p} IST',
+                           FOOTER, [(f'Yesterday ({yday0:%a})', yp, '#9aa6b5', 2.0),
+                                    (f'Today ({today0:%a})', tp, cards.NAVY, 3.0)], tiles=tiles)
         alts.append(f'Line chart of tickets booked in the last hour for {name} through the day, today against yesterday.')
         images.append(p2)
     elif h in PEAK_HOURS:
@@ -143,10 +171,17 @@ def build(slot, data, names):
                 t = t.replace(minute=0 if t.minute < 30 else 30, second=0, microsecond=0)
                 peaks.append((n, best, series.window_label(t)))
         peaks.sort(key=lambda x: -x[1].value)
+        seen_p, uniq = set(), []                  # one row per film (other listings repeat the name)
+        for pk in peaks:
+            k = re.sub(r'[^a-z0-9]+', '', pk[0].lower())
+            if k not in seen_p:
+                seen_p.add(k)
+                uniq.append(pk)
+        peaks = uniq
         if peaks:
             peaks = peaks[:TOP]
             cards.square_table(p2, "Yesterday's busiest hour", f'{y0:%a %d %b} · tickets in the peak hour', FOOTER,
-                               ['Movie', 'Peak hour', 'When'], [[series.short_name(n, 22), b.text, w] for n, b, w in peaks],
+                               ['Movie', 'Peak hour', 'When'], [[series.short_name(n, 26), b.text, w] for n, b, w in peaks],
                                widths=[.44, .22, .34])
             alts.append(f"Table of each movie's busiest hour on {y0:%a %d %b}: " + '; '.join(
                 f'{n} {b.text} ({w})' for n, b, w in peaks))

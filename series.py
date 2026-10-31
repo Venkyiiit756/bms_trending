@@ -5,6 +5,7 @@ is older than an earlier row's was an out-of-date copy served late, which otherw
 false dip followed by a jump back.
 """
 import csv
+import re
 import json
 import os
 from collections import namedtuple
@@ -97,6 +98,11 @@ def short_name(name, limit=20):
     """Fit a title in a narrow cell: drop a subtitle after ':' or cut at a word boundary."""
     if len(name) <= limit:
         return name
+    plain = re.sub(r'\s*\([^)]*\)\s*$', '', name)
+    plain = re.sub(r'\s*House No:? ?\d+\s*$', '', plain)
+    if plain and len(plain) <= limit:
+        return plain
+    name = plain or name
     if ':' in name and len(name.split(':')[0]) >= 4:
         name = name.split(':')[0]
         if len(name) <= limit:
