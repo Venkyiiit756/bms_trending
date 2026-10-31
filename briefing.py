@@ -21,7 +21,6 @@ import json
 import os
 import re
 import sys
-import time
 from datetime import date, datetime, timedelta
 
 import briefing_facts
@@ -31,8 +30,7 @@ ROOT = series.ROOT
 OUT = os.path.join(ROOT, 'briefing.json')
 ARCHIVE = os.path.join(ROOT, 'briefings')
 KEEP_DAYS = 30
-MODEL = os.environ.get('ANTHROPIC_MODEL', 'claude-sonnet-5-5')
-API = 'https://api.anthropic.com/v1/messages'
+MODEL = os.environ.get('ANTHROPIC_MODEL', 'claude-haiku-5-5')      # the cheapest current model; the verifier guards the quality
 POST_LIMIT = 272                    # X allows 280; keep a margin
 BANNED = re.compile(r'\b(collections?|gross(ed)?|crores?|revenue|box[- ]office collection|earn(ed|ings)?)\b', re.I)
 QTY = re.compile(r'(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s?([KkMm](?![A-Za-z])|%)')
@@ -182,22 +180,19 @@ Reply with ONLY a JSON object:
  "flags": ["<anything the owner should double-check, or an empty list>"]}"""
 
 
-def _call(messages, key, tries=2):
-    import requests
-    last = None
-    for k in range(tries):
-        try:
-            r = requests.post(API, timeout=120, headers={'x-api-key': key, 'anthropic-version': '2023-06-01',
-                                                         'content-type': 'application/json'},
-                              json={'model': MODEL, 'max_tokens': 1800, 'temperature': 0.3, 'system': SYSTEM,
-                                    'messages': messages})
-            if r.status_code == 200:
-                return ''.join(b.get('text', '') for b in r.json().get('content', []) if b.get('type') == 'text')
-            last = f'HTTP {r.status_code}: {r.text[:200]}'
-        except Exception as e:                       # network problem: try again once
-            last = str(e)
-        time.sleep(5 * (k + 1))
-    raise RuntimeError(last)
+def _call(messages, key):
+    """One request through the official SDK (it retries 429/5xx itself). Returns the reply text.
+
+    No temperature / top_p: the API rejects sampling settings. Effort "low" keeps the model's own
+    thinking (billed as output) small - the task is writing from verified facts, not reasoning.
+    """
+    import anthropic
+    client = anthropic.Anthropic(api_key=key, max_retries=3, timeout=120)
+    r = client.messages.create(model=MODEL, max_tokens=4000, system=SYSTEM, messages=messages,
+                               output_config={'effort': 'low'})
+    if r.stop_reason == 'refusal':
+        raise RuntimeError('the model declined this request')
+    return ''.join(b.text for b in r.content if b.type == 'text')
 
 
 def _json(text):
