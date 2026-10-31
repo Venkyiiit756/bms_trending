@@ -862,3 +862,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-31 12:00:39+05:30,Prahaar,24_hours,7.65K,7.65K tickets booked in last 24 hours,2026-10-31 11:50:35+05:30,change,2026-10-31 12:00:39+05:30
 2026-10-31 12:09:55+05:30,Prahaar,24_hours,7.74K,7.74K tickets booked in last 24 hours,2026-10-31 12:00:39+05:30,change,2026-10-31 12:09:55+05:30
 2026-10-31 12:16:30+05:30,Prahaar,24_hours,7.79K,7.79K tickets booked in last 24 hours,2026-10-31 12:09:55+05:30,change,2026-10-31 12:16:30+05:30
+2026-10-31 12:40:58+05:30,Prahaar,24_hours,7.85K,7.85K tickets booked in last 24 hours,2026-10-31 12:16:30+05:30,change,2026-10-31 12:40:58+05:30
