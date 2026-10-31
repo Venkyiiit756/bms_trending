@@ -114,6 +114,11 @@ tr.me td{background:var(--soft);font-weight:700}
 .ml{color:inherit;text-decoration:none;border-bottom:1px dotted var(--mute)}
 .ml:hover{border-bottom-style:solid}
 .cell-n{font-variant-numeric:tabular-nums}
+#briefInt td:first-child,#briefTable td:nth-child(2){white-space:normal!important}
+.flagbox{background:rgba(185,119,14,.10);border:1px solid rgba(185,119,14,.35);border-radius:10px;padding:8px 12px;font-size:13.5px;margin-top:8px}
+.draft{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:8px;background:var(--card)}
+.draft textarea{min-height:120px}
+.chip.ai{border-color:var(--brand);color:var(--brand)}
 .miles{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
 .miles span{font-size:12.5px;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
 .miles b{font-weight:800}
@@ -146,6 +151,9 @@ tr.me td{background:var(--soft);font-weight:700}
 <main>
 <!-- NOW -->
 <section id="now" class="on">
+  <a class="card" id="nowBrief" href="#kit" hidden style="text-decoration:none;color:inherit;display:block">
+    <div class="mute">Today's briefing · tap to read</div><div class="big" id="nowBriefHead" style="margin-top:2px"></div>
+  </a>
   <div class="card">
     <div class="row">
       <select id="nowDay" aria-label="Date"></select>
@@ -374,6 +382,19 @@ tr.me td{background:var(--soft);font-weight:700}
 
 <!-- AUTO POSTS -->
 <section id="kit">
+  <div class="card" id="brief" hidden>
+    <div class="row spread"><h2>Daily briefing</h2><span class="chip" id="briefMode"></span></div>
+    <div class="mute" id="briefWin"></div>
+    <div class="big" id="briefHead" style="margin:10px 0 6px"></div>
+    <ul id="briefBullets" style="margin:0 0 6px;padding-left:20px"></ul>
+    <div id="briefFlags"></div>
+    <div class="tw" id="briefTable"></div>
+    <div class="tw" id="briefInt"></div>
+    <h2 style="margin:16px 0 4px">Draft posts</h2>
+    <div class="mute">Nothing is posted automatically. Edit if you like, then copy or open in X.</div>
+    <div id="briefDrafts" style="display:grid;gap:10px;margin-top:10px"></div>
+    <div class="mute" id="briefNote" style="margin-top:10px"></div>
+  </div>
   <div class="card">
     <h2>Auto posts</h2>
     <div class="mute">Made automatically every hour, 8 AM to 11 PM IST. Posted to X when the account is connected; otherwise post them from here. "Edit in Studio" opens an image with the same settings so you can change it.</div>
@@ -408,7 +429,7 @@ tr.me td{background:var(--soft);font-weight:700}
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-let M={}, D={movies:[],days:{}}, SL={movies:[]}, IN={films:[]}, HANDLE='';
+let M={}, D={movies:[],days:{}}, SL={movies:[]}, IN={films:[]}, BR=null, HANDLE='';
 const NAVY='#1f3a5f', ZEBRA='#f4f7fb', INK='#222222', MUTE='#6b7684', UP='#0a7d33', DOWN='#c0392b', BAND='#dfe8f5';
 const DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -1225,6 +1246,29 @@ function mvInit(){if(!MV.list.length&&(SL.movies.length||IN.films.length))mvBuil
   $$('#movie [data-csv]').forEach(b=>b.onclick=()=>mvCsv(b.dataset.csv));
   $$('#movie [data-studio]').forEach(b=>b.onclick=()=>mvStudio(b.dataset.studio))}
 
+/* ---------- DAILY BRIEFING (data/briefing.json, written by briefing.py) ---------- */
+const esc=t=>String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function briefing(){const B=BR;if(!B||!B.headline)return;
+  $('#brief').hidden=false;$('#nowBrief').hidden=false;$('#nowBriefHead').textContent=B.headline;
+  const ai=String(B.mode||'').startsWith('claude');
+  $('#briefMode').textContent=B.mode==='claude'?'Written by Claude':ai?'Claude, partly automatic':'Automatic summary';$('#briefMode').classList.toggle('ai',ai);
+  const g=B.generated_at||'';$('#briefWin').textContent=`${B.window||''}${g?` · written ${dayLabel(g.slice(0,10))}, ${timeLabel(g.slice(11,13)+g.slice(14,16))} IST`:''}`;
+  $('#briefHead').textContent=B.headline;
+  $('#briefBullets').innerHTML=(B.bullets||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#briefFlags').innerHTML=(B.flags||[]).map(x=>`<div class="flagbox">Worth a look: ${esc(x)}</div>`).join('');
+  const T=B.tables||{},cls=p=>p>0?'up':p<0?'down':'';
+  $('#briefTable').innerHTML=(T.films||[]).length?`<table><thead><tr><th>#</th><th>Film</th><th class="n">Yesterday</th><th class="n">vs day before</th><th class="n hide-sm">vs last week</th><th class="n hide-sm">Busiest hour</th></tr></thead><tbody>${T.films.map(r=>`<tr><td class="rank">${r.rank}</td><td class="movie">${mvLink(mvResolve(r.name),esc(inName(r.name)))}</td><td class="n"><b>${esc(r.yesterday)}</b></td><td class="n ${cls(r.vs_day_before)}">${r.vs_day_before==null?'—':pctTxt(r.vs_day_before)}</td><td class="n hide-sm ${cls(r.vs_week_ago)}">${r.vs_week_ago==null?'—':pctTxt(r.vs_week_ago)}</td><td class="n hide-sm">${r.busiest_hour?esc(r.busiest_hour)+' <span class="mute">'+esc(r.busiest_hour_at)+'</span>':'—'}</td></tr>`).join('')}</tbody></table>`:'';
+  $('#briefInt').innerHTML=(T.interest||[]).length?`<table style="margin-top:12px"><thead><tr><th>Most awaited</th><th class="n">Interested</th><th class="n">24h</th><th class="hide-sm">Release</th></tr></thead><tbody>${T.interest.map(r=>`<tr><td class="movie">${mvLink(mvResolve(r.name),esc(inName(r.name)))}</td><td class="n"><b>${esc(r.interested)}</b></td><td class="n ${r.gained_24h&&!/^[−-]/.test(r.gained_24h)&&r.gained_24h!=='+0'?'up':''}">${esc(r.gained_24h||'—')}</td><td class="hide-sm">${esc(r.release||'—')}</td></tr>`).join('')}</tbody></table>`:'';
+  $('#briefDrafts').innerHTML=(B.drafts||[]).map((d,i)=>{const film=d.film?mvResolve(d.film):null;
+    return `<div class="draft"><div class="row spread"><b>${i+1}. ${esc({leaderboard:'Leaderboard',mover:'Biggest move',interest:'Most awaited',bookings:'Bookings open'}[d.story]||'Post')}</b><span class="count" id="bc${i}"></span></div>
+      <textarea id="bt${i}" aria-label="Draft post ${i+1}">${esc(d.text)}</textarea>
+      <div class="row"><button data-bc="${i}">Copy</button><a class="btn" id="bx${i}" target="_blank" rel="noopener">Open in X</a>${d.studio?`<button data-bs="${i}">Make the image</button>`:''}${film?`<a class="btn" href="#movie?f=${encodeURIComponent(film)}">Film page</a>`:''}</div></div>`}).join('');
+  const upd=i=>{const t=$('#bt'+i).value,n=xlen(t);$('#bc'+i).textContent=`${n}/280`;$('#bc'+i).classList.toggle('over',n>280);$('#bx'+i).href='https://x.com/intent/tweet?text='+encodeURIComponent(t)};
+  (B.drafts||[]).forEach((d,i)=>{upd(i);$('#bt'+i).oninput=()=>upd(i)});
+  $$('#briefDrafts [data-bc]').forEach(b=>b.onclick=()=>copy($('#bt'+b.dataset.bc).value,'Post copied'));
+  $$('#briefDrafts [data-bs]').forEach(b=>b.onclick=()=>{apply(B.drafts[+b.dataset.bs].studio,false);show('studio')});
+  $('#briefNote').textContent=(B.notes||[]).join(' ')}
+
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
   if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
@@ -1252,9 +1296,10 @@ function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.
   if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}if(tab==='movie')mvDraw()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
-  [M,D,SL,IN]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
+  [M,D,SL,IN,BR]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
     fetch('data/sales.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({movies:[]})),
-    fetch('data/interest.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({films:[]}))]);
+    fetch('data/interest.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({films:[]})),
+    fetch('data/briefing.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>null)]);
   HANDLE=M.handle||'';$('#handle').textContent=HANDLE;
   try{const H=await (await fetch('health.json',{cache:'no-store'})).json();const [d,t]=(H.newest||' ').split(' ');
     $('#health').innerHTML=`<span class="dot ${H.ok?'':'bad'}"></span>${H.ok?'Live':'Delayed'} · latest reading ${d?dayLabel(d)+' '+timeLabel(t.replace(':','')):'unknown'} IST`}catch(e){}
@@ -1264,7 +1309,7 @@ async function init(){
   outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
   nowSet(...def);
   try{await document.fonts.load(`700 40px Inter`)}catch(e){}
-  studioDayTime(...def);drawPresets();exploreInit();totalsInit();interestInit();mvInit();kit();
+  studioDayTime(...def);drawPresets();exploreInit();totalsInit();interestInit();mvInit();kit();briefing();
   route();
   addEventListener('hashchange',route);
 }

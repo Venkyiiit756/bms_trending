@@ -1,0 +1,46 @@
+name: Daily Briefing
+
+# Every morning (08:05 IST, started by tracker.py; the cron below is only a backup because GitHub's own
+# schedule runs late or not at all) write yesterday's box-office briefing and three draft X posts.
+# briefing_facts.py computes the figures; briefing.py has Claude write the words if the ANTHROPIC_API_KEY
+# secret exists (otherwise a plain template writer is used). Every number is checked against the facts.
+# Nothing is posted: the drafts appear on the website (Auto posts tab) for the owner to copy.
+on:
+  schedule:
+    - cron: '40 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Write it again even if today already has a briefing'
+        type: boolean
+        default: false
+
+concurrency:
+  group: bms-briefing
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install requests
+    - name: Write the briefing
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        FORCE: ${{ inputs.force }}
+      run: python briefing.py $( [ "$FORCE" = "true" ] && echo --force )
+    - name: Commit
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add briefing.json briefings
+        git diff --cached --quiet && exit 0
+        git commit -m "Daily briefing [skip ci]"
+        for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done

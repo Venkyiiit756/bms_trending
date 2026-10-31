@@ -19,7 +19,7 @@ night (about 2-7 AM); small films show the 24-hour count all the time.
 - d24[i]: BookMyShow's 24-hour figure in force at that half hour (exact), when shown.
 """
 import statistics
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 import series
 
@@ -124,6 +124,55 @@ def build():
         })
     movies.sort(key=lambda m: -sum(v for v in m['slots'][-96:] if v > 0) - sum(list(m['d24'].values())[-1:]))
     return {'step': 30, 'movies': movies}
+
+
+# --- day totals (the same rules as the website's Totals tab) ---
+def slot_index(m, when):
+    """Index of the half-hour slot ending at `when` (IST datetime) in a movie from build()."""
+    start = datetime.strptime(m['start'], '%Y-%m-%d %H%M').replace(tzinfo=series.IST)
+    return round((when - start).total_seconds() / 1800)
+
+
+def slsum(m, a, b):
+    """Estimated tickets in slots (a, b]; None when more than 10% of them have no data."""
+    s = miss = 0
+    for i in range(a + 1, b + 1):
+        v = m['slots'][i] if 0 <= i < len(m['slots']) else -1
+        if v < 0:
+            miss += 1
+        else:
+            s += v
+    n = b - a
+    if not n or miss > n * 0.1:
+        return None
+    return {'v': s * n / (n - miss), 'exact': False}
+
+
+def day24(m, i):
+    """Tickets in the 24 hours ending at slot i: BookMyShow's own figure when it showed one (also within two
+    slots of i, corrected by the estimated slots in between), else the estimate; None when unknown."""
+    e = m['d24'].get(i)
+    if e is not None:
+        return {'v': e, 'exact': True}
+
+    def raw(a, b):
+        t = 0
+        for j in range(a + 1, b + 1):
+            v = m['slots'][j] if 0 <= j < len(m['slots']) else None
+            if v is None or v < 0:
+                return None
+            t += v
+        return t
+    for k in (1, -1, 2, -2):
+        f = m['d24'].get(i + k)
+        if f is None:
+            continue
+        lo, hi = min(i, i + k), max(i, i + k)
+        now, then = raw(lo, hi), raw(lo - 48, hi - 48)
+        if now is None or then is None:
+            continue
+        return {'v': f - now + then if k > 0 else f + now - then, 'exact': True}
+    return slsum(m, i - 48, i)
 
 
 if __name__ == '__main__':

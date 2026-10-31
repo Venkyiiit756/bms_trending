@@ -34,6 +34,7 @@ BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, .
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
 DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
+BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after the 3:45 sweep has the day's exact totals)
 SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
@@ -426,11 +427,11 @@ def next_sweep_time(t):
     return cand if cand > ist else cand + timedelta(days=1)
 
 
-def next_discover_time(t):
-    """The next DISCOVER_AT time (IST wall clock) after t."""
+def next_discover_time(t, times=None):
+    """The next DISCOVER_AT (or `times`) time, IST wall clock, after t."""
     ist = t.astimezone(IST)
     for days in (0, 1):
-        for h, m in DISCOVER_AT:
+        for h, m in (times or DISCOVER_AT):
             cand = (ist + timedelta(days=days)).replace(hour=h, minute=m, second=0, microsecond=0)
             if cand > ist:
                 return cand
@@ -501,6 +502,7 @@ def run(keys, minutes, commit):
     last_commit = time.monotonic()
     next_snap = next_snapshot_time(now())
     next_discover = next_discover_time(now())
+    next_brief = next_discover_time(now(), BRIEFING_AT)
     sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
 
     def stop(*_):
@@ -543,6 +545,9 @@ def run(keys, minutes, commit):
             if now() >= next_discover:
                 request_workflow('discover_movies.yml', 'movie discovery')
                 next_discover = next_discover_time(now())
+            if now() >= next_brief:
+                request_workflow('daily_briefing.yml', 'daily briefing')
+                next_brief = next_discover_time(now(), BRIEFING_AT)
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:

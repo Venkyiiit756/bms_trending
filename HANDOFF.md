@@ -158,3 +158,17 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   white card with soft shadow, rounded gradient header, change pills, KPI tiles (`tiles=`), area under the line. Font: Inter, bundled in `fonts/`
   (OFL, `fonts/LICENSE-Inter.txt`) so the runner renders the same typeface. `compact_table` (the stored half-hour snapshot tables) keeps the
   bordered look. `posts.py` shows one row per film (other listings of a film repeat its name); `series.short_name` drops "(AK 47)" / "House No: 47".
+
+## Daily briefing agent (briefing_facts.py, briefing.py, .github/workflows/daily_briefing.yml)
+- 08:05 IST `tracker.py` starts the `Daily Briefing` workflow (cron `40 2 * * *` is only a backup). Steps:
+  1. `briefing_facts.facts()` computes everything (yesterday = 4 AM to 4 AM, vs day before / last week, busiest hour, interest, bookings opened, flags).
+     Day totals use `sales.day24`, a Python mirror of the website's rule.
+  2. `briefing.py` asks Claude (`ANTHROPIC_API_KEY` secret, model `claude-sonnet-5-5`, override with `ANTHROPIC_MODEL`) for headline, bullets and
+     3 X drafts as JSON. No key or API failure -> the template writer. The template output must pass its own check.
+  3. `verify()`: every quantity (217K, 1.07M, 130%) must appear in the facts, no "collection / gross / crore / revenue", posts <= 272 characters.
+     Failures go back to the model once; whatever still fails is replaced field by field by the template. `mode` in briefing.json says what happened
+     (`claude`, `claude+template`, `template`).
+  4. Writes `briefing.json` (+ `briefings/<date>.json`, 30 days). `build_site.py` copies it to `data/briefing.json`; the website shows it in the
+     Auto posts tab (and a headline strip on Now). Posts are drafts: nothing is sent to X.
+- To turn the model on: add the repository secret `ANTHROPIC_API_KEY`, then run the workflow with "force". Run locally:
+  `python briefing.py --date 2026-10-31 --force --no-llm --out /tmp/b.json`.

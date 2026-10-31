@@ -116,6 +116,9 @@ def main():
     films = list(best.values())
     with open(os.path.join(SITE, 'data', 'interest.json'), 'w', encoding='utf-8') as f:
         json.dump({'films': films}, f, separators=(',', ':'), ensure_ascii=False)
+    brief = os.path.join(ROOT, 'briefing.json')
+    if os.path.exists(brief):
+        shutil.copy(brief, os.path.join(SITE, 'data', 'briefing.json'))
     if os.path.exists(interest.CSV):
         shutil.copy(interest.CSV, os.path.join(SITE, 'data', 'interest.csv'))
     # tickets per half hour since tracking began, for daily totals (see sales.py)
