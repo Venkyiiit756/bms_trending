@@ -144,3 +144,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - Interest history on the site: Upcoming tab "Interest over time" (chart of gain-since-start or total, hour-by-hour table, CSV) and
   Studio types `interestline` / `interesttable`. `build_site.py` keeps one entry per BookMyShow group (other listings of the same film
   show the same count) and copies `data/interest.csv` to the site.
+- **Movie tab** (`site_src/index.html`, "MOVIE page" block): pick a film (ticket films + interest-only upcoming films) and get its KPIs,
+  day-by-day totals (4 AM-4 AM, bars + table), hour-by-hour chart (days / vs other films), time-of-day heat grid, comparison with other films
+  (yesterday's total, last hour), interest chart + hourly table. Every block has "Download image" (Studio look, style picker on top), CSV and
+  "Studio". Link: `#movie?f=<name>`; film names on the Now and Upcoming tabs link to it. Ticket and interest films are matched by name.

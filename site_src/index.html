@@ -93,6 +93,27 @@ details p,details li{color:var(--mute)}
 .src{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute);white-space:nowrap}
 .src.ok{border-color:var(--up);color:var(--up)}
 tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
+.mpick{display:grid;gap:4px;font-size:12.5px;color:var(--mute);font-weight:600;flex:1;min-width:230px;max-width:440px}
+.mpick select{font-size:17px;font-weight:700;padding:9px 11px;width:100%}
+.mstyle{display:grid;gap:4px;font-size:12.5px;font-weight:600}
+.mstyle .seg{width:230px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.jump a{font-size:13px;padding:4px 11px;border:1px solid var(--line);border-radius:99px;color:var(--mute);text-decoration:none;cursor:pointer}
+.jump a:hover{color:var(--ink);border-color:var(--mute)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.kpi .l{font-size:12px;color:var(--mute);font-weight:600}
+.kpi .v{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-top:2px;overflow-wrap:anywhere}
+.kpi .s{font-size:12.5px;color:var(--mute);margin-top:2px}
+.msec-h{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.msec h2{font-size:16px}
+.msec canvas{margin-top:2px}
+.tw{overflow-x:auto;margin-top:10px}
+.tw table th:first-child,.tw table td:first-child{white-space:nowrap}
+tr.me td{background:var(--soft);font-weight:700}
+.ml{color:inherit;text-decoration:none;border-bottom:1px dotted var(--mute)}
+.ml:hover{border-bottom-style:solid}
+.cell-n{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -104,6 +125,7 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
 </header>
 <nav role="tablist">
   <button role="tab" data-tab="now" aria-selected="true">Now</button>
+  <button role="tab" data-tab="movie">Movie</button>
   <button role="tab" data-tab="studio">Studio</button>
   <button role="tab" data-tab="explore">Explore</button>
   <button role="tab" data-tab="totals">Totals</button>
@@ -136,6 +158,57 @@ tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
     <div class="mute">BookMyShow shows "last 24 hours" for smaller films and, late at night, for most films.</div>
     <div id="now24" style="margin-top:8px"></div>
   </div>
+</section>
+
+<!-- MOVIE -->
+<section id="movie">
+  <div class="card mhead">
+    <div class="row spread" style="align-items:flex-end;gap:12px">
+      <label class="mpick">Movie<select id="mSel" aria-label="Pick a movie"></select></label>
+      <div class="mstyle"><span class="mute">Image style</span><div class="seg" id="mStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></div>
+    </div>
+    <div id="mMeta" class="mute" style="margin-top:8px"></div>
+    <div class="jump" id="mJump"></div>
+  </div>
+  <div class="kpis" id="mKpis"></div>
+
+  <div class="card msec" id="mSecDays">
+    <div class="msec-h"><div><h2>Day by day</h2><div class="mute">Tickets booked per day, each day 4 AM to 4 AM IST</div></div>
+      <div class="row"><button data-img="days">Download image</button><button data-csv="days">CSV</button><button data-studio="days">Studio</button></div></div>
+    <canvas id="mcDays" width="1400" height="520" aria-label="Bar chart of tickets per day"></canvas>
+    <div class="tw" id="mtDays"></div>
+    <div class="mute" id="mnDays"></div>
+  </div>
+
+  <div class="card msec" id="mSecHours">
+    <div class="msec-h"><div><h2>Hour by hour</h2><div class="mute" id="mHoursSub"></div></div>
+      <div class="row"><div class="seg" id="mHourMode" style="width:210px"><button data-v="days" aria-pressed="true">This film, days</button><button data-v="films" aria-pressed="false">Vs other films</button></div>
+        <button data-img="hours">Download image</button><button data-studio="hours">Studio</button></div></div>
+    <canvas id="mcHours" width="1400" height="620" aria-label="Line chart of tickets per hour"></canvas>
+  </div>
+
+  <div class="card msec" id="mSecGrid">
+    <div class="msec-h"><div><h2>Time of day, day by day</h2><div class="mute">Tickets in the hour before each time; darker means busier</div></div>
+      <div class="row"><select id="mGridDays" aria-label="Days"><option value="3">3 days</option><option value="5" selected>5 days</option><option value="7">7 days</option></select>
+        <button data-img="grid">Download image</button><button data-csv="grid">CSV</button><button data-studio="grid">Studio</button></div></div>
+    <div class="tw" id="mtGrid"></div>
+  </div>
+
+  <div class="card msec" id="mSecCmp">
+    <div class="msec-h"><div><h2>Compared with other films</h2><div class="mute" id="mCmpSub"></div></div>
+      <div class="row"><button data-img="cmp">Download image</button><button data-csv="cmp">CSV</button></div></div>
+    <div class="tw" id="mtCmp"></div>
+  </div>
+
+  <div class="card msec" id="mSecInt">
+    <div class="msec-h"><div><h2>Interest</h2><div class="mute">People who marked "interested" on BookMyShow</div></div>
+      <div class="row"><select id="mIntDays" aria-label="Period"><option value="1">Last day</option><option value="3" selected>Last 3 days</option><option value="7">Last 7 days</option></select>
+        <select id="mIntMode" aria-label="Show"><option value="growth">Gained</option><option value="total">Total</option></select>
+        <button data-img="int">Download image</button><button data-csv="int">CSV</button><button data-studio="int">Studio</button></div></div>
+    <canvas id="mcInt" width="1400" height="560" aria-label="Line chart of people interested"></canvas>
+    <div class="tw" id="mtInt" style="max-height:360px;overflow:auto"></div>
+  </div>
+  <div class="mute" style="text-align:center">Ticket figures come from BookMyShow's own counters. Days marked ≈ are estimates from hourly figures (about ±3%); see the Totals tab for how they are worked out.</div>
 </section>
 
 <!-- STUDIO -->
@@ -354,10 +427,10 @@ function nowDraw(){
   $('#nowSub').textContent=`Tickets booked in the hour ${windowLabel(t)}, compared with the same time the day before`;
   $('#nowCsv').href=`snapshots/${d}/${d}_${t}.csv`;
   const rows=hourly(d,t), prev=snap(addDays(d,-1),t);
-  $('#nowHour').innerHTML=rows.length?`<table><thead><tr><th>#</th><th>Movie</th><th class="n">Last hour</th><th class="n">vs ${dayName(addDays(d,-1))}</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${rows.map((r,i)=>{const p=prev[r.name]&&prev[r.name].k===1?pct(r.n,prev[r.name].n):null;return `<tr><td class="rank">${i+1}</td><td class="movie">${r.name}</td><td class="n"><b>${r.t}</b></td><td class="n ${p>0?'up':p<0?'down':''}">${pctTxt(p)}</td><td class="n hide-sm mute">${r.rt}</td></tr>`}).join('')}</tbody></table>`
+  $('#nowHour').innerHTML=rows.length?`<table><thead><tr><th>#</th><th>Movie</th><th class="n">Last hour</th><th class="n">vs ${dayName(addDays(d,-1))}</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${rows.map((r,i)=>{const p=prev[r.name]&&prev[r.name].k===1?pct(r.n,prev[r.name].n):null;return `<tr><td class="rank">${i+1}</td><td class="movie">${mvLink(r.name)}</td><td class="n"><b>${r.t}</b></td><td class="n ${p>0?'up':p<0?'down':''}">${pctTxt(p)}</td><td class="n hide-sm mute">${r.rt}</td></tr>`}).join('')}</tbody></table>`
     :`<div class="empty">No movie shows an hourly figure at this time (usually between midnight and about 7 AM). Try an earlier time.</div>`;
   const r24=daily(d,t);$('#now24card').hidden=!r24.length;
-  $('#now24').innerHTML=`<table><thead><tr><th>Movie</th><th class="n">Last 24 hours</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${r24.map(r=>`<tr><td class="movie">${r.name}</td><td class="n"><b>${r.t}</b></td><td class="n hide-sm mute">${r.rt}</td></tr>`).join('')}</tbody></table>`;
+  $('#now24').innerHTML=`<table><thead><tr><th>Movie</th><th class="n">Last 24 hours</th><th class="n hide-sm">Read at</th></tr></thead><tbody>${r24.map(r=>`<tr><td class="movie">${mvLink(r.name)}</td><td class="n"><b>${r.t}</b></td><td class="n hide-sm mute">${r.rt}</td></tr>`).join('')}</tbody></table>`;
 }
 function nowSet(d,t){fill($('#nowDay'),days().slice().reverse(),d,dayLabel);fill($('#nowTime'),times($('#nowDay').value).slice().reverse(),t,timeLabel);nowDraw()}
 function nowStep(dir){const d=$('#nowDay').value,t=$('#nowTime').value;const ts=times(d);let i=ts.indexOf(t)+dir;if(i>=0&&i<ts.length)return nowSet(d,ts[i]);const ds=days();const j=ds.indexOf(d)+dir;if(j>=0&&j<ds.length){const t2=times(ds[j]);nowSet(ds[j],dir>0?t2[0]:t2[t2.length-1])}}
@@ -778,7 +851,7 @@ function releaseInfo(text){const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(text||'');if
 function inRows(){return IN.films.filter(f=>f.points.length).map(f=>{const L=f.points[f.points.length-1],ms=inMs(L[0]);const d1=inAt(f,ms-864e5),d7=inAt(f,ms-7*864e5);
   return {f,v:L[1],t:L[0],g1:d1&&inMs(d1[0])>ms-1.5*864e5?L[1]-d1[1]:null,g7:d7?L[1]-d7[1]:null,rel:releaseInfo(f.release)}}).sort((a,b)=>b.v-a.v)}
 function upcoming(){const R=inRows();
-  $('#uTable').innerHTML=R.length?`<table><thead><tr><th>#</th><th>Film</th><th>Release</th><th class="n">Interested</th><th class="n">Last 24h</th><th class="n hide-sm">Last 7 days</th><th class="hide-sm">Bookings</th></tr></thead><tbody>${R.map((r,i)=>`<tr><td class="rank">${i+1}</td><td class="movie"><a href="${r.f.url}" target="_blank" rel="noopener" style="color:inherit">${r.f.name}</a><div class="mute">${(r.f.languages||[]).slice(0,4).join(', ')}</div></td><td>${r.rel.long}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.g1>0?'up':''}">${r.g1!=null?'+'+fmt(r.g1):'—'}</td><td class="n hide-sm">${r.g7!=null?'+'+fmt(r.g7):'—'}</td><td class="hide-sm">${r.f.book?'<span class="src ok">Open</span>':r.f.book===false?'<span class="src">Not yet</span>':''}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:8px">Counts are rounded by BookMyShow, so small changes show in steps (0.1K below 100K, 1K above). Latest check ${whenLabel(inMs(R.reduce((a,r)=>r.t>a?r.t:a,'')))} IST.</div>`
+  $('#uTable').innerHTML=R.length?`<table><thead><tr><th>#</th><th>Film</th><th>Release</th><th class="n">Interested</th><th class="n">Last 24h</th><th class="n hide-sm">Last 7 days</th><th class="hide-sm">Bookings</th></tr></thead><tbody>${R.map((r,i)=>`<tr><td class="rank">${i+1}</td><td class="movie">${mvLink(r.f.name)} <a href="${r.f.url}" target="_blank" rel="noopener" class="mute" title="Open on BookMyShow" style="text-decoration:none">↗</a><div class="mute">${(r.f.languages||[]).slice(0,4).join(', ')}</div></td><td>${r.rel.long}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.g1>0?'up':''}">${r.g1!=null?'+'+fmt(r.g1):'—'}</td><td class="n hide-sm">${r.g7!=null?'+'+fmt(r.g7):'—'}</td><td class="hide-sm">${r.f.book?'<span class="src ok">Open</span>':r.f.book===false?'<span class="src">Not yet</span>':''}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:8px">Counts are rounded by BookMyShow, so small changes show in steps (0.1K below 100K, 1K above). Latest check ${whenLabel(inMs(R.reduce((a,r)=>r.t>a?r.t:a,'')))} IST.</div>`
     :'<div class="empty">No interest figures yet. The tracker checks upcoming films every hour.</div>'}
 $('#uImg').onclick=()=>{apply({type:'interest',top:'7'},false);show('studio')};
 
@@ -820,6 +893,184 @@ function inToStudio(type){const ds=inRange(),names=inRows().map(r=>r.f.name).fil
   apply({type,d:ds[ds.length-1],days:String(Math.min(7,Math.max(1,ds.length))),imode:$('#iMode').value,hours:'all',top:'pick',pick:names.join('|')},false);show('studio')}
 $('#iImg').onclick=()=>inToStudio('interestline');$('#iImgT').onclick=()=>inToStudio('interesttable');
 
+/* ---------- MOVIE page: every stat for one film ---------- */
+const nrm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'');
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const MV={name:null,list:[],hr:{},d:{}};
+const mvLink=n=>`<a class="ml" href="#movie?f=${encodeURIComponent(n)}">${n}</a>`;
+function bestPoint(){const ds=days();for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--)if(hourly(ds[i],ts[j]).length>=3)return [ds[i],ts[j]]}return latestPoint()}
+function mvBuild(){
+  const out=new Map();
+  SL.movies.forEach(m=>out.set(nrm(m.name),{name:m.name,m,f:null}));
+  IN.films.filter(f=>f.points.length&&!/^ET\d+$/.test(f.name)).forEach(f=>{const k=nrm(f.name);if(out.has(k))out.get(k).f=f;else out.set(k,{name:f.name,m:null,f})});
+  MV.list=[...out.values()];
+  const sel=$('#mSel');sel.innerHTML='';
+  [['Ticket counts',MV.list.filter(e=>e.m)],['Upcoming (interest only)',MV.list.filter(e=>!e.m).sort((a,b)=>b.f.points[b.f.points.length-1][1]-a.f.points[a.f.points.length-1][1])]].forEach(([lab,items])=>{
+    if(!items.length)return;const g=document.createElement('optgroup');g.label=lab;
+    items.forEach(e=>{const o=document.createElement('option');o.value=o.textContent=e.name;g.appendChild(o)});sel.appendChild(g)});
+  if(!MV.name)MV.name=MV.list.length?MV.list[0].name:null}
+const mvResolve=n=>{const e=MV.list.find(x=>x.name===n)||MV.list.find(x=>nrm(x.name)===nrm(n));return e?e.name:(MV.list[0]||{}).name};
+function mvHourly(name){if(MV.hr[name])return MV.hr[name];const out=[];
+  for(const d of days())for(const t of times(d)){const v=snap(d,t)[name];if(v&&v.k===1)out.push({d,t,ms:istMs(d,t),n:v.n,txt:v.t})}
+  return MV.hr[name]=out}
+const mvDate=ms=>msParts(ms)[0];
+// page charts: wide on desktop; narrower with larger text on phones so they stay readable
+function mvCv(id,h){const cv=$('#'+id),narrow=innerWidth<620;cv.width=narrow?760:1400;cv.height=h;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);return [cv,ctx,narrow?1.0:0.85]}
+// day by day, 4 AM to 4 AM
+function mvDays(m,hr){
+  if(!m||m.slots.length<3)return null;
+  const L=m.slots.length-1;let a=0;while(a<L&&msParts(slMs(m,a))[1]!=='0400')a++;if(a>=L)a=0;
+  const res=dayRows(m,a,L),list=[];
+  if(a>0)list.push({a:0,b:a,full:false,r:slSum(m,0,a),pre:true});
+  res.rows.forEach(x=>list.push({...x,pre:false}));
+  let run=0,prev=null;
+  list.forEach(x=>{if(x.r)run+=x.r.v;x.run=x.r?run:null;
+    const d=mvDate(slMs(m,x.a));x.date=d;
+    x.label=x.pre?`Start to 4 AM`:x.full?dayLabel(d):`${dayLabel(d)} · so far`;
+    x.p=x.full&&prev&&prev.r&&x.r?pct(x.r.v,prev.r.v):null;if(x.full)prev=x;
+    const lo=slMs(m,x.a),hi=slMs(m,x.b);let pk=null;for(const h of hr)if(h.ms>lo&&h.ms<=hi&&(!pk||h.n>pk.n))pk=h;
+    x.peak=pk?{txt:pk.txt,at:`${timeLabel(pk.t)}`}:null});
+  const rows=list.filter(x=>x.r);
+  if(!rows.length)return null;
+  return {list,total:run,exact:rows.every(x=>x.r.exact)&&rows.length===list.length,start:slMs(m,0)}}
+function mvKpis(e,hr,dd){
+  const {m,f}=e,k=[];const kpi=(l,v,s)=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s||''}</div></div>`;
+  const delta=p=>p===null?'':` <span class="${p>0?'up':p<0?'down':''}">${pctTxt(p)}</span>`;
+  if(m){
+    if(hr.length){const L=hr[hr.length-1];const pv=hr.find(h=>Math.abs(h.ms-(L.ms-864e5))<=25*60000);
+      k.push(kpi('Last hour',L.txt,`${short(L.d)}, ${timeLabel(L.t)}${pv?delta(pct(L.n,pv.n))+' vs yesterday':''}`));
+      const pk=hr.reduce((a,h)=>h.n>a.n?h:a,hr[0]);k.push(kpi('Busiest hour',pk.txt,`${short(pk.d)}, ${windowLabel(pk.t)}`))}
+    else{const idx=Object.keys(m.d24).map(Number).sort((a,b)=>a-b);if(idx.length){const i=idx[idx.length-1];k.push(kpi('Last 24 hours',fmt(m.d24[i]),`BookMyShow, ${whenShort(slMs(m,i))}`))}}
+    if(dd){const full=dd.list.filter(x=>x.full&&x.r);const y=full[full.length-1];
+      if(y)k.push(kpi('Yesterday',fmtV(y.r),`4 AM to 4 AM, ${short(y.date)}${delta(y.p)}`));
+      k.push(kpi('Total so far',(dd.exact?'':'≈ ')+fmt(dd.total),`since ${whenShort(dd.start)}`))}
+    const [bd,bt]=MV.bp;const rk=hourly(bd,bt);const ri=rk.findIndex(r=>r.name===e.name);
+    if(ri>=0)k.push(kpi('Rank right now',`#${ri+1}`,`of ${rk.length} films, last hour`))}
+  if(f){const r=inRows().find(x=>x.f===f);
+    if(r)k.push(kpi('Interested',fmt(r.v)+'+',`${r.g1!=null?`+${fmt(r.g1)} in 24h`:'on BookMyShow'}${r.rel.days!=null?` · ${r.rel.days>1?`out in ${r.rel.days} days`:r.rel.days===1?'out tomorrow':r.rel.days===0?'out today':'released'}`:''}`))}
+  return k.join('')}
+function mvDraw(){
+  if(!$('#movie').classList.contains('on')||!SL||!MV.list.length)return;
+  const e=MV.list.find(x=>x.name===MV.name);if(!e)return;MV.e=e;$('#mSel').value=e.name;
+  history.replaceState(null,'','#movie?f='+encodeURIComponent(e.name));
+  const {m,f,name}=e;MV.bp=bestPoint();
+  const hr=m?mvHourly(name):[];MV.cur=hr;
+  const dd=mvDays(m,hr);MV.d.days=dd;
+  const keep=S.style;S.style='color';
+  // header
+  const bits=[];if(f){const ri=releaseInfo(f.release);if(f.release)bits.push(`Releases ${ri.long}`);if(f.book===true)bits.push('Bookings open');else if(f.book===false)bits.push('Bookings not open yet');if((f.languages||[]).length)bits.push(f.languages.slice(0,5).join(', '))}
+  if(m)bits.push(`Tracked since ${whenShort(slMs(m,0))}`);
+  $('#mMeta').textContent=bits.join(' · ');
+  $('#mKpis').innerHTML=mvKpis(e,hr,dd);
+  const secs=[];
+  // 1. day by day
+  $('#mSecDays').hidden=!dd;
+  if(dd){secs.push(['mSecDays','Day by day']);
+    const [cv,ctx,u]=mvCv('mcDays',520);
+    const items=dd.list.slice(-14).map(x=>({label:x.pre?'Start':short(x.date),sub:x.full?'':x.pre?'to 4 AM':'so far',r:x.r,partial:!x.full}));
+    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u},items);
+    $('#mtDays').innerHTML=`<table><thead><tr><th>Day</th><th class="n">Tickets</th><th class="n">vs previous</th><th class="n hide-sm">Total so far</th><th class="n hide-sm">Busiest hour</th><th class="hide-sm">Source</th></tr></thead><tbody>${dd.list.slice().reverse().map(x=>`<tr${x.full?'':' class="mute"'}><td>${x.label}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n ${x.p>0?'up':x.p<0?'down':''}">${x.p===null?'—':pctTxt(x.p)}</td><td class="n hide-sm">${x.run!=null?fmt(x.run):'—'}</td><td class="n hide-sm">${x.peak?`${x.peak.txt} <span class="mute">${x.peak.at}</span>`:'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="n">${dd.exact?'':'≈'}${fmt(dd.total)}</td><td></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td></tr></tbody></table>`;
+    $('#mnDays').textContent=dd.list.some(x=>!x.r)?'Days without data are left out of the total.':''}
+  // 2. hour by hour
+  $('#mSecHours').hidden=!hr.length;
+  if(hr.length){secs.push(['mSecHours','Hours']);mvHoursDraw()}
+  // 3. time of day grid
+  $('#mSecGrid').hidden=!hr.length;
+  if(hr.length){secs.push(['mSecGrid','Time of day']);mvGridDraw()}
+  // 4. compare
+  const cmp=m?mvCmp(name):null;MV.d.cmp=cmp;$('#mSecCmp').hidden=!cmp;
+  if(cmp){secs.push(['mSecCmp','Vs other films']);
+    $('#mCmpSub').textContent=cmp.sub;
+    $('#mtCmp').innerHTML=`<table><thead><tr><th>#</th><th>Film</th><th class="n">Yesterday</th><th class="n">vs day before</th><th class="n hide-sm">Last hour now</th></tr></thead><tbody>${cmp.rows.map(r=>`<tr${r.name===name?' class="me"':''}><td class="rank">${r.rank}</td><td class="movie">${r.name===name?r.name:mvLink(r.name)}</td><td class="n"><b>${fmtV(r.y)}</b></td><td class="n ${r.p>0?'up':r.p<0?'down':''}">${r.p===null?'—':pctTxt(r.p)}</td><td class="n hide-sm">${r.h||'—'}</td></tr>`).join('')}</tbody></table>`}
+  // 5. interest
+  $('#mSecInt').hidden=!f;
+  if(f){secs.push(['mSecInt','Interest']);mvIntDraw()}
+  S.style=keep;
+  $('#mJump').innerHTML=secs.map(([id,l])=>`<a data-j="${id}">${l}</a>`).join('');
+  $$('#mJump a').forEach(a=>a.onclick=()=>$('#'+a.dataset.j).scrollIntoView({behavior:'smooth',block:'start'}));
+  if(!m&&!f)$('#mKpis').innerHTML='<div class="card empty">No data for this movie yet.</div>'}
+function mvHoursLines(colors){
+  const name=MV.e.name;
+  const kind=$('#mHourMode button[aria-pressed="true"]').dataset.v;
+  const series=(n,d)=>times(d).map(t=>{const v=snap(d,t)[n];if(!v||v.k!==1)return null;const [h,mi]=hm(t);return [h+mi/60,v.n/1000]}).filter(Boolean);
+  if(kind==='days'){const ds=days().filter(d=>times(d).some(t=>{const v=snap(d,t)[name];return v&&v.k===1})).slice(-4).reverse();
+    const other=[colors[1]||'#c0392b',colors[2]||'#0a7d33',colors[3]||'#b9770e'];
+    return ds.map((d,i)=>({label:i===0?`${dayName(d)} ${pd(d).getUTCDate()}`:short(d),pts:series(name,d),color:i===0?colors[0]:other[i-1],main:i===0,end:i===0})).filter(l=>l.pts.length)}
+  const [bd]=MV.bp;const top=hourly(...MV.bp).map(r=>r.name).filter(n=>n!==name).slice(0,3);
+  return [name,...top].map((n,i)=>({label:inName(n),pts:series(n,bd),color:colors[i%colors.length],main:i===0,end:i===0})).filter(l=>l.pts.length)}
+const MVAXIS={steps:[0.1,0.2,0.5,1,2,5,10,20,25,50,100,200],yfmt:v=>fmt(v*1000),floor:0.2,gap:1};
+function mvHoursDraw(){
+  const kind=$('#mHourMode button[aria-pressed="true"]').dataset.v;
+  $('#mHoursSub').textContent=kind==='days'?'Tickets booked in the last hour, today and the days before':`${dayLabel(MV.bp[0])}: this film and the busiest others`;
+  const [cv,ctx,u]=mvCv('mcHours',620);
+  const keep=S.style;S.style='color';const lines=mvHoursLines(T().pal);
+  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u},lines,MVAXIS);else empty(ctx,cv.width,cv.height,'No hourly readings yet');
+  S.style=keep}
+function mvGridData(){const name=MV.e.name,n=+$('#mGridDays').value;
+  const ds=days().filter(d=>times(d).some(t=>{const v=snap(d,t)[name];return v&&v.k===1})).slice(-n);
+  const hs=HOURSETS.all;const grid=hs.map(h=>ds.map(d=>{const v=snap(d,hh(h))[name];return v&&v.k===1?v:null}));
+  return {ds,hs,grid,max:Math.max(0,...grid.flat().map(v=>v?v.n:0))}}
+function mvGridDraw(){const g=mvGridData();MV.d.grid=g;
+  $('#mtGrid').innerHTML=g.ds.length?`<table><thead><tr><th>Time</th>${g.ds.map(d=>`<th class="n">${short(d)}</th>`).join('')}</tr></thead><tbody>${g.hs.map((h,i)=>`<tr><td>${timeLabel(hh(h))}</td>${g.grid[i].map(v=>`<td class="n cell-n" style="${v?`background:rgba(75,120,184,${(0.06+0.4*v.n/g.max).toFixed(3)})`:''}">${v?v.t:'—'}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'<div class="empty">No hourly readings yet</div>'}
+function mvCmp(name){
+  const [bd,bt]=MV.bp;if(!bd)return null;const nowMs=istMs(bd,bt);let t4=istMs(bd,'0400');if(t4>nowMs)t4-=864e5;
+  const now=snap(bd,bt);
+  const rows=SL.movies.map(m=>{const i=slIdx(m,t4);const y=day24(m,i),b=day24(m,i-48),h=now[m.name];return {name:m.name,y,p:y&&b?pct(y.v,b.v):null,h:h&&h.k===1?h.t:null}}).filter(r=>r.y);
+  rows.sort((a,b)=>b.y.v-a.y.v);rows.forEach((r,i)=>r.rank=i+1);
+  const me=rows.find(r=>r.name===name);if(!me)return null;
+  let shown=rows.slice(0,8);if(!shown.includes(me))shown.push(me);
+  const day=dayLabel(mvDate(t4-864e5));
+  return {rows:shown,total:rows.length,day,sub:`Yesterday (${day}, 4 AM to 4 AM) and the latest hourly figure · this film is ${me.rank} of ${rows.length}`}}
+function mvIntData(){const f=MV.e.f,all=inDays(),n=+$('#mIntDays').value,ds=all.slice(-n);
+  const rows=[];let prev=null;f.points.forEach(p=>{const d=p[0].slice(0,10);if(ds.includes(d))rows.push({t:p[0],v:p[1],c:prev!=null?p[1]-prev:null});prev=p[1]});
+  return {ds,rows:rows.reverse()}}
+function mvIntDraw(){const f=MV.e.f,mode=$('#mIntMode').value;const g=mvIntData();MV.d.int=g;
+  const [cv,ctx,u]=mvCv('mcInt',560);
+  const keep=S.style;S.style='color';const lines=inLines(g.ds,[f.name],mode,PAL6);
+  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u},lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,cv.width,cv.height,'No interest readings in this period');
+  S.style=keep;
+  $('#mtInt').innerHTML=g.rows.length?`<table><thead><tr><th>When</th><th class="n">Interested</th><th class="n">Change</th></tr></thead><tbody>${g.rows.map(r=>`<tr><td>${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.c>0?'up':''}">${r.c==null?'—':r.c>0?'+'+fmt(r.c):'0'}</td></tr>`).join('')}</tbody></table>`:''}
+// images (same look as the Studio) and CSV
+function mvCanvas(title,sub,draw){const W=1200,H=1200,cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');const box=frame(ctx,W,H,title,sub);draw(ctx,W,H,box,T());return cv}
+function mvImg(kind){const e=MV.e;if(!e)return;const name=e.name,dd=MV.d.days;let cv;
+  if(kind==='days'&&dd){const R=dd.list.filter(x=>x.r).slice(-12);
+    cv=mvCanvas(name,'Tickets booked per day · 4 AM to 4 AM IST',(ctx,W,H,box,th)=>{
+      const rows=R.map(x=>[x.pre?'Start':dayLabel(x.date)+(x.full?'':' (so far)'),fmtV(x.r),x.p==null?'—':pctTxt(x.p),x.run!=null?fmt(x.run):'—']);rows.push(['Total',(dd.exact?'':'≈')+fmt(dd.total),'','']);
+      table(ctx,W,box,['Day','Tickets','vs previous','Total so far'],rows,R.map(x=>[th.rank,th.first,x.p>0?th.up:x.p<0?th.down:th.ink,th.ink]).concat([[th.first,th.first,th.ink,th.ink]]),[.3,.24,.22,.24])})}
+  else if(kind==='hours'){const daysMode=$('#mHourMode button[aria-pressed="true"]').dataset.v==='days';
+    cv=mvCanvas(name,daysMode?'Tickets booked per hour · today and earlier days':`Tickets booked per hour · ${dayLabel(MV.bp[0])}`,(ctx,W,H,box,th)=>{
+      const lines=mvHoursLines(th.pal);if(lines.length)chart(ctx,W,box,lines,MVAXIS);else empty(ctx,W,H,'No hourly readings yet')})}
+  else if(kind==='grid'&&MV.d.grid){const g=MV.d.grid;
+    cv=mvCanvas(name,`Tickets in the hour before each time · ${short(g.ds[0])} to ${short(g.ds[g.ds.length-1])}`,(ctx,W,H,box,th)=>{
+      table(ctx,W,box,['Time',...g.ds.map(short)],g.hs.map((h,i)=>[timeLabel(hh(h)),...g.grid[i].map(v=>v?v.t:'—')]),g.hs.map(()=>[th.rank]),[.2,...g.ds.map(()=>.8/g.ds.length)],g.grid.map(r=>[null,...r.map(v=>v?heat(v.n,g.max):null)]))})}
+  else if(kind==='cmp'&&MV.d.cmp){const c=MV.d.cmp;
+    cv=mvCanvas('Tickets booked yesterday',`${c.day} · 4 AM to 4 AM IST`,(ctx,W,H,box,th)=>{
+      table(ctx,W,box,['#','Film','Yesterday','vs day before'],c.rows.map(r=>[r.rank,(r.name===name?'★ ':'')+inName(r.name),fmtV(r.y),r.p===null?'—':pctTxt(r.p)]),c.rows.map(r=>[th.rank,r.name===name?th.up:th.first,th.ink,r.p>0?th.up:r.p<0?th.down:th.ink]),[.09,.46,.23,.22])})}
+  else if(kind==='int'&&e.f){const g=MV.d.int,mode=$('#mIntMode').value;
+    cv=mvCanvas(name,`People who marked "interested" · ${mode==='growth'?'gained':'total'}`,(ctx,W,H,box,th)=>{
+      const lines=inLines(g.ds,[e.f.name],mode,th.pal);if(lines.length)chart(ctx,W,box,lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,'No interest readings in this period')})}
+  if(!cv)return;const a=document.createElement('a');a.download=`${slug(name)}_${kind}_${S.style}.png`;a.href=cv.toDataURL('image/png');a.click()}
+function mvCsv(kind){const e=MV.e;if(!e)return;let rows=null;
+  if(kind==='days'&&MV.d.days)rows=[['day','from_ist','to_ist','tickets','source','total_so_far'],...MV.d.days.list.map(x=>[x.label,msKey(slMs(e.m,x.a)),msKey(slMs(e.m,x.b)),x.r?Math.round(x.r.v):'',!x.r?'no data':x.r.exact?'bookmyshow_24h':'estimate',x.run!=null?Math.round(x.run):''])];
+  else if(kind==='grid'&&MV.d.grid){const g=MV.d.grid;rows=[['time',...g.ds],...g.hs.map((h,i)=>[timeLabel(hh(h)),...g.grid[i].map(v=>v?v.n:'')])]}
+  else if(kind==='cmp'&&MV.d.cmp)rows=[['rank','film','yesterday','vs_day_before_pct','last_hour_now'],...MV.d.cmp.rows.map(r=>[r.rank,r.name,Math.round(r.y.v),r.p===null?'':r.p,r.h||''])];
+  else if(kind==='int'&&MV.d.int)rows=[['time_ist','interested','change'],...MV.d.int.rows.map(r=>[r.t,r.v,r.c==null?'':r.c])];
+  if(!rows)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.map(c=>/[,"]/.test(c)?`"${String(c).replace(/"/g,'""')}"`:c).join(',')).join('\n')],{type:'text/csv'}));a.download=`${slug(e.name)}_${kind}.csv`;a.click()}
+function mvStudio(kind){const e=MV.e,[bd,bt]=MV.bp;if(!e)return;
+  if(kind==='days')apply({type:'totals',movie:e.name},false);
+  else if(kind==='hours')apply({type:'line',d:bd,t:bt,movie:e.name},false);
+  else if(kind==='grid')apply({type:'week',d:bd,days:$('#mGridDays').value,hours:'all',movie:e.name},false);
+  else if(kind==='int'){const ds=MV.d.int.ds;apply({type:'interestline',d:ds[ds.length-1],days:String(ds.length),imode:$('#mIntMode').value,top:'pick',pick:e.f.name},false)}
+  show('studio')}
+function mvInit(){if(!MV.list.length&&(SL.movies.length||IN.films.length))mvBuild();
+  $('#mSel').onchange=()=>{MV.name=$('#mSel').value;mvDraw()};
+  $$('#mStyle button').forEach(b=>b.onclick=()=>{S.style=b.dataset.v;setSeg('mStyle',b.dataset.v);setSeg('sStyle',b.dataset.v)});
+  $$('#mHourMode button').forEach(b=>b.onclick=()=>{setSeg('mHourMode',b.dataset.v);mvHoursDraw()});
+  $('#mGridDays').onchange=mvGridDraw;$('#mIntDays').onchange=$('#mIntMode').onchange=()=>{if(MV.e&&MV.e.f)mvIntDraw()};
+  $$('#movie [data-img]').forEach(b=>b.onclick=()=>mvImg(b.dataset.img));
+  $$('#movie [data-csv]').forEach(b=>b.onclick=()=>mvCsv(b.dataset.csv));
+  $$('#movie [data-studio]').forEach(b=>b.onclick=()=>mvStudio(b.dataset.studio))}
+
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
   if(j===0)return {type:'board',d,t:T2,cmp:'day',top:'7'};
@@ -844,7 +1095,7 @@ function kit(){
 
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
-  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}}
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}if(tab==='movie')mvDraw()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
   [M,D,SL,IN]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
@@ -859,13 +1110,14 @@ async function init(){
   outer:for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--){if(hourly(ds[i],ts[j]).length>=3){def=[ds[i],ts[j]];break outer}}}
   nowSet(...def);
   try{await document.fonts.load(`700 40px Inter`)}catch(e){}
-  studioDayTime(...def);drawPresets();exploreInit();totalsInit();interestInit();kit();
+  studioDayTime(...def);drawPresets();exploreInit();totalsInit();interestInit();mvInit();kit();
   route();
   addEventListener('hashchange',route);
 }
 function route(){
   const [tab,q]=location.hash.slice(1).split('?');
   if(tab==='studio'&&q){show('studio');apply(Object.fromEntries(new URLSearchParams(q)),false)}
+  else if(tab==='movie'){const f=q&&new URLSearchParams(q).get('f');if(f)MV.name=mvResolve(f);show('movie')}
   else if(['now','studio','explore','totals','upcoming','kit','data'].includes(tab))show(tab);
 }
 init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
