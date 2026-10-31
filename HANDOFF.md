@@ -148,3 +148,9 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   day-by-day totals (4 AM-4 AM, bars + table), hour-by-hour chart (days / vs other films), time-of-day heat grid, comparison with other films
   (yesterday's total, last hour), interest chart + hourly table. Every block has "Download image" (Studio look, style picker on top), CSV and
   "Studio". Link: `#movie?f=<name>`; film names on the Now and Upcoming tabs link to it. Ticket and interest films are matched by name.
+- **Image look** (`site_src/index.html`, "modern look" block): Colour and Dark use card panels, a rounded gradient header, change pills, KPI tiles
+  (`frame(..., {tiles})`), gradient bars and area-under-line charts; Minimal keeps the classic bordered tables (`tableClassic` / `frameClassic`).
+  Page canvases pass `box.flat` (no panel). The auto-posted X images (Python `cards.py`) still use the older bordered look.
+- Movie tab additions: today's pace vs same time yesterday, best day, 7-day average, milestones, vs-last-week column, cumulative chart,
+  "When people book" (share of a day's tickets by morning / afternoon / evening / night, estimated from half-hour slots), interest day-by-day
+  table (calendar days IST, gain, growth, days to release) with chart / table images.

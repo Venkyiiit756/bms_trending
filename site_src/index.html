@@ -114,6 +114,15 @@ tr.me td{background:var(--soft);font-weight:700}
 .ml{color:inherit;text-decoration:none;border-bottom:1px dotted var(--mute)}
 .ml:hover{border-bottom-style:solid}
 .cell-n{font-variant-numeric:tabular-nums}
+.miles{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.miles span{font-size:12.5px;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.miles b{font-weight:800}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--mute);margin:2px 0 8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.stack{display:flex;height:26px;border-radius:8px;overflow:hidden;min-width:220px;background:var(--soft)}
+.stack i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;overflow:hidden;white-space:nowrap}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12.5px;font-weight:700}
+.pill.up{background:rgba(10,125,51,.12)}.pill.down{background:rgba(192,57,43,.12)}
 </style>
 </head>
 <body>
@@ -174,10 +183,18 @@ tr.me td{background:var(--soft);font-weight:700}
 
   <div class="card msec" id="mSecDays">
     <div class="msec-h"><div><h2>Day by day</h2><div class="mute">Tickets booked per day, each day 4 AM to 4 AM IST</div></div>
-      <div class="row"><button data-img="days">Download image</button><button data-csv="days">CSV</button><button data-studio="days">Studio</button></div></div>
-    <canvas id="mcDays" width="1400" height="520" aria-label="Bar chart of tickets per day"></canvas>
+      <div class="row"><div class="seg" id="mDayMode" style="width:200px"><button data-v="bars" aria-pressed="true">Per day</button><button data-v="cum" aria-pressed="false">Total so far</button></div><button data-img="days">Download image</button><button data-csv="days">CSV</button><button data-studio="days">Studio</button></div></div>
+    <canvas id="mcDays" width="1400" height="520" aria-label="Chart of tickets per day"></canvas>
+    <div class="miles" id="mMiles"></div>
     <div class="tw" id="mtDays"></div>
     <div class="mute" id="mnDays"></div>
+  </div>
+
+  <div class="card msec" id="mSecParts">
+    <div class="msec-h"><div><h2>When people book</h2><div class="mute">Share of each day's tickets by time of day (4 AM to 4 AM), estimated from hourly figures</div></div>
+      <div class="row"><button data-img="parts">Download image</button><button data-csv="parts">CSV</button></div></div>
+    <div class="legend" id="mPartsLegend"></div>
+    <div class="tw" id="mtParts"></div>
   </div>
 
   <div class="card msec" id="mSecHours">
@@ -202,11 +219,14 @@ tr.me td{background:var(--soft);font-weight:700}
 
   <div class="card msec" id="mSecInt">
     <div class="msec-h"><div><h2>Interest</h2><div class="mute">People who marked "interested" on BookMyShow</div></div>
-      <div class="row"><select id="mIntDays" aria-label="Period"><option value="1">Last day</option><option value="3" selected>Last 3 days</option><option value="7">Last 7 days</option></select>
+      <div class="row"><select id="mIntDays" aria-label="Period for the chart"><option value="1">Last day</option><option value="3" selected>Last 3 days</option><option value="7">Last 7 days</option></select>
         <select id="mIntMode" aria-label="Show"><option value="growth">Gained</option><option value="total">Total</option></select>
-        <button data-img="int">Download image</button><button data-csv="int">CSV</button><button data-studio="int">Studio</button></div></div>
+        <button data-img="int">Chart image</button><button data-studio="int">Studio</button></div></div>
     <canvas id="mcInt" width="1400" height="560" aria-label="Line chart of people interested"></canvas>
-    <div class="tw" id="mtInt" style="max-height:360px;overflow:auto"></div>
+    <div class="msec-h" style="margin:14px 0 0"><div class="seg" id="mIntView" style="width:250px"><button data-v="day" aria-pressed="true">Day by day</button><button data-v="hour" aria-pressed="false">Hour by hour</button></div>
+      <div class="row"><button data-img="inttab">Table image</button><button data-csv="int">CSV</button></div></div>
+    <div class="tw" id="mtIntDay"></div>
+    <div class="tw" id="mtInt" style="max-height:360px;overflow:auto" hidden></div>
   </div>
   <div class="mute" style="text-align:center">Ticket figures come from BookMyShow's own counters. Days marked ≈ are estimates from hourly figures (about ±3%); see the Totals tab for how they are worked out.</div>
 </section>
@@ -442,9 +462,9 @@ $('#nowToStudio').onclick=()=>{S.type='board';$('#sType').value='board';studioDa
 /* ---------- STUDIO state ---------- */
 const S={type:'board',style:'color',size:'1200x1200',cap:'long',ra:null,rb:null};
 const THEMES={
-  color:{bg:'#ffffff',title:'#1f3a5f',sub:'#6b7684',ink:'#222222',head:'#1f3a5f',headInk:'#ffffff',zebra:'#f4f7fb',row:'#ffffff',border:'#1f3a5f',up:'#0a7d33',down:'#c0392b',grid:'#e3e8ef',axis:'#b8c2cf',first:'#1f3a5f',rank:'#6b7684',heat:[31,58,95],pal:['#1f3a5f','#c0392b','#0a7d33','#b9770e'],ghost:'#9aa6b5'},
+  color:{modern:true,bgG:['#f7faff','#e8eff9'],panel:'#ffffff',hair:'#e2e9f3',shadow:'rgba(31,58,95,.16)',band:'#f4f8fd',hl:'rgba(75,120,184,.14)',headA:'#1f3a5f',headB:'#33619c',accA:'#1f3a5f',accB:'#5b8fd0',pillUp:'rgba(10,125,51,.13)',pillDown:'rgba(192,57,43,.13)',bg:'#ffffff',title:'#1f3a5f',sub:'#6b7684',ink:'#222222',head:'#1f3a5f',headInk:'#ffffff',zebra:'#f4f7fb',row:'#ffffff',border:'#1f3a5f',up:'#0a7d33',down:'#c0392b',grid:'#e3e8ef',axis:'#b8c2cf',first:'#1f3a5f',rank:'#6b7684',heat:[31,58,95],pal:['#1f3a5f','#c0392b','#0a7d33','#b9770e'],ghost:'#9aa6b5'},
   mono:{bg:'#ffffff',title:'#111111',sub:'#555555',ink:'#111111',head:'#ececec',headInk:'#111111',zebra:'#ffffff',row:'#ffffff',border:'#111111',up:'#111111',down:'#111111',grid:'#e5e5e5',axis:'#999999',first:'#111111',rank:'#555555',heat:[0,0,0],pal:['#111111','#666666','#999999','#3d3d3d'],ghost:'#b3b3b3'},
-  dark:{bg:'#0f1720',title:'#ffffff',sub:'#9aa6b5',ink:'#e8edf3',head:'#2b4a75',headInk:'#ffffff',zebra:'#16202c',row:'#0f1720',border:'#3a4b61',up:'#4cc27a',down:'#ff7a6b',grid:'#223042',axis:'#3a4b61',first:'#cfe0f5',rank:'#9aa6b5',heat:[127,179,255],pal:['#7fb3ff','#ff7a6b','#4cc27a','#f5b041'],ghost:'#6b7a8f'}};
+  dark:{modern:true,bgG:['#090f1b','#111c31'],panel:'#15233a',hair:'#243552',shadow:'rgba(0,0,0,.5)',band:'#192a46',hl:'rgba(127,179,255,.16)',headA:'#294a78',headB:'#3a62a0',accA:'#7fb3ff',accB:'#4b78b8',pillUp:'rgba(76,194,122,.17)',pillDown:'rgba(255,122,107,.17)',bg:'#0f1720',title:'#ffffff',sub:'#9aa6b5',ink:'#e8edf3',head:'#2b4a75',headInk:'#ffffff',zebra:'#16202c',row:'#0f1720',border:'#3a4b61',up:'#4cc27a',down:'#ff7a6b',grid:'#223042',axis:'#3a4b61',first:'#cfe0f5',rank:'#9aa6b5',heat:[127,179,255],pal:['#7fb3ff','#ff7a6b','#4cc27a','#f5b041'],ghost:'#6b7a8f'}};
 const T=()=>THEMES[S.style]||THEMES.color;
 function seg(id,key){$$(`#${id} button`).forEach(b=>b.onclick=()=>{setSeg(id,b.dataset.v);S[key]=b.dataset.v;render()})}
 function setSeg(id,v){$$(`#${id} button`).forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===v))}
@@ -484,7 +504,7 @@ const hh=h=>String(h).padStart(2,'0')+'00';
 /* ---------- canvas drawing ---------- */
 const FONT='Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
 function fit(ctx,text,maxW,size,weight){let s=size;ctx.font=`${weight} ${s}px ${FONT}`;while(ctx.measureText(text).width>maxW&&s>8){s-=1;ctx.font=`${weight} ${s}px ${FONT}`}return s}
-function frame(ctx,W,H,title,subtitle){
+function frameClassic(ctx,W,H,title,subtitle){
   const th=T();ctx.fillStyle=th.bg;ctx.fillRect(0,0,W,H);const u=Math.min(W,H*1.25)/1200;
   const ty=H*(H>W?0.075:0.085);
   ctx.textAlign='center';ctx.textBaseline='middle';
@@ -494,7 +514,7 @@ function frame(ctx,W,H,title,subtitle){
   if($('#sFoot').checked){const f=`Source: BookMyShow app${HANDLE?' · '+HANDLE:''}`;fit(ctx,f,W*0.9,Math.round(22*u),500);ctx.fillStyle=th.sub;ctx.fillText(f,W/2,H-H*0.04);bottom=H-H*0.075}
   return {top:ty+52*u+38*u,bottom,u}}
 // colors[r][c]: text colour (or null); bgs[r][c]: optional cell fill
-function table(ctx,W,box,header,rows,colors,widths,bgs){
+function tableClassic(ctx,W,box,header,rows,colors,widths,bgs){
   const th=T();const x0=W*0.06,w=W*0.88,n=rows.length+1;
   const avail=box.bottom-box.top;let rh=Math.min(avail/n,108*box.u);
   const y0=box.top+(avail-rh*n)/2;const fs=Math.min(rh*0.42,38*box.u);
@@ -504,16 +524,71 @@ function table(ctx,W,box,header,rows,colors,widths,bgs){
     if(r>0&&bgs&&bgs[r-1])bgs[r-1].forEach((bg,ci)=>{if(bg){ctx.fillStyle=bg;ctx.fillRect(xs[ci],y,xs[ci+1]-xs[ci],rh)}});
     const cells=r===0?header:rows[r-1];
     cells.forEach((c,ci)=>{const cx=(xs[ci]+xs[ci+1])/2;const maxw=xs[ci+1]-xs[ci]-16*box.u;
-      fit(ctx,String(c),maxw,Math.round(r===0?fs*0.9:fs),700);
+      c=String(c);if(c.length>24&&!NUMCELL.test(c))c=inName(c);
+      fit(ctx,c,maxw,Math.round(r===0?fs*0.9:fs),700);
       ctx.fillStyle=r===0?th.headInk:((colors&&colors[r-1]&&colors[r-1][ci])||th.ink);
-      ctx.textAlign='center';ctx.fillText(String(c),cx,y+rh/2)})}
+      ctx.textAlign='center';ctx.fillText(c,cx,y+rh/2)})}
   ctx.strokeStyle=th.border;ctx.lineWidth=Math.max(1.5,2*box.u);
   for(let r=0;r<=n;r++){ctx.beginPath();ctx.moveTo(x0,y0+r*rh);ctx.lineTo(x0+w,y0+r*rh);ctx.stroke()}
   xs.forEach(x=>{ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y0+rh*n);ctx.stroke()})}
+/* ---------- modern look for Colour and Dark (Minimal keeps the plain bordered tables) ---------- */
+function rr(ctx,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h/2));ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+function rrTop(ctx,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h));ctx.beginPath();ctx.moveTo(x,y+h);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h);ctx.closePath()}
+const hexA=(hex,a)=>{const n=parseInt(hex.slice(1),16);return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`};
+function panel(ctx,x,y,w,h,u){const th=T();ctx.save();ctx.shadowColor=th.shadow;ctx.shadowBlur=30*u;ctx.shadowOffsetY=9*u;ctx.fillStyle=th.panel;rr(ctx,x,y,w,h,26*u);ctx.fill();ctx.restore();
+  ctx.strokeStyle=th.hair;ctx.lineWidth=Math.max(1,1.5*u);rr(ctx,x,y,w,h,26*u);ctx.stroke()}
+const NUMCELL=/^[\s\d.,KMk≈+▲▼%—–\-]*$/;
+// title block (left aligned, with an accent bar) and optional KPI tiles: opt.tiles=[[label,value,sub,subColor]]
+function frame(ctx,W,H,title,subtitle,opt={}){
+  const th=T();if(!th.modern)return frameClassic(ctx,W,H,title,subtitle);
+  const u=Math.min(W,H*1.25)/1200,mx=W*0.06;
+  const bg=ctx.createLinearGradient(0,0,W*0.4,H);bg.addColorStop(0,th.bgG[0]);bg.addColorStop(1,th.bgG[1]);ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  const ag=ctx.createLinearGradient(mx,0,mx+120*u,0);ag.addColorStop(0,th.accA);ag.addColorStop(1,th.accB);ctx.fillStyle=ag;rr(ctx,mx,H*0.04,120*u,9*u,5*u);ctx.fill();
+  ctx.textAlign='left';ctx.textBaseline='middle';
+  const ty=H*0.04+62*u;fit(ctx,title,W*0.88,Math.round(54*u),800);ctx.fillStyle=th.title;ctx.fillText(title,mx,ty);
+  fit(ctx,subtitle,W*0.88,Math.round(27*u),500);ctx.fillStyle=th.sub;ctx.fillText(subtitle,mx,ty+50*u);
+  let top=ty+50*u+36*u;
+  if(opt.tiles&&opt.tiles.length){const n=opt.tiles.length,gap=18*u,tw=(W*0.88-gap*(n-1))/n,tH=124*u;
+    opt.tiles.forEach(([lab,val,sub,col],i)=>{const x=mx+i*(tw+gap);panel(ctx,x,top,tw,tH,u*0.8);
+      ctx.textAlign='left';fit(ctx,lab.toUpperCase(),tw-40*u,Math.round(19*u),700);ctx.fillStyle=th.sub;ctx.fillText(lab.toUpperCase(),x+22*u,top+26*u);
+      fit(ctx,val,tw-40*u,Math.round(46*u),800);ctx.fillStyle=th.title;ctx.fillText(val,x+22*u,top+66*u);
+      if(sub){fit(ctx,sub,tw-40*u,Math.round(20*u),600);ctx.fillStyle=col||th.sub;ctx.fillText(sub,x+22*u,top+100*u)}});
+    top+=tH+26*u}
+  let bottom=H*0.965;
+  if($('#sFoot').checked){const f=`Source: BookMyShow app`;ctx.fillStyle=th.hair;ctx.fillRect(mx,H-H*0.068,W*0.88,Math.max(1,1.5*u));
+    ctx.font=`500 ${Math.round(21*u)}px ${FONT}`;ctx.fillStyle=th.sub;ctx.textAlign='left';ctx.fillText(f,mx,H-H*0.04);
+    if(HANDLE){ctx.textAlign='right';ctx.font=`700 ${Math.round(21*u)}px ${FONT}`;ctx.fillText(HANDLE,W-mx,H-H*0.04)}bottom=H-H*0.085}
+  return {top,bottom,u}}
+// cells: text; colors[r][c] overrides the text colour; bgs[r][c] fills the cell (heat); rows starting with "★ " are highlighted
+function table(ctx,W,box,header,rows,colors,widths,bgs){
+  const th=T();if(!th.modern)return tableClassic(ctx,W,box,header,rows,colors,widths,bgs);
+  const u=box.u,x0=W*0.06,w=W*0.88,pad=22*u,n=rows.length;
+  const avail=box.bottom-box.top-2*pad;const rh=Math.min(avail/(n+0.86),98*u),hh=rh*0.86,total=hh+rh*n;
+  const y0=box.top+pad+(avail-total)/2;
+  panel(ctx,x0,y0-pad,w,total+2*pad,u);
+  const ix=x0+pad,iw=w-2*pad;let xs=[ix];widths.forEach(f=>xs.push(xs[xs.length-1]+f*iw));
+  const al=header.map((h,ci)=>h==='#'?'c':ci>0&&rows.length&&rows.every(r=>NUMCELL.test(String(r[ci])))?'r':'l');
+  const fs=Math.min(rh*0.40,36*u),px=16*u;
+  const hg=ctx.createLinearGradient(ix,0,ix+iw,0);hg.addColorStop(0,th.headA);hg.addColorStop(1,th.headB);ctx.fillStyle=hg;rr(ctx,ix,y0,iw,hh,16*u);ctx.fill();
+  const put=(txt,ci,y,hgt,color,wt,size)=>{const cw=xs[ci+1]-xs[ci];if(txt.length>24&&!NUMCELL.test(txt))txt=inName(txt);fit(ctx,txt,cw-2*px,size,wt);ctx.fillStyle=color;ctx.textBaseline='middle';
+    if(al[ci]==='r'){ctx.textAlign='right';ctx.fillText(txt,xs[ci+1]-px,y+hgt/2)}else if(al[ci]==='c'){ctx.textAlign='center';ctx.fillText(txt,(xs[ci]+xs[ci+1])/2,y+hgt/2)}else{ctx.textAlign='left';ctx.fillText(txt,xs[ci]+px,y+hgt/2)}};
+  header.forEach((h,ci)=>put(String(h),ci,y0,hh,th.headInk,700,Math.round(fs*0.86)));
+  rows.forEach((cells,r)=>{const y=y0+hh+r*rh;const hl=String(cells[0]).startsWith('★ ')||String(cells[1]).startsWith('★ ');
+    if(hl){ctx.fillStyle=th.hl;rr(ctx,ix,y+3*u,iw,rh-6*u,14*u);ctx.fill();ctx.fillStyle=th.accA;rr(ctx,ix,y+10*u,6*u,rh-20*u,3*u);ctx.fill()}
+    else if(r%2===1){ctx.fillStyle=th.band;rr(ctx,ix,y+2*u,iw,rh-4*u,12*u);ctx.fill()}
+    cells.forEach((c,ci)=>{let txt=String(c).replace(/^★ /,'');const col=(colors&&colors[r]&&colors[r][ci])||th.ink;
+      if(bgs&&bgs[r]&&bgs[r][ci]){ctx.fillStyle=bgs[r][ci];rr(ctx,xs[ci]+3*u,y+4*u,xs[ci+1]-xs[ci]-6*u,rh-8*u,10*u);ctx.fill()}
+      if(/^[▲▼]/.test(txt)){const up=txt[0]==='▲',body=txt.slice(1).trim(),size=Math.round(fs*0.92);fit(ctx,txt,xs[ci+1]-xs[ci]-2*px-34*u,size,800);
+        const tw=ctx.measureText(body).width,pw=tw+46*u,ph=rh*0.6,pxr=al[ci]==='r'?xs[ci+1]-px-pw:al[ci]==='c'?(xs[ci]+xs[ci+1])/2-pw/2:xs[ci]+px;
+        ctx.fillStyle=up?th.pillUp:th.pillDown;rr(ctx,pxr,y+(rh-ph)/2,pw,ph,ph/2);ctx.fill();
+        ctx.fillStyle=up?th.up:th.down;ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(up?'▲':'▼',pxr+13*u,y+rh/2);ctx.fillText(body,pxr+13*u+ctx.measureText('▲').width+6*u,y+rh/2)}
+      else if(txt==='—'||txt==='')put(txt,ci,y,rh,th.sub,600,Math.round(fs));
+      else put(txt,ci,y,rh,col,ci===0||al[ci]==='r'?800:700,Math.round(fs))})})}
 // lines: [{label, pts:[[x,v]], color, main, end}] ; xmax hours on the axis; ticks:[[x,label]]
 function chart(ctx,W,box,lines,opt={}){
   const th=T();const xmax=opt.xmax||24,ticks=opt.ticks||[0,3,6,9,12,15,18,21,24].map(h=>[h,h===0||h===24?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p']);
   const x0=W*0.12,x1=W*0.94,y0=box.top+70*box.u,y1=box.bottom-60*box.u;
+  if(th.modern&&!box.flat)panel(ctx,W*0.05,box.top-8*box.u,W*0.92,box.bottom-box.top+4*box.u,box.u);
   const all=lines.flatMap(l=>l.pts.map(p=>p[1]));const ymin=opt.ymin||0;const ymax=Math.max(opt.floor||1,...all)*(ymin?1.03:1.12);const span=ymax-ymin;
   const steps=opt.steps||[1,2,5,10,20,25,50,100,200];const step=steps.find(s=>span/s<=6)||steps[steps.length-1];
   const yfmt=opt.yfmt||(v=>v+'K');
@@ -522,9 +597,12 @@ function chart(ctx,W,box,lines,opt={}){
   ctx.textAlign='center';ticks.forEach(([h,lab])=>{const x=x0+(h/xmax)*(x1-x0);ctx.fillStyle=th.sub;ctx.fillText(lab,x,y1+30*box.u)});
   ctx.strokeStyle=th.axis;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,y1);ctx.lineTo(x1,y1);ctx.stroke();
   const X=h=>x0+(h/xmax)*(x1-x0),Y=v=>y1-((v-ymin)/span)*(y1-y0);
-  lines.forEach(l=>{ctx.strokeStyle=l.color;ctx.lineWidth=(l.main?5:3.5)*box.u;ctx.lineJoin='round';ctx.beginPath();let pen=false,last=null;
+  lines.forEach(l=>{
+    if(th.modern&&l.main){let seg=[],lx=null;const flush=()=>{if(seg.length>1){const g=ctx.createLinearGradient(0,y0,0,y1);g.addColorStop(0,hexA(l.color,.28));g.addColorStop(1,hexA(l.color,0));ctx.beginPath();ctx.moveTo(X(seg[0][0]),y1);seg.forEach(p=>ctx.lineTo(X(p[0]),Y(p[1])));ctx.lineTo(X(seg[seg.length-1][0]),y1);ctx.closePath();ctx.fillStyle=g;ctx.fill()}seg=[]};
+      for(const p of l.pts){if(lx!==null&&p[0]-lx>(opt.gap||0.75))flush();seg.push(p);lx=p[0]}flush()}
+    ctx.strokeStyle=l.color;ctx.lineWidth=(l.main?(th.modern?5.5:5):(th.modern?3.5:3.5))*box.u;ctx.lineJoin='round';ctx.lineCap='round';ctx.beginPath();let pen=false,last=null;
     for(const [h,v] of l.pts){if(last!==null&&h-last>(opt.gap||0.75))pen=false;pen?ctx.lineTo(X(h),Y(v)):ctx.moveTo(X(h),Y(v));pen=true;last=h}ctx.stroke();
-    if(l.end&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];ctx.fillStyle=l.color;ctx.beginPath();ctx.arc(X(h),Y(v),7*box.u,0,7);ctx.fill();
+    if(l.end&&l.pts.length){const [h,v]=l.pts[l.pts.length-1];if(th.modern){ctx.fillStyle=th.panel;ctx.beginPath();ctx.arc(X(h),Y(v),11*box.u,0,7);ctx.fill()}ctx.fillStyle=l.color;ctx.beginPath();ctx.arc(X(h),Y(v),th.modern?7.5*box.u:7*box.u,0,7);ctx.fill();
       ctx.font=`800 ${Math.round(24*box.u)}px ${FONT}`;ctx.textAlign=h>xmax*0.85?'right':'left';ctx.fillText(opt.yfmt?opt.yfmt(v):v.toFixed(1)+'K',X(h)+(h>xmax*0.85?-14:14)*box.u,Y(v)-24*box.u)}});
   // legend (wraps)
   let lx=x0,ly=box.top+18*box.u;ctx.textAlign='left';ctx.font=`600 ${Math.round(24*box.u)}px ${FONT}`;
@@ -746,7 +824,7 @@ function explore(){if(!$('#explore').classList.contains('on'))return;
   const lines=names.map((n,i)=>({label:n,color:['#1f3a5f','#c0392b','#0a7d33','#b9770e','#8e44ad','#117a8b'][i],main:i===0,end:true,
     pts:slots.map(s=>{const v=snap(s.d,s.t)[n];return v&&v.k===1?[s.x,v.n/1000]:null}).filter(Boolean)}));
   const ticks=ds.map((x,i)=>[i*24+12,short(x)]);
-  if(names.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85},lines,{xmax:ds.length*24,ticks,gap:step===60?1.5:0.75});else empty(ctx,W,H,'Pick at least one movie');
+  if(names.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85,flat:true},lines,{xmax:ds.length*24,ticks,gap:step===60?1.5:0.75});else empty(ctx,W,H,'Pick at least one movie');
   ds.forEach((x,i)=>{if(i){const xx=W*0.12+(i*24/(ds.length*24))*(W*0.82);ctx.strokeStyle='#d9dfe7';ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(xx,40);ctx.lineTo(xx,H-80);ctx.stroke();ctx.setLineDash([])}});
   S.style=keep;
   const rows=slots.slice().reverse().filter(s=>names.some(n=>{const v=snap(s.d,s.t)[n];return v&&v.k===1}));
@@ -793,13 +871,14 @@ function dayRows(m,a,b){const rows=[];let run=0,ok=true;
 function rangeOf(m,ra,rb){const L=m.slots.length-1;let a=ra?slIdx(m,keyMs(ra)):0,b=rb?slIdx(m,keyMs(rb)):L;a=Math.max(0,Math.min(a,L-1));b=Math.max(a+1,Math.min(b,L));return [a,b]}
 // bar chart: items [{label, sub, r, partial}]
 function bars(ctx,W,box,items){
-  const th=T();const x0=W*0.1,x1=W*0.96,y0=box.top+60*box.u,y1=box.bottom-84*box.u;
+  const th=T();const x0=W*(T().modern?0.12:0.1),x1=W*0.95,y0=box.top+60*box.u,y1=box.bottom-84*box.u;
+  if(th.modern&&!box.flat)panel(ctx,W*0.05,box.top-8*box.u,W*0.92,box.bottom-box.top+4*box.u,box.u);
   const max=Math.max(1,...items.map(i=>i.r?i.r.v:0))*1.15;const n=items.length,bw=(x1-x0)/Math.max(n,1);
   const step=[1,2,5,10,20,25,50,100,200,250,500].map(x=>x*1000).find(x=>max/x<=5)||1e6;
   ctx.textBaseline='middle';ctx.font=`500 ${Math.round(22*box.u)}px ${FONT}`;
   for(let v=0;v<=max;v+=step){const y=y1-(v/max)*(y1-y0);ctx.strokeStyle=th.grid;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.fillStyle=th.sub;ctx.textAlign='right';ctx.fillText(fmt(v),x0-12*box.u,y)}
   items.forEach((it,k)=>{const cx=x0+(k+0.5)*bw,w=Math.min(bw*0.7,120*box.u);
-    if(it.r){const y=y1-(it.r.v/max)*(y1-y0);ctx.globalAlpha=it.partial?0.35:it.r.exact?1:0.6;ctx.fillStyle=th.pal[0];ctx.fillRect(cx-w/2,y,w,y1-y);ctx.globalAlpha=1;
+    if(it.r){const y=y1-(it.r.v/max)*(y1-y0);ctx.globalAlpha=it.partial?0.35:it.r.exact?1:0.6;if(th.modern){const g=ctx.createLinearGradient(0,y,0,y1);g.addColorStop(0,th.accB);g.addColorStop(1,th.accA);ctx.fillStyle=g;rrTop(ctx,cx-w/2,y,w,y1-y,Math.min(12*box.u,w/2));ctx.fill()}else{ctx.fillStyle=th.pal[0];ctx.fillRect(cx-w/2,y,w,y1-y)}ctx.globalAlpha=1;
       fit(ctx,fmtV(it.r),bw*0.96,Math.round(26*box.u),800);ctx.fillStyle=th.ink;ctx.textAlign='center';ctx.fillText(fmtV(it.r),cx,y-20*box.u)}
     fit(ctx,it.label,bw*0.95,Math.round(22*box.u),700);ctx.fillStyle=th.ink;ctx.textAlign='center';ctx.fillText(it.label,cx,y1+28*box.u);
     fit(ctx,it.sub,bw*0.95,Math.round(19*box.u),500);ctx.fillStyle=th.sub;ctx.fillText(it.sub,cx,y1+56*box.u)});
@@ -834,7 +913,7 @@ function totals(){
   $('#tSub').dataset.miss=res.ok?'':lastOnly?`Latest ${Math.round((miss[0].b-miss[0].a)/2)} hours not in the total yet (BookMyShow shows only its 24-hour figure then). `:`${miss.length} day${miss.length>1?'s':''} without data not in the total. `;
   $('#tSub').textContent=`${m.name} · ${whenLabel(slMs(m,a))} to ${whenLabel(slMs(m,b))} IST · ${full} full day${full===1?'':'s'}${hrs?` + ${hrs} hour${hrs===1?'':'s'}`:''} · estimate factor ×${m.factor}`;if($('#tSub').dataset.miss)$('#tSub').textContent=$('#tSub').dataset.miss+$('#tSub').textContent;
   if($('#totals').classList.contains('on')){const cv=$('#tcv'),ctx=cv.getContext('2d');const keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);
-    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u:0.85},dayItems(m,res));S.style=keep}
+    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u:0.85,flat:true},dayItems(m,res));S.style=keep}
   $('#tTable').innerHTML=`<table><thead><tr><th>Day</th><th>From → to (IST)</th><th class="n">Tickets</th><th class="n">Total so far</th><th class="hide-sm">Source</th></tr></thead><tbody>${res.rows.map((x,k)=>`<tr><td class="rank">${k+1}</td><td>${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}${x.full?'':` <span class="mute">(${Math.round((x.b-x.a)/2)}h)</span>`}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n">${x.run!=null?fmt(x.run):'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}
     <tr class="tot"><td></td><td>Total</td><td class="n">${res.exact?'':'≈'}${fmt(res.total)}</td><td></td><td class="hide-sm"></td></tr></tbody></table>`}
 const TT={};
@@ -880,7 +959,7 @@ function interestHist(){if(!$('#upcoming').classList.contains('on')||!$('#iFrom'
   const ds=inRange(),mode=$('#iMode').value,names=inRows().map(r=>r.f.name).filter(n=>IS.sel.has(n)).slice(0,6);
   const cv=$('#icv'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
   const lines=inLines(ds,names,mode,PAL6);
-  if(lines.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85},lines,{xmax:ds.length*24,ticks:inTicks(ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,names.length?'No readings in this period':'Pick at least one film');
+  if(lines.length)chart(ctx,W,{top:20,bottom:H-10,u:0.85,flat:true},lines,{xmax:ds.length*24,ticks:inTicks(ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,names.length?'No readings in this period':'Pick at least one film');
   S.style=keep;
   // hour-by-hour table: the latest reading of each film in each clock hour, newest first
   const rows={},base={};
@@ -896,12 +975,17 @@ $('#iImg').onclick=()=>inToStudio('interestline');$('#iImgT').onclick=()=>inToSt
 /* ---------- MOVIE page: every stat for one film ---------- */
 const nrm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'');
 const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-const MV={name:null,list:[],hr:{},d:{}};
+const MV={name:null,list:[],hr:{},d:{},k:{}};
 const mvLink=(n,label)=>`<a class="ml" href="#movie?f=${encodeURIComponent(n)}">${label||n}</a>`;
+const PARTS=[['Morning','4 AM–12 PM',0,16],['Afternoon','12–6 PM',16,28],['Evening','6–10 PM',28,36],['Night','10 PM–4 AM',36,48]];
+const PCOL=['#f2b134','#4fa3e0','#2f5fa8','#9b6bd0'];
+const pct1=p=>p==null?'—':p>0?`▲${p.toFixed(1)}%`:p<0?`▼${(-p).toFixed(1)}%`:'0%';
+const signK=v=>v>0?'+'+fmt(v):v<0?'−'+fmt(-v):'0';
 function bestPoint(){const ds=days();for(let i=ds.length-1;i>=0;i--){const ts=times(ds[i]);for(let j=ts.length-1;j>=0;j--)if(hourly(ds[i],ts[j]).length>=3)return [ds[i],ts[j]]}return latestPoint()}
 function mvBuild(){
   const out=new Map();
-  SL.movies.forEach(m=>out.set(nrm(m.name),{name:m.name,m,f:null}));
+  const tot=m=>m.slots.reduce((a,v)=>a+(v>0?v:0),0)||Math.max(0,...Object.values(m.d24));
+  [...SL.movies].sort((a,b)=>tot(b)-tot(a)).forEach(m=>out.set(nrm(m.name),{name:m.name,m,f:null}));
   IN.films.filter(f=>f.points.length&&!/^ET\d+$/.test(f.name)).forEach(f=>{const k=nrm(f.name);if(out.has(k))out.get(k).f=f;else out.set(k,{name:f.name,m:null,f})});
   MV.list=[...out.values()];
   const sel=$('#mSel');sel.innerHTML='';
@@ -915,7 +999,8 @@ function mvHourly(name){if(MV.hr[name])return MV.hr[name];const out=[];
   return MV.hr[name]=out}
 const mvDate=ms=>msParts(ms)[0];
 // page charts: wide on desktop; narrower with larger text on phones so they stay readable
-function mvCv(id,h){const cv=$('#'+id),narrow=innerWidth<620;cv.width=narrow?760:1400;cv.height=h;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);return [cv,ctx,narrow?1.0:0.85]}
+function mvCv(id,h){const cv=$('#'+id),narrow=innerWidth<620;cv.width=narrow?760:1400;cv.height=h;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);return [cv,ctx,narrow?1.0:0.85,narrow]}
+const MILES=[1e5,2.5e5,5e5,1e6,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,1e7,1.5e7,2e7,3e7];
 // day by day, 4 AM to 4 AM
 function mvDays(m,hr){
   if(!m||m.slots.length<3)return null;
@@ -923,41 +1008,57 @@ function mvDays(m,hr){
   const res=dayRows(m,a,L),list=[];
   if(a>0)list.push({a:0,b:a,full:false,r:slSum(m,0,a),pre:true});
   res.rows.forEach(x=>list.push({...x,pre:false}));
-  let run=0,prev=null;
+  let run=0,prev=null;const byDate={};
   list.forEach(x=>{if(x.r)run+=x.r.v;x.run=x.r?run:null;
     const d=mvDate(slMs(m,x.a));x.date=d;
     x.label=x.pre?`Start to 4 AM`:x.full?dayLabel(d):`${dayLabel(d)} · so far`;
-    x.p=x.full&&prev&&prev.r&&x.r?pct(x.r.v,prev.r.v):null;if(x.full)prev=x;
+    x.p=x.full&&prev&&prev.r&&x.r?pct(x.r.v,prev.r.v):null;if(x.full&&x.r)byDate[d]=x;if(x.full)prev=x;
+    const wk=byDate[addDays(d,-7)];x.wow=x.full&&x.r&&wk?pct(x.r.v,wk.r.v):null;
+    if(!x.full&&!x.pre){const cur=slSum(m,x.a,x.b),was=slSum(m,x.a-48,x.b-48);x.pace=cur&&was?pct(cur.v,was.v):null}
     const lo=slMs(m,x.a),hi=slMs(m,x.b);let pk=null;for(const h of hr)if(h.ms>lo&&h.ms<=hi&&(!pk||h.n>pk.n))pk=h;
     x.peak=pk?{txt:pk.txt,at:`${timeLabel(pk.t)}`}:null});
   const rows=list.filter(x=>x.r);
   if(!rows.length)return null;
-  return {list,total:run,exact:rows.every(x=>x.r.exact)&&rows.length===list.length,start:slMs(m,0)}}
+  const full=list.filter(x=>x.full&&x.r),best=full.reduce((b,x)=>!b||x.r.v>b.r.v?x:b,null),last7=full.slice(-7);
+  const miles=MILES.map(t=>{const x=list.find(y=>y.run!=null&&y.run>=t);return x?{t,x}:null}).filter(Boolean);
+  return {list,total:run,exact:rows.every(x=>x.r.exact)&&rows.length===list.length,start:slMs(m,0),best,avg7:last7.length?last7.reduce((a,x)=>a+x.r.v,0)/last7.length:null,n7:last7.length,miles}}
+const mvDelta=p=>p===null||p===undefined?'':` <span class="${p>0?'up':p<0?'down':''}">${pctTxt(p)}</span>`;
 function mvKpis(e,hr,dd){
-  const {m,f}=e,k=[];const kpi=(l,v,s)=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s||''}</div></div>`;
-  const delta=p=>p===null?'':` <span class="${p>0?'up':p<0?'down':''}">${pctTxt(p)}</span>`;
+  const {m,f}=e,k=[];MV.k={};const kpi=(l,v,s)=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s||''}</div></div>`;
   if(m){
-    if(hr.length){const L=hr[hr.length-1];const pv=hr.find(h=>Math.abs(h.ms-(L.ms-864e5))<=25*60000);
-      k.push(kpi('Last hour',L.txt,`${short(L.d)}, ${timeLabel(L.t)}${pv?delta(pct(L.n,pv.n))+' vs yesterday':''}`));
-      const pk=hr.reduce((a,h)=>h.n>a.n?h:a,hr[0]);k.push(kpi('Busiest hour',pk.txt,`${short(pk.d)}, ${windowLabel(pk.t)}`))}
+    if(hr.length){const L=hr[hr.length-1];const pv=hr.find(h=>Math.abs(h.ms-(L.ms-864e5))<=25*60000);const p=pv?pct(L.n,pv.n):null;
+      k.push(kpi('Last hour',L.txt,`${short(L.d)}, ${timeLabel(L.t)}${pv?mvDelta(p)+' vs yesterday':''}`));MV.k.last=['Last hour',L.txt,`${short(L.d)}, ${timeLabel(L.t)}`];
+      const pk=hr.reduce((a,h)=>h.n>a.n?h:a,hr[0]);k.push(kpi('Busiest hour',pk.txt,`${short(pk.d)}, ${windowLabel(pk.t)}`));MV.k.peak=['Busiest hour',pk.txt,`${short(pk.d)}, ${windowLabel(pk.t)}`]}
     else{const idx=Object.keys(m.d24).map(Number).sort((a,b)=>a-b);if(idx.length){const i=idx[idx.length-1];k.push(kpi('Last 24 hours',fmt(m.d24[i]),`BookMyShow, ${whenShort(slMs(m,i))}`))}}
-    if(dd){const full=dd.list.filter(x=>x.full&&x.r);const y=full[full.length-1];
-      if(y)k.push(kpi('Yesterday',fmtV(y.r),`4 AM to 4 AM, ${short(y.date)}${delta(y.p)}`));
-      k.push(kpi('Total so far',(dd.exact?'':'≈ ')+fmt(dd.total),`since ${whenShort(dd.start)}`))}
+    if(dd){const full=dd.list.filter(x=>x.full&&x.r),y=full[full.length-1],today=dd.list[dd.list.length-1];
+      if(!today.full&&!today.pre&&today.r){k.push(kpi('Today so far',fmtV(today.r),today.pace!=null?`${mvDelta(today.pace)} vs same time yesterday`:'since 4 AM'));MV.k.today=['Today so far',fmtV(today.r),today.pace!=null?`${pctTxt(today.pace)} vs this time yesterday`:'since 4 AM',today.pace]}
+      if(y){k.push(kpi('Yesterday',fmtV(y.r),`4 AM to 4 AM, ${short(y.date)}${mvDelta(y.p)}`));MV.k.y=['Yesterday',fmtV(y.r),`${short(y.date)}${y.p!=null?' · '+pctTxt(y.p)+' vs day before':''}`,y.p]}
+      if(dd.best){k.push(kpi('Best day',fmtV(dd.best.r),dayLabel(dd.best.date)));MV.k.best=['Best day',fmtV(dd.best.r),dayLabel(dd.best.date)]}
+      if(dd.avg7!=null&&dd.n7>=3){k.push(kpi(`${dd.n7}-day average`,fmt(dd.avg7),'per day, full days'));MV.k.avg=[`${dd.n7}-day average`,fmt(dd.avg7),'per day, full days']}
+      k.push(kpi('Total so far',(dd.exact?'':'≈ ')+fmt(dd.total),`since ${whenShort(dd.start)}`));MV.k.total=['Total so far',(dd.exact?'':'≈')+fmt(dd.total),`since ${whenShort(dd.start)}`]}
     const [bd,bt]=MV.bp;const rk=hourly(bd,bt);const ri=rk.findIndex(r=>r.name===e.name);
     if(ri>=0)k.push(kpi('Rank right now',`#${ri+1}`,`of ${rk.length} films, last hour`))}
   if(f){const r=inRows().find(x=>x.f===f);
-    if(r)k.push(kpi('Interested',fmt(r.v)+'+',`${r.g1!=null?`+${fmt(r.g1)} in 24h`:'on BookMyShow'}${r.rel.days!=null?` · ${r.rel.days>1?`out in ${r.rel.days} days`:r.rel.days===1?'out tomorrow':r.rel.days===0?'out today':'released'}`:''}`))}
+    if(r){k.push(kpi('Interested',fmt(r.v)+'+',`${r.g1!=null?`+${fmt(r.g1)} in 24h`:'on BookMyShow'}${r.rel.days!=null?` · ${r.rel.days>1?`out in ${r.rel.days} days`:r.rel.days===1?'out tomorrow':r.rel.days===0?'out today':'released'}`:''}`));
+      MV.k.int=['Interested now',fmt(r.v)+'+',`as of ${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}`];
+      MV.k.intg=['Gained, last 24 hours',r.g1!=null?'+'+fmt(r.g1):'—',r.g7!=null?`${'+'+fmt(r.g7)} in 7 days`:'',r.g1];
+      MV.k.rel=['Release',r.rel.short,r.rel.days!=null?(r.rel.days>1?`in ${r.rel.days} days`:r.rel.days===1?'tomorrow':r.rel.days===0?'today':'released'):'']}}
   return k.join('')}
+// when people book: share of each full day's tickets by time of day
+function mvParts(m,dd){if(!dd)return null;const rows=[];
+  dd.list.filter(x=>x.full&&x.r).slice(-10).forEach(x=>{const v=PARTS.map(p=>slSum(m,x.a+p[2],x.a+p[3]));if(v.some(q=>!q))return;const t=v.reduce((a,q)=>a+q.v,0);if(t<=0)return;
+    rows.push({date:x.date,label:dayLabel(x.date),sh:v.map(q=>q.v/t)})});
+  if(rows.length<2)return null;
+  return {rows:rows.reverse(),avg:PARTS.map((_,i)=>rows.reduce((a,r)=>a+r.sh[i],0)/rows.length)}}
+const topPart=sh=>PARTS[sh.indexOf(Math.max(...sh))][0];
 function mvDraw(){
-  if(!$('#movie').classList.contains('on')||!SL||!MV.list.length)return;
+  if(!$('#movie').classList.contains('on')||!MV.list.length)return;
   const e=MV.list.find(x=>x.name===MV.name);if(!e)return;MV.e=e;$('#mSel').value=e.name;
   history.replaceState(null,'','#movie?f='+encodeURIComponent(e.name));
   const {m,f,name}=e;MV.bp=bestPoint();
-  const hr=m?mvHourly(name):[];MV.cur=hr;
+  const hr=m?mvHourly(name):[];
   const dd=mvDays(m,hr);MV.d.days=dd;
   const keep=S.style;S.style='color';
-  // header
   const bits=[];if(f){const ri=releaseInfo(f.release);if(f.release)bits.push(`Releases ${ri.long}`);if(f.book===true)bits.push('Bookings open');else if(f.book===false)bits.push('Bookings not open yet');if((f.languages||[]).length)bits.push(f.languages.slice(0,5).join(', '))}
   if(m)bits.push(`Tracked since ${whenShort(slMs(m,0))}`);
   $('#mMeta').textContent=bits.join(' · ');
@@ -965,30 +1066,44 @@ function mvDraw(){
   const secs=[];
   // 1. day by day
   $('#mSecDays').hidden=!dd;
-  if(dd){secs.push(['mSecDays','Day by day']);
-    const [cv,ctx,u]=mvCv('mcDays',520);
-    const items=dd.list.slice(-14).map(x=>({label:x.pre?'Start':short(x.date),sub:x.full?'':x.pre?'to 4 AM':'so far',r:x.r,partial:!x.full}));
-    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u},items);
-    $('#mtDays').innerHTML=`<table><thead><tr><th>Day</th><th class="n">Tickets</th><th class="n">vs previous</th><th class="n hide-sm">Total so far</th><th class="n hide-sm">Busiest hour</th><th class="hide-sm">Source</th></tr></thead><tbody>${dd.list.slice().reverse().map(x=>`<tr${x.full?'':' class="mute"'}><td>${x.label}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n ${x.p>0?'up':x.p<0?'down':''}">${x.p===null?'—':pctTxt(x.p)}</td><td class="n hide-sm">${x.run!=null?fmt(x.run):'—'}</td><td class="n hide-sm">${x.peak?`${x.peak.txt} <span class="mute">${x.peak.at}</span>`:'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="n">${dd.exact?'':'≈'}${fmt(dd.total)}</td><td></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td></tr></tbody></table>`;
-    $('#mnDays').textContent=dd.list.some(x=>!x.r)?'Days without data are left out of the total.':''}
-  // 2. hour by hour
+  if(dd){secs.push(['mSecDays','Day by day']);mvDaysDraw()}
+  // 2. when people book
+  const pr=m?mvParts(m,dd):null;MV.d.parts=pr;$('#mSecParts').hidden=!pr;
+  if(pr){secs.push(['mSecParts','When people book']);
+    $('#mPartsLegend').innerHTML=PARTS.map((p,i)=>`<span><i style="background:${PCOL[i]}"></i>${p[0]} ${p[1]}</span>`).join('');
+    const bar=sh=>`<div class="stack">${sh.map((v,i)=>`<i style="width:${(v*100).toFixed(1)}%;background:${PCOL[i]}">${v>=0.09?Math.round(v*100)+'%':''}</i>`).join('')}</div>`;
+    $('#mtParts').innerHTML=`<table><thead><tr><th>Day</th><th>Share of the day's tickets</th><th class="hide-sm">Busiest period</th></tr></thead><tbody><tr class="me"><td>Average</td><td>${bar(pr.avg)}</td><td class="hide-sm">${topPart(pr.avg)}</td></tr>${pr.rows.map(r=>`<tr><td>${r.label}</td><td>${bar(r.sh)}</td><td class="hide-sm">${topPart(r.sh)}</td></tr>`).join('')}</tbody></table>`}
+  // 3. hour by hour
   $('#mSecHours').hidden=!hr.length;
   if(hr.length){secs.push(['mSecHours','Hours']);mvHoursDraw()}
-  // 3. time of day grid
+  // 4. time of day grid
   $('#mSecGrid').hidden=!hr.length;
   if(hr.length){secs.push(['mSecGrid','Time of day']);mvGridDraw()}
-  // 4. compare
+  // 5. compare
   const cmp=m?mvCmp(name):null;MV.d.cmp=cmp;$('#mSecCmp').hidden=!cmp;
   if(cmp){secs.push(['mSecCmp','Vs other films']);
     $('#mCmpSub').textContent=cmp.sub;
     $('#mtCmp').innerHTML=`<table><thead><tr><th>#</th><th>Film</th><th class="n">Yesterday</th><th class="n">vs day before</th><th class="n hide-sm">Last hour now</th></tr></thead><tbody>${cmp.rows.map(r=>`<tr${r.name===name?' class="me"':''}><td class="rank">${r.rank}</td><td class="movie" title="${r.name.replace(/"/g,'&quot;')}">${r.name===name?inName(r.name):mvLink(r.name,inName(r.name))}</td><td class="n"><b>${fmtV(r.y)}</b></td><td class="n ${r.p>0?'up':r.p<0?'down':''}">${r.p===null?'—':pctTxt(r.p)}</td><td class="n hide-sm">${r.h||'—'}</td></tr>`).join('')}</tbody></table>`}
-  // 5. interest
+  // 6. interest
   $('#mSecInt').hidden=!f;
   if(f){secs.push(['mSecInt','Interest']);mvIntDraw()}
   S.style=keep;
   $('#mJump').innerHTML=secs.map(([id,l])=>`<a data-j="${id}">${l}</a>`).join('');
   $$('#mJump a').forEach(a=>a.onclick=()=>$('#'+a.dataset.j).scrollIntoView({behavior:'smooth',block:'start'}));
   if(!m&&!f)$('#mKpis').innerHTML='<div class="card empty">No data for this movie yet.</div>'}
+function mvDaysDraw(){
+  const dd=MV.d.days,mode=$('#mDayMode button[aria-pressed="true"]').dataset.v;const keep=S.style;S.style='color';
+  const [cv,ctx,u,narrow]=mvCv('mcDays',520);
+  if(mode==='bars'){const items=dd.list.slice(-14).map(x=>({label:x.pre?'Start':short(x.date),sub:x.full?'':x.pre?'to 4 AM':'so far',r:x.r,partial:!x.full}));
+    bars(ctx,cv.width,{top:6,bottom:cv.height-4,u,flat:true},items)}
+  else{const L=dd.list,k=Math.ceil(L.length/(narrow?6:14));
+    const pts=L.map((x,i)=>x.run!=null?[i*24+12,x.run/1000]:null).filter(Boolean);
+    chart(ctx,cv.width,{top:20,bottom:cv.height-10,u,flat:true},[{label:'Total tickets so far, at the end of each day',pts,color:T().pal[0],main:true,end:true}],
+      {xmax:L.length*24,ticks:L.map((x,i)=>i%k===0?[i*24+12,x.pre?'Start':short(x.date)]:null).filter(Boolean),gap:100,steps:[50,100,200,250,500,1000,2000],yfmt:v=>fmt(v*1000),floor:100})}
+  S.style=keep;
+  $('#mMiles').innerHTML=dd.miles.length?dd.miles.slice(-6).map(({t,x})=>`<span>Passed <b>${t>=1e6?t/1e6+'M':t/1e3+'K'}</b> · ${x.pre?'day 1':short(x.date)}</span>`).join(''):'';
+  $('#mtDays').innerHTML=`<table><thead><tr><th>Day</th><th class="n">Tickets</th><th class="n">vs previous</th><th class="n hide-sm">vs last week</th><th class="n hide-sm">Total so far</th><th class="n hide-sm">Busiest hour</th><th class="hide-sm">Source</th></tr></thead><tbody>${dd.list.slice().reverse().map(x=>`<tr${x.full?'':' class="mute"'}><td>${x.label}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n ${(x.p||x.pace)>0?'up':(x.p||x.pace)<0?'down':''}">${x.p!=null?pctTxt(x.p):x.pace!=null?pctTxt(x.pace)+' <span class="mute">at this time</span>':'—'}</td><td class="n hide-sm ${x.wow>0?'up':x.wow<0?'down':''}">${x.wow===null||x.wow===undefined?'—':pctTxt(x.wow)}</td><td class="n hide-sm">${x.run!=null?fmt(x.run):'—'}</td><td class="n hide-sm">${x.peak?`${x.peak.txt} <span class="mute">${x.peak.at}</span>`:'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="n">${dd.exact?'':'≈'}${fmt(dd.total)}</td><td></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td></tr></tbody></table>`;
+  $('#mnDays').textContent=dd.list.some(x=>!x.r)?'Days without data are left out of the total.':''}
 function mvHoursLines(colors){
   const name=MV.e.name;
   const kind=$('#mHourMode button[aria-pressed="true"]').dataset.v;
@@ -1004,7 +1119,7 @@ function mvHoursDraw(){
   $('#mHoursSub').textContent=kind==='days'?'Tickets booked in the last hour, today and the days before':`${dayLabel(MV.bp[0])}: this film and the busiest others`;
   const [cv,ctx,u]=mvCv('mcHours',620);
   const keep=S.style;S.style='color';const lines=mvHoursLines(T().pal);
-  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u},lines,MVAXIS);else empty(ctx,cv.width,cv.height,'No hourly readings yet');
+  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u,flat:true},lines,MVAXIS);else empty(ctx,cv.width,cv.height,'No hourly readings yet');
   S.style=keep}
 function mvGridData(){const name=MV.e.name,n=+$('#mGridDays').value;
   const ds=days().filter(d=>times(d).some(t=>{const v=snap(d,t)[name];return v&&v.k===1})).slice(-n);
@@ -1021,40 +1136,76 @@ function mvCmp(name){
   let shown=rows.slice(0,8);if(!shown.includes(me))shown.push(me);
   const day=dayLabel(mvDate(t4-864e5));
   return {rows:shown,total:rows.length,day,sub:`Yesterday (${day}, 4 AM to 4 AM) and the latest hourly figure · this film is ${me.rank} of ${rows.length}`}}
+// interest: one row per calendar day (IST); gain = end of day minus end of the day before
+const relIso=f=>{const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(f.release||'');return m?iso(new Date(Date.UTC(+m[3],MON.indexOf(m[1]),+m[2]))):null};
+function mvIntDays(f){const by={};f.points.forEach(p=>{const d=p[0].slice(0,10);if(!by[d])by[d]={first:p[1],end:p[1],n:0};by[d].end=p[1];by[d].n++});
+  const ds=Object.keys(by).sort(),rel=relIso(f),today=msParts(Date.now())[0];let prev=null;const rows=[];
+  ds.forEach(d=>{const b=by[d];const gain=prev!=null?b.end-prev:b.end-b.first;
+    rows.push({d,end:b.end,gain,pct:prev!=null&&prev>0?gain/prev*100:null,start:prev==null,to:rel?Math.round((pd(rel)-pd(d))/864e5):null,part:d===today});prev=b.end});
+  return rows.reverse()}
+const toRel=x=>x.to==null?'—':x.to>1?`${x.to} days`:x.to===1?'1 day':x.to===0?'Release day':'Released';
 function mvIntData(){const f=MV.e.f,all=inDays(),n=+$('#mIntDays').value,ds=all.slice(-n);
   const rows=[];let prev=null;f.points.forEach(p=>{const d=p[0].slice(0,10);if(ds.includes(d))rows.push({t:p[0],v:p[1],c:prev!=null?p[1]-prev:null});prev=p[1]});
-  return {ds,rows:rows.reverse()}}
+  return {ds,rows:rows.reverse(),days:mvIntDays(f)}}
 function mvIntDraw(){const f=MV.e.f,mode=$('#mIntMode').value;const g=mvIntData();MV.d.int=g;
   const [cv,ctx,u]=mvCv('mcInt',560);
   const keep=S.style;S.style='color';const lines=inLines(g.ds,[f.name],mode,PAL6);
-  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u},lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,cv.width,cv.height,'No interest readings in this period');
+  if(lines.length)chart(ctx,cv.width,{top:20,bottom:cv.height-10,u,flat:true},lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,cv.width,cv.height,'No interest readings in this period');
   S.style=keep;
-  $('#mtInt').innerHTML=g.rows.length?`<table><thead><tr><th>When</th><th class="n">Interested</th><th class="n">Change</th></tr></thead><tbody>${g.rows.map(r=>`<tr><td>${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.c>0?'up':''}">${r.c==null?'—':r.c>0?'+'+fmt(r.c):'0'}</td></tr>`).join('')}</tbody></table>`:''}
+  $('#mtIntDay').innerHTML=g.days.length?`<table><thead><tr><th>Day</th><th class="n">Interested</th><th class="n">Gained</th><th class="n hide-sm">Growth</th><th class="n hide-sm">To release</th></tr></thead><tbody>${g.days.map(x=>`<tr${x.part?' class="mute"':''}><td>${dayLabel(x.d)}${x.part?' · so far':x.start?' *':''}</td><td class="n"><b>${fmt(x.end)}+</b></td><td class="n ${x.gain>0?'up':''}">${signK(x.gain)}</td><td class="n hide-sm ${x.pct>0?'up':''}">${pct1(x.pct)}</td><td class="n hide-sm">${toRel(x)}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:6px">Each day is midnight to midnight IST. BookMyShow rounds the count, so small gains show in steps. * counts only from our first reading.</div>`:'';
+  $('#mtInt').innerHTML=g.rows.length?`<table><thead><tr><th>When</th><th class="n">Interested</th><th class="n">Change</th></tr></thead><tbody>${g.rows.map(r=>`<tr><td>${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.c>0?'up':''}">${r.c==null?'—':signK(r.c)}</td></tr>`).join('')}</tbody></table>`:''}
 // images (same look as the Studio) and CSV
-function mvCanvas(title,sub,draw){const W=1200,H=1200,cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');const box=frame(ctx,W,H,title,sub);draw(ctx,W,H,box,T());return cv}
-function mvImg(kind){const e=MV.e;if(!e)return;const name=e.name,dd=MV.d.days;let cv;
-  if(kind==='days'&&dd){const R=dd.list.filter(x=>x.r).slice(-12);
+function mvCanvas(title,sub,draw,tiles){const W=1200,H=1200,cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');
+  const th=T(),box=frame(ctx,W,H,title,sub,{tiles:tiles?tiles(th):null});draw(ctx,W,H,box,th);return cv}
+function mvPartsDraw(ctx,W,H,box,th,pr){
+  const u=box.u,x0=W*0.06,w=W*0.88,pad=24*u,rows=[{label:'Average',sh:pr.avg,avg:true},...pr.rows],n=rows.length;
+  const head=64*u,rh=Math.min((box.bottom-box.top-2*pad-head)/n,86*u),total=head+rh*n,y0=box.top+pad+(box.bottom-box.top-2*pad-total)/2;
+  if(th.modern)panel(ctx,x0,y0-pad,w,total+2*pad,u);
+  ctx.textBaseline='middle';ctx.textAlign='left';ctx.font=`600 ${Math.round(21*u)}px ${FONT}`;let lx=x0+pad;const ly=y0+24*u;
+  PARTS.forEach((p,i)=>{ctx.fillStyle=PCOL[i];rr(ctx,lx,ly-10*u,20*u,20*u,6*u);ctx.fill();ctx.fillStyle=th.ink;const t=`${p[0]} ${p[1]}`;ctx.fillText(t,lx+28*u,ly);lx+=ctx.measureText(t).width+54*u});
+  const bx=x0+pad+w*0.2,bw=x0+w-pad-bx;
+  rows.forEach((r,k)=>{const y=y0+head+k*rh,bh=rh*0.58;
+    ctx.textAlign='left';fit(ctx,r.label,w*0.19,Math.round(rh*0.3),r.avg?800:700);ctx.fillStyle=r.avg?th.title:th.ink;ctx.fillText(r.label,x0+pad,y+rh/2);
+    ctx.save();rr(ctx,bx,y+(rh-bh)/2,bw,bh,bh/2);ctx.clip();let x=bx;
+    r.sh.forEach((v,i)=>{ctx.fillStyle=PCOL[i];ctx.fillRect(x,y+(rh-bh)/2,v*bw+1,bh);if(v>=0.09){ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font=`800 ${Math.round(bh*0.46)}px ${FONT}`;ctx.fillText(Math.round(v*100)+'%',x+v*bw/2,y+rh/2)}x+=v*bw});ctx.restore();
+    if(r.avg){ctx.fillStyle=th.hair;ctx.fillRect(x0+pad,y+rh-1,w-2*pad,Math.max(1,1.5*u))}})}
+function mvImg(kind){const e=MV.e;if(!e)return;const name=e.name,dd=MV.d.days,k=MV.k;let cv;
+  const tile=a=>a?[a[0],a[1],a[2],null]:null;
+  if(kind==='days'&&dd){const R=dd.list.filter(x=>x.r).slice(-10);
     cv=mvCanvas(name,'Tickets booked per day · 4 AM to 4 AM IST',(ctx,W,H,box,th)=>{
-      const rows=R.map(x=>[x.pre?'Start':dayLabel(x.date)+(x.full?'':' (so far)'),fmtV(x.r),x.p==null?'—':pctTxt(x.p),x.run!=null?fmt(x.run):'—']);rows.push(['Total',(dd.exact?'':'≈')+fmt(dd.total),'','']);
-      table(ctx,W,box,['Day','Tickets','vs previous','Total so far'],rows,R.map(x=>[th.rank,th.first,x.p>0?th.up:x.p<0?th.down:th.ink,th.ink]).concat([[th.first,th.first,th.ink,th.ink]]),[.3,.24,.22,.24])})}
+      const rows=R.map(x=>[x.pre?'Start':dayLabel(x.date)+(x.full?'':' (so far)'),fmtV(x.r),x.p==null?(x.pace!=null?pctTxt(x.pace):'—'):pctTxt(x.p),x.run!=null?fmt(x.run):'—']);rows.push(['Total',(dd.exact?'':'≈')+fmt(dd.total),'','']);
+      table(ctx,W,box,['Day','Tickets','vs previous','Total so far'],rows,R.map(x=>[th.rank,th.first,th.ink,th.ink]).concat([[th.first,th.first,th.ink,th.ink]]),[.3,.24,.24,.22])},
+      th=>[k.total,k.y,k.best].filter(Boolean).map(a=>[a[0],a[1],a[2],a[3]>0?th.up:a[3]<0?th.down:null]))}
+  else if(kind==='parts'&&MV.d.parts){const pr=MV.d.parts;
+    cv=mvCanvas(name,'When people book · share of each day\'s tickets, 4 AM to 4 AM',(ctx,W,H,box,th)=>mvPartsDraw(ctx,W,H,box,th,pr),
+      th=>[['Busiest period (average)',topPart(pr.avg),`${Math.round(Math.max(...pr.avg)*100)}% of the day's tickets`,null],['Evening share',Math.round(pr.avg[2]*100)+'%','6 to 10 PM',null],['Morning share',Math.round(pr.avg[0]*100)+'%','4 AM to 12 PM',null]])}
   else if(kind==='hours'){const daysMode=$('#mHourMode button[aria-pressed="true"]').dataset.v==='days';
     cv=mvCanvas(name,daysMode?'Tickets booked per hour · today and earlier days':`Tickets booked per hour · ${dayLabel(MV.bp[0])}`,(ctx,W,H,box,th)=>{
-      const lines=mvHoursLines(th.pal);if(lines.length)chart(ctx,W,box,lines,MVAXIS);else empty(ctx,W,H,'No hourly readings yet')})}
+      const lines=mvHoursLines(th.pal);if(lines.length)chart(ctx,W,box,lines,MVAXIS);else empty(ctx,W,H,'No hourly readings yet')},
+      th=>[k.last,k.peak,k.today].filter(Boolean).map(a=>[a[0],a[1],a[2],a[3]>0?th.up:a[3]<0?th.down:null]))}
   else if(kind==='grid'&&MV.d.grid){const g=MV.d.grid;
     cv=mvCanvas(name,`Tickets in the hour before each time · ${short(g.ds[0])} to ${short(g.ds[g.ds.length-1])}`,(ctx,W,H,box,th)=>{
       table(ctx,W,box,['Time',...g.ds.map(short)],g.hs.map((h,i)=>[timeLabel(hh(h)),...g.grid[i].map(v=>v?v.t:'—')]),g.hs.map(()=>[th.rank]),[.2,...g.ds.map(()=>.8/g.ds.length)],g.grid.map(r=>[null,...r.map(v=>v?heat(v.n,g.max):null)]))})}
   else if(kind==='cmp'&&MV.d.cmp){const c=MV.d.cmp;
     cv=mvCanvas('Tickets booked yesterday',`${c.day} · 4 AM to 4 AM IST`,(ctx,W,H,box,th)=>{
-      table(ctx,W,box,['#','Film','Yesterday','vs day before'],c.rows.map(r=>[r.rank,(r.name===name?'★ ':'')+inName(r.name),fmtV(r.y),r.p===null?'—':pctTxt(r.p)]),c.rows.map(r=>[th.rank,r.name===name?th.up:th.first,th.ink,r.p>0?th.up:r.p<0?th.down:th.ink]),[.09,.46,.23,.22])})}
+      table(ctx,W,box,['#','Film','Yesterday','vs day before'],c.rows.map(r=>[r.rank,(r.name===name?'★ ':'')+inName(r.name),fmtV(r.y),r.p===null?'—':pctTxt(r.p)]),c.rows.map(r=>[th.rank,r.name===name?th.up:th.first,th.ink,th.ink]),[.09,.46,.23,.22])})}
   else if(kind==='int'&&e.f){const g=MV.d.int,mode=$('#mIntMode').value;
     cv=mvCanvas(name,`People who marked "interested" · ${mode==='growth'?'gained':'total'}`,(ctx,W,H,box,th)=>{
-      const lines=inLines(g.ds,[e.f.name],mode,th.pal);if(lines.length)chart(ctx,W,box,lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,'No interest readings in this period')})}
+      const lines=inLines(g.ds,[e.f.name],mode,th.pal);if(lines.length)chart(ctx,W,box,lines,{xmax:g.ds.length*24,ticks:inTicks(g.ds),gap:4,...inAxis(lines,mode)});else empty(ctx,W,H,'No interest readings in this period')},
+      th=>[k.int,k.intg,k.rel].filter(Boolean).map(a=>[a[0],a[1],a[2],a[3]>0?th.up:null]))}
+  else if(kind==='inttab'&&e.f){const g=MV.d.int,view=$('#mIntView button[aria-pressed="true"]').dataset.v;
+    cv=mvCanvas(name,`People who marked "interested" · ${view==='day'?'day by day':'hour by hour'}`,(ctx,W,H,box,th)=>{
+      if(view==='day'){const R=g.days.slice(0,10);table(ctx,W,box,['Day','Interested','Gained','Growth','To release'],R.map(x=>[dayLabel(x.d)+(x.part?' (so far)':''),fmt(x.end)+'+',signK(x.gain),pct1(x.pct),toRel(x)]),R.map(x=>[th.rank,th.first,x.gain>0?th.up:th.ink,th.ink,th.ink]),[.28,.2,.16,.18,.18])}
+      else{const R=g.rows.slice(0,12);table(ctx,W,box,['When','Interested','Change'],R.map(r=>[`${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}`,fmt(r.v)+'+',r.c==null?'—':signK(r.c)]),R.map(r=>[th.rank,th.first,r.c>0?th.up:th.ink]),[.44,.28,.28])}},
+      th=>[k.int,k.intg,k.rel].filter(Boolean).map(a=>[a[0],a[1],a[2],a[3]>0?th.up:null]))}
   if(!cv)return;const a=document.createElement('a');a.download=`${slug(name)}_${kind}_${S.style}.png`;a.href=cv.toDataURL('image/png');a.click()}
 function mvCsv(kind){const e=MV.e;if(!e)return;let rows=null;
-  if(kind==='days'&&MV.d.days)rows=[['day','from_ist','to_ist','tickets','source','total_so_far'],...MV.d.days.list.map(x=>[x.label,msKey(slMs(e.m,x.a)),msKey(slMs(e.m,x.b)),x.r?Math.round(x.r.v):'',!x.r?'no data':x.r.exact?'bookmyshow_24h':'estimate',x.run!=null?Math.round(x.run):''])];
+  if(kind==='days'&&MV.d.days)rows=[['day','from_ist','to_ist','tickets','source','vs_previous_pct','vs_last_week_pct','total_so_far'],...MV.d.days.list.map(x=>[x.label,msKey(slMs(e.m,x.a)),msKey(slMs(e.m,x.b)),x.r?Math.round(x.r.v):'',!x.r?'no data':x.r.exact?'bookmyshow_24h':'estimate',x.p==null?'':x.p,x.wow==null?'':x.wow,x.run!=null?Math.round(x.run):''])];
+  else if(kind==='parts'&&MV.d.parts)rows=[['day',...PARTS.map(p=>p[0]+' share_pct')],['Average',...MV.d.parts.avg.map(v=>Math.round(v*1000)/10)],...MV.d.parts.rows.map(r=>[r.label,...r.sh.map(v=>Math.round(v*1000)/10)])];
   else if(kind==='grid'&&MV.d.grid){const g=MV.d.grid;rows=[['time',...g.ds],...g.hs.map((h,i)=>[timeLabel(hh(h)),...g.grid[i].map(v=>v?v.n:'')])]}
   else if(kind==='cmp'&&MV.d.cmp)rows=[['rank','film','yesterday','vs_day_before_pct','last_hour_now'],...MV.d.cmp.rows.map(r=>[r.rank,r.name,Math.round(r.y.v),r.p===null?'':r.p,r.h||''])];
-  else if(kind==='int'&&MV.d.int)rows=[['time_ist','interested','change'],...MV.d.int.rows.map(r=>[r.t,r.v,r.c==null?'':r.c])];
+  else if(kind==='int'&&MV.d.int){const view=$('#mIntView button[aria-pressed="true"]').dataset.v;
+    rows=view==='day'?[['day','interested_end_of_day','gained','growth_pct','days_to_release'],...MV.d.int.days.map(x=>[x.d,x.end,x.gain,x.pct==null?'':Math.round(x.pct*10)/10,x.to==null?'':x.to])]:[['time_ist','interested','change'],...MV.d.int.rows.map(r=>[r.t,r.v,r.c==null?'':r.c])]}
   if(!rows)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.map(c=>/[,"]/.test(c)?`"${String(c).replace(/"/g,'""')}"`:c).join(',')).join('\n')],{type:'text/csv'}));a.download=`${slug(e.name)}_${kind}.csv`;a.click()}
 function mvStudio(kind){const e=MV.e,[bd,bt]=MV.bp;if(!e)return;
   if(kind==='days')apply({type:'totals',movie:e.name},false);
@@ -1067,6 +1218,8 @@ function mvInit(){if(!MV.list.length&&(SL.movies.length||IN.films.length))mvBuil
   $('#mSel').onchange=()=>{MV.name=$('#mSel').value;mvDraw()};
   $$('#mStyle button').forEach(b=>b.onclick=()=>{S.style=b.dataset.v;setSeg('mStyle',b.dataset.v);setSeg('sStyle',b.dataset.v)});
   $$('#mHourMode button').forEach(b=>b.onclick=()=>{setSeg('mHourMode',b.dataset.v);mvHoursDraw()});
+  $$('#mDayMode button').forEach(b=>b.onclick=()=>{setSeg('mDayMode',b.dataset.v);if(MV.d.days)mvDaysDraw()});
+  $$('#mIntView button').forEach(b=>b.onclick=()=>{setSeg('mIntView',b.dataset.v);$('#mtIntDay').hidden=b.dataset.v!=='day';$('#mtInt').hidden=b.dataset.v!=='hour'});
   $('#mGridDays').onchange=mvGridDraw;$('#mIntDays').onchange=$('#mIntMode').onchange=()=>{if(MV.e&&MV.e.f)mvIntDraw()};
   $$('#movie [data-img]').forEach(b=>b.onclick=()=>mvImg(b.dataset.img));
   $$('#movie [data-csv]').forEach(b=>b.onclick=()=>mvCsv(b.dataset.csv));
