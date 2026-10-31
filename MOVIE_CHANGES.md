@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-10-31
+- added **Eetha** (ET00502500), polled hourly
+- **Nayyi Navelli** (ET00513250): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-10-31
 - added **The Cat in the Hat** (ET00451881), polled hourly
 - added **Appakutty** (ET00518647), polled hourly
 - added **Disco** (ET00521913), polled hourly

@@ -562,6 +562,15 @@
   "release": "Oct 02, 2026",
   "book": true
  },
+ "ET00502500": {
+  "first_seen": "2026-10-31",
+  "last_listed": null,
+  "name": "Eetha",
+  "page_slug": "eetha",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-10-31"
+ },
  "ET00502504": {
   "name": "Prahaar",
   "page_slug": "prahaar",

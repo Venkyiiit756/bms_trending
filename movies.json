@@ -306,7 +306,7 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00396541",
@@ -1263,6 +1263,18 @@
     "page_slug": "disco",
     "csv": "data/ET00521913.csv",
     "headers_csv": "data/ET00521913_headers.csv",
+    "every": 3600,
+    "added": "2026-10-31"
+  },
+  {
+    "key": "et00502500",
+    "name": "Eetha",
+    "eventcode": "ET00502500",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "eetha",
+    "csv": "data/ET00502500.csv",
+    "headers_csv": "data/ET00502500_headers.csv",
     "every": 3600,
     "added": "2026-10-31"
   }
