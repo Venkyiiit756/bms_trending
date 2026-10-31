@@ -163,7 +163,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - 08:05 IST `tracker.py` starts the `Daily Briefing` workflow (cron `40 2 * * *` is only a backup). Steps:
   1. `briefing_facts.facts()` computes everything (yesterday = 4 AM to 4 AM, vs day before / last week, busiest hour, interest, bookings opened, flags).
      Day totals use `sales.day24`, a Python mirror of the website's rule.
-  2. `briefing.py` asks Claude (`ANTHROPIC_API_KEY` secret, model `claude-sonnet-5-5`, override with `ANTHROPIC_MODEL`) for headline, bullets and
+  2. `briefing.py` asks Claude through the official `anthropic` SDK (`ANTHROPIC_API_KEY` secret, model `claude-haiku-5-5` = cheapest, $0.10/$0.50 per million tokens, about 0.1 cent a day; override with the `ANTHROPIC_MODEL` variable, e.g. `claude-sonnet-5-5`; effort `low`, no temperature because the API rejects sampling settings) for headline, bullets and
      3 X drafts as JSON. No key or API failure -> the template writer. The template output must pass its own check.
   3. `verify()`: every quantity (217K, 1.07M, 130%) must appear in the facts, no "collection / gross / crore / revenue", posts <= 272 characters.
      Failures go back to the model once; whatever still fails is replaced field by field by the template. `mode` in briefing.json says what happened
