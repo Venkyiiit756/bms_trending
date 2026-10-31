@@ -154,3 +154,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - Movie tab additions: today's pace vs same time yesterday, best day, 7-day average, milestones, vs-last-week column, cumulative chart,
   "When people book" (share of a day's tickets by morning / afternoon / evening / night, estimated from half-hour slots), interest day-by-day
   table (calendar days IST, gain, growth, days to release) with chart / table images.
+- **X images in the new look**: `cards.square_table` / `square_lines` (used by `posts.py`) now draw the website's modern style: gradient background,
+  white card with soft shadow, rounded gradient header, change pills, KPI tiles (`tiles=`), area under the line. Font: Inter, bundled in `fonts/`
+  (OFL, `fonts/LICENSE-Inter.txt`) so the runner renders the same typeface. `compact_table` (the stored half-hour snapshot tables) keeps the
+  bordered look. `posts.py` shows one row per film (other listings of a film repeat its name); `series.short_name` drops "(AK 47)" / "House No: 47".
