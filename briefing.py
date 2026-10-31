@@ -35,6 +35,9 @@ TRACE = {'calls': [], 'replies': []}          # what was sent / received this ru
 PRICES = {'claude-haiku-5-5': (0.10, 0.50), 'claude-sonnet-5-5': (2.0, 10.0)}   # $ per million tokens (input, output)
 POST_LIMIT = 272                    # X allows 280; keep a margin
 BANNED = re.compile(r'\b(collections?|gross(ed)?|crores?|revenue|box[- ]office collection|earn(ed|ings)?)\b', re.I)
+# wording that points at content we do not publish (a list, a thread, an image, a link, "below")
+PROMISE = re.compile(r"(👇|⬇|⬇️|🧵|\b(thread|threads|below|link in|in the replies|in the comments|full (list|board|table|breakdown|chart|ranking)"
+                     r"|top \d+ (list|table)|read more|see more|swipe|click|attached|check (it )?out|here'?s how|here is how|stacked up)\b)", re.I)
 QTY = re.compile(r'(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s?([KkMm](?![A-Za-z])|%)')
 BIGINT = re.compile(r'(?<![\w.,])(\d{4,})(?![\w.,])')
 NUM = re.compile(r'\d[\d,]*(?:\.\d+)?')
@@ -80,6 +83,8 @@ def verify(text, facts, post=False):
             bad.append(f'{v} is not in the facts')
     for m in BANNED.finditer(text):
         bad.append(f'"{m.group(0)}" is not allowed (we count tickets, not revenue)')
+    for m in PROMISE.finditer(text):
+        bad.append(f'"{m.group(0)}" points at content we do not publish: say the numbers, do not promise more')
     if post and xlen(text) > POST_LIMIT:
         bad.append(f'post is {xlen(text)} characters (limit {POST_LIMIT})')
     return bad
@@ -175,7 +180,8 @@ Hard rules:
 - Posts: at most 272 characters, friendly and clear, 2-3 hashtags including #BoxOffice, emoji allowed.
 - Do not invent films, dates, or hashtags for films not in the facts.
 - Call each film by its "short" name from the facts (never the long "name").
-- Never promise or mention anything outside the facts (links, a full list, a thread, an image being posted).
+- Never promise or mention anything outside the facts: no links, "full list", "thread", "below", "👇", "here's how", "check out"
+  or an image being posted. Every post must stand alone.
 - Percentages always carry a % sign and no plus or minus sign next to words like up, down, rose or fell
   (write "up 130%" or "down 68%", never "up +130%", "fell -68" or "up 38").
 - "flags" is only for real problems you notice in the facts (an inconsistent date, a figure that looks wrong, stale data
