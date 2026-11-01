@@ -40,6 +40,7 @@ SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
 COMMIT_EVERY = 600         # push collected rows at most this often (plus before each snapshot)
+POLL_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'poll_state.json')   # {movie key: when it was last asked}
 MISSING_RETRY = 3600       # a movie whose response has no counter is retried this often
 GIT_TIMEOUT = 120
 # Each request runs in its own short-lived process so one stuck connection can
@@ -225,6 +226,8 @@ def git(*args):
 
 
 def commit_and_push(files):
+    if POLLED:
+        save_poll_state({**load_poll_state(), **POLLED})
     git('add', *[p for p in files if os.path.exists(p)])
     if git('diff', '--cached', '--quiet').returncode == 0:
         return
@@ -282,6 +285,23 @@ class State:
         self.files = [self.csv] + ([self.headers_csv] if LOG_HEADERS else [])
 
 
+def load_poll_state():
+    try:
+        with open(POLL_STATE, encoding='utf-8') as f:
+            return {k: datetime.fromisoformat(v) for k, v in json.load(f).items()}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_poll_state(state):
+    os.makedirs(os.path.dirname(POLL_STATE), exist_ok=True)
+    with open(POLL_STATE, 'w', encoding='utf-8') as f:
+        json.dump({k: v.isoformat(timespec='seconds') for k, v in sorted(state.items())}, f, indent=0)
+
+
+POLLED = {}      # movie key -> time of its last request, saved so the next run knows who is overdue
+
+
 def poll(st, shared):
     """Request one movie, log the outcome, schedule its next request.
 
@@ -290,6 +310,7 @@ def poll(st, shared):
     """
     result = fetch(st.key)
     t = now()
+    POLLED[st.key] = t
     mono = time.monotonic()
     logged = False
     if result.get('error'):
@@ -492,9 +513,18 @@ def run(keys, minutes, commit):
     slow = [k for k in keys if movies[k].get('every')]
     fast = [k for k in keys if k not in slow]
     due = {k: start + i * MIN_GAP for i, k in enumerate(fast)}
-    for i, k in enumerate(slow):
+    # Runs end early (HTTP 429), so a fixed order would starve the films at the end of the list. Instead the film
+    # asked longest ago goes first, and one asked recently waits until its interval is up.
+    POLLED.update(load_poll_state())
+    t0, slot = now(), 0
+    for k in sorted(slow, key=lambda k: POLLED.get(k, datetime.min.replace(tzinfo=IST))):
         every = min(movies[k]['every'], 3600)
-        due[k] = start + len(fast) * MIN_GAP + i * (every - 300) / len(slow)
+        age = (t0 - POLLED[k]).total_seconds() if k in POLLED else None
+        if age is None or age >= every - 300:
+            due[k] = start + len(fast) * MIN_GAP + slot * MIN_GAP
+            slot += 1
+        else:
+            due[k] = start + (every - 300 - age)
     states = [State(movies[k], due[k]) for k in keys]
     jobs = interest_jobs(start)
     shared = {'failures': 0, 'block_until': 0.0}
@@ -511,7 +541,7 @@ def run(keys, minutes, commit):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM, stop)
 
-    files = [p for s in states for p in s.files] + [interest.CSV]
+    files = [p for s in states for p in s.files] + [interest.CSV, POLL_STATE]
     try:
         while True:
             if time.monotonic() >= sweep_mono:
