@@ -130,8 +130,12 @@ def series():
     # one entry per film: other listings of it (same BookMyShow group) show the same count
     cat_path = os.path.join(ROOT, 'catalog.json')
     catalog = json.load(open(cat_path, encoding='utf-8')) if os.path.exists(cat_path) else {}
+    mp = os.path.join(ROOT, 'movies.json')
+    dups = {m['eventcode'] for m in json.load(open(mp, encoding='utf-8')) if m.get('dup')} if os.path.exists(mp) else set()
     best, rel = {}, {}
     for code, m in out.items():
+        if code in dups:           # a duplicate listing of a film tracked under another code
+            continue
         g = catalog.get(code, {}).get('group') or code
         if g not in best or len(m['points']) > len(out[best[g]]['points']):
             best[g] = code

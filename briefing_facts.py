@@ -126,6 +126,7 @@ def _health(today):
     newest = None
     for _, name, path, _ in series.movies():
         rs = series.load(path)
+        rs = [r for r in rs if r.time <= datetime(today.year, today.month, today.day, 8, 0, tzinfo=IST)]   # a late re-run still judges 8 AM
         if rs:
             newest = max(newest, rs[-1].time) if newest else rs[-1].time
     cutoff = datetime(today.year, today.month, today.day, 8, 0, tzinfo=IST)
