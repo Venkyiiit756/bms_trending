@@ -79,3 +79,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-10-31 14:12:01+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-10-31 20:09:42+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-01 01:59:50+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-01 07:51:04+05:30,,error,200,no trending widget in response (failure 1),,error,
