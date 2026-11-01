@@ -26,6 +26,8 @@ import os
 import re
 import sys
 import time
+
+import series
 from datetime import datetime, timedelta, timezone
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -204,7 +206,7 @@ def main():
                 e = catalog.setdefault(code, {'first_seen': day, 'last_listed': None, 'name': code, 'page_slug': slug,
                                               'last_checked': None, 'figure': None})
                 e['upcoming'] = day
-                if name and e.get('name', code) == code:
+                if name:
                     e['name'] = name
             time.sleep(GAP)
     except Blocked as e:
@@ -292,6 +294,8 @@ def main():
             o.setdefault('page_slug', slug)
             if other not in seen and other not in queue:
                 queue.append(other)
+    for e in catalog.values():                   # no real title yet: use one made from the page slug
+        e['name'] = series.readable(e.get('name'), e.get('page_slug'))
     os.makedirs(os.path.dirname(ALERTS), exist_ok=True)
     with open(ALERTS, 'w', encoding='utf-8') as f:
         json.dump(alerts, f, indent=1)

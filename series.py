@@ -94,6 +94,22 @@ def window_label(end):
     return f'{a}–{b} {bm}' if am == bm else f'{a} {am}–{b} {bm}'
 
 
+def name_from_slug(slug):
+    """'jailer-2-telugu' -> 'Jailer 2 (Telugu)': a readable stand-in until BookMyShow gives the real title."""
+    words = [w for w in (slug or '').split('-') if w]
+    langs = {'telugu', 'hindi', 'tamil', 'malayalam', 'kannada', 'english'}
+    if len(words) > 1 and words[-1] in langs:
+        return ' '.join(w.capitalize() for w in words[:-1]) + f' ({words[-1].capitalize()})'
+    return ' '.join(w.capitalize() for w in words)
+
+
+def readable(name, slug):
+    """The real title, or one made from the page slug when only an ETxxxxxxxx code is known."""
+    if re.fullmatch(r'ET\d+', name or ''):
+        return name_from_slug(slug) if slug and slug != 'movie' else name
+    return name
+
+
 def short_name(name, limit=20):
     """Fit a title in a narrow cell: drop a subtitle after ':' or cut at a word boundary."""
     if len(name) <= limit:

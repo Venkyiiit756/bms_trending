@@ -1011,7 +1011,7 @@ function mvBuild(){
   const out=new Map();
   const tot=m=>m.slots.reduce((a,v)=>a+(v>0?v:0),0)||Math.max(0,...Object.values(m.d24));
   [...SL.movies].sort((a,b)=>tot(b)-tot(a)).forEach(m=>out.set(nrm(m.name),{name:m.name,m,f:null}));
-  IN.films.filter(f=>f.points.length&&!/^ET\d+$/.test(f.name)).forEach(f=>{const k=nrm(f.name);if(out.has(k))out.get(k).f=f;else out.set(k,{name:f.name,m:null,f})});
+  IN.films.filter(f=>f.points.length).forEach(f=>{const k=nrm(f.name);if(out.has(k))out.get(k).f=f;else out.set(k,{name:f.name,m:null,f})});
   MV.list=[...out.values()];
   const sel=$('#mSel');sel.innerHTML='';
   [['Ticket counts',MV.list.filter(e=>e.m)],['Upcoming (interest only)',MV.list.filter(e=>!e.m).sort((a,b)=>b.f.points[b.f.points.length-1][1]-a.f.points[a.f.points.length-1][1])]].forEach(([lab,items])=>{
