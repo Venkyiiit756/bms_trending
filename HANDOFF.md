@@ -176,3 +176,14 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
   reading, the figures on both sides within an hour are interpolated (exact); then the older slot-corrected neighbour; then a one-sided figure
   within 30 minutes; only then the estimate. Fixes a bug where the day that had just closed fell back to an estimate 11% too high while the
   night's half-hour slots were still unknown (found with Aadarsha Kutumbam, 1 Nov: 232K estimate vs 208.5K real).
+
+## Small agents (all cheap; Claude Haiku 5.5 only where words are written)
+- **Weekly report** (`weekly.py`, `weekly_report.yml`): Mondays 08:20 IST (tracker dispatch, cron backup). Week = seven 4 AM-4 AM days
+  from `sales.day24`; Python computes totals, change vs the week before, best day, interest gained in 7 days; Claude writes a headline and 4
+  bullets; every number is checked (`briefing.verify`); template fallback. Output `weekly.json`, `weeklies/`. About 0.05 cents a run.
+- **Release radar** (`radar.py`): no model. Films releasing in 21 days with interest, 24h/7-day change, bookings open. Written to `data/radar.json` by `build_site.py`.
+- **Watchdog** (`health.py`): hourly checks (ticket readings, interest counts, discovery, daily briefing) in `health.json` `checks`; one GitHub issue
+  "Tracker needs attention" lists failures and closes itself when green.
+- **Ask the data** (`ask.py`, `ask.yml`): the owner opens an issue titled "? question" (or label `ask`); Claude answers from a Python-built digest,
+  numbers checked, answer posted as a comment and the issue closed. Only the repository owner's issues are answered.
+- Site: **Reports** tab (weekly report, radar, status, ask button). Shared helpers in `agentkit.py`.

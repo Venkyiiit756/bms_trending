@@ -34,6 +34,7 @@ BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, .
 HEARTBEAT_SECONDS = 15 * 60
 FETCH_TIMEOUT = 60
 DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
+WEEKLY_AT = [(8, 20)]                           # IST, Mondays only: the weekly report
 BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after the 3:45 sweep has the day's exact totals)
 SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
@@ -503,6 +504,7 @@ def run(keys, minutes, commit):
     next_snap = next_snapshot_time(now())
     next_discover = next_discover_time(now())
     next_brief = next_discover_time(now(), BRIEFING_AT)
+    next_weekly = next_discover_time(now(), WEEKLY_AT)
     sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
 
     def stop(*_):
@@ -548,6 +550,10 @@ def run(keys, minutes, commit):
             if now() >= next_brief:
                 request_workflow('daily_briefing.yml', 'daily briefing')
                 next_brief = next_discover_time(now(), BRIEFING_AT)
+            if now() >= next_weekly:
+                if now().astimezone(IST).weekday() == 0:
+                    request_workflow('weekly_report.yml', 'weekly report')
+                next_weekly = next_discover_time(now(), WEEKLY_AT)
     except KeyboardInterrupt:
         print('Interrupted; saving what we have.', flush=True)
     finally:

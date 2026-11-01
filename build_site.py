@@ -116,6 +116,12 @@ def main():
     films = list(best.values())
     with open(os.path.join(SITE, 'data', 'interest.json'), 'w', encoding='utf-8') as f:
         json.dump({'films': films}, f, separators=(',', ':'), ensure_ascii=False)
+    import radar
+    with open(os.path.join(SITE, 'data', 'radar.json'), 'w', encoding='utf-8') as f:
+        json.dump(radar.build(), f, separators=(',', ':'), ensure_ascii=False)
+    weekly = os.path.join(ROOT, 'weekly.json')
+    if os.path.exists(weekly):
+        shutil.copy(weekly, os.path.join(SITE, 'data', 'weekly.json'))
     brief = os.path.join(ROOT, 'briefing.json')
     if os.path.exists(brief):
         shutil.copy(brief, os.path.join(SITE, 'data', 'briefing.json'))
