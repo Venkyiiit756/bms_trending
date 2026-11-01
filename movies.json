@@ -832,7 +832,9 @@
     "csv": "data/ET00518675.csv",
     "headers_csv": "data/ET00518675_headers.csv",
     "every": 1800,
-    "added": "2026-10-24"
+    "added": "2026-10-24",
+    "paused": true,
+    "dup": true
   },
   {
     "key": "et00521157",
@@ -868,7 +870,9 @@
     "csv": "data/ET00493076.csv",
     "headers_csv": "data/ET00493076_headers.csv",
     "every": 1800,
-    "added": "2026-10-24"
+    "added": "2026-10-24",
+    "paused": true,
+    "dup": true
   },
   {
     "key": "et00401459",
@@ -1300,6 +1304,8 @@
     "csv": "data/ET00518312.csv",
     "headers_csv": "data/ET00518312_headers.csv",
     "every": 3600,
-    "added": "2026-10-31"
+    "added": "2026-10-31",
+    "paused": true,
+    "dup": true
   }
 ]

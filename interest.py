@@ -127,7 +127,23 @@ def series():
                 m = out.setdefault(r['eventcode'], {'name': r['movie_name'], 'release': r['release'], 'points': []})
                 m['name'], m['release'] = r['movie_name'], r['release'] or m['release']
                 m['points'].append((t, v))
-    return out
+    # one entry per film: other listings of it (same BookMyShow group) show the same count
+    cat_path = os.path.join(ROOT, 'catalog.json')
+    catalog = json.load(open(cat_path, encoding='utf-8')) if os.path.exists(cat_path) else {}
+    best, rel = {}, {}
+    for code, m in out.items():
+        g = catalog.get(code, {}).get('group') or code
+        if g not in best or len(m['points']) > len(out[best[g]]['points']):
+            best[g] = code
+    for code, c in catalog.items():
+        if c.get('group') and c.get('release'):
+            rel.setdefault(c['group'], c['release'])
+    merged = {}
+    for g, code in best.items():
+        m = out[code]
+        m['release'] = m['release'] or rel.get(g, '')
+        merged[code] = m
+    return merged
 
 
 if __name__ == '__main__':

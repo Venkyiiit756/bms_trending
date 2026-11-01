@@ -83,9 +83,25 @@ def main():
                        'every': 3600, 'added': today.isoformat()})
         log.append(f'added **{name}** ({code}), polled hourly')
 
+    # listings of one film (same group) show the same counter: keep one (a manual one, else the one with most data)
+    def rows(m):
+        path = os.path.join(ROOT, m['csv'])
+        return sum(1 for _ in open(path, encoding='utf-8')) if os.path.exists(path) else 0
+    keep = {}
+    for m in sorted(movies, key=lambda m: (not m.get('manual'), -rows(m))):
+        g = catalog.get(m['eventcode'], {}).get('group')
+        if g and not m.get('dup'):
+            keep.setdefault(g, m['eventcode'])
+    for m in movies:
+        g = catalog.get(m['eventcode'], {}).get('group')
+        if not m.get('manual') and (m.get('dup') or (g and keep.get(g) != m['eventcode'])):
+            if not m.get('dup'):
+                log.append(f"stopped tracking **{m['name']}** ({m['eventcode']}): same film as another listing")
+            m['dup'] = m['paused'] = True
+
     auto = []
     for m in movies:
-        if m.get('manual'):
+        if m.get('manual') or m.get('dup'):
             continue
         c = catalog.get(m['eventcode'], {})
         name = c.get('name') or m['name']
