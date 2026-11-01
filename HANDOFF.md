@@ -172,3 +172,7 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
      Auto posts tab (and a headline strip on Now). Posts are drafts: nothing is sent to X.
 - To turn the model on: add the repository secret `ANTHROPIC_API_KEY`, then run the workflow with "force". Run locally:
   `python briefing.py --date 2026-10-31 --force --no-llm --out /tmp/b.json`.
+- Day totals (`sales.day24` and its twin in `site_src/index.html`): the exact BookMyShow 24-hour figure is used at 4 AM; if the slot itself has no
+  reading, the figures on both sides within an hour are interpolated (exact); then the older slot-corrected neighbour; then a one-sided figure
+  within 30 minutes; only then the estimate. Fixes a bug where the day that had just closed fell back to an estimate 11% too high while the
+  night's half-hour slots were still unknown (found with Aadarsha Kutumbam, 1 Nov: 232K estimate vs 208.5K real).

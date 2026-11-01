@@ -348,7 +348,7 @@ tr.me td{background:var(--soft);font-weight:700}
       <summary><strong>How these totals are worked out</strong></summary>
       <ul>
         <li>A day here is a real 24 hours counted from the "From" time, so a day can run from noon to noon.</li>
-        <li>BookMyShow shows its own "booked in the last 24 hours" figure late at night for big films (about 2 to 7 AM) and all day for smaller films. When a day ends at such a time (or within an hour of one, corrected by the estimate for the minutes in between), that figure is used (marked "BookMyShow").</li>
+        <li>BookMyShow shows its own "booked in the last 24 hours" figure late at night for big films (about 2 to 7 AM) and all day for smaller films. When a day ends at such a time, that figure is used (marked "BookMyShow"); if it was read a little before and after 4 AM, the two are blended, which keeps it exact because the counter barely moves at night.</li>
         <li>Otherwise the day is estimated from the hourly figures taken every 30 minutes. Hourly figures added up come out about 15 to 20% below BookMyShow's own 24-hour figure, so each film's daytime figures are scaled by how the two compared on recent nights (the factor is shown, about ×1.2). Night hours, when no hourly figure shows, are a small allowance. Estimates are marked ≈.</li>
         <li>Checked against 45 nights of BookMyShow 24-hour figures (each night left out of the scaling it was checked with): typical error under 1%, nine in ten within 4%. Films that rarely show an hourly figure get no estimate, only BookMyShow's own figures.</li>
         <li>Pick "Days from 4 AM" to make every full day an exact BookMyShow figure.</li>
@@ -879,9 +879,13 @@ function slSum(m,a,b){let s=0,miss=0;for(let i=a+1;i<=b;i++){const v=i>=0&&i<m.s
 // (a BookMyShow figure up to an hour away is used too, corrected by the estimated half hours in between)
 function day24(m,i){const e=m.d24[i];if(e!=null)return {v:e,exact:true};
   const raw=(a,b)=>{let s=0;for(let j=a+1;j<=b;j++){const v=m.slots[j];if(v==null||v<0)return null;s+=v}return s};
+  // BookMyShow's own figure on both sides within an hour: interpolate (the counter barely moves at night)
+  let lo=null,hi=null;for(const k of [1,2]){if(lo===null&&m.d24[i-k]!=null)lo=[k,m.d24[i-k]];if(hi===null&&m.d24[i+k]!=null)hi=[k,m.d24[i+k]]}
+  if(lo&&hi)return {v:(lo[1]*hi[0]+hi[1]*lo[0])/(lo[0]+hi[0]),exact:true};
   for(const k of [1,-1,2,-2]){const f=m.d24[i+k];if(f==null)continue;
     const lo=Math.min(i,i+k),hi=Math.max(i,i+k);const now=raw(lo,hi),then=raw(lo-48,hi-48);if(now==null||then==null)continue;
     return {v:k>0?f-now+then:f+now-then,exact:true}}
+  const one=m.d24[i-1]!=null?m.d24[i-1]:m.d24[i+1];if(one!=null)return {v:one,exact:true};   // 30 minutes from BookMyShow's figure: tiny movement
   return slSum(m,i-48,i)}
 // real 24-hour days from slot a to slot b (the last one may be shorter)
 function dayRows(m,a,b){const rows=[];let run=0,ok=true;
