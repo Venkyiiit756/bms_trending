@@ -163,6 +163,11 @@ def day24(m, i):
                 return None
             t += v
         return t
+    # BookMyShow's own figure on both sides within an hour: interpolate (the counter barely moves at night)
+    lo = next(((k, m['d24'][i - k]) for k in (1, 2) if m['d24'].get(i - k) is not None), None)
+    hi = next(((k, m['d24'][i + k]) for k in (1, 2) if m['d24'].get(i + k) is not None), None)
+    if lo and hi:
+        return {'v': (lo[1] * hi[0] + hi[1] * lo[0]) / (lo[0] + hi[0]), 'exact': True}
     for k in (1, -1, 2, -2):
         f = m['d24'].get(i + k)
         if f is None:
@@ -172,6 +177,11 @@ def day24(m, i):
         if now is None or then is None:
             continue
         return {'v': f - now + then if k > 0 else f + now - then, 'exact': True}
+    one = m['d24'].get(i - 1)
+    if one is None:
+        one = m['d24'].get(i + 1)
+    if one is not None:                  # 30 minutes from BookMyShow's figure: the movement is tiny
+        return {'v': one, 'exact': True}
     return slsum(m, i - 48, i)
 
 
