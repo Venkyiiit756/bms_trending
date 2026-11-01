@@ -1,42 +1,42 @@
 {
  "date": "2026-11-01",
- "generated_at": "2026-11-01T10:19:25+05:30",
+ "generated_at": "2026-11-01T10:27:20+05:30",
  "mode": "claude",
  "model": "claude-haiku-5-5",
  "window": "4 AM Sat 31 Oct to 4 AM Sun 1 Nov IST",
  "day": "Sat 31 Oct",
- "headline": "Aadarsha Kutumbam led yesterday with 208K tickets booked, while Jailer 2 (Hindi) had the biggest daily rise at up 59%.",
+ "headline": "Aadarsha Kutumbam led yesterday with 208K tickets booked, while Jailer 2 (Hindi) was the biggest mover at up 59%.",
  "bullets": [
-  "Aadarsha Kutumbam ranked first with 208K tickets booked, down 4% from the day before.",
-  "Jailer 2 was second with 159K tickets, up 33% on the day before but down 60% on the week before.",
-  "Jailer 2 (Hindi) had the biggest move, rising from 18.1K to 28.7K tickets, up 59%.",
-  "Namit Malhotra's Ramayana has 533K+ people interested, gained 16K in 24 hours, and releases Thu 5 Nov with bookings open.",
-  "Varanasi, Spirit and King have no bookings open yet, and Spirit gained no interest in the last 24 hours."
+  "Aadarsha Kutumbam ranked first with 208K tickets, down 4% from the day before, and its busiest hour was 6:32 PM with 14.47K.",
+  "Jailer 2 was second with 159K tickets, up 33% on the day before, and Udta Teer was third with 61.7K.",
+  "Jailer 2 (Hindi) had the biggest move, rising up 59% to 28.7K, with its busiest hour at 9:08 PM.",
+  "Namit Malhotra's Ramayana has 533K+ people interested, gained 16K in 24 hours, and has bookings open for its Thu 5 Nov release.",
+  "Premada Oorali and Drishyam were also rising, up 52% and up 43% respectively."
  ],
  "drafts": [
   {
    "story": "leaderboard",
    "film": "Aadarsha Kutumbam",
-   "text": "🎬 Aadarsha Kutumbam led yesterday with 208K tickets booked on BookMyShow, ahead of Jailer 2 at 159K. Which film are you watching this weekend? #BoxOffice #Hyderabad",
+   "text": "🎬 Aadarsha Kutumbam led yesterday with 208K tickets booked, ahead of Jailer 2 at 159K. Udta Teer took third with 61.7K. #BoxOffice #Movies",
    "studio": {
     "type": "board24",
     "d": "2026-11-01",
     "t": "0400",
     "top": "5"
    },
-   "length": 165
+   "length": 139
   },
   {
    "story": "mover",
    "film": "Jailer 2 (Hindi)",
-   "text": "📈 Jailer 2 (Hindi) was up 59% on the day before, with 28.7K tickets booked yesterday on BookMyShow. Hindi audiences are showing up. #BoxOffice #Bollywood",
+   "text": "📈 Jailer 2 (Hindi) booked 28.7K tickets yesterday, up 59% on the day before. Its busiest hour was 9:08 PM with 2.45K tickets. #BoxOffice #Jailer2",
    "studio": null,
-   "length": 154
+   "length": 146
   },
   {
    "story": "interest",
    "film": "Namit Malhotra's Ramayana",
-   "text": "🔥 Namit Malhotra's Ramayana has 533K+ people interested and gained 16K in 24 hours. It releases Thu 5 Nov, and bookings are open now. #BoxOffice #Upcoming",
+   "text": "🔥 Namit Malhotra's Ramayana has 533K+ people interested and gained 16K in 24 hours. Bookings are open ahead of its Thu 5 Nov release. #BoxOffice #Ramayana",
    "studio": {
     "type": "interest",
     "top": "5"
@@ -47,8 +47,7 @@
  "flags": [
   "Jailer 2 (Hindi): 28.7K yesterday, +59% vs the day before",
   "Premada Oorali: 25.6K yesterday, +52% vs the day before",
-  "Drishyam: 25.3K yesterday, +43% vs the day before",
-  "health.newest_reading is Sun 1 Nov 10:17 AM, which is after the 8 AM check, yet minutes_old_at_8am is 0. Please confirm the data timestamp."
+  "Drishyam: 25.3K yesterday, +43% vs the day before"
  ],
  "notes": [
   "Tickets are counted from BookMyShow counters (one listing per film, not revenue).",
@@ -64,8 +63,8 @@
  "usage": {
   "calls": 1,
   "input_tokens": 4344,
-  "output_tokens": 2549,
-  "cost_cents": 0.171
+  "output_tokens": 2075,
+  "cost_cents": 0.147
  },
  "tables": {
   "films": [
