@@ -187,3 +187,8 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 - **Ask the data** (`ask.py`, `ask.yml`): the owner opens an issue titled "? question" (or label `ask`); Claude answers from a Python-built digest,
   numbers checked, answer posted as a comment and the issue closed. Only the repository owner's issues are answered.
 - Site: **Reports** tab (weekly report, radar, status, ask button). Shared helpers in `agentkit.py`.
+
+## Polling order (fix for films that were never asked)
+Runs end early (HTTP 429), and the slow (hourly) films used to be spread over the hour in a fixed order, so films at the end of
+`movies.json` (like Cult) were starved. `tracker.py` now saves when each film was last asked (`data/poll_state.json`) and every run asks the
+film asked longest ago first; a film asked recently waits until its interval is up.
