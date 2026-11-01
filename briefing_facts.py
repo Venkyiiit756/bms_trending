@@ -101,8 +101,10 @@ def _interest(today):
             g = v - ago[-1][1]
             e['gained_24h'] = ('+' if g >= 0 else '−') + fmt(abs(g))
             e['gained_24h_value'] = g
+        if rel and rel < today:
+            continue                 # already released: the interested count no longer applies
         if rel:
-            e['release'] = f'{rel:%a} {rel.day} {rel:%b}'
+            e['release'] = f'{rel:%a} {rel.day} {rel:%b}' + (f' {rel.year}' if rel.year != today.year else '')
             e['days_to_release'] = (rel - today).days
         key = c.get('group') or code             # other listings of one film show the same count: keep the longest history
         if key not in best or len(pts) > best[key][0]:

@@ -31,7 +31,7 @@ def build(today=None):
         day_ago = [p for p in m['points'] if p[0] <= t - timedelta(hours=22)]
         week_ago = [p for p in m['points'] if p[0] <= t - timedelta(days=6)]
         name = series.readable(c.get('name') or m['name'], c.get('page_slug'))
-        e = {'name': name, 'release': f'{rel:%a} {rel.day} {rel:%b}', 'release_date': rel.isoformat(), 'days': (rel - today).days,
+        e = {'name': name, 'release': f'{rel:%a} {rel.day} {rel:%b}' + (f' {rel.year}' if rel.year != today.year else ''), 'release_date': rel.isoformat(), 'days': (rel - today).days,
              'interested': bf.fmt(v) + '+', 'interested_value': v,
              'gain_24h': (('+' if v >= day_ago[-1][1] else '−') + bf.fmt(abs(v - day_ago[-1][1]))) if day_ago else None,
              'gain_7d': (('+' if v >= week_ago[-1][1] else '−') + bf.fmt(abs(v - week_ago[-1][1]))) if week_ago else None,
