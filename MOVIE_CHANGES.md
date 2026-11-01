@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-01
+- **Premada Oorali** (ET00412717): hourly -> every 30 min (best hourly figure in 24 h: 3.1K)
+
+## 2026-11-01
 - **Nayyi Navelli** (ET00513250): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
 - **Yaaran De Yaar** (ET00524195): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Gaamini** (ET00524286): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

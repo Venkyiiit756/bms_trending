@@ -196,7 +196,7 @@
     "page_slug": "premada-oorali",
     "csv": "data/ET00412717.csv",
     "headers_csv": "data/ET00412717_headers.csv",
-    "every": 3600
+    "every": 1800
   },
   {
     "key": "et00504928",
