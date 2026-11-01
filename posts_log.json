@@ -2368,5 +2368,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-01 23:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 10–11 PM (Sun 01 Nov)\n\n1. Namit Malhotra's Ramayana: 5.67K (▲63% vs Sat)\n2. Jailer 2: 2.6K (▼63% vs Sat)\n3. Aadarsha Kutumbam House No: 47 (AK 47): 2.45K (▼67% vs Sat)\n\n#NamitMalhotrasRamayana #Jailer2 #BoxOffice",
+  "images": [
+   "posts/2026-11-01/2300/1.png",
+   "posts/2026-11-01/2300/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (10–11 PM, Sun 01 Nov), with change against the same hour yesterday: Namit Malhotra's Ramayana 5.67K, ▲63% vs yesterday; Jailer 2 2.6K, ▼63% vs yesterday; Aadarsha Kutumbam House No: 47 (AK 47) 2.45K, ▼67% vs yesterday; Udta Teer 1.62K, ▼50% vs yesterday",
+   "Line chart of tickets booked in the last hour for Namit Malhotra's Ramayana through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
