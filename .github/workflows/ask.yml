@@ -1,0 +1,38 @@
+name: Ask the Data
+
+# Open an issue titled "? your question" (or add the label "ask") and get an answer as a comment, then the issue closes.
+# Only issues opened by the repository owner are answered, so nobody else can spend the API budget.
+# ask.py gives Claude a small digest of the data and checks every number in the answer against it.
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  ask:
+    if: >-
+      github.event.issue.user.login == github.repository_owner &&
+      (startsWith(github.event.issue.title, '?') || contains(github.event.issue.labels.*.name, 'ask'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install anthropic
+    - name: Answer
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        ISSUE_TITLE: ${{ github.event.issue.title }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
+      run: python ask.py > answer.md
+    - name: Reply and close
+      env:
+        GH_TOKEN: ${{ github.token }}
+        NUMBER: ${{ github.event.issue.number }}
+      run: |
+        gh issue comment "$NUMBER" --body-file answer.md
+        gh issue close "$NUMBER" --reason completed

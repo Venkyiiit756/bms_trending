@@ -144,6 +144,7 @@ tr.me td{background:var(--soft);font-weight:700}
   <button role="tab" data-tab="explore">Explore</button>
   <button role="tab" data-tab="totals">Totals</button>
   <button role="tab" data-tab="upcoming">Upcoming</button>
+  <button role="tab" data-tab="reports">Reports</button>
   <button role="tab" data-tab="kit">Auto posts</button>
   <button role="tab" data-tab="data">Data</button>
 </nav>
@@ -377,6 +378,32 @@ tr.me td{background:var(--soft);font-weight:700}
     <div class="chips" id="iPick"></div>
     <canvas id="icv" width="1400" height="620" style="margin-top:10px" aria-label="Chart of people interested over time"></canvas>
     <div style="max-height:440px;overflow:auto;margin-top:10px" id="iTable"></div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section id="reports">
+  <div class="card" id="rpWeek" hidden>
+    <div class="row spread"><h2>Weekly report</h2><span class="chip" id="rpWeekMode"></span></div>
+    <div class="mute" id="rpWeekWin"></div>
+    <div class="big" id="rpWeekHead" style="margin:10px 0 6px"></div>
+    <ul id="rpWeekBullets" style="margin:0 0 6px;padding-left:20px"></ul>
+    <div class="tw" id="rpWeekTable"></div>
+  </div>
+  <div class="card">
+    <h2>Release radar</h2>
+    <div class="mute" id="rpRadarNote">Films releasing in the next 3 weeks, most awaited by people who tapped "interested" on BookMyShow.</div>
+    <div class="tw" id="rpRadar"></div>
+  </div>
+  <div class="card">
+    <div class="row spread"><h2>Tracker status</h2><span class="chip" id="rpStatChip"></span></div>
+    <div class="mute">A watchdog checks the data every hour and opens an issue (an email to you) if anything stops.</div>
+    <div id="rpStatus" style="margin-top:8px"></div>
+  </div>
+  <div class="card">
+    <h2>Ask a question</h2>
+    <div class="mute">Open an issue titled "? your question" and the answer arrives as a comment within a minute or two. Example: "? Which film grew most this week?"</div>
+    <p style="margin:10px 0 0"><a class="btn" id="rpAsk" target="_blank" rel="noopener">Ask a question</a></p>
   </div>
 </section>
 
@@ -1295,9 +1322,27 @@ function kit(){
   $$('button[data-e]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.e.split(':').map(Number);const st=postSettings(P[i],j);show('studio');apply(st,false)});
 }
 
+/* ---------- REPORTS (weekly.json, radar.json, health.json) ---------- */
+let RPDONE=false;
+async function reports(){if(RPDONE)return;RPDONE=true;
+  const get=u=>fetch(u,{cache:'no-store'}).then(r=>r.json()).catch(()=>null);
+  const [W,R,H]=await Promise.all([get('data/weekly.json'),get('data/radar.json'),get('health.json')]);
+  $('#rpAsk').href='https://github.com/Venkyiiit756/bms_trending/issues/new?title='+encodeURIComponent('? ')+'&labels=ask';
+  if(W&&W.headline){$('#rpWeek').hidden=false;const ai=String(W.mode||'').startsWith('claude');
+    $('#rpWeekMode').textContent=W.mode==='claude'?'Written by Claude':ai?'Claude, partly automatic':'Automatic summary';$('#rpWeekMode').classList.toggle('ai',ai);
+    $('#rpWeekWin').textContent=W.window||'';$('#rpWeekHead').textContent=W.headline;
+    $('#rpWeekBullets').innerHTML=(W.bullets||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+    const pc=v=>v==null?'<span class="mute">—</span>':`<span class="${v>=0?'up':'down'}">${v>=0?'▲':'▼'} ${Math.abs(v)}%</span>`;
+    $('#rpWeekTable').innerHTML=(W.films||[]).length?`<table><thead><tr><th>#</th><th>Film</th><th class="n">Week</th><th class="n">vs last week</th><th class="n hide-sm">Best day</th></tr></thead><tbody>${W.films.map(r=>`<tr><td class="rank">${r.rank}</td><td class="movie">${mvLink(mvResolve(r.name),esc(inName(r.name)))}</td><td class="n"><b>${esc(r.week_total)}</b></td><td class="n">${pc(r.vs_prior_week)}</td><td class="n hide-sm">${esc(r.best_day)} · ${esc(r.best_day_tickets)}</td></tr>`).join('')}</tbody></table>`:''}
+  const rf=(R&&R.films)||[];
+  $('#rpRadar').innerHTML=rf.length?`<table><thead><tr><th>Release</th><th>Film</th><th class="n">Interested</th><th class="n hide-sm">24h</th><th class="n hide-sm">7 days</th></tr></thead><tbody>${rf.map(r=>`<tr><td>${esc(r.release)}<div class="mute">${r.days<0?'out now':r.days===0?'today':r.days===1?'tomorrow':'in '+r.days+' days'}</div></td><td class="movie">${esc(r.name)}<div><span class="chip ${r.bookings==='open'?'ok':''}" style="font-size:11px;padding:1px 7px">Bookings ${esc(r.bookings)}</span></div></td><td class="n"><b>${esc(r.interested)}</b><div class="${r.gain_24h&&!/^−/.test(r.gain_24h)?'up':'mute'}" style="font-size:12px">${esc(r.gain_24h?r.gain_24h+' today':'')}</div></td><td class="n hide-sm ${r.gain_24h&&!/^−/.test(r.gain_24h)?'up':'down'}">${esc(r.gain_24h||'—')}</td><td class="n hide-sm">${esc(r.gain_7d||'—')}</td></tr>`).join('')}</tbody></table>`:'<div class="mute" style="margin-top:8px">Nothing is releasing in the next 3 weeks that we follow.</div>';
+  const ck=(H&&H.checks)||[],bad=ck.filter(c=>!c.ok).length;
+  $('#rpStatChip').textContent=!ck.length?'no data':bad?bad+' to check':'All good';$('#rpStatChip').className='chip '+(!ck.length?'':bad?'err':'ok');
+  $('#rpStatus').innerHTML=ck.map(c=>`<div class="row spread" style="padding:7px 0;border-top:1px solid var(--line)"><span><span class="dot ${c.ok?'':'bad'}"></span>&nbsp; ${esc(c.name)}</span><span class="mute">${esc(c.detail)}</span></div>`).join('')}
+
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
-  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}if(tab==='movie')mvDraw()}
+  if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='reports')reports();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}if(tab==='movie')mvDraw()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 async function init(){
   [M,D,SL,IN,BR]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
@@ -1321,7 +1366,7 @@ function route(){
   const [tab,q]=location.hash.slice(1).split('?');
   if(tab==='studio'&&q){show('studio');apply(Object.fromEntries(new URLSearchParams(q)),false)}
   else if(tab==='movie'){const f=q&&new URLSearchParams(q).get('f');if(f)MV.name=mvResolve(f);show('movie')}
-  else if(['now','studio','explore','totals','upcoming','kit','data'].includes(tab))show(tab);
+  else if(['now','studio','explore','totals','upcoming','reports','kit','data'].includes(tab))show(tab);
 }
 init().catch(e=>{document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card">Could not load data: '+e+'</div>')});
 </script>
