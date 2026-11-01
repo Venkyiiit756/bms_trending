@@ -306,7 +306,7 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 21600
+    "every": 3600
   },
   {
     "key": "et00396541",
@@ -824,7 +824,7 @@
   },
   {
     "key": "et00518675",
-    "name": "Jailer 2 Telugu",
+    "name": "Jailer 2 (Telugu)",
     "eventcode": "ET00518675",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -848,7 +848,7 @@
   },
   {
     "key": "et00523167",
-    "name": "Haiku Telugu",
+    "name": "Haiku (Telugu)",
     "eventcode": "ET00523167",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1071,7 +1071,7 @@
     "page_slug": "yaaran-de-yaar",
     "csv": "data/ET00524195.csv",
     "headers_csv": "data/ET00524195_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-29"
   },
   {
@@ -1083,7 +1083,7 @@
     "page_slug": "gaamini",
     "csv": "data/ET00524286.csv",
     "headers_csv": "data/ET00524286_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-29"
   },
   {
@@ -1095,7 +1095,7 @@
     "page_slug": "ene-repeat",
     "csv": "data/ET00506990.csv",
     "headers_csv": "data/ET00506990_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-29"
   },
   {
@@ -1107,7 +1107,7 @@
     "page_slug": "kaal-kothri-punjabi",
     "csv": "data/ET00524390.csv",
     "headers_csv": "data/ET00524390_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-29"
   },
   {
@@ -1119,7 +1119,7 @@
     "page_slug": "udayam-kathu",
     "csv": "data/ET00524621.csv",
     "headers_csv": "data/ET00524621_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-29"
   },
   {
@@ -1292,7 +1292,7 @@
   },
   {
     "key": "et00518312",
-    "name": "Ramayana Telugu",
+    "name": "Ramayana (Telugu)",
     "eventcode": "ET00518312",
     "region_code": "HYD",
     "region_slug": "hyderabad",

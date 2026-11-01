@@ -2,6 +2,14 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-01
+- **Nayyi Navelli** (ET00513250): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Yaaran De Yaar** (ET00524195): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Gaamini** (ET00524286): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **ENE Repeat** (ET00506990): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Kaal Kothri (Punjabi)** (ET00524390): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Udayam Kathu** (ET00524621): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-10-31
 - added **King** (ET00455480), polled hourly
 - added **Ramayana Telugu** (ET00518312), polled hourly
