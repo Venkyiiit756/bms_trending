@@ -68,6 +68,7 @@ def targets(day=None):
     """[(code, name, release)] to follow: catalog films not released yet (release date after today, or
     no date yet but on an upcoming / coming-soon page in the last 3 days),
     plus watchlist codes, nearest release first."""
+    import series
     day = day or datetime.now(IST).date()
     catalog_path = os.path.join(ROOT, 'catalog.json')
     catalog = json.load(open(catalog_path, encoding='utf-8')) if os.path.exists(catalog_path) else {}
@@ -83,7 +84,7 @@ def targets(day=None):
         if e.get('group') and e.get('group') in groups:        # one listing per film (same count)
             continue
         groups.add(e.get('group'))
-        out[code] = (code, e.get('name', code), e.get('release') or '')
+        out[code] = (code, series.readable(e.get('name', code), e.get('page_slug')), e.get('release') or '')
     for w in watch:
         if w.get('code') and w['code'] not in out and catalog.get(w['code'], {}).get('group') not in groups:
             out[w['code']] = (w['code'], w.get('name', w['code']), catalog.get(w['code'], {}).get('release') or '')
