@@ -513,3 +513,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-02 02:26:40+05:30,Namit Malhotra's Ramayana,24_hours,86.62K,86.62K tickets booked in last 24 hours,,heartbeat,
 2026-11-02 02:51:40+05:30,Namit Malhotra's Ramayana,24_hours,86.58K,86.58K tickets booked in last 24 hours,2026-11-02 02:26:40+05:30,change,2026-11-02 02:51:40+05:30
 2026-11-02 04:04:34+05:30,Namit Malhotra's Ramayana,24_hours,86.56K,86.56K tickets booked in last 24 hours,2026-11-02 02:51:40+05:30,change,2026-11-02 04:04:34+05:30
+2026-11-02 04:29:34+05:30,Namit Malhotra's Ramayana,24_hours,86.57K,86.57K tickets booked in last 24 hours,2026-11-02 04:04:34+05:30,change,2026-11-02 04:29:34+05:30
