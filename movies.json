@@ -1307,5 +1307,17 @@
     "added": "2026-10-31",
     "paused": true,
     "dup": true
+  },
+  {
+    "key": "et00460536",
+    "name": "BTS Movie Week",
+    "eventcode": "ET00460536",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bts-movie-week",
+    "csv": "data/ET00460536.csv",
+    "headers_csv": "data/ET00460536_headers.csv",
+    "every": 3600,
+    "added": "2026-11-01"
   }
 ]

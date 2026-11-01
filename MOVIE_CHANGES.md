@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-01
+- added **BTS Movie Week** (ET00460536), polled hourly
+
+## 2026-11-01
 - **Premada Oorali** (ET00412717): hourly -> every 30 min (best hourly figure in 24 h: 3.1K)
 
 ## 2026-11-01

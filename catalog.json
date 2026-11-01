@@ -310,6 +310,15 @@
   "release": "Dec 24, 2026",
   "book": false
  },
+ "ET00460536": {
+  "first_seen": "2026-11-01",
+  "last_listed": null,
+  "name": "BTS Movie Week",
+  "page_slug": "bts-movie-week",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-01"
+ },
  "ET00465242": {
   "name": "Baa Baa Black Sheep",
   "page_slug": "baa-baa-black-sheep",
@@ -1300,7 +1309,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-31"
+  "upcoming": "2026-11-01"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",
