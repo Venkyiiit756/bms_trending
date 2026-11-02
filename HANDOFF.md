@@ -14,12 +14,10 @@ Nothing needs to run locally; the data accumulates on `main`.
 | `tracker.py` | Polls BookMyShow's app API and writes the CSVs. Runs inside the workflow. |
 | `.github/workflows/run_tracker.yml` | Hourly-chained job: runs `tracker.py --minutes 60 --commit`, then a last step dispatches the next run. An hourly cron (`:07`) is only a backup. |
 | `bms_booking_log.csv` | The main log (see below). |
-| `bms_api_headers.csv` | One row per poll with cache headers (`cf-cache-status`, `age`...). Diagnostic, about 120 KB/day. Set `LOG_HEADERS=0` to switch off. |
-| `window_sales.py` | Estimates tickets booked between two IST times. |
+| `bms_api_headers*.csv` | (removed) Cache-header logs, off since `LOG_HEADERS=0`; set `LOG_HEADERS=1` to bring them back. Old copies are in git history. |
 
 The bot commits as `github-actions[bot]` ("Update booking logs [skip ci]") every few minutes.
 **Always `git fetch` and read `origin/main:bms_booking_log.csv`**, because a local checkout goes stale quickly.
-`window_sales.py` reads `bms_booking_log.csv` from the current directory unless you pass `--csv <path>`.
 
 ## The log: `bms_booking_log.csv`
 Columns: `timestamp, movie_name, metric_type, metric_value, raw_text, prev_poll, kind, fresh_at`
@@ -40,12 +38,6 @@ Columns: `timestamp, movie_name, metric_type, metric_value, raw_text, prev_poll,
 - At night, stale copies are sometimes served (ages of 1,000 s or more), which produces occasional flip-flop rows (a value, an older value, the value again within seconds). Treat them as noise.
 - Occasional HTTP **429** rate-limit errors, mostly overnight. Back-off is 120/240/480/900 s, and `Retry-After` has been seen at 3,600 s. When the wait exceeds the run's remaining window, the run ends and the next run polls immediately from a different runner.
 - Known gaps: 2026-10-07 14:19-14:39 (a stall) and 16:52-17:09 (a 429 block). Those readings are lost.
-
-## `window_sales.py`
-`python window_sales.py 10:00 12:00` or `python window_sales.py "2026-10-08 10:00" "2026-10-08 12:00" --csv <fresh copy>`
-- Times are IST. It sums whole-hour readings (each reading is the hour before it), interpolating between refreshes, and prints an estimate with a low-high range.
-- It refuses end times in the future and times before the data starts. Error rows and `24_hours` rows are ignored.
-- The docstring says "~15 minutes"; the real refresh is about 10 minutes.
 
 ## Reference numbers (tickets in the previous hour, K)
 | Time (IST) | Thu 8 Oct | Fri 9 Oct | Sat 10 Oct |
