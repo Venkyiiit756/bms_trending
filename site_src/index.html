@@ -744,10 +744,10 @@ function render(){
   } else if(S.type==='totals'||S.type==='totalsbar'){
     const n=$('#sMovie').value;const m=slm(n);
     if(!m){box=frame(ctx,W,H,'Tickets per day','');empty(ctx,W,H,'No data for this movie')}else{
-    const [a,b]=rangeOf(m,S.ra,S.rb);let res=dayRows(m,a,b);
-    $('#sRange').textContent=`${whenLabel(slMs(m,a))} → ${whenLabel(slMs(m,b))} IST`;
+    const [a,b]=rangeOf(m,S.ra,S.rb);let res=dayRows(m,a,b,a>0&&a===firstFour(m));const a0=res.rows.length?res.rows[0].a:a;
+    $('#sRange').textContent=`${whenLabel(slMs(m,a0))} → ${whenLabel(slMs(m,b))} IST`;
     const tot=`${res.exact?'':'≈'}${fmt(res.total)}`;const nd=res.rows.length;
-    box=frame(ctx,W,H,`${n}: ${tot} tickets`,`${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))} IST · ${nd} day${nd>1?'s':''}${res.exact?'':' · ≈ estimated'}`);
+    box=frame(ctx,W,H,`${n}: ${tot} tickets`,`${whenShort(slMs(m,a0))} to ${whenShort(slMs(m,b))} IST · ${nd} day${nd>1?'s':''}${res.exact?'':' · ≈ estimated'}`);
     if(S.type==='totals'){const R=res.rows.slice(-14);const skip=res.rows.length-R.length;
       const rows=R.map((x,k)=>[`Day ${skip+k+1}`,`${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}`,fmtV(x.r),x.run!=null?fmt(x.run):'—']);
       rows.push(['Total','',tot,'']);
@@ -757,7 +757,7 @@ function render(){
     const lines=res.rows.map((x,k)=>`Day ${k+1} (${x.full?short(msParts(slMs(m,x.a))[0]):Math.round((x.b-x.a)/2)+'h'}): ${fmtV(x.r)}`);
     CAP.long=build(`🎟️ ${n} on BookMyShow: ${tot} tickets booked from ${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))}`,lines.slice(-7),[n]);
     CAP.short=`${n}: ${tot} tickets booked on BookMyShow in ${nd} day${nd>1?'s':''} (${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))}).\n\n${tags(n)}`;
-    ALT=`${S.type==='totals'?'Table':'Bar chart'} of tickets booked per day for ${n} on BookMyShow, ${whenLabel(slMs(m,a))} to ${whenLabel(slMs(m,b))}: `+lines.join('; ')+`. Total ${tot}.`+(res.exact?'':' Figures marked ≈ are estimates from hourly figures.')}
+    ALT=`${S.type==='totals'?'Table':'Bar chart'} of tickets booked per day for ${n} on BookMyShow, ${whenLabel(slMs(m,a0))} to ${whenLabel(slMs(m,b))}: `+lines.join('; ')+`. Total ${tot}.`+(res.exact?'':' Figures marked ≈ are estimates from hourly figures.')}
   } else if(S.type==='trend'){
     const nd=+$('#sDays').value;const ds=[...Array(nd)].map((_,i)=>addDays(d,i-nd+1));const names=chosen();
     const rows=[],cols=[];names.forEach(n=>{const vals=ds.map(x=>{const v=snap(x,t)[n];return v&&v.k===1?v:null});rows.push([n,...vals.map(v=>v?v.t:'—')]);cols.push([th.first,...vals.map((v,i)=>i===0||!v||!vals[i-1]?th.ink:color(v.n,vals[i-1].n))])});
@@ -918,7 +918,8 @@ function day24(m,i){const e=m.d24[i];if(e!=null)return {v:e,exact:true};
   if(l2||h2){const q=l2||h2;return {v:q[1],exact:true,near:q[0]}}
   return slSum(m,i-48,i)}
 // real 24-hour days from slot a to slot b (the last one may be shorter)
-function dayRows(m,a,b){const rows=[];let run=0,ok=true;
+function dayRows(m,a,b,lead){const rows=[];let run=0,ok=true;
+  if(lead&&a>0){const r0=day24(m,a);if(r0&&r0.exact){run=r0.v;rows.push({a:a-48,b:a,full:true,r:r0,run})}}   // the day before: BookMyShow's own 24-hour figure at the first 4 AM
   for(let s=a;s<b;s+=48){const e=Math.min(s+48,b);const full=e-s===48;const r=full?day24(m,e):slSum(m,s,e);
     if(r)run+=r.v;else ok=false;rows.push({a:s,b:e,full,r,run:r?run:null})}
   return {rows,total:run,ok,exact:ok&&rows.every(x=>x.r&&x.r.exact)}}
@@ -952,6 +953,7 @@ function totalsInit(){
   $$('#totals [data-n]').forEach(b=>b.onclick=()=>{const [id,n]=b.dataset.n.split(':');const e=$('#'+id);e.value=+e.value+ +n;e.oninput()});
   $$('#totals [data-q]').forEach(b=>b.onclick=()=>totalsQuick(b.dataset.q));
   totalsQuick('all')}
+const firstFour=m=>{const L=m.slots.length-1;let i=0;while(i<L&&msParts(slMs(m,i))[1]!=='0400')i++;return i<L?i:0};
 function totalsQuick(q){const m=slm($('#tMovie').value);if(!m)return;const L=m.slots.length-1,f=$('#tFrom'),t=$('#tTo');
   f.max=t.max=L;
   if(q==='all'){f.value=0;t.value=L}
@@ -961,12 +963,12 @@ function totalsQuick(q){const m=slm($('#tMovie').value);if(!m)return;const L=m.s
 function totals(){
   const m=slm($('#tMovie').value);if(!m)return;const a=+$('#tFrom').value,b=+$('#tTo').value;
   $('#tFromL').textContent=whenLabel(slMs(m,a))+(a===0?' (tracking began)':'');$('#tToL').textContent=whenLabel(slMs(m,b))+(b===m.slots.length-1?' (latest)':'');
-  const res=dayRows(m,a,b);TT.m=m;TT.a=a;TT.b=b;TT.res=res;
+  const f4=firstFour(m),res=dayRows(m,a,b,a===f4&&f4>0);TT.m=m;TT.a=a;TT.b=b;TT.res=res;
   const full=res.rows.filter(x=>x.full).length,hrs=Math.floor((b-a)%48/2);
   const miss=res.rows.filter(x=>!x.r),lastOnly=miss.length===1&&miss[0]===res.rows[res.rows.length-1]&&!miss[0].full;
   $('#tTotal').textContent=`${res.exact?'':'≈ '}${fmt(res.total)} tickets`;
   $('#tSub').dataset.miss=res.ok?'':lastOnly?`Latest ${Math.round((miss[0].b-miss[0].a)/2)} hours not in the total yet (BookMyShow shows only its 24-hour figure then). `:`${miss.length} day${miss.length>1?'s':''} without data not in the total. `;
-  $('#tSub').textContent=`${m.name} · ${whenLabel(slMs(m,a))} to ${whenLabel(slMs(m,b))} IST · ${full} full day${full===1?'':'s'}${hrs?` + ${hrs} hour${hrs===1?'':'s'}`:''} · estimate factor ×${m.factor}`;if($('#tSub').dataset.miss)$('#tSub').textContent=$('#tSub').dataset.miss+$('#tSub').textContent;
+  $('#tSub').textContent=`${m.name} · ${whenLabel(slMs(m,res.rows.length?res.rows[0].a:a))} to ${whenLabel(slMs(m,b))} IST · ${full} full day${full===1?'':'s'}${hrs?` + ${hrs} hour${hrs===1?'':'s'}`:''} · estimate factor ×${m.factor}`;if($('#tSub').dataset.miss)$('#tSub').textContent=$('#tSub').dataset.miss+$('#tSub').textContent;
   if($('#totals').classList.contains('on')){const cv=$('#tcv'),ctx=cv.getContext('2d');const keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);
     bars(ctx,cv.width,{top:6,bottom:cv.height-4,u:0.85,flat:true},dayItems(m,res));S.style=keep}
   $('#tTable').innerHTML=`<table><thead><tr><th>Day</th><th>From → to (IST)</th><th class="n">Tickets</th><th class="n">Total so far</th><th class="hide-sm">Source</th></tr></thead><tbody>${res.rows.map((x,k)=>`<tr><td class="rank">${k+1}</td><td>${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}${x.full?'':` <span class="mute">(${Math.round((x.b-x.a)/2)}h)</span>`}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n">${x.run!=null?fmt(x.run):'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}
@@ -1061,7 +1063,7 @@ function mvDays(m,hr){
   if(!m||m.slots.length<3)return null;
   const L=m.slots.length-1;let a=0;while(a<L&&msParts(slMs(m,a))[1]!=='0400')a++;if(a>=L)a=0;
   const res=dayRows(m,a,L),list=[];
-  if(a>0)list.push({a:0,b:a,full:false,r:slSum(m,0,a),pre:true});
+  if(a>0){const r0=day24(m,a);list.push(r0&&r0.exact?{a:a-48,b:a,full:true,r:r0,pre:false}:{a:0,b:a,full:false,r:slSum(m,0,a),pre:true})}
   res.rows.forEach(x=>list.push({...x,pre:false}));
   let run=0,prev=null;const byDate={};
   list.forEach(x=>{if(x.r)run+=x.r.v;x.run=x.r?run:null;
