@@ -192,3 +192,9 @@ Wednesday Oct 7 data only exists from 10:08. Thursday's hourly figure starts at 
 Runs end early (HTTP 429), and the slow (hourly) films used to be spread over the hour in a fixed order, so films at the end of
 `movies.json` (like Cult) were starved. `tracker.py` now saves when each film was last asked (`data/poll_state.json`) and every run asks the
 film asked longest ago first; a film asked recently waits until its interval is up.
+
+## Day totals when nothing was read near 4 AM
+`day24` (sales.py and the website) now also uses BookMyShow's nearest 24-hour figure within 4 hours (`NEAR` = 8 slots) of 4 AM: blended
+when there is one on each side, else the one side; marked exact, with `near` = distance in slots. Tested on days that do have a reading at
+4 AM: median error 0.3% at 3 hours, 1.0% at 4 hours (90th percentile 2.5%), because night sales are small and the 24-hour window drops
+off about as much as it adds. Fixes blank days (Ramayana 25-28 Oct).
