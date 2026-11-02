@@ -3488,3 +3488,5 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-02 15:59:34+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-02 15:59:56+05:30,Drishyam 3,24_hours,15.32K,15.32K tickets booked in last 24 hours,2026-11-02 15:49:32+05:30,change,2026-11-02 15:59:56+05:30
 2026-11-02 16:10:01+05:30,Drishyam 3,24_hours,15.18K,15.18K tickets booked in last 24 hours,2026-11-02 15:59:56+05:30,change,2026-11-02 16:10:01+05:30
+2026-11-02 16:19:20+05:30,Drishyam 3,24_hours,14.96K,14.96K tickets booked in last 24 hours,2026-11-02 16:10:01+05:30,change,2026-11-02 16:19:20+05:30
+2026-11-02 16:29:26+05:30,Drishyam 3,24_hours,14.78K,14.78K tickets booked in last 24 hours,2026-11-02 16:19:20+05:30,change,2026-11-02 16:29:26+05:30
