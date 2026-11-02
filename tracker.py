@@ -39,6 +39,8 @@ BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after 
 SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
 WINDOW = ((3, 0), (5, 0))   # IST: every film (not too old) must be read once in this window, the sweep aims at ~4 AM
+NIGHT_TRIES = 3           # a film whose night read found no counter is asked up to this many times
+NIGHT_RETRY = 600          # seconds between those attempts
 OLD_DAYS = 50              # films released more than this many days ago are left out of the night read
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
 COMMIT_EVERY = 600         # push collected rows at most this often (plus before each snapshot)
@@ -301,6 +303,7 @@ def save_poll_state(state):
         json.dump({k: v.isoformat(timespec='seconds') for k, v in sorted(state.items())}, f, indent=0)
 
 
+TRIES = {}       # night read attempts that found no counter
 PENDING = set()  # films still owed their 3-5 AM read
 POLLED = {}      # movie key -> time of its last request, saved so the next run knows who is overdue
 
@@ -322,6 +325,12 @@ def poll(st, shared):
         if no_counter:       # this movie only: no Trending widget (yet)
             st.missing += 1
             wait = MISSING_RETRY
+            if st.key in PENDING:     # night read: try up to NIGHT_TRIES times, NIGHT_RETRY apart, while the window is open
+                TRIES[st.key] = TRIES.get(st.key, 0) + 1
+                if TRIES[st.key] < NIGHT_TRIES:
+                    wait = NIGHT_RETRY
+                else:
+                    PENDING.discard(st.key)
             n = st.missing
         else:                # access problem: likely shared by all movies
             shared['failures'] += 1
@@ -581,6 +590,7 @@ def run(keys, minutes, commit):
         while True:
             if time.monotonic() >= sweep_mono:
                 t_s = now()
+                TRIES.clear()
                 PENDING.update(night_films(movies, [s_.key for s_ in states], t_s.date()))
                 for s_ in states:
                     if s_.key in PENDING:

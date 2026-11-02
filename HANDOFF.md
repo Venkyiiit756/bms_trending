@@ -204,3 +204,7 @@ off about as much as it adds. Fixes blank days (Ramayana 25-28 Oct).
 first; interest jobs wait until the queue is empty. A 429 during the window retries after the block lifts (not after the normal hour); the window
 closes at 5:00 (`WINDOW`) and logs any film that was not read. A run that starts inside the window queues whoever has no read since 3:00.
 A request that gets a 429 no longer counts as "asked" in `data/poll_state.json`. Simulated with a fake clock: 85 of 85 films read between 3:45 and 4:12.
+
+## Night read retries and the first day
+- `tracker.py`: a film whose night read finds no counter is asked again up to `NIGHT_TRIES` (3) times, `NIGHT_RETRY` (10 min) apart, until 5 AM; a 429 retries when the block lifts.
+- Website: when the Totals range starts at the first 4 AM (Align button), or the Movie tab's day-by-day starts, a row for the day before is added from BookMyShow's own 24-hour figure near that 4 AM (Ramayana: Thu 22 4 AM -> Fri 23 4 AM = 23.5K from the 1:51 AM reading).
