@@ -128,6 +128,68 @@ tr.me td{background:var(--soft);font-weight:700}
 .stack i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;overflow:hidden;white-space:nowrap}
 .pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12.5px;font-weight:700}
 .pill.up{background:rgba(10,125,51,.12)}.pill.down{background:rgba(192,57,43,.12)}
+
+/* ---------- visual refresh: tokens, depth, rounded controls, sticky pill tabs ---------- */
+:root{--bg:#f3f5f9;--card:#fff;--ink:#101828;--mute:#5b6778;--line:#e3e8ef;--brand:#1d3a63;--brand2:#3d74bf;--soft:#f0f4fa;--up:#0b8a3e;--down:#c8382b;--focus:#3d74bf;--shadow:0 1px 2px rgba(16,24,40,.05),0 10px 28px -14px rgba(16,24,40,.18);--tint-up:rgba(11,138,62,.11);--tint-down:rgba(200,56,43,.11)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1218;--card:#151c26;--ink:#e9eef5;--mute:#9aa7b8;--line:#263140;--brand:#5b8dd6;--brand2:#7aa7ec;--soft:#1a2330;--up:#4cc27a;--down:#ff7a6b;--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px -16px rgba(0,0,0,.6);--tint-up:rgba(76,194,122,.14);--tint-down:rgba(255,122,107,.14)}}
+:root[data-theme="dark"]{--bg:#0d1218;--card:#151c26;--ink:#e9eef5;--mute:#9aa7b8;--line:#263140;--brand:#5b8dd6;--brand2:#7aa7ec;--soft:#1a2330;--up:#4cc27a;--down:#ff7a6b;--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px -16px rgba(0,0,0,.6);--tint-up:rgba(76,194,122,.14);--tint-down:rgba(255,122,107,.14)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"cv11","ss01"}
+header{padding:22px 0 10px}
+h1{font-size:23px;font-weight:800;letter-spacing:-.025em}
+h1::before{content:"";display:block;width:38px;height:4px;border-radius:4px;margin-bottom:10px;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+nav{position:sticky;top:0;z-index:20;gap:6px;padding:8px 0;margin:8px 0 16px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav.more{-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent)}
+nav button{border:1px solid transparent;border-radius:999px;padding:8px 15px;font-weight:650;transition:background .15s,color .15s}
+nav button:hover{background:var(--soft);color:var(--ink)}
+nav button[aria-selected="true"]{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-color:transparent;box-shadow:0 4px 14px -6px var(--brand)}
+@media (max-width:560px){nav button{padding:8px 13px;font-size:13.5px}}
+.card{border-radius:16px;padding:18px;box-shadow:var(--shadow);border-color:var(--line)}
+@media (max-width:560px){.card{padding:15px}}
+h2{font-size:17px;font-weight:750;letter-spacing:-.012em}
+.mute{line-height:1.45}
+select,button,a.btn,input[type=number]{border-radius:10px;padding:8px 13px;font-weight:550;transition:background .15s,border-color .15s,box-shadow .15s}
+select{padding-right:10px}
+button:hover:not(:disabled):not([aria-selected="true"]):not([aria-pressed="true"]):not(.primary),a.btn:hover:not(.primary){background:var(--soft);border-color:color-mix(in srgb,var(--mute) 45%,var(--line))}
+button.primary,a.btn.primary,.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--brand),var(--brand2));border-color:transparent;color:#fff}
+button.primary:hover:not(:disabled){background:linear-gradient(135deg,var(--brand),var(--brand2));filter:brightness(1.08)}
+.seg{border-radius:10px;padding:2px;background:var(--soft);border-color:var(--line)}
+.seg button{border-radius:8px;background:transparent;border:0!important}
+.seg button+button{border-left:0}
+.seg button:hover:not([aria-pressed="true"]){background:color-mix(in srgb,var(--line) 60%,transparent)}
+th{background:var(--soft);font-size:11.5px;letter-spacing:.05em;border-bottom:1px solid var(--line);padding:9px 10px}
+th:first-child{border-radius:10px 0 0 10px}th:last-child{border-radius:0 10px 10px 0}
+td{padding:10px 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+tbody tr:hover td{background:color-mix(in srgb,var(--soft) 65%,transparent)}
+tr.tot td{border-top:2px solid var(--ink);background:transparent}
+.chip{background:var(--soft);padding:3px 10px;font-weight:600}
+.chip.ok,.src.ok{background:var(--tint-up);border-color:transparent}
+.chip.err{background:var(--tint-down);border-color:transparent}
+.chip.ai{background:color-mix(in srgb,var(--brand2) 14%,transparent);border-color:transparent}
+.src{background:var(--soft);border-color:transparent;font-weight:600}
+.pill.up{background:var(--tint-up)}.pill.down{background:var(--tint-down)}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:14px 16px 14px 18px;box-shadow:var(--shadow)}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--brand2),var(--brand))}
+.kpi .v{font-size:26px}
+canvas{border-radius:12px;border-color:var(--line);box-shadow:0 1px 2px rgba(16,24,40,.05)}
+textarea{border-radius:10px;background:var(--soft)}
+.draft,.post{border-radius:14px}
+.flagbox{border-radius:12px}
+.jump a{background:var(--soft);border-color:transparent;font-weight:550}
+.jump a:hover{background:color-mix(in srgb,var(--brand2) 16%,transparent);color:var(--ink)}
+.toast{border-radius:12px;box-shadow:var(--shadow)}
+details>summary{cursor:pointer}
+.rel{white-space:nowrap}@media (max-width:560px){.rel{white-space:normal}}
+.kpi#tTotal,#tTotal.kpi{border:0;box-shadow:none;padding:0;background:none;overflow:visible}#tTotal.kpi::before{display:none}
+.only-sm{display:none}@media (max-width:560px){.only-sm{display:block}}
+.relcount{font-size:12.5px;color:var(--mute)}
+.subhead td{background:var(--soft);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);border-radius:10px}
+.moreposts{display:grid;gap:10px;margin-top:6px}
+.how{margin-top:10px;font-size:13px;color:var(--mute)}
+.how summary{font-weight:600}
+@media (max-width:560px){th{font-size:10.5px;letter-spacing:.02em}th,td{padding:9px 6px}th:first-child,td:first-child{padding-left:4px}td.rank{width:20px}}
+#uTable{overflow-x:auto}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
@@ -986,13 +1048,20 @@ $('#tImg').onclick=()=>{if(!TT.m)return;const L=TT.m.slots.length-1;apply({type:
 /* ---------- UPCOMING: interested counts (data/interest.json, see interest.py) ---------- */
 const inMs=s=>keyMs(s.slice(0,10)+' '+s.slice(11,13)+s.slice(14,16));
 function inAt(f,ms){let best=null;for(const p of f.points){if(inMs(p[0])<=ms)best=p;else break}return best}
-function releaseInfo(text){const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(text||'');if(!m)return {short:'—',long:'—',days:null};
+function releaseInfo(text,book){const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(text||'');if(!m)return {short:'—',long:'—',date:'—',count:'',days:null,state:'none'};
   const d=iso(new Date(Date.UTC(+m[3],MON.indexOf(m[1]),+m[2])));const today=msParts(Date.now())[0];const days=Math.round((pd(d)-pd(today))/864e5);
-  return {short:`${pd(d).getUTCDate()} ${m[1]}`,long:`${dayLabel(d)} · ${days>1?`in ${days} days`:days===1?'tomorrow':days===0?'today':'released'}`,days}}
+  const yr=+m[3]!==+today.slice(0,4)?` ${m[3]}`:'';
+  // BookMyShow shows stand-in dates (31 Dec) and stale past dates for films that have no real date yet
+  const state=days<-14&&book!==true?'unconfirmed':(m[1]==='Dec'&&m[2]==='31'?'tentative':days<0?'released':'upcoming');
+  const count=state==='unconfirmed'?'date not confirmed':state==='tentative'?`tentative · ${days>1?`in ${days} days`:'soon'}`:days>1?`in ${days} days`:days===1?'tomorrow':days===0?'today':'released';
+  const date=state==='unconfirmed'?'Date not confirmed':`${dayLabel(d)}${yr}`;
+  return {short:`${pd(d).getUTCDate()} ${m[1]}`,long:`${date} · ${count}`,date,count,days,state}}
 function inRows(){return IN.films.filter(f=>f.points.length).map(f=>{const L=f.points[f.points.length-1],ms=inMs(L[0]);const d1=inAt(f,ms-864e5),d7=inAt(f,ms-7*864e5);
-  return {f,v:L[1],t:L[0],g1:d1&&inMs(d1[0])>ms-1.5*864e5?L[1]-d1[1]:null,g7:d7?L[1]-d7[1]:null,rel:releaseInfo(f.release)}}).sort((a,b)=>b.v-a.v)}
+  return {f,v:L[1],t:L[0],g1:d1&&inMs(d1[0])>ms-1.5*864e5?L[1]-d1[1]:null,g7:d7?L[1]-d7[1]:null,rel:releaseInfo(f.release,f.book)}}).sort((a,b)=>b.v-a.v)}
 function upcoming(){const R=inRows();
-  $('#uTable').innerHTML=R.length?`<table><thead><tr><th>#</th><th>Film</th><th>Release</th><th class="n">Interested</th><th class="n">Last 24h</th><th class="n hide-sm">Last 7 days</th><th class="hide-sm">Bookings</th></tr></thead><tbody>${R.map((r,i)=>`<tr><td class="rank">${i+1}</td><td class="movie">${mvLink(r.f.name)} <a href="${r.f.url}" target="_blank" rel="noopener" class="mute" title="Open on BookMyShow" style="text-decoration:none">↗</a><div class="mute">${(r.f.languages||[]).slice(0,4).join(', ')}</div></td><td>${r.rel.long}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.g1>0?'up':''}">${r.g1!=null?'+'+fmt(r.g1):'—'}</td><td class="n hide-sm">${r.g7!=null?'+'+fmt(r.g7):'—'}</td><td class="hide-sm">${r.f.book?'<span class="src ok">Open</span>':r.f.book===false?'<span class="src">Not yet</span>':''}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:8px">Counts are rounded by BookMyShow, so small changes show in steps (0.1K below 100K, 1K above). Latest check ${whenLabel(inMs(R.reduce((a,r)=>r.t>a?r.t:a,'')))} IST.</div>`
+  const live=R.filter(r=>r.rel.state!=='released'),done=R.filter(r=>r.rel.state==='released');
+  const row=(r,i)=>`<tr><td class="rank hide-sm">${i+1}</td><td class="movie">${mvLink(r.f.name)} <a href="${r.f.url}" target="_blank" rel="noopener" class="mute" title="Open on BookMyShow" style="text-decoration:none">↗</a><div class="mute">${(r.f.languages||[]).slice(0,4).join(', ')}</div></td><td class="rel">${r.rel.date}${r.rel.state==='unconfirmed'?'':`<div class="relcount">${r.rel.count}</div>`}</td><td class="n"><b>${fmt(r.v)}+</b>${r.g1>0?`<div class="up only-sm" style="font-size:12px">+${fmt(r.g1)} today</div>`:''}</td><td class="n hide-sm ${r.g1>0?'up':''}">${r.g1!=null?'+'+fmt(r.g1):'—'}</td><td class="n hide-sm">${r.g7!=null?'+'+fmt(r.g7):'—'}</td><td class="hide-sm">${r.f.book?'<span class="src ok">Open</span>':r.f.book===false?'<span class="src">Not yet</span>':''}</td></tr>`;
+  $('#uTable').innerHTML=R.length?`<table><thead><tr><th class="hide-sm">#</th><th>Film</th><th>Release</th><th class="n">Interested</th><th class="n hide-sm">Last 24h</th><th class="n hide-sm">Last 7 days</th><th class="hide-sm">Bookings</th></tr></thead><tbody>${live.map((r,i)=>row(r,i)).join('')}${done.length?`<tr class="subhead"><td colspan="7" style="padding:8px 10px">Recently released</td></tr>${done.map((r,i)=>row(r,live.length+i)).join('')}`:''}</tbody></table><div class="mute" style="margin-top:8px">Counts are rounded by BookMyShow, so small changes show in steps (0.1K below 100K, 1K above). Latest check ${whenLabel(inMs(R.reduce((a,r)=>r.t>a?r.t:a,'')))} IST.</div>`
     :'<div class="empty">No interest figures yet. The tracker checks upcoming films every hour.</div>'}
 $('#uImg').onclick=()=>{apply({type:'interest',top:'7'},false);show('studio')};
 
@@ -1308,7 +1377,7 @@ function briefing(){const B=BR;if(!B||!B.headline)return;
   (B.drafts||[]).forEach((d,i)=>{upd(i);$('#bt'+i).oninput=()=>upd(i)});
   $$('#briefDrafts [data-bc]').forEach(b=>b.onclick=()=>copy($('#bt'+b.dataset.bc).value,'Post copied'));
   $$('#briefDrafts [data-bs]').forEach(b=>b.onclick=()=>{apply(B.drafts[+b.dataset.bs].studio,false);show('studio')});
-  const U=B.usage;$('#briefNote').textContent=(B.notes||[]).join(' ')+(U?` Model ${B.model||''}: ${U.input_tokens.toLocaleString()} tokens in, ${U.output_tokens.toLocaleString()} out${U.cost_cents!=null?`, about ${U.cost_cents}¢`:''}.`:'')}
+  const U=B.usage;$('#briefNote').innerHTML=esc((B.notes||[]).join(' '))+(U?`<details class="how"><summary>How this was made</summary>Written by ${esc(B.model||'the template writer')}; ${U.input_tokens.toLocaleString()} tokens in, ${U.output_tokens.toLocaleString()} out${U.cost_cents!=null?`, about ${U.cost_cents}¢`:''}. Every number was checked against the data before it was kept.</details>`:'')}
 
 /* ---------- AUTO POSTS ---------- */
 function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':','');const h=+T2.slice(0,2);
@@ -1318,15 +1387,17 @@ function postSettings(p,j){const [d,t]=p.slot.split(' ');const T2=t.replace(':',
   return {type:'peak',d:addDays(d,-1),t:'2330',top:'7'}}
 function kit(){
   const P=M.posts||[];if(!P.length){$('#posts').innerHTML='<div class="empty">No posts yet. The first one appears after the next full hour between 8 AM and 11 PM IST.</div>';return}
-  $('#posts').innerHTML=P.slice(0,24).map((p,i)=>{
+  const items=P.slice(0,24).map((p,i)=>{
     const [d,t]=p.slot.split(' ');const st=p.status==='posted'?`<a class="chip ok" href="https://x.com/i/web/status/${p.tweet}" target="_blank" rel="noopener">Posted ↗</a>`
-      :p.status.startsWith('error')?`<span class="chip err" title="${p.status.replace(/"/g,'&quot;')}">Not posted (error)</span>`:`<span class="chip">Not posted</span>`;
+      :p.status.startsWith('error')?`<span class="chip err" title="${p.status.replace(/"/g,'&quot;')}">Not posted (error)</span>`:'';
     const first=(p.text.split('\n').find(l=>/^1\./.test(l))||'').replace(/</g,'&lt;');
     return `<details class="post" ${i===0?'open':''}><summary><strong>${dayLabel(d)} · ${timeLabel(t.replace(':',''))}</strong>${st}<span class="first">${first}</span></summary>
       <div class="thumbs" style="margin-top:10px">${p.images.map((f,j)=>`<div class="thumb"><a href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png" title="Download image ${j+1}"><img src="${f}" alt="${(p.alt[j]||'').replace(/"/g,'&quot;')}" loading="lazy"></a><button data-e="${i}:${j}">Edit in Studio</button></div>`).join('')}</div>
       <textarea readonly rows="7" style="margin-top:10px">${p.text.replace(/</g,'&lt;')}</textarea>
       <div class="row" style="margin-top:8px"><button data-c="${i}">Copy caption</button><button data-a="${i}">Copy alt text</button><a class="btn" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=${encodeURIComponent(p.text)}">Open in X</a>
-      ${p.images.map((f,j)=>`<a class="btn" href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png">Image ${j+1}</a>`).join('')}</div></details>`}).join('');
+      ${p.images.map((f,j)=>`<a class="btn" href="${f}" download="${d}_${t.replace(':','')}_${j+1}.png">Image ${j+1}</a>`).join('')}</div></details>`});
+  $('#posts').innerHTML=items.slice(0,6).join('')+(items.length>6?`<div id="morePosts" class="moreposts" hidden>${items.slice(6).join('')}</div><button id="showMorePosts" style="margin-top:6px">Show earlier posts (${items.length-6})</button>`:'');
+  const sm=$('#showMorePosts');if(sm)sm.onclick=()=>{const m=$('#morePosts');m.hidden=!m.hidden;sm.textContent=m.hidden?`Show earlier posts (${items.length-6})`:'Hide earlier posts'};
   $$('button[data-c]').forEach(b=>b.onclick=()=>copy(P[b.dataset.c].text,'Caption copied'));
   $$('button[data-a]').forEach(b=>b.onclick=()=>copy(P[b.dataset.a].alt.join('\n\n'),'Alt text copied'));
   $$('button[data-e]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.e.split(':').map(Number);const st=postSettings(P[i],j);show('studio');apply(st,false)});
@@ -1351,9 +1422,11 @@ async function reports(){if(RPDONE)return;RPDONE=true;
   $('#rpStatus').innerHTML=ck.map(c=>`<div class="row spread" style="padding:7px 0;border-top:1px solid var(--line)"><span><span class="dot ${c.ok?'':'bad'}"></span>&nbsp; ${esc(c.name)}</span><span class="mute">${esc(c.detail)}</span></div>`).join('')}
 
 /* ---------- init ---------- */
-function show(tab){$$('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
+function show(tab){$$('nav button').forEach(b=>{const on=b.dataset.tab===tab;b.setAttribute('aria-selected',on);if(on&&b.scrollIntoView)try{b.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}});$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));
   if(tab==='studio'){render()}else history.replaceState(null,'','#'+tab);if(tab==='explore')explore();if(tab==='reports')reports();if(tab==='totals')totals();if(tab==='upcoming'){upcoming();interestHist()}if(tab==='movie')mvDraw()}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
+const navEl=document.querySelector('nav'),navMore=()=>navEl.classList.toggle('more',navEl.scrollWidth-navEl.scrollLeft-navEl.clientWidth>6);
+navEl.addEventListener('scroll',navMore,{passive:true});addEventListener('resize',navMore);setTimeout(navMore,50);
 async function init(){
   [M,D,SL,IN,BR]=await Promise.all([fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/snapshots.json',{cache:'no-store'}).then(r=>r.json()),
     fetch('data/sales.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({movies:[]})),
