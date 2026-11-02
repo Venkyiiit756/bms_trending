@@ -352,7 +352,7 @@
   "languages": [
    "Tamil"
   ],
-  "release": "Nov 06, 2026",
+  "release": "Dec 31, 2027",
   "book": false
  },
  "ET00467913": {
@@ -1346,6 +1346,15 @@
   "last_listed": null,
   "name": "Disco",
   "page_slug": "disco",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-02"
+ },
+ "ET00521921": {
+  "first_seen": "2026-11-02",
+  "last_listed": null,
+  "name": "Aadi Anant",
+  "page_slug": "aadi-anant",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-02"

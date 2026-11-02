@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-02
+- added **Aadi Anant** (ET00521921), polled hourly
+- **Premada Oorali** (ET00412717): every 30 min -> hourly (best hourly figure in 24 h: 3.0K)
+- **Pehla Pyaar Doosri Baar** (ET00517731): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-02
 - **Nakhrewaalii** (ET00403215): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Arasan** (ET00466626): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Seyon** (ET00487903): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

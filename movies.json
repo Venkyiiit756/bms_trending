@@ -196,7 +196,7 @@
     "page_slug": "premada-oorali",
     "csv": "data/ET00412717.csv",
     "headers_csv": "data/ET00412717_headers.csv",
-    "every": 1800
+    "every": 3600
   },
   {
     "key": "et00504928",
@@ -491,7 +491,7 @@
     "page_slug": "pehla-pyaar-doosri-baar",
     "csv": "data/ET00517731.csv",
     "headers_csv": "data/ET00517731_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -1319,5 +1319,17 @@
     "headers_csv": "data/ET00460536_headers.csv",
     "every": 3600,
     "added": "2026-11-01"
+  },
+  {
+    "key": "et00521921",
+    "name": "Aadi Anant",
+    "eventcode": "ET00521921",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "aadi-anant",
+    "csv": "data/ET00521921.csv",
+    "headers_csv": "data/ET00521921_headers.csv",
+    "every": 3600,
+    "added": "2026-11-02"
   }
 ]
