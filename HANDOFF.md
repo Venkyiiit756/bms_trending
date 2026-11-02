@@ -207,3 +207,9 @@ slot-corrected neighbour within 1 h; (1) BookMyShow 24-hour reading from about 1
 BookMyShow (tested: median 0.1%, worst 3.2% over 482 comparisons); (2) none in that window: estimate from hourly figures, marked ≈ "from hourly figures"
 (median 3% when the 24-hour readings are removed); (3) no usable hourly figures: nearest 24-hour reading up to 5 h away, marked ≈ with its distance;
 (4) otherwise blank. Hourly estimates agree with nearby 24-hour readings (Jailer 2 18 Oct: 1.071M vs 1.070M).
+
+## Website look (refresh)
+`site_src/index.html`: one CSS layer ("visual refresh") defines the tokens (light and dark), depth, rounded controls, gradient primary/selected states, sticky pill tab bar with an edge fade
+(`nav.more`), tinted chips and KPI tiles. Upcoming tab: release dates carry the year when it is not this year, BookMyShow stand-in dates (31 Dec) are "tentative", old past dates without
+bookings are "date not confirmed", released films sit under "Recently released", and on phones the 24-hour gain sits under the interested count. Auto posts: latest 6 shown, the rest behind
+"Show earlier posts"; "Not posted" chips are hidden; the briefing's model/cost line is inside "How this was made".
