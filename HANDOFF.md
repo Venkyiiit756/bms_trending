@@ -198,3 +198,9 @@ film asked longest ago first; a film asked recently waits until its interval is 
 when there is one on each side, else the one side; marked exact, with `near` = distance in slots. Tested on days that do have a reading at
 4 AM: median error 0.3% at 3 hours, 1.0% at 4 hours (90th percentile 2.5%), because night sales are small and the 24-hour window drops
 off about as much as it adds. Fixes blank days (Ramayana 25-28 Oct).
+
+## Mandatory night read (3-5 AM, aimed at 4 AM)
+`tracker.py`: at 3:45 IST every film except those released more than `OLD_DAYS` (50) days ago is queued (`PENDING`) and asked in turn, longest-waiting
+first; interest jobs wait until the queue is empty. A 429 during the window retries after the block lifts (not after the normal hour); the window
+closes at 5:00 (`WINDOW`) and logs any film that was not read. A run that starts inside the window queues whoever has no read since 3:00.
+A request that gets a 429 no longer counts as "asked" in `data/poll_state.json`. Simulated with a fake clock: 85 of 85 films read between 3:45 and 4:12.
