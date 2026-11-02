@@ -3474,3 +3474,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-02 13:36:38+05:30,Drishyam 3,24_hours,18.71K,18.71K tickets booked in last 24 hours,2026-11-02 13:26:35+05:30,change,2026-11-02 13:36:38+05:30
 2026-11-02 13:46:41+05:30,Drishyam 3,24_hours,18.5K,18.5K tickets booked in last 24 hours,2026-11-02 13:40:12+05:30,change,2026-11-02 13:46:41+05:30
 2026-11-02 13:57:20+05:30,Drishyam 3,24_hours,18.3K,18.3K tickets booked in last 24 hours,2026-11-02 13:47:17+05:30,change,2026-11-02 13:57:20+05:30
+2026-11-02 14:07:22+05:30,Drishyam 3,24_hours,18.04K,18.04K tickets booked in last 24 hours,2026-11-02 13:57:20+05:30,change,2026-11-02 14:07:22+05:30
