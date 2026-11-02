@@ -302,7 +302,7 @@
   "page_slug": "king",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-01",
+  "upcoming": "2026-11-02",
   "group": "EG00453178",
   "languages": [
    "Hindi"
@@ -577,7 +577,7 @@
   ],
   "release": "Oct 23, 2026",
   "book": true,
-  "upcoming": "2026-11-01"
+  "upcoming": "2026-11-02"
  },
  "ET00497246": {
   "name": "Verity",
@@ -889,6 +889,26 @@
   "release": "Oct 25, 2026",
   "book": false
  },
+ "ET00515083": {
+  "first_seen": "2026-11-02",
+  "last_listed": null,
+  "name": "Mysaa",
+  "page_slug": "mysaa",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-02",
+  "group": "EG00511916",
+  "languages": [
+   "Telugu",
+   "Malayalam",
+   "Kannada",
+   "Tamil",
+   "Hindi"
+  ],
+  "release": "Nov 27, 2026",
+  "book": false,
+  "listed_alert": "2026-11-02"
+ },
  "ET00515520": {
   "name": "Baththa",
   "page_slug": "baththa",
@@ -926,7 +946,7 @@
   "page_slug": "wildwood",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-29",
+  "upcoming": "2026-11-02",
   "group": "EG00513427",
   "languages": [
    "English"
@@ -1316,7 +1336,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-01"
+  "upcoming": "2026-11-02"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",

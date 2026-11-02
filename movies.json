@@ -467,7 +467,7 @@
     "page_slug": "udta-teer",
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-22"
   },
   {
@@ -1329,6 +1329,18 @@
     "page_slug": "aadi-anant",
     "csv": "data/ET00521921.csv",
     "headers_csv": "data/ET00521921_headers.csv",
+    "every": 3600,
+    "added": "2026-11-02"
+  },
+  {
+    "key": "et00515083",
+    "name": "Mysaa",
+    "eventcode": "ET00515083",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mysaa",
+    "csv": "data/ET00515083.csv",
+    "headers_csv": "data/ET00515083_headers.csv",
     "every": 3600,
     "added": "2026-11-02"
   }

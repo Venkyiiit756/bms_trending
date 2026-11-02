@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-02
+- added **Mysaa** (ET00515083), polled hourly
+- **Udta Teer** (ET00495822): every 30 min -> hourly (best hourly figure in 24 h: 2.1K)
+
+## 2026-11-02
 - added **Aadi Anant** (ET00521921), polled hourly
 - **Premada Oorali** (ET00412717): every 30 min -> hourly (best hourly figure in 24 h: 3.0K)
 - **Pehla Pyaar Doosri Baar** (ET00517731): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
