@@ -1,0 +1,122 @@
+{
+ "end": "2026-11-02",
+ "week": "Mon 26 Oct to Sun 1 Nov",
+ "window": "4 AM Mon 26 Oct to 4 AM Mon 2 Nov IST",
+ "generated_at": "2026-11-02T08:21:01+05:30",
+ "mode": "claude",
+ "model": "claude-haiku-5-5",
+ "headline": "Jailer 2 led the week with 826K tickets, while Aadarsha Kutumbam posted the top single day at 217K on Fri 30 Oct.",
+ "bullets": [
+  "Jailer 2 counted 826K tickets, down 75% on the prior week, with its best day on Sat 31 Oct at 159K.",
+  "Aadarsha Kutumbam took 720K tickets over 5 counted days, peaking at 217K on Fri 30 Oct.",
+  "Namit Malhotra's Ramayana drew 269K tickets and gained 100K in interest over 7 days, reaching 551K+.",
+  "Premada Oorali fell 73% to 178K tickets, while Avengers: Doomsday gained 46K in interest to 476K+."
+ ],
+ "usage": {
+  "input_tokens": 1945,
+  "output_tokens": 804,
+  "cost_cents": 0.06
+ },
+ "attempts": [
+  {
+   "attempt": 1,
+   "problems": []
+  }
+ ],
+ "films": [
+  {
+   "rank": 1,
+   "name": "Jailer 2",
+   "week_total": "826K",
+   "vs_prior_week": -75,
+   "best_day": "Sat 31 Oct",
+   "best_day_tickets": "159K",
+   "exact": true
+  },
+  {
+   "rank": 2,
+   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+   "week_total": "720K",
+   "vs_prior_week": null,
+   "best_day": "Fri 30 Oct",
+   "best_day_tickets": "217K",
+   "exact": true
+  },
+  {
+   "rank": 3,
+   "name": "Udta Teer",
+   "week_total": "361K",
+   "vs_prior_week": null,
+   "best_day": "Sat 31 Oct",
+   "best_day_tickets": "61.7K",
+   "exact": true
+  },
+  {
+   "rank": 4,
+   "name": "Namit Malhotra's Ramayana",
+   "week_total": "269K",
+   "vs_prior_week": null,
+   "best_day": "Sun 1 Nov",
+   "best_day_tickets": "86.6K",
+   "exact": true
+  },
+  {
+   "rank": 5,
+   "name": "Premada Oorali",
+   "week_total": "178K",
+   "vs_prior_week": -73,
+   "best_day": "Mon 26 Oct",
+   "best_day_tickets": "47.8K",
+   "exact": true
+  },
+  {
+   "rank": 6,
+   "name": "Jailer 2 (Hindi)",
+   "week_total": "159K",
+   "vs_prior_week": -63,
+   "best_day": "Sun 1 Nov",
+   "best_day_tickets": "28.8K",
+   "exact": true
+  },
+  {
+   "rank": 7,
+   "name": "Drishyam",
+   "week_total": "141K",
+   "vs_prior_week": -60,
+   "best_day": "Tue 27 Oct",
+   "best_day_tickets": "26.5K",
+   "exact": true
+  },
+  {
+   "rank": 8,
+   "name": "418",
+   "week_total": "79.1K",
+   "vs_prior_week": null,
+   "best_day": "Mon 26 Oct",
+   "best_day_tickets": "18.4K",
+   "exact": true
+  }
+ ],
+ "interest": [
+  {
+   "name": "Namit Malhotra's Ramayana",
+   "interested": "551K+",
+   "gained_7d": "+100K"
+  },
+  {
+   "name": "Scene",
+   "interested": "191K+",
+   "gained_7d": "+83K"
+  },
+  {
+   "name": "Avengers: Doomsday",
+   "interested": "476K+",
+   "gained_7d": "+46K"
+  },
+  {
+   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+   "interested": "67.9K+",
+   "gained_7d": "+24.3K"
+  }
+ ]
+}
