@@ -1135,7 +1135,7 @@
     "page_slug": "nakhrewaalii",
     "csv": "data/ET00403215.csv",
     "headers_csv": "data/ET00403215_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1147,7 +1147,7 @@
     "page_slug": "arasan",
     "csv": "data/ET00466626.csv",
     "headers_csv": "data/ET00466626_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1159,7 +1159,7 @@
     "page_slug": "seyon",
     "csv": "data/ET00487903.csv",
     "headers_csv": "data/ET00487903_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1171,7 +1171,7 @@
     "page_slug": "wild-horse-nine",
     "csv": "data/ET00506776.csv",
     "headers_csv": "data/ET00506776_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1183,7 +1183,7 @@
     "page_slug": "dante",
     "csv": "data/ET00513761.csv",
     "headers_csv": "data/ET00513761_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1195,7 +1195,7 @@
     "page_slug": "mookuthi-amman-2",
     "csv": "data/ET00517348.csv",
     "headers_csv": "data/ET00517348_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1207,7 +1207,7 @@
     "page_slug": "mohra",
     "csv": "data/ET00522331.csv",
     "headers_csv": "data/ET00522331_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1219,7 +1219,7 @@
     "page_slug": "summer-holidays",
     "csv": "data/ET00524282.csv",
     "headers_csv": "data/ET00524282_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1231,7 +1231,7 @@
     "page_slug": "godzilla-minus-zero",
     "csv": "data/ET00524518.csv",
     "headers_csv": "data/ET00524518_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {

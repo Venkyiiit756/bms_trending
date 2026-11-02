@@ -2,6 +2,17 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-02
+- **Nakhrewaalii** (ET00403215): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Arasan** (ET00466626): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Seyon** (ET00487903): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Wild Horse Nine** (ET00506776): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dante** (ET00513761): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mookuthi Amman 2** (ET00517348): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mohra** (ET00522331): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Summer Holidays** (ET00524282): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Godzilla Minus Zero** (ET00524518): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-01
 - added **BTS Movie Week** (ET00460536), polled hourly
 
