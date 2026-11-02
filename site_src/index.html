@@ -898,6 +898,7 @@ const slStart=m=>keyMs(m.start);
 const slMs=(m,i)=>slStart(m)+i*HALF;
 const slIdx=(m,ms)=>Math.round((ms-slStart(m))/HALF);
 const fmt=v=>v>=1e6?(v/1e6).toFixed(2)+'M':v>=1e5?Math.round(v/1e3)+'K':v>=1e3?(v/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(Math.round(v));
+const srcTxt=r=>!r?'<span class="src">No data</span>':r.exact?'<span class="src ok">BookMyShow</span>':`<span class="src">≈ ${r.src==='24h'?`24-hour reading ${r.near/2}h from 4 AM`:'from hourly figures'}</span>`;
 const fmtV=r=>r?(r.exact?'':'≈')+fmt(r.v):'—';
 // estimated tickets in (slot a, slot b]; null when more than 10% of it has no data
 function slSum(m,a,b){let s=0,miss=0;for(let i=a+1;i<=b;i++){const v=i>=0&&i<m.slots.length?m.slots[i]:-1;if(v<0)miss++;else s+=v}
@@ -912,11 +913,15 @@ function day24(m,i){const e=m.d24[i];if(e!=null)return {v:e,exact:true};
   for(const k of [1,-1,2,-2]){const f=m.d24[i+k];if(f==null)continue;
     const lo=Math.min(i,i+k),hi=Math.max(i,i+k);const now=raw(lo,hi),then=raw(lo-48,hi-48);if(now==null||then==null)continue;
     return {v:k>0?f-now+then:f+now-then,exact:true}}
-  // no reading close to 4 AM: BookMyShow's nearest 24-hour figure within 5 hours (blended when on both sides; about 1% off)
-  let l2=null,h2=null;for(let k=1;k<=10;k++){if(l2===null&&m.d24[i-k]!=null)l2=[k,m.d24[i-k]];if(h2===null&&m.d24[i+k]!=null)h2=[k,m.d24[i+k]]}
-  if(l2&&h2)return {v:(l2[1]*h2[0]+h2[1]*l2[0])/(l2[0]+h2[0]),exact:true,near:Math.min(l2[0],h2[0])};
-  if(l2||h2){const q=l2||h2;return {v:q[1],exact:true,near:q[0]}}
-  return slSum(m,i-48,i)}
+  // 1. a BookMyShow 24-hour reading from about 1:30 to 5 AM (nearest, blended when on both sides; about 1% off)
+  const near=(B,A)=>{let l=null,h=null;for(let k=1;k<=Math.max(B,A);k++){if(l===null&&k<=B&&m.d24[i-k]!=null)l=[k,m.d24[i-k]];if(h===null&&k<=A&&m.d24[i+k]!=null)h=[k,m.d24[i+k]]}
+    if(l&&h)return [Math.min(l[0],h[0]),(l[1]*h[0]+h[1]*l[0])/(l[0]+h[0])];return l||h||[null,null]};
+  let [k1,v1]=near(5,2);if(k1!==null)return {v:v1,exact:true,near:k1};
+  // 2. otherwise estimate from the hourly figures (approximate)
+  const est=slSum(m,i-48,i);if(est){est.src='hourly';return est}
+  // 3. no usable hourly figures: the nearest 24-hour reading up to 5 hours from 4 AM (approximate, about 1-5% off)
+  [k1,v1]=near(10,10);if(k1!==null)return {v:v1,exact:false,near:k1,src:'24h'};
+  return null}
 // real 24-hour days from slot a to slot b (the last one may be shorter)
 function dayRows(m,a,b,lead){const rows=[];let run=0,ok=true;
   if(lead&&a>0){const r0=day24(m,a);if(r0&&r0.exact){run=r0.v;rows.push({a:a-48,b:a,full:true,r:r0,run})}}   // the day before: BookMyShow's own 24-hour figure at the first 4 AM
@@ -971,7 +976,7 @@ function totals(){
   $('#tSub').textContent=`${m.name} · ${whenLabel(slMs(m,res.rows.length?res.rows[0].a:a))} to ${whenLabel(slMs(m,b))} IST · ${full} full day${full===1?'':'s'}${hrs?` + ${hrs} hour${hrs===1?'':'s'}`:''} · estimate factor ×${m.factor}`;if($('#tSub').dataset.miss)$('#tSub').textContent=$('#tSub').dataset.miss+$('#tSub').textContent;
   if($('#totals').classList.contains('on')){const cv=$('#tcv'),ctx=cv.getContext('2d');const keep=S.style;S.style='color';ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);
     bars(ctx,cv.width,{top:6,bottom:cv.height-4,u:0.85,flat:true},dayItems(m,res));S.style=keep}
-  $('#tTable').innerHTML=`<table><thead><tr><th>Day</th><th>From → to (IST)</th><th class="n">Tickets</th><th class="n">Total so far</th><th class="hide-sm">Source</th></tr></thead><tbody>${res.rows.map((x,k)=>`<tr><td class="rank">${k+1}</td><td>${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}${x.full?'':` <span class="mute">(${Math.round((x.b-x.a)/2)}h)</span>`}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n">${x.run!=null?fmt(x.run):'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}
+  $('#tTable').innerHTML=`<table><thead><tr><th>Day</th><th>From → to (IST)</th><th class="n">Tickets</th><th class="n">Total so far</th><th class="hide-sm">Source</th></tr></thead><tbody>${res.rows.map((x,k)=>`<tr><td class="rank">${k+1}</td><td>${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}${x.full?'':` <span class="mute">(${Math.round((x.b-x.a)/2)}h)</span>`}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n">${x.run!=null?fmt(x.run):'—'}</td><td class="hide-sm">${srcTxt(x.r)}</td></tr>`).join('')}
     <tr class="tot"><td></td><td>Total</td><td class="n">${res.exact?'':'≈'}${fmt(res.total)}</td><td></td><td class="hide-sm"></td></tr></tbody></table>`}
 const TT={};
 $('#tCsv').onclick=()=>{if(!TT.res)return;const m=TT.m;const rows=[['day','from_ist','to_ist','hours','tickets','total_so_far','source'],...TT.res.rows.map((x,k)=>[k+1,msKey(slMs(m,x.a)),msKey(slMs(m,x.b)),(x.b-x.a)/2,x.r?Math.round(x.r.v):'',x.run!=null?Math.round(x.run):'',!x.r?'no data':x.r.exact?'bookmyshow_24h':'estimate'])];
@@ -1159,7 +1164,7 @@ function mvDaysDraw(){
       {xmax:L.length*24,ticks:L.map((x,i)=>i%k===0?[i*24+12,x.pre?'Start':short(x.date)]:null).filter(Boolean),gap:100,steps:[50,100,200,250,500,1000,2000],yfmt:v=>fmt(v*1000),floor:100})}
   S.style=keep;
   $('#mMiles').innerHTML=dd.miles.length?dd.miles.slice(-6).map(({t,x})=>`<span>Passed <b>${t>=1e6?t/1e6+'M':t/1e3+'K'}</b> · ${x.pre?'day 1':short(x.date)}</span>`).join(''):'';
-  $('#mtDays').innerHTML=`<table><thead><tr><th>Day</th><th class="n">Tickets</th><th class="n">vs previous</th><th class="n hide-sm">vs last week</th><th class="n hide-sm">Total so far</th><th class="n hide-sm">Busiest hour</th><th class="hide-sm">Source</th></tr></thead><tbody>${dd.list.slice().reverse().map(x=>`<tr${x.full?'':' class="mute"'}><td>${x.label}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n ${(x.p||x.pace)>0?'up':(x.p||x.pace)<0?'down':''}">${x.p!=null?pctTxt(x.p):x.pace!=null?pctTxt(x.pace)+' <span class="mute">at this time</span>':'—'}</td><td class="n hide-sm ${x.wow>0?'up':x.wow<0?'down':''}">${x.wow===null||x.wow===undefined?'—':pctTxt(x.wow)}</td><td class="n hide-sm">${x.run!=null?fmt(x.run):'—'}</td><td class="n hide-sm">${x.peak?`${x.peak.txt} <span class="mute">${x.peak.at}</span>`:'—'}</td><td class="hide-sm">${!x.r?'<span class="src">No data</span>':x.r.exact?'<span class="src ok">BookMyShow</span>':'<span class="src">Estimate</span>'}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="n">${dd.exact?'':'≈'}${fmt(dd.total)}</td><td></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td></tr></tbody></table>`;
+  $('#mtDays').innerHTML=`<table><thead><tr><th>Day</th><th class="n">Tickets</th><th class="n">vs previous</th><th class="n hide-sm">vs last week</th><th class="n hide-sm">Total so far</th><th class="n hide-sm">Busiest hour</th><th class="hide-sm">Source</th></tr></thead><tbody>${dd.list.slice().reverse().map(x=>`<tr${x.full?'':' class="mute"'}><td>${x.label}</td><td class="n"><b>${fmtV(x.r)}</b></td><td class="n ${(x.p||x.pace)>0?'up':(x.p||x.pace)<0?'down':''}">${x.p!=null?pctTxt(x.p):x.pace!=null?pctTxt(x.pace)+' <span class="mute">at this time</span>':'—'}</td><td class="n hide-sm ${x.wow>0?'up':x.wow<0?'down':''}">${x.wow===null||x.wow===undefined?'—':pctTxt(x.wow)}</td><td class="n hide-sm">${x.run!=null?fmt(x.run):'—'}</td><td class="n hide-sm">${x.peak?`${x.peak.txt} <span class="mute">${x.peak.at}</span>`:'—'}</td><td class="hide-sm">${srcTxt(x.r)}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="n">${dd.exact?'':'≈'}${fmt(dd.total)}</td><td></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td><td class="hide-sm"></td></tr></tbody></table>`;
   $('#mnDays').textContent=dd.list.some(x=>!x.r)?'Days without data are left out of the total.':''}
 function mvHoursLines(colors){
   const name=MV.e.name;

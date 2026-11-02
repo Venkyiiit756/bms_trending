@@ -208,3 +208,10 @@ A request that gets a 429 no longer counts as "asked" in `data/poll_state.json`.
 ## Night read retries and the first day
 - `tracker.py`: a film whose night read finds no counter is asked again up to `NIGHT_TRIES` (3) times, `NIGHT_RETRY` (10 min) apart, until 5 AM; a 429 retries when the block lifts.
 - Website: when the Totals range starts at the first 4 AM (Align button), or the Movie tab's day-by-day starts, a row for the day before is added from BookMyShow's own 24-hour figure near that 4 AM (Ramayana: Thu 22 4 AM -> Fri 23 4 AM = 23.5K from the 1:51 AM reading).
+
+## Day total rule order (final)
+`day24` (sales.py and website, identical results on 825 day totals): (0) exact reading at 4 AM / blend of readings on both sides within 1 h /
+slot-corrected neighbour within 1 h; (1) BookMyShow 24-hour reading from about 1:30 to 5 AM (`WIN_BEFORE`=5, `WIN_AFTER`=2 slots), nearest or blended - marked
+BookMyShow (tested: median 0.1%, worst 3.2% over 482 comparisons); (2) none in that window: estimate from hourly figures, marked ≈ "from hourly figures"
+(median 3% when the 24-hour readings are removed); (3) no usable hourly figures: nearest 24-hour reading up to 5 h away, marked ≈ with its distance;
+(4) otherwise blank. Hourly estimates agree with nearby 24-hour readings (Jailer 2 18 Oct: 1.071M vs 1.070M).
