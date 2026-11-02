@@ -912,8 +912,8 @@ function day24(m,i){const e=m.d24[i];if(e!=null)return {v:e,exact:true};
   for(const k of [1,-1,2,-2]){const f=m.d24[i+k];if(f==null)continue;
     const lo=Math.min(i,i+k),hi=Math.max(i,i+k);const now=raw(lo,hi),then=raw(lo-48,hi-48);if(now==null||then==null)continue;
     return {v:k>0?f-now+then:f+now-then,exact:true}}
-  // no reading close to 4 AM: BookMyShow's nearest 24-hour figure within 4 hours (blended when on both sides; about 1% off)
-  let l2=null,h2=null;for(let k=1;k<=8;k++){if(l2===null&&m.d24[i-k]!=null)l2=[k,m.d24[i-k]];if(h2===null&&m.d24[i+k]!=null)h2=[k,m.d24[i+k]]}
+  // no reading close to 4 AM: BookMyShow's nearest 24-hour figure within 5 hours (blended when on both sides; about 1% off)
+  let l2=null,h2=null;for(let k=1;k<=10;k++){if(l2===null&&m.d24[i-k]!=null)l2=[k,m.d24[i-k]];if(h2===null&&m.d24[i+k]!=null)h2=[k,m.d24[i+k]]}
   if(l2&&h2)return {v:(l2[1]*h2[0]+h2[1]*l2[0])/(l2[0]+h2[0]),exact:true,near:Math.min(l2[0],h2[0])};
   if(l2||h2){const q=l2||h2;return {v:q[1],exact:true,near:q[0]}}
   return slSum(m,i-48,i)}

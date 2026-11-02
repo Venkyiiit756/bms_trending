@@ -26,7 +26,7 @@ import series
 STEP = timedelta(minutes=30)
 MAX_AGE = timedelta(minutes=20)    # a reading older than this does not describe the half hour
 MAX_AGE_24 = timedelta(minutes=60) # the 24-hour figure barely moves at night
-NEAR = 8                            # use BookMyShow's 24-hour figure up to 4 hours (8 slots) from 4 AM
+NEAR = 10                           # use BookMyShow's 24-hour figure up to 5 hours (10 slots) from 4 AM
 MAX_LINEAR = 8                      # fill data gaps up to 4 hours
 MAX_NIGHT = 28                      # night gaps up to 14 hours
 DEFAULT_FACTOR = 1.15
