@@ -1,53 +1,50 @@
 {
- "date": "2026-11-01",
- "generated_at": "2026-11-01T10:27:20+05:30",
+ "date": "2026-11-02",
+ "generated_at": "2026-11-02T08:05:50+05:30",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "window": "4 AM Sat 31 Oct to 4 AM Sun 1 Nov IST",
- "day": "Sat 31 Oct",
- "headline": "Aadarsha Kutumbam led yesterday with 208K tickets booked, while Jailer 2 (Hindi) was the biggest mover at up 59%.",
+ "window": "4 AM Sun 1 Nov to 4 AM Mon 2 Nov IST",
+ "day": "Sun 1 Nov",
+ "headline": "Aadarsha Kutumbam led yesterday with 175K tickets, while Namit Malhotra's Ramayana rose 77% to 86.6K.",
  "bullets": [
-  "Aadarsha Kutumbam ranked first with 208K tickets, down 4% from the day before, and its busiest hour was 6:32 PM with 14.47K.",
-  "Jailer 2 was second with 159K tickets, up 33% on the day before, and Udta Teer was third with 61.7K.",
-  "Jailer 2 (Hindi) had the biggest move, rising up 59% to 28.7K, with its busiest hour at 9:08 PM.",
-  "Namit Malhotra's Ramayana has 533K+ people interested, gained 16K in 24 hours, and has bookings open for its Thu 5 Nov release.",
-  "Premada Oorali and Drishyam were also rising, up 52% and up 43% respectively."
+  "Aadarsha Kutumbam was the top seller with 175K tickets, down 16% from 208K the day before.",
+  "Jailer 2 was second at 138K, down 13% from the day before and down 55% from a week ago.",
+  "Namit Malhotra's Ramayana was the biggest mover, up 77% from 49K to 86.6K, and its interest count rose by 19K in 24 hours.",
+  "Scene gained the most interest in 24 hours at +23K, reaching 191K+ ahead of its Fri 6 Nov release."
  ],
  "drafts": [
   {
    "story": "leaderboard",
    "film": "Aadarsha Kutumbam",
-   "text": "🎬 Aadarsha Kutumbam led yesterday with 208K tickets booked, ahead of Jailer 2 at 159K. Udta Teer took third with 61.7K. #BoxOffice #Movies",
+   "text": "Yesterday's top ticket sellers on BookMyShow: Aadarsha Kutumbam with 175K and Jailer 2 with 138K. 🎬 #BoxOffice #Tollywood",
    "studio": {
     "type": "board24",
-    "d": "2026-11-01",
+    "d": "2026-11-02",
     "t": "0400",
     "top": "5"
    },
-   "length": 139
+   "length": 122
   },
   {
    "story": "mover",
-   "film": "Jailer 2 (Hindi)",
-   "text": "📈 Jailer 2 (Hindi) booked 28.7K tickets yesterday, up 59% on the day before. Its busiest hour was 9:08 PM with 2.45K tickets. #BoxOffice #Jailer2",
+   "film": "Namit Malhotra's Ramayana",
+   "text": "Namit Malhotra's Ramayana tickets were up 77% vs the day before, reaching 86.6K yesterday. 📈 #BoxOffice #Ramayana",
    "studio": null,
-   "length": 146
+   "length": 114
   },
   {
    "story": "interest",
-   "film": "Namit Malhotra's Ramayana",
-   "text": "🔥 Namit Malhotra's Ramayana has 533K+ people interested and gained 16K in 24 hours. Bookings are open ahead of its Thu 5 Nov release. #BoxOffice #Ramayana",
+   "film": "Scene",
+   "text": "Scene is building buzz: 191K+ interested, up 23K in 24 hours, with its release on Fri 6 Nov. 🔥 #BoxOffice #Scene",
    "studio": {
     "type": "interest",
     "top": "5"
    },
-   "length": 155
+   "length": 113
   }
  ],
  "flags": [
-  "Jailer 2 (Hindi): 28.7K yesterday, +59% vs the day before",
-  "Premada Oorali: 25.6K yesterday, +52% vs the day before",
-  "Drishyam: 25.3K yesterday, +43% vs the day before"
+  "Namit Malhotra's Ramayana: 86.6K yesterday, +77% vs the day before"
  ],
  "notes": [
   "Tickets are counted from BookMyShow counters (one listing per film, not revenue).",
@@ -62,108 +59,108 @@
  ],
  "usage": {
   "calls": 1,
-  "input_tokens": 4344,
-  "output_tokens": 2075,
-  "cost_cents": 0.147
+  "input_tokens": 4092,
+  "output_tokens": 2071,
+  "cost_cents": 0.144
  },
  "tables": {
   "films": [
    {
     "rank": 1,
     "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
-    "yesterday": "208K",
-    "vs_day_before": -4,
+    "yesterday": "175K",
+    "vs_day_before": -16,
     "vs_week_ago": null,
-    "busiest_hour": "14.47K",
-    "busiest_hour_at": "6:32 PM"
+    "busiest_hour": "14.89K",
+    "busiest_hour_at": "11:54 AM"
    },
    {
     "rank": 2,
     "name": "Jailer 2",
-    "yesterday": "159K",
-    "vs_day_before": 33,
-    "vs_week_ago": -60,
-    "busiest_hour": "11.11K",
-    "busiest_hour_at": "9:37 PM"
+    "yesterday": "138K",
+    "vs_day_before": -13,
+    "vs_week_ago": -55,
+    "busiest_hour": "11.06K",
+    "busiest_hour_at": "2:59 PM"
    },
    {
     "rank": 3,
-    "name": "Udta Teer",
-    "yesterday": "61.7K",
-    "vs_day_before": 22,
-    "vs_week_ago": -41,
-    "busiest_hour": "4.41K",
-    "busiest_hour_at": "7:31 PM"
+    "name": "Namit Malhotra's Ramayana",
+    "yesterday": "86.6K",
+    "vs_day_before": 77,
+    "vs_week_ago": null,
+    "busiest_hour": "5.7K",
+    "busiest_hour_at": "10:18 PM"
    },
    {
     "rank": 4,
-    "name": "Namit Malhotra's Ramayana",
-    "yesterday": "49K",
-    "vs_day_before": 24,
-    "vs_week_ago": null,
-    "busiest_hour": "3.5K",
-    "busiest_hour_at": "10:32 PM"
+    "name": "Udta Teer",
+    "yesterday": "58.1K",
+    "vs_day_before": -6,
+    "vs_week_ago": -44,
+    "busiest_hour": "4.96K",
+    "busiest_hour_at": "1:34 PM"
    },
    {
     "rank": 5,
-    "name": "Jailer 2 (Hindi)",
-    "yesterday": "28.7K",
-    "vs_day_before": 59,
-    "vs_week_ago": -50,
-    "busiest_hour": "2.45K",
-    "busiest_hour_at": "9:08 PM"
+    "name": "Premada Oorali",
+    "yesterday": "33.4K",
+    "vs_day_before": 31,
+    "vs_week_ago": -61,
+    "busiest_hour": "3.08K",
+    "busiest_hour_at": "12:05 PM"
    },
    {
     "rank": 6,
-    "name": "Premada Oorali",
-    "yesterday": "25.6K",
-    "vs_day_before": 52,
-    "vs_week_ago": -71,
-    "busiest_hour": "1.69K",
-    "busiest_hour_at": "2:09 PM"
+    "name": "Jailer 2 (Hindi)",
+    "yesterday": "28.8K",
+    "vs_day_before": 0,
+    "vs_week_ago": -44,
+    "busiest_hour": "2.42K",
+    "busiest_hour_at": "3:32 PM"
    },
    {
     "rank": 7,
     "name": "Drishyam",
-    "yesterday": "25.3K",
-    "vs_day_before": 43,
-    "vs_week_ago": -46,
+    "yesterday": "24.9K",
+    "vs_day_before": -2,
+    "vs_week_ago": -41,
     "busiest_hour": null,
     "busiest_hour_at": null
    },
    {
     "rank": 8,
-    "name": "418",
-    "yesterday": "11.2K",
-    "vs_day_before": 42,
-    "vs_week_ago": -80,
-    "busiest_hour": null,
-    "busiest_hour_at": null
+    "name": "Cult",
+    "yesterday": "21.1K",
+    "vs_day_before": null,
+    "vs_week_ago": null,
+    "busiest_hour": "1.56K",
+    "busiest_hour_at": "6:15 PM"
    }
   ],
   "interest": [
    {
     "name": "Namit Malhotra's Ramayana",
-    "interested": "533K+",
-    "gained_24h": "+16K",
+    "interested": "551K+",
+    "gained_24h": "+19K",
     "release": "Thu 5 Nov",
-    "days_to_release": 4,
+    "days_to_release": 3,
     "bookings": "open"
    },
    {
     "name": "Avengers: Doomsday",
-    "interested": "470K+",
+    "interested": "476K+",
     "gained_24h": "+6K",
     "release": "Thu 17 Dec",
-    "days_to_release": 46,
+    "days_to_release": 45,
     "bookings": "not open yet"
    },
    {
     "name": "Scene",
-    "interested": "169K+",
-    "gained_24h": "+14K",
+    "interested": "191K+",
+    "gained_24h": "+23K",
     "release": "Fri 6 Nov",
-    "days_to_release": 5,
+    "days_to_release": 4,
     "bookings": "not open yet"
    },
    {
@@ -171,23 +168,23 @@
     "interested": "154K+",
     "gained_24h": "+0",
     "release": "Fri 29 Oct 2027",
-    "days_to_release": 362,
+    "days_to_release": 361,
     "bookings": "not open yet"
    },
    {
     "name": "King",
-    "interested": "99.5K+",
-    "gained_24h": null,
+    "interested": "100K+",
+    "gained_24h": "+500",
     "release": "Thu 24 Dec",
-    "days_to_release": 53,
+    "days_to_release": 52,
     "bookings": "not open yet"
    },
    {
     "name": "Varanasi",
-    "interested": "85K+",
+    "interested": "85.1K+",
     "gained_24h": "+100",
     "release": "Wed 7 Apr 2027",
-    "days_to_release": 157,
+    "days_to_release": 156,
     "bookings": "not open yet"
    }
   ]
