@@ -38,6 +38,8 @@ WEEKLY_AT = [(8, 20)]                           # IST, Mondays only: the weekly 
 BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after the 3:45 sweep has the day's exact totals)
 SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
+WINDOW = ((3, 0), (5, 0))   # IST: every film (not too old) must be read once in this window, the sweep aims at ~4 AM
+OLD_DAYS = 50              # films released more than this many days ago are left out of the night read
 MIN_GAP = 15               # seconds between any two requests (all movies share one IP)
 COMMIT_EVERY = 600         # push collected rows at most this often (plus before each snapshot)
 POLL_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'poll_state.json')   # {movie key: when it was last asked}
@@ -299,6 +301,7 @@ def save_poll_state(state):
         json.dump({k: v.isoformat(timespec='seconds') for k, v in sorted(state.items())}, f, indent=0)
 
 
+PENDING = set()  # films still owed their 3-5 AM read
 POLLED = {}      # movie key -> time of its last request, saved so the next run knows who is overdue
 
 
@@ -310,7 +313,8 @@ def poll(st, shared):
     """
     result = fetch(st.key)
     t = now()
-    POLLED[st.key] = t
+    if not result.get('error') or result['status'] == 200:
+        POLLED[st.key] = t            # a 429 / timeout does not count as asked: that film stays first in line
     mono = time.monotonic()
     logged = False
     if result.get('error'):
@@ -325,6 +329,8 @@ def poll(st, shared):
             shared['block_until'] = max(shared['block_until'], mono + wait)
             st.failures += 1
             n = st.failures
+            if st.key in PENDING:       # the 3-5 AM read is mandatory: ask again as soon as the block lifts
+                wait = 60
         st.targeted = False
         print(f"[{fmt(t)}] {st.key}: poll FAILED ({result['detail']}); #{n}, "
               f"next try in {wait}s", flush=True)
@@ -341,6 +347,7 @@ def poll(st, shared):
     if st.failures or shared['failures']:
         print(f"[{fmt(t)}] {st.key}: recovered", flush=True)
     st.failures = st.missing = shared['failures'] = 0
+    PENDING.discard(st.key)
     headers = result['headers']
     hit = cache_hit(headers)
     key = (result['metric_type'], result['metric_value'])
@@ -493,6 +500,27 @@ def recently_polled(movie):
     return (now() - stamp).total_seconds() < movie['every'] - 900
 
 
+def night_films(movies, keys, day):
+    """Keys that must be read at night: all except films released more than OLD_DAYS days ago."""
+    try:
+        catalog = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'catalog.json'), encoding='utf-8'))
+    except (OSError, ValueError):
+        catalog = {}
+    out = []
+    for k in keys:
+        rel = interest.release_day((catalog.get(movies[k]['eventcode']) or {}).get('release'))
+        if rel is None or (day - rel).days <= OLD_DAYS:
+            out.append(k)
+    return out
+
+
+def window_bounds(t):
+    """(start, end) of today's 3-5 AM window, IST, for the day of t."""
+    ist = t.astimezone(IST)
+    (h0, m0), (h1, m1) = WINDOW
+    return (ist.replace(hour=h0, minute=m0, second=0, microsecond=0), ist.replace(hour=h1, minute=m1, second=0, microsecond=0))
+
+
 def run(keys, minutes, commit):
     """Poll the given movies for `minutes`, one request at a time.
 
@@ -525,6 +553,13 @@ def run(keys, minutes, commit):
             slot += 1
         else:
             due[k] = start + (every - 300 - age)
+    night = set(night_films(movies, keys, t0.date()))
+    w0, w1 = window_bounds(t0)
+    if w0 <= t0 < w1:                    # a run that starts inside the window: whoever has no read since 3 AM is owed one
+        PENDING.update(k for k in night if POLLED.get(k, datetime.min.replace(tzinfo=IST)) < w0)
+        for k in PENDING:
+            due[k] = start
+    window_end = time.monotonic() + max(0, (w1 - t0).total_seconds()) if t0 < w1 else 0
     states = [State(movies[k], due[k]) for k in keys]
     jobs = interest_jobs(start)
     shared = {'failures': 0, 'block_until': 0.0}
@@ -545,12 +580,18 @@ def run(keys, minutes, commit):
     try:
         while True:
             if time.monotonic() >= sweep_mono:
-                for s in states:
-                    if s.every:
-                        s.due = min(s.due, time.monotonic())
-                print(f'[{fmt(now())}] night sweep: asking every movie before 4 AM', flush=True)
+                t_s = now()
+                PENDING.update(night_films(movies, [s_.key for s_ in states], t_s.date()))
+                for s_ in states:
+                    if s_.key in PENDING:
+                        s_.due = min(s_.due, time.monotonic())
+                window_end = time.monotonic() + max(0, (window_bounds(t_s)[1] - t_s).total_seconds())
+                print(f'[{fmt(now())}] night read: asking {len(PENDING)} films before 4 AM (until 5 AM)', flush=True)
                 sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
-            st = min(states + jobs, key=lambda s: s.due)
+            if PENDING and window_end and time.monotonic() >= window_end:
+                print(f'[{fmt(now())}] night read window over; not read: {sorted(PENDING)}', flush=True)
+                PENDING.clear()
+            st = min(states + ([] if PENDING else jobs), key=lambda s: s.due)
             go = max(st.due, shared['block_until'], last_request + MIN_GAP)
             if min(go, sweep_mono) >= end:
                 print('Run window finished.', flush=True)
