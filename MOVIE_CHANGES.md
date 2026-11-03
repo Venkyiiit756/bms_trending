@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-03
+- added **Bhogi** (ET00489093), polled hourly
+
+## 2026-11-03
 - added **Resident Evil** (ET00498183), polled hourly
 - added **Bouma** (ET00513613), polled hourly
 - added **Pyre** (ET00519811), polled hourly

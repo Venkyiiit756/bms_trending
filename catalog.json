@@ -483,6 +483,22 @@
   "release": "Oct 31, 2026",
   "book": false
  },
+ "ET00489093": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "Bhogi",
+  "page_slug": "bhogi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03",
+  "group": "EG00486433",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 12, 2026",
+  "book": false,
+  "listed_alert": "2026-11-03"
+ },
  "ET00491771": {
   "first_seen": "2026-10-25",
   "last_listed": null,
@@ -578,7 +594,7 @@
   ],
   "release": "Oct 23, 2026",
   "book": true,
-  "upcoming": "2026-11-02"
+  "upcoming": "2026-11-03"
  },
  "ET00497246": {
   "name": "Verity",
@@ -600,7 +616,17 @@
   "name": "Resident Evil",
   "page_slug": "resident-evil",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00495405",
+  "languages": [
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu",
+   "Malayalam"
+  ],
+  "release": "Sep 18, 2026",
+  "book": true
  },
  "ET00502500": {
   "first_seen": "2026-10-31",
@@ -1231,7 +1257,13 @@
   "name": "Pyre",
   "page_slug": "pyre",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00516921",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Oct 30, 2026",
+  "book": true
  },
  "ET00520032": {
   "first_seen": "2026-10-22",
@@ -1325,7 +1357,13 @@
   "page_slug": "the-influencer-project",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-28"
+  "upcoming": "2026-10-28",
+  "group": "EG00518037",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 30, 2026",
+  "book": true
  },
  "ET00521061": {
   "name": "Crazy Kalyanam",
@@ -1438,7 +1476,13 @@
   "name": "The Fix",
   "page_slug": "the-fix",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00519799",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 30, 2026",
+  "book": true
  },
  "ET00522567": {
   "first_seen": "2026-10-23",
@@ -1522,7 +1566,13 @@
   "page_slug": "cult",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03"
+  "upcoming": "2026-11-03",
+  "group": "EG00521554",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Oct 30, 2026",
+  "book": true
  },
  "ET00524195": {
   "first_seen": "2026-10-29",

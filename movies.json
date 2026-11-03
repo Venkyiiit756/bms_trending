@@ -1391,5 +1391,17 @@
     "headers_csv": "data/ET00522401_headers.csv",
     "every": 3600,
     "added": "2026-11-03"
+  },
+  {
+    "key": "et00489093",
+    "name": "Bhogi",
+    "eventcode": "ET00489093",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bhogi",
+    "csv": "data/ET00489093.csv",
+    "headers_csv": "data/ET00489093_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
   }
 ]
