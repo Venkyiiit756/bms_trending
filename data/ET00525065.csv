@@ -1,2 +1,3 @@
 timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-03 21:29:08+05:30,Scene (Telugu),1_hour,7.9K,7.9K tickets booked in last 1 hour,,start,2026-11-03 21:29:08+05:30
+2026-11-03 22:37:36+05:30,Scene (Telugu),1_hour,8.69K,8.69K tickets booked in last 1 hour,2026-11-03 21:29:08+05:30,change,2026-11-03 22:37:36+05:30
