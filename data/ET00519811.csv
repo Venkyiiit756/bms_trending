@@ -1,2 +1,3 @@
 timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-03 06:48:52+05:30,Pyre,24_hours,6.41K,6.41K tickets booked in last 24 hours,,start,2026-11-03 06:48:52+05:30
+2026-11-03 07:43:53+05:30,Pyre,24_hours,6.37K,6.37K tickets booked in last 24 hours,2026-11-03 06:48:52+05:30,change,2026-11-03 07:43:53+05:30
