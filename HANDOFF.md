@@ -213,3 +213,9 @@ BookMyShow (tested: median 0.1%, worst 3.2% over 482 comparisons); (2) none in t
 (`nav.more`), tinted chips and KPI tiles. Upcoming tab: release dates carry the year when it is not this year, BookMyShow stand-in dates (31 Dec) are "tentative", old past dates without
 bookings are "date not confirmed", released films sit under "Recently released", and on phones the 24-hour gain sits under the interested count. Auto posts: latest 6 shown, the rest behind
 "Show earlier posts"; "Not posted" chips are hidden; the briefing's model/cost line is inside "How this was made".
+
+## Night read, second version (after the first real night, 3 Nov)
+First night: only 8 of 87 films read in 3-5 AM. Cause: 74 of the 87 films have no counter (not released), so most of the night read's requests were wasted; a 429 at 3:48 AM then blocked
+all requests until 4:29. Now `night_films` = only films with a 1-hour/24-hour reading in the last 3 days (or released within 3 days), not older than 50 days (14 films today).
+From 3:30 to 5:00 (`QUIET_FROM`, `WINDOW`) nothing else is asked, so the allowance is not used up, and the read starts at 3:55 (`SWEEP_AT`), about 30 s apart. Simulated with a fake clock:
+14 of 14 films read 3:50-3:58, 0 other requests in the quiet window.
