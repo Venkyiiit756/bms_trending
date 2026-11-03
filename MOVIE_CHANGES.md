@@ -2,6 +2,17 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-03
+- added **Resident Evil** (ET00498183), polled hourly
+- added **Bouma** (ET00513613), polled hourly
+- added **Pyre** (ET00519811), polled hourly
+- added **The Fix** (ET00522401), polled hourly
+- **The Cat in the Hat** (ET00451881): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Appakutty** (ET00518647): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Disco** (ET00521913): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Eetha** (ET00502500): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **King** (ET00455480): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-02
 - added **Mysaa** (ET00515083), polled hourly
 - **Udta Teer** (ET00495822): every 30 min -> hourly (best hourly figure in 24 h: 2.1K)
