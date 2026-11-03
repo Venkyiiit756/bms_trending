@@ -803,3 +803,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-03 21:13:07+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-03 22:08:07+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-03 23:03:21+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-03 23:58:34+05:30,,error,429,HTTP 429 (failure 1),,error,
