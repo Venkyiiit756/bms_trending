@@ -3,6 +3,14 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-03
+- added **G.O.A.T** (ET00476213), polled hourly
+- added **Ghost Soldier** (ET00518333), polled hourly
+- added **Scene (Telugu)** (ET00525065), polled hourly
+- added **Stray Kids: Run It** (ET00525135), polled hourly
+- added **Mahasakthi** (ET00525155), polled hourly
+- **Scene** (ET00516631): every 6 h -> every 30 min (best hourly figure in 24 h: 13.8K)
+
+## 2026-11-03
 - added **Bhogi** (ET00489093), polled hourly
 
 ## 2026-11-03

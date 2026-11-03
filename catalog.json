@@ -404,6 +404,15 @@
   "listed_alert": "2026-10-23",
   "book_opened": "2026-10-28"
  },
+ "ET00476213": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "G.O.A.T",
+  "page_slug": "goat",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03"
+ },
  "ET00477243": {
   "name": "Digger",
   "page_slug": "digger",
@@ -506,7 +515,7 @@
   "page_slug": "dune-part-three",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-02",
+  "upcoming": "2026-11-03",
   "group": "EG00489079",
   "languages": [
    "English",
@@ -722,7 +731,7 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-30",
+  "upcoming": "2026-11-03",
   "group": "EG00503915",
   "languages": [
    "Telugu"
@@ -1121,6 +1130,15 @@
   "figure": null,
   "upcoming": "2026-11-03",
   "group": "EG00449671"
+ },
+ "ET00518333": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "Ghost Soldier",
+  "page_slug": "ghost-soldier",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03"
  },
  "ET00518466": {
   "first_seen": "2026-10-28",
@@ -1654,5 +1672,32 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-29"
+ },
+ "ET00525065": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "Scene (Telugu)",
+  "page_slug": "scene-telugu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03"
+ },
+ "ET00525135": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "Stray Kids: Run It",
+  "page_slug": "stray-kids-run-it",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03"
+ },
+ "ET00525155": {
+  "first_seen": "2026-11-03",
+  "last_listed": null,
+  "name": "Mahasakthi",
+  "page_slug": "mahasakthi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-03"
  }
 }

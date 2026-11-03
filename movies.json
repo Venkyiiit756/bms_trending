@@ -819,7 +819,7 @@
     "page_slug": "scene",
     "csv": "data/ET00516631.csv",
     "headers_csv": "data/ET00516631_headers.csv",
-    "every": 21600,
+    "every": 1800,
     "added": "2026-10-24"
   },
   {
@@ -1401,6 +1401,66 @@
     "page_slug": "bhogi",
     "csv": "data/ET00489093.csv",
     "headers_csv": "data/ET00489093_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
+  },
+  {
+    "key": "et00476213",
+    "name": "G.O.A.T",
+    "eventcode": "ET00476213",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "goat",
+    "csv": "data/ET00476213.csv",
+    "headers_csv": "data/ET00476213_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
+  },
+  {
+    "key": "et00518333",
+    "name": "Ghost Soldier",
+    "eventcode": "ET00518333",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ghost-soldier",
+    "csv": "data/ET00518333.csv",
+    "headers_csv": "data/ET00518333_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
+  },
+  {
+    "key": "et00525065",
+    "name": "Scene (Telugu)",
+    "eventcode": "ET00525065",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "scene-telugu",
+    "csv": "data/ET00525065.csv",
+    "headers_csv": "data/ET00525065_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
+  },
+  {
+    "key": "et00525135",
+    "name": "Stray Kids: Run It",
+    "eventcode": "ET00525135",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "stray-kids-run-it",
+    "csv": "data/ET00525135.csv",
+    "headers_csv": "data/ET00525135_headers.csv",
+    "every": 3600,
+    "added": "2026-11-03"
+  },
+  {
+    "key": "et00525155",
+    "name": "Mahasakthi",
+    "eventcode": "ET00525155",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mahasakthi",
+    "csv": "data/ET00525155.csv",
+    "headers_csv": "data/ET00525155_headers.csv",
     "every": 3600,
     "added": "2026-11-03"
   }
