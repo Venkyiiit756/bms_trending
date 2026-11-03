@@ -491,3 +491,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-04 00:49:07+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-04 00:52:40+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-04 00:56:51+05:30,Aadarsha Kutumbam House No: 47 (AK 47),24_hours,32.88K,32.88K tickets booked in last 24 hours,2026-11-04 00:24:07+05:30,change,2026-11-04 00:56:51+05:30
+2026-11-04 01:41:37+05:30,,error,429,HTTP 429 (failure 1),,error,
