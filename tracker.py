@@ -36,9 +36,10 @@ FETCH_TIMEOUT = 60
 DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
 WEEKLY_AT = [(8, 20)]                           # IST, Mondays only: the weekly report
 BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after the 3:45 sweep has the day's exact totals)
-SWEEP_AT = (3, 45)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
+SWEEP_AT = (3, 55)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
                            # BookMyShow's own 24-hour figure (at night every movie shows it)
 WINDOW = ((3, 0), (5, 0))   # IST: every film (not too old) must be read once in this window, the sweep aims at ~4 AM
+QUIET_FROM = (3, 30)       # IST: from here to the end of WINDOW only the night-read films are asked (every other request risks a 429 that blocks the read)
 NIGHT_TRIES = 3           # a film whose night read found no counter is asked up to this many times
 NIGHT_RETRY = 600          # seconds between those attempts
 OLD_DAYS = 50              # films released more than this many days ago are left out of the night read
@@ -510,17 +511,38 @@ def recently_polled(movie):
 
 
 def night_films(movies, keys, day):
-    """Keys that must be read at night: all except films released more than OLD_DAYS days ago."""
+    """Keys to read at night: films that show a counter (a 1-hour or 24-hour reading in the last 3 days, or a new
+    release without data yet), except films released more than OLD_DAYS days ago. Films with no counter (not
+    released yet) are left out: asking them only uses up the request allowance."""
     try:
         catalog = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'catalog.json'), encoding='utf-8'))
     except (OSError, ValueError):
         catalog = {}
+    since = datetime(day.year, day.month, day.day, tzinfo=IST) - timedelta(days=3)
     out = []
     for k in keys:
         rel = interest.release_day((catalog.get(movies[k]['eventcode']) or {}).get('release'))
-        if rel is None or (day - rel).days <= OLD_DAYS:
+        if rel is not None and (day - rel).days > OLD_DAYS:
+            continue
+        live = False
+        try:
+            with open(movies[k]['csv'], newline='', encoding='utf-8') as f:
+                for row in csv.reader(f):
+                    if len(row) > 2 and row[2] in ('1_hour', '24_hours') and row[0] >= since.strftime('%Y-%m-%d'):
+                        live = True
+        except OSError:
+            pass
+        fresh = rel is not None and 0 <= (day - rel).days <= 3
+        if live or fresh:
             out.append(k)
     return out
+
+
+def quiet_now(t):
+    """True from QUIET_FROM to the end of the window (IST)."""
+    w0, w1 = window_bounds(t)
+    q = w0.replace(hour=QUIET_FROM[0], minute=QUIET_FROM[1])
+    return q <= t.astimezone(IST) < w1
 
 
 def window_bounds(t):
@@ -544,9 +566,10 @@ def run(keys, minutes, commit):
     # Movies with an `every` interval (hourly sales are enough for them) are spread
     # evenly over that interval; the rest start MIN_GAP apart and follow the cache.
     keys = [k for k in keys if not movies[k].get('paused')]
+    night = set(night_films(movies, keys, now().date()))
     # Movies checked less than once an hour (every > 3600 s) are skipped by runs that start
     # too soon after their last logged row, so they are polled about once per interval.
-    keys = [k for k in keys if not (movies[k].get('every', 0) > 3600 and recently_polled(movies[k]))]
+    keys = [k for k in keys if k in night or not (movies[k].get('every', 0) > 3600 and recently_polled(movies[k]))]
     slow = [k for k in keys if movies[k].get('every')]
     fast = [k for k in keys if k not in slow]
     due = {k: start + i * MIN_GAP for i, k in enumerate(fast)}
@@ -562,7 +585,6 @@ def run(keys, minutes, commit):
             slot += 1
         else:
             due[k] = start + (every - 300 - age)
-    night = set(night_films(movies, keys, t0.date()))
     w0, w1 = window_bounds(t0)
     if w0 <= t0 < w1:                    # a run that starts inside the window: whoever has no read since 3 AM is owed one
         PENDING.update(k for k in night if POLLED.get(k, datetime.min.replace(tzinfo=IST)) < w0)
@@ -591,17 +613,25 @@ def run(keys, minutes, commit):
             if time.monotonic() >= sweep_mono:
                 t_s = now()
                 TRIES.clear()
-                PENDING.update(night_films(movies, [s_.key for s_ in states], t_s.date()))
+                PENDING.update(night & {s_.key for s_ in states})
                 for s_ in states:
                     if s_.key in PENDING:
                         s_.due = min(s_.due, time.monotonic())
                 window_end = time.monotonic() + max(0, (window_bounds(t_s)[1] - t_s).total_seconds())
-                print(f'[{fmt(now())}] night read: asking {len(PENDING)} films before 4 AM (until 5 AM)', flush=True)
+                print(f'[{fmt(now())}] night read: asking {len(PENDING)} films with a counter around 4 AM (others wait until 5 AM)', flush=True)
                 sweep_mono = time.monotonic() + (next_sweep_time(now()) - now()).total_seconds()
             if PENDING and window_end and time.monotonic() >= window_end:
                 print(f'[{fmt(now())}] night read window over; not read: {sorted(PENDING)}', flush=True)
                 PENDING.clear()
-            st = min(states + ([] if PENDING else jobs), key=lambda s: s.due)
+            quiet = quiet_now(now())
+            pool = [s_ for s_ in states if not quiet or s_.key in night] + ([] if PENDING or quiet else jobs)
+            if not pool:
+                if time.monotonic() >= end:
+                    print('Run window finished.', flush=True)
+                    break
+                sleep(30)
+                continue
+            st = min(pool, key=lambda s: s.due)
             go = max(st.due, shared['block_until'], last_request + MIN_GAP)
             if min(go, sweep_mono) >= end:
                 print('Run window finished.', flush=True)
