@@ -44,3 +44,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-04 19:36:10+05:30,Pyre,24_hours,5.21K,5.21K tickets booked in last 24 hours,2026-11-04 18:40:49+05:30,change,2026-11-04 19:36:10+05:30
 2026-11-04 20:31:10+05:30,Pyre,24_hours,5.11K,5.11K tickets booked in last 24 hours,2026-11-04 19:36:10+05:30,change,2026-11-04 20:31:10+05:30
 2026-11-04 21:26:10+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-04 22:21:18+05:30,,error,200,no trending widget in response (failure 1),,error,
