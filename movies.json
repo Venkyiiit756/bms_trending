@@ -1204,7 +1204,7 @@
     "page_slug": "mookuthi-amman-2",
     "csv": "data/ET00517348.csv",
     "headers_csv": "data/ET00517348_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-30"
   },
   {
@@ -1482,6 +1482,54 @@
     "page_slug": "ethanungda",
     "csv": "data/ET00525031.csv",
     "headers_csv": "data/ET00525031_headers.csv",
+    "every": 3600,
+    "added": "2026-11-04"
+  },
+  {
+    "key": "et00504901",
+    "name": "OM Chapter 1: Udhiram",
+    "eventcode": "ET00504901",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "om-chapter-1-udhiram",
+    "csv": "data/ET00504901.csv",
+    "headers_csv": "data/ET00504901_headers.csv",
+    "every": 3600,
+    "added": "2026-11-04"
+  },
+  {
+    "key": "et00521922",
+    "name": "Talcum Powder",
+    "eventcode": "ET00521922",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "talcum-powder",
+    "csv": "data/ET00521922.csv",
+    "headers_csv": "data/ET00521922_headers.csv",
+    "every": 3600,
+    "added": "2026-11-04"
+  },
+  {
+    "key": "et00524691",
+    "name": "The Cat In The Hat 3d",
+    "eventcode": "ET00524691",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-cat-in-the-hat-3d",
+    "csv": "data/ET00524691.csv",
+    "headers_csv": "data/ET00524691_headers.csv",
+    "every": 3600,
+    "added": "2026-11-04"
+  },
+  {
+    "key": "et00525409",
+    "name": "Harij Weds Sajali",
+    "eventcode": "ET00525409",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "harij-weds-sajali",
+    "csv": "data/ET00525409.csv",
+    "headers_csv": "data/ET00525409_headers.csv",
     "every": 3600,
     "added": "2026-11-04"
   }

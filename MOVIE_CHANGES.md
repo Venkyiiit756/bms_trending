@@ -3,6 +3,13 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-04
+- added **OM Chapter 1: Udhiram** (ET00504901), polled hourly
+- added **Talcum Powder** (ET00521922), polled hourly
+- added **The Cat In The Hat 3d** (ET00524691), polled hourly
+- added **Harij Weds Sajali** (ET00525409), polled hourly
+- **Mookuthi Amman 2** (ET00517348): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-04
 - added **Ethanungda** (ET00525031), polled hourly
 
 ## 2026-11-04

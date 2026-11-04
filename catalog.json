@@ -287,7 +287,7 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03",
+  "upcoming": "2026-11-04",
   "group": "EG00449868",
   "languages": [
    "Hindi",
@@ -363,7 +363,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03",
+  "upcoming": "2026-11-04",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -673,6 +673,15 @@
   "book": true,
   "upcoming": "2026-10-28"
  },
+ "ET00504901": {
+  "first_seen": "2026-11-04",
+  "last_listed": null,
+  "name": "OM Chapter 1: Udhiram",
+  "page_slug": "om-chapter-1-udhiram",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-04"
+ },
  "ET00504928": {
   "name": "Heart of the Beast",
   "page_slug": "heart-of-the-beast",
@@ -791,7 +800,7 @@
   ],
   "release": "Aug 07, 2026",
   "book": true,
-  "upcoming": "2026-10-30"
+  "upcoming": "2026-11-04"
  },
  "ET00509047": {
   "first_seen": "2026-10-22",
@@ -1467,6 +1476,15 @@
   "figure": null,
   "upcoming": "2026-11-04"
  },
+ "ET00521922": {
+  "first_seen": "2026-11-04",
+  "last_listed": null,
+  "name": "Talcum Powder",
+  "page_slug": "talcum-powder",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-04"
+ },
  "ET00522234": {
   "first_seen": "2026-10-23",
   "last_listed": null,
@@ -1679,6 +1697,15 @@
   "figure": null,
   "upcoming": "2026-10-29"
  },
+ "ET00524691": {
+  "first_seen": "2026-11-04",
+  "last_listed": null,
+  "name": "The Cat In The Hat 3d",
+  "page_slug": "the-cat-in-the-hat-3d",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-04"
+ },
  "ET00525031": {
   "first_seen": "2026-11-04",
   "last_listed": null,
@@ -1711,6 +1738,15 @@
   "last_listed": null,
   "name": "Mahasakthi",
   "page_slug": "mahasakthi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-04"
+ },
+ "ET00525409": {
+  "first_seen": "2026-11-04",
+  "last_listed": null,
+  "name": "Harij Weds Sajali",
+  "page_slug": "harij-weds-sajali",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-04"
