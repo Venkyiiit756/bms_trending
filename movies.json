@@ -63,7 +63,8 @@
     "page_slug": "crazy-kalyanam",
     "csv": "data/ET00521061.csv",
     "headers_csv": "data/ET00521061_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00481645",
@@ -74,7 +75,8 @@
     "page_slug": "street-fighter",
     "csv": "data/ET00481645.csv",
     "headers_csv": "data/ET00481645_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00507337",
@@ -381,7 +383,8 @@
     "csv": "data/ET00511431.csv",
     "headers_csv": "data/ET00511431_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00520054",
@@ -444,7 +447,8 @@
     "csv": "data/ET00114750.csv",
     "headers_csv": "data/ET00114750_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00451914",
@@ -504,7 +508,8 @@
     "csv": "data/ET00517732.csv",
     "headers_csv": "data/ET00517732_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00517992",
@@ -516,7 +521,8 @@
     "csv": "data/ET00517992.csv",
     "headers_csv": "data/ET00517992_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00518916",
@@ -540,7 +546,8 @@
     "csv": "data/ET00519221.csv",
     "headers_csv": "data/ET00519221_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00520032",
@@ -565,7 +572,8 @@
     "csv": "data/ET00520164.csv",
     "headers_csv": "data/ET00520164_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00520774",
@@ -627,7 +635,7 @@
     "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
     "csv": "data/ET00475942.csv",
     "headers_csv": "data/ET00475942_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-23"
   },
   {
@@ -1028,7 +1036,8 @@
     "csv": "data/ET00518466.csv",
     "headers_csv": "data/ET00518466_headers.csv",
     "every": 21600,
-    "added": "2026-10-28"
+    "added": "2026-10-28",
+    "paused": true
   },
   {
     "key": "et00524295",
@@ -1317,7 +1326,7 @@
     "page_slug": "bts-movie-week",
     "csv": "data/ET00460536.csv",
     "headers_csv": "data/ET00460536_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-01"
   },
   {
@@ -1437,7 +1446,7 @@
     "page_slug": "scene-telugu",
     "csv": "data/ET00525065.csv",
     "headers_csv": "data/ET00525065_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-03"
   },
   {

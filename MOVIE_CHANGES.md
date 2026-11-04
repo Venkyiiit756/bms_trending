@@ -2,6 +2,20 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-04
+- **Crazy Kalyanam** (ET00521061): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Street Fighter** (ET00481645): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Eken: Kerala-e-Kurukshetra** (ET00511431): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Doosra** (ET00114750): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Haiku** (ET00517732): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Tum Mere Ho** (ET00517992): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **321 [Love Marriage Vs Arranged]** (ET00519221): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Tu Hai Meri Kiran** (ET00520164): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): every 30 min -> hourly (best hourly figure in 24 h: 3.0K)
+- **Dhood** (ET00518466): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **BTS Movie Week** (ET00460536): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Scene (Telugu)** (ET00525065): hourly -> every 30 min (best hourly figure in 24 h: 15.1K)
+
 ## 2026-11-03
 - added **G.O.A.T** (ET00476213), polled hourly
 - added **Ghost Soldier** (ET00518333), polled hourly
