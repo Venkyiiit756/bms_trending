@@ -47,3 +47,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-04 22:49:48+05:30,Scene (Telugu),1_hour,13.24K,13.24K tickets booked in last 1 hour,2026-11-04 22:20:32+05:30,change,2026-11-04 22:49:48+05:30
 2026-11-04 23:15:03+05:30,Scene (Telugu),1_hour,13.24K,13.24K tickets booked in last 1 hour,,heartbeat,
 2026-11-04 23:40:29+05:30,Scene (Telugu),1_hour,9.55K,9.55K tickets booked in last 1 hour,2026-11-04 23:15:03+05:30,change,2026-11-04 23:40:29+05:30
+2026-11-05 00:05:44+05:30,,error,429,HTTP 429 (failure 1),,error,
