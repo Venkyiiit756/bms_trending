@@ -396,6 +396,8 @@ def poll(st, shared):
         wait = POLL_SECONDS
     st.targeted = st.retries < MAX_QUICK_RETRIES
     st.due = mono + (st.every or wait)
+    if quiet_now(t) and st.key not in PENDING:    # already read for the night: a second ask would only use up the allowance
+        st.due = max(st.due, mono + (window_bounds(t)[1] - t).total_seconds())
     return logged
 
 
