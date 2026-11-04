@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-04
+- added **Ethanungda** (ET00525031), polled hourly
+
+## 2026-11-04
 - **Crazy Kalyanam** (ET00521061): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Street Fighter** (ET00481645): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **The Eken: Kerala-e-Kurukshetra** (ET00511431): every 6 h -> paused (best hourly figure in 24 h: 0.0K)

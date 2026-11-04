@@ -1451,7 +1451,7 @@
   },
   {
     "key": "et00525135",
-    "name": "Stray Kids: Run It",
+    "name": "Stray Kids: World Tour, Run It (Live Viewing)",
     "eventcode": "ET00525135",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1472,5 +1472,17 @@
     "headers_csv": "data/ET00525155_headers.csv",
     "every": 3600,
     "added": "2026-11-03"
+  },
+  {
+    "key": "et00525031",
+    "name": "Ethanungda",
+    "eventcode": "ET00525031",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ethanungda",
+    "csv": "data/ET00525031.csv",
+    "headers_csv": "data/ET00525031_headers.csv",
+    "every": 3600,
+    "added": "2026-11-04"
   }
 ]
