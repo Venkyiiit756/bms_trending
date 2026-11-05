@@ -182,6 +182,7 @@ details>summary{cursor:pointer}
 .rel{white-space:nowrap}@media (max-width:560px){.rel{white-space:normal}}
 .kpi#tTotal,#tTotal.kpi{border:0;box-shadow:none;padding:0;background:none;overflow:visible}#tTotal.kpi::before{display:none}
 .only-sm{display:none}@media (max-width:560px){.only-sm{display:block}}
+.nw{white-space:nowrap}
 .relcount{font-size:12.5px;color:var(--mute)}
 .subhead td{background:var(--soft);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);border-radius:10px}
 .moreposts{display:grid;gap:10px;margin-top:6px}
@@ -445,6 +446,13 @@ details>summary{cursor:pointer}
 
 <!-- REPORTS -->
 <section id="reports">
+  <div class="card" id="rpFc" hidden>
+    <div class="row spread"><h2>Next hour forecast</h2><span class="chip" id="rpFcChip">Statistical, version 1</span></div>
+    <div class="mute" id="rpFcAsOf"></div>
+    <div id="rpFcOut" style="margin:10px 0 4px"></div>
+    <div class="tw" id="rpFcTable"></div>
+    <details class="how"><summary>How this works and what it cannot know yet</summary><div id="rpFcHow"></div></details>
+  </div>
   <div class="card" id="rpWeek" hidden>
     <div class="row spread"><h2>Weekly report</h2><span class="chip" id="rpWeekMode"></span></div>
     <div class="mute" id="rpWeekWin"></div>
@@ -1469,6 +1477,17 @@ let RPDONE=false;
 async function reports(){if(RPDONE)return;RPDONE=true;
   const get=u=>fetch(u,{cache:'no-store'}).then(r=>r.json()).catch(()=>null);
   const [W,R,H]=await Promise.all([get('data/weekly.json'),get('data/radar.json'),get('health.json')]);
+  const FC=await get('data/forecast.json'),OL=await get('data/outlook.json');
+  if(FC&&(FC.films||[]).length){$('#rpFc').hidden=false;$('#rpFcAsOf').textContent=`As of ${FC.as_of} IST · figures are tickets in the hour, as BookMyShow shows them`;
+    if(OL&&OL.headline){const g=OL.generated_at||'';$('#rpFcOut').innerHTML=`<div class="big" style="margin-bottom:6px">${esc(OL.headline)}</div><ul style="margin:0 0 6px;padding-left:20px">${(OL.bullets||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${(OL.watch||[]).length?`<div class="flagbox">Could change this: ${(OL.watch||[]).map(esc).join(' · ')}</div>`:''}<div class="mute" style="margin-top:6px">${OL.mode==='claude'?'Written by Claude':'Automatic summary'} · ${esc(g.slice(0,10)===msParts(Date.now())[0]?'today':g.slice(0,10))} ${g?timeLabel(g.slice(11,13)+g.slice(14,16)):''} IST</div>`}
+    const rg=(v,lo,hi)=>`<div class="relcount nw">${esc(lo)} – ${esc(hi)}</div>`;
+    $('#rpFcTable').innerHTML=`<table><thead><tr><th>Film</th><th class="n hide-sm">Last hour</th><th class="n">Next hour</th><th class="n hide-sm">Today total</th><th class="n hide-sm">Tomorrow</th></tr></thead><tbody>${FC.films.map(f=>{const n=f.next[0],t=f.today,tm=f.tomorrow;
+      return `<tr><td class="movie">${mvLink(mvResolve(f.name),esc(f.short))}<div class="relcount">${esc(n.hour)}${f.vs_yesterday_pct!=null?` · ${f.vs_yesterday_pct>=0?'+':''}${f.vs_yesterday_pct}% vs yesterday`:''}</div></td>
+      <td class="n hide-sm">${esc(f.now)}</td><td class="n"><b>${esc(n.text)}</b>${rg(0,n.low,n.high)}<div class="relcount hide-sm">then ${f.next.slice(1).map(x=>esc(x.text)).join(', ')}</div>${t?`<div class="only-sm relcount nw">today ≈ ${esc(t.projected)}</div>`:''}</td>
+      <td class="n hide-sm">${t?`<b class="nw">≈ ${esc(t.projected)}</b>${rg(0,t.low,t.high)}<div class="relcount nw">${esc(t.so_far)} so far</div>`:'<span class="mute">—</span>'}</td>
+      <td class="n hide-sm">${tm?`<b>≈ ${esc(tm.projected)}</b>${rg(0,tm.low,tm.high)}`:'<span class="mute">—</span>'}</td></tr>`}).join('')}</tbody></table>`;
+    const A=FC.accuracy||{};$('#rpFcHow').innerHTML=`<p>The next hours come from the latest hourly figure and how the same hours moved yesterday and a week ago. Today's total adds what is left of yesterday's pattern at today's pace; tomorrow applies the usual weekday-to-weekday change across films. The ranges are how far the same method was off in the past (tested on ${A.cases||'?'} past hours: typically ${A.median_error_pct}% off, 8 in 10 within ${esc(A.next_hour_range||'')}).</p><p>Not included yet: ${(FC.not_included||[]).map(esc).join('; ')}. A film that opens today or tomorrow can jump well beyond the pattern, so treat its range as wide.</p>`}
+
   $('#rpAsk').href='https://github.com/Venkyiiit756/bms_trending/issues/new?title='+encodeURIComponent('? ')+'&labels=ask';
   if(W&&W.headline){$('#rpWeek').hidden=false;const ai=String(W.mode||'').startsWith('claude');
     $('#rpWeekMode').textContent=W.mode==='claude'?'Written by Claude':ai?'Claude, partly automatic':'Automatic summary';$('#rpWeekMode').classList.toggle('ai',ai);

@@ -125,6 +125,15 @@ def main():
     import radar
     with open(os.path.join(SITE, 'data', 'radar.json'), 'w', encoding='utf-8') as f:
         json.dump(radar.build(), f, separators=(',', ':'), ensure_ascii=False)
+    try:
+        import forecast
+        with open(os.path.join(SITE, 'data', 'forecast.json'), 'w', encoding='utf-8') as f:
+            json.dump(forecast.build(), f, separators=(',', ':'), ensure_ascii=False)
+    except Exception as e:        # the forecast is an extra: never stop the site for it
+        print(f'forecast skipped: {e}')
+    outlook = os.path.join(ROOT, 'outlook.json')
+    if os.path.exists(outlook):
+        shutil.copy(outlook, os.path.join(SITE, 'data', 'outlook.json'))
     weekly = os.path.join(ROOT, 'weekly.json')
     if os.path.exists(weekly):
         shutil.copy(weekly, os.path.join(SITE, 'data', 'weekly.json'))
