@@ -239,3 +239,9 @@ A 429 still hit at 4:12 AM because the always-polled films were asked again ever
 - Inputs you can edit: `signals.json` (`[{"film": "Scene", "talk": "good"|"mixed"|"bad", "note": "..."}]`, nudges tomorrow x1.10 / x0.85 and is shown) and `holidays.json` (dates the
   writer may mention). NOT included yet (version 2): review scores / word of mouth (could read BookMyShow's rating and votes), show and screen counts, weather, release-day
   surges for films with no history. Site: Reports tab, "Next hour forecast".
+
+### Forecast agent: whole-day, hour by hour
+`forecast.json` now has, per film, `hours` = every reported hour of the day (7-8 AM ... 10-11 PM): booked (actual) for past hours, expected + range for the rest, plus the same hour yesterday;
+`peak_ahead` = the busiest hour still ahead. Ranges per hour-ahead come from the backtest (error grows: ~6% one hour ahead, ~12% at 4 hours, ~21% at 8). Today's total = so far + the hourly
+forecast for the rest of the evening x the counter-to-ticket factor + a night allowance (yesterday's night x today's evening vs yesterday's); backtested: ~13% off at 3 PM, 7% at 6 PM, 4% at 9 PM.
+Site: Reports tab -> chart (booked solid, expected dashed, range shaded, yesterday grey) + table with a film picker.
