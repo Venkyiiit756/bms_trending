@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Intelligence agent: what is being said about a film right now, with sources.
 
-For the films the forecast cares about (released in the last 2 weeks, or releasing in the next 5 days) Claude Haiku 5.5 searches the web
+For the films listed in research.json (opt-in, one by one) Claude Haiku 5.5 searches the web
 (Anthropic's web search tool) for critic reviews and ratings, audience ratings, word of mouth, reported screen / show counts and the
 other releases it competes with. Nothing it says is trusted blindly:
 
@@ -11,7 +11,7 @@ other releases it competes with. Nothing it says is trusted blindly:
 
     python intel.py                 # research the films that matter now (needs ANTHROPIC_API_KEY), write intel.json
     python intel.py --film "Scene"  # one film
-Cost: web search is $10 per 1,000 searches (about 5 per film) plus a few thousand tokens at Haiku 5.5 prices: roughly 5-6 cents per film.
+Cost: web search is $10 per 1,000 searches (3 per film per day) plus a few thousand tokens at Haiku 5.5 prices: about 3-4 cents per film per day, only for the films in research.json.
 """
 import argparse
 import json
@@ -26,9 +26,10 @@ IST = series.IST
 ROOT = series.ROOT
 OUT = os.path.join(ROOT, 'intel.json')
 MODEL = os.environ.get('INTEL_MODEL', 'claude-haiku-5-5')
-MAX_FILMS = 6
-MAX_SEARCHES = 5
-KEEP_HOURS = 30          # a film's intel is reused for this long unless it is in its opening days
+MAX_FILMS = 3
+MAX_SEARCHES = 3          # about 1 cent each: this is where the money goes
+KEEP_HOURS = 20           # a film is researched about once a day
+MAX_RUN_CENTS = 10        # stop a run that has spent this much
 
 SYSTEM = """You are a film-industry research assistant for an Indian box-office tracking account (Hyderabad; Telugu, Hindi, Tamil and English films).
 Research ONE film with web search and report only what you find, with a source URL for every item.
@@ -128,31 +129,31 @@ def clean(data, urls):
 
 
 def targets(today=None):
-    """Films worth researching now: released within 14 days or releasing within 5 days, and either in the forecast (they show an hourly
-    counter) or awaited by 60K+ people. Small films are skipped: they cost as much to research and move nothing."""
-    import forecast
-    import interest
+    """Only the films listed in research.json (each may have an "until" date after which it is dropped). Research costs about
+    1 cent per web search, so it is opt-in per film: [{"film": "Scene", "until": "2026-11-20"}]."""
     today = today or datetime.now(IST).date()
+    try:
+        wanted = json.load(open(os.path.join(ROOT, 'research.json'), encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
     catalog = json.load(open(os.path.join(ROOT, 'catalog.json'), encoding='utf-8'))
-    focus = {n for n, _ in forecast.films()}
-    awaited = {}
-    for code, m in interest.series().items():
-        if m['points']:
-            awaited[(catalog.get(code, {}).get('name') or m['name'])] = m['points'][-1][1]
-    seen, out = set(), []
+    by_name = {}
     for code, c in catalog.items():
+        if c.get('name'):
+            by_name.setdefault(c['name'], c)
+    out = []
+    for w in wanted:
+        if not isinstance(w, dict) or not w.get('film'):
+            continue
+        if w.get('until') and date.fromisoformat(w['until']) < today:
+            continue
+        c = by_name.get(w['film']) or {}
         try:
             rel = datetime.strptime(c.get('release') or '', '%b %d, %Y').date()
         except ValueError:
-            continue
-        d = (today - rel).days
-        name = c.get('name')
-        if not name or name in seen or not -5 <= d <= 14 or not (name in focus or awaited.get(name, 0) >= 60000):
-            continue
-        seen.add(name)
-        out.append((abs(d), name, rel, c.get('languages') or []))
-    out.sort()
-    return [(n, r, l) for _, n, r, l in out][:MAX_FILMS]
+            rel = None
+        out.append((w['film'], rel, c.get('languages') or []))
+    return out[:MAX_FILMS]
 
 
 def run(only=None):
@@ -170,9 +171,11 @@ def run(only=None):
     now = datetime.now(IST)
     res = {'generated': now.isoformat(timespec='minutes'), 'model': MODEL, 'films': {}, 'usage': {'in': 0, 'out': 0, 'searches': 0}}
     for name, rel, langs in ([(only, None, [])] if only else targets()):
+        if res['usage']['searches'] * 1.0 > MAX_RUN_CENTS:
+            print('cost cap reached; stopping', flush=True)
+            break
         prev = old.get(name)
-        opening = rel is not None and abs((now.date() - rel).days) <= 2
-        if prev and not opening and not only:
+        if prev and not only:
             age = now - datetime.fromisoformat(prev.get('researched', '2000-01-01T00:00+05:30'))
             if age < timedelta(hours=KEEP_HOURS):
                 res['films'][name] = prev

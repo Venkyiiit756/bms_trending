@@ -256,3 +256,8 @@ Site: Reports tab -> chart (booked solid, expected dashed, range shaded, yesterd
 - **Holidays**: `holidays.json`; a holiday tomorrow multiplies tomorrow by 1.12 (assumption, marked in the basis text).
 - **Release-day pattern**: for a film 0-1 days after release the hourly forecast is the average of the usual pattern (yesterday / last week) and the average release-day / day-2 shape of other films (scaled to how today has gone so far); ranges widen to cover the opening-day backtest (median error ~10% on 108 cases, versus ~9.5% for the usual method on all days but with bigger misses on opening days).
 - Site: Reports tab -> "What the forecast takes into account" (chips + signals table with sources and each nudge).
+
+### Cost control (research is opt-in per film)
+`research.json` lists the films that get web research and BookMyShow ratings (`[{"film": "...", "until": "YYYY-MM-DD"}]`, default: Ramayana until 19 Nov); other films get the booking-pattern forecast only.
+Research = 3 web searches per film per day (~1 cent each) + a few thousand tokens: about 3-4 cents per film per day; a run stops at 10 cents. The outlook text (Haiku, no search) is ~0.15 cent a run.
+To switch a film on, add it to `research.json` (the name as in the catalog, e.g. "Scene").
