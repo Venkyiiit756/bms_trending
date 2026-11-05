@@ -57,7 +57,7 @@ def venues(node, out, venue=None):
 
 def summarize(st):
     found = []
-    venues((st or {}).get('showtimesByEvent') or st, found)
+    venues(st, found)
     seen, sessions, names = set(), [], set()
     for venue, s in found:
         if s['sessionId'] in seen:
