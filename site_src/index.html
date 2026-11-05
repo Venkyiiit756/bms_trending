@@ -868,12 +868,13 @@ function render0(){
     const [a,b]=rangeOf(m,S.ra,S.rb);let res=dayRows(m,a,b,a>0&&a===firstFour(m));const a0=res.rows.length?res.rows[0].a:a;
     $('#sRange').textContent=`${whenLabel(slMs(m,a0))} → ${whenLabel(slMs(m,b))} IST`;
     const tot=`${res.exact?'':'≈'}${fmt(res.total)}`;const nd=res.rows.length;
-    box=frame(ctx,W,H,`${n}: ${tot} tickets`,`${whenShort(slMs(m,a0))} to ${whenShort(slMs(m,b))} IST · ${nd} day${nd>1?'s':''}${res.exact?'':' · ≈ estimated'}`);
+    const fullRows=res.rows.filter(x=>x.full),clk=fullRows.length?timeLabel(msParts(slMs(m,fullRows[0].a))[1]):'';   // every full day starts and ends at this time: say it once, in the header
+    box=frame(ctx,W,H,`${n}: ${tot} tickets`,(clk?`Each day ${clk} to ${clk} IST`:`${whenShort(slMs(m,a0))} to ${whenShort(slMs(m,b))} IST`)+` · ${nd} day${nd>1?'s':''}${res.exact?'':' · ≈ estimated'}`);
     if(S.type==='totals'){const R=res.rows.slice(-14);const skip=res.rows.length-R.length;
-      const rows=R.map((x,k)=>[`Day ${skip+k+1}`,`${whenShort(slMs(m,x.a))} → ${whenShort(slMs(m,x.b))}`,fmtV(x.r),x.run!=null?fmt(x.run):'—']);
-      rows.push(['Total','',tot,'']);
-      const cols=rows.map((r,k)=>k===rows.length-1?[th.first,th.ink,th.first,th.ink]:[th.rank,th.ink,th.first,th.ink]);
-      table(ctx,W,box,['Day','From → to','Tickets','Total so far'],rows,cols,[.14,.44,.2,.22])}
+      const rows=R.map((x,k)=>[`${skip+k+1}`,x.full&&clk?dayLabel(msParts(slMs(m,x.a))[0]):`${dayLabel(msParts(slMs(m,x.a))[0])} · ${Math.round((x.b-x.a)/2)}h so far`,fmtV(x.r),x.run!=null?fmt(x.run):'—']);
+      rows.push(['','Total',tot,'']);
+      const cols=rows.map((r,k)=>k===rows.length-1?[th.first,th.first,th.first,th.ink]:[th.rank,th.ink,th.first,th.ink]);
+      table(ctx,W,box,['Day','Date','Tickets','Total so far'],rows,cols,[.14,.44,.2,.22])}
     else bars(ctx,W,box,dayItems(m,res).slice(-14));
     const lines=res.rows.map((x,k)=>`Day ${k+1} (${x.full?short(msParts(slMs(m,x.a))[0]):Math.round((x.b-x.a)/2)+'h'}): ${fmtV(x.r)}`);
     CAP.long=build(`🎟️ ${n} on BookMyShow: ${tot} tickets booked from ${whenShort(slMs(m,a))} to ${whenShort(slMs(m,b))}`,lines.slice(-7),[n]);
