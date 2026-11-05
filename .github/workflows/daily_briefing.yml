@@ -6,8 +6,7 @@ name: Daily Briefing
 # secret exists (otherwise a plain template writer is used). Every number is checked against the facts.
 # Nothing is posted: the drafts appear on the website (Auto posts tab) for the owner to copy.
 on:
-  schedule:
-    - cron: '40 2 * * *'
+  # schedule removed: the briefing is switched off (run it by hand with workflow_dispatch)
   workflow_dispatch:
     inputs:
       force:
