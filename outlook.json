@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-05T16:13+05:30",
- "as_of": "Thu 5 Nov 4:00 PM",
+ "generated_at": "2026-11-05T20:11+05:30",
+ "as_of": "Thu 5 Nov 8:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Namit Malhotra's Ramayana is expected to reach 1.17M tickets today (range 923K–1.40M), with Friday likely stronger.",
+ "headline": "Jailer 2 is expected to reach 23.6K tickets today, with 24.9K expected tomorrow on Friday.",
  "bullets": [
-  "Namit Malhotra's Ramayana has 395K so far; the forecast of 1.17M today (923K–1.40M) comes from how earlier films behaved on release day and day two, so the range is wide.",
-  "Its busiest hour still ahead is 9–10 PM at an expected 80.3K (56.9K–106K), after 44.9K (33.8K–50.2K) in 4–5 PM.",
-  "Friday is expected to be stronger, with Ramayana at 1.28M (913K–2.00M); the signals lean it +4%, from a 9.4/10 BookMyShow rating (+7%) and critics at 7.5/10 (+3%), offset by the Scene and Mookuthi Amman 2 releases (-2% each).",
-  "Jailer 2 (later weeks) has 9.7K so far and is expected at 24.4K today (20.5K–29.3K) and 25.8K tomorrow (19.5K–40.3K), with no review or word-of-mouth information found yet; Aadarsha Kutumbam is expected to peak at 1.8K (1.2K–2.5K) at 10–11 PM, with signals leaning it -7%."
+  "Jailer 2 has 17.3K tickets so far today, and the full day is expected at 23.6K (range 22.6K to 24.7K), down 21% vs yesterday.",
+  "The busiest hour still ahead is 9–10 PM at about 1.6K (range 1.3K to 1.8K), with 8–9 PM near 1.5K and 10–11 PM near 1.3K.",
+  "Tomorrow, Fri 6 Nov, is expected at 24.9K (range 21.5K to 34K), since Friday is usually a stronger day with new releases opening.",
+  "The film is 21 days past release, and no review or word-of-mouth signals are included because that information is only collected for films switched on, so the forecast rests on usual patterns."
  ],
  "watch": [
-  "Ramayana's mixed word of mouth and the thin early signals, not yet tested against history, could move these estimates as they fade in over the first 6 hours.",
-  "Scene releasing on 6 Nov and Diwali on 2026-11-08 could change tomorrow's numbers."
+  "Diwali on 8 Nov is a listed holiday that could shift demand, so later days are less certain.",
+  "Tomorrow's range is wide (21.5K to 34K); next-hour estimates are typically within x0.88 to x1.12, so recheck as hours pass."
  ],
  "usage": {
-  "input_tokens": 4935,
-  "output_tokens": 2064,
-  "cost_cents": 0.153
+  "input_tokens": 1808,
+  "output_tokens": 1773,
+  "cost_cents": 0.107
  }
 }

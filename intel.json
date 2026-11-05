@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T16:11+05:30",
+ "generated": "2026-11-05T20:10+05:30",
  "model": "claude-haiku-5-5",
  "films": {
   "Namit Malhotra's Ramayana": {
@@ -87,9 +87,9 @@
   }
  },
  "usage": {
-  "in": 328818,
-  "out": 15600,
-  "searches": 21,
-  "cost_cents": 25.07
+  "in": 0,
+  "out": 0,
+  "searches": 0,
+  "cost_cents": 0.0
  }
 }
