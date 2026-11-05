@@ -245,3 +245,14 @@ A 429 still hit at 4:12 AM because the always-polled films were asked again ever
 `peak_ahead` = the busiest hour still ahead. Ranges per hour-ahead come from the backtest (error grows: ~6% one hour ahead, ~12% at 4 hours, ~21% at 8). Today's total = so far + the hourly
 forecast for the rest of the evening x the counter-to-ticket factor + a night allowance (yesterday's night x today's evening vs yesterday's); backtested: ~13% off at 3 PM, 7% at 6 PM, 4% at 9 PM.
 Site: Reports tab -> chart (booked solid, expected dashed, range shaded, yesterday grey) + table with a film picker.
+
+## Forecast agent, version 2: outside signals and release-day patterns
+- **BookMyShow rating** (`ratings.py`, fields found with `probe_ratings.py`): init/static rating widget (`styleId` `overall-rating`, `review-count`) and secondary `meta.ratings.aggregatedRating` + "Top reviews" count -> `ratings.json`.
+- **Web research** (`intel.py`, Claude Haiku 5.5 + web search `web_search_20250305`, max 5 searches per film, ~5-6 cents a film): critic reviews and ratings, IMDb / Google scores, word of mouth, reported screens, competing releases -> `intel.json`.
+  Every item needs a URL that really appeared in that run's search results, ratings must be on a sane scale, otherwise it is dropped. Films in their opening days (within 2 days of release) are re-researched every run, others once per 30 h.
+- Both run in `forecast_outlook.yml` (11:10 / 16:10 / 20:10 IST), then the outlook text is written.
+- **Nudge** (`forecast.buzz`): critics (+/-6%), BookMyShow rating (+/-7%, needs 500+ votes), IMDb (+/-4%), Google (+/-3%), word of mouth (good +5%, bad -8%), competition (-2.5% each, max 2), your `signals.json` note; total capped at about +16% / -18%. It is
+  faded in over the hours ahead (nothing on the next hour, full from ~7 hours ahead) and applied to tomorrow's total. NOT tested against history (there is none): it only leans the forecast. Screens are shown, not used.
+- **Holidays**: `holidays.json`; a holiday tomorrow multiplies tomorrow by 1.12 (assumption, marked in the basis text).
+- **Release-day pattern**: for a film 0-1 days after release the hourly forecast is the average of the usual pattern (yesterday / last week) and the average release-day / day-2 shape of other films (scaled to how today has gone so far); ranges widen to cover the opening-day backtest (median error ~10% on 108 cases, versus ~9.5% for the usual method on all days but with bigger misses on opening days).
+- Site: Reports tab -> "What the forecast takes into account" (chips + signals table with sources and each nudge).

@@ -1,8 +1,10 @@
 name: Forecast Outlook
 
-# Three times a day (11:10, 16:10, 20:10 IST, started by tracker.py; the cron is only a backup) forecast.py writes the short
-# outlook text next to the forecast numbers: Claude (ANTHROPIC_API_KEY secret) explains the statistics, every number is checked
-# against the facts, and a plain template is used otherwise. The numbers themselves are recomputed every hour by build_site.py.
+# Three times a day (11:10, 16:10, 20:10 IST, started by tracker.py; the cron is only a backup):
+#   ratings.py   BookMyShow's own rating / votes / review count for the films that matter (needs curl_cffi; BookMyShow answers runners)
+#   intel.py     Claude Haiku 5.5 + web search: critic reviews, IMDb / Google ratings, word of mouth, reported screens, competition (sources kept)
+#   forecast.py  --outlook: the short outlook text; every number checked against the facts, template if no key
+# The forecast numbers themselves are recomputed every hour by build_site.py and read ratings.json / intel.json.
 on:
   schedule:
     - cron: '40 5,10,14 * * *'
@@ -15,7 +17,7 @@ concurrency:
 jobs:
   outlook:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     permissions:
       contents: write
     steps:
@@ -23,7 +25,15 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-    - run: pip install anthropic
+    - run: pip install -r requirements.txt anthropic
+    - name: BookMyShow ratings
+      continue-on-error: true
+      run: python ratings.py
+    - name: Web research (reviews, word of mouth, competition)
+      continue-on-error: true
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: python intel.py
     - name: Write the outlook
       env:
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -32,7 +42,7 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add outlook.json
+        git add outlook.json ratings.json intel.json
         git diff --cached --quiet && exit 0
         git commit -m "Forecast outlook [skip ci]"
         for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
