@@ -128,9 +128,17 @@ def clean(data, urls):
 
 
 def targets(today=None):
-    """Films worth researching now: in the forecast, or releasing within 5 days, or released within 14 days."""
+    """Films worth researching now: released within 14 days or releasing within 5 days, and either in the forecast (they show an hourly
+    counter) or awaited by 60K+ people. Small films are skipped: they cost as much to research and move nothing."""
+    import forecast
+    import interest
     today = today or datetime.now(IST).date()
     catalog = json.load(open(os.path.join(ROOT, 'catalog.json'), encoding='utf-8'))
+    focus = {n for n, _ in forecast.films()}
+    awaited = {}
+    for code, m in interest.series().items():
+        if m['points']:
+            awaited[(catalog.get(code, {}).get('name') or m['name'])] = m['points'][-1][1]
     seen, out = set(), []
     for code, c in catalog.items():
         try:
@@ -139,7 +147,7 @@ def targets(today=None):
             continue
         d = (today - rel).days
         name = c.get('name')
-        if not name or name in seen or not -5 <= d <= 14:
+        if not name or name in seen or not -5 <= d <= 14 or not (name in focus or awaited.get(name, 0) >= 60000):
             continue
         seen.add(name)
         out.append((abs(d), name, rel, c.get('languages') or []))
