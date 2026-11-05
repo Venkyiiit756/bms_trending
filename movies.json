@@ -1526,7 +1526,7 @@
   },
   {
     "key": "et00525409",
-    "name": "Harij Weds Sajali",
+    "name": "Harij Weds Sajili",
     "eventcode": "ET00525409",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1557,6 +1557,18 @@
     "page_slug": "bhai-beej",
     "csv": "data/ET00525419.csv",
     "headers_csv": "data/ET00525419_headers.csv",
+    "every": 3600,
+    "added": "2026-11-05"
+  },
+  {
+    "key": "et00525459",
+    "name": "Amalpatta Chapter 1: Hashim",
+    "eventcode": "ET00525459",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "amalpatta-chapter-1-hashim",
+    "csv": "data/ET00525459.csv",
+    "headers_csv": "data/ET00525459_headers.csv",
     "every": 3600,
     "added": "2026-11-05"
   }

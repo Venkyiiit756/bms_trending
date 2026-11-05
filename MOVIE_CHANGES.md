@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-05
+- added **Amalpatta Chapter 1: Hashim** (ET00525459), polled hourly
+
+## 2026-11-05
 - stopped tracking **Scene (Telugu)** (ET00525065): same counters as **Scene**
 
 ## 2026-11-05
