@@ -99,6 +99,30 @@ def main():
                 log.append(f"stopped tracking **{m['name']}** ({m['eventcode']}): same film as another listing")
             m['dup'] = m['paused'] = True
 
+    # listings whose group is not known yet (BookMyShow limits the lookups) are caught by their counters: the same
+    # (hour, kind, value) readings as a tracked listing means the same film
+    import series as _series
+
+    def prints(m):
+        path = os.path.join(ROOT, m['csv'])
+        try:
+            return {(r.time.strftime('%m-%d %H'), r.kind, r.value) for r in _series.load(path)[-60:]}
+        except Exception:
+            return set()
+    kept = [m for m in sorted(movies, key=lambda m: (not m.get('manual'), -rows(m))) if not m.get('dup') and not m.get('paused')]
+    seen_prints = []
+    for m in kept:
+        fp = prints(m)
+        twin = next((o for o, ofp in seen_prints if len(fp & ofp) >= 5), None)
+        if twin is not None and not m.get('manual'):
+            log.append(f"stopped tracking **{m['name']}** ({m['eventcode']}): same counters as **{twin['name']}**")
+            m['dup'] = m['paused'] = True
+            g = catalog.get(twin['eventcode'], {}).get('group')
+            if g and m['eventcode'] in catalog:
+                catalog[m['eventcode']]['group'] = g
+        elif fp:
+            seen_prints.append((m, fp))
+
     auto = []
     for m in movies:
         if m.get('manual') or m.get('dup'):

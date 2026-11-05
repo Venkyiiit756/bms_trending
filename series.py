@@ -17,7 +17,8 @@ HANDLE = '@GeT_RiGhT_A1'
 # Display names where several BookMyShow listings share a title.
 NAMES = {'drishyam': 'Drishyam', 'jailer2_hyd': 'Jailer 2', 'jailer2': 'Jailer 2 (Hindi)'}
 # Older names found in saved snapshot files -> current display name
-ALIASES = {'Jailer 2 (Telugu)': 'Jailer 2', 'Rajini: The Jailer 2': 'Jailer 2 (Hindi)', 'Drishyam 3': 'Drishyam'}
+ALIASES = {'Jailer 2 (Telugu)': 'Jailer 2', 'Jailer 2 Telugu': 'Jailer 2', 'Rajini: The Jailer 2': 'Jailer 2 (Hindi)', 'Drishyam 3': 'Drishyam',
+           'Scene (Telugu)': 'Scene', 'Ramayana (Telugu)': "Namit Malhotra's Ramayana", 'Namit Malhotras Ramayana': "Namit Malhotra's Ramayana"}
 
 Reading = namedtuple('Reading', 'time kind text value title')
 

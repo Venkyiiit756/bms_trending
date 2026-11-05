@@ -160,8 +160,10 @@ def _frame(ax, fig, title, subtitle, footer, tiles=None):
     return top, bottom
 
 
-def square_table(path, title, subtitle, footer, header, rows, colors=None, widths=None, tiles=None):
-    """Card table. colors[r][c] overrides a cell's text colour; cells starting with an arrow become pills."""
+def square_table(path, title, subtitle, footer, header, rows, colors=None, widths=None, tiles=None, look='sheet'):
+    """Table image. look 'sheet' (default): clean bordered grid sized to its content; 'card': the earlier rounded look."""
+    if look == 'sheet':
+        return sheet_table(path, title, subtitle, footer, header, rows, colors, widths, tiles)
     with plt.rc_context(FONT_RC):
         fig, ax = _canvas()
         top, bottom = _frame(ax, fig, title, subtitle, footer, tiles)
@@ -218,6 +220,171 @@ def square_table(path, title, subtitle, footer, header, rows, colors=None, width
                     color = given or ('#1f3a5f' if ci == name_col else '#222222')
                     cell(txt, ci, yc, fs, color, 800 if ci == name_col or align[ci] == 'r' else 700)
         fig.savefig(path, dpi=200)
+        plt.close(fig)
+
+
+# ---------- spreadsheet look (default): plain bordered grid, sized to its content ----------
+GRID, EDGE, SHEET_HEAD, SHEET_BAND, SHEET_HL = '#b9c2cf', '#1f2937', '#dbe5f1', '#f5f7fa', '#fff3c4'
+
+
+def _wrap(text, parts=2):
+    """Split a long cell onto two balanced lines at a space ('Namit Malhotra's / Ramayana'); a word is never cut."""
+    words = text.split(' ')
+    if len(words) < 2:
+        return [text]
+    best, gap = None, None
+    for i in range(1, len(words)):
+        a, b = ' '.join(words[:i]), ' '.join(words[i:])
+        d = abs(len(a) - len(b))
+        if gap is None or d < gap:
+            best, gap = [a, b], d
+    return best
+
+
+def sheet_table(path, title, subtitle, footer, header, rows, colors=None, widths=None, tiles=None):
+    """A clean grid like a spreadsheet screenshot: thin grid lines, a heavier outer border, a tinted header row.
+    Columns are only as wide as their content (long names wrap onto a second line), the text is scaled so the table
+    fills the picture, and the picture is exactly as tall as it needs to be. colors[r][c] sets a cell's text colour."""
+    ml, base, maxw = 40, 26.0, 1120.0
+    colors = colors or [None] * len(rows)
+    ncol = len(header)
+    align = ['c' if h == '#' else 'r' if ci > 0 and rows and all(NUMERIC.match(str(r[ci])) for r in rows) else 'l'
+             for ci, h in enumerate(header)]
+    name_col = 1 if header and header[0] == '#' else 0
+    texts = [[str(c) for c in r] for r in rows]
+    hl = [r[0].startswith('★ ') or (len(r) > 1 and r[1].startswith('★ ')) for r in texts]
+    texts = [[c.replace('★ ', '', 1) for c in r] for r in texts]
+    with plt.rc_context(FONT_RC):
+        meas = plt.figure(figsize=(6, 6), dpi=200)
+        rend = meas.canvas.get_renderer()
+
+        def tw(txt, px, wt):
+            t = meas.text(0, 0, txt, fontsize=px * PX, fontweight=wt)
+            w = t.get_window_extent(rend).width
+            t.remove()
+            return w
+
+        def weight(ci, header_row=False):
+            return 700 if header_row or ci == name_col or align[ci] == 'r' else 600
+
+        def layout(px, wrap_cols):
+            pad = px * 0.55
+            widths_, lines = [], []
+            for ci in range(ncol):
+                w = tw(str(header[ci]), px, 700)
+                for r in texts:
+                    parts = _wrap(r[ci]) if ci in wrap_cols and align[ci] == 'l' else [r[ci]]
+                    w = max(w, max(tw(x, px, weight(ci)) for x in parts))
+                widths_.append(w + 2 * pad)
+            return widths_, pad
+
+        wrap_cols = set()
+        px = base
+        cw, pad = layout(px, wrap_cols)
+        if sum(cw) > maxw:                       # too wide: wrap the widest text column onto two lines first
+            cand = [ci for ci in range(ncol) if align[ci] == 'l']
+            if cand:
+                wrap_cols.add(max(cand, key=lambda ci: cw[ci]))
+                cw, pad = layout(px, wrap_cols)
+        while sum(cw) > maxw and px > 15:        # still too wide: a smaller font
+            px -= 1
+            cw, pad = layout(px, wrap_cols)
+        if sum(cw) < maxw:                       # narrow table: enlarge the text (at most 1.5x) so it fills the picture
+            k = min(maxw / sum(cw), 1.5)
+            px *= k
+            cw, pad = layout(px, wrap_cols)
+        table_w = sum(cw)
+        W = int(max(760, table_w + 2 * ml))
+        line = px * 1.32
+        ypad = px * 0.42
+
+        def cell_lines(ci, txt):
+            return _wrap(txt) if ci in wrap_cols and align[ci] == 'l' else [txt]
+        heights = [line + 2 * ypad]
+        for r in texts:
+            heights.append(max(len(cell_lines(ci, r[ci])) for ci in range(ncol)) * line + 2 * ypad)
+        # header block, optional summary strip, table, footer
+        title_px, sub_px = 38, 22
+        y = 34 + title_px / 2
+        title_y, sub_y = y, y + title_px * 0.95
+        top = sub_y + sub_px + 18
+        strip_h = 0
+        if tiles:
+            strip_h = 112
+        table_top = top + (strip_h + 14 if tiles else 0)
+        table_h = sum(heights)
+        foot_px = 18
+        H = int(table_top + table_h + (foot_px + 46 if footer else 26))
+        meas_plt_close = plt.close(meas)  # noqa: F841
+        fig = plt.figure(figsize=(W / 200, H / 200), dpi=200)
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_xlim(0, W)
+        ax.set_ylim(H, 0)
+        ax.axis('off')
+        fig.patch.set_facecolor('white')
+        x0 = (W - table_w) / 2 if table_w + 2 * ml <= W else ml
+        # title block, aligned with the table
+        _text(ax, x0, title_y, title, title_px, '#111827', 800)
+        _text(ax, x0, sub_y, subtitle, sub_px, '#6b7280', 400)
+        # summary strip
+        if tiles:
+            n = len(tiles)
+            tw_ = table_w / n
+            ax.add_patch(Rectangle((x0, top), table_w, strip_h, facecolor='white', edgecolor=EDGE, linewidth=2.2 * PX * 1.0, zorder=3))
+            for i, (label, value, sub, col) in enumerate(tiles):
+                tx = x0 + i * tw_
+                if i:
+                    ax.plot([tx, tx], [top, top + strip_h], color=GRID, linewidth=1.2 * PX, zorder=4)
+                _fit(ax, fig, tx + 14, top + 22, label.upper(), 16, tw_ - 24, '#6b7280', 700)
+                _fit(ax, fig, tx + 14, top + 54, value, 28, tw_ - 24, '#111827', 800)
+                if sub:
+                    _fit(ax, fig, tx + 14, top + 87, sub, 18, tw_ - 24, col or '#6b7280', 600)
+        # grid
+        xs = [x0]
+        for w in cw:
+            xs.append(xs[-1] + w)
+        ys = [table_top]
+        for h in heights:
+            ys.append(ys[-1] + h)
+        for r in range(len(heights)):
+            fc = SHEET_HEAD if r == 0 else (SHEET_HL if hl[r - 1] else SHEET_BAND if r % 2 == 0 else 'white')
+            ax.add_patch(Rectangle((x0, ys[r]), table_w, heights[r], facecolor=fc, edgecolor='none', zorder=2))
+        for yy in ys[1:-1]:
+            ax.plot([x0, x0 + table_w], [yy, yy], color=GRID, linewidth=1.3 * PX, zorder=4)
+        for xx in xs[1:-1]:
+            ax.plot([xx, xx], [table_top, ys[-1]], color=GRID, linewidth=1.3 * PX, zorder=4)
+        ax.plot([x0, x0 + table_w], [ys[1], ys[1]], color=EDGE, linewidth=2.2 * PX, zorder=5)
+        ax.add_patch(Rectangle((x0, table_top), table_w, table_h, facecolor='none', edgecolor=EDGE, linewidth=2.6 * PX, zorder=6))
+        # text
+        for r in range(len(heights)):
+            cells = header if r == 0 else texts[r - 1]
+            for ci in range(ncol):
+                txt = str(cells[ci])
+                parts = cell_lines(ci, txt) if r else [txt]
+                color = '#111827' if r == 0 else (colors[r - 1][ci] if colors[r - 1] and colors[r - 1][ci] else None)
+                if r and color is None:
+                    color = '#111827'
+                if r and ci == 0 and align[ci] == 'c' and not (colors[r - 1] and colors[r - 1][ci]):
+                    color = '#4b5563'
+                if r and txt in ('—', ''):
+                    color = '#9ca3af'
+                yc0 = ys[r] + heights[r] / 2 - (len(parts) - 1) * line / 2
+                for li, part in enumerate(parts):
+                    yc = yc0 + li * line
+                    wt = 700 if r == 0 or ci == name_col or align[ci] == 'r' else 600
+                    if align[ci] == 'r':
+                        _text(ax, xs[ci + 1] - pad, yc, part, px, color, wt, ha='right', z=7)
+                    elif align[ci] == 'c':
+                        _text(ax, (xs[ci] + xs[ci + 1]) / 2, yc, part, px, color, wt, ha='center', z=7)
+                    else:
+                        _text(ax, xs[ci] + pad, yc, part, px, color, wt, ha='left', z=7)
+        if footer:
+            left, _, right = footer.partition(' · ')
+            fy = ys[-1] + 32
+            _text(ax, x0, fy, left, foot_px, '#6b7280', 400, z=7)
+            if right:
+                _text(ax, x0 + table_w, fy, right, foot_px, '#374151', 700, ha='right', z=7)
+        fig.savefig(path, dpi=200, facecolor='white')
         plt.close(fig)
 
 
