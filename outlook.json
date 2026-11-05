@@ -1,0 +1,22 @@
+{
+ "generated_at": "2026-11-05T15:07+05:30",
+ "as_of": "Thu 5 Nov 3:00 PM",
+ "mode": "claude",
+ "model": "claude-haiku-5-5",
+ "headline": "Ramayana leads the outlook, with its next-hour tickets expected near 49.2K to 57.1K ahead of a stronger Friday.",
+ "bullets": [
+  "Namit Malhotra's Ramayana is at 54.9K now and could reach 57.1K in the 5–6 PM hour (range 46.2K to 68.4K), up 281% on yesterday.",
+  "Aadarsha Kutumbam is at 1.8K now, with the next hours expected between 1.3K and 1.7K, down 3 versus yesterday.",
+  "Jailer 2 is expected to reach 23.8K today (range 21K to 29.6K) and 25.1K tomorrow (range 20K to 40.8K), down 35 versus yesterday.",
+  "Review and word-of-mouth information is not included yet, so these are estimates from ticket history only."
+ ],
+ "watch": [
+  "Friday's new releases opening could shift tomorrow's numbers, especially for Jailer 2 where the range is wide.",
+  "Diwali on 2026-11-08 is approaching and could change demand for all three films."
+ ],
+ "usage": {
+  "input_tokens": 2338,
+  "output_tokens": 924,
+  "cost_cents": 0.07
+ }
+}
