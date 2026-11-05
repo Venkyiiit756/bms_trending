@@ -272,12 +272,10 @@ def buzz(name, ctx, competitors):
         add('Word of mouth', 0.05 if w['verdict'] == 'good' else -0.08, f"{w['verdict']}: {w.get('evidence', '')}", w.get('url'))
     elif w.get('verdict') == 'mixed':
         reasons.append({'label': 'Word of mouth', 'effect_pct': 0, 'text': f"mixed: {w.get('evidence', '')}", 'url': w.get('url')})
-    comp = [c for c in (intel.get('competition') or [])][:2]
-    for c in comp:
-        add('Competition', -0.025, f"{c['film']}: {c['note']}", c.get('url'))
-    for c in competitors[:2]:
-        if not any(c['name'] == x.get('film') for x in comp):
-            add('Competition', -0.02, f"{c['name']} ({c['release']}) has {c['interested']} interested", None)
+    for c in (intel.get('competition') or [])[:3]:          # found on the web: shown, not counted (language and city overlap unknown)
+        reasons.append({'label': 'Competing release', 'effect_pct': 0, 'text': f"{c['film']}: {c['note']}", 'url': c.get('url')})
+    for c in competitors[:2]:                               # from our own data: a release within 2 days that is at least half as awaited
+        add('Competition', -0.02, f"{c['name']} ({c['release']}) has {c['interested']} interested", None)
     if sig and sig.get('talk') in TALK and TALK[sig['talk']] != 1.0:
         add('Your note', math_log(TALK[sig['talk']]), f"{sig['talk']} talk{': ' + sig['note'] if sig.get('note') else ''}", None)
     scr = intel.get('screens') or {}
