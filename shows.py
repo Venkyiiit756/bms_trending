@@ -38,31 +38,34 @@ def state(html):
         return None
 
 
-def venues(node, out):
-    """Every dict holding a list of sessions is a venue (the sessions carry sessionId and availStatus)."""
+def venues(node, out, venue=None):
+    """Collect every dict that is a session (carries sessionId and showTime/availStatus) with its nearest enclosing venue id."""
     if isinstance(node, dict):
-        for k, v in node.items():
-            if isinstance(v, list) and v and isinstance(v[0], dict) and 'sessionId' in v[0]:
-                out.append((node, v))
+        if 'sessionId' in node and ('showTime' in node or 'availStatus' in node):
+            out.append((venue, node))
+            return
+        for k in ('venueCode', 'venue_code', 'VenueCode', 'venueName', 'name'):
+            if k.lower().startswith('venue') and isinstance(node.get(k), str):
+                venue = node[k]
+                break
         for v in node.values():
-            venues(v, out)
+            venues(v, out, venue)
     elif isinstance(node, list):
         for v in node:
-            venues(v, out)
+            venues(v, out, venue)
 
 
 def summarize(st):
     found = []
     venues((st or {}).get('showtimesByEvent') or st, found)
-    seen, sessions = set(), []
-    names = set()
-    for node, ss in found:
-        for s in ss:
-            if s['sessionId'] in seen:
-                continue
-            seen.add(s['sessionId'])
-            sessions.append(s)
-        names.add(str(node.get('venueCode') or node.get('venue_code') or node.get('VenueCode') or node.get('venueName') or id(node)))
+    seen, sessions, names = set(), [], set()
+    for venue, s in found:
+        if s['sessionId'] in seen:
+            continue
+        seen.add(s['sessionId'])
+        sessions.append(s)
+        names.add(venue or s.get('venueCode') or s.get('venue_code'))
+    names.discard(None)
     c = Counter(str(s.get('availStatus')) for s in sessions)
     t = [int(str(s.get('showTimeCode') or '0000')[:2]) for s in sessions]
     return {'venues': len(names), 'shows': len(sessions), 'sold_out': c['0'], 'almost_full': c['3'], 'fast_filling': c['2'], 'available': c['1'],
