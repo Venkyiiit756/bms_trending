@@ -1,0 +1,41 @@
+name: Shows Snapshot
+
+# On demand: a snapshot of shows and how full they are for one film in 8 cities, today and the next 3 days -> data/shows.csv.
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: 'Event code'
+        required: true
+        default: 'ET00451914'
+      slug:
+        description: 'Film slug on BookMyShow'
+        required: true
+        default: 'namit-malhotras-ramayana'
+
+concurrency:
+  group: bms-shows
+  cancel-in-progress: false
+
+jobs:
+  shows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install -r requirements.txt
+    - name: Snapshot
+      run: python shows.py "${{ inputs.code }}" "${{ inputs.slug }}"
+    - name: Commit
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add data/shows.csv
+        git diff --cached --quiet && exit 0
+        git commit -m "Shows snapshot [skip ci]"
+        for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
