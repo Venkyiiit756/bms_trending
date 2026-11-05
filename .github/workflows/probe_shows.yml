@@ -1,0 +1,29 @@
+name: Probe shows and availability
+
+# Manual diagnostic: what the public buytickets page says about shows and how full they are, in several cities.
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: 'Event code'
+        required: true
+        default: 'ET00451914'
+      slug:
+        description: 'Film slug on BookMyShow'
+        required: true
+        default: 'namit-malhotras-ramayana'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: pip install -r requirements.txt
+    - run: python probe_shows.py "$CODE" "$SLUG"
+      env:
+        CODE: ${{ inputs.code }}
+        SLUG: ${{ inputs.slug }}
