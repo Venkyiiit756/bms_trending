@@ -9,7 +9,9 @@ on:
 
 jobs:
   ask:
+    # switched off (owner does not use it): remove the 'false &&' to turn it on again
     if: >-
+      false &&
       github.event.issue.user.login == github.repository_owner &&
       (startsWith(github.event.issue.title, '?') || contains(github.event.issue.labels.*.name, 'ask'))
     runs-on: ubuntu-latest
