@@ -447,10 +447,14 @@ details>summary{cursor:pointer}
 <!-- REPORTS -->
 <section id="reports">
   <div class="card" id="rpFc" hidden>
-    <div class="row spread"><h2>Next hour forecast</h2><span class="chip" id="rpFcChip">Statistical, version 1</span></div>
+    <div class="row spread"><h2>Today, hour by hour: forecast</h2><span class="chip" id="rpFcChip">Statistical, version 1</span></div>
     <div class="mute" id="rpFcAsOf"></div>
     <div id="rpFcOut" style="margin:10px 0 4px"></div>
     <div class="tw" id="rpFcTable"></div>
+    <div class="row spread" style="margin-top:16px"><h2 style="font-size:16px">Hour by hour today</h2><select id="rpFcFilm" aria-label="Film"></select></div>
+    <div class="mute">Solid = what has been booked each hour, dashed = expected, shaded = likely range, grey = same hour yesterday.</div>
+    <canvas id="rpFcCv" style="margin-top:8px;height:260px"></canvas>
+    <div class="tw" id="rpFcHours"></div>
     <details class="how"><summary>How this works and what it cannot know yet</summary><div id="rpFcHow"></div></details>
   </div>
   <div class="card" id="rpWeek" hidden>
@@ -1486,7 +1490,8 @@ async function reports(){if(RPDONE)return;RPDONE=true;
       <td class="n hide-sm">${esc(f.now)}</td><td class="n"><b>${esc(n.text)}</b>${rg(0,n.low,n.high)}<div class="relcount hide-sm">then ${f.next.slice(1).map(x=>esc(x.text)).join(', ')}</div>${t?`<div class="only-sm relcount nw">today ≈ ${esc(t.projected)}</div>`:''}</td>
       <td class="n hide-sm">${t?`<b class="nw">≈ ${esc(t.projected)}</b>${rg(0,t.low,t.high)}<div class="relcount nw">${esc(t.so_far)} so far</div>`:'<span class="mute">—</span>'}</td>
       <td class="n hide-sm">${tm?`<b>≈ ${esc(tm.projected)}</b>${rg(0,tm.low,tm.high)}`:'<span class="mute">—</span>'}</td></tr>`}).join('')}</tbody></table>`;
-    const A=FC.accuracy||{};$('#rpFcHow').innerHTML=`<p>The next hours come from the latest hourly figure and how the same hours moved yesterday and a week ago. Today's total adds what is left of yesterday's pattern at today's pace; tomorrow applies the usual weekday-to-weekday change across films. The ranges are how far the same method was off in the past (tested on ${A.cases||'?'} past hours: typically ${A.median_error_pct}% off, 8 in 10 within ${esc(A.next_hour_range||'')}).</p><p>Not included yet: ${(FC.not_included||[]).map(esc).join('; ')}. A film that opens today or tomorrow can jump well beyond the pattern, so treat its range as wide.</p>`}
+    fcHours(FC);
+    const A=FC.accuracy||{};$('#rpFcHow').innerHTML=`<p>The next hours come from the latest hourly figure and how the same hours moved yesterday and a week ago. Today's total is what has been booked since 4 AM plus the forecast for the rest of the evening and a night allowance${A.day_error_pct&&A.day_error_pct['15']?` (tested on past days: about ${A.day_error_pct['15']}% off when made at 3 PM, ${A.day_error_pct['18']}% at 6 PM, ${A.day_error_pct['21']}% at 9 PM)`:''}; tomorrow applies the usual weekday-to-weekday change across films. The ranges are how far the same method was off in the past (tested on ${A.cases||'?'} past hours: typically ${A.median_error_pct}% off one hour ahead, 8 in 10 within ${esc(A.next_hour_range||'')}${A.by_hours_ahead&&A.by_hours_ahead['8']?`; the further ahead, the wider: about ${A.by_hours_ahead['4']}% at 4 hours and ${A.by_hours_ahead['8']}% at 8 hours`:''}).</p><p>Not included yet: ${(FC.not_included||[]).map(esc).join('; ')}. A film that opens today or tomorrow can jump well beyond the pattern, so treat its range as wide.</p>`}
 
   $('#rpAsk').href='https://github.com/Venkyiiit756/bms_trending/issues/new?title='+encodeURIComponent('? ')+'&labels=ask';
   if(W&&W.headline){$('#rpWeek').hidden=false;const ai=String(W.mode||'').startsWith('claude');
@@ -1500,6 +1505,24 @@ async function reports(){if(RPDONE)return;RPDONE=true;
   const ck=(H&&H.checks)||[],bad=ck.filter(c=>!c.ok).length;
   $('#rpStatChip').textContent=!ck.length?'no data':bad?bad+' to check':'All good';$('#rpStatChip').className='chip '+(!ck.length?'':bad?'err':'ok');
   $('#rpStatus').innerHTML=ck.map(c=>`<div class="row spread" style="padding:7px 0;border-top:1px solid var(--line)"><span><span class="dot ${c.ok?'':'bad'}"></span>&nbsp; ${esc(c.name)}</span><span class="mute">${esc(c.detail)}</span></div>`).join('')}
+
+
+function fcHours(FC){const sel=$('#rpFcFilm');if(!sel.options.length){FC.films.forEach((f,i)=>sel.add(new Option(f.short,i)));sel.onchange=()=>fcHours(FC)}
+  const f=FC.films[+sel.value||0];if(!f||!(f.hours||[]).length)return;const hs=f.hours;
+  const cs=getComputedStyle(document.documentElement),ink=cs.getPropertyValue('--ink').trim(),mute=cs.getPropertyValue('--mute').trim(),line=cs.getPropertyValue('--line').trim(),br=cs.getPropertyValue('--brand2').trim()||'#3d74bf';
+  const cv=$('#rpFcCv'),ctx=cv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),w=cv.clientWidth||600,h=260;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+  const L=44,R=14,Tp=14,B=30,xs=i=>L+(w-L-R)*i/Math.max(hs.length-1,1);
+  const vmax=Math.max(1,...hs.map(x=>Math.max(x.value,x.high_value||0,x.yesterday_value||0)))*1.1,ys=v=>Tp+(h-Tp-B)*(1-v/vmax);
+  ctx.font='12px Inter,system-ui,sans-serif';ctx.fillStyle=mute;ctx.strokeStyle=line;ctx.lineWidth=1;ctx.textAlign='right';
+  for(let g=0;g<=4;g++){const v=vmax*g/4,y=ys(v);ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();ctx.fillText(v>=1000?(v/1000).toFixed(v>=1e4?0:1)+'K':Math.round(v),L-6,y+4)}
+  const step=w<480?4:2;ctx.textAlign='center';hs.forEach((x,i)=>{if(i%step===0||hs.length<9)ctx.fillText(timeLabel(x.end).replace(':00',''),xs(i),h-10)});
+  const fi=hs.findIndex(x=>x.kind==='forecast');
+  if(fi>=0){ctx.beginPath();ctx.moveTo(xs(Math.max(fi-1,0)),ys(hs[Math.max(fi-1,0)].value));for(let i=fi;i<hs.length;i++)ctx.lineTo(xs(i),ys(hs[i].high_value));for(let i=hs.length-1;i>=fi;i--)ctx.lineTo(xs(i),ys(hs[i].low_value));ctx.lineTo(xs(Math.max(fi-1,0)),ys(hs[Math.max(fi-1,0)].value));ctx.closePath();ctx.fillStyle=br+'33';ctx.fill()}
+  ctx.strokeStyle=mute;ctx.globalAlpha=.55;ctx.lineWidth=2;ctx.beginPath();let st=false;hs.forEach((x,i)=>{if(x.yesterday_value==null){st=false;return}const X=xs(i),Y=ys(x.yesterday_value);st?ctx.lineTo(X,Y):ctx.moveTo(X,Y);st=true});ctx.stroke();ctx.globalAlpha=1;
+  const act=hs.filter(x=>x.kind==='actual');ctx.strokeStyle=ink;ctx.lineWidth=2.6;ctx.beginPath();act.forEach((x,i)=>{const X=xs(hs.indexOf(x)),Y=ys(x.value);i?ctx.lineTo(X,Y):ctx.moveTo(X,Y)});ctx.stroke();
+  if(fi>=0){ctx.strokeStyle=br;ctx.lineWidth=2.6;ctx.setLineDash([7,5]);ctx.beginPath();const a0=Math.max(fi-1,0);ctx.moveTo(xs(a0),ys(hs[a0].value));for(let i=fi;i<hs.length;i++)ctx.lineTo(xs(i),ys(hs[i].value));ctx.stroke();ctx.setLineDash([])}
+  const pk=f.peak_ahead;
+  $('#rpFcHours').innerHTML=`<table><thead><tr><th>Hour</th><th class="n hide-sm">Yesterday</th><th class="n">Booked / expected</th><th class="n hide-sm">Likely range</th></tr></thead><tbody>${hs.map(x=>`<tr${x.kind==='forecast'?'':' style="background:var(--soft)"'}><td>${esc(x.hour)}</td><td class="n hide-sm mute">${esc(x.yesterday||'—')}</td><td class="n"><b>${x.kind==='forecast'?'≈ ':''}${esc(x.text)}</b>${x.kind==='forecast'?`<div class="relcount only-sm nw">${esc(x.low)} – ${esc(x.high)}</div>`:''}</td><td class="n hide-sm">${x.kind==='forecast'?esc(x.low)+' – '+esc(x.high):'<span class="mute">booked</span>'}</td></tr>`).join('')}</tbody></table>${pk?`<div class="mute" style="margin-top:6px">Busiest hour still ahead: ${esc(pk.hour)}, about ${esc(pk.text)} (likely ${esc(pk.low)} – ${esc(pk.high)}).</div>`:''}`}
 
 /* ---------- init ---------- */
 function show(tab){$$('nav button').forEach(b=>{const on=b.dataset.tab===tab;b.setAttribute('aria-selected',on);if(on&&b.scrollIntoView)try{b.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}});$$('main section').forEach(s=>s.classList.toggle('on',s.id===tab));

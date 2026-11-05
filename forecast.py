@@ -39,6 +39,8 @@ SIGNALS = os.path.join(ROOT, 'signals.json')
 HOLIDAYS = os.path.join(ROOT, 'holidays.json')
 TALK = {'good': 1.10, 'mixed': 1.0, 'bad': 0.85}
 HORIZON = 3
+MAXK = 16                    # hours ahead for the whole-day table
+DAY_HOURS = range(8, 24)     # the hours the site reports: 7-8 AM ... 11 PM-midnight, labelled by the hour they end
 
 
 # ---------- hourly series ----------
@@ -88,20 +90,30 @@ def films():
 
 def backtest_hours(fl):
     """Ratios actual / forecast for hours 1..HORIZON ahead, from every past daytime hour that had the data."""
-    ratios = {k: [] for k in range(1, HORIZON + 1)}
+    ratios = {k: [] for k in range(1, MAXK + 1)}
     for _, rs in fl:
         hv, _ = make_hv(rs)
         h1 = [r.time for r in rs if r.kind == '1_hour']
         T = h1[0].astimezone(IST).replace(minute=0, second=0, microsecond=0) + timedelta(days=8)
         end = h1[-1]
-        while T + HORIZON * H < end:
-            if 10 <= T.hour <= 20:
-                for k in range(1, HORIZON + 1):
+        while T + 2 * H < end:
+            if 7 <= T.hour <= 22:
+                for k in range(1, MAXK + 1):
                     f, a = shape(hv, T, k), hv(T + k * H)
                     if f and a:
                         ratios[k].append(a / f)
             T += H
     return ratios
+
+
+def band(ratios, k):
+    """10th / 50th / 90th percentile of actual/forecast for k hours ahead (neighbouring horizons are pooled when few cases)."""
+    vals = list(ratios.get(k, []))
+    j = 1
+    while len(vals) < 30 and j < 4:
+        vals += ratios.get(k - j, []) + ratios.get(k + j, [])
+        j += 1
+    return quantiles(vals) if vals else (1.0, 1.0, 1.0)
 
 
 def quantiles(vals, qs=(0.1, 0.5, 0.9)):
@@ -121,26 +133,38 @@ def slot_sum(m, a, b):
     return None if (b - a) <= 0 or miss > (b - a) * 0.1 else s * (b - a) / (b - a - miss)
 
 
-def project_day(m, i_now, i_4am):
-    """(so_far, projected total) for the day that started at slot i_4am, seen at slot i_now (4 AM to next 4 AM = 48 slots)."""
+def project_day(m, hv, T, i_now, i_4am):
+    """(so_far, projected total) for the day that started at slot i_4am, seen at hour T (slots: half-hour tickets, 48 = a day).
+    So far = slots since 4 AM. The rest of the evening = the hourly forecasts for the remaining hours (counter units x the film's
+    counter-to-ticket factor); the night after 11 PM = yesterday's night, scaled by how today's evening compares with yesterday's."""
     so_far = slot_sum(m, i_4am, i_now)
     if not so_far:
         return None
-    preds = []
-    for d in (1, 7):
-        off = 48 * d
-        cur, old = slot_sum(m, i_now - 6, i_now), slot_sum(m, i_now - 6 - off, i_now - off)
-        rem = slot_sum(m, i_now - off, i_4am + 48 - off)
-        if cur and old and rem is not None:
-            pace = min(max(cur / old, 0.4), 2.5)
-            preds.append(so_far + pace * rem)
-    return (so_far, sum(preds) / len(preds)) if preds else None
+    left = list(range(1, 24 - T.hour + 1)) if T.hour < 24 else []
+    fc, yest = 0.0, 0.0
+    got = 0
+    for k in left:
+        f = shape(hv, T, k)
+        y = hv(T + k * H - timedelta(days=1))
+        if f is not None and y:
+            fc, yest, got = fc + f, yest + y, got + 1
+    if left and got < 0.8 * len(left):
+        return None
+    ratio = fc / yest if yest else 1.0
+    factor = m.get('factor') or 1.2
+    i_23 = i_4am + 38
+    night = slot_sum(m, i_23 - 48, i_4am)           # yesterday 11 PM -> 4 AM
+    proj = so_far + fc * factor * (len(left) / got if got else 1) + (night or 0) * min(max(ratio, 0.3), 3.0)
+    return so_far, proj
 
 
-def backtest_days(data):
+def backtest_days(data, hvs):
     """Ratios truth / projection at 3 PM, 6 PM and 9 PM, for days with a BookMyShow 24-hour figure."""
     out = {15: [], 18: [], 21: []}
     for m in data['movies']:
+        hv = hvs.get(m['name'])
+        if hv is None:
+            continue
         s0 = datetime.strptime(m['start'], '%Y-%m-%d %H%M').replace(tzinfo=IST)
         L = len(m['slots']) - 1
         i0 = next((i for i in range(L) if (s0 + timedelta(minutes=30 * i)).strftime('%H%M') == '0400'), None)
@@ -151,9 +175,10 @@ def backtest_days(data):
             if not truth or not truth['exact'] or truth['v'] < 15000:
                 continue
             i_4 = i_end - 48
+            day0 = (s0 + timedelta(minutes=30 * i_4)).replace(hour=0, minute=0)
             for hr in out:
                 i_now = i_4 + (hr - 4) * 2
-                p = project_day(m, i_now, i_4)
+                p = project_day(m, hv, day0 + timedelta(hours=hr), i_now, i_4)
                 if p and p[1] > 0:
                     out[hr].append(truth['v'] / p[1])
     return out
@@ -211,7 +236,8 @@ def build(now=None):
     fl = films()
     ratios = backtest_hours(fl)
     data = sales.build()
-    dr = backtest_days(data)
+    hvs = {name: make_hv(rs)[0] for name, rs in fl}
+    dr = backtest_days(data, hvs)
     wd = weekday_change(data)
     catalog = load_json(os.path.join(ROOT, 'catalog.json'), {})
     by_name = {}
@@ -233,20 +259,51 @@ def build(now=None):
             f = shape(hv, T, k)
             if not f:
                 continue
-            lo, _, hi = quantiles(ratios[k])
+            lo, _, hi = band(ratios, k)
             nxt.append({'hour': series.window_label(T + k * H), 'value': round(f), 'text': bf.fmt(f), 'low': bf.fmt(f * lo), 'high': bf.fmt(f * hi),
                         'low_value': round(f * lo), 'high_value': round(f * hi)})
         if not nxt:
             continue
         item['next'] = nxt
+        hours = []
+        for hh in DAY_HOURS:
+            end = datetime(today.year, today.month, today.day, 0, 0, tzinfo=IST) + timedelta(hours=hh) if hh < 24 else None
+            if end is None:
+                continue
+            row = {'hour': series.window_label(end), 'end': f'{hh:02d}00'}
+            yv = hv(end - timedelta(days=1))
+            if yv:
+                row['yesterday'] = bf.fmt(yv)
+                row['yesterday_value'] = round(yv)
+            if end <= T:
+                a = hv(end)
+                if a is None:
+                    continue
+                row.update({'kind': 'actual', 'value': round(a), 'text': bf.fmt(a)})
+            else:
+                k = int(round((end - T) / H))
+                f = shape(hv, T, k) if k <= MAXK else None
+                if not f:
+                    continue
+                lo, _, hi = band(ratios, k)
+                row.update({'kind': 'forecast', 'value': round(f), 'text': bf.fmt(f), 'low': bf.fmt(f * lo), 'high': bf.fmt(f * hi),
+                            'low_value': round(f * lo), 'high_value': round(f * hi)})
+            hours.append(row)
+        item['hours'] = hours
+        fut = [x for x in hours if x['kind'] == 'forecast']
+        if fut:
+            pk = max(fut, key=lambda x: x['value'])
+            item['peak_ahead'] = {'hour': pk['hour'], 'text': pk['text'], 'low': pk['low'], 'high': pk['high']}
         y = hv(T - timedelta(days=1))
         if y:
             item['vs_yesterday_pct'] = round((cur - y) / y * 100)
         m = by_slots.get(name)
         if m:
             i_now = min(sales.slot_index(m, T), len(m['slots']) - 1)
+            while i_now > 0 and m['slots'][i_now] < 0:        # the newest slot may not be filled yet
+                i_now -= 1
             i_4 = sales.slot_index(m, datetime(today.year, today.month, today.day, 4, 0, tzinfo=IST))
-            p = project_day(m, i_now, i_4) if 0 <= i_4 < i_now <= len(m['slots']) - 1 else None
+            p = project_day(m, hv, T, i_now, i_4) if 0 <= i_4 < i_now <= len(m['slots']) - 1 else None
             if p and len(dr[18]) >= 8:
                 hr = min((15, 18, 21), key=lambda h: abs(h - (T.hour if T.hour >= 4 else T.hour + 24)))
                 lo, med, hi = quantiles(dr[hr])
@@ -270,7 +327,9 @@ def build(now=None):
     q = quantiles(ratios[1])
     errs = [abs(r - 1) for r in ratios[1]]
     return {'generated': now.isoformat(timespec='minutes'), 'as_of': f'{T:%a %-d %b %-I:%M %p}', 'films': out,
-            'accuracy': {'cases': len(ratios[1]), 'median_error_pct': round(statistics.median(errs) * 100) if errs else None,
+            'accuracy': {'by_hours_ahead': {str(k): round(statistics.median(abs(r - 1) for r in ratios[k]) * 100) for k in (1, 2, 4, 8, 12) if len(ratios.get(k, [])) >= 20},
+                         'day_error_pct': {str(h): round(statistics.median(abs(r - 1) for r in v) * 100) for h, v in dr.items() if len(v) >= 10},
+                         'cases': len(ratios[1]), 'median_error_pct': round(statistics.median(errs) * 100) if errs else None,
                          'next_hour_range': f'x{q[0]:.2f} to x{q[2]:.2f}', 'day_cases': len(dr[18])},
             'not_included': ['review scores and word of mouth (only what is in signals.json)', 'show and screen counts', 'weather', 'release-day surges of films with no history']}
 
@@ -286,7 +345,8 @@ Hard rules:
 - Do not invent reviews, ratings, collections, show counts or causes. The only causes you may mention are the ones in the facts:
   the weekday of tomorrow, a holiday listed in the facts, the film's release phase, and a "signal" when present. If there is no signal
   say plainly that review and word-of-mouth information is not included yet.
-- Films by their "short" name. No links, no promises of more content.
+- Write every percentage with a % sign. Films by their "short" name. No links, no promises of more content.
+- Cover the whole day, not only the next hour: when the busiest hour still ahead is, roughly how big the day could get, and what tomorrow looks like.
 Reply with ONLY JSON: {"headline": "<one sentence, at most 140 characters>", "bullets": ["<3 to 4 short sentences>"], "watch": ["<2 short things that could change these numbers>"]}"""
 
 
@@ -297,7 +357,9 @@ def template(f):
         return out
     a = films_[0]
     n = a['next'][0]
-    out['headline'] = f"{a['short']} is expected to see about {n['text']} tickets in {n['hour']} (range {n['low']} to {n['high']})."
+    pk = a.get('peak_ahead')
+    out['headline'] = (f"{a['short']}: busiest hour still ahead is {pk['hour']}, about {pk['text']} expected (range {pk['low']} to {pk['high']})." if pk
+                       else f"{a['short']} is expected to see about {n['text']} tickets in {n['hour']} (range {n['low']} to {n['high']}).")
     for x in films_[:3]:
         t = x.get('today')
         line = f"{x['short']}: {x['next'][0]['text']} expected in {x['next'][0]['hour']}"
@@ -314,7 +376,7 @@ def run_outlook(use_llm=True):
     import briefing
     f = build()
     base = template(f)
-    facts = {'as_of': f['as_of'], 'films': [{k: x[k] for k in x if k not in ('now_value',)} for x in f['films'][:6]], 'accuracy': f['accuracy'],
+    facts = {'as_of': f['as_of'], 'films': [{k: x[k] for k in x if k not in ('now_value', 'hours')} for x in f['films'][:6]], 'accuracy': f['accuracy'],
              'not_included': f['not_included']}
     body, mode, usage = base, 'template', None
     key = os.environ.get('ANTHROPIC_API_KEY')
