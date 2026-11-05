@@ -308,7 +308,8 @@
     "page_slug": "nayyi-navelli",
     "csv": "data/ET00513250.csv",
     "headers_csv": "data/ET00513250_headers.csv",
-    "every": 3600
+    "every": 3600,
+    "paused": true
   },
   {
     "key": "et00396541",
@@ -421,7 +422,7 @@
     "page_slug": "clayface",
     "csv": "data/ET00496545.csv",
     "headers_csv": "data/ET00496545_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-20"
   },
   {
@@ -1338,7 +1339,7 @@
     "page_slug": "aadi-anant",
     "csv": "data/ET00521921.csv",
     "headers_csv": "data/ET00521921_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-02"
   },
   {
@@ -1350,7 +1351,7 @@
     "page_slug": "mysaa",
     "csv": "data/ET00515083.csv",
     "headers_csv": "data/ET00515083_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-02"
   },
   {
@@ -1532,5 +1533,29 @@
     "headers_csv": "data/ET00525409_headers.csv",
     "every": 3600,
     "added": "2026-11-04"
+  },
+  {
+    "key": "et00524873",
+    "name": "Lambodhara 2.0",
+    "eventcode": "ET00524873",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "lambodhara-20",
+    "csv": "data/ET00524873.csv",
+    "headers_csv": "data/ET00524873_headers.csv",
+    "every": 3600,
+    "added": "2026-11-05"
+  },
+  {
+    "key": "et00525419",
+    "name": "Bhai Beej",
+    "eventcode": "ET00525419",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bhai-beej",
+    "csv": "data/ET00525419.csv",
+    "headers_csv": "data/ET00525419_headers.csv",
+    "every": 3600,
+    "added": "2026-11-05"
   }
 ]

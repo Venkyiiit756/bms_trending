@@ -2,6 +2,14 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-05
+- added **Lambodhara 2.0** (ET00524873), polled hourly
+- added **Bhai Beej** (ET00525419), polled hourly
+- **Nayyi Navelli** (ET00513250): hourly -> paused (best hourly figure in 24 h: 0.0K)
+- **Clayface** (ET00496545): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Aadi Anant** (ET00521921): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mysaa** (ET00515083): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-04
 - added **OM Chapter 1: Udhiram** (ET00504901), polled hourly
 - added **Talcum Powder** (ET00521922), polled hourly
