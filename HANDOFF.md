@@ -228,3 +228,14 @@ A 429 still hit at 4:12 AM because the always-polled films were asked again ever
 ## Table images: "Sheet" look (default) and the Scene duplicate
 - **Sheet look** (website Studio / Movie images: `tableSheet`, `frameSheet`, `finishSheet` in `site_src/index.html`; X post images: `cards.sheet_table`, used by `cards.square_table`): a plain bordered grid like a spreadsheet screenshot - thin grid lines, heavier outer border, tinted header row, optional summary strip, green/red text for changes (no pills, no gradients). Columns are only as wide as their content, long names wrap onto a second line, the text is scaled to fill the picture width, and the picture is exactly as tall as the table (+ footer). Style buttons: Sheet (default), Colour, Minimal, Dark. Charts are unchanged.
 - **Duplicate listings** (Scene and Scene (Telugu) showed the same figures): `update_movies.py` now also marks a listing as `dup` when its last readings match another tracked listing's (5+ identical hour/kind/value points), even if BookMyShow's group is not known yet. `build_site.py` leaves such names out of older snapshots; `series.ALIASES` maps their old names.
+
+## Forecast agent, version 1 (`forecast.py`)
+- Numbers (every hour, in `build_site.py` -> `data/forecast.json`; no model): next 3 hours = latest hourly figure x how the same hours moved 1 and 7 days ago
+  (tested on ~650 past hours: median error 6%, repeating the last hour is ~10%; range = 10th-90th percentile of past ratios); today's total = so far + what is left
+  of yesterday/last week at today's pace; tomorrow = today's projection x the usual weekday-to-weekday change across films (range from the middle half). Only films that
+  currently show the hourly counter (>= 240 hourly readings, newest within 90 min).
+- Words (`python forecast.py --outlook`, `.github/workflows/forecast_outlook.yml`, 11:10 / 16:10 / 20:10 IST, ~0.1 cent a run): Claude Haiku explains the facts; every number
+  checked with `briefing.verify`; template fallback; written to `outlook.json`.
+- Inputs you can edit: `signals.json` (`[{"film": "Scene", "talk": "good"|"mixed"|"bad", "note": "..."}]`, nudges tomorrow x1.10 / x0.85 and is shown) and `holidays.json` (dates the
+  writer may mention). NOT included yet (version 2): review scores / word of mouth (could read BookMyShow's rating and votes), show and screen counts, weather, release-day
+  surges for films with no history. Site: Reports tab, "Next hour forecast".
