@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-05T15:07+05:30",
+ "generated_at": "2026-11-05T15:23+05:30",
  "as_of": "Thu 5 Nov 3:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana leads the outlook, with its next-hour tickets expected near 49.2K to 57.1K ahead of a stronger Friday.",
+ "headline": "Ramayana is expected to close today near 1.29M tickets, with a peak of about 104K at 10–11 PM and Friday likely stronger.",
  "bullets": [
-  "Namit Malhotra's Ramayana is at 54.9K now and could reach 57.1K in the 5–6 PM hour (range 46.2K to 68.4K), up 281% on yesterday.",
-  "Aadarsha Kutumbam is at 1.8K now, with the next hours expected between 1.3K and 1.7K, down 3 versus yesterday.",
-  "Jailer 2 is expected to reach 23.8K today (range 21K to 29.6K) and 25.1K tomorrow (range 20K to 40.8K), down 35 versus yesterday.",
-  "Review and word-of-mouth information is not included yet, so these are estimates from ticket history only."
+  "Namit Malhotra's Ramayana has 331K tickets so far and is at 54.9K now, up 281% vs yesterday; its day total is expected around 1.29M (range 1.08M to 1.55M).",
+  "Its busiest hour still ahead is likely 10–11 PM at about 104K (range 66.8K to 146K), while the next hours are estimated at 52.1K, 49.2K and 57.1K.",
+  "Tomorrow, Friday with new releases opening, could bring Ramayana to about 1.37M (range 1.03M to 2.13M), and Diwali on 2026-11-08 is coming soon.",
+  "Jailer 2 is expected to reach 22.1K today (range 18.5K to 26.4K), down 35% vs yesterday, and Aadarsha Kutumbam is down 3% vs yesterday with a 10–11 PM peak near 2.9K."
  ],
  "watch": [
-  "Friday's new releases opening could shift tomorrow's numbers, especially for Jailer 2 where the range is wide.",
-  "Diwali on 2026-11-08 is approaching and could change demand for all three films."
+  "Review and word-of-mouth signals are not included yet, so these estimates rest on booking patterns alone.",
+  "Friday's new releases and the run-up to Diwali could shift Ramayana's opening-weekend numbers in either direction."
  ],
  "usage": {
-  "input_tokens": 2338,
-  "output_tokens": 924,
-  "cost_cents": 0.07
+  "input_tokens": 2904,
+  "output_tokens": 1383,
+  "cost_cents": 0.098
  }
 }
