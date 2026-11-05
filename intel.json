@@ -1,0 +1,374 @@
+{
+ "generated": "2026-11-05T16:11+05:30",
+ "model": "claude-haiku-5-5",
+ "films": {
+  "Namit Malhotra's Ramayana": {
+   "identified": true,
+   "release_date": "2026-11-05",
+   "confidence": "medium",
+   "critics": [
+    {
+     "outlet": "The Week",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://www.theweek.in/review/movies/2026/11/05/ramayana-part-1-2026-movie-review.html"
+    },
+    {
+     "outlet": "NewsBytes",
+     "rating": 3.5,
+     "scale": 5.0,
+     "verdict": "mixed",
+     "url": "https://www.newsbytesapp.com/news/entertainment/ranbir-kapoor-s-ramayana-review/story"
+    },
+    {
+     "outlet": "The Quint",
+     "rating": null,
+     "scale": null,
+     "verdict": "negative",
+     "url": "https://www.thequint.com/entertainment/movie-reviews/ramanyana-review-ranbir-kapoor-yash-namit-malhotra"
+    },
+    {
+     "outlet": "India TV News",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://www.indiatvnews.com/entertainment/movie-review/ramayana-movie-review-rating-ranbir-kapoor-yash-sai-pallavi-ravie-dubey-namit-malhotra-nitesh-tiwari-1406"
+    },
+    {
+     "outlet": "Rotten Tomatoes (critics score shown on ",
+     "rating": 4.0,
+     "scale": 5.0,
+     "verdict": "positive",
+     "url": "https://www.rottentomatoes.com/m/ramayana_rise_of_a_legend"
+    }
+   ],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": null
+   },
+   "word_of_mouth": {
+    "verdict": "mixed",
+    "evidence": "Early LA screening reactions praised the scale and Ranbir Kapoor's portrayal of Rama, while viewers also questioned the storytelling and emotional weight.",
+    "url": "https://theprint.in/entertainment/ramayana-gets-its-first-audience-reactions-in-la-viewers-praise-scale-question-storytelling/3083935/"
+   },
+   "screens": {
+    "count": 9000,
+    "where": "India (reported; the same report cites 59,000 screens worldw",
+    "url": "https://en.wikipedia.org/wiki/Ramayana:_Part_1"
+   },
+   "competition": [
+    {
+     "film": "Scene (Suriya, Tamil action-comedy)",
+     "note": "Releases November 6 in theatres, one day after Ramayana.",
+     "url": "https://www.republicworld.com/entertainment/movies-releasing-in-theatres-this-diwali-week-ramayana-scene-disco-and-more-to-watch-2026-11-02-140251"
+    },
+    {
+     "film": "Mookuthi Amman 2 (Nayanthara, Tamil fant",
+     "note": "Also set to hit cinemas this week, adding to a crowded Tamil release day alongside Ramayana.",
+     "url": "https://www.businesstoday.in/bt-tv/whats-hot/video/diwali-2026-movie-releases-ramayana-to-scene-5-films-to-watch-out-for-theater-release-this-week-565640-2026-11-04"
+    },
+    {
+     "film": "Moonwalk (Tamil)",
+     "note": "Listed alongside Ramayana in the Diwali 2026 festive line-up, with a crowded Tamil market on November 6.",
+     "url": "https://www.etvbharat.com/en/entertainment/diwali-2026-releases-ramayana-leads-festive-race-as-moonwalk-mookuthi-amman-2-scene-join-the-line-up-enn26102102378"
+    },
+    {
+     "film": "Disco (Malayalam action-crime thriller)",
+     "note": "Releases November 6 in theatres.",
+     "url": "https://www.republicworld.com/entertainment/movies-releasing-in-theatres-this-diwali-week-ramayana-scene-disco-and-more-to-watch-2026-11-02-140251"
+    }
+   ],
+   "researched": "2026-11-05T16:11+05:30"
+  },
+  "Scene": {
+   "identified": true,
+   "release_date": "2026-11-06",
+   "confidence": "medium",
+   "critics": [],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": null
+   },
+   "word_of_mouth": {
+    "verdict": "unknown",
+    "evidence": "",
+    "url": null
+   },
+   "screens": {
+    "count": 550,
+    "where": "Kerala (reported planned release; not a Tamil Nadu or worldw",
+    "url": "https://www.sacnilk.com/movie/Scene_2026"
+   },
+   "competition": [
+    {
+     "film": "Moon Walk (Tamil)",
+     "note": "Prabhu Deva and Yogi Babu musical comedy releasing on the same day, 6 November 2026.",
+     "url": "https://www.filmibeat.com/tamil/movies/moon-walk.html"
+    },
+    {
+     "film": "Mookuthi Amman 2 (Tamil; Mahasakthi in H",
+     "note": "Nayanthara fantasy sequel scheduled for 6 November 2026; one report says the Tamil market is crowded that day, and another says Scene needs ",
+     "url": "https://www.etvbharat.com/en/entertainment/diwali-2026-releases-ramayana-leads-festive-race-as-moonwalk-mookuthi-amman-2-scene-join-the-line-up-enn26102102378"
+    },
+    {
+     "film": "Aasai (Tamil)",
+     "note": "Kathir and Divya Bharti drama listed for 6 November 2026.",
+     "url": "https://www.filmibeat.com/tamil/movies/november-2026.html"
+    },
+    {
+     "film": "MR. Bhaarath (Tamil)",
+     "note": "Bhaarath and Samyuktha Vishwanathan black comedy listed for 6 November 2026.",
+     "url": "https://www.filmibeat.com/tamil/movies/november-2026.html"
+    }
+   ],
+   "researched": "2026-11-05T16:11+05:30"
+  },
+  "The Cat in the Hat": {
+   "identified": true,
+   "release_date": "2026-11-06",
+   "confidence": "medium",
+   "critics": [
+    {
+     "outlet": "Deadline",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://deadline.com/2026/11/cat-in-the-hat-review-bill-hader-dr-seuss-animated-debut-1237211639/"
+    },
+    {
+     "outlet": "Plugged In",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://www.pluggedin.com/movie-reviews/cat-in-the-hat-2026/"
+    },
+    {
+     "outlet": "Variety",
+     "rating": 70.0,
+     "scale": null,
+     "verdict": "mixed",
+     "url": "https://variety.com/2026/film/reviews/the-cat-in-the-hat-review-bill-hader-1236937564/"
+    },
+    {
+     "outlet": "The Hollywood Reporter",
+     "rating": null,
+     "scale": null,
+     "verdict": "negative",
+     "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-cat-in-the-hat-review-bill-hader-1236746055/"
+    },
+    {
+     "outlet": "The A.V. Club",
+     "rating": null,
+     "scale": null,
+     "verdict": "negative",
+     "url": "https://www.avclub.com/the-cat-in-the-hat-review-2026-dr-seuss-bill-hader-animated"
+    }
+   ],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": null
+   },
+   "word_of_mouth": {
+    "verdict": "unknown",
+    "evidence": "",
+    "url": null
+   },
+   "screens": {
+    "count": null,
+    "where": null,
+    "url": null
+   },
+   "competition": [
+    {
+     "film": "Ramayana: Part 1 (Hindi)",
+     "note": "Listed for a November 6 release with Ranbir Kapoor and Sai Pallavi, so it is a major Hindi release on the same date.",
+     "url": "https://www.etvbharat.com/en/entertainment/november-theatrical-releases-2026-ramayana-part-1-aakasamlo-oka-tara-suryaa-and-more-coming-up-next-month-enn26102402585"
+    },
+    {
+     "film": "Mookuthi Amman 2 (Tamil)",
+     "note": "Listed for November 6 with Nayanthara in the lead, competing for family audiences.",
+     "url": "https://www.filmibeat.com/telugu/movies/november-2026.html"
+    },
+    {
+     "film": "Scene (Tamil/Telugu)",
+     "note": "Listed for November 6 with Suriya Sivakumar and Nazriya Nazim.",
+     "url": "https://www.filmibeat.com/telugu/movies/november-2026.html"
+    }
+   ],
+   "researched": "2026-11-05T16:11+05:30"
+  },
+  "Wild Horse Nine": {
+   "identified": true,
+   "release_date": "2026-11-06",
+   "confidence": "medium",
+   "critics": [
+    {
+     "outlet": "The Guardian (Peter Bradshaw)",
+     "rating": 3.0,
+     "scale": 5.0,
+     "verdict": "mixed",
+     "url": "https://en.wikipedia.org/wiki/Wild_Horse_Nine"
+    },
+    {
+     "outlet": "IndieWire (David Ehrlich)",
+     "rating": null,
+     "scale": null,
+     "verdict": "mixed",
+     "url": "https://www.indiewire.com/criticism/movies/wild-horse-nine-movie-review-1235213912/"
+    },
+    {
+     "outlet": "Variety",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://variety.com/2026/film/reviews/wild-horse-nine-review-1236849978/"
+    },
+    {
+     "outlet": "Roger Ebert",
+     "rating": null,
+     "scale": null,
+     "verdict": "positive",
+     "url": "https://www.rogerebert.com/reviews/wild-horse-nine-martin-mcdonagh-sam-rockwell-john-malkovich-film-review-2026"
+    },
+    {
+     "outlet": "Metacritic (aggregate, 34 critics)",
+     "rating": 77.0,
+     "scale": 100.0,
+     "verdict": "positive",
+     "url": "https://en.wikipedia.org/wiki/Wild_Horse_Nine"
+    }
+   ],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": null
+   },
+   "word_of_mouth": {
+    "verdict": "mixed",
+    "evidence": "Letterboxd user reviews praise the lead performances and humour, while one reviewer criticises the film's handling of its subject matter.",
+    "url": "https://letterboxd.com/film/wild-horse-nine/"
+   },
+   "screens": {
+    "count": null,
+    "where": null,
+    "url": null
+   },
+   "competition": [],
+   "researched": "2026-11-05T16:11+05:30"
+  },
+  "Seyon": {
+   "identified": true,
+   "release_date": null,
+   "confidence": "low",
+   "critics": [],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": null
+   },
+   "word_of_mouth": {
+    "verdict": "unknown",
+    "evidence": "",
+    "url": null
+   },
+   "screens": {
+    "count": null,
+    "where": null,
+    "url": null
+   },
+   "competition": [],
+   "researched": "2026-11-05T16:11+05:30"
+  },
+  "Aadarsha Kutumbam House No: 47 (AK 47)": {
+   "identified": true,
+   "release_date": "2026-10-30",
+   "confidence": "medium",
+   "critics": [
+    {
+     "outlet": "123telugu",
+     "rating": 3.0,
+     "scale": 5.0,
+     "verdict": "positive",
+     "url": "https://www.123telugu.com/reviews/venkatesh-aadarsha-kutumbam-telugu-movie-review-and-rating.html"
+    },
+    {
+     "outlet": "Telugu360",
+     "rating": 2.75,
+     "scale": 5.0,
+     "verdict": "positive",
+     "url": "https://www.telugu360.com/aadarsha-kutumbam-movie-review/"
+    },
+    {
+     "outlet": "Filmfare (via Rotten Tomatoes)",
+     "rating": 3.0,
+     "scale": 5.0,
+     "verdict": "mixed",
+     "url": "https://www.rottentomatoes.com/m/aadarsha_kutumbam_house_no_47_ak_47"
+    },
+    {
+     "outlet": "Gulte",
+     "rating": 2.5,
+     "scale": 5.0,
+     "verdict": "mixed",
+     "url": "https://www.gulte.com/moviereviews/438846/aadarsha-kutumbam-movie-review"
+    }
+   ],
+   "audience": {
+    "bms_rating": null,
+    "bms_votes": null,
+    "imdb_rating": null,
+    "imdb_votes": null,
+    "google_score_percent": null,
+    "url": "https://www.medianama.com/2026/11/223-bookmyshow-disables-ratings-reviews-ak-47-movie/"
+   },
+   "word_of_mouth": {
+    "verdict": "mixed",
+    "evidence": "Rotten Tomatoes audience comments split between praise for the comedy-heavy first half and complaints that the second half drags and the writing is weak.",
+    "url": "https://www.rottentomatoes.com/m/aadarsha_kutumbam_house_no_47_ak_47"
+   },
+   "screens": {
+    "count": 897,
+    "where": "India (theatres on Day 3, 1 Nov 2026, per Tracktollywood)",
+    "url": "https://tracktollywood.com/box-office-daily/aadarsha-kutumbam-house-no-47-box-office-collections-day-3-india/"
+   },
+   "competition": [
+    {
+     "film": "Jailer 2",
+     "note": "Described as delivering a strong third weekend while AK 47 led the Oct 30 to Nov 1 weekend chart.",
+     "url": "https://www.sacnilk.com/movie/Aadarsha_Kutumbam_House_No_47_2026"
+    },
+    {
+     "film": "Ramayana Part 1",
+     "note": "Listed for 6 Nov 2026 and cited in trade coverage as a upcoming rival for AK 47's run; language details not confirmed.",
+     "url": "https://www.sacnilk.com/quicknews/Aadarsha_Kutumbam_House_No_47_2026_Box_Office_Collection_Day_4"
+    }
+   ],
+   "researched": "2026-11-05T16:11+05:30"
+  }
+ },
+ "usage": {
+  "in": 328818,
+  "out": 15600,
+  "searches": 21,
+  "cost_cents": 25.07
+ }
+}

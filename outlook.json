@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-05T15:23+05:30",
- "as_of": "Thu 5 Nov 3:00 PM",
+ "generated_at": "2026-11-05T16:13+05:30",
+ "as_of": "Thu 5 Nov 4:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to close today near 1.29M tickets, with a peak of about 104K at 10–11 PM and Friday likely stronger.",
+ "headline": "Namit Malhotra's Ramayana is expected to reach 1.17M tickets today (range 923K–1.40M), with Friday likely stronger.",
  "bullets": [
-  "Namit Malhotra's Ramayana has 331K tickets so far and is at 54.9K now, up 281% vs yesterday; its day total is expected around 1.29M (range 1.08M to 1.55M).",
-  "Its busiest hour still ahead is likely 10–11 PM at about 104K (range 66.8K to 146K), while the next hours are estimated at 52.1K, 49.2K and 57.1K.",
-  "Tomorrow, Friday with new releases opening, could bring Ramayana to about 1.37M (range 1.03M to 2.13M), and Diwali on 2026-11-08 is coming soon.",
-  "Jailer 2 is expected to reach 22.1K today (range 18.5K to 26.4K), down 35% vs yesterday, and Aadarsha Kutumbam is down 3% vs yesterday with a 10–11 PM peak near 2.9K."
+  "Namit Malhotra's Ramayana has 395K so far; the forecast of 1.17M today (923K–1.40M) comes from how earlier films behaved on release day and day two, so the range is wide.",
+  "Its busiest hour still ahead is 9–10 PM at an expected 80.3K (56.9K–106K), after 44.9K (33.8K–50.2K) in 4–5 PM.",
+  "Friday is expected to be stronger, with Ramayana at 1.28M (913K–2.00M); the signals lean it +4%, from a 9.4/10 BookMyShow rating (+7%) and critics at 7.5/10 (+3%), offset by the Scene and Mookuthi Amman 2 releases (-2% each).",
+  "Jailer 2 (later weeks) has 9.7K so far and is expected at 24.4K today (20.5K–29.3K) and 25.8K tomorrow (19.5K–40.3K), with no review or word-of-mouth information found yet; Aadarsha Kutumbam is expected to peak at 1.8K (1.2K–2.5K) at 10–11 PM, with signals leaning it -7%."
  ],
  "watch": [
-  "Review and word-of-mouth signals are not included yet, so these estimates rest on booking patterns alone.",
-  "Friday's new releases and the run-up to Diwali could shift Ramayana's opening-weekend numbers in either direction."
+  "Ramayana's mixed word of mouth and the thin early signals, not yet tested against history, could move these estimates as they fade in over the first 6 hours.",
+  "Scene releasing on 6 Nov and Diwali on 2026-11-08 could change tomorrow's numbers."
  ],
  "usage": {
-  "input_tokens": 2904,
-  "output_tokens": 1383,
-  "cost_cents": 0.098
+  "input_tokens": 4935,
+  "output_tokens": 2064,
+  "cost_cents": 0.153
  }
 }
