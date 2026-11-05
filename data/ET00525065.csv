@@ -71,3 +71,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-05 08:50:55+05:30,Scene (Telugu),1_hour,4.54K,4.54K tickets booked in last 1 hour,2026-11-05 08:25:40+05:30,change,2026-11-05 08:50:55+05:30
 2026-11-05 09:16:09+05:30,Scene (Telugu),1_hour,5.28K,5.28K tickets booked in last 1 hour,2026-11-05 08:50:55+05:30,change,2026-11-05 09:16:09+05:30
 2026-11-05 09:41:09+05:30,Scene (Telugu),1_hour,5.74K,5.74K tickets booked in last 1 hour,2026-11-05 09:16:09+05:30,change,2026-11-05 09:41:09+05:30
+2026-11-05 10:06:09+05:30,Scene (Telugu),1_hour,6.56K,6.56K tickets booked in last 1 hour,2026-11-05 09:41:09+05:30,change,2026-11-05 10:06:09+05:30
