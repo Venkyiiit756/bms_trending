@@ -3156,5 +3156,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-05 23:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 10–11 PM (Thu 05 Nov)\n\n1. Namit Malhotra's Ramayana: 50.29K (▲69% vs Wed)\n2. Scene: 15.77K (▲19% vs Wed)\n3. Mookuthi Amman 2: 1.72K\n4. Jailer 2: 1.23K (▼23% vs Wed)\n\n#NamitMalhotrasRamayana #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-05/2300/1.png",
+   "posts/2026-11-05/2300/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (10–11 PM, Thu 05 Nov), with change against the same hour yesterday: Namit Malhotra's Ramayana 50.29K, ▲69% vs yesterday; Scene 15.77K, ▲19% vs yesterday; Mookuthi Amman 2 1.72K; Jailer 2 1.23K, ▼23% vs yesterday",
+   "Line chart of tickets booked in the last hour for Namit Malhotra's Ramayana through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
