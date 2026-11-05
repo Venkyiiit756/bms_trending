@@ -14,6 +14,15 @@
   "release": "Oct 20, 1995",
   "book": true
  },
+ "ET00000849": {
+  "first_seen": "2026-11-05",
+  "last_listed": null,
+  "name": "Hero 1983",
+  "page_slug": "hero-1983",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-05"
+ },
  "ET00031160": {
   "first_seen": "2026-10-26",
   "last_listed": null,
@@ -182,7 +191,7 @@
   ],
   "release": "Oct 15, 2026",
   "book": true,
-  "upcoming": "2026-11-04"
+  "upcoming": "2026-11-05"
  },
  "ET00436621": {
   "name": "The Paradise",
@@ -521,7 +530,7 @@
   "page_slug": "dune-part-three",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-04",
+  "upcoming": "2026-11-05",
   "group": "EG00489079",
   "languages": [
    "English",
@@ -1433,7 +1442,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03"
+  "upcoming": "2026-11-05"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",
@@ -1774,6 +1783,15 @@
   "last_listed": null,
   "name": "Amalpatta Chapter 1: Hashim",
   "page_slug": "amalpatta-chapter-1-hashim",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-05"
+ },
+ "ET00525557": {
+  "first_seen": "2026-11-05",
+  "last_listed": null,
+  "name": "Meru Malan",
+  "page_slug": "meru-malan",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-05"

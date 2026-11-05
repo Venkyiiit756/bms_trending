@@ -484,7 +484,7 @@
     "page_slug": "418",
     "csv": "data/ET00509047.csv",
     "headers_csv": "data/ET00509047_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -1569,6 +1569,30 @@
     "page_slug": "amalpatta-chapter-1-hashim",
     "csv": "data/ET00525459.csv",
     "headers_csv": "data/ET00525459_headers.csv",
+    "every": 3600,
+    "added": "2026-11-05"
+  },
+  {
+    "key": "et00000849",
+    "name": "Hero 1983",
+    "eventcode": "ET00000849",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hero-1983",
+    "csv": "data/ET00000849.csv",
+    "headers_csv": "data/ET00000849_headers.csv",
+    "every": 3600,
+    "added": "2026-11-05"
+  },
+  {
+    "key": "et00525557",
+    "name": "Meru Malan",
+    "eventcode": "ET00525557",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "meru-malan",
+    "csv": "data/ET00525557.csv",
+    "headers_csv": "data/ET00525557_headers.csv",
     "every": 3600,
     "added": "2026-11-05"
   }

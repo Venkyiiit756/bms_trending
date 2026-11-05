@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-05
+- added **Hero 1983** (ET00000849), polled hourly
+- added **Meru Malan** (ET00525557), polled hourly
+- **418** (ET00509047): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-05
 - added **Amalpatta Chapter 1: Hashim** (ET00525459), polled hourly
 
 ## 2026-11-05
