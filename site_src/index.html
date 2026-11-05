@@ -245,7 +245,7 @@ details>summary{cursor:pointer}
   <div class="card mhead">
     <div class="row spread" style="align-items:flex-end;gap:12px">
       <label class="mpick">Movie<select id="mSel" aria-label="Pick a movie"></select></label>
-      <div class="mstyle"><span class="mute">Image style</span><div class="seg" id="mStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></div>
+      <div class="mstyle"><span class="mute">Image style</span><div class="seg" id="mStyle"><button data-v="sheet" aria-pressed="true">Sheet</button><button data-v="color" aria-pressed="false">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></div>
     </div>
     <div id="mMeta" class="mute" style="margin-top:8px"></div>
     <div class="jump" id="mJump"></div>
@@ -358,7 +358,7 @@ details>summary{cursor:pointer}
         <select id="sTop"><option value="3">Top 3</option><option value="5">Top 5</option><option value="7" selected>Top 7</option><option value="10">Top 10</option><option value="pick">Choose…</option></select>
       </label>
       <div class="chips" id="sPick" hidden></div>
-      <label>Style<div class="seg" id="sStyle"><button data-v="color" aria-pressed="true">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></label>
+      <label>Style<div class="seg" id="sStyle"><button data-v="sheet" aria-pressed="true">Sheet</button><button data-v="color" aria-pressed="false">Colour</button><button data-v="mono" aria-pressed="false">Minimal</button><button data-v="dark" aria-pressed="false">Dark</button></div></label>
       <label>Size<div class="seg" id="sSize"><button data-v="1200x1200" aria-pressed="true">Square</button><button data-v="1200x675" aria-pressed="false">Wide</button><button data-v="1080x1350" aria-pressed="false">Tall</button></div></label>
       <label class="check"><input type="checkbox" id="sFoot" checked> Source and handle at the bottom</label>
     </div>
@@ -570,12 +570,70 @@ $('#nowLatest').onclick=()=>{const [d,t]=latestPoint();nowSet(d,t)};
 $('#nowToStudio').onclick=()=>{S.type='board';$('#sType').value='board';studioDayTime($('#nowDay').value,$('#nowTime').value);show('studio')};
 
 /* ---------- STUDIO state ---------- */
-const S={type:'board',style:'color',size:'1200x1200',cap:'long',ra:null,rb:null};
+const S={type:'board',style:'sheet',size:'1200x1200',cap:'long',ra:null,rb:null};
 const THEMES={
   color:{modern:true,bgG:['#f7faff','#e8eff9'],panel:'#ffffff',hair:'#e2e9f3',shadow:'rgba(31,58,95,.16)',band:'#f4f8fd',hl:'rgba(75,120,184,.14)',headA:'#1f3a5f',headB:'#33619c',accA:'#1f3a5f',accB:'#5b8fd0',pillUp:'rgba(10,125,51,.13)',pillDown:'rgba(192,57,43,.13)',bg:'#ffffff',title:'#1f3a5f',sub:'#6b7684',ink:'#222222',head:'#1f3a5f',headInk:'#ffffff',zebra:'#f4f7fb',row:'#ffffff',border:'#1f3a5f',up:'#0a7d33',down:'#c0392b',grid:'#e3e8ef',axis:'#b8c2cf',first:'#1f3a5f',rank:'#6b7684',heat:[31,58,95],pal:['#1f3a5f','#c0392b','#0a7d33','#b9770e'],ghost:'#9aa6b5'},
   mono:{bg:'#ffffff',title:'#111111',sub:'#555555',ink:'#111111',head:'#ececec',headInk:'#111111',zebra:'#ffffff',row:'#ffffff',border:'#111111',up:'#111111',down:'#111111',grid:'#e5e5e5',axis:'#999999',first:'#111111',rank:'#555555',heat:[0,0,0],pal:['#111111','#666666','#999999','#3d3d3d'],ghost:'#b3b3b3'},
   dark:{modern:true,bgG:['#090f1b','#111c31'],panel:'#15233a',hair:'#243552',shadow:'rgba(0,0,0,.5)',band:'#192a46',hl:'rgba(127,179,255,.16)',headA:'#294a78',headB:'#3a62a0',accA:'#7fb3ff',accB:'#4b78b8',pillUp:'rgba(76,194,122,.17)',pillDown:'rgba(255,122,107,.17)',bg:'#0f1720',title:'#ffffff',sub:'#9aa6b5',ink:'#e8edf3',head:'#2b4a75',headInk:'#ffffff',zebra:'#16202c',row:'#0f1720',border:'#3a4b61',up:'#4cc27a',down:'#ff7a6b',grid:'#223042',axis:'#3a4b61',first:'#cfe0f5',rank:'#9aa6b5',heat:[127,179,255],pal:['#7fb3ff','#ff7a6b','#4cc27a','#f5b041'],ghost:'#6b7a8f'}};
 const T=()=>THEMES[S.style]||THEMES.color;
+THEMES.sheet={...THEMES.mono,sheet:true,bg:'#ffffff',title:'#111827',sub:'#6b7280',ink:'#111827',head:'#dbe5f1',headInk:'#111827',zebra:'#f5f7fa',row:'#ffffff',border:'#1f2937',up:'#0b7a37',down:'#c0392b',grid:'#e5e7eb',axis:'#6b7280',first:'#111827',rank:'#4b5563',heat:[31,95,160],pal:['#1f3a5f','#c0392b','#2f855a','#b7791f']};
+/* ---------- "Sheet" look: a plain bordered grid like a spreadsheet screenshot, as wide and as tall as its content ---------- */
+const SHEET={used:null,w:0,ml:40,minW:0};
+const TABLETYPES=new Set(['board','movers','interest','interesttable','board24','days24','totals','daytable','week','peak']);
+function frameSheet(ctx,W,H,title,subtitle,opt={}){
+  const ml=SHEET.ml;SHEET.used=null;SHEET.w=0;SHEET.minW=0;ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);ctx.textAlign='left';ctx.textBaseline='middle';
+  fit(ctx,title,W-2*ml,38,800);ctx.fillStyle='#111827';ctx.fillText(title,ml,53);
+  fit(ctx,subtitle,W-2*ml,22,400);ctx.fillStyle='#6b7280';ctx.fillText(subtitle,ml,53+36);
+  let top=53+36+40;
+  if(opt.tiles&&opt.tiles.length){const n=opt.tiles.length,tw=(W-2*ml)/n,h=112;
+    opt.tiles.forEach(([lab,val,sub,col],i)=>{const x=ml+i*tw;if(i){ctx.strokeStyle='#b9c2cf';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x,top+h);ctx.stroke()}
+      ctx.textAlign='left';fit(ctx,lab.toUpperCase(),tw-24,16,700);ctx.fillStyle='#6b7280';ctx.fillText(lab.toUpperCase(),x+14,top+22);
+      fit(ctx,val,tw-24,28,800);ctx.fillStyle='#111827';ctx.fillText(val,x+14,top+54);
+      if(sub){fit(ctx,sub,tw-24,18,600);ctx.fillStyle=col||'#6b7280';ctx.fillText(sub,x+14,top+87)}});
+    ctx.strokeStyle='#1f2937';ctx.lineWidth=2.4;ctx.strokeRect(ml,top,W-2*ml,h);top+=h+14;SHEET.minW=W}
+  sheetFooter(ctx,W,H);
+  return {top,bottom:H*0.94,u:1,sheet:true}}
+function sheetFooter(ctx,W,H,x0,tw){if(!$('#sFoot').checked)return;x0=x0==null?SHEET.ml:x0;tw=tw==null?W-2*SHEET.ml:tw;
+  ctx.textBaseline='middle';ctx.textAlign='left';ctx.font=`400 18px ${FONT}`;ctx.fillStyle='#6b7280';ctx.fillText('Source: BookMyShow app',x0,H-30);
+  if(HANDLE){ctx.textAlign='right';ctx.font=`700 18px ${FONT}`;ctx.fillStyle='#374151';ctx.fillText(HANDLE,x0+tw,H-30)}}
+function tableSheet(ctx,W,box,header,rows,colors,widths,bgs){
+  const th=T(),ml=SHEET.ml,maxW=W-2*ml,base=26,ncol=header.length;
+  const align=header.map((h,ci)=>h==='#'?'c':ci>0&&rows.length&&rows.every(r=>NUMCELL.test(String(r[ci])))?'r':'l');
+  const nameCol=header[0]==='#'?1:0;
+  const hl=rows.map(r=>String(r[0]).startsWith('★ ')||String(r[1]).startsWith('★ '));
+  const cells=rows.map(r=>r.map((c,ci)=>{c=String(c).replace(/^★ /,'');return c.length>24&&!NUMCELL.test(c)?inName(c):c}));
+  const wt=(ci,h)=>h||ci===nameCol||align[ci]==='r'?700:600;
+  const wrap2=t=>{const w=t.split(' ');if(w.length<2)return [t];let best=[t],gap=1e9;for(let i=1;i<w.length;i++){const a=w.slice(0,i).join(' '),b=w.slice(i).join(' '),d=Math.abs(a.length-b.length);if(d<gap){gap=d;best=[a,b]}}return best};
+  const mw=(t,px,w)=>{ctx.font=`${w} ${px}px ${FONT}`;return ctx.measureText(t).width};
+  const lines=(ci,t,wc)=>wc.has(ci)&&align[ci]==='l'?wrap2(t):[t];
+  const layout=(px,wc)=>{const pad=px*0.55;const cw=header.map((h,ci)=>{let w=mw(String(h),px,700);cells.forEach(r=>lines(ci,r[ci],wc).forEach(pt=>{w=Math.max(w,mw(pt,px,wt(ci,false)))}));return w+2*pad});return {cw,pad}};
+  let wc=new Set(),px=base,L=layout(px,wc);const sum=a=>a.reduce((x,y)=>x+y,0);
+  if(sum(L.cw)>maxW){const cand=[...Array(ncol).keys()].filter(ci=>align[ci]==='l');if(cand.length){wc.add(cand.reduce((a,b)=>L.cw[b]>L.cw[a]?b:a));L=layout(px,wc)}}
+  while(sum(L.cw)>maxW&&px>15){px-=1;L=layout(px,wc)}
+  if(sum(L.cw)<maxW){px*=Math.min(maxW/sum(L.cw),SHEET.minW?1.8:1.5);L=layout(px,wc)}
+  const cw=L.cw,pad=L.pad,tw=sum(cw),line=px*1.32,yp=px*0.42;
+  const hs=[line+2*yp,...cells.map(r=>Math.max(...r.map((c,ci)=>lines(ci,c,wc).length))*line+2*yp)];
+  const x0=ml,y0=box.top,xs=[x0];cw.forEach(w=>xs.push(xs[xs.length-1]+w));const ys=[y0];hs.forEach(h=>ys.push(ys[ys.length-1]+h));
+  for(let r=0;r<hs.length;r++){ctx.fillStyle=r===0?'#dbe5f1':hl[r-1]?'#fff3c4':r%2===0?'#f5f7fa':'#ffffff';ctx.fillRect(x0,ys[r],tw,hs[r]);
+    if(r>0&&bgs&&bgs[r-1])bgs[r-1].forEach((bg,ci)=>{if(bg){ctx.fillStyle=bg;ctx.fillRect(xs[ci],ys[r],cw[ci],hs[r])}})}
+  ctx.strokeStyle='#b9c2cf';ctx.lineWidth=1.3;
+  for(let r=1;r<hs.length;r++){ctx.beginPath();ctx.moveTo(x0,ys[r]);ctx.lineTo(x0+tw,ys[r]);ctx.stroke()}
+  for(let ci=1;ci<ncol;ci++){ctx.beginPath();ctx.moveTo(xs[ci],y0);ctx.lineTo(xs[ci],ys[ys.length-1]);ctx.stroke()}
+  ctx.strokeStyle='#1f2937';ctx.lineWidth=2.2;ctx.beginPath();ctx.moveTo(x0,ys[1]);ctx.lineTo(x0+tw,ys[1]);ctx.stroke();ctx.lineWidth=2.6;ctx.strokeRect(x0,y0,tw,ys[ys.length-1]-y0);
+  ctx.textBaseline='middle';
+  for(let r=0;r<hs.length;r++)for(let ci=0;ci<ncol;ci++){
+    const txt=r===0?String(header[ci]):cells[r-1][ci],parts=r===0?[txt]:lines(ci,txt,wc);
+    let col=r===0?'#111827':(colors&&colors[r-1]&&colors[r-1][ci])||'#111827';if(r>0&&ci===0&&align[ci]==='c'&&!(colors&&colors[r-1]&&colors[r-1][ci]))col='#4b5563';if(r>0&&(txt==='—'||txt===''))col='#9ca3af';if(r>0&&/^[▲▼]/.test(txt))col=txt[0]==='▲'?'#0b7a37':'#c0392b';
+    ctx.font=`${r===0?700:wt(ci,false)} ${px}px ${FONT}`;ctx.fillStyle=col;ctx.textAlign=align[ci]==='r'?'right':align[ci]==='c'?'center':'left';
+    const ax=align[ci]==='r'?xs[ci+1]-pad:align[ci]==='c'?(xs[ci]+xs[ci+1])/2:xs[ci]+pad;
+    parts.forEach((pt,li)=>ctx.fillText(pt,ax,ys[r]+hs[r]/2-(parts.length-1)*line/2+li*line))}
+  SHEET.used=ys[ys.length-1];SHEET.w=tw+2*ml}
+// the table was drawn on a tall canvas: cut it to its content (+ footer); false when the picture has no table
+function finishSheet(cv){if(!T().sheet||SHEET.used==null)return false;
+  const W=Math.round(Math.max(SHEET.w,SHEET.minW,760)),Hc=Math.ceil(SHEET.used+($('#sFoot').checked?70:30));
+  const tmp=document.createElement('canvas');tmp.width=cv.width;tmp.height=Math.ceil(SHEET.used)+4;tmp.getContext('2d').drawImage(cv,0,0);
+  cv.width=W;cv.height=Hc;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,W,Hc);ctx.drawImage(tmp,0,0);sheetFooter(ctx,W,Hc);return true}
+
 function seg(id,key){$$(`#${id} button`).forEach(b=>b.onclick=()=>{setSeg(id,b.dataset.v);S[key]=b.dataset.v;render()})}
 function setSeg(id,v){$$(`#${id} button`).forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===v))}
 seg('sStyle','style');seg('sSize','size');
@@ -650,7 +708,7 @@ function panel(ctx,x,y,w,h,u){const th=T();ctx.save();ctx.shadowColor=th.shadow;
 const NUMCELL=/^[\s\d.,KMk≈+▲▼%—–\-]*$/;
 // title block (left aligned, with an accent bar) and optional KPI tiles: opt.tiles=[[label,value,sub,subColor]]
 function frame(ctx,W,H,title,subtitle,opt={}){
-  const th=T();if(!th.modern)return frameClassic(ctx,W,H,title,subtitle);
+  const th=T();if(th.sheet)return frameSheet(ctx,W,H,title,subtitle,opt);if(!th.modern)return frameClassic(ctx,W,H,title,subtitle);
   const u=Math.min(W,H*1.25)/1200,mx=W*0.06;
   const bg=ctx.createLinearGradient(0,0,W*0.4,H);bg.addColorStop(0,th.bgG[0]);bg.addColorStop(1,th.bgG[1]);ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
   const ag=ctx.createLinearGradient(mx,0,mx+120*u,0);ag.addColorStop(0,th.accA);ag.addColorStop(1,th.accB);ctx.fillStyle=ag;rr(ctx,mx,H*0.04,120*u,9*u,5*u);ctx.fill();
@@ -671,7 +729,7 @@ function frame(ctx,W,H,title,subtitle,opt={}){
   return {top,bottom,u}}
 // cells: text; colors[r][c] overrides the text colour; bgs[r][c] fills the cell (heat); rows starting with "★ " are highlighted
 function table(ctx,W,box,header,rows,colors,widths,bgs){
-  const th=T();if(!th.modern)return tableClassic(ctx,W,box,header,rows,colors,widths,bgs);
+  const th=T();if(th.sheet)return tableSheet(ctx,W,box,header,rows,colors,widths,bgs);if(!th.modern)return tableClassic(ctx,W,box,header,rows,colors,widths,bgs);
   const u=box.u,x0=W*0.06,w=W*0.88,pad=22*u,n=rows.length;
   const avail=box.bottom-box.top-2*pad;const rh=Math.min(avail/(n+0.86),98*u),hh=rh*0.86,total=hh+rh*n;
   const y0=box.top+pad+(avail-total)/2;
@@ -724,9 +782,10 @@ const heat=(v,max)=>{if(v==null||!max)return null;const [r,g,b]=T().heat;const a
 /* ---------- STUDIO render ---------- */
 let CAP={long:'',short:''},ALT='';
 const tags=(...names)=>[...new Set(names.map(tag).filter(Boolean)),'#BoxOffice'].join(' ');
-function render(){
+function render(){render0();if(T().sheet&&TABLETYPES.has(S.type))finishSheet($('#cv'))}
+function render0(){
   if(!$('#studio').classList.contains('on')&&render._init)return;render._init=true;
-  const cv=$('#cv'),ctx=cv.getContext('2d');const [W,H]=S.size.split('x').map(Number);cv.width=W;cv.height=H;
+  const cv=$('#cv'),ctx=cv.getContext('2d');let [W,H]=S.size.split('x').map(Number);if(T().sheet&&TABLETYPES.has(S.type))H=3200;cv.width=W;cv.height=H;
   const d=$('#sDay').value,t=$('#sTime').value;if(!d)return;
   const th=T();const win=windowLabel(t);let box;
   const color=(a,b)=>a==null||b==null||a===b?th.ink:(a>b?th.up:th.down);
@@ -1055,7 +1114,7 @@ function releaseInfo(text,book){const m=/^(\w{3}) (\d\d), (\d{4})$/.exec(text||'
   const state=days<-14&&book!==true?'unconfirmed':(m[1]==='Dec'&&m[2]==='31'?'tentative':days<0?'released':'upcoming');
   const count=state==='unconfirmed'?'date not confirmed':state==='tentative'?`tentative · ${days>1?`in ${days} days`:'soon'}`:days>1?`in ${days} days`:days===1?'tomorrow':days===0?'today':'released';
   const date=state==='unconfirmed'?'Date not confirmed':`${dayLabel(d)}${yr}`;
-  return {short:`${pd(d).getUTCDate()} ${m[1]}`,long:`${date} · ${count}`,date,count,days,state}}
+  return {short:`${pd(d).getUTCDate()} ${m[1]}${yr}`,long:`${date} · ${count}`,date,count,days,state}}
 function inRows(){return IN.films.filter(f=>f.points.length).map(f=>{const L=f.points[f.points.length-1],ms=inMs(L[0]);const d1=inAt(f,ms-864e5),d7=inAt(f,ms-7*864e5);
   return {f,v:L[1],t:L[0],g1:d1&&inMs(d1[0])>ms-1.5*864e5?L[1]-d1[1]:null,g7:d7?L[1]-d7[1]:null,rel:releaseInfo(f.release,f.book)}}).sort((a,b)=>b.v-a.v)}
 function upcoming(){const R=inRows();
@@ -1286,8 +1345,9 @@ function mvIntDraw(){const f=MV.e.f,mode=$('#mIntMode').value;const g=mvIntData(
   $('#mtIntDay').innerHTML=g.days.length?`<table><thead><tr><th>Day</th><th class="n">Interested</th><th class="n">Gained</th><th class="n hide-sm">Growth</th><th class="n hide-sm">To release</th></tr></thead><tbody>${g.days.map(x=>`<tr${x.part?' class="mute"':''}><td>${dayLabel(x.d)}${x.part?' · so far':x.start?' *':''}</td><td class="n"><b>${fmt(x.end)}+</b></td><td class="n ${x.gain>0?'up':''}">${signK(x.gain)}</td><td class="n hide-sm ${x.pct>0?'up':''}">${pct1(x.pct)}</td><td class="n hide-sm">${toRel(x)}</td></tr>`).join('')}</tbody></table><div class="mute" style="margin-top:6px">Each day is midnight to midnight IST. BookMyShow rounds the count, so small gains show in steps. * counts only from our first reading.</div>`:'';
   $('#mtInt').innerHTML=g.rows.length?`<table><thead><tr><th>When</th><th class="n">Interested</th><th class="n">Change</th></tr></thead><tbody>${g.rows.map(r=>`<tr><td>${short(r.t.slice(0,10))}, ${timeLabel(r.t.slice(11,13)+r.t.slice(14,16))}</td><td class="n"><b>${fmt(r.v)}+</b></td><td class="n ${r.c>0?'up':''}">${r.c==null?'—':signK(r.c)}</td></tr>`).join('')}</tbody></table>`:''}
 // images (same look as the Studio) and CSV
-function mvCanvas(title,sub,draw,tiles){const W=1200,H=1200,cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');
-  const th=T(),box=frame(ctx,W,H,title,sub,{tiles:tiles?tiles(th):null});draw(ctx,W,H,box,th);return cv}
+function mvCanvas(title,sub,draw,tiles){const W=1200,mk=H=>{const cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');const th=T(),box=frame(ctx,W,H,title,sub,{tiles:tiles?tiles(th):null});draw(ctx,W,H,box,th);return cv};
+  if(T().sheet){const tall=mk(3000);if(finishSheet(tall))return tall}   // a table: sized to its content; a chart is drawn again at the normal size
+  return mk(1200)}
 function mvPartsDraw(ctx,W,H,box,th,pr){
   const u=box.u,x0=W*0.06,w=W*0.88,pad=24*u,rows=[{label:'Average',sh:pr.avg,avg:true},...pr.rows],n=rows.length;
   const head=64*u,rh=Math.min((box.bottom-box.top-2*pad-head)/n,86*u),total=head+rh*n,y0=box.top+pad+(box.bottom-box.top-2*pad-total)/2;

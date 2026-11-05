@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-05
+- stopped tracking **Scene (Telugu)** (ET00525065): same counters as **Scene**
+
+## 2026-11-05
 - added **Lambodhara 2.0** (ET00524873), polled hourly
 - added **Bhai Beej** (ET00525419), polled hourly
 - **Nayyi Navelli** (ET00513250): hourly -> paused (best hourly figure in 24 h: 0.0K)

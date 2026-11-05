@@ -80,12 +80,18 @@ def main():
 
     # compact half-hour data for the in-browser views and image studio (last DATA_DAYS days)
     names, rows_by_day = [], {}
+    # listings of a film that is tracked under another listing (same counters) are left out, also from older snapshots
+    norm = lambda x: re.sub(r'[^a-z0-9]+', '', series.ALIASES.get(x, x).lower())
+    entries = json.load(open(os.path.join(ROOT, 'movies.json'), encoding='utf-8'))
+    hidden = {norm(m['name']) for m in entries if m.get('dup')} - {norm(m['name']) for m in entries if not m.get('dup') and not m.get('paused')}
     keep = sorted(snaps)[-DATA_DAYS:]
     for date in keep:
         for hhmm in sorted(set(snaps[date])):
             with open(os.path.join(SNAP, date, f'{date}_{hhmm}.csv'), newline='', encoding='utf-8') as f:
                 for r in csv.DictReader(f):
                     r['movie'] = series.ALIASES.get(r['movie'], r['movie'])
+                    if norm(r['movie']) in hidden:
+                        continue
                     if r['movie'] not in names:
                         names.append(r['movie'])
                     try:

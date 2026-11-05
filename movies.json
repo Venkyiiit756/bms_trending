@@ -1448,7 +1448,9 @@
     "csv": "data/ET00525065.csv",
     "headers_csv": "data/ET00525065_headers.csv",
     "every": 1800,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00525135",
