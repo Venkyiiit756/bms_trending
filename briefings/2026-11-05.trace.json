@@ -1,0 +1,318 @@
+{
+ "model": "claude-haiku-5-5",
+ "system_prompt": "You are the morning analyst for a BookMyShow ticket-tracking account on X (Hyderabad, Indian films).\nYou receive FACTS (JSON) about yesterday, 4 AM to 4 AM IST. Write a short briefing and three X draft posts.\n\nHard rules:\n- Use numbers ONLY exactly as they appear in the facts (for example \"217K\", \"1.07M\", \"130\"). Never add, subtract,\n  round, convert or estimate a number yourself. If you need a number that is not in the facts, leave it out.\n- We count tickets booked, not revenue. Never use the words collection, gross, crore, revenue or earnings.\n- Do not explain why something happened unless the facts say so. Say what the numbers show.\n- Figures that start with ≈ are estimates; keep the ≈.\n- Posts: at most 272 characters, friendly and clear, 2-3 hashtags including #BoxOffice, emoji allowed.\n- Do not invent films, dates, or hashtags for films not in the facts.\n- Call each film by its \"short\" name from the facts (never the long \"name\").\n- Never promise or mention anything outside the facts: no links, \"full list\", \"thread\", \"below\", \"👇\", \"here's how\", \"check out\"\n  or an image being posted. Every post must stand alone.\n- Percentages always carry a % sign and no plus or minus sign next to words like up, down, rose or fell\n  (write \"up 130%\" or \"down 68%\", never \"up +130%\", \"fell -68\" or \"up 38\").\n- \"flags\" is only for real problems you notice in the facts (an inconsistent date, a figure that looks wrong, stale data\n  when health.minutes_old_at_8am is above 90). Do not repeat anything already listed in the facts' own flags, and use\n  an empty list when everything looks fine.\n\nReply with ONLY a JSON object:\n{\"headline\": \"<one sentence, at most 140 characters>\",\n \"bullets\": [\"<3 to 5 short sentences>\"],\n \"drafts\": [{\"story\": \"leaderboard|mover|interest|bookings\", \"film\": \"<film name or null>\", \"text\": \"<post>\"}, ... exactly 3],\n \"flags\": [\"<anything the owner should double-check, or an empty list>\"]}",
+ "facts": {
+  "date": "2026-11-05",
+  "day": "Wed 4 Nov",
+  "window": "4 AM Wed 4 Nov to 4 AM Thu 5 Nov IST",
+  "films": [
+   {
+    "name": "Namit Malhotra's Ramayana",
+    "short": "Namit Malhotra's Ramayana",
+    "yesterday": "373K",
+    "yesterday_value": 373451,
+    "exact": true,
+    "vs_day_before": 134,
+    "vs_week_ago": 1266,
+    "day_before": "160K",
+    "busiest_hour": "30.65K",
+    "busiest_hour_at": "10:20 PM",
+    "rank": 1
+   },
+   {
+    "name": "Scene",
+    "short": "Scene",
+    "yesterday": "240K",
+    "yesterday_value": 240240,
+    "exact": true,
+    "vs_day_before": 171,
+    "vs_week_ago": null,
+    "day_before": "88.5K",
+    "busiest_hour": "15.08K",
+    "busiest_hour_at": "9:49 PM",
+    "rank": 2
+   },
+   {
+    "name": "Scene (Telugu)",
+    "short": "Scene (Telugu)",
+    "yesterday": "240K",
+    "yesterday_value": 239940,
+    "exact": true,
+    "vs_day_before": 171,
+    "vs_week_ago": null,
+    "day_before": "88.5K",
+    "busiest_hour": "15.08K",
+    "busiest_hour_at": "9:50 PM",
+    "rank": 3
+   },
+   {
+    "name": "Jailer 2",
+    "short": "Jailer 2",
+    "yesterday": "31.5K",
+    "yesterday_value": 31470,
+    "exact": true,
+    "vs_day_before": -9,
+    "vs_week_ago": -66,
+    "day_before": "34.7K",
+    "busiest_hour": "2.24K",
+    "busiest_hour_at": "6:44 PM",
+    "rank": 4
+   },
+   {
+    "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+    "short": "Aadarsha Kutumbam",
+    "yesterday": "23.9K",
+    "yesterday_value": 23940,
+    "exact": true,
+    "vs_day_before": -27,
+    "vs_week_ago": -6,
+    "day_before": "32.9K",
+    "busiest_hour": "2.03K",
+    "busiest_hour_at": "6:30 PM",
+    "rank": 5
+   },
+   {
+    "name": "Udta Teer",
+    "short": "Udta Teer",
+    "yesterday": "18.7K",
+    "yesterday_value": 18710,
+    "exact": true,
+    "vs_day_before": -40,
+    "vs_week_ago": -51,
+    "day_before": "30.9K",
+    "busiest_hour": "1.29K",
+    "busiest_hour_at": "1:55 PM",
+    "rank": 6
+   },
+   {
+    "name": "Mookuthi Amman 2",
+    "short": "Mookuthi Amman 2",
+    "yesterday": "16.7K",
+    "yesterday_value": 16700,
+    "exact": true,
+    "vs_day_before": null,
+    "vs_week_ago": null,
+    "busiest_hour": "1.22K",
+    "busiest_hour_at": "10:11 PM",
+    "rank": 7
+   },
+   {
+    "name": "Drishyam",
+    "short": "Drishyam",
+    "yesterday": "9.6K",
+    "yesterday_value": 9610,
+    "exact": true,
+    "vs_day_before": -38,
+    "vs_week_ago": -18,
+    "day_before": "15.4K",
+    "rank": 8
+   },
+   {
+    "name": "Jailer 2 (Hindi)",
+    "short": "Jailer 2 (Hindi)",
+    "yesterday": "9K",
+    "yesterday_value": 8960,
+    "exact": true,
+    "vs_day_before": -41,
+    "vs_week_ago": -44,
+    "day_before": "15.2K",
+    "rank": 9
+   },
+   {
+    "name": "Premada Oorali",
+    "short": "Premada Oorali",
+    "yesterday": "6.1K",
+    "yesterday_value": 6060,
+    "exact": true,
+    "vs_day_before": -19,
+    "vs_week_ago": -64,
+    "day_before": "7.5K",
+    "rank": 10
+   }
+  ],
+  "film_count": 10,
+  "biggest_move": {
+   "name": "Scene",
+   "short": "Scene",
+   "yesterday": "240K",
+   "yesterday_value": 240240,
+   "exact": true,
+   "vs_day_before": 171,
+   "vs_week_ago": null,
+   "day_before": "88.5K",
+   "busiest_hour": "15.08K",
+   "busiest_hour_at": "9:49 PM",
+   "rank": 2
+  },
+  "rising": [
+   {
+    "name": "Namit Malhotra's Ramayana",
+    "short": "Namit Malhotra's Ramayana",
+    "yesterday": "373K",
+    "yesterday_value": 373451,
+    "exact": true,
+    "vs_day_before": 134,
+    "vs_week_ago": 1266,
+    "day_before": "160K",
+    "busiest_hour": "30.65K",
+    "busiest_hour_at": "10:20 PM",
+    "rank": 1
+   },
+   {
+    "name": "Scene",
+    "short": "Scene",
+    "yesterday": "240K",
+    "yesterday_value": 240240,
+    "exact": true,
+    "vs_day_before": 171,
+    "vs_week_ago": null,
+    "day_before": "88.5K",
+    "busiest_hour": "15.08K",
+    "busiest_hour_at": "9:49 PM",
+    "rank": 2
+   },
+   {
+    "name": "Scene (Telugu)",
+    "short": "Scene (Telugu)",
+    "yesterday": "240K",
+    "yesterday_value": 239940,
+    "exact": true,
+    "vs_day_before": 171,
+    "vs_week_ago": null,
+    "day_before": "88.5K",
+    "busiest_hour": "15.08K",
+    "busiest_hour_at": "9:50 PM",
+    "rank": 3
+   }
+  ],
+  "falling": [],
+  "interest_top": [
+   {
+    "name": "Namit Malhotra's Ramayana",
+    "short": "Namit Malhotra's Ramayana",
+    "interested": "617K+",
+    "interested_value": 617000,
+    "bookings": "open",
+    "gained_24h": "+27K",
+    "gained_24h_value": 27000,
+    "release": "Thu 5 Nov",
+    "days_to_release": 0
+   },
+   {
+    "name": "Avengers: Doomsday",
+    "short": "Avengers: Doomsday",
+    "interested": "494K+",
+    "interested_value": 494000,
+    "bookings": "not open yet",
+    "gained_24h": "+6K",
+    "gained_24h_value": 6000,
+    "release": "Thu 17 Dec",
+    "days_to_release": 42
+   },
+   {
+    "name": "Scene",
+    "short": "Scene",
+    "interested": "279K+",
+    "interested_value": 279000,
+    "bookings": "not open yet",
+    "gained_24h": "+11K",
+    "gained_24h_value": 11000,
+    "release": "Fri 6 Nov",
+    "days_to_release": 1
+   },
+   {
+    "name": "Spirit",
+    "short": "Spirit",
+    "interested": "155K+",
+    "interested_value": 155000,
+    "bookings": "not open yet",
+    "gained_24h": "+0",
+    "gained_24h_value": 0,
+    "release": "Fri 29 Oct 2027",
+    "days_to_release": 358
+   },
+   {
+    "name": "King",
+    "short": "King",
+    "interested": "105K+",
+    "interested_value": 105000,
+    "bookings": "not open yet",
+    "gained_24h": "+1K",
+    "gained_24h_value": 1000,
+    "release": "Thu 24 Dec",
+    "days_to_release": 49
+   },
+   {
+    "name": "OM Chapter 1: Udhiram",
+    "short": "OM Chapter 1: Udhiram",
+    "interested": "92.3K+",
+    "interested_value": 92300,
+    "bookings": null
+   }
+  ],
+  "interest_gainers": [
+   {
+    "name": "Mookuthi Amman 2",
+    "short": "Mookuthi Amman 2",
+    "interested": "58.3K+",
+    "interested_value": 58300,
+    "bookings": null,
+    "gained_24h": "+34.1K",
+    "gained_24h_value": 34100
+   },
+   {
+    "name": "Namit Malhotra's Ramayana",
+    "short": "Namit Malhotra's Ramayana",
+    "interested": "617K+",
+    "interested_value": 617000,
+    "bookings": "open",
+    "gained_24h": "+27K",
+    "gained_24h_value": 27000,
+    "release": "Thu 5 Nov",
+    "days_to_release": 0
+   },
+   {
+    "name": "Scene",
+    "short": "Scene",
+    "interested": "279K+",
+    "interested_value": 279000,
+    "bookings": "not open yet",
+    "gained_24h": "+11K",
+    "gained_24h_value": 11000,
+    "release": "Fri 6 Nov",
+    "days_to_release": 1
+   }
+  ],
+  "bookings_opened": [],
+  "flags": [
+   "Namit Malhotra's Ramayana: 373K yesterday, +134% vs the day before",
+   "Scene: 240K yesterday, +171% vs the day before",
+   "Scene (Telugu): 240K yesterday, +171% vs the day before"
+  ],
+  "health": {
+   "newest_reading": "Thu 5 Nov 7:54 AM",
+   "minutes_old_at_8am": 5
+  },
+  "notes": [
+   "Tickets are counted from BookMyShow counters (one listing per film, not revenue).",
+   "Figures marked ≈ are estimates from hourly figures (about ±3%).",
+   "Interest counts are rounded by BookMyShow."
+  ]
+ },
+ "calls": [
+  {
+   "input_tokens": 4268,
+   "output_tokens": 2022,
+   "stop_reason": "end_turn"
+  }
+ ],
+ "replies": [
+  "{\"headline\": \"Namit Malhotra's Ramayana led yesterday with 373K tickets booked, while Scene rose up 171% to 240K.\",\n \"bullets\": [\n  \"Namit Malhotra's Ramayana was rank 1 with 373K tickets booked, up 134% on the day before and up 1266% on a week ago.\",\n  \"Scene and Scene (Telugu) were close behind at 240K each, both up 171% on the day before, with Scene the biggest mover.\",\n  \"Jailer 2 (31.5K) and Aadarsha Kutumbam (23.9K) were the next largest, both down on the day before.\",\n  \"Interest is led by Namit Malhotra's Ramayana at 617K+, which gained +27K in 24 hours and opens Thu 5 Nov.\",\n  \"Avengers: Doomsday has 494K+ interested, gained +6K in 24 hours, and bookings are not open yet.\"\n ],\n \"drafts\": [\n  {\"story\": \"leaderboard\", \"film\": \"Namit Malhotra's Ramayana\", \"text\": \"🎟️ Yesterday's #BoxOffice leader: Namit Malhotra's Ramayana with 373K tickets booked, ahead of Scene at 240K. Releases Thu 5 Nov. #BoxOffice #Hyderabad\"},\n  {\"story\": \"mover\", \"film\": \"Scene\", \"text\": \"📈 Scene was up 171% on the day before, with 240K tickets booked yesterday. It releases Fri 6 Nov. #BoxOffice #Tollywood\"},\n  {\"story\": \"interest\", \"film\": \"Avengers: Doomsday\", \"text\": \"🔥 494K+ people are interested in Avengers: Doomsday, up +6K in the last 24 hours. Bookings are not open yet and it releases Thu 17 Dec. #BoxOffice #Hyderabad\"}\n ],\n \"flags\": [\n  \"Scene: the facts show 240K tickets booked yesterday, but bookings are marked 'not open yet' and the release is Fri 6 Nov. Please confirm whether these bookings are correct.\"\n ]}"
+ ],
+ "attempts": [
+  {
+   "attempt": 1,
+   "problems": []
+  }
+ ]
+}
