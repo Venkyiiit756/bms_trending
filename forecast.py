@@ -557,7 +557,7 @@ Hard rules:
 - Do not invent reviews, ratings, collections, show counts or causes. The only causes you may mention are the ones in the facts:
   the weekday of tomorrow, a holiday listed in the facts, the film's release phase / release-day number, and the "signals" listed
   for a film (BookMyShow rating, critics, word of mouth, competition, your note), each with its own size ("effect_pct"). If a film has no
-  signals, say plainly that review and word-of-mouth information was not found yet. Say that signals only lean the forecast.
+  signals, say plainly that review and word-of-mouth information is only collected for films that are switched on. Say that signals only lean the forecast.
 - A film in its opening days ("opening_day_pattern": true) is forecast from how earlier films behaved on release day and day two: say so,
   and say its range is wide.
 - Write every percentage with a % sign. Films by their "short" name. No links, no promises of more content.
@@ -584,7 +584,7 @@ def template(f):
     ctx = a.get('context', {})
     sg = a.get('signals') or {}
     out['watch'] = [f"Tomorrow is {ctx.get('tomorrow_note', 'a new day')}.",
-                    (f"Signals (ratings, reviews, word of mouth) lean this film's forecast by {sg['nudge_pct']}%." if sg.get('reasons') else 'Review and word-of-mouth information was not found yet.')]
+                    (f"Signals (ratings, reviews, word of mouth) lean this film's forecast by {sg['nudge_pct']}%." if sg.get('reasons') else 'Review and word-of-mouth information is only collected for films switched on, not this one.')]
     return out
 
 
