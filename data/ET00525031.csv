@@ -65,3 +65,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-07 01:03:07+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-07 01:37:04+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-07 02:32:05+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-07 05:05:10+05:30,,error,200,no trending widget in response (failure 1),,error,
