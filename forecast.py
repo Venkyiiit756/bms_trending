@@ -346,14 +346,22 @@ def mean_profile(vecs):
 
 
 def phase_pred(prof, vec, i0, k):
-    """Forecast k hours after index i0 from the release-day shape, scaled to how this film's day has gone so far."""
+    """Forecast k hours after index i0 from the release-day shape, scaled to the last 3 hours of this film's day (backtested: a
+    scale from the last 3 hours beats one from the whole day, 14% vs 18% typical error on release day)."""
     j = i0 + k
     if j > 14 or not prof[j]:
         return None
-    pairs = [(x, p) for x, p in zip(vec[:i0 + 1], prof[:i0 + 1]) if x and p]
+    pairs = [(vec[i], prof[i]) for i in range(max(0, i0 - 2), i0 + 1) if vec[i] and prof[i]]
     if not pairs:
         return None
     return prof[j] * sum(x for x, _ in pairs) / sum(p for _, p in pairs)
+
+
+def phase_weight(dd, k):
+    """How much of the forecast comes from the release-day shape rather than 'yesterday and last week'. On release day the
+    day before is no guide (its evening ramp, 2x the afternoon, is a pre-release effect; on Nov 5 this overshot Ramayana's
+    evening peak by about 55%), so the shape gets 50% one hour ahead rising to 85%; on day 2 it stays 50/50 (backtest)."""
+    return min(0.85, 0.35 + 0.15 * k) if dd == 0 else 0.5
 
 
 def backtest_opening(info, today):
@@ -377,7 +385,8 @@ def backtest_opening(info, today):
                         continue
                     cur, pp = shape(hv, T, k), phase_pred(prof, v, i0, k)
                     if cur and pp:
-                        ratios.append(v[j] / ((cur + pp) / 2))
+                        w = phase_weight(dd, k)
+                        ratios.append(v[j] / ((1 - w) * cur + w * pp))
     return ratios
 
 
@@ -435,7 +444,8 @@ def build(now=None):
             f = shape(hv, T, k)
             if opening:
                 pp = phase_pred(prof, my_vec, i0, k)
-                f = (f + pp) / 2 if (f and pp) else (f or pp)
+                w = phase_weight(dd, k)
+                f = (1 - w) * f + w * pp if (f and pp) else (f or pp)
             if f and with_signals:
                 f *= 1 + (factor - 1) * min(1.0, max(0.0, (k - 1) / RAMP_HOURS))
             return f

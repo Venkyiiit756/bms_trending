@@ -261,3 +261,9 @@ Site: Reports tab -> chart (booked solid, expected dashed, range shaded, yesterd
 `research.json` lists the films that get web research and BookMyShow ratings (`[{"film": "...", "until": "YYYY-MM-DD"}]`, default: Ramayana until 19 Nov); other films get the booking-pattern forecast only.
 Research = 3 web searches per film per day (~1 cent each) + a few thousand tokens: about 3-4 cents per film per day; a run stops at 10 cents. The outlook text (Haiku, no search) is ~0.15 cent a run.
 To switch a film on, add it to `research.json` (the name as in the catalog, e.g. "Scene").
+
+## Release-day forecast fix (Nov 6)
+Nov 5 backtest on Ramayana's release day: the "yesterday and last week" shape overshot the evening peak by ~55% (forecast ~83K, actual 67.5K at 9 PM)
+because the day before release has a 2x evening ramp that does not repeat. Over all 5 release days the shape overshoots by 40-60% and the release-day
+profile is within 14%. Now: profile scaled on the last 3 hours (not the whole day) and `phase_weight()` = 50% one hour ahead rising to 85% on day 0, 50% on day 2.
+Not backtestable yet (too few films): holidays, ratings, competition, screens/capacity. `shows.py` is collecting capacity history.
