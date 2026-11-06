@@ -1205,7 +1205,7 @@
     "page_slug": "mookuthi-amman-2",
     "csv": "data/ET00517348.csv",
     "headers_csv": "data/ET00517348_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-30"
   },
   {
@@ -1277,7 +1277,7 @@
     "page_slug": "disco",
     "csv": "data/ET00521913.csv",
     "headers_csv": "data/ET00521913_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-31"
   },
   {
@@ -1629,6 +1629,18 @@
     "page_slug": "naaguge-vadhu-bekaagide",
     "csv": "data/ET00525223.csv",
     "headers_csv": "data/ET00525223_headers.csv",
+    "every": 3600,
+    "added": "2026-11-06"
+  },
+  {
+    "key": "et00502600",
+    "name": "Spiderman Brand New Day 3d",
+    "eventcode": "ET00502600",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "spiderman-brand-new-day-3d",
+    "csv": "data/ET00502600.csv",
+    "headers_csv": "data/ET00502600_headers.csv",
     "every": 3600,
     "added": "2026-11-06"
   }

@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-06
+- added **Spiderman Brand New Day 3d** (ET00502600), polled hourly
+- **Mookuthi Amman 2** (ET00517348): hourly -> every 30 min (best hourly figure in 24 h: 3.7K)
+- **Disco** (ET00521913): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-06
 - added **Dark Chocolate** (ET00522245), polled hourly
 - added **Har Maidan Fateh** (ET00524723), polled hourly
 - added **Naaguge Vadhu Bekaagide** (ET00525223), polled hourly

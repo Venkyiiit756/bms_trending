@@ -394,7 +394,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05",
+  "upcoming": "2026-11-06",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -572,7 +572,7 @@
   "page_slug": "valmiki-ramayana",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-01",
+  "upcoming": "2026-11-06",
   "group": "EG00490482",
   "languages": [
    "Hindi"
@@ -687,6 +687,15 @@
   "release": "Oct 16, 2026",
   "book": true,
   "upcoming": "2026-10-28"
+ },
+ "ET00502600": {
+  "first_seen": "2026-11-06",
+  "last_listed": null,
+  "name": "Spiderman Brand New Day 3d",
+  "page_slug": "spiderman-brand-new-day-3d",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-06"
  },
  "ET00504901": {
   "first_seen": "2026-11-04",
@@ -932,7 +941,7 @@
   "page_slug": "itllu-arjuna",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-02",
+  "upcoming": "2026-11-06",
   "group": "EG00510914",
   "languages": [
    "Telugu"
