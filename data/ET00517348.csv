@@ -72,3 +72,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-06 11:34:56+05:30,Mookuthi Amman 2,1_hour,2.38K,2.38K tickets booked in last 1 hour,2026-11-06 10:39:56+05:30,change,2026-11-06 11:34:56+05:30
 2026-11-06 12:30:46+05:30,Mookuthi Amman 2,1_hour,2.4K,2.4K tickets booked in last 1 hour,2026-11-06 11:34:56+05:30,change,2026-11-06 12:30:46+05:30
 2026-11-06 13:25:46+05:30,Mookuthi Amman 2,1_hour,2.39K,2.39K tickets booked in last 1 hour,2026-11-06 12:30:46+05:30,change,2026-11-06 13:25:46+05:30
+2026-11-06 14:20:46+05:30,Mookuthi Amman 2,1_hour,2.4K,2.4K tickets booked in last 1 hour,2026-11-06 13:25:46+05:30,change,2026-11-06 14:20:46+05:30
