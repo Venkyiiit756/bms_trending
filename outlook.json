@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-06T11:11+05:30",
- "as_of": "Fri 6 Nov 11:00 AM",
+ "generated_at": "2026-11-06T16:11+05:30",
+ "as_of": "Fri 6 Nov 4:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to reach about 1.25M tickets today (968K–1.49M); Jailer 2 is tracking 19% lower than yesterday.",
+ "headline": "Ramayana tickets could reach 1.09M today and 1.69M tomorrow; Jailer 2 is running quieter, with a smaller peak ahead.",
  "bullets": [
-  "Namit Malhotra's Ramayana is expected to sell about 58K tickets in the 11 AM–12 PM hour (range 43K–64.9K), rising to about 63.1K by 1–2 PM.",
-  "Its busiest hour still ahead is 8–9 PM, at an estimated 81.1K (range 48.6K–117K), and today could total about 1.25M, 20% above yesterday.",
-  "Tomorrow, Saturday, is forecast at about 1.82M (range 1.27M–2.49M). As an opening-day film, Ramayana is forecast from earlier films' release-day and day-two patterns, so the range is wide; BookMyShow rating (+6%) and critics (+3%) lean the forecast up.",
-  "Jailer 2 is expected at about 1.1K per hour through early afternoon, with its peak around 8–9 PM at about 1.7K (range 1K–2.4K). No review or word-of-mouth signals are switched on for it, so its outlook rests on the hourly pattern alone."
+  "Namit Malhotra's Ramayana has 446K tickets so far, and today is expected to reach 1.09M (range 906K–1.29M), about -5% vs yesterday.",
+  "Its busiest hour still ahead looks like 9–10 PM at an expected 70.6K (range 47.6K–93.2K), after 44K expected at 4–5 PM and 59.3K at 6–7 PM.",
+  "Tomorrow (Sat 7 Nov) is expected at 1.69M (range 1.26M–2.31M). This is an opening-day estimate based on earlier films' release-day and day-two patterns, so the range is wide, and signals add +16%.",
+  "Jailer 2 has 1.1K tickets so far and could peak at 1.6K at 8–9 PM (range 1.2K–2.1K), about -17% vs yesterday. No review or word-of-mouth signals are tracked for it, so this is a timing-based estimate."
  ],
  "watch": [
-  "Mixed word of mouth and several Tamil releases this week (Scene, Mookuthi Amman 2, Moonwalk) could pull Ramayana toward the lower end of its range.",
-  "Diwali falls on 2026-11-08, and holiday demand could move both films' weekend numbers in either direction."
+  "Diwali on 8 Nov could shift weekend bookings for both films.",
+  "Ramayana's early ratings are preliminary and vote counts differ across sources, so the +16% signal lift could shrink."
  ],
  "usage": {
-  "input_tokens": 7500,
-  "output_tokens": 2901,
-  "cost_cents": 0.22
+  "input_tokens": 3108,
+  "output_tokens": 1601,
+  "cost_cents": 0.111
  }
 }

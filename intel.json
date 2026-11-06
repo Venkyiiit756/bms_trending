@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T11:11+05:30",
+ "generated": "2026-11-06T16:10+05:30",
  "model": "claude-haiku-5-5",
  "films": {
   "Namit Malhotra's Ramayana": {
@@ -8,88 +8,67 @@
    "confidence": "medium",
    "critics": [
     {
-     "outlet": "The Week",
-     "rating": null,
-     "scale": null,
+     "outlet": "123Telugu",
+     "rating": 3.75,
+     "scale": 5.0,
      "verdict": "positive",
-     "url": "https://www.theweek.in/review/movies/2026/11/05/ramayana-part-1-2026-movie-review.html"
+     "url": "https://www.123telugu.com/reviews/ranbir-kapoor-ramayana-telugu-movie-review-and-rating.html"
     },
     {
-     "outlet": "NewsBytes",
-     "rating": 3.5,
+     "outlet": "Times of India (via District)",
+     "rating": 4.5,
+     "scale": 5.0,
+     "verdict": "positive",
+     "url": "https://www.district.in/movies/namit-malhotra-s-ramayana-movie-tickets-MV176276"
+    },
+    {
+     "outlet": "NDTV (via District)",
+     "rating": 3.0,
      "scale": 5.0,
      "verdict": "mixed",
-     "url": "https://www.newsbytesapp.com/news/entertainment/ranbir-kapoor-s-ramayana-review/story"
+     "url": "https://www.district.in/movies/namit-malhotra-s-ramayana-movie-tickets-MV176276"
     },
     {
-     "outlet": "The Quint",
+     "outlet": "Metacritic",
+     "rating": 62.0,
+     "scale": 100.0,
+     "verdict": "positive",
+     "url": "https://www.metacritic.com/movie/ramayana-rise-of-a-legend/"
+    },
+    {
+     "outlet": "Telangana Today",
      "rating": null,
      "scale": null,
      "verdict": "negative",
-     "url": "https://www.thequint.com/entertainment/movie-reviews/ramanyana-review-ranbir-kapoor-yash-namit-malhotra"
-    },
-    {
-     "outlet": "India TV News",
-     "rating": null,
-     "scale": null,
-     "verdict": "positive",
-     "url": "https://www.indiatvnews.com/entertainment/movie-review/ramayana-movie-review-rating-ranbir-kapoor-yash-sai-pallavi-ravie-dubey-namit-malhotra-nitesh-tiwari-1406"
-    },
-    {
-     "outlet": "Rotten Tomatoes (critics score shown on ",
-     "rating": 4.0,
-     "scale": 5.0,
-     "verdict": "positive",
-     "url": "https://www.rottentomatoes.com/m/ramayana_rise_of_a_legend"
+     "url": "https://telanganatoday.com/movie-review-namit-malhotras-ramayana-part-1-is-grandeur-without-a-soul"
     }
    ],
    "audience": {
-    "bms_rating": null,
-    "bms_votes": null,
-    "imdb_rating": null,
-    "imdb_votes": null,
+    "bms_rating": 9.4,
+    "bms_votes": 48200,
+    "imdb_rating": 8.7,
+    "imdb_votes": 8900,
     "google_score_percent": null,
-    "url": null
+    "url": "https://www.sacnilk.com/news/ramayana-ratings-on-imdb-bookmyshow-rotten-tomatoes-and-sacnilk-indicates-blockbuster-box-office-run"
    },
    "word_of_mouth": {
-    "verdict": "mixed",
-    "evidence": "Early LA screening reactions praised the scale and Ranbir Kapoor's portrayal of Rama, while viewers also questioned the storytelling and emotional weight.",
-    "url": "https://theprint.in/entertainment/ramayana-gets-its-first-audience-reactions-in-la-viewers-praise-scale-question-storytelling/3083935/"
+    "verdict": "good",
+    "evidence": "Sacnilk's 6 November report describes strong early audience ratings on BookMyShow and IMDb, though it notes the scores are preliminary; an earlier Sacnilk page listed lower vote counts (BookMyShow 22,400; IMDb 4,600) and",
+    "url": "https://www.sacnilk.com/news/ramayana-ratings-on-imdb-bookmyshow-rotten-tomatoes-and-sacnilk-indicates-blockbuster-box-office-run"
    },
    "screens": {
-    "count": 9000,
-    "where": "India (reported; the same report cites 59,000 screens worldw",
-    "url": "https://en.wikipedia.org/wiki/Ramayana:_Part_1"
+    "count": null,
+    "where": "worldwide",
+    "url": "https://gulfnews.com/entertainment/ramayana-box-office-ranbir-kapoors-epic-opens-to-rs-127-billion-worldwide-trails-adipurush-1.500738063"
    },
-   "competition": [
-    {
-     "film": "Scene (Suriya, Tamil action-comedy)",
-     "note": "Releases November 6 in theatres, one day after Ramayana.",
-     "url": "https://www.republicworld.com/entertainment/movies-releasing-in-theatres-this-diwali-week-ramayana-scene-disco-and-more-to-watch-2026-11-02-140251"
-    },
-    {
-     "film": "Mookuthi Amman 2 (Nayanthara, Tamil fant",
-     "note": "Also set to hit cinemas this week, adding to a crowded Tamil release day alongside Ramayana.",
-     "url": "https://www.businesstoday.in/bt-tv/whats-hot/video/diwali-2026-movie-releases-ramayana-to-scene-5-films-to-watch-out-for-theater-release-this-week-565640-2026-11-04"
-    },
-    {
-     "film": "Moonwalk (Tamil)",
-     "note": "Listed alongside Ramayana in the Diwali 2026 festive line-up, with a crowded Tamil market on November 6.",
-     "url": "https://www.etvbharat.com/en/entertainment/diwali-2026-releases-ramayana-leads-festive-race-as-moonwalk-mookuthi-amman-2-scene-join-the-line-up-enn26102102378"
-    },
-    {
-     "film": "Disco (Malayalam action-crime thriller)",
-     "note": "Releases November 6 in theatres.",
-     "url": "https://www.republicworld.com/entertainment/movies-releasing-in-theatres-this-diwali-week-ramayana-scene-disco-and-more-to-watch-2026-11-02-140251"
-    }
-   ],
-   "researched": "2026-11-05T16:11+05:30"
+   "competition": [],
+   "researched": "2026-11-06T16:10+05:30"
   }
  },
  "usage": {
-  "in": 0,
-  "out": 0,
-  "searches": 0,
-  "cost_cents": 0.0
+  "in": 46102,
+  "out": 2536,
+  "searches": 3,
+  "cost_cents": 3.59
  }
 }
