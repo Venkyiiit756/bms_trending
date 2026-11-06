@@ -3308,5 +3308,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-06 20:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 7–8 PM (Fri 06 Nov)\n\n1. Scene: 36.45K\n2. Mookuthi Amman 2: 3.71K\n3. Aadarsha Kutumbam House No: 47 (AK 47): 1.57K\n4. Jailer 2: 1.43K (▼4% vs Thu)\n\n#Scene #MookuthiAmman2 #BoxOffice",
+  "images": [
+   "posts/2026-11-06/2000/1.png",
+   "posts/2026-11-06/2000/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (7–8 PM, Fri 06 Nov), with change against the same hour yesterday: Scene 36.45K; Mookuthi Amman 2 3.71K; Aadarsha Kutumbam House No: 47 (AK 47) 1.57K; Jailer 2 1.43K, ▼4% vs yesterday",
+   "Line chart of tickets booked in the last hour for Scene through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
