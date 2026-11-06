@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-06T20:11+05:30",
- "as_of": "Fri 6 Nov 8:00 PM",
+ "generated_at": "2026-11-07T02:03+05:30",
+ "as_of": "Sat 7 Nov 2:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to reach 1.05M tickets today and 1.41M tomorrow, with the busiest hour still ahead at 8–9 PM.",
+ "headline": "Namit Malhotra's Ramayana is expected at 1.94M tickets today (1.85M to 2.03M), with 2.59M possible tomorrow.",
  "bullets": [
-  "Namit Malhotra's Ramayana: 8–9 PM is expected to be the busiest hour, at 68.4K tickets (range 55.2K–77.7K), and today could total 1.05M (range 878K–1.24M) from 673K so far.",
-  "Ramayana is in its opening weekend, so this forecast is drawn from how earlier films behaved on release day and day two, and its range is wide; tomorrow, Saturday, is expected at 1.41M (range 1.05M–1.90M).",
-  "Review and rating signals lean Ramayana up (BookMyShow rating +6%, word of mouth +5%, IMDb +3%, critics +2%), but nearly full shows (−18%) cancel that out, leaving a net nudge of 0%.",
-  "Aadarsha Kutumbam is expected to peak at 9–10 PM at 1.7K tickets (range 1.4K–2K) and is running 24% ahead of yesterday; Jailer 2 peaks at 8–9 PM at 1.6K (range 1.4K–1.8K) and is running −3% against yesterday."
+  "The next hour, 2–3 AM, is expected at 2.4K tickets (range 2.1K to 2.6K), the busiest of the listed hours still ahead.",
+  "Today is expected to reach 1.94M (range 1.85M to 2.03M) from 1.10M so far, which is -24% versus yesterday.",
+  "Tomorrow, a Saturday in the opening weekend, is expected at 2.59M (range 2.22M to 3.11M), using the usual Friday-to-Saturday change of x1.34.",
+  "Ratings and word of mouth lean the forecast up, but 94% of shows are nearly full or sold out, so the net nudge is 0%."
  ],
  "watch": [
-  "Shows are almost full at 94% of upcoming shows, so seats rather than demand may cap Ramayana's upside.",
-  "Diwali on 8 Nov and the preliminary early ratings could shift tomorrow's Saturday numbers either way."
+  "If more shows sell out, the upside stays capped, since the -18% shows-nearly-full signal already reflects this.",
+  "Ratings are preliminary and not tested against history, so the forecast could move as scores change."
  ],
  "usage": {
-  "input_tokens": 4082,
-  "output_tokens": 1471,
-  "cost_cents": 0.114
+  "input_tokens": 2445,
+  "output_tokens": 1540,
+  "cost_cents": 0.101
  }
 }
