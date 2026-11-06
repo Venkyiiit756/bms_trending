@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-05T23:46+05:30",
- "as_of": "Thu 5 Nov 11:00 PM",
+ "generated_at": "2026-11-06T11:11+05:30",
+ "as_of": "Fri 6 Nov 11:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana's day could reach about 1.02M tickets, with its busiest hour still ahead around 11 PM–12 AM; Jailer 2 is running lower.",
+ "headline": "Ramayana is expected to reach about 1.25M tickets today (968K–1.49M); Jailer 2 is tracking 19% lower than yesterday.",
  "bullets": [
-  "Ramayana: about 910K tickets so far, with the day expected to reach 1.02M (range 793K to 1.18M), 67% above yesterday. This is an opening-day forecast built from how earlier films behaved on release day and day two, so the range is wide.",
-  "The busiest hour still ahead is 11 PM–12 AM, at an expected 33.4K (range 25.1K to 37.4K), then 25.2K for 12–1 AM. Signals lean the forecast up by 9%, mainly from the BookMyShow rating (+7%) and critics (+3%); word of mouth and competing releases show 0%.",
-  "Tomorrow (Fri 6 Nov) is expected at 1.18M for Ramayana (range 826K to 1.78M), with new releases opening and Diwali on 8 Nov. Jailer 2 is expected at 25.2K tomorrow (range 21.7K to 34.4K) after about 23.9K today (range 22.8K to 25K), down 23% from yesterday.",
-  "Jailer 2 is in its later weeks, with about 679 tickets expected in the 11 PM–12 AM hour (range 595 to 759). No review or word-of-mouth signals are switched on for it, so its forecast is based on timing and history alone."
+  "Namit Malhotra's Ramayana is expected to sell about 58K tickets in the 11 AM–12 PM hour (range 43K–64.9K), rising to about 63.1K by 1–2 PM.",
+  "Its busiest hour still ahead is 8–9 PM, at an estimated 81.1K (range 48.6K–117K), and today could total about 1.25M, 20% above yesterday.",
+  "Tomorrow, Saturday, is forecast at about 1.82M (range 1.27M–2.49M). As an opening-day film, Ramayana is forecast from earlier films' release-day and day-two patterns, so the range is wide; BookMyShow rating (+6%) and critics (+3%) lean the forecast up.",
+  "Jailer 2 is expected at about 1.1K per hour through early afternoon, with its peak around 8–9 PM at about 1.7K (range 1K–2.4K). No review or word-of-mouth signals are switched on for it, so its outlook rests on the hourly pattern alone."
  ],
  "watch": [
-  "Ramayana's word of mouth is mixed, and a weaker reception could pull its later-night and Friday numbers toward the low end of the range.",
-  "Competing Tamil releases open on 6 Nov; the model currently shows no effect from them, so a stronger pull could shift tomorrow's split."
+  "Mixed word of mouth and several Tamil releases this week (Scene, Mookuthi Amman 2, Moonwalk) could pull Ramayana toward the lower end of its range.",
+  "Diwali falls on 2026-11-08, and holiday demand could move both films' weekend numbers in either direction."
  ],
  "usage": {
-  "input_tokens": 3506,
-  "output_tokens": 1223,
-  "cost_cents": 0.096
+  "input_tokens": 7500,
+  "output_tokens": 2901,
+  "cost_cents": 0.22
  }
 }

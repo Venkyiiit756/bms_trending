@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-05T23:46+05:30",
+ "generated": "2026-11-06T11:11+05:30",
  "films": {
   "Namit Malhotra's Ramayana": {
-   "bms_rating": 9.4,
-   "bms_votes": 32500,
-   "aggregated": 9.4,
-   "reviews": 20100,
+   "bms_rating": 9.3,
+   "bms_votes": 50300,
+   "aggregated": 9.3,
+   "reviews": 31400,
    "sample_reviews": [
     10,
     10,
@@ -13,7 +13,7 @@
     10,
     10
    ],
-   "updated": "2026-11-05T23:46+05:30"
+   "updated": "2026-11-06T11:11+05:30"
   }
  }
 }
