@@ -18,6 +18,7 @@ the numbers and nudges the tomorrow figure a little (good x1.10, bad x0.85). Hol
 """
 import argparse
 import bisect
+import csv
 import json
 import os
 import statistics
@@ -237,6 +238,28 @@ MAX_UP, MAX_DOWN = 0.15, -0.20          # the whole nudge, in log terms: never m
 RAMP_HOURS = 6                          # no effect on the next hour (momentum rules), full effect from about 7 hours ahead
 
 
+CAP_FULL = 0.85                          # share of upcoming shows almost full / sold out above which seats are the limit
+
+
+def capacity():
+    """From the newest data/shows.csv run (collector shows.py, cities that answered): share of upcoming shows that are almost
+    full or sold out. None when there is no run from the last 24 hours. Not backtested: the history starts Nov 6."""
+    try:
+        rows = list(csv.DictReader(open(os.path.join(ROOT, 'data', 'shows.csv'), encoding='utf-8')))
+    except OSError:
+        return None
+    rows = [r for r in rows if int(r['shows'] or 0) > 0]
+    if not rows:
+        return None
+    last = max(r['time_ist'] for r in rows)
+    if datetime.now(IST) - datetime.strptime(last, '%Y-%m-%d %H:%M').replace(tzinfo=IST) > timedelta(hours=24):
+        return None
+    new = [r for r in rows if r['time_ist'] == last]
+    n = sum(int(r['shows']) for r in new)
+    full = sum(int(r['almost_full']) + int(r['sold_out']) for r in new)
+    return {'shows': n, 'full_share': full / n, 'when': f"{len(new)} city-days at {last[11:]}"} if n >= 50 else None
+
+
 def buzz(name, ctx, competitors):
     """(factor, reasons) from reviews, ratings, word of mouth and competition. Deliberately small and capped: there is no
     review history to test it against yet, so it only leans the forecast, it never replaces the pattern."""
@@ -281,6 +304,14 @@ def buzz(name, ctx, competitors):
     scr = intel.get('screens') or {}
     if scr.get('count'):
         reasons.append({'label': 'Screens', 'effect_pct': 0, 'text': f"about {scr['count']} reported{' (' + scr['where'] + ')' if scr.get('where') else ''}; shown, not used in the numbers yet", 'url': scr.get('url')})
+    cap = capacity()
+    if cap:
+        if cap['full_share'] >= CAP_FULL and total > 0:
+            reasons.append({'label': 'Shows nearly full', 'effect_pct': -round((math_exp(total) - 1) * 100),
+                            'text': f"{round(cap['full_share'] * 100)}% of {cap['shows']} upcoming shows are almost full or sold out ({cap['when']}): seats, not interest, limit the upside, so the positive nudge is dropped", 'url': None})
+            total = 0.0
+        else:
+            reasons.append({'label': 'Shows filling', 'effect_pct': 0, 'text': f"{round(cap['full_share'] * 100)}% of {cap['shows']} upcoming shows are almost full or sold out ({cap['when']}); shown, not used in the numbers", 'url': None})
     total = max(MAX_DOWN, min(MAX_UP, total))
     return math_exp(total), reasons, (intel.get('researched') or rating.get('updated'))
 
