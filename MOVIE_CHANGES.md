@@ -2,6 +2,16 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-06
+- **Resident Evil** (ET00498183): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bouma** (ET00513613): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Fix** (ET00522401): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bhogi** (ET00489093): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **G.O.A.T** (ET00476213): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Ghost Soldier** (ET00518333): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Stray Kids: World Tour, Run It (Live Viewing)** (ET00525135): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mahasakthi** (ET00525155): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-05
 - added **Hero 1983** (ET00000849), polled hourly
 - added **Meru Malan** (ET00525557), polled hourly

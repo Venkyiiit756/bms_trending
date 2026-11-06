@@ -1363,7 +1363,7 @@
     "page_slug": "resident-evil",
     "csv": "data/ET00498183.csv",
     "headers_csv": "data/ET00498183_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1375,7 +1375,7 @@
     "page_slug": "bouma",
     "csv": "data/ET00513613.csv",
     "headers_csv": "data/ET00513613_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1399,7 +1399,7 @@
     "page_slug": "the-fix",
     "csv": "data/ET00522401.csv",
     "headers_csv": "data/ET00522401_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1411,7 +1411,7 @@
     "page_slug": "bhogi",
     "csv": "data/ET00489093.csv",
     "headers_csv": "data/ET00489093_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1423,7 +1423,7 @@
     "page_slug": "goat",
     "csv": "data/ET00476213.csv",
     "headers_csv": "data/ET00476213_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1435,7 +1435,7 @@
     "page_slug": "ghost-soldier",
     "csv": "data/ET00518333.csv",
     "headers_csv": "data/ET00518333_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1461,7 +1461,7 @@
     "page_slug": "stray-kids-run-it",
     "csv": "data/ET00525135.csv",
     "headers_csv": "data/ET00525135_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1473,7 +1473,7 @@
     "page_slug": "mahasakthi",
     "csv": "data/ET00525155.csv",
     "headers_csv": "data/ET00525155_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1574,7 +1574,7 @@
   },
   {
     "key": "et00000849",
-    "name": "Hero 1983",
+    "name": "Hero (1983)",
     "eventcode": "ET00000849",
     "region_code": "HYD",
     "region_slug": "hyderabad",
