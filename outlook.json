@@ -1,22 +1,21 @@
 {
- "generated_at": "2026-11-06T16:11+05:30",
- "as_of": "Fri 6 Nov 4:00 PM",
+ "generated_at": "2026-11-06T18:43+05:30",
+ "as_of": "Fri 6 Nov 6:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana tickets could reach 1.09M today and 1.69M tomorrow; Jailer 2 is running quieter, with a smaller peak ahead.",
+ "headline": "Ramayana's busiest hour ahead, 9–10 PM, could reach 70.1K tickets; tomorrow (Sat) is expected at 1.53M, range 1.16M to 2.09M.",
  "bullets": [
-  "Namit Malhotra's Ramayana has 446K tickets so far, and today is expected to reach 1.09M (range 906K–1.29M), about -5% vs yesterday.",
-  "Its busiest hour still ahead looks like 9–10 PM at an expected 70.6K (range 47.6K–93.2K), after 44K expected at 4–5 PM and 59.3K at 6–7 PM.",
-  "Tomorrow (Sat 7 Nov) is expected at 1.69M (range 1.26M–2.31M). This is an opening-day estimate based on earlier films' release-day and day-two patterns, so the range is wide, and signals add +16%.",
-  "Jailer 2 has 1.1K tickets so far and could peak at 1.6K at 8–9 PM (range 1.2K–2.1K), about -17% vs yesterday. No review or word-of-mouth signals are tracked for it, so this is a timing-based estimate."
+  "Namit Malhotra's Ramayana is at 54.3K so far, and today is expected at 1.14M (range 966K to 1.36M), 1% lower than yesterday. Tomorrow's 1.53M is a weekend estimate with a wide range, since this is an opening-day forecast based on earlier films' release-day and day-two patterns. Ratings and word of mouth add about +16%, but nearly full shows (-18%) cancel the nudge, leaving it at 0%.",
+  "Aadarsha Kutumbam is at 1.4K so far, and its next peak is 6–7 PM at an expected 1.5K (range 1.3K to 1.7K), then about 1.2K in each following hour. Tickets are running 15% lower than yesterday. No tomorrow total is forecast for this film, though Saturday is a strong day.",
+  "Jailer 2 is at 1.2K so far, with its busiest hour ahead at 8–9 PM, expected at 1.5K (range 1.1K to 1.8K). Tickets are running 17% lower than yesterday. Review and word-of-mouth information is only collected for switched-on films, so none applies here and the outlook rests on its usual pattern."
  ],
  "watch": [
-  "Diwali on 8 Nov could shift weekend bookings for both films.",
-  "Ramayana's early ratings are preliminary and vote counts differ across sources, so the +16% signal lift could shrink."
+  "Ramayana's early ratings are preliminary according to Sacnilk, and its range is wide, so the figures could move as more opening-day data arrives.",
+  "Diwali (8 Nov) is listed as a holiday soon, and these numbers do not quantify its effect separately."
  ],
  "usage": {
-  "input_tokens": 3108,
-  "output_tokens": 1601,
-  "cost_cents": 0.111
+  "input_tokens": 8837,
+  "output_tokens": 3459,
+  "cost_cents": 0.261
  }
 }
