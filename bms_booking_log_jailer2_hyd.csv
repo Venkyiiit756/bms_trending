@@ -3023,3 +3023,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-06 13:27:48+05:30,Jailer 2,1_hour,1.06K,1.06K tickets booked in last 1 hour,,heartbeat,
 2026-11-06 13:44:18+05:30,Jailer 2,1_hour,1.06K,1.06K tickets booked in last 1 hour,,heartbeat,
 2026-11-06 13:48:38+05:30,Jailer 2,1_hour,1.08K,1.08K tickets booked in last 1 hour,2026-11-06 13:47:38+05:30,change,2026-11-06 13:48:38+05:30
+2026-11-06 14:00:59+05:30,Jailer 2,1_hour,1.06K,1.06K tickets booked in last 1 hour,2026-11-06 13:48:38+05:30,change,2026-11-06 14:00:59+05:30
