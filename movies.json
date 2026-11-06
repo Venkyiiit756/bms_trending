@@ -1595,5 +1595,41 @@
     "headers_csv": "data/ET00525557_headers.csv",
     "every": 3600,
     "added": "2026-11-05"
+  },
+  {
+    "key": "et00522245",
+    "name": "Dark Chocolate",
+    "eventcode": "ET00522245",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dark-chocolate",
+    "csv": "data/ET00522245.csv",
+    "headers_csv": "data/ET00522245_headers.csv",
+    "every": 3600,
+    "added": "2026-11-06"
+  },
+  {
+    "key": "et00524723",
+    "name": "Har Maidan Fateh",
+    "eventcode": "ET00524723",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "har-maidan-fateh",
+    "csv": "data/ET00524723.csv",
+    "headers_csv": "data/ET00524723_headers.csv",
+    "every": 3600,
+    "added": "2026-11-06"
+  },
+  {
+    "key": "et00525223",
+    "name": "Naaguge Vadhu Bekaagide",
+    "eventcode": "ET00525223",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "naaguge-vadhu-bekaagide",
+    "csv": "data/ET00525223.csv",
+    "headers_csv": "data/ET00525223_headers.csv",
+    "every": 3600,
+    "added": "2026-11-06"
   }
 ]

@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-06
+- added **Dark Chocolate** (ET00522245), polled hourly
+- added **Har Maidan Fateh** (ET00524723), polled hourly
+- added **Naaguge Vadhu Bekaagide** (ET00525223), polled hourly
+
+## 2026-11-06
 - **Resident Evil** (ET00498183): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Bouma** (ET00513613): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **The Fix** (ET00522401): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

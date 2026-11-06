@@ -608,7 +608,7 @@
   ],
   "release": "Oct 23, 2026",
   "book": true,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00496545": {
   "first_seen": "2026-10-20",
@@ -1489,7 +1489,7 @@
   "page_slug": "aadi-anant",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00521922": {
   "first_seen": "2026-11-04",
@@ -1498,7 +1498,7 @@
   "page_slug": "talcum-powder",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00522234": {
   "first_seen": "2026-10-23",
@@ -1517,6 +1517,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-29"
+ },
+ "ET00522245": {
+  "first_seen": "2026-11-06",
+  "last_listed": null,
+  "name": "Dark Chocolate",
+  "page_slug": "dark-chocolate",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-06"
  },
  "ET00522331": {
   "first_seen": "2026-10-30",
@@ -1548,7 +1557,7 @@
   "page_slug": "chandrayan",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00523016": {
   "first_seen": "2026-10-22",
@@ -1721,6 +1730,15 @@
   "figure": null,
   "upcoming": "2026-11-06"
  },
+ "ET00524723": {
+  "first_seen": "2026-11-06",
+  "last_listed": null,
+  "name": "Har Maidan Fateh",
+  "page_slug": "har-maidan-fateh",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-06"
+ },
  "ET00524873": {
   "first_seen": "2026-11-05",
   "last_listed": null,
@@ -1728,7 +1746,7 @@
   "page_slug": "lambodhara-20",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00525031": {
   "first_seen": "2026-11-04",
@@ -1755,13 +1773,22 @@
   "page_slug": "stray-kids-run-it",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00525155": {
   "first_seen": "2026-11-03",
   "last_listed": null,
   "name": "Mahasakthi",
   "page_slug": "mahasakthi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-06"
+ },
+ "ET00525223": {
+  "first_seen": "2026-11-06",
+  "last_listed": null,
+  "name": "Naaguge Vadhu Bekaagide",
+  "page_slug": "naaguge-vadhu-bekaagide",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-06"
@@ -1791,7 +1818,7 @@
   "page_slug": "amalpatta-chapter-1-hashim",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  },
  "ET00525557": {
   "first_seen": "2026-11-05",
@@ -1800,6 +1827,6 @@
   "page_slug": "meru-malan",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-06"
  }
 }
