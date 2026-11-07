@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-07T17:25+05:30",
- "as_of": "Sat 7 Nov 5:00 PM",
+ "generated_at": "2026-11-07T20:11+05:30",
+ "as_of": "Sat 7 Nov 8:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana's tickets are expected to climb toward 90.4K by 9–10 PM, with Diwali tomorrow lifting all three films.",
+ "headline": "Diwali Sunday looks strong: Ramayana and Jailer 2 are expected to rise tomorrow, while Aadarsha Kutumbam eases.",
  "bullets": [
-  "Namit Malhotra's Ramayana: today is projected at 1.32M tickets (range 1.17M–1.48M), so far 606K, and the 7–8 PM hour is expected at 72.8K (range 57.1K–88.7K). The busiest hour ahead is 9–10 PM at about 90.4K (range 65.1K–117K), and the film is running -1% against yesterday. Its 9.3/10 BookMyShow rating and 7.8/10 critics average lean the forecast up by 10%, while mixed word of mouth adds 0%.",
-  "Aadarsha Kutumbam: today is projected at 27.5K (range 24.3K–30.9K), so far 11.9K, and it peaks at 2.3K in the 6–7 PM hour (range 1.9K–2.7K), 37% above yesterday. Review and word-of-mouth information is only collected for films that are switched on, so this forecast is not nudged by signals.",
-  "Jailer 2: today is projected at 26.5K (range 23.4K–29.8K), so far 14.3K, and its busiest hour ahead is 9–10 PM at about 1.7K (range 1.2K–2.2K), 9% above yesterday. Review and word-of-mouth information is only collected for films that are switched on, so this forecast is not nudged by signals.",
-  "Tomorrow, Sunday 8 Nov, is a Diwali holiday and a strong weekend day. Ramayana is projected at 1.53M (range 1.21M–1.81M), Aadarsha Kutumbam at 28.9K (range 22.8K–34.4K), and Jailer 2 at 27.9K (range 22K–33.1K). The Diwali uplift is an assumption."
+  "Namit Malhotra's Ramayana could sell about 79.7K tickets in the 9–10 PM hour (range 65.5K–94K), taking today's projection to about 1.26M (range 1.20M–1.31M).",
+  "Tomorrow, Ramayana is forecast at about 1.46M tickets (range 1.24M–1.61M), helped by Diwali tomorrow and its opening-weekend phase.",
+  "Jailer 2 is expected to peak at about 1.6K in the 9–10 PM hour, with today's total near 25.4K (range 24.3K–26.5K) and tomorrow near 26.7K (range 22.8K–29.5K).",
+  "Aadarsha Kutumbam is expected to peak at about 1.9K in the 8–9 PM hour (range 1.6K–2.1K), then ease to about 1.3K by 10–11 PM."
  ],
  "watch": [
-  "Ramayana's signal-based lean could shift as reviews and ratings update, since the nudge fades in over the first hours.",
-  "Diwali's effect on Sunday is assumed rather than tested, so the Sunday projections for all three films could move within their stated ranges."
+  "Ramayana's word of mouth is mixed, so its signal adds nothing, and its ratings-based lift of 10% could fade if reviews turn negative.",
+  "The Diwali boost is an assumption; if tomorrow's crowds fall short of the usual Sunday pattern, the Ramayana and Jailer 2 ranges could tighten toward their lower ends."
  ],
  "usage": {
-  "input_tokens": 9201,
-  "output_tokens": 2787,
-  "cost_cents": 0.231
+  "input_tokens": 3951,
+  "output_tokens": 1328,
+  "cost_cents": 0.106
  }
 }
