@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-07T20:11+05:30",
- "as_of": "Sat 7 Nov 8:00 PM",
+ "generated_at": "2026-11-08T00:32+05:30",
+ "as_of": "Sun 8 Nov 12:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Diwali Sunday looks strong: Ramayana and Jailer 2 are expected to rise tomorrow, while Aadarsha Kutumbam eases.",
+ "headline": "Ramayana is expected to sell 2.22M tickets today; Sunday, a Diwali holiday, could reach 2.57M (range 2.19M–2.83M).",
  "bullets": [
-  "Namit Malhotra's Ramayana could sell about 79.7K tickets in the 9–10 PM hour (range 65.5K–94K), taking today's projection to about 1.26M (range 1.20M–1.31M).",
-  "Tomorrow, Ramayana is forecast at about 1.46M tickets (range 1.24M–1.61M), helped by Diwali tomorrow and its opening-weekend phase.",
-  "Jailer 2 is expected to peak at about 1.6K in the 9–10 PM hour, with today's total near 25.4K (range 24.3K–26.5K) and tomorrow near 26.7K (range 22.8K–29.5K).",
-  "Aadarsha Kutumbam is expected to peak at about 1.9K in the 8–9 PM hour (range 1.6K–2.1K), then ease to about 1.3K by 10–11 PM."
+  "Today is projected at 2.22M tickets (range 2.12M to 2.32M), which is -21% against yesterday.",
+  "The busiest hour still ahead is 12–1 AM, at an estimated 22.9K tickets (range 20.1K to 25.7K), tapering to 2.3K by 2–3 AM.",
+  "Tomorrow, Sunday and Diwali, is estimated at 2.57M tickets (range 2.19M to 2.83M), based on the usual Saturday-to-Sunday pattern with a Diwali assumption.",
+  "Signals lean the forecast up by 10%: BookMyShow rating +6%, critics +4%, word of mouth 0%, in its opening weekend (day 2 after release). Forecasts have typically missed by a median of 6%."
  ],
  "watch": [
-  "Ramayana's word of mouth is mixed, so its signal adds nothing, and its ratings-based lift of 10% could fade if reviews turn negative.",
-  "The Diwali boost is an assumption; if tomorrow's crowds fall short of the usual Sunday pattern, the Ramayana and Jailer 2 ranges could tighten toward their lower ends."
+  "Mixed word of mouth on storytelling (0%) could shift Sunday's figure if reviews turn negative.",
+  "Diwali is assumed to lift tomorrow by x1.12; a weaker holiday effect would pull the Sunday range down."
  ],
  "usage": {
-  "input_tokens": 3951,
-  "output_tokens": 1328,
-  "cost_cents": 0.106
+  "input_tokens": 2211,
+  "output_tokens": 1473,
+  "cost_cents": 0.096
  }
 }
