@@ -297,7 +297,7 @@
     "page_slug": "prahaar",
     "csv": "data/ET00502504.csv",
     "headers_csv": "data/ET00502504_headers.csv",
-    "every": 3600
+    "every": 21600
   },
   {
     "key": "et00513250",

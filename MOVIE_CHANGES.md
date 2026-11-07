@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-07
+- **Prahaar** (ET00502504): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-07
 - added **Doraemon Castle Of The Undersea Devil (Telugu)** (ET00516269), polled hourly
 - added **Radhe Love Story** (ET00525520), polled hourly
 - **Ethanungda** (ET00525031): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
