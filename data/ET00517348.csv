@@ -102,3 +102,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-07 07:02:29+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-07 08:02:27+05:30,Mookuthi Amman 2,1_hour,1.34K,1.34K tickets booked in last 1 hour,2026-11-07 06:37:29+05:30,change,2026-11-07 08:02:27+05:30
 2026-11-07 08:29:45+05:30,Mookuthi Amman 2,1_hour,1.79K,1.79K tickets booked in last 1 hour,2026-11-07 08:02:27+05:30,change,2026-11-07 08:29:45+05:30
+2026-11-07 08:59:46+05:30,Mookuthi Amman 2,1_hour,2.3K,2.3K tickets booked in last 1 hour,2026-11-07 08:29:45+05:30,change,2026-11-07 08:59:46+05:30
