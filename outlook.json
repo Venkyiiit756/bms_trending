@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-07T02:03+05:30",
- "as_of": "Sat 7 Nov 2:00 AM",
+ "generated_at": "2026-11-07T11:11+05:30",
+ "as_of": "Sat 7 Nov 11:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Namit Malhotra's Ramayana is expected at 1.94M tickets today (1.85M to 2.03M), with 2.59M possible tomorrow.",
+ "headline": "Ramayana could reach 1.37M tickets today and 1.44M tomorrow, with Diwali Sunday; Jailer 2 and Aadarsha Kutumbam are smaller.",
  "bullets": [
-  "The next hour, 2–3 AM, is expected at 2.4K tickets (range 2.1K to 2.6K), the busiest of the listed hours still ahead.",
-  "Today is expected to reach 1.94M (range 1.85M to 2.03M) from 1.10M so far, which is -24% versus yesterday.",
-  "Tomorrow, a Saturday in the opening weekend, is expected at 2.59M (range 2.22M to 3.11M), using the usual Friday-to-Saturday change of x1.34.",
-  "Ratings and word of mouth lean the forecast up, but 94% of shows are nearly full or sold out, so the net nudge is 0%."
+  "Namit Malhotra's Ramayana has 61.9K so far this hour, with 66.4K, 62.7K and 66.9K expected in the next three hours; its busiest hour ahead, 9–10 PM, could reach 96.1K (range 58.2K–144K).",
+  "Ramayana's day could reach 1.37M (range 1.14M–1.63M), 20% above yesterday; tomorrow is expected at 1.44M (range 1.07M–1.81M). Positive ratings and word of mouth are offset by nearly full shows, so the net nudge is 0%.",
+  "Jailer 2 has 4.3K so far today, with about 1.7K–1.8K per hour expected; its 9–10 PM peak could reach 2.6K (range 1.6K–3.8K), and the day could reach 35.6K (range 29.7K–42.4K), 58% above yesterday.",
+  "Aadarsha Kutumbam has 1.3K now, with 1.4K–1.5K per hour expected and a 6–7 PM peak of 1.7K (range 1.1K–2.4K); no full-day or tomorrow figure is available for it. Review and word-of-mouth signals are only collected for films switched on, so Jailer 2 and Aadarsha Kutumbam have none."
  ],
  "watch": [
-  "If more shows sell out, the upside stays capped, since the -18% shows-nearly-full signal already reflects this.",
-  "Ratings are preliminary and not tested against history, so the forecast could move as scores change."
+  "Nearly full shows (94% of 1673 upcoming shows) could cap Ramayana's upside, since its positive signals are dropped.",
+  "Tomorrow's Diwali figures assume a ×1.12 holiday boost, so a different holiday effect would move the Sunday estimates."
  ],
  "usage": {
-  "input_tokens": 2445,
-  "output_tokens": 1540,
-  "cost_cents": 0.101
+  "input_tokens": 4422,
+  "output_tokens": 2345,
+  "cost_cents": 0.161
  }
 }
