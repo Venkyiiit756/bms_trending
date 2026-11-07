@@ -256,7 +256,8 @@
    "Malayalam"
   ],
   "release": "Jul 30, 2026",
-  "book": true
+  "book": true,
+  "upcoming": "2026-11-07"
  },
  "ET00451881": {
   "first_seen": "2026-10-31",
@@ -310,6 +311,15 @@
   ],
   "release": "Oct 29, 2027",
   "book": false
+ },
+ "ET00452351": {
+  "first_seen": "2026-11-07",
+  "last_listed": null,
+  "name": "MaatruBhumi: May War Rest in Peace",
+  "page_slug": "maatrubhumi-may-war-rest-in-peace",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-07"
  },
  "ET00455480": {
   "first_seen": "2026-10-31",
@@ -378,7 +388,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-06",
+  "upcoming": "2026-11-07",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -1062,7 +1072,7 @@
   "page_slug": "scene",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-06",
+  "upcoming": "2026-11-07",
   "group": "EG00513478",
   "languages": [
    "Tamil"

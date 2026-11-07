@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-07
+- added **MaatruBhumi: May War Rest in Peace** (ET00452351), polled hourly
+- **Cult** (ET00524017): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Pyre** (ET00519811): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-07
 - **Prahaar** (ET00502504): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 
 ## 2026-11-07

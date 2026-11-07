@@ -964,7 +964,7 @@
     "page_slug": "cult",
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-26"
   },
   {
@@ -1387,7 +1387,7 @@
     "page_slug": "pyre",
     "csv": "data/ET00519811.csv",
     "headers_csv": "data/ET00519811_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-03"
   },
   {
@@ -1665,6 +1665,18 @@
     "page_slug": "radhe-love-story",
     "csv": "data/ET00525520.csv",
     "headers_csv": "data/ET00525520_headers.csv",
+    "every": 3600,
+    "added": "2026-11-07"
+  },
+  {
+    "key": "et00452351",
+    "name": "MaatruBhumi: May War Rest in Peace",
+    "eventcode": "ET00452351",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "maatrubhumi-may-war-rest-in-peace",
+    "csv": "data/ET00452351.csv",
+    "headers_csv": "data/ET00452351_headers.csv",
     "every": 3600,
     "added": "2026-11-07"
   }
