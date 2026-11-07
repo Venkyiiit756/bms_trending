@@ -2,6 +2,15 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-07
+- added **Doraemon Castle Of The Undersea Devil (Telugu)** (ET00516269), polled hourly
+- added **Radhe Love Story** (ET00525520), polled hourly
+- **Ethanungda** (ET00525031): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **OM Chapter 1: Udhiram** (ET00504901): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Talcum Powder** (ET00521922): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Cat In The Hat 3d** (ET00524691): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Harij Weds Sajili** (ET00525409): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-06
 - added **Spiderman Brand New Day 3d** (ET00502600), polled hourly
 - **Mookuthi Amman 2** (ET00517348): hourly -> every 30 min (best hourly figure in 24 h: 3.7K)

@@ -1485,7 +1485,7 @@
     "page_slug": "ethanungda",
     "csv": "data/ET00525031.csv",
     "headers_csv": "data/ET00525031_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-04"
   },
   {
@@ -1497,7 +1497,7 @@
     "page_slug": "om-chapter-1-udhiram",
     "csv": "data/ET00504901.csv",
     "headers_csv": "data/ET00504901_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-04"
   },
   {
@@ -1509,7 +1509,7 @@
     "page_slug": "talcum-powder",
     "csv": "data/ET00521922.csv",
     "headers_csv": "data/ET00521922_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-04"
   },
   {
@@ -1521,7 +1521,7 @@
     "page_slug": "the-cat-in-the-hat-3d",
     "csv": "data/ET00524691.csv",
     "headers_csv": "data/ET00524691_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-04"
   },
   {
@@ -1533,7 +1533,7 @@
     "page_slug": "harij-weds-sajali",
     "csv": "data/ET00525409.csv",
     "headers_csv": "data/ET00525409_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-04"
   },
   {
@@ -1643,5 +1643,29 @@
     "headers_csv": "data/ET00502600_headers.csv",
     "every": 3600,
     "added": "2026-11-06"
+  },
+  {
+    "key": "et00516269",
+    "name": "Doraemon Castle Of The Undersea Devil (Telugu)",
+    "eventcode": "ET00516269",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "doraemon-castle-of-the-undersea-devil-telugu",
+    "csv": "data/ET00516269.csv",
+    "headers_csv": "data/ET00516269_headers.csv",
+    "every": 3600,
+    "added": "2026-11-07"
+  },
+  {
+    "key": "et00525520",
+    "name": "Radhe Love Story",
+    "eventcode": "ET00525520",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "radhe-love-story",
+    "csv": "data/ET00525520.csv",
+    "headers_csv": "data/ET00525520_headers.csv",
+    "every": 3600,
+    "added": "2026-11-07"
   }
 ]
