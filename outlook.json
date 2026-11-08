@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-08T16:11+05:30",
- "as_of": "Sun 8 Nov 4:00 PM",
+ "generated_at": "2026-11-08T17:41+05:30",
+ "as_of": "Sun 8 Nov 5:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Jailer 2 is expected to reach about 23.5K tickets today, with the busiest hour ahead at 5–6 PM (1.2K).",
+ "headline": "Namit Malhotra's Ramayana could reach 1.15M tickets today (est. 1.03M–1.28M), peaking near 8–9 PM.",
  "bullets": [
-  "Jailer 2 has sold 13.8K tickets so far today, and the full day is forecast at 23.5K (range 19.5K to 27.6K), which is 4% above yesterday.",
-  "Sales for the next hours are expected at 1.1K to 1.2K per hour, with the busiest hour ahead at 5–6 PM (1.2K, range 949 to 1.4K).",
-  "Today is Diwali (Sun 8 Nov), and Mon 9 Nov is a weekday, with tickets expected at 12.2K (range 7.8K to 18.4K), a wide range.",
-  "The film is in its later weeks, 24 days after its Thu 15 Oct release. No review or word-of-mouth signals are switched on for it, so these are estimates from the usual trend alone."
+  "Ramayana is expected to sell 45.3K tickets in 5–6 PM, rising to 61.5K in 7–8 PM, with the busiest hour ahead at 8–9 PM around 68.9K (range 50.3K–85.8K).",
+  "Ramayana's day total is estimated at 1.15M (range 1.03M–1.28M), with 624K sold so far and -10% against yesterday. Tomorrow, Mon 9 Nov, a weekday, is expected near 691K (range 476K–992K).",
+  "Ramayana is in its opening weekend (day 3), and its ratings signals lean the forecast by +16%. Diwali is listed as a holiday on 2026-11-08, which is today.",
+  "Jailer 2 is expected to reach 23.9K today (range 21.5K–26.8K) and 12.4K tomorrow (range 8.6K–17.9K). Aadarsha Kutumbam peaks near 1.4K at 6–7 PM (range 1.1K–1.6K), -22% against yesterday."
  ],
  "watch": [
-  "Whether actual sales in the 4–5 PM hour come in near the 1.1K estimate, or toward the low (1K) or high (1.3K) end.",
-  "Whether the 5–6 PM and 6–7 PM hours land near the top (1.4K) or bottom (902 to 949) of their ranges."
+  "Ramayana's ratings signals have not been tested against history, and their lean fades in over the first 6 hours ahead.",
+  "Jailer 2 and Aadarsha Kutumbam have no review or rating signals switched on, so their figures rest only on past patterns."
  ],
  "usage": {
-  "input_tokens": 1786,
-  "output_tokens": 1477,
-  "cost_cents": 0.092
+  "input_tokens": 3880,
+  "output_tokens": 1852,
+  "cost_cents": 0.131
  }
 }
