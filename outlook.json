@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-08T20:11+05:30",
- "as_of": "Sun 8 Nov 8:00 PM",
+ "generated_at": "2026-11-09T00:36+05:30",
+ "as_of": "Mon 9 Nov 12:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana peaks at 48.9K tickets expected 8–9 PM; all three films trail yesterday on a Diwali Sunday.",
+ "headline": "Ramayana is expected to sell about 24K tickets in the 12–1 AM hour, with today projected near 2.22M and tomorrow near 1.15M.",
  "bullets": [
-  "Ramayana could reach about 1.01M tickets today (range 970K to 1.06M), with the 8–9 PM hour expected at 48.9K (range 42.7K to 54.8K), though it is -32% vs yesterday.",
-  "Ramayana is in its opening weekend (release day 3), and its forecast is nudged up by 16%, mainly from its BookMyShow rating (+6%), word of mouth (+5%), IMDb (+3%) and critics (+2%).",
-  "Monday 9 Nov is a weekday, not a strong day, so Ramayana is expected at 612K tickets tomorrow (range 448K to 820K).",
-  "Aadarsha Kutumbam peaks at 1.1K in 8–9 PM (range 993 to 1.3K) and Jailer 2 at 931 (range 812 to 1K), both down vs yesterday by -35% and -23%; neither has review signals, so their forecasts are unadjusted."
+  "The busiest hour still ahead, 12–1 AM, is expected at 24K tickets for Ramayana (range 21K to 27K), then easing to 14.3K and 4.4K in the next two hours.",
+  "Today (Sun 8 Nov, Diwali listed) is projected at 2.22M tickets (range 2.12M to 2.31M) after 917K so far, 27% above yesterday.",
+  "Tomorrow, a weekday (Mon 9 Nov), is expected at 1.15M tickets (range 844K to 1.54M), based on the usual Sun-to-Mon change across films.",
+  "Ramayana is on its opening weekend (release day number 3) and no review or word-of-mouth signals are switched on, so the forecast is not nudged (0%); review and word-of-mouth information is only collected for films that are switched on."
  ],
  "watch": [
-  "Diwali is listed for today (2026-11-08), and festive timing could push evening sales outside these ranges.",
-  "Ramayana's review and word-of-mouth signals are early and untested, so a shift in ratings could move its figures by up to about +16%."
+  "If review or word-of-mouth signals are switched on, they could lean this estimate by up to about +16% or -18%.",
+  "Next-hour counts have typically landed between x0.87 and x1.12 of the estimate, so the 12–1 AM figure could move."
  ],
  "usage": {
-  "input_tokens": 3598,
-  "output_tokens": 1616,
-  "cost_cents": 0.117
+  "input_tokens": 1743,
+  "output_tokens": 1389,
+  "cost_cents": 0.087
  }
 }
