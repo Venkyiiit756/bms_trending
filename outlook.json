@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-08T00:32+05:30",
- "as_of": "Sun 8 Nov 12:00 AM",
+ "generated_at": "2026-11-08T11:11+05:30",
+ "as_of": "Sun 8 Nov 11:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to sell 2.22M tickets today; Sunday, a Diwali holiday, could reach 2.57M (range 2.19M–2.83M).",
+ "headline": "Ramayana is expected to reach 1.41M tickets today (1.17M–1.65M), while Jailer 2 and Aadarsha Kutumbam are forecast at 25.8K and 28.6K.",
  "bullets": [
-  "Today is projected at 2.22M tickets (range 2.12M to 2.32M), which is -21% against yesterday.",
-  "The busiest hour still ahead is 12–1 AM, at an estimated 22.9K tickets (range 20.1K to 25.7K), tapering to 2.3K by 2–3 AM.",
-  "Tomorrow, Sunday and Diwali, is estimated at 2.57M tickets (range 2.19M to 2.83M), based on the usual Saturday-to-Sunday pattern with a Diwali assumption.",
-  "Signals lean the forecast up by 10%: BookMyShow rating +6%, critics +4%, word of mouth 0%, in its opening weekend (day 2 after release). Forecasts have typically missed by a median of 6%."
+  "Namit Malhotra's Ramayana has 117K so far and is forecast at 1.41M today (1.17M–1.65M), with its busiest hour ahead at 8–9 PM, around 95.4K (53.1K–138K).",
+  "Jailer 2 is expected to peak at 11 AM–12 PM at about 1.8K (1.6K–2K), and Aadarsha Kutumbam at 6–7 PM at about 2K (1.2K–2.7K), with today's totals at 25.8K and 28.6K.",
+  "Tomorrow is a weekday, so all three are expected lower: Ramayana 804K (512K–1.21M), Jailer 2 13.4K (8.6K–20.3K), Aadarsha Kutumbam 14.9K (9.5K–22.5K).",
+  "Ramayana is an opening-weekend film, so its range is wide; its BookMyShow rating (9.3/10) and critics (7.8/10) nudge the forecast up about 10%, while word of mouth is mixed. Jailer 2 and Aadarsha Kutumbam have no review or rating signals, as those are only collected for films switched on."
  ],
  "watch": [
-  "Mixed word of mouth on storytelling (0%) could shift Sunday's figure if reviews turn negative.",
-  "Diwali is assumed to lift tomorrow by x1.12; a weaker holiday effect would pull the Sunday range down."
+  "Ramayana's 8–9 PM peak has a very wide range (53.1K–138K), so evening sales will decide how close today lands to the forecast.",
+  "Jailer 2 and Aadarsha Kutumbam rest on the usual pattern alone, so any shift in their pace since 11 AM would move these numbers."
  ],
  "usage": {
-  "input_tokens": 2211,
-  "output_tokens": 1473,
-  "cost_cents": 0.096
+  "input_tokens": 4079,
+  "output_tokens": 1945,
+  "cost_cents": 0.138
  }
 }
