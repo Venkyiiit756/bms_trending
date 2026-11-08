@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-08T17:41+05:30",
- "as_of": "Sun 8 Nov 5:00 PM",
+ "generated_at": "2026-11-08T20:11+05:30",
+ "as_of": "Sun 8 Nov 8:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Namit Malhotra's Ramayana could reach 1.15M tickets today (est. 1.03M–1.28M), peaking near 8–9 PM.",
+ "headline": "Ramayana peaks at 48.9K tickets expected 8–9 PM; all three films trail yesterday on a Diwali Sunday.",
  "bullets": [
-  "Ramayana is expected to sell 45.3K tickets in 5–6 PM, rising to 61.5K in 7–8 PM, with the busiest hour ahead at 8–9 PM around 68.9K (range 50.3K–85.8K).",
-  "Ramayana's day total is estimated at 1.15M (range 1.03M–1.28M), with 624K sold so far and -10% against yesterday. Tomorrow, Mon 9 Nov, a weekday, is expected near 691K (range 476K–992K).",
-  "Ramayana is in its opening weekend (day 3), and its ratings signals lean the forecast by +16%. Diwali is listed as a holiday on 2026-11-08, which is today.",
-  "Jailer 2 is expected to reach 23.9K today (range 21.5K–26.8K) and 12.4K tomorrow (range 8.6K–17.9K). Aadarsha Kutumbam peaks near 1.4K at 6–7 PM (range 1.1K–1.6K), -22% against yesterday."
+  "Ramayana could reach about 1.01M tickets today (range 970K to 1.06M), with the 8–9 PM hour expected at 48.9K (range 42.7K to 54.8K), though it is -32% vs yesterday.",
+  "Ramayana is in its opening weekend (release day 3), and its forecast is nudged up by 16%, mainly from its BookMyShow rating (+6%), word of mouth (+5%), IMDb (+3%) and critics (+2%).",
+  "Monday 9 Nov is a weekday, not a strong day, so Ramayana is expected at 612K tickets tomorrow (range 448K to 820K).",
+  "Aadarsha Kutumbam peaks at 1.1K in 8–9 PM (range 993 to 1.3K) and Jailer 2 at 931 (range 812 to 1K), both down vs yesterday by -35% and -23%; neither has review signals, so their forecasts are unadjusted."
  ],
  "watch": [
-  "Ramayana's ratings signals have not been tested against history, and their lean fades in over the first 6 hours ahead.",
-  "Jailer 2 and Aadarsha Kutumbam have no review or rating signals switched on, so their figures rest only on past patterns."
+  "Diwali is listed for today (2026-11-08), and festive timing could push evening sales outside these ranges.",
+  "Ramayana's review and word-of-mouth signals are early and untested, so a shift in ratings could move its figures by up to about +16%."
  ],
  "usage": {
-  "input_tokens": 3880,
-  "output_tokens": 1852,
-  "cost_cents": 0.131
+  "input_tokens": 3598,
+  "output_tokens": 1616,
+  "cost_cents": 0.117
  }
 }
