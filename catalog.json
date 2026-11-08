@@ -197,7 +197,7 @@
   ],
   "release": "Oct 15, 2026",
   "book": true,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00436621": {
   "name": "The Paradise",
@@ -227,7 +227,7 @@
   "page_slug": "avengers-doomsday",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00437704",
   "languages": [
    "English",
@@ -257,7 +257,7 @@
   ],
   "release": "Jul 30, 2026",
   "book": true,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00451881": {
   "first_seen": "2026-10-31",
@@ -303,7 +303,7 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00449868",
   "languages": [
    "Hindi",
@@ -319,7 +319,13 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08",
+  "group": "EG00450096",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Dec 04, 2026",
+  "book": false
  },
  "ET00455480": {
   "first_seen": "2026-10-31",
@@ -328,7 +334,7 @@
   "page_slug": "king",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00453178",
   "languages": [
    "Hindi"
@@ -388,7 +394,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -404,7 +410,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -419,7 +425,7 @@
   "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00473423",
   "languages": [
    "Telugu"
@@ -618,7 +624,7 @@
   ],
   "release": "Oct 23, 2026",
   "book": true,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00496545": {
   "first_seen": "2026-10-20",
@@ -780,7 +786,7 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00503915",
   "languages": [
    "Telugu"
@@ -1072,7 +1078,7 @@
   "page_slug": "scene",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00513478",
   "languages": [
    "Tamil"
@@ -1186,7 +1192,7 @@
   "page_slug": "ramayana-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00449671"
  },
  "ET00518333": {
@@ -1245,7 +1251,7 @@
   "page_slug": "jailer-2-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00515691"
  },
  "ET00518692": {
@@ -1476,7 +1482,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",
@@ -1517,7 +1523,7 @@
   "page_slug": "aadi-anant",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00521922": {
   "first_seen": "2026-11-04",
@@ -1526,7 +1532,7 @@
   "page_slug": "talcum-powder",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00522234": {
   "first_seen": "2026-10-23",
@@ -1553,7 +1559,7 @@
   "page_slug": "dark-chocolate",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00522331": {
   "first_seen": "2026-10-30",
@@ -1585,7 +1591,7 @@
   "page_slug": "chandrayan",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00523016": {
   "first_seen": "2026-10-22",
@@ -1660,7 +1666,7 @@
   "page_slug": "cult",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-08",
   "group": "EG00521554",
   "languages": [
    "Telugu"
@@ -1693,7 +1699,7 @@
   "page_slug": "summer-holidays",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00524286": {
   "first_seen": "2026-10-29",
@@ -1738,7 +1744,16 @@
   "page_slug": "godzilla-minus-zero",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
+ },
+ "ET00524561": {
+  "first_seen": "2026-11-08",
+  "last_listed": null,
+  "name": "Nee Nange Allava",
+  "page_slug": "nee-nange-allava",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-08"
  },
  "ET00524621": {
   "first_seen": "2026-10-29",
@@ -1756,7 +1771,7 @@
   "page_slug": "the-cat-in-the-hat-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00524723": {
   "first_seen": "2026-11-06",
@@ -1765,7 +1780,7 @@
   "page_slug": "har-maidan-fateh",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00524873": {
   "first_seen": "2026-11-05",
@@ -1774,7 +1789,7 @@
   "page_slug": "lambodhara-20",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525031": {
   "first_seen": "2026-11-04",
@@ -1792,7 +1807,7 @@
   "page_slug": "scene-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525135": {
   "first_seen": "2026-11-03",
@@ -1810,7 +1825,7 @@
   "page_slug": "mahasakthi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525223": {
   "first_seen": "2026-11-06",
@@ -1819,7 +1834,7 @@
   "page_slug": "naaguge-vadhu-bekaagide",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525409": {
   "first_seen": "2026-11-04",
@@ -1846,7 +1861,7 @@
   "page_slug": "amalpatta-chapter-1-hashim",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525520": {
   "first_seen": "2026-11-07",
@@ -1855,7 +1870,7 @@
   "page_slug": "radhe-love-story",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07"
+  "upcoming": "2026-11-08"
  },
  "ET00525557": {
   "first_seen": "2026-11-05",

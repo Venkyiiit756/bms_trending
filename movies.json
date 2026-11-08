@@ -1545,7 +1545,7 @@
     "page_slug": "lambodhara-20",
     "csv": "data/ET00524873.csv",
     "headers_csv": "data/ET00524873_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-05"
   },
   {
@@ -1557,7 +1557,7 @@
     "page_slug": "bhai-beej",
     "csv": "data/ET00525419.csv",
     "headers_csv": "data/ET00525419_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-05"
   },
   {
@@ -1569,7 +1569,7 @@
     "page_slug": "amalpatta-chapter-1-hashim",
     "csv": "data/ET00525459.csv",
     "headers_csv": "data/ET00525459_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-05"
   },
   {
@@ -1581,7 +1581,7 @@
     "page_slug": "hero-1983",
     "csv": "data/ET00000849.csv",
     "headers_csv": "data/ET00000849_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-05"
   },
   {
@@ -1593,7 +1593,7 @@
     "page_slug": "meru-malan",
     "csv": "data/ET00525557.csv",
     "headers_csv": "data/ET00525557_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-05"
   },
   {
@@ -1679,5 +1679,17 @@
     "headers_csv": "data/ET00452351_headers.csv",
     "every": 3600,
     "added": "2026-11-07"
+  },
+  {
+    "key": "et00524561",
+    "name": "Nee Nange Allava",
+    "eventcode": "ET00524561",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nee-nange-allava",
+    "csv": "data/ET00524561.csv",
+    "headers_csv": "data/ET00524561_headers.csv",
+    "every": 3600,
+    "added": "2026-11-08"
   }
 ]

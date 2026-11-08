@@ -2,6 +2,14 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-08
+- added **Nee Nange Allava** (ET00524561), polled hourly
+- **Lambodhara 2.0** (ET00524873): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bhai Beej** (ET00525419): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Amalpatta Chapter 1: Hashim** (ET00525459): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Hero (1983)** (ET00000849): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Meru Malan** (ET00525557): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-07
 - added **MaatruBhumi: May War Rest in Peace** (ET00452351), polled hourly
 - **Cult** (ET00524017): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
