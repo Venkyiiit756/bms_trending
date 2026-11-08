@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T11:11+05:30",
+ "generated": "2026-11-08T16:11+05:30",
  "model": "claude-haiku-5-5",
  "films": {
   "Namit Malhotra's Ramayana": {
@@ -8,7 +8,7 @@
    "confidence": "medium",
    "critics": [
     {
-     "outlet": "Times of India (via District listing)",
+     "outlet": "The Times of India (via District listing",
      "rating": 4.5,
      "scale": 5.0,
      "verdict": "positive",
@@ -22,7 +22,7 @@
      "url": "https://www.district.in/movies/namit-malhotra-s-ramayana-movie-tickets-MV176276"
     },
     {
-     "outlet": "Indian Express (via District listing)",
+     "outlet": "The Indian Express (via District listing",
      "rating": 3.0,
      "scale": 5.0,
      "verdict": "mixed",
@@ -36,39 +36,39 @@
      "url": "https://www.district.in/movies/namit-malhotra-s-ramayana-movie-tickets-MV176276"
     },
     {
-     "outlet": "Bollywood Hungama, Taran Adarsh (via Dis",
-     "rating": 5.0,
-     "scale": 5.0,
-     "verdict": "positive",
-     "url": "https://www.district.in/movies/namit-malhotra-s-ramayana-movie-tickets-MV176276"
+     "outlet": "Telangana Today",
+     "rating": null,
+     "scale": null,
+     "verdict": "negative",
+     "url": "https://telanganatoday.com/movie-review-namit-malhotras-ramayana-part-1-is-grandeur-without-a-soul"
     }
    ],
    "audience": {
-    "bms_rating": 9.4,
-    "bms_votes": 48200,
-    "imdb_rating": null,
-    "imdb_votes": null,
+    "bms_rating": 9.3,
+    "bms_votes": 53700,
+    "imdb_rating": 8.7,
+    "imdb_votes": 8900,
     "google_score_percent": null,
-    "url": "https://www.sacnilk.com/news/ramayana-ratings-on-imdb-bookmyshow-rotten-tomatoes-and-sacnilk-indicates-blockbuster-box-office-run"
+    "url": "https://www.sacnilk.com/big-release/ramayana_part_1_2026"
    },
    "word_of_mouth": {
-    "verdict": "mixed",
-    "evidence": "Early LA screening viewers praised the film's scale and spectacle but said the storytelling felt flat and serial-like in places.",
-    "url": "https://theprint.in/entertainment/ramayana-gets-its-first-audience-reactions-in-la-viewers-praise-scale-question-storytelling/3083935/"
+    "verdict": "good",
+    "evidence": "An early Sacnilk analysis describes the audience ratings as a favourable first impression, though it calls the scores preliminary.",
+    "url": "https://www.sacnilk.com/news/ramayana-ratings-on-imdb-bookmyshow-rotten-tomatoes-and-sacnilk-indicates-blockbuster-box-office-run"
    },
    "screens": {
     "count": null,
-    "where": "India, Day 1 shows across Hindi, Kannada, Telugu, Tamil and ",
+    "where": "India, Day 1 (5 Nov 2026), reported as shows, all languages",
     "url": "https://www.sacnilk.com/quicknews/ramayana_part_1_2026_Box_Office_Collection_Day_1"
    },
    "competition": [],
-   "researched": "2026-11-07T16:12+05:30"
+   "researched": "2026-11-08T16:11+05:30"
   }
  },
  "usage": {
-  "in": 0,
-  "out": 0,
-  "searches": 0,
-  "cost_cents": 0.0
+  "in": 26252,
+  "out": 3126,
+  "searches": 3,
+  "cost_cents": 3.42
  }
 }

@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-08T11:11+05:30",
- "as_of": "Sun 8 Nov 11:00 AM",
+ "generated_at": "2026-11-08T16:11+05:30",
+ "as_of": "Sun 8 Nov 4:00 PM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to reach 1.41M tickets today (1.17M–1.65M), while Jailer 2 and Aadarsha Kutumbam are forecast at 25.8K and 28.6K.",
+ "headline": "Jailer 2 is expected to reach about 23.5K tickets today, with the busiest hour ahead at 5–6 PM (1.2K).",
  "bullets": [
-  "Namit Malhotra's Ramayana has 117K so far and is forecast at 1.41M today (1.17M–1.65M), with its busiest hour ahead at 8–9 PM, around 95.4K (53.1K–138K).",
-  "Jailer 2 is expected to peak at 11 AM–12 PM at about 1.8K (1.6K–2K), and Aadarsha Kutumbam at 6–7 PM at about 2K (1.2K–2.7K), with today's totals at 25.8K and 28.6K.",
-  "Tomorrow is a weekday, so all three are expected lower: Ramayana 804K (512K–1.21M), Jailer 2 13.4K (8.6K–20.3K), Aadarsha Kutumbam 14.9K (9.5K–22.5K).",
-  "Ramayana is an opening-weekend film, so its range is wide; its BookMyShow rating (9.3/10) and critics (7.8/10) nudge the forecast up about 10%, while word of mouth is mixed. Jailer 2 and Aadarsha Kutumbam have no review or rating signals, as those are only collected for films switched on."
+  "Jailer 2 has sold 13.8K tickets so far today, and the full day is forecast at 23.5K (range 19.5K to 27.6K), which is 4% above yesterday.",
+  "Sales for the next hours are expected at 1.1K to 1.2K per hour, with the busiest hour ahead at 5–6 PM (1.2K, range 949 to 1.4K).",
+  "Today is Diwali (Sun 8 Nov), and Mon 9 Nov is a weekday, with tickets expected at 12.2K (range 7.8K to 18.4K), a wide range.",
+  "The film is in its later weeks, 24 days after its Thu 15 Oct release. No review or word-of-mouth signals are switched on for it, so these are estimates from the usual trend alone."
  ],
  "watch": [
-  "Ramayana's 8–9 PM peak has a very wide range (53.1K–138K), so evening sales will decide how close today lands to the forecast.",
-  "Jailer 2 and Aadarsha Kutumbam rest on the usual pattern alone, so any shift in their pace since 11 AM would move these numbers."
+  "Whether actual sales in the 4–5 PM hour come in near the 1.1K estimate, or toward the low (1K) or high (1.3K) end.",
+  "Whether the 5–6 PM and 6–7 PM hours land near the top (1.4K) or bottom (902 to 949) of their ranges."
  ],
  "usage": {
-  "input_tokens": 4079,
-  "output_tokens": 1945,
-  "cost_cents": 0.138
+  "input_tokens": 1786,
+  "output_tokens": 1477,
+  "cost_cents": 0.092
  }
 }
