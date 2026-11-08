@@ -453,7 +453,7 @@
   },
   {
     "key": "et00451914",
-    "name": "Namit Malhotra's Ramayana",
+    "name": "Ramayana",
     "eventcode": "ET00451914",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1689,6 +1689,18 @@
     "page_slug": "nee-nange-allava",
     "csv": "data/ET00524561.csv",
     "headers_csv": "data/ET00524561_headers.csv",
+    "every": 3600,
+    "added": "2026-11-08"
+  },
+  {
+    "key": "et00508520",
+    "name": "I Play Rocky",
+    "eventcode": "ET00508520",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "i-play-rocky",
+    "csv": "data/ET00508520.csv",
+    "headers_csv": "data/ET00508520_headers.csv",
     "every": 3600,
     "added": "2026-11-08"
   }

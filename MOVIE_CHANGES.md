@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-08
+- added **I Play Rocky** (ET00508520), polled hourly
+
+## 2026-11-08
 - added **Nee Nange Allava** (ET00524561), polled hourly
 - **Lambodhara 2.0** (ET00524873): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Bhai Beej** (ET00525419): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

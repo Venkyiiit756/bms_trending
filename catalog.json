@@ -279,7 +279,7 @@
  "ET00451914": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-11-03",
-  "name": "Namit Malhotra's Ramayana",
+  "name": "Ramayana",
   "page_slug": "namit-malhotras-ramayana",
   "last_checked": null,
   "figure": null,
@@ -294,7 +294,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-10-26"
+  "upcoming": "2026-11-08"
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -603,7 +603,7 @@
   "page_slug": "raaka",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-27",
+  "upcoming": "2026-11-08",
   "group": "EG00491817",
   "languages": [
    "Telugu"
@@ -720,7 +720,7 @@
   "page_slug": "om-chapter-1-udhiram",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-06"
+  "upcoming": "2026-11-08"
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -841,6 +841,15 @@
   "release": "Aug 07, 2026",
   "book": true,
   "upcoming": "2026-11-05"
+ },
+ "ET00508520": {
+  "first_seen": "2026-11-08",
+  "last_listed": null,
+  "name": "I Play Rocky",
+  "page_slug": "i-play-rocky",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-08"
  },
  "ET00509047": {
   "first_seen": "2026-10-22",
