@@ -280,3 +280,11 @@ Simulated 4 h with a cold film rate-limited every 5th poll (1 h block): Ramayana
 - `run_tracker.yml`: setup-python gets a retry (a failed Python download killed a run on Nov 8 and cost Ramayana 80 minutes).
 - Gap audit since Nov 3 (minutes missing beyond 45-min spacing): Ramayana 597, Scene 553, Mookuthi Amman 2 1078, Jailer 2 (hyd) 164; the fast cache-following films are fine.
   Cause: the shared rate-limit block (fixed Nov 9, see above), plus run start/stop gaps.
+
+## Claude agents off + hot-film alarm + cold films off by day (Nov 9)
+- No automatic Claude call remains: briefing and weekly report are not dispatched (flags `BRIEFING_ON`, `WEEKLY_ON` in tracker.py, crons removed), ask-the-data is gated off (`false &&`),
+  the forecast_outlook workflow skips intel.py (`if: false`) and writes the outlook from the template (no API key passed). ratings.py (no Claude) still runs. To re-enable: see the comments in those files.
+- Alarm: health.py check "Hot films: reading on time" - a hot film with no reading for 60 min fails the check, which opens the 'Tracker needs attention' issue (emails the owner); closes itself when readings return.
+  health.py runs in the hourly snapshot workflow, so detection takes up to ~1 h after the 60 min.
+- Root cause of Nov 9's 2+ h Ramayana outage (429 on every request from 11:35 IST, even with hot films retrying): the ~100 six-hourly cold films were swept by day, which set off the rate limit.
+  Cold films are now only read in the night read (about 4 AM); by day only hot films + interest counts are polled. HOT_RETRY = 300 s.
