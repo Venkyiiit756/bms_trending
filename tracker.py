@@ -32,6 +32,9 @@ MAX_QUICK_RETRIES = 4      # still cached after expiry this many times -> poll g
 POLL_SECONDS = 180         # gentle fallback interval (also for a copy already past CACHE_TTL)
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
+HOT_EVERY = 1800           # films polled at least every 30 minutes (or following the cache) are 'hot': never starved by other films' 429s
+HOT = set()                # keys of the hot films of this run
+HOT_RETRY = 120            # a hot film retries at most this long after any access failure (the block is shared, but a hot film must not wait an hour)
 FETCH_TIMEOUT = 60
 DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
 OUTLOOK_AT = [(11, 10), (16, 10), (20, 10)]    # IST: the forecast outlook text (the numbers are rebuilt every hour)
@@ -339,6 +342,7 @@ def poll(st, shared):
             shared['failures'] += 1
             wait = backoff_wait(shared['failures'], result.get('retry_after', 0))
             shared['block_until'] = max(shared['block_until'], mono + wait)
+            shared['hot_block_until'] = max(shared.get('hot_block_until', 0.0), mono + min(wait, HOT_RETRY))
             st.failures += 1
             n = st.failures
             if st.key in PENDING:       # the 3-5 AM read is mandatory: ask again as soon as the block lifts
@@ -353,7 +357,7 @@ def poll(st, shared):
             write_rows(st.csv, [[fmt(t), '', 'error', result['status'],
                                  f"{result['detail']} (failure {n})", '', 'error', '']])
             logged = True
-        st.due = mono + wait
+        st.due = mono + (min(wait, HOT_RETRY) if (not no_counter and st.key in HOT) else wait)
         return logged
 
     if st.failures or shared['failures']:
@@ -428,6 +432,7 @@ def poll_interest(job, shared):
             shared['failures'] += 1
             wait = backoff_wait(shared['failures'], result.get('retry_after', 0))
             shared['block_until'] = max(shared['block_until'], mono + wait)
+            shared['hot_block_until'] = max(shared.get('hot_block_until', 0.0), mono + min(wait, HOT_RETRY))
             job.due = mono + wait
         print(f"[{fmt(now())}] interest {job.name}: {result['detail']}", flush=True)
         return False
@@ -597,7 +602,9 @@ def run(keys, minutes, commit):
     window_end = time.monotonic() + max(0, (w1 - t0).total_seconds()) if t0 < w1 else 0
     states = [State(movies[k], due[k]) for k in keys]
     jobs = interest_jobs(start)
-    shared = {'failures': 0, 'block_until': 0.0}
+    shared = {'failures': 0, 'block_until': 0.0, 'hot_block_until': 0.0}
+    HOT.clear()
+    HOT.update(k for k in keys if not movies[k].get('every') or movies[k]['every'] <= HOT_EVERY)
     last_request = 0.0
     dirty = False
     last_commit = time.monotonic()
@@ -636,8 +643,16 @@ def run(keys, minutes, commit):
                     break
                 sleep(30)
                 continue
-            st = min(pool, key=lambda s: s.due)
-            go = max(st.due, shared['block_until'], last_request + MIN_GAP)
+            # Every film is judged by when it can really go: its own due time or the end of the block that applies to it
+            # (hot films wait at most HOT_RETRY seconds). Among films that can go now, hot ones go first, then the one
+            # due longest ago. So neither a long block on cold films nor an overdue 6-hourly film can hold a hot film back.
+            nowm = time.monotonic()
+
+            def can_go(s_):
+                hot_ = getattr(s_, 'key', None) in HOT
+                return max(s_.due, shared['hot_block_until'] if hot_ else shared['block_until'], last_request + MIN_GAP)
+            st = min(pool, key=lambda s_: (max(can_go(s_), nowm), getattr(s_, 'key', None) not in HOT, s_.due))
+            go = can_go(st)
             if min(go, sweep_mono) >= end:
                 print('Run window finished.', flush=True)
                 break

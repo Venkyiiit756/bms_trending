@@ -267,3 +267,9 @@ Nov 5 backtest on Ramayana's release day: the "yesterday and last week" shape ov
 because the day before release has a 2x evening ramp that does not repeat. Over all 5 release days the shape overshoots by 40-60% and the release-day
 profile is within 14%. Now: profile scaled on the last 3 hours (not the whole day) and `phase_weight()` = 50% one hour ahead rising to 85% on day 0, 50% on day 2.
 Not backtestable yet (too few films): holidays, ratings, competition, screens/capacity. `shows.py` is collecting capacity history.
+
+## Hot films are never starved (Nov 9)
+Ramayana had 80-140 minute gaps (worst Nov 8 21:41-00:04): one shared block applied to every film, so a 429/403 on any of the ~100 six-hourly films (or a
+Retry-After up to an hour) held the hot film back too, and an overdue cold film could be picked first. Now (tracker.py): hot films (no `every`, or every <= 30 min,
+`HOT_EVERY`) wait out a block for at most `HOT_RETRY` = 120 s, and the next film is chosen by when it can really go: hot first among those ready.
+Simulated 4 h with a cold film rate-limited every 5th poll (1 h block): Ramayana polled exactly every 30 min. Real effect to confirm in the next days' gaps.
