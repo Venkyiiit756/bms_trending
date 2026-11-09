@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-09T00:36+05:30",
- "as_of": "Mon 9 Nov 12:00 AM",
+ "generated_at": "2026-11-09T11:12+05:30",
+ "as_of": "Mon 9 Nov 11:00 AM",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Ramayana is expected to sell about 24K tickets in the 12–1 AM hour, with today projected near 2.22M and tomorrow near 1.15M.",
+ "headline": "Ramayana is forecast to reach 2.42M tickets today and Jailer 2 about 29.7K, both estimates with wide ranges.",
  "bullets": [
-  "The busiest hour still ahead, 12–1 AM, is expected at 24K tickets for Ramayana (range 21K to 27K), then easing to 14.3K and 4.4K in the next two hours.",
-  "Today (Sun 8 Nov, Diwali listed) is projected at 2.22M tickets (range 2.12M to 2.31M) after 917K so far, 27% above yesterday.",
-  "Tomorrow, a weekday (Mon 9 Nov), is expected at 1.15M tickets (range 844K to 1.54M), based on the usual Sun-to-Mon change across films.",
-  "Ramayana is on its opening weekend (release day number 3) and no review or word-of-mouth signals are switched on, so the forecast is not nudged (0%); review and word-of-mouth information is only collected for films that are switched on."
+  "Ramayana has sold 216K so far today, and its day total is estimated at 2.42M (range 2.02M to 2.79M), 77% vs yesterday.",
+  "Its busiest hour ahead is expected at 10–11 PM, around 320K (range 185K to 480K), with 11 AM–12 PM at about 139K.",
+  "Jailer 2 has sold 4.3K so far, with its day total estimated at 29.7K (range 24.7K to 34.1K), which is -8% vs yesterday.",
+  "Tomorrow, Tuesday, is an ordinary weekday with no holiday, so Ramayana could reach 2.69M (range 1.66M to 3.34M) and Jailer 2 about 33K (range 20.3K to 40.9K)."
  ],
  "watch": [
-  "If review or word-of-mouth signals are switched on, they could lean this estimate by up to about +16% or -18%.",
-  "Next-hour counts have typically landed between x0.87 and x1.12 of the estimate, so the 12–1 AM figure could move."
+  "Neither film has review, rating or word-of-mouth signals switched on, so these figures are based on history alone and are not adjusted for them.",
+  "Show and screen counts are not included, so a change in them could move the forecast, especially for tomorrow's wide range."
  ],
  "usage": {
-  "input_tokens": 1743,
-  "output_tokens": 1389,
-  "cost_cents": 0.087
+  "input_tokens": 2635,
+  "output_tokens": 1531,
+  "cost_cents": 0.103
  }
 }
