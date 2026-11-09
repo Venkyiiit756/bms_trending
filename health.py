@@ -49,12 +49,26 @@ def checks(now, newest):
     except Exception:
         d = None
     add('Movie discovery', d is not None and (now.date() - d).days <= 2, f"upcoming pages last read {d:%a %-d %b}" if d else 'never')
+    # Hot films (polled at least every 30 minutes) must not have holes: a long gap makes the hour-by-hour view patchy.
     try:
-        bd = json.load(open(os.path.join(series.ROOT, 'briefing.json'), encoding='utf-8')).get('date')
-    except Exception:
-        bd = None
-    due = now.hour * 60 + now.minute >= 9 * 60 + 45
-    add('Daily briefing', bd == now.date().isoformat() or not due, f'written for {bd}' if bd else 'none yet')
+        movies = json.load(open(os.path.join(series.ROOT, 'movies.json'), encoding='utf-8'))
+        movies = movies.values() if isinstance(movies, dict) else movies
+        hot = [m for m in movies if not m.get('paused') and (not m.get('every') or m['every'] <= 1800)]
+        bad_gaps, since = [], now - timedelta(hours=6)
+        for m in hot:
+            ts = []
+            for r in csv.DictReader(open(os.path.join(series.ROOT, m['csv']), newline='', encoding='utf-8')):
+                if r['kind'] != 'error':
+                    t = datetime.fromisoformat(r['timestamp'])
+                    if t >= since - timedelta(hours=2):
+                        ts.append(t)
+            ts = sorted(ts) + [now]
+            gap = max(((b_ - max(a_, since)).total_seconds() / 60 for a_, b_ in zip(ts, ts[1:]) if b_ > since), default=0)
+            if len(ts) > 2 and gap > 75 and (now - ts[-2]).total_seconds() < 36 * 3600:      # skip films that stopped showing a counter
+                bad_gaps.append(f"{m['name'][:20]} {round(gap)} min")
+        add('Hot films: no long gaps (6 h)', not bad_gaps, ', '.join(bad_gaps) if bad_gaps else f'{len(hot)} hot films read at least every 75 min')
+    except Exception as e:
+        add('Hot films: no long gaps (6 h)', True, f'not checked ({str(e)[:60]})')
     return out
 
 

@@ -273,3 +273,10 @@ Ramayana had 80-140 minute gaps (worst Nov 8 21:41-00:04): one shared block appl
 Retry-After up to an hour) held the hot film back too, and an overdue cold film could be picked first. Now (tracker.py): hot films (no `every`, or every <= 30 min,
 `HOT_EVERY`) wait out a block for at most `HOT_RETRY` = 120 s, and the next film is chosen by when it can really go: hot first among those ready.
 Simulated 4 h with a cold film rate-limited every 5th poll (1 h block): Ramayana polled exactly every 30 min. Real effect to confirm in the next days' gaps.
+
+## Reliability sweep (Nov 9)
+- Watchdog (`health.py`): new check "Hot films: no long gaps (6 h)" (alerts via the existing 'Tracker needs attention' issue when a hot film has a gap > 75 min);
+  removed the "Daily briefing" check, which would have opened a false alarm now that the briefing is switched off.
+- `run_tracker.yml`: setup-python gets a retry (a failed Python download killed a run on Nov 8 and cost Ramayana 80 minutes).
+- Gap audit since Nov 3 (minutes missing beyond 45-min spacing): Ramayana 597, Scene 553, Mookuthi Amman 2 1078, Jailer 2 (hyd) 164; the fast cache-following films are fine.
+  Cause: the shared rate-limit block (fixed Nov 9, see above), plus run start/stop gaps.
