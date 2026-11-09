@@ -1,22 +1,15 @@
 {
- "generated_at": "2026-11-09T11:12+05:30",
- "as_of": "Mon 9 Nov 11:00 AM",
- "mode": "claude",
- "model": "claude-haiku-5-5",
- "headline": "Ramayana is forecast to reach 2.42M tickets today and Jailer 2 about 29.7K, both estimates with wide ranges.",
+ "generated_at": "2026-11-09T16:11+05:30",
+ "as_of": "Mon 9 Nov 4:00 PM",
+ "mode": "template",
+ "model": null,
+ "headline": "Ramayana: busiest hour still ahead is 10–11 PM, about 167K expected (range 107K to 227K).",
  "bullets": [
-  "Ramayana has sold 216K so far today, and its day total is estimated at 2.42M (range 2.02M to 2.79M), 77% vs yesterday.",
-  "Its busiest hour ahead is expected at 10–11 PM, around 320K (range 185K to 480K), with 11 AM–12 PM at about 139K.",
-  "Jailer 2 has sold 4.3K so far, with its day total estimated at 29.7K (range 24.7K to 34.1K), which is -8% vs yesterday.",
-  "Tomorrow, Tuesday, is an ordinary weekday with no holiday, so Ramayana could reach 2.69M (range 1.66M to 3.34M) and Jailer 2 about 33K (range 20.3K to 40.9K)."
+  "Ramayana: 73K expected in 4–5 PM, about 1.22M for the whole day (range 1.02M to 1.40M)."
  ],
  "watch": [
-  "Neither film has review, rating or word-of-mouth signals switched on, so these figures are based on history alone and are not adjusted for them.",
-  "Show and screen counts are not included, so a change in them could move the forecast, especially for tomorrow's wide range."
+  "Tomorrow is weekday.",
+  "Review and word-of-mouth information is only collected for films switched on, not this one."
  ],
- "usage": {
-  "input_tokens": 2635,
-  "output_tokens": 1531,
-  "cost_cents": 0.103
- }
+ "usage": null
 }
