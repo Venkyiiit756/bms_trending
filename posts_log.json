@@ -3826,5 +3826,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-09 23:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 10–11 PM (Mon 09 Nov)\n\n1. Ramayana: 64.4K\n2. Scene: 14.21K\n3. Mookuthi Amman 2: 1.89K\n\n#Ramayana #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-09/2300/1.png",
+   "posts/2026-11-09/2300/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (10–11 PM, Mon 09 Nov), with change against the same hour yesterday: Ramayana 64.4K; Scene 14.21K; Mookuthi Amman 2 1.89K",
+   "Line chart of tickets booked in the last hour for Ramayana through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
