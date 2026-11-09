@@ -1,0 +1,95 @@
+{
+ "end": "2026-11-09",
+ "week": "Mon 2 Nov to Sun 8 Nov",
+ "window": "4 AM Mon 2 Nov to 4 AM Mon 9 Nov IST",
+ "generated_at": "2026-11-09T08:20:57+05:30",
+ "mode": "claude",
+ "model": "claude-haiku-5-5",
+ "headline": "Ramayana led Hyderabad's week with 3.97M tickets, ahead of Scene at 2.22M, while Scene and Mookuthi Amman 2 gained the most interest.",
+ "bullets": [
+  "Ramayana finished first with 3.97M tickets, up 1374 on the prior week, and its best day was Sat 7 Nov with 1.18M tickets.",
+  "Scene placed second with 2.22M tickets, and its best day was Fri 6 Nov with 578K tickets.",
+  "Mookuthi Amman 2 was third with 285K tickets over 5 counted days, peaking on Sun 8 Nov with 119K tickets.",
+  "Jailer 2 (210K) and Aadarsha Kutumbam (203K) took fourth and fifth, both counted on all 7 days and both down slightly on the prior week, while Scene gained 135K interested users and Ramayana gained 124K."
+ ],
+ "usage": {
+  "input_tokens": 1512,
+  "output_tokens": 678,
+  "cost_cents": 0.049
+ },
+ "attempts": [
+  {
+   "attempt": 1,
+   "problems": []
+  }
+ ],
+ "films": [
+  {
+   "rank": 1,
+   "name": "Ramayana",
+   "week_total": "3.97M",
+   "vs_prior_week": 1374,
+   "best_day": "Sat 7 Nov",
+   "best_day_tickets": "1.18M",
+   "exact": false
+  },
+  {
+   "rank": 2,
+   "name": "Scene",
+   "week_total": "2.22M",
+   "vs_prior_week": null,
+   "best_day": "Fri 6 Nov",
+   "best_day_tickets": "578K",
+   "exact": true
+  },
+  {
+   "rank": 3,
+   "name": "Mookuthi Amman 2",
+   "week_total": "285K",
+   "vs_prior_week": null,
+   "best_day": "Sun 8 Nov",
+   "best_day_tickets": "119K",
+   "exact": true
+  },
+  {
+   "rank": 4,
+   "name": "Jailer 2",
+   "week_total": "210K",
+   "vs_prior_week": -75,
+   "best_day": "Mon 2 Nov",
+   "best_day_tickets": "42.1K",
+   "exact": true
+  },
+  {
+   "rank": 5,
+   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+   "week_total": "203K",
+   "vs_prior_week": -72,
+   "best_day": "Mon 2 Nov",
+   "best_day_tickets": "50.3K",
+   "exact": true
+  }
+ ],
+ "interest": [
+  {
+   "name": "Scene",
+   "interested": "288K+",
+   "gained_7d": "+135K"
+  },
+  {
+   "name": "Ramayana",
+   "interested": "617K+",
+   "gained_7d": "+124K"
+  },
+  {
+   "name": "Mookuthi Amman 2",
+   "interested": "63.1K+",
+   "gained_7d": "+54.6K"
+  },
+  {
+   "name": "Avengers: Doomsday",
+   "interested": "520K+",
+   "gained_7d": "+38K"
+  }
+ ]
+}

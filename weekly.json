@@ -1,21 +1,21 @@
 {
- "end": "2026-11-02",
- "week": "Mon 26 Oct to Sun 1 Nov",
- "window": "4 AM Mon 26 Oct to 4 AM Mon 2 Nov IST",
- "generated_at": "2026-11-02T08:21:01+05:30",
+ "end": "2026-11-09",
+ "week": "Mon 2 Nov to Sun 8 Nov",
+ "window": "4 AM Mon 2 Nov to 4 AM Mon 9 Nov IST",
+ "generated_at": "2026-11-09T08:20:57+05:30",
  "mode": "claude",
  "model": "claude-haiku-5-5",
- "headline": "Jailer 2 led the week with 826K tickets, while Aadarsha Kutumbam posted the top single day at 217K on Fri 30 Oct.",
+ "headline": "Ramayana led Hyderabad's week with 3.97M tickets, ahead of Scene at 2.22M, while Scene and Mookuthi Amman 2 gained the most interest.",
  "bullets": [
-  "Jailer 2 counted 826K tickets, down 75% on the prior week, with its best day on Sat 31 Oct at 159K.",
-  "Aadarsha Kutumbam took 720K tickets over 5 counted days, peaking at 217K on Fri 30 Oct.",
-  "Namit Malhotra's Ramayana drew 269K tickets and gained 100K in interest over 7 days, reaching 551K+.",
-  "Premada Oorali fell 73% to 178K tickets, while Avengers: Doomsday gained 46K in interest to 476K+."
+  "Ramayana finished first with 3.97M tickets, up 1374 on the prior week, and its best day was Sat 7 Nov with 1.18M tickets.",
+  "Scene placed second with 2.22M tickets, and its best day was Fri 6 Nov with 578K tickets.",
+  "Mookuthi Amman 2 was third with 285K tickets over 5 counted days, peaking on Sun 8 Nov with 119K tickets.",
+  "Jailer 2 (210K) and Aadarsha Kutumbam (203K) took fourth and fifth, both counted on all 7 days and both down slightly on the prior week, while Scene gained 135K interested users and Ramayana gained 124K."
  ],
  "usage": {
-  "input_tokens": 1945,
-  "output_tokens": 804,
-  "cost_cents": 0.06
+  "input_tokens": 1512,
+  "output_tokens": 678,
+  "cost_cents": 0.049
  },
  "attempts": [
   {
@@ -26,97 +26,70 @@
  "films": [
   {
    "rank": 1,
-   "name": "Jailer 2",
-   "week_total": "826K",
-   "vs_prior_week": -75,
-   "best_day": "Sat 31 Oct",
-   "best_day_tickets": "159K",
-   "exact": true
+   "name": "Ramayana",
+   "week_total": "3.97M",
+   "vs_prior_week": 1374,
+   "best_day": "Sat 7 Nov",
+   "best_day_tickets": "1.18M",
+   "exact": false
   },
   {
    "rank": 2,
-   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
-   "week_total": "720K",
+   "name": "Scene",
+   "week_total": "2.22M",
    "vs_prior_week": null,
-   "best_day": "Fri 30 Oct",
-   "best_day_tickets": "217K",
+   "best_day": "Fri 6 Nov",
+   "best_day_tickets": "578K",
    "exact": true
   },
   {
    "rank": 3,
-   "name": "Udta Teer",
-   "week_total": "361K",
+   "name": "Mookuthi Amman 2",
+   "week_total": "285K",
    "vs_prior_week": null,
-   "best_day": "Sat 31 Oct",
-   "best_day_tickets": "61.7K",
+   "best_day": "Sun 8 Nov",
+   "best_day_tickets": "119K",
    "exact": true
   },
   {
    "rank": 4,
-   "name": "Namit Malhotra's Ramayana",
-   "week_total": "269K",
-   "vs_prior_week": null,
-   "best_day": "Sun 1 Nov",
-   "best_day_tickets": "86.6K",
+   "name": "Jailer 2",
+   "week_total": "210K",
+   "vs_prior_week": -75,
+   "best_day": "Mon 2 Nov",
+   "best_day_tickets": "42.1K",
    "exact": true
   },
   {
    "rank": 5,
-   "name": "Premada Oorali",
-   "week_total": "178K",
-   "vs_prior_week": -73,
-   "best_day": "Mon 26 Oct",
-   "best_day_tickets": "47.8K",
-   "exact": true
-  },
-  {
-   "rank": 6,
-   "name": "Jailer 2 (Hindi)",
-   "week_total": "159K",
-   "vs_prior_week": -63,
-   "best_day": "Sun 1 Nov",
-   "best_day_tickets": "28.8K",
-   "exact": true
-  },
-  {
-   "rank": 7,
-   "name": "Drishyam",
-   "week_total": "141K",
-   "vs_prior_week": -60,
-   "best_day": "Tue 27 Oct",
-   "best_day_tickets": "26.5K",
-   "exact": true
-  },
-  {
-   "rank": 8,
-   "name": "418",
-   "week_total": "79.1K",
-   "vs_prior_week": null,
-   "best_day": "Mon 26 Oct",
-   "best_day_tickets": "18.4K",
+   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
+   "week_total": "203K",
+   "vs_prior_week": -72,
+   "best_day": "Mon 2 Nov",
+   "best_day_tickets": "50.3K",
    "exact": true
   }
  ],
  "interest": [
   {
-   "name": "Namit Malhotra's Ramayana",
-   "interested": "551K+",
-   "gained_7d": "+100K"
+   "name": "Scene",
+   "interested": "288K+",
+   "gained_7d": "+135K"
   },
   {
-   "name": "Scene",
-   "interested": "191K+",
-   "gained_7d": "+83K"
+   "name": "Ramayana",
+   "interested": "617K+",
+   "gained_7d": "+124K"
+  },
+  {
+   "name": "Mookuthi Amman 2",
+   "interested": "63.1K+",
+   "gained_7d": "+54.6K"
   },
   {
    "name": "Avengers: Doomsday",
-   "interested": "476K+",
-   "gained_7d": "+46K"
-  },
-  {
-   "name": "Aadarsha Kutumbam House No: 47 (AK 47)",
-   "interested": "67.9K+",
-   "gained_7d": "+24.3K"
+   "interested": "520K+",
+   "gained_7d": "+38K"
   }
  ]
 }
