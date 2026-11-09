@@ -34,11 +34,12 @@ BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, .
 HEARTBEAT_SECONDS = 15 * 60
 HOT_EVERY = 1800           # films polled at least every 30 minutes (or following the cache) are 'hot': never starved by other films' 429s
 HOT = set()                # keys of the hot films of this run
-HOT_RETRY = 120            # a hot film retries at most this long after any access failure (the block is shared, but a hot film must not wait an hour)
+HOT_RETRY = 300            # a hot film retries at most this long after any access failure (the block is shared, but a hot film must not wait an hour)
 FETCH_TIMEOUT = 60
 DISCOVER_AT = [(6, 40), (13, 40), (20, 40)]   # IST: look for new movies three times a day
 OUTLOOK_AT = [(11, 10), (16, 10), (20, 10)]    # IST: the forecast outlook text (the numbers are rebuilt every hour)
 WEEKLY_AT = [(8, 20)]                           # IST, Mondays only: the weekly report
+WEEKLY_ON = False                              # the weekly report uses Claude: switched off to save tokens
 BRIEFING_ON = False                            # the daily briefing agent is switched off (owner does not use it); set True to run it again
 BRIEFING_AT = [(8, 5)]                         # IST: the daily briefing (after the 3:45 sweep has the day's exact totals)
 SWEEP_AT = (3, 55)         # IST: every movie is asked once just before 4 AM, so each day 4 AM-4 AM has
@@ -587,6 +588,12 @@ def run(keys, minutes, commit):
     POLLED.update(load_poll_state())
     t0, slot = now(), 0
     for k in sorted(slow, key=lambda k: POLLED.get(k, datetime.min.replace(tzinfo=IST))):
+        if movies[k]['every'] > 3600:
+            # Cold films (6-hourly) are no longer polled by day: ~100 of them swept every 6 hours were what set off the 429s that
+            # blocked the hot films for hours (Nov 9: 2+ hours without a Ramayana reading). They are still read in the night read
+            # (about 4 AM, via PENDING below / the sweep), which is what their daily totals need.
+            due[k] = start + 10 ** 7
+            continue
         every = min(movies[k]['every'], 3600)
         age = (t0 - POLLED[k]).total_seconds() if k in POLLED else None
         if age is None or age >= every - 300:
@@ -685,7 +692,7 @@ def run(keys, minutes, commit):
                 request_workflow('forecast_outlook.yml', 'forecast outlook')
                 next_outlook = next_discover_time(now(), OUTLOOK_AT)
             if now() >= next_weekly:
-                if now().astimezone(IST).weekday() == 0:
+                if WEEKLY_ON and now().astimezone(IST).weekday() == 0:
                     request_workflow('weekly_report.yml', 'weekly report')
                 next_weekly = next_discover_time(now(), WEEKLY_AT)
     except KeyboardInterrupt:

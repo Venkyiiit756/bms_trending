@@ -12,6 +12,7 @@ import series
 from series import IST
 
 STALE = timedelta(minutes=45)
+HOT_STALE = timedelta(minutes=60)     # a hot film with no reading (not even a heartbeat) for this long raises the alarm
 TITLE = 'Tracker needs attention'
 
 
@@ -49,26 +50,29 @@ def checks(now, newest):
     except Exception:
         d = None
     add('Movie discovery', d is not None and (now.date() - d).days <= 2, f"upcoming pages last read {d:%a %-d %b}" if d else 'never')
-    # Hot films (polled at least every 30 minutes) must not have holes: a long gap makes the hour-by-hour view patchy.
+    # Hot films (polled at least every 30 minutes) must never go quiet on a big day: each missed reading is lost for good.
+    # Live check (this is the alarm: it opens the 'Tracker needs attention' issue, which emails the owner) + a 6-hour history line.
     try:
         movies = json.load(open(os.path.join(series.ROOT, 'movies.json'), encoding='utf-8'))
         movies = movies.values() if isinstance(movies, dict) else movies
         hot = [m for m in movies if not m.get('paused') and (not m.get('every') or m['every'] <= 1800)]
-        bad_gaps, since = [], now - timedelta(hours=6)
+        silent, holes, since = [], [], now - timedelta(hours=6)
         for m in hot:
-            ts = []
-            for r in csv.DictReader(open(os.path.join(series.ROOT, m['csv']), newline='', encoding='utf-8')):
-                if r['kind'] != 'error':
-                    t = datetime.fromisoformat(r['timestamp'])
-                    if t >= since - timedelta(hours=2):
-                        ts.append(t)
-            ts = sorted(ts) + [now]
-            gap = max(((b_ - max(a_, since)).total_seconds() / 60 for a_, b_ in zip(ts, ts[1:]) if b_ > since), default=0)
-            if len(ts) > 2 and gap > 75 and (now - ts[-2]).total_seconds() < 36 * 3600:      # skip films that stopped showing a counter
-                bad_gaps.append(f"{m['name'][:20]} {round(gap)} min")
-        add('Hot films: no long gaps (6 h)', not bad_gaps, ', '.join(bad_gaps) if bad_gaps else f'{len(hot)} hot films read at least every 75 min')
+            ts = sorted(datetime.fromisoformat(r['timestamp'])
+                        for r in csv.DictReader(open(os.path.join(series.ROOT, m['csv']), newline='', encoding='utf-8'))
+                        if r['kind'] != 'error' and r['timestamp'] >= (since - timedelta(hours=40)).isoformat())
+            if not ts or now - ts[-1] > timedelta(hours=36):
+                continue                                    # a film that no longer shows a counter is not a hot film any more
+            if now - ts[-1] > HOT_STALE:
+                silent.append(f"{m['name'][:22]} silent {round((now - ts[-1]).total_seconds() / 60)} min")
+            pts = [t for t in ts if t >= since]
+            gap = max(((b_ - a_).total_seconds() / 60 for a_, b_ in zip(pts, pts[1:])), default=0)
+            if gap > 75:
+                holes.append(f"{m['name'][:22]} {round(gap)} min")
+        add('Hot films: reading on time', not silent, ', '.join(silent) if silent else f'{len(hot)} hot films read within the last {round(HOT_STALE.total_seconds() / 60)} min')
+        add('Hot films: gaps in the last 6 h (info)', True, ', '.join(holes) if holes else 'none over 75 min')
     except Exception as e:
-        add('Hot films: no long gaps (6 h)', True, f'not checked ({str(e)[:60]})')
+        add('Hot films: reading on time', True, f'not checked ({str(e)[:60]})')
     return out
 
 

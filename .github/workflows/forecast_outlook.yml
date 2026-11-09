@@ -29,14 +29,15 @@ jobs:
     - name: BookMyShow ratings
       continue-on-error: true
       run: python ratings.py
+    # Claude is switched off to save tokens: no web research, and the outlook text uses the plain template (no API key passed).
+    # To turn it back on: remove 'if: false' below and pass ANTHROPIC_API_KEY to both steps again.
     - name: Web research (reviews, word of mouth, competition)
+      if: false
       continue-on-error: true
       env:
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       run: python intel.py
-    - name: Write the outlook
-      env:
-        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    - name: Write the outlook (template, no Claude)
       run: python forecast.py --outlook
     - name: Commit
       run: |

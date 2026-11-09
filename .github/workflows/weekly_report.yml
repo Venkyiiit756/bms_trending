@@ -3,8 +3,7 @@ name: Weekly Report
 # Monday morning (08:20 IST, started by tracker.py; the cron is only a backup) write last week's ticket story.
 # weekly.py: Python computes every figure, Claude (ANTHROPIC_API_KEY secret) writes the words, numbers are checked.
 on:
-  schedule:
-    - cron: '50 3 * * 1'
+  # schedule removed: Claude agents are switched off to save tokens (run by hand with workflow_dispatch)
   workflow_dispatch:
     inputs:
       force:
