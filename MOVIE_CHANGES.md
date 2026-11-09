@@ -2,6 +2,13 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-09
+- **Udta Teer** (ET00495822): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dark Chocolate** (ET00522245): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Har Maidan Fateh** (ET00524723): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Naaguge Vadhu Bekaagide** (ET00525223): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Spiderman Brand New Day 3d** (ET00502600): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-08
 - added **I Play Rocky** (ET00508520), polled hourly
 

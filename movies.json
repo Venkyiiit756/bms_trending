@@ -472,7 +472,7 @@
     "page_slug": "udta-teer",
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-22"
   },
   {
@@ -1605,7 +1605,7 @@
     "page_slug": "dark-chocolate",
     "csv": "data/ET00522245.csv",
     "headers_csv": "data/ET00522245_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-06"
   },
   {
@@ -1617,7 +1617,7 @@
     "page_slug": "har-maidan-fateh",
     "csv": "data/ET00524723.csv",
     "headers_csv": "data/ET00524723_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-06"
   },
   {
@@ -1629,7 +1629,7 @@
     "page_slug": "naaguge-vadhu-bekaagide",
     "csv": "data/ET00525223.csv",
     "headers_csv": "data/ET00525223_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-06"
   },
   {
@@ -1641,7 +1641,7 @@
     "page_slug": "spiderman-brand-new-day-3d",
     "csv": "data/ET00502600.csv",
     "headers_csv": "data/ET00502600_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-06"
   },
   {
