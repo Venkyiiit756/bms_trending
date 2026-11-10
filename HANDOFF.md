@@ -288,3 +288,8 @@ Simulated 4 h with a cold film rate-limited every 5th poll (1 h block): Ramayana
   health.py runs in the hourly snapshot workflow, so detection takes up to ~1 h after the 60 min.
 - Root cause of Nov 9's 2+ h Ramayana outage (429 on every request from 11:35 IST, even with hot films retrying): the ~100 six-hourly cold films were swept by day, which set off the rate limit.
   Cold films are now only read in the night read (about 4 AM); by day only hot films + interest counts are polled. HOT_RETRY = 300 s.
+
+## Fresh runner on repeated 429 (Nov 10)
+429s kept coming after the cold-film change (Nov 9 14:07-16:03: 116 min gap with only hot films polled), so the block is by IP, not by our request count.
+tracker.py now ends the run after `ROTATE_FAILURES` = 2 access failures in a row (and at least `ROTATE_AFTER` = 240 s uptime); the chained run starts at once, usually on another IP.
+Rows are committed on the way out. Check the logs for 'ending this run so the next one starts on a fresh runner' and whether gaps shrink.
