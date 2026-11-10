@@ -1,10 +1,17 @@
 {
- "generated_at": "2026-11-10T05:04+05:30",
- "as_of": "Tue 10 Nov 5:00 AM",
+ "generated_at": "2026-11-10T11:19+05:30",
+ "as_of": "Tue 10 Nov 11:00 AM",
  "mode": "template",
  "model": null,
- "headline": "No hourly forecast is available right now.",
- "bullets": [],
- "watch": [],
+ "headline": "Ramayana: busiest hour still ahead is 9–10 PM, about 98.2K expected (range 54.7K to 149K).",
+ "bullets": [
+  "Ramayana: 88.4K expected in 11 AM–12 PM, about 1.45M for the whole day (range 1.21M to 1.66M).",
+  "Scene: 14.7K expected in 12–1 PM, about 191K for the whole day (range 159K to 220K).",
+  "Jailer 2: 1.1K expected in 11 AM–12 PM."
+ ],
+ "watch": [
+  "Tomorrow is weekday.",
+  "Review and word-of-mouth information is only collected for films switched on, not this one."
+ ],
  "usage": null
 }
