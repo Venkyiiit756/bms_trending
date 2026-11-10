@@ -4020,5 +4020,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-10 23:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 10–11 PM (Tue 10 Nov)\n\n1. Ramayana: 47.11K (▼27% vs Mon)\n2. Scene: 7.58K (▼47% vs Mon)\n\n#Ramayana #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-10/2300/1.png",
+   "posts/2026-11-10/2300/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (10–11 PM, Tue 10 Nov), with change against the same hour yesterday: Ramayana 47.11K, ▼27% vs yesterday; Scene 7.58K, ▼47% vs yesterday",
+   "Line chart of tickets booked in the last hour for Ramayana through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
