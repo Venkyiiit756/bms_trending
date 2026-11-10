@@ -52,7 +52,8 @@
     "page_slug": "comrade-kalyan",
     "csv": "data/ET00519564.csv",
     "headers_csv": "data/ET00519564_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00521061",
@@ -87,7 +88,8 @@
     "page_slug": "doraemon-castle-of-the-undersea-devil",
     "csv": "data/ET00507337.csv",
     "headers_csv": "data/ET00507337_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00507738",
@@ -98,7 +100,8 @@
     "page_slug": "hanuman-ansh",
     "csv": "data/ET00507738.csv",
     "headers_csv": "data/ET00507738_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00520562",
@@ -109,7 +112,8 @@
     "page_slug": "garividi-lakshmi",
     "csv": "data/ET00520562.csv",
     "headers_csv": "data/ET00520562_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00519781",
@@ -297,7 +301,8 @@
     "page_slug": "prahaar",
     "csv": "data/ET00502504.csv",
     "headers_csv": "data/ET00502504_headers.csv",
-    "every": 21600
+    "every": 21600,
+    "paused": true
   },
   {
     "key": "et00513250",
@@ -321,7 +326,8 @@
     "csv": "data/ET00396541.csv",
     "headers_csv": "data/ET00396541_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00421831",
@@ -333,7 +339,8 @@
     "csv": "data/ET00421831.csv",
     "headers_csv": "data/ET00421831_headers.csv",
     "every": 21600,
-    "added": "2026-10-18"
+    "added": "2026-10-18",
+    "paused": true
   },
   {
     "key": "et00506502",
@@ -423,7 +430,8 @@
     "csv": "data/ET00496545.csv",
     "headers_csv": "data/ET00496545_headers.csv",
     "every": 21600,
-    "added": "2026-10-20"
+    "added": "2026-10-20",
+    "paused": true
   },
   {
     "key": "et00519195",
@@ -473,7 +481,8 @@
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00509047",
@@ -485,7 +494,8 @@
     "csv": "data/ET00509047.csv",
     "headers_csv": "data/ET00509047_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00517731",
@@ -497,7 +507,8 @@
     "csv": "data/ET00517731.csv",
     "headers_csv": "data/ET00517731_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00517732",
@@ -535,7 +546,8 @@
     "csv": "data/ET00518916.csv",
     "headers_csv": "data/ET00518916_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00519221",
@@ -612,7 +624,8 @@
     "csv": "data/ET00521605.csv",
     "headers_csv": "data/ET00521605_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00523468",
@@ -649,7 +662,8 @@
     "csv": "data/ET00507314.csv",
     "headers_csv": "data/ET00507314_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00514196",
@@ -673,7 +687,8 @@
     "csv": "data/ET00515684.csv",
     "headers_csv": "data/ET00515684_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00517728",
@@ -697,7 +712,8 @@
     "csv": "data/ET00520789.csv",
     "headers_csv": "data/ET00520789_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00522234",
@@ -965,7 +981,8 @@
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
     "every": 21600,
-    "added": "2026-10-26"
+    "added": "2026-10-26",
+    "paused": true
   },
   {
     "key": "et00031160",
@@ -1146,7 +1163,8 @@
     "csv": "data/ET00403215.csv",
     "headers_csv": "data/ET00403215_headers.csv",
     "every": 21600,
-    "added": "2026-10-30"
+    "added": "2026-10-30",
+    "paused": true
   },
   {
     "key": "et00466626",
@@ -1254,7 +1272,8 @@
     "csv": "data/ET00451881.csv",
     "headers_csv": "data/ET00451881_headers.csv",
     "every": 21600,
-    "added": "2026-10-31"
+    "added": "2026-10-31",
+    "paused": true
   },
   {
     "key": "et00518647",
@@ -1364,7 +1383,8 @@
     "csv": "data/ET00498183.csv",
     "headers_csv": "data/ET00498183_headers.csv",
     "every": 21600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00513613",
@@ -1388,7 +1408,8 @@
     "csv": "data/ET00519811.csv",
     "headers_csv": "data/ET00519811_headers.csv",
     "every": 21600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00522401",
@@ -1400,7 +1421,8 @@
     "csv": "data/ET00522401.csv",
     "headers_csv": "data/ET00522401_headers.csv",
     "every": 21600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00489093",
@@ -1653,7 +1675,7 @@
     "page_slug": "doraemon-castle-of-the-undersea-devil-telugu",
     "csv": "data/ET00516269.csv",
     "headers_csv": "data/ET00516269_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-07"
   },
   {
@@ -1665,7 +1687,7 @@
     "page_slug": "radhe-love-story",
     "csv": "data/ET00525520.csv",
     "headers_csv": "data/ET00525520_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-07"
   },
   {
@@ -1677,7 +1699,7 @@
     "page_slug": "maatrubhumi-may-war-rest-in-peace",
     "csv": "data/ET00452351.csv",
     "headers_csv": "data/ET00452351_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-07"
   },
   {

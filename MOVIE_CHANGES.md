@@ -2,6 +2,33 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-10
+- **Comrade Kalyan** (ET00519564): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Doraemon: Castle of the Undersea Devil** (ET00507337): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Hanuman Ansh** (ET00507738): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Garividi Lakshmi** (ET00520562): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Prahaar** (ET00502504): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Mufasa: The Lion King** (ET00396541): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Lilo & Stitch** (ET00421831): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Clayface** (ET00496545): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Udta Teer** (ET00495822): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **418** (ET00509047): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Pehla Pyaar Doosri Baar** (ET00517731): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Tom and Jerry: Forbidden Compass** (ET00518916): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Jayaho Ramanuja** (ET00521605): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Sense and Sensibility** (ET00507314): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Killer** (ET00515684): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Influencer Project** (ET00520789): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Cult** (ET00524017): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Nakhrewaalii** (ET00403215): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Cat in the Hat** (ET00451881): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Resident Evil** (ET00498183): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Pyre** (ET00519811): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Fix** (ET00522401): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Doraemon Castle Of The Undersea Devil (Telugu)** (ET00516269): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Radhe Love Story** (ET00525520): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **MaatruBhumi: May War Rest in Peace** (ET00452351): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-09
 - **Udta Teer** (ET00495822): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Dark Chocolate** (ET00522245): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
