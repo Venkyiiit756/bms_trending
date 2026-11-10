@@ -33,6 +33,8 @@ POLL_SECONDS = 180         # gentle fallback interval (also for a copy already p
 BACKOFF = (120, 240, 480, 900)   # waits after consecutive failures (429, 403, ...)
 HEARTBEAT_SECONDS = 15 * 60
 HOT_EVERY = 1800           # films polled at least every 30 minutes (or following the cache) are 'hot': never starved by other films' 429s
+ROTATE_FAILURES = 2       # this many access failures in a row: end the run so the chained run starts on a fresh runner (another IP)
+ROTATE_AFTER = 240        # ...but not before the run has been up this many seconds (no restart loop)
 HOT = set()                # keys of the hot films of this run
 HOT_RETRY = 300            # a hot film retries at most this long after any access failure (the block is shared, but a hot film must not wait an hour)
 FETCH_TIMEOUT = 60
@@ -642,6 +644,11 @@ def run(keys, minutes, commit):
             if PENDING and window_end and time.monotonic() >= window_end:
                 print(f'[{fmt(now())}] night read window over; not read: {sorted(PENDING)}', flush=True)
                 PENDING.clear()
+            if shared['failures'] >= ROTATE_FAILURES and time.monotonic() - start >= ROTATE_AFTER:
+                # BookMyShow rate-limits by IP. Another runner has another IP, and the next run starts right away (chained), so
+                # hand over instead of waiting out the block: on Nov 9 a block cost the hot films up to 2 hours of readings.
+                print(f'[{fmt(now())}] {shared["failures"]} access failures in a row: ending this run so the next one starts on a fresh runner', flush=True)
+                break
             quiet = quiet_now(now())
             pool = [s_ for s_ in states if not quiet or s_.key in night] + ([] if PENDING or quiet else jobs)
             if not pool:
