@@ -2,6 +2,12 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-11
+- **Mookuthi Amman 2** (ET00517348): every 30 min -> hourly (best hourly figure in 24 h: 2.3K)
+- **Disco** (ET00521913): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Nee Nange Allava** (ET00524561): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **I Play Rocky** (ET00508520): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-10
 - **Comrade Kalyan** (ET00519564): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Doraemon: Castle of the Undersea Devil** (ET00507337): every 6 h -> paused (best hourly figure in 24 h: 0.0K)

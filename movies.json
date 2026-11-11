@@ -1223,7 +1223,7 @@
     "page_slug": "mookuthi-amman-2",
     "csv": "data/ET00517348.csv",
     "headers_csv": "data/ET00517348_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-30"
   },
   {
@@ -1296,7 +1296,7 @@
     "page_slug": "disco",
     "csv": "data/ET00521913.csv",
     "headers_csv": "data/ET00521913_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-31"
   },
   {
@@ -1711,7 +1711,7 @@
     "page_slug": "nee-nange-allava",
     "csv": "data/ET00524561.csv",
     "headers_csv": "data/ET00524561_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-08"
   },
   {
@@ -1723,7 +1723,7 @@
     "page_slug": "i-play-rocky",
     "csv": "data/ET00508520.csv",
     "headers_csv": "data/ET00508520_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-08"
   }
 ]
