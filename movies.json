@@ -1725,5 +1725,53 @@
     "headers_csv": "data/ET00508520_headers.csv",
     "every": 21600,
     "added": "2026-11-08"
+  },
+  {
+    "key": "et00469394",
+    "name": "Goat",
+    "eventcode": "ET00469394",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "goat",
+    "csv": "data/ET00469394.csv",
+    "headers_csv": "data/ET00469394_headers.csv",
+    "every": 3600,
+    "added": "2026-11-11"
+  },
+  {
+    "key": "et00524575",
+    "name": "Maya Lady",
+    "eventcode": "ET00524575",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "maya-lady",
+    "csv": "data/ET00524575.csv",
+    "headers_csv": "data/ET00524575_headers.csv",
+    "every": 3600,
+    "added": "2026-11-11"
+  },
+  {
+    "key": "et00525623",
+    "name": "Kalusha",
+    "eventcode": "ET00525623",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "kalusha",
+    "csv": "data/ET00525623.csv",
+    "headers_csv": "data/ET00525623_headers.csv",
+    "every": 3600,
+    "added": "2026-11-11"
+  },
+  {
+    "key": "et00526138",
+    "name": "She",
+    "eventcode": "ET00526138",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "she",
+    "csv": "data/ET00526138.csv",
+    "headers_csv": "data/ET00526138_headers.csv",
+    "every": 3600,
+    "added": "2026-11-11"
   }
 ]

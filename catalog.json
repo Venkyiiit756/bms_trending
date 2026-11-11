@@ -319,7 +319,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-08",
+  "upcoming": "2026-11-11",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -402,6 +402,15 @@
   "release": "Mar 19, 2026",
   "book": false,
   "listed_alert": "2026-10-24"
+ },
+ "ET00469394": {
+  "first_seen": "2026-11-11",
+  "last_listed": null,
+  "name": "Goat",
+  "page_slug": "goat",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-11"
  },
  "ET00471138": {
   "first_seen": "2026-10-25",
@@ -967,7 +976,7 @@
   "page_slug": "itllu-arjuna",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-11",
   "group": "EG00510914",
   "languages": [
    "Telugu"
@@ -1202,7 +1211,7 @@
   "page_slug": "ramayana-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-10",
+  "upcoming": "2026-11-11",
   "group": "EG00449671"
  },
  "ET00518333": {
@@ -1492,7 +1501,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-10"
+  "upcoming": "2026-11-11"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",
@@ -1765,6 +1774,15 @@
   "figure": null,
   "upcoming": "2026-11-11"
  },
+ "ET00524575": {
+  "first_seen": "2026-11-11",
+  "last_listed": null,
+  "name": "Maya Lady",
+  "page_slug": "maya-lady",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-11"
+ },
  "ET00524621": {
   "first_seen": "2026-10-29",
   "last_listed": null,
@@ -1890,5 +1908,23 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-07"
+ },
+ "ET00525623": {
+  "first_seen": "2026-11-11",
+  "last_listed": null,
+  "name": "Kalusha",
+  "page_slug": "kalusha",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-11"
+ },
+ "ET00526138": {
+  "first_seen": "2026-11-11",
+  "last_listed": null,
+  "name": "She",
+  "page_slug": "she",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-11"
  }
 }
