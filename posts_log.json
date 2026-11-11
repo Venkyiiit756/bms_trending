@@ -4034,5 +4034,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-11 08:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 7–8 AM (Wed 11 Nov)\n\n1. Ramayana: 5.7K\n2. Scene: 1.17K\n\n#Ramayana #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-11/0800/1.png",
+   "posts/2026-11-11/0800/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (7–8 AM, Wed 11 Nov), with change against the same hour yesterday: Ramayana 5.7K; Scene 1.17K",
+   "Table of each movie's busiest hour on Tue 10 Nov: Ramayana 91.73K (11:30 AM–12:30 PM); Scene 17.23K (10:30–11:30 AM); Mookuthi Amman 2 2.33K (10:30–11:30 AM); Jailer 2 1.15K (10–11 AM)"
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
