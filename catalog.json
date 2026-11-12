@@ -378,7 +378,19 @@
   "name": "Gondhal",
   "page_slug": "gondhal",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00462965",
+  "languages": [
+   "Marathi",
+   "Kannada",
+   "Telugu",
+   "Tamil",
+   "Hindi",
+   "English",
+   "Malayalam"
+  ],
+  "release": "Nov 14, 2025",
+  "book": true
  },
  "ET00466626": {
   "first_seen": "2026-10-30",
@@ -874,7 +886,14 @@
   "page_slug": "i-play-rocky",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-09"
+  "upcoming": "2026-11-09",
+  "group": "EG00505431",
+  "languages": [
+   "English"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00509047": {
   "first_seen": "2026-10-22",
@@ -973,7 +992,13 @@
   "page_slug": "bouma",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-05"
+  "upcoming": "2026-11-05",
+  "group": "EG00510464",
+  "languages": [
+   "Malayalam"
+  ],
+  "release": "Nov 12, 2026",
+  "book": true
  },
  "ET00513761": {
   "first_seen": "2026-10-30",
@@ -996,8 +1021,9 @@
   "languages": [
    "Telugu"
   ],
-  "release": "Dec 31, 2026",
-  "book": false
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00514163": {
   "name": "Avengers Endgame: Encore",
@@ -1103,7 +1129,8 @@
    "English"
   ],
   "release": "Nov 13, 2026",
-  "book": false
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00516631": {
   "first_seen": "2026-10-24",
@@ -1226,7 +1253,7 @@
   "page_slug": "ramayana-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11",
+  "upcoming": "2026-11-12",
   "group": "EG00449671"
  },
  "ET00518333": {
@@ -1236,7 +1263,14 @@
   "page_slug": "ghost-soldier",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-12"
+  "upcoming": "2026-11-12",
+  "group": "EG00515317",
+  "languages": [
+   "English"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00518466": {
   "first_seen": "2026-10-28",
@@ -1513,11 +1547,18 @@
  "ET00521157": {
   "first_seen": "2026-10-24",
   "last_listed": "2026-11-12",
-  "name": "Donga Naa Koduku",
+  "name": "DNK",
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-12"
+  "upcoming": "2026-11-12",
+  "group": "EG00518431",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00521457": {
   "first_seen": "2026-10-25",
