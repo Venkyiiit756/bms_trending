@@ -1590,7 +1590,13 @@
   "page_slug": "disco",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-04"
+  "upcoming": "2026-11-04",
+  "group": "EG00519246",
+  "languages": [
+   "Malayalam"
+  ],
+  "release": "Nov 06, 2026",
+  "book": false
  },
  "ET00521921": {
   "first_seen": "2026-11-02",
@@ -1599,7 +1605,13 @@
   "page_slug": "aadi-anant",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11"
+  "upcoming": "2026-11-11",
+  "group": "EG00519254",
+  "languages": [
+   "Marathi"
+  ],
+  "release": "Nov 12, 2026",
+  "book": true
  },
  "ET00521922": {
   "first_seen": "2026-11-04",
@@ -1635,7 +1647,14 @@
   "page_slug": "dark-chocolate",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-12"
+  "upcoming": "2026-11-12",
+  "group": "EG00519619",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00522331": {
   "first_seen": "2026-10-30",
@@ -1667,7 +1686,14 @@
   "page_slug": "chandrayan",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-12"
+  "upcoming": "2026-11-12",
+  "group": "EG00519997",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00523016": {
   "first_seen": "2026-10-22",
@@ -1775,7 +1801,13 @@
   "page_slug": "summer-holidays",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11"
+  "upcoming": "2026-11-11",
+  "group": "EG00521842",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 06, 2026",
+  "book": true
  },
  "ET00524286": {
   "first_seen": "2026-10-29",
@@ -1838,7 +1870,14 @@
   "page_slug": "maya-lady",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-12"
+  "upcoming": "2026-11-12",
+  "group": "EG00522156",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 13, 2026",
+  "book": true,
+  "book_opened": "2026-11-12"
  },
  "ET00524621": {
   "first_seen": "2026-10-29",
@@ -1910,7 +1949,14 @@
   "page_slug": "mahasakthi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11"
+  "upcoming": "2026-11-11",
+  "group": "EG00522808",
+  "languages": [
+   "Telugu",
+   "Kannada"
+  ],
+  "release": "Nov 06, 2026",
+  "book": true
  },
  "ET00525223": {
   "first_seen": "2026-11-06",
