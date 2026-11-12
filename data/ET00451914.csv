@@ -1023,3 +1023,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-12 09:12:27+05:30,Ramayana,1_hour,25.28K,25.28K tickets booked in last 1 hour,2026-11-12 08:42:26+05:30,change,2026-11-12 09:12:27+05:30
 2026-11-12 09:37:37+05:30,Ramayana,1_hour,29.7K,29.7K tickets booked in last 1 hour,2026-11-12 09:12:27+05:30,change,2026-11-12 09:37:37+05:30
 2026-11-12 10:02:37+05:30,Ramayana,1_hour,34.33K,34.33K tickets booked in last 1 hour,2026-11-12 09:37:37+05:30,change,2026-11-12 10:02:37+05:30
+2026-11-12 10:32:38+05:30,Ramayana,1_hour,43.54K,43.54K tickets booked in last 1 hour,2026-11-12 10:02:37+05:30,change,2026-11-12 10:32:38+05:30
