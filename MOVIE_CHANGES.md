@@ -2,6 +2,20 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-12
+- added **Gondhal** (ET00465382), polled hourly
+- added **Rashi** (ET00525385), polled hourly
+- added **Melcow Pondicherry** (ET00525663), polled hourly
+- added **John Doe** (ET00525702), polled hourly
+- added **Amalaamrutha** (ET00525943), polled hourly
+- added **Jayannth The Jingo Pen** (ET00526028), polled hourly
+- **Doraemon: Castle of the Undersea Devil** (ET00507337): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Hanuman Ansh** (ET00507738): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Udta Teer** (ET00495822): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Cult** (ET00524017): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Cat in the Hat** (ET00451881): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Pyre** (ET00519811): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-11
 - added **Goat** (ET00469394), polled hourly
 - added **Maya Lady** (ET00524575), polled hourly

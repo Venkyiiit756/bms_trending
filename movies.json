@@ -88,8 +88,7 @@
     "page_slug": "doraemon-castle-of-the-undersea-devil",
     "csv": "data/ET00507337.csv",
     "headers_csv": "data/ET00507337_headers.csv",
-    "every": 21600,
-    "paused": true
+    "every": 21600
   },
   {
     "key": "et00507738",
@@ -100,8 +99,7 @@
     "page_slug": "hanuman-ansh",
     "csv": "data/ET00507738.csv",
     "headers_csv": "data/ET00507738_headers.csv",
-    "every": 21600,
-    "paused": true
+    "every": 21600
   },
   {
     "key": "et00520562",
@@ -481,8 +479,7 @@
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
     "every": 21600,
-    "added": "2026-10-22",
-    "paused": true
+    "added": "2026-10-22"
   },
   {
     "key": "et00509047",
@@ -981,8 +978,7 @@
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
     "every": 21600,
-    "added": "2026-10-26",
-    "paused": true
+    "added": "2026-10-26"
   },
   {
     "key": "et00031160",
@@ -1272,8 +1268,7 @@
     "csv": "data/ET00451881.csv",
     "headers_csv": "data/ET00451881_headers.csv",
     "every": 21600,
-    "added": "2026-10-31",
-    "paused": true
+    "added": "2026-10-31"
   },
   {
     "key": "et00518647",
@@ -1408,8 +1403,7 @@
     "csv": "data/ET00519811.csv",
     "headers_csv": "data/ET00519811_headers.csv",
     "every": 21600,
-    "added": "2026-11-03",
-    "paused": true
+    "added": "2026-11-03"
   },
   {
     "key": "et00522401",
@@ -1773,5 +1767,77 @@
     "headers_csv": "data/ET00526138_headers.csv",
     "every": 3600,
     "added": "2026-11-11"
+  },
+  {
+    "key": "et00465382",
+    "name": "Gondhal",
+    "eventcode": "ET00465382",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "gondhal",
+    "csv": "data/ET00465382.csv",
+    "headers_csv": "data/ET00465382_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
+  },
+  {
+    "key": "et00525385",
+    "name": "Rashi",
+    "eventcode": "ET00525385",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "rashi",
+    "csv": "data/ET00525385.csv",
+    "headers_csv": "data/ET00525385_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
+  },
+  {
+    "key": "et00525663",
+    "name": "Melcow Pondicherry",
+    "eventcode": "ET00525663",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "melcow-pondicherry",
+    "csv": "data/ET00525663.csv",
+    "headers_csv": "data/ET00525663_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
+  },
+  {
+    "key": "et00525702",
+    "name": "John Doe",
+    "eventcode": "ET00525702",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "john-doe",
+    "csv": "data/ET00525702.csv",
+    "headers_csv": "data/ET00525702_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
+  },
+  {
+    "key": "et00525943",
+    "name": "Amalaamrutha",
+    "eventcode": "ET00525943",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "amalaamrutha",
+    "csv": "data/ET00525943.csv",
+    "headers_csv": "data/ET00525943_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
+  },
+  {
+    "key": "et00526028",
+    "name": "Jayannth The Jingo Pen",
+    "eventcode": "ET00526028",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "jayannth-the-jingo-pen",
+    "csv": "data/ET00526028.csv",
+    "headers_csv": "data/ET00526028_headers.csv",
+    "every": 3600,
+    "added": "2026-11-12"
   }
 ]
