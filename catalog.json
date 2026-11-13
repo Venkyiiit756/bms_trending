@@ -227,7 +227,13 @@
   "page_slug": "sadhak-bamakhyapa",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-13"
+  "upcoming": "2026-11-13",
+  "group": "EG00436100",
+  "languages": [
+   "Bengali"
+  ],
+  "release": "Nov 20, 2026",
+  "book": false
  },
  "ET00439706": {
   "first_seen": "2026-10-24",
@@ -303,7 +309,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-11-11"
+  "upcoming": "2026-11-13"
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -1157,7 +1163,7 @@
   "page_slug": "wildwood",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-04",
+  "upcoming": "2026-11-13",
   "group": "EG00513427",
   "languages": [
    "English"
@@ -1173,7 +1179,7 @@
   "page_slug": "scene",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11",
+  "upcoming": "2026-11-13",
   "group": "EG00513478",
   "languages": [
    "Tamil"
