@@ -4526,5 +4526,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-13 15:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 2–3 PM (Fri 13 Nov)\n\n1. Ramayana: 53.89K (▼2% vs Thu)\n2. Scene: 9.51K (▲12% vs Thu)\n3. Bouma: 2.61K\n4. DNK: 2.49K\n5. Itllu Arjuna: 1.04K\n\n#Ramayana #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-13/1500/1.png",
+   "posts/2026-11-13/1500/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (2–3 PM, Fri 13 Nov), with change against the same hour yesterday: Ramayana 53.89K, ▼2% vs yesterday; Scene 9.51K, ▲12% vs yesterday; Bouma 2.61K; DNK 2.49K; Itllu Arjuna 1.04K",
+   "Table of tickets booked in the hour 2–3 PM on each of the last four days: Ramayana Tue 78.65K, Wed 67.31K, Thu 55.14K, Fri 53.89K; Scene Tue 15.56K, Wed 11.12K, Thu 8.49K, Fri 9.51K; Bouma Tue —, Wed —, Thu —, Fri 2.61K; DNK Tue —, Wed —, Thu —, Fri 2.49K; Itllu Arjuna Tue —, Wed —, Thu —, Fri 1.04K"
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
