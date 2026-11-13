@@ -541,3 +541,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-14 01:02:30+05:30,Scene,1_hour,1.97K,1.97K tickets booked in last 1 hour,2026-11-14 00:35:55+05:30,change,2026-11-14 01:02:30+05:30
 2026-11-14 01:32:31+05:30,Scene,1_hour,1.22K,1.22K tickets booked in last 1 hour,2026-11-14 01:02:30+05:30,change,2026-11-14 01:32:31+05:30
 2026-11-14 01:57:31+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-11-14 02:01:37+05:30,Scene,24_hours,184.02K,184.02K tickets booked in last 24 hours,2026-11-14 01:32:31+05:30,change,2026-11-14 02:01:37+05:30
