@@ -56,3 +56,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-13 20:37:00+05:30,Itllu Arjuna,1_hour,1.1K,1.1K tickets booked in last 1 hour,2026-11-13 19:14:01+05:30,change,2026-11-13 20:37:00+05:30
 2026-11-13 21:55:51+05:30,Itllu Arjuna,1_hour,1.17K,1.17K tickets booked in last 1 hour,2026-11-13 20:37:00+05:30,change,2026-11-13 21:55:51+05:30
 2026-11-13 22:56:10+05:30,Itllu Arjuna,24_hours,16.58K,16.58K tickets booked in last 24 hours,2026-11-13 21:55:51+05:30,change,2026-11-13 22:56:10+05:30
+2026-11-14 00:36:55+05:30,Itllu Arjuna,24_hours,16.91K,16.91K tickets booked in last 24 hours,2026-11-13 22:56:10+05:30,change,2026-11-14 00:36:55+05:30
