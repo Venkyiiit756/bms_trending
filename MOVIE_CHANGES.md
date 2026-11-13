@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-13
+- added **Sadhak Bamakhyapa** (ET00438080), polled hourly
+- added **Aakasamlo Oka Tara** (ET00482388), polled hourly
+- added **Ebenezer: A Christmas Carol** (ET00506939), polled hourly
+- added **Bachelor Party D'eux** (ET00521598), polled hourly
+- added **Chikeezing** (ET00522528), polled hourly
+- added **Samavarthi** (ET00524626), polled hourly
+- added **Nazarbandi** (ET00526256), polled hourly
+- **DNK** (ET00521157): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Itllu Arjuna** (ET00514068): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Bouma** (ET00513613): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-12
 - added **Gondhal** (ET00465382), polled hourly
 - added **Rashi** (ET00525385), polled hourly

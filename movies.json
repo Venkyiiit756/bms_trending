@@ -867,7 +867,7 @@
     "page_slug": "donga-naa-koduku",
     "csv": "data/ET00521157.csv",
     "headers_csv": "data/ET00521157_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-24"
   },
   {
@@ -1074,7 +1074,7 @@
     "page_slug": "itllu-arjuna",
     "csv": "data/ET00514068.csv",
     "headers_csv": "data/ET00514068_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-28"
   },
   {
@@ -1390,7 +1390,7 @@
     "page_slug": "bouma",
     "csv": "data/ET00513613.csv",
     "headers_csv": "data/ET00513613_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-11-03"
   },
   {
@@ -1830,7 +1830,7 @@
   },
   {
     "key": "et00526028",
-    "name": "Jayannth The Jingo Pen",
+    "name": "Jayannth & the Jingo Pen",
     "eventcode": "ET00526028",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1839,5 +1839,89 @@
     "headers_csv": "data/ET00526028_headers.csv",
     "every": 3600,
     "added": "2026-11-12"
+  },
+  {
+    "key": "et00438080",
+    "name": "Sadhak Bamakhyapa",
+    "eventcode": "ET00438080",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "sadhak-bamakhyapa",
+    "csv": "data/ET00438080.csv",
+    "headers_csv": "data/ET00438080_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00482388",
+    "name": "Aakasamlo Oka Tara",
+    "eventcode": "ET00482388",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "aakasamlo-oka-tara",
+    "csv": "data/ET00482388.csv",
+    "headers_csv": "data/ET00482388_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00506939",
+    "name": "Ebenezer: A Christmas Carol",
+    "eventcode": "ET00506939",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ebenezer-a-christmas-carol",
+    "csv": "data/ET00506939.csv",
+    "headers_csv": "data/ET00506939_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00521598",
+    "name": "Bachelor Party D'eux",
+    "eventcode": "ET00521598",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bachelor-party-deux",
+    "csv": "data/ET00521598.csv",
+    "headers_csv": "data/ET00521598_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00522528",
+    "name": "Chikeezing",
+    "eventcode": "ET00522528",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "chikeezing",
+    "csv": "data/ET00522528.csv",
+    "headers_csv": "data/ET00522528_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00524626",
+    "name": "Samavarthi",
+    "eventcode": "ET00524626",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "samavarthi",
+    "csv": "data/ET00524626.csv",
+    "headers_csv": "data/ET00524626_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
+  },
+  {
+    "key": "et00526256",
+    "name": "Nazarbandi",
+    "eventcode": "ET00526256",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nazarbandi",
+    "csv": "data/ET00526256.csv",
+    "headers_csv": "data/ET00526256_headers.csv",
+    "every": 3600,
+    "added": "2026-11-13"
   }
 ]
