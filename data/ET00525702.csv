@@ -31,3 +31,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-13 17:41:57+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-13 19:14:31+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-13 20:37:15+05:30,John Doe,24_hours,5.13K,5.13K tickets booked in last 24 hours,,start,2026-11-13 20:37:15+05:30
+2026-11-13 21:56:06+05:30,John Doe,24_hours,6.09K,6.09K tickets booked in last 24 hours,2026-11-13 20:37:15+05:30,change,2026-11-13 21:56:06+05:30
