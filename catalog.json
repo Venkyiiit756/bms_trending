@@ -620,7 +620,7 @@
   "page_slug": "dune-part-three",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-07",
+  "upcoming": "2026-11-13",
   "group": "EG00489079",
   "languages": [
    "English",
@@ -926,7 +926,7 @@
   "page_slug": "i-play-rocky",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-09",
+  "upcoming": "2026-11-13",
   "group": "EG00505431",
   "languages": [
    "English"
@@ -2125,6 +2125,15 @@
   "release": "Nov 13, 2026",
   "book": true
  },
+ "ET00525919": {
+  "first_seen": "2026-11-13",
+  "last_listed": null,
+  "name": "Jijai",
+  "page_slug": "jijai",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-13"
+ },
  "ET00525943": {
   "first_seen": "2026-11-12",
   "last_listed": null,
@@ -2147,7 +2156,8 @@
   ],
   "release": "Nov 14, 2026",
   "book": true,
-  "book_opened": "2026-11-13"
+  "book_opened": "2026-11-13",
+  "upcoming": "2026-11-13"
  },
  "ET00526138": {
   "first_seen": "2026-11-11",

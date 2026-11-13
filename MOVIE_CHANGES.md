@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-13
+- added **Jijai** (ET00525919), polled hourly
+- **DNK** (ET00521157): hourly -> every 30 min (best hourly figure in 24 h: 3.4K)
+
+## 2026-11-13
 - added **Sadhak Bamakhyapa** (ET00438080), polled hourly
 - added **Aakasamlo Oka Tara** (ET00482388), polled hourly
 - added **Ebenezer: A Christmas Carol** (ET00506939), polled hourly
