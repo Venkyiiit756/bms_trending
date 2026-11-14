@@ -573,3 +573,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-14 13:13:52+05:30,Scene,1_hour,12.41K,12.41K tickets booked in last 1 hour,2026-11-14 12:48:52+05:30,change,2026-11-14 13:13:52+05:30
 2026-11-14 13:43:53+05:30,Scene,1_hour,12.54K,12.54K tickets booked in last 1 hour,2026-11-14 13:13:52+05:30,change,2026-11-14 13:43:53+05:30
 2026-11-14 14:14:32+05:30,Scene,1_hour,12.75K,12.75K tickets booked in last 1 hour,2026-11-14 13:43:53+05:30,change,2026-11-14 14:14:32+05:30
+2026-11-14 14:44:33+05:30,Scene,1_hour,12.19K,12.19K tickets booked in last 1 hour,2026-11-14 14:14:32+05:30,change,2026-11-14 14:44:33+05:30
