@@ -1353,7 +1353,7 @@
     "page_slug": "aadi-anant",
     "csv": "data/ET00521921.csv",
     "headers_csv": "data/ET00521921_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-11-02"
   },
   {
@@ -1729,7 +1729,7 @@
     "page_slug": "goat",
     "csv": "data/ET00469394.csv",
     "headers_csv": "data/ET00469394_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-11"
   },
   {
@@ -1741,7 +1741,7 @@
     "page_slug": "maya-lady",
     "csv": "data/ET00524575.csv",
     "headers_csv": "data/ET00524575_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-11"
   },
   {
@@ -1753,7 +1753,7 @@
     "page_slug": "kalusha",
     "csv": "data/ET00525623.csv",
     "headers_csv": "data/ET00525623_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-11"
   },
   {
@@ -1765,7 +1765,7 @@
     "page_slug": "she",
     "csv": "data/ET00526138.csv",
     "headers_csv": "data/ET00526138_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-11"
   },
   {
@@ -1935,5 +1935,17 @@
     "headers_csv": "data/ET00525919_headers.csv",
     "every": 3600,
     "added": "2026-11-13"
+  },
+  {
+    "key": "et00517825",
+    "name": "Happy Happy Family",
+    "eventcode": "ET00517825",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "happy-happy-family",
+    "csv": "data/ET00517825.csv",
+    "headers_csv": "data/ET00517825_headers.csv",
+    "every": 3600,
+    "added": "2026-11-14"
   }
 ]

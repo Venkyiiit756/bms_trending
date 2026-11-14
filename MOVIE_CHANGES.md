@@ -2,6 +2,14 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-14
+- added **Happy Happy Family** (ET00517825), polled hourly
+- **Aadi Anant** (ET00521921): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Goat** (ET00469394): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Maya Lady** (ET00524575): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Kalusha** (ET00525623): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **She** (ET00526138): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-13
 - added **Jijai** (ET00525919), polled hourly
 - **DNK** (ET00521157): hourly -> every 30 min (best hourly figure in 24 h: 3.4K)
