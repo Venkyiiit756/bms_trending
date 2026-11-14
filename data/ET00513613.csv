@@ -103,3 +103,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-14 03:01:32+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-14 03:21:11+05:30,Bouma,24_hours,41.73K,41.73K tickets booked in last 24 hours,2026-11-14 01:59:51+05:30,change,2026-11-14 03:21:11+05:30
 2026-11-14 04:16:11+05:30,Bouma,24_hours,41.72K,41.72K tickets booked in last 24 hours,2026-11-14 03:21:11+05:30,change,2026-11-14 04:16:11+05:30
+2026-11-14 05:43:56+05:30,,error,429,HTTP 429 (failure 1),,error,
