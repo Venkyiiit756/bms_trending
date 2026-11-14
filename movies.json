@@ -867,7 +867,7 @@
     "page_slug": "donga-naa-koduku",
     "csv": "data/ET00521157.csv",
     "headers_csv": "data/ET00521157_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-24"
   },
   {
@@ -1506,7 +1506,7 @@
   },
   {
     "key": "et00504901",
-    "name": "OM Chapter 1: Udhiram",
+    "name": "O.M Operation Mole",
     "eventcode": "ET00504901",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -1945,6 +1945,30 @@
     "page_slug": "happy-happy-family",
     "csv": "data/ET00517825.csv",
     "headers_csv": "data/ET00517825_headers.csv",
+    "every": 3600,
+    "added": "2026-11-14"
+  },
+  {
+    "key": "et00526285",
+    "name": "Adrishyya",
+    "eventcode": "ET00526285",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "adrishyya",
+    "csv": "data/ET00526285.csv",
+    "headers_csv": "data/ET00526285_headers.csv",
+    "every": 3600,
+    "added": "2026-11-14"
+  },
+  {
+    "key": "et00526286",
+    "name": "Heat City Antarpath - Chapter One",
+    "eventcode": "ET00526286",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "heat-city-antarpath-chapter-one",
+    "csv": "data/ET00526286.csv",
+    "headers_csv": "data/ET00526286_headers.csv",
     "every": 3600,
     "added": "2026-11-14"
   }

@@ -246,8 +246,8 @@
   "group": "EG00437704",
   "languages": [
    "English",
-   "Telugu",
    "Tamil",
+   "Telugu",
    "Hindi"
   ],
   "release": "Dec 17, 2026",
@@ -784,7 +784,7 @@
  "ET00504901": {
   "first_seen": "2026-11-04",
   "last_listed": null,
-  "name": "OM Chapter 1: Udhiram",
+  "name": "O.M Operation Mole",
   "page_slug": "om-chapter-1-udhiram",
   "last_checked": null,
   "figure": null,
@@ -2185,5 +2185,23 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-13"
+ },
+ "ET00526285": {
+  "first_seen": "2026-11-14",
+  "last_listed": null,
+  "name": "Adrishyya",
+  "page_slug": "adrishyya",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-14"
+ },
+ "ET00526286": {
+  "first_seen": "2026-11-14",
+  "last_listed": null,
+  "name": "Heat City Antarpath - Chapter One",
+  "page_slug": "heat-city-antarpath-chapter-one",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-14"
  }
 }

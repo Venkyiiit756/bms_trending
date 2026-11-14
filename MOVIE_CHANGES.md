@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-14
+- added **Adrishyya** (ET00526285), polled hourly
+- added **Heat City Antarpath - Chapter One** (ET00526286), polled hourly
+- **DNK** (ET00521157): every 30 min -> hourly (best hourly figure in 24 h: 3.0K)
+
+## 2026-11-14
 - **Premada Oorali** (ET00412717): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 
 ## 2026-11-14
