@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-14
+- **Premada Oorali** (ET00412717): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-14
 - added **Happy Happy Family** (ET00517825), polled hourly
 - **Aadi Anant** (ET00521921): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
 - **Goat** (ET00469394): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
