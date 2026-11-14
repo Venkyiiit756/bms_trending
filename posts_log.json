@@ -4772,5 +4772,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-14 18:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 5–6 PM (Sat 14 Nov)\n\n1. DNK: 2.21K (0% vs Fri)\n2. Bouma: 1.98K (▼5% vs Fri)\n\n#DNK #Bouma #BoxOffice",
+  "images": [
+   "posts/2026-11-14/1800/1.png",
+   "posts/2026-11-14/1800/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (5–6 PM, Sat 14 Nov), with change against the same hour yesterday: DNK 2.21K, 0% vs yesterday; Bouma 1.98K, ▼5% vs yesterday",
+   "Table of tickets booked in the hour 5–6 PM on each of the last four days: DNK Wed —, Thu —, Fri 2.22K, Sat 2.21K; Bouma Wed —, Thu —, Fri 2.09K, Sat 1.98K"
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
