@@ -59,3 +59,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-14 23:24:26+05:30,Melcow Pondicherry,24_hours,5.27K,5.27K tickets booked in last 24 hours,2026-11-14 21:53:36+05:30,change,2026-11-14 23:24:26+05:30
 2026-11-15 00:56:19+05:30,Melcow Pondicherry,24_hours,5.08K,5.08K tickets booked in last 24 hours,2026-11-14 23:24:26+05:30,change,2026-11-15 00:56:19+05:30
 2026-11-15 02:31:39+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-15 03:56:03+05:30,,error,429,HTTP 429 (failure 1),,error,
