@@ -1777,7 +1777,7 @@
     "page_slug": "gondhal",
     "csv": "data/ET00465382.csv",
     "headers_csv": "data/ET00465382_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1789,7 +1789,7 @@
     "page_slug": "rashi",
     "csv": "data/ET00525385.csv",
     "headers_csv": "data/ET00525385_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1825,7 +1825,7 @@
     "page_slug": "amalaamrutha",
     "csv": "data/ET00525943.csv",
     "headers_csv": "data/ET00525943_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1837,7 +1837,7 @@
     "page_slug": "jayannth-the-jingo-pen",
     "csv": "data/ET00526028.csv",
     "headers_csv": "data/ET00526028_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1971,5 +1971,17 @@
     "headers_csv": "data/ET00526286_headers.csv",
     "every": 3600,
     "added": "2026-11-14"
+  },
+  {
+    "key": "et00524975",
+    "name": "Maharashtra Epstein Files",
+    "eventcode": "ET00524975",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "maharashtra-epstein-files",
+    "csv": "data/ET00524975.csv",
+    "headers_csv": "data/ET00524975_headers.csv",
+    "every": 3600,
+    "added": "2026-11-15"
   }
 ]

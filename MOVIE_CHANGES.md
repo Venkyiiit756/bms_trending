@@ -2,6 +2,13 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-15
+- added **Maharashtra Epstein Files** (ET00524975), polled hourly
+- **Gondhal** (ET00465382): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Rashi** (ET00525385): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Amalaamrutha** (ET00525943): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Jayannth & the Jingo Pen** (ET00526028): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-14
 - added **Adrishyya** (ET00526285), polled hourly
 - added **Heat City Antarpath - Chapter One** (ET00526286), polled hourly
