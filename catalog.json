@@ -318,7 +318,7 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-13",
+  "upcoming": "2026-11-15",
   "group": "EG00449868",
   "languages": [
    "Hindi",
@@ -671,7 +671,7 @@
   "page_slug": "raaka",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-09",
+  "upcoming": "2026-11-15",
   "group": "EG00491817",
   "languages": [
    "Telugu"
@@ -1463,7 +1463,7 @@
   ],
   "release": "Oct 30, 2026",
   "book": true,
-  "upcoming": "2026-11-13"
+  "upcoming": "2026-11-15"
  },
  "ET00520032": {
   "first_seen": "2026-10-22",
