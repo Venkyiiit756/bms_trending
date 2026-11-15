@@ -1273,3 +1273,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-16 03:06:54+05:30,Ramayana,24_hours,727.18K,727.18K tickets booked in last 24 hours,2026-11-16 02:36:18+05:30,change,2026-11-16 03:06:54+05:30
 2026-11-16 03:31:54+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-16 03:36:45+05:30,Ramayana,24_hours,726.92K,726.92K tickets booked in last 24 hours,2026-11-16 03:06:54+05:30,change,2026-11-16 03:36:45+05:30
+2026-11-16 03:55:15+05:30,Ramayana,24_hours,726.92K,726.92K tickets booked in last 24 hours,,heartbeat,
