@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-15
+- **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-15
 - added **Maharashtra Epstein Files** (ET00524975), polled hourly
 - **Gondhal** (ET00465382): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Rashi** (ET00525385): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

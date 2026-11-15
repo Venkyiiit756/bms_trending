@@ -646,7 +646,7 @@
     "page_slug": "aadarsha-kutumbam-house-no-47-ak-47",
     "csv": "data/ET00475942.csv",
     "headers_csv": "data/ET00475942_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-23"
   },
   {
