@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-16
+- added **Mirzapur The Movie** (ET00417686), polled hourly
+- added **The Girl Who Sees** (ET00526282), polled hourly
+- **Sadhak Bamakhyapa** (ET00438080): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Aakasamlo Oka Tara** (ET00482388): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Ebenezer: A Christmas Carol** (ET00506939): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bachelor Party D'eux** (ET00521598): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Chikeezing** (ET00522528): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Samavarthi** (ET00524626): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Nazarbandi** (ET00526256): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Jijai** (ET00525919): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-15
 - **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 
