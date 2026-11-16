@@ -261,9 +261,9 @@
   "group": "EG00437704",
   "languages": [
    "English",
+   "Hindi",
    "Tamil",
-   "Telugu",
-   "Hindi"
+   "Telugu"
   ],
   "release": "Dec 17, 2026",
   "book": false,
@@ -324,7 +324,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-11-13"
+  "upcoming": "2026-11-16"
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -619,12 +619,12 @@
   "page_slug": "bhogi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-11",
+  "upcoming": "2026-11-16",
   "group": "EG00486433",
   "languages": [
    "Telugu"
   ],
-  "release": "Nov 12, 2026",
+  "release": "Nov 27, 2026",
   "book": false,
   "listed_alert": "2026-11-03"
  },
@@ -2233,6 +2233,15 @@
   "last_listed": null,
   "name": "Heat City Antarpath - Chapter One",
   "page_slug": "heat-city-antarpath-chapter-one",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-16"
+ },
+ "ET00526300": {
+  "first_seen": "2026-11-16",
+  "last_listed": null,
+  "name": "Badmash Pottey Returns",
+  "page_slug": "badmash-pottey-returns",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-16"

@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-16
+- added **Badmash Pottey Returns** (ET00526300), polled hourly
+
+## 2026-11-16
 - added **18 November** (ET00526301), polled hourly
 
 ## 2026-11-16

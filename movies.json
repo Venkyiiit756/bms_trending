@@ -2019,5 +2019,17 @@
     "headers_csv": "data/ET00526301_headers.csv",
     "every": 3600,
     "added": "2026-11-16"
+  },
+  {
+    "key": "et00526300",
+    "name": "Badmash Pottey Returns",
+    "eventcode": "ET00526300",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "badmash-pottey-returns",
+    "csv": "data/ET00526300.csv",
+    "headers_csv": "data/ET00526300_headers.csv",
+    "every": 3600,
+    "added": "2026-11-16"
   }
 ]
