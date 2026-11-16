@@ -1986,7 +1986,7 @@
   },
   {
     "key": "et00417686",
-    "name": "Mirzapur The Movie",
+    "name": "Mirzapur: The Movie",
     "eventcode": "ET00417686",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -2005,6 +2005,18 @@
     "page_slug": "the-girl-who-sees",
     "csv": "data/ET00526282.csv",
     "headers_csv": "data/ET00526282_headers.csv",
+    "every": 3600,
+    "added": "2026-11-16"
+  },
+  {
+    "key": "et00526301",
+    "name": "18 November",
+    "eventcode": "ET00526301",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "18-november",
+    "csv": "data/ET00526301.csv",
+    "headers_csv": "data/ET00526301_headers.csv",
     "every": 3600,
     "added": "2026-11-16"
   }

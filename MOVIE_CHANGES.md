@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-16
+- added **18 November** (ET00526301), polled hourly
+
+## 2026-11-16
 - added **Mirzapur The Movie** (ET00417686), polled hourly
 - added **The Girl Who Sees** (ET00526282), polled hourly
 - **Sadhak Bamakhyapa** (ET00438080): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

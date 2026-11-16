@@ -170,10 +170,17 @@
  "ET00417686": {
   "first_seen": "2026-11-16",
   "last_listed": "2026-11-16",
-  "name": "Mirzapur The Movie",
+  "name": "Mirzapur: The Movie",
   "page_slug": "mirzapur-the-movie",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00415918",
+  "languages": [
+   "Hindi",
+   "Telugu"
+  ],
+  "release": "Sep 04, 2026",
+  "book": true
  },
  "ET00421831": {
   "first_seen": "2026-10-18",
@@ -2226,6 +2233,15 @@
   "last_listed": null,
   "name": "Heat City Antarpath - Chapter One",
   "page_slug": "heat-city-antarpath-chapter-one",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-16"
+ },
+ "ET00526301": {
+  "first_seen": "2026-11-16",
+  "last_listed": null,
+  "name": "18 November",
+  "page_slug": "18-november",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-16"
