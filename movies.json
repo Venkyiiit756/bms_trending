@@ -2055,5 +2055,65 @@
     "headers_csv": "data/ET00526318_headers.csv",
     "every": 3600,
     "added": "2026-11-17"
+  },
+  {
+    "key": "et00496180",
+    "name": "The Hunger Games: Sunrise on the Reaping",
+    "eventcode": "ET00496180",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-hunger-games-sunrise-on-the-reaping",
+    "csv": "data/ET00496180.csv",
+    "headers_csv": "data/ET00496180_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
+  },
+  {
+    "key": "et00504904",
+    "name": "Om Operation Mole (Telugu)",
+    "eventcode": "ET00504904",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "om-operation-mole-telugu",
+    "csv": "data/ET00504904.csv",
+    "headers_csv": "data/ET00504904_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
+  },
+  {
+    "key": "et00514476",
+    "name": "Hyderabad Comic Con ",
+    "eventcode": "ET00514476",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hyderabad-comic-con",
+    "csv": "data/ET00514476.csv",
+    "headers_csv": "data/ET00514476_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
+  },
+  {
+    "key": "et00526328",
+    "name": "Bachelor Party Deux (Telugu)",
+    "eventcode": "ET00526328",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bachelor-party-deux-telugu",
+    "csv": "data/ET00526328.csv",
+    "headers_csv": "data/ET00526328_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
+  },
+  {
+    "key": "et00526333",
+    "name": "Mana Doctor Babe",
+    "eventcode": "ET00526333",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mana-doctor-babe",
+    "csv": "data/ET00526333.csv",
+    "headers_csv": "data/ET00526333_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
   }
 ]

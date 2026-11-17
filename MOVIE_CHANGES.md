@@ -3,6 +3,13 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-17
+- added **The Hunger Games: Sunrise on the Reaping** (ET00496180), polled hourly
+- added **Om Operation Mole (Telugu)** (ET00504904), polled hourly
+- added **Hyderabad Comic Con ** (ET00514476), polled hourly
+- added **Bachelor Party Deux (Telugu)** (ET00526328), polled hourly
+- added **Mana Doctor Babe** (ET00526333), polled hourly
+
+## 2026-11-17
 - added **Aayen Bayen Sayen** (ET00526318), polled hourly
 - **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): hourly -> every 30 min (best hourly figure in 24 h: 9.0K)
 

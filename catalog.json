@@ -257,7 +257,7 @@
   "page_slug": "avengers-doomsday",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-16",
+  "upcoming": "2026-11-17",
   "group": "EG00437704",
   "languages": [
    "English",
@@ -445,7 +445,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-13",
+  "upcoming": "2026-11-17",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -477,7 +477,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-15",
+  "upcoming": "2026-11-17",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -710,6 +710,15 @@
   "book": true,
   "upcoming": "2026-11-10"
  },
+ "ET00496180": {
+  "first_seen": "2026-11-17",
+  "last_listed": null,
+  "name": "The Hunger Games: Sunrise on the Reaping",
+  "page_slug": "the-hunger-games-sunrise-on-the-reaping",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-17"
+ },
  "ET00496545": {
   "first_seen": "2026-10-20",
   "last_listed": "2026-11-03",
@@ -805,6 +814,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-16"
+ },
+ "ET00504904": {
+  "first_seen": "2026-11-17",
+  "last_listed": null,
+  "name": "Om Operation Mole (Telugu)",
+  "page_slug": "om-operation-mole-telugu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-17"
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -1112,6 +1130,15 @@
   ],
   "release": "Oct 25, 2026",
   "book": false
+ },
+ "ET00514476": {
+  "first_seen": "2026-11-17",
+  "last_listed": null,
+  "name": "Hyderabad Comic Con ",
+  "page_slug": "hyderabad-comic-con",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-17"
  },
  "ET00515083": {
   "first_seen": "2026-11-02",
@@ -2270,6 +2297,24 @@
   "last_listed": null,
   "name": "Aayen Bayen Sayen",
   "page_slug": "aayen-bayen-sayen",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-17"
+ },
+ "ET00526328": {
+  "first_seen": "2026-11-17",
+  "last_listed": null,
+  "name": "Bachelor Party Deux (Telugu)",
+  "page_slug": "bachelor-party-deux-telugu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-17"
+ },
+ "ET00526333": {
+  "first_seen": "2026-11-17",
+  "last_listed": null,
+  "name": "Mana Doctor Babe",
+  "page_slug": "mana-doctor-babe",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-17"
