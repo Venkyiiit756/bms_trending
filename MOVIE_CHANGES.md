@@ -2,6 +2,12 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-17
+- added **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306), polled hourly
+- **Happy Happy Family** (ET00517825): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Adrishyya** (ET00526285): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Heat City Antarpath - Chapter One** (ET00526286): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-16
 - added **Badmash Pottey Returns** (ET00526300), polled hourly
 

@@ -1945,7 +1945,7 @@
     "page_slug": "happy-happy-family",
     "csv": "data/ET00517825.csv",
     "headers_csv": "data/ET00517825_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-14"
   },
   {
@@ -1957,7 +1957,7 @@
     "page_slug": "adrishyya",
     "csv": "data/ET00526285.csv",
     "headers_csv": "data/ET00526285_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-14"
   },
   {
@@ -1969,7 +1969,7 @@
     "page_slug": "heat-city-antarpath-chapter-one",
     "csv": "data/ET00526286.csv",
     "headers_csv": "data/ET00526286_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-14"
   },
   {
@@ -2031,5 +2031,17 @@
     "headers_csv": "data/ET00526300_headers.csv",
     "every": 3600,
     "added": "2026-11-16"
+  },
+  {
+    "key": "et00526306",
+    "name": "Avengers Doomsday Msinfinity Vsn 3d",
+    "eventcode": "ET00526306",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
+    "csv": "data/ET00526306.csv",
+    "headers_csv": "data/ET00526306_headers.csv",
+    "every": 3600,
+    "added": "2026-11-17"
   }
 ]
