@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-17
+- added **Aayen Bayen Sayen** (ET00526318), polled hourly
+- **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): hourly -> every 30 min (best hourly figure in 24 h: 9.0K)
+
+## 2026-11-17
 - added **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306), polled hourly
 - **Happy Happy Family** (ET00517825): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Adrishyya** (ET00526285): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

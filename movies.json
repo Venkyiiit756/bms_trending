@@ -2041,6 +2041,18 @@
     "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
     "csv": "data/ET00526306.csv",
     "headers_csv": "data/ET00526306_headers.csv",
+    "every": 1800,
+    "added": "2026-11-17"
+  },
+  {
+    "key": "et00526318",
+    "name": "Aayen Bayen Sayen",
+    "eventcode": "ET00526318",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "aayen-bayen-sayen",
+    "csv": "data/ET00526318.csv",
+    "headers_csv": "data/ET00526318_headers.csv",
     "every": 3600,
     "added": "2026-11-17"
   }
