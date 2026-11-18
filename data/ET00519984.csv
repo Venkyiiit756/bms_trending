@@ -4,3 +4,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-18 09:46:41+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-18 09:59:18+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-18 11:26:18+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-18 12:57:30+05:30,,error,429,HTTP 429 (failure 1),,error,
