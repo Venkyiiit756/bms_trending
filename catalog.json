@@ -334,7 +334,7 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-18",
   "group": "EG00449868",
   "languages": [
    "Hindi",
@@ -445,7 +445,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-18",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -477,7 +477,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-18",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -576,8 +576,9 @@
    "Telugu"
   ],
   "release": "Nov 20, 2026",
-  "book": false,
-  "listed_alert": "2026-11-13"
+  "book": true,
+  "listed_alert": "2026-11-13",
+  "book_opened": "2026-11-18"
  },
  "ET00483565": {
   "name": "Ranabaali",
@@ -813,7 +814,7 @@
   "page_slug": "om-chapter-1-udhiram",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-16"
+  "upcoming": "2026-11-18"
  },
  "ET00504904": {
   "first_seen": "2026-11-17",
@@ -1300,7 +1301,7 @@
   "page_slug": "happy-happy-family",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17"
+  "upcoming": "2026-11-18"
  },
  "ET00517992": {
   "first_seen": "2026-10-22",
@@ -2050,7 +2051,7 @@
   "page_slug": "maharashtra-epstein-files",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-15"
+  "upcoming": "2026-11-18"
  },
  "ET00525031": {
   "first_seen": "2026-11-04",
