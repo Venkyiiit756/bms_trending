@@ -38,3 +38,5 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-09 06:48:27+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-18 23:15:34+05:30,ENE Repeat,1_hour,4K,4K tickets booked in last 1 hour,,start,2026-11-18 23:15:34+05:30
 2026-11-18 23:45:34+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-11-18 23:53:13+05:30,ENE Repeat,1_hour,2.75K,2.75K tickets booked in last 1 hour,2026-11-18 23:15:34+05:30,change,2026-11-18 23:53:13+05:30
+2026-11-19 00:23:13+05:30,,error,429,HTTP 429 (failure 1),,error,
