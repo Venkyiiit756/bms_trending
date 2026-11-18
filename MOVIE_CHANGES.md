@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-18
+- added **70 Syaal** (ET00522086), polled hourly
+- **Scene** (ET00516631): every 30 min -> hourly (best hourly figure in 24 h: 2.9K)
+
+## 2026-11-18
 - added **Dada** (ET00519984), polled hourly
 - **Melcow Pondicherry** (ET00525663): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Maharashtra Epstein Files** (ET00524975): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

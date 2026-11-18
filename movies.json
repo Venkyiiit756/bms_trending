@@ -841,7 +841,7 @@
     "page_slug": "scene",
     "csv": "data/ET00516631.csv",
     "headers_csv": "data/ET00516631_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-10-24"
   },
   {
@@ -2125,6 +2125,18 @@
     "page_slug": "dada",
     "csv": "data/ET00519984.csv",
     "headers_csv": "data/ET00519984_headers.csv",
+    "every": 3600,
+    "added": "2026-11-18"
+  },
+  {
+    "key": "et00522086",
+    "name": "70 Syaal",
+    "eventcode": "ET00522086",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "70-syaal",
+    "csv": "data/ET00522086.csv",
+    "headers_csv": "data/ET00522086_headers.csv",
     "every": 3600,
     "added": "2026-11-18"
   }
