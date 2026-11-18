@@ -17,10 +17,13 @@ import json
 import os
 from datetime import datetime, timedelta, timezone
 
+import interest as _interest
+
 IST = timezone(timedelta(hours=5, minutes=30))
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FAST_MIN, FAST_MAX, HALF_MIN = 8000, 4, 3000
 NO_COUNTER_DAYS, UNLISTED_DAYS, NEW_DAYS = 3, 7, 3
+PRE_RELEASE_DAYS, PRE_RELEASE_INTEREST = 2, 20000   # a film this close to release with this many 'interested' is watched every 30 min even before it shows a counter
 BUDGET = 80
 COST = {None: 6.0, 1800: 2.0, 3600: 1.0, 21600: 1 / 6}
 
@@ -53,6 +56,22 @@ def days_since(date_text, today):
     if not date_text:
         return None
     return (today - datetime.strptime(date_text, '%Y-%m-%d').date()).days
+
+
+def pre_release_hot(c, m):
+    """True for a film releasing within PRE_RELEASE_DAYS days (or released yesterday) with plenty of 'interested' on BookMyShow."""
+    try:
+        rel = datetime.strptime(c.get('release') or '', '%b %d, %Y').date()
+    except ValueError:
+        return False
+    days = (rel - datetime.now(IST).date()).days
+    if not -1 <= days <= PRE_RELEASE_DAYS:
+        return False
+    try:
+        pts = _interest.series().get(m['eventcode'], {}).get('points') or []
+    except Exception:
+        return False
+    return bool(pts) and pts[-1][1] >= PRE_RELEASE_INTEREST
 
 
 def main():
@@ -133,7 +152,11 @@ def main():
         added_days = days_since(m.get('added'), today)
         listed_days = days_since(c.get('last_listed'), today)
         quiet_days = (now - last_data).days if last_data else (days_since(m.get('added'), today) or 0)
-        if m.get('added') and added_days is not None and added_days < NEW_DAYS and not last_data:
+        if pre_release_hot(c, m):
+            # Bookings can open any hour and the first hours of a big film are the data that cannot be recovered: a 6-hourly
+            # check could miss up to 6 hours of them (ENE Repeat, releasing Nov 19, was still on the 6-hour tier on Nov 18).
+            tier = 1800
+        elif m.get('added') and added_days is not None and added_days < NEW_DAYS and not last_data:
             tier = 3600
         elif best >= HALF_MIN:
             tier = 1800

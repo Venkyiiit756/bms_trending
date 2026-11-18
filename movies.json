@@ -1122,7 +1122,7 @@
     "page_slug": "ene-repeat",
     "csv": "data/ET00506990.csv",
     "headers_csv": "data/ET00506990_headers.csv",
-    "every": 21600,
+    "every": 1800,
     "added": "2026-10-29"
   },
   {
@@ -1861,7 +1861,7 @@
     "page_slug": "aakasamlo-oka-tara",
     "csv": "data/ET00482388.csv",
     "headers_csv": "data/ET00482388_headers.csv",
-    "every": 21600,
+    "every": 1800,
     "added": "2026-11-13"
   },
   {
