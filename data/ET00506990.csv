@@ -45,3 +45,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-19 01:08:30+05:30,ENE Repeat,1_hour,1.66K,1.66K tickets booked in last 1 hour,2026-11-19 00:30:51+05:30,change,2026-11-19 01:08:30+05:30
 2026-11-19 01:38:31+05:30,ENE Repeat,1_hour,1.17K,1.17K tickets booked in last 1 hour,2026-11-19 01:08:30+05:30,change,2026-11-19 01:38:31+05:30
 2026-11-19 02:03:31+05:30,ENE Repeat,1_hour,1.17K,1.17K tickets booked in last 1 hour,,heartbeat,
+2026-11-19 02:33:31+05:30,ENE Repeat,24_hours,67.98K,67.98K tickets booked in last 24 hours,2026-11-19 02:03:31+05:30,change,2026-11-19 02:33:31+05:30
