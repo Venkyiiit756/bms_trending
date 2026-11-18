@@ -2,6 +2,12 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-18
+- added **Dada** (ET00519984), polled hourly
+- **Melcow Pondicherry** (ET00525663): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Maharashtra Epstein Files** (ET00524975): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Om Operation Mole (Telugu)** (ET00504904): hourly -> every 30 min (best hourly figure in 24 h: 5.5K)
+
 ## 2026-11-17
 - added **The Hunger Games: Sunrise on the Reaping** (ET00496180), polled hourly
 - added **Om Operation Mole (Telugu)** (ET00504904), polled hourly

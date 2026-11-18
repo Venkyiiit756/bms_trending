@@ -1801,7 +1801,7 @@
     "page_slug": "melcow-pondicherry",
     "csv": "data/ET00525663.csv",
     "headers_csv": "data/ET00525663_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1981,7 +1981,7 @@
     "page_slug": "maharashtra-epstein-files",
     "csv": "data/ET00524975.csv",
     "headers_csv": "data/ET00524975_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-15"
   },
   {
@@ -2077,7 +2077,7 @@
     "page_slug": "om-operation-mole-telugu",
     "csv": "data/ET00504904.csv",
     "headers_csv": "data/ET00504904_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-17"
   },
   {
@@ -2115,5 +2115,17 @@
     "headers_csv": "data/ET00526333_headers.csv",
     "every": 3600,
     "added": "2026-11-17"
+  },
+  {
+    "key": "et00519984",
+    "name": "Dada",
+    "eventcode": "ET00519984",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dada",
+    "csv": "data/ET00519984.csv",
+    "headers_csv": "data/ET00519984_headers.csv",
+    "every": 3600,
+    "added": "2026-11-18"
   }
 ]
