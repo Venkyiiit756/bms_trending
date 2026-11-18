@@ -84,8 +84,15 @@ def main():
             continue
         rows = series.load(path)
         status[name] = rows[-1].time.astimezone(IST).strftime('%Y-%m-%d %H:%M') if rows else None
-    newest = max((datetime.strptime(t, '%Y-%m-%d %H:%M').replace(tzinfo=IST) for t in status.values() if t),
-                 default=None)
+    # 'Is the tracker alive?' = the newest reading of any film. It used to be the newest of the 'manual' films only, and one of them
+    # (Jailer 2 Hyderabad) stopped showing a counter on Nov 15: the watchdog then cried 'stale' for days, the site said 'Delayed', and
+    # the stuck open issue meant a real alarm could never email anyone.
+    newest = None
+    for key, name, path, entry in series.movies():
+        rows = series.load(path)
+        if rows:
+            t = rows[-1].time.astimezone(IST)
+            newest = t if newest is None or t > newest else newest
     ok = newest is not None and now - newest <= STALE
     cks = checks(now, newest)
     os.makedirs(os.path.join(series.ROOT, 'build'), exist_ok=True)
@@ -105,7 +112,15 @@ def main():
         gh('issue', 'create', '--repo', repo, '--title', TITLE, '--body',
            f'The watchdog (checked {now:%H:%M} IST) found:\n\n{lines}\n\n'
            'Check the "BMS Trend Tracker" and "Discover Hyderabad Movies" workflow runs.\n\n'
-           '_Opened automatically by health.py; it closes itself when everything is back._')
+           '_Opened automatically by health.py; it closes itself when everything is back._\n\n'
+           f"<!-- failing: {'|'.join(sorted(c['name'] for c in bad))} -->")
+    elif bad and number:
+        names = '|'.join(sorted(c['name'] for c in bad))
+        body = gh('issue', 'view', number, '--repo', repo, '--json', 'body,comments', '--jq', '.body, (.comments[].body)')
+        if body and body.returncode == 0 and f'<!-- failing: {names} -->' not in body.stdout:
+            lines = '\n'.join(f"- **{c['name']}**: {c['detail']}" for c in bad)
+            gh('issue', 'comment', number, '--repo', repo, '--body',
+               f'Still failing ({now:%a %-d %b %H:%M} IST), and the list has changed:\n\n{lines}\n\n<!-- failing: {names} -->')
     elif not bad and number:
         gh('issue', 'close', number, '--repo', repo, '--comment', 'All checks are green again.')
 
