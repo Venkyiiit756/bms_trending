@@ -293,3 +293,8 @@ Simulated 4 h with a cold film rate-limited every 5th poll (1 h block): Ramayana
 429s kept coming after the cold-film change (Nov 9 14:07-16:03: 116 min gap with only hot films polled), so the block is by IP, not by our request count.
 tracker.py now ends the run after `ROTATE_FAILURES` = 2 access failures in a row (and at least `ROTATE_AFTER` = 240 s uptime); the chained run starts at once, usually on another IP.
 Rows are committed on the way out. Check the logs for 'ending this run so the next one starts on a fresh runner' and whether gaps shrink.
+
+## Watchdog fixes (Nov 18)
+Issue #134 'Tracker needs attention' sat open from Nov 15: health.py judged 'is the tracker alive' by the newest reading of the 'manual' films only, and Jailer 2 (Hyderabad) stopped showing a
+counter. That false alarm also meant a REAL alarm could never email (an issue was already open). Now: alive = newest reading of any film; and while an issue is open, a comment (new email)
+is added whenever the set of failing checks changes (marker `<!-- failing: ... -->`). Gap audit Nov 10-18: Ramayana had only 2 gaps over 75 min (worst 86 min, early morning), vs 14 before the fixes.
