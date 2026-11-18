@@ -38,3 +38,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-18 21:31:11+05:30,Om Operation Mole (Telugu),1_hour,9.38K,9.38K tickets booked in last 1 hour,2026-11-18 21:06:03+05:30,change,2026-11-18 21:31:11+05:30
 2026-11-18 22:01:11+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-18 22:04:32+05:30,Om Operation Mole (Telugu),1_hour,9.18K,9.18K tickets booked in last 1 hour,2026-11-18 21:31:11+05:30,change,2026-11-18 22:04:32+05:30
+2026-11-18 22:34:32+05:30,,error,429,HTTP 429 (failure 1),,error,
