@@ -3,6 +3,28 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-19
+- added **The Odyssey** (ET00452034), polled hourly
+- added **How To Rob A Bank** (ET00501652), polled hourly
+- added **Dear Astronaut** (ET00518540), polled hourly
+- added **Party Animals** (ET00519397), polled hourly
+- added **Kaali Kheti** (ET00519979), polled hourly
+- added **Alias Rukmini** (ET00521603), polled hourly
+- added **Sathyavan Savithiri** (ET00522599), polled hourly
+- added **Shankarabharanna** (ET00523262), polled hourly
+- added **View** (ET00524728), polled hourly
+- added **Pratap** (ET00524867), polled hourly
+- added **Kerub** (ET00526074), polled hourly
+- added **Nanhey Dil** (ET00526276), polled hourly
+- added **Aot** (ET00526277), polled hourly
+- added **Himalayan Gold** (ET00526363), polled hourly
+- added **Mitha Chuingam** (ET00526376), polled hourly
+- **Itllu Arjuna** (ET00514068): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mookuthi Amman 2** (ET00517348): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dark Chocolate** (ET00522245): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Aakasamlo Oka Tara** (ET00482388): every 30 min -> hourly (best hourly figure in 24 h: 0.0K)
+- **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): every 30 min -> hourly (best hourly figure in 24 h: 4.1K)
+
+## 2026-11-19
 - **Bachelor Party Deux (Telugu)** (ET00526328): hourly -> every 30 min (best hourly figure in 24 h: 4.5K)
 
 ## 2026-11-19

@@ -1076,7 +1076,7 @@
     "page_slug": "itllu-arjuna",
     "csv": "data/ET00514068.csv",
     "headers_csv": "data/ET00514068_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-28"
   },
   {
@@ -1221,7 +1221,7 @@
     "page_slug": "mookuthi-amman-2",
     "csv": "data/ET00517348.csv",
     "headers_csv": "data/ET00517348_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-30"
   },
   {
@@ -1626,8 +1626,7 @@
     "csv": "data/ET00522245.csv",
     "headers_csv": "data/ET00522245_headers.csv",
     "every": 21600,
-    "added": "2026-11-06",
-    "paused": true
+    "added": "2026-11-06"
   },
   {
     "key": "et00524723",
@@ -1867,7 +1866,7 @@
     "page_slug": "aakasamlo-oka-tara",
     "csv": "data/ET00482388.csv",
     "headers_csv": "data/ET00482388_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-13"
   },
   {
@@ -2047,7 +2046,7 @@
     "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
     "csv": "data/ET00526306.csv",
     "headers_csv": "data/ET00526306_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-17"
   },
   {
@@ -2155,6 +2154,186 @@
     "page_slug": "sathyavan-savithiri-telugu",
     "csv": "data/ET00522600.csv",
     "headers_csv": "data/ET00522600_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00452034",
+    "name": "The Odyssey",
+    "eventcode": "ET00452034",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-odyssey",
+    "csv": "data/ET00452034.csv",
+    "headers_csv": "data/ET00452034_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00501652",
+    "name": "How To Rob A Bank",
+    "eventcode": "ET00501652",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "how-to-rob-a-bank",
+    "csv": "data/ET00501652.csv",
+    "headers_csv": "data/ET00501652_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00518540",
+    "name": "Dear Astronaut",
+    "eventcode": "ET00518540",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dear-astronaut",
+    "csv": "data/ET00518540.csv",
+    "headers_csv": "data/ET00518540_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00519397",
+    "name": "Party Animals",
+    "eventcode": "ET00519397",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "party-animals",
+    "csv": "data/ET00519397.csv",
+    "headers_csv": "data/ET00519397_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00519979",
+    "name": "Kaali Kheti",
+    "eventcode": "ET00519979",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "kaali-kheti",
+    "csv": "data/ET00519979.csv",
+    "headers_csv": "data/ET00519979_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00521603",
+    "name": "Alias Rukmini",
+    "eventcode": "ET00521603",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "alias-rukmini",
+    "csv": "data/ET00521603.csv",
+    "headers_csv": "data/ET00521603_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00522599",
+    "name": "Sathyavan Savithiri",
+    "eventcode": "ET00522599",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "sathyavan-savithiri",
+    "csv": "data/ET00522599.csv",
+    "headers_csv": "data/ET00522599_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00523262",
+    "name": "Shankarabharanna",
+    "eventcode": "ET00523262",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "shankarabharanna",
+    "csv": "data/ET00523262.csv",
+    "headers_csv": "data/ET00523262_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00524728",
+    "name": "View",
+    "eventcode": "ET00524728",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "view",
+    "csv": "data/ET00524728.csv",
+    "headers_csv": "data/ET00524728_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00524867",
+    "name": "Pratap",
+    "eventcode": "ET00524867",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "pratap",
+    "csv": "data/ET00524867.csv",
+    "headers_csv": "data/ET00524867_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00526074",
+    "name": "Kerub",
+    "eventcode": "ET00526074",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "kerub",
+    "csv": "data/ET00526074.csv",
+    "headers_csv": "data/ET00526074_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00526276",
+    "name": "Nanhey Dil",
+    "eventcode": "ET00526276",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nanhey-dil",
+    "csv": "data/ET00526276.csv",
+    "headers_csv": "data/ET00526276_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00526277",
+    "name": "Aot",
+    "eventcode": "ET00526277",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "aot",
+    "csv": "data/ET00526277.csv",
+    "headers_csv": "data/ET00526277_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00526363",
+    "name": "Himalayan Gold",
+    "eventcode": "ET00526363",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "himalayan-gold",
+    "csv": "data/ET00526363.csv",
+    "headers_csv": "data/ET00526363_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
+  },
+  {
+    "key": "et00526376",
+    "name": "Mitha Chuingam",
+    "eventcode": "ET00526376",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mitha-chuingam",
+    "csv": "data/ET00526376.csv",
+    "headers_csv": "data/ET00526376_headers.csv",
     "every": 3600,
     "added": "2026-11-19"
   }
