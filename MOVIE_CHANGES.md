@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-19
+- **Bachelor Party Deux (Telugu)** (ET00526328): hourly -> every 30 min (best hourly figure in 24 h: 4.5K)
+
+## 2026-11-19
 - added **Sathyavan Savithiri (Telugu)** (ET00522600), polled hourly
 - **Udta Teer** (ET00495822): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Cult** (ET00524017): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
