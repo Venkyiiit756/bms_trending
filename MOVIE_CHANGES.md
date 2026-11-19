@@ -2,6 +2,19 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-19
+- added **Sathyavan Savithiri (Telugu)** (ET00522600), polled hourly
+- **Udta Teer** (ET00495822): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Cult** (ET00524017): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Summer Holidays** (ET00524282): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Disco** (ET00521913): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Dark Chocolate** (ET00522245): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Melcow Pondicherry** (ET00525663): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Mirzapur: The Movie** (ET00417686): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The Girl Who Sees** (ET00526282): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **18 November** (ET00526301): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Badmash Pottey Returns** (ET00526300): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-18
 - **ENE Repeat** (ET00506990): every 6 h -> every 30 min (best hourly figure in 24 h: 0.0K)
 - **Aakasamlo Oka Tara** (ET00482388): every 6 h -> every 30 min (best hourly figure in 24 h: 0.0K)

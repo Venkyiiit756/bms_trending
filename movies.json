@@ -479,7 +479,8 @@
     "csv": "data/ET00495822.csv",
     "headers_csv": "data/ET00495822_headers.csv",
     "every": 21600,
-    "added": "2026-10-22"
+    "added": "2026-10-22",
+    "paused": true
   },
   {
     "key": "et00509047",
@@ -978,7 +979,8 @@
     "csv": "data/ET00524017.csv",
     "headers_csv": "data/ET00524017_headers.csv",
     "every": 21600,
-    "added": "2026-10-26"
+    "added": "2026-10-26",
+    "paused": true
   },
   {
     "key": "et00031160",
@@ -1244,7 +1246,8 @@
     "csv": "data/ET00524282.csv",
     "headers_csv": "data/ET00524282_headers.csv",
     "every": 21600,
-    "added": "2026-10-30"
+    "added": "2026-10-30",
+    "paused": true
   },
   {
     "key": "et00524518",
@@ -1292,7 +1295,8 @@
     "csv": "data/ET00521913.csv",
     "headers_csv": "data/ET00521913_headers.csv",
     "every": 21600,
-    "added": "2026-10-31"
+    "added": "2026-10-31",
+    "paused": true
   },
   {
     "key": "et00502500",
@@ -1622,7 +1626,8 @@
     "csv": "data/ET00522245.csv",
     "headers_csv": "data/ET00522245_headers.csv",
     "every": 21600,
-    "added": "2026-11-06"
+    "added": "2026-11-06",
+    "paused": true
   },
   {
     "key": "et00524723",
@@ -1802,7 +1807,8 @@
     "csv": "data/ET00525663.csv",
     "headers_csv": "data/ET00525663_headers.csv",
     "every": 21600,
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "paused": true
   },
   {
     "key": "et00525702",
@@ -1993,7 +1999,7 @@
     "page_slug": "mirzapur-the-movie",
     "csv": "data/ET00417686.csv",
     "headers_csv": "data/ET00417686_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-16"
   },
   {
@@ -2005,7 +2011,7 @@
     "page_slug": "the-girl-who-sees",
     "csv": "data/ET00526282.csv",
     "headers_csv": "data/ET00526282_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-16"
   },
   {
@@ -2017,7 +2023,7 @@
     "page_slug": "18-november",
     "csv": "data/ET00526301.csv",
     "headers_csv": "data/ET00526301_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-16"
   },
   {
@@ -2029,7 +2035,7 @@
     "page_slug": "badmash-pottey-returns",
     "csv": "data/ET00526300.csv",
     "headers_csv": "data/ET00526300_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-16"
   },
   {
@@ -2139,5 +2145,17 @@
     "headers_csv": "data/ET00522086_headers.csv",
     "every": 3600,
     "added": "2026-11-18"
+  },
+  {
+    "key": "et00522600",
+    "name": "Sathyavan Savithiri (Telugu)",
+    "eventcode": "ET00522600",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "sathyavan-savithiri-telugu",
+    "csv": "data/ET00522600.csv",
+    "headers_csv": "data/ET00522600_headers.csv",
+    "every": 3600,
+    "added": "2026-11-19"
   }
 ]
