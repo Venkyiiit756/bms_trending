@@ -217,3 +217,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-19 16:01:14+05:30,Bouma,24_hours,11.29K,11.29K tickets booked in last 24 hours,2026-11-19 14:06:01+05:30,change,2026-11-19 16:01:14+05:30
 2026-11-19 17:00:33+05:30,Bouma,24_hours,10.97K,10.97K tickets booked in last 24 hours,2026-11-19 16:01:14+05:30,change,2026-11-19 17:00:33+05:30
 2026-11-19 18:43:22+05:30,Bouma,24_hours,10.37K,10.37K tickets booked in last 24 hours,2026-11-19 17:00:33+05:30,change,2026-11-19 18:43:22+05:30
+2026-11-19 21:40:21+05:30,Bouma,24_hours,9.23K,9.23K tickets booked in last 24 hours,2026-11-19 18:43:22+05:30,change,2026-11-19 21:40:21+05:30
