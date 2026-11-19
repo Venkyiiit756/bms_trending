@@ -122,3 +122,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-19 22:07:59+05:30,,error,400,HTTP 400 (failure 1),,error,
 2026-11-19 22:49:33+05:30,,error,400,HTTP 400 (failure 1),,error,
 2026-11-19 22:57:28+05:30,,error,400,HTTP 400 (failure 1),,error,
+2026-11-19 23:05:06+05:30,,error,400,HTTP 400 (failure 1),,error,
