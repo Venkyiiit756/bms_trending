@@ -51,3 +51,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-20 16:57:08+05:30,The Hunger Games: Sunrise on the Reaping,24_hours,5.75K,5.75K tickets booked in last 24 hours,2026-11-20 15:57:51+05:30,change,2026-11-20 16:57:08+05:30
 2026-11-20 17:56:34+05:30,The Hunger Games: Sunrise on the Reaping,24_hours,5.89K,5.89K tickets booked in last 24 hours,2026-11-20 16:57:08+05:30,change,2026-11-20 17:56:34+05:30
 2026-11-20 18:52:17+05:30,The Hunger Games: Sunrise on the Reaping,24_hours,5.96K,5.96K tickets booked in last 24 hours,2026-11-20 17:56:34+05:30,change,2026-11-20 18:52:17+05:30
+2026-11-20 19:50:41+05:30,The Hunger Games: Sunrise on the Reaping,24_hours,5.98K,5.98K tickets booked in last 24 hours,2026-11-20 18:52:17+05:30,change,2026-11-20 19:50:41+05:30
