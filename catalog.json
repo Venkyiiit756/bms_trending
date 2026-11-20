@@ -257,7 +257,7 @@
   "page_slug": "avengers-doomsday",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00437704",
   "languages": [
    "English",
@@ -334,7 +334,7 @@
   "page_slug": "the-odyssey",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -374,7 +374,7 @@
   "page_slug": "king",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00453178",
   "languages": [
    "Hindi"
@@ -579,7 +579,7 @@
   "page_slug": "aakasamlo-oka-tara",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00479817",
   "languages": [
    "Telugu"
@@ -630,7 +630,7 @@
   "page_slug": "bhogi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00486433",
   "languages": [
    "Telugu"
@@ -646,7 +646,7 @@
   "page_slug": "dune-part-three",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00489079",
   "languages": [
    "English",
@@ -727,7 +727,7 @@
   "page_slug": "the-hunger-games-sunrise-on-the-reaping",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-20",
   "group": "EG00493413",
   "languages": [
    "English"
@@ -787,10 +787,16 @@
  "ET00501652": {
   "first_seen": "2026-11-19",
   "last_listed": "2026-11-19",
-  "name": "How To Rob A Bank",
+  "name": "How to Rob a Bank",
   "page_slug": "how-to-rob-a-bank",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00498782",
+  "languages": [
+   "English"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00502500": {
   "first_seen": "2026-10-31",
@@ -799,7 +805,7 @@
   "page_slug": "eetha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00499608",
   "languages": [
    "Hindi"
@@ -838,7 +844,15 @@
   "page_slug": "om-chapter-1-udhiram",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-19",
+  "group": "EG00501898",
+  "languages": [
+   "Tamil",
+   "Telugu",
+   "Hindi"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00504904": {
   "first_seen": "2026-11-17",
@@ -847,7 +861,7 @@
   "page_slug": "om-operation-mole-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -922,13 +936,14 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00503915",
   "languages": [
    "Telugu"
   ],
   "release": "Nov 19, 2026",
-  "book": false
+  "book": true,
+  "book_opened": "2026-11-20"
  },
  "ET00507314": {
   "first_seen": "2026-10-23",
@@ -1410,7 +1425,7 @@
   "page_slug": "dear-astronaut",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00518647": {
   "first_seen": "2026-10-31",
@@ -1505,7 +1520,13 @@
   "name": "Party Animals",
   "page_slug": "party-animals",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00516459",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00519564": {
   "name": "Comrade Kalyan",
@@ -1556,7 +1577,13 @@
   "name": "Kaali Kheti",
   "page_slug": "kaali-kheti",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00517095",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00519984": {
   "first_seen": "2026-11-18",
@@ -1594,6 +1621,15 @@
   ],
   "release": "Oct 09, 2026",
   "book": true
+ },
+ "ET00520053": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "Miranda Warning",
+  "page_slug": "miranda-warning",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
  },
  "ET00520054": {
   "first_seen": "2026-10-18",
@@ -1702,7 +1738,7 @@
   "page_slug": "donga-naa-koduku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00518431",
   "languages": [
    "Telugu"
@@ -1727,7 +1763,15 @@
   "page_slug": "bachelor-party-deux",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-14"
+  "upcoming": "2026-11-14",
+  "group": "EG00518906",
+  "languages": [
+   "Malayalam",
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Nov 19, 2026",
+  "book": true
  },
  "ET00521603": {
   "first_seen": "2026-11-19",
@@ -1736,7 +1780,7 @@
   "page_slug": "alias-rukmini",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00521605": {
   "first_seen": "2026-10-23",
@@ -1888,7 +1932,14 @@
   "name": "Sathyavan Savithiri",
   "page_slug": "sathyavan-savithiri",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00520025",
+  "languages": [
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00522600": {
   "first_seen": "2026-11-19",
@@ -1897,7 +1948,7 @@
   "page_slug": "sathyavan-savithiri-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00523016": {
   "first_seen": "2026-10-22",
@@ -1929,7 +1980,7 @@
   "page_slug": "namit-malhotras-ramayana-3dtelugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-20",
   "group": "EG00449671",
   "languages": [
    "Hindi",
@@ -1957,7 +2008,13 @@
   "name": "Shankarabharanna",
   "page_slug": "shankarabharanna",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00520755",
+  "languages": [
+   "Kannada"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00523468": {
   "first_seen": "2026-10-23",
@@ -2064,7 +2121,7 @@
   "page_slug": "godzilla-minus-zero",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00524561": {
   "first_seen": "2026-11-08",
@@ -2108,6 +2165,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-14"
+ },
+ "ET00524643": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "The 1979",
+  "page_slug": "the-1979",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
  },
  "ET00524691": {
   "first_seen": "2026-11-04",
@@ -2177,7 +2243,7 @@
   "page_slug": "scene-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00525135": {
   "first_seen": "2026-11-03",
@@ -2203,6 +2269,15 @@
   ],
   "release": "Nov 06, 2026",
   "book": true
+ },
+ "ET00525176": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "Mitra Rakshaka",
+  "page_slug": "mitra-rakshaka",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
  },
  "ET00525223": {
   "first_seen": "2026-11-06",
@@ -2355,6 +2430,15 @@
   "figure": null,
   "upcoming": "2026-11-13"
  },
+ "ET00526232": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "You Can See Everything",
+  "page_slug": "you-can-see-everything",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
+ },
  "ET00526256": {
   "first_seen": "2026-11-13",
   "last_listed": null,
@@ -2363,6 +2447,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-13"
+ },
+ "ET00526257": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "BTS World Tour Arirang in Kaohsiung: Live Viewing",
+  "page_slug": "bts-world-tour-arirang-in-kaohsiung-live-viewing",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
  },
  "ET00526276": {
   "first_seen": "2026-11-19",
@@ -2380,6 +2473,15 @@
   "last_checked": null,
   "figure": null
  },
+ "ET00526281": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "Samurai Vengeance",
+  "page_slug": "samurai-vengeance",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
+ },
  "ET00526282": {
   "first_seen": "2026-11-16",
   "last_listed": null,
@@ -2387,7 +2489,7 @@
   "page_slug": "the-girl-who-sees",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00526285": {
   "first_seen": "2026-11-14",
@@ -2432,7 +2534,7 @@
   "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00526318": {
   "first_seen": "2026-11-17",
@@ -2450,7 +2552,7 @@
   "page_slug": "bachelor-party-deux-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19"
+  "upcoming": "2026-11-20"
  },
  "ET00526333": {
   "first_seen": "2026-11-17",
@@ -2460,6 +2562,24 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-18"
+ },
+ "ET00526352": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "Apsara",
+  "page_slug": "apsara",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
+ },
+ "ET00526356": {
+  "first_seen": "2026-11-20",
+  "last_listed": null,
+  "name": "Hail Mary",
+  "page_slug": "hail-mary",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-20"
  },
  "ET00526363": {
   "first_seen": "2026-11-19",

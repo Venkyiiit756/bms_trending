@@ -2,6 +2,26 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-20
+- added **Miranda Warning** (ET00520053), polled hourly
+- added **The 1979** (ET00524643), polled hourly
+- added **Mitra Rakshaka** (ET00525176), polled hourly
+- added **You Can See Everything** (ET00526232), polled hourly
+- added **BTS World Tour Arirang in Kaohsiung: Live Viewing** (ET00526257), polled hourly
+- added **Samurai Vengeance** (ET00526281), polled hourly
+- added **Apsara** (ET00526352), polled hourly
+- added **Hail Mary** (ET00526356), polled hourly
+- **Ramayana** (ET00451914): every 30 min -> hourly (best hourly figure in 24 h: 21.7K)
+- **ENE Repeat** (ET00506990): every 30 min -> hourly (best hourly figure in 24 h: 8.2K)
+- **O.M Operation Mole** (ET00504901): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Bachelor Party D'eux** (ET00521598): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Aayen Bayen Sayen** (ET00526318): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Om Operation Mole (Telugu)** (ET00504904): every 30 min -> hourly (best hourly figure in 24 h: 15.9K)
+- **Hyderabad Comic Con ** (ET00514476): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Bachelor Party Deux (Telugu)** (ET00526328): every 30 min -> hourly (best hourly figure in 24 h: 4.5K)
+- **Mana Doctor Babe** (ET00526333): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
 ## 2026-11-19
 - added **The Odyssey** (ET00452034), polled hourly
 - added **How To Rob A Bank** (ET00501652), polled hourly
