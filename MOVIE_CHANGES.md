@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-20
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-20
 - added **King of Salangpur** (ET00519222), polled hourly
 - **Godzilla Minus Zero** (ET00524518): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
 - note: still above the 80 requests/hour budget after demotions

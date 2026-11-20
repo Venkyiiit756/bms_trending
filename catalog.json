@@ -325,7 +325,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-11-17"
+  "upcoming": "2026-11-20"
  },
  "ET00452034": {
   "first_seen": "2026-11-19",
@@ -334,7 +334,16 @@
   "page_slug": "the-odyssey",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-20"
+  "upcoming": "2026-11-20",
+  "group": "EG00449784",
+  "languages": [
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Jul 17, 2026",
+  "book": false
  },
  "ET00452121": {
   "first_seen": "2026-10-24",
@@ -359,7 +368,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-20",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -470,7 +479,7 @@
   "page_slug": "goat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-17",
+  "upcoming": "2026-11-20",
   "group": "EG00466920",
   "languages": [
    "English",
@@ -2646,7 +2655,13 @@
   "name": "Himalayan Gold",
   "page_slug": "himalayan-gold",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00525114",
+  "languages": [
+   "Nepali"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00526376": {
   "first_seen": "2026-11-19",
