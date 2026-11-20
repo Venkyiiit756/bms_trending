@@ -25,3 +25,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-21 00:45:15+05:30,Sathyavan Savithiri,24_hours,5.12K,5.12K tickets booked in last 24 hours,,start,2026-11-21 00:45:15+05:30
 2026-11-21 01:45:09+05:30,Sathyavan Savithiri,24_hours,5.16K,5.16K tickets booked in last 24 hours,2026-11-21 00:45:15+05:30,change,2026-11-21 01:45:09+05:30
 2026-11-21 02:42:26+05:30,Sathyavan Savithiri,24_hours,5.19K,5.19K tickets booked in last 24 hours,2026-11-21 01:45:09+05:30,change,2026-11-21 02:42:26+05:30
+2026-11-21 03:59:26+05:30,Sathyavan Savithiri,24_hours,5.24K,5.24K tickets booked in last 24 hours,2026-11-21 02:42:26+05:30,change,2026-11-21 03:59:26+05:30
