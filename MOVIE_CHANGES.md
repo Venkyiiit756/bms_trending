@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-20
+- added **King of Salangpur** (ET00519222), polled hourly
+- **Godzilla Minus Zero** (ET00524518): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-20
 - added **Miranda Warning** (ET00520053), polled hourly
 - added **The 1979** (ET00524643), polled hourly
 - added **Mitra Rakshaka** (ET00525176), polled hourly

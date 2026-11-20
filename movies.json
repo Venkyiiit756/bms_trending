@@ -1258,7 +1258,7 @@
     "page_slug": "godzilla-minus-zero",
     "csv": "data/ET00524518.csv",
     "headers_csv": "data/ET00524518_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-10-30"
   },
   {
@@ -2303,7 +2303,7 @@
   },
   {
     "key": "et00526277",
-    "name": "Aot",
+    "name": "AOT",
     "eventcode": "ET00526277",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -2430,6 +2430,18 @@
     "page_slug": "hail-mary",
     "csv": "data/ET00526356.csv",
     "headers_csv": "data/ET00526356_headers.csv",
+    "every": 3600,
+    "added": "2026-11-20"
+  },
+  {
+    "key": "et00519222",
+    "name": "King of Salangpur",
+    "eventcode": "ET00519222",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "king-of-salangpur",
+    "csv": "data/ET00519222.csv",
+    "headers_csv": "data/ET00519222_headers.csv",
     "every": 3600,
     "added": "2026-11-20"
   }
