@@ -5910,5 +5910,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-20 20:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 7–8 PM (Fri 20 Nov)\n\n1. AOT: 2.65K\n2. Scene: 2.08K\n3. Avengers Doomsday Msinfinity Vsn 3d: 1.47K (▼37% vs Thu)\n\n#AOT #Scene #BoxOffice",
+  "images": [
+   "posts/2026-11-20/2000/1.png",
+   "posts/2026-11-20/2000/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (7–8 PM, Fri 20 Nov), with change against the same hour yesterday: AOT 2.65K; Scene 2.08K; Avengers Doomsday Msinfinity Vsn 3d 1.47K, ▼37% vs yesterday",
+   "Line chart of tickets booked in the last hour for AOT through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
