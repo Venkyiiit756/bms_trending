@@ -85,3 +85,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-20 21:28:44+05:30,O.M Operation Mole,1_hour,24.86K,24.86K tickets booked in last 1 hour,2026-11-20 20:22:03+05:30,change,2026-11-20 21:28:44+05:30
 2026-11-20 22:26:00+05:30,O.M Operation Mole,1_hour,21.56K,21.56K tickets booked in last 1 hour,2026-11-20 21:28:44+05:30,change,2026-11-20 22:26:00+05:30
 2026-11-20 23:23:40+05:30,O.M Operation Mole,1_hour,12.11K,12.11K tickets booked in last 1 hour,2026-11-20 22:26:00+05:30,change,2026-11-20 23:23:40+05:30
+2026-11-21 00:20:51+05:30,O.M Operation Mole,1_hour,6.61K,6.61K tickets booked in last 1 hour,2026-11-20 23:23:40+05:30,change,2026-11-21 00:20:51+05:30
