@@ -5846,5 +5846,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-20 14:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 1–2 PM (Fri 20 Nov)\n\n1. O.M Operation Mole: 19.39K\n2. AOT: 1.01K\n\n#OMOperationMole #AOT #BoxOffice",
+  "images": [
+   "posts/2026-11-20/1400/1.png",
+   "posts/2026-11-20/1400/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (1–2 PM, Fri 20 Nov), with change against the same hour yesterday: O.M Operation Mole 19.39K; AOT 1.01K",
+   "Line chart of tickets booked in the last hour for O.M Operation Mole through the day, today against yesterday."
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
