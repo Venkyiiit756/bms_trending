@@ -6,6 +6,9 @@ Written automatically by update_movies.py (daily).
 - note: still above the 80 requests/hour budget after demotions
 
 ## 2026-11-21
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-21
 - added **Relax Aagi** (ET00526299), polled hourly
 - added **Pei Pidichirukku** (ET00526385), polled hourly
 - added **Dune Part Three 4dx** (ET00526391), polled hourly
