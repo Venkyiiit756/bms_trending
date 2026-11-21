@@ -2,6 +2,13 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-21
+- added **Cosmic Samson** (ET00525197), polled hourly
+- added **Minnum Oar Iravu** (ET00526355), polled hourly
+- **Dada** (ET00519984): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **70 Syaal** (ET00522086): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
 ## 2026-11-20
 - note: still above the 80 requests/hour budget after demotions
 
