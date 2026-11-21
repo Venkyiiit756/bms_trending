@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-21T03:26+05:30",
- "as_of": "Sat 21 Nov 3:00 AM",
+ "generated_at": "2026-11-21T11:10+05:30",
+ "as_of": "Sat 21 Nov 11:00 AM",
  "mode": "template",
  "model": null,
- "headline": "No hourly forecast is available right now.",
- "bullets": [],
- "watch": [],
+ "headline": "Scene: busiest hour still ahead is 7–8 PM, about 3.1K expected (range 1.6K to 4.3K).",
+ "bullets": [
+  "Scene: 2.3K expected in 11 AM–12 PM."
+ ],
+ "watch": [
+  "Tomorrow is Sunday: weekend.",
+  "Signals (ratings, reviews, word of mouth) lean this film's forecast by -2%."
+ ],
  "usage": null
 }
