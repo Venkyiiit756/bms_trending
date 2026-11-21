@@ -106,3 +106,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-21 19:51:07+05:30,Bachelor Party Deux (Telugu),24_hours,6.82K,6.82K tickets booked in last 24 hours,2026-11-21 18:49:42+05:30,change,2026-11-21 19:51:07+05:30
 2026-11-21 20:48:57+05:30,Bachelor Party Deux (Telugu),24_hours,6.6K,6.6K tickets booked in last 24 hours,2026-11-21 19:51:07+05:30,change,2026-11-21 20:48:57+05:30
 2026-11-21 21:50:20+05:30,Bachelor Party Deux (Telugu),24_hours,6.37K,6.37K tickets booked in last 24 hours,2026-11-21 20:48:57+05:30,change,2026-11-21 21:50:20+05:30
+2026-11-21 22:48:47+05:30,Bachelor Party Deux (Telugu),24_hours,6.39K,6.39K tickets booked in last 24 hours,2026-11-21 21:50:20+05:30,change,2026-11-21 22:48:47+05:30
