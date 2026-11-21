@@ -93,3 +93,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-21 15:40:29+05:30,Bachelor Party D'eux,24_hours,7.92K,7.92K tickets booked in last 24 hours,2026-11-21 14:38:28+05:30,change,2026-11-21 15:40:29+05:30
 2026-11-21 16:41:12+05:30,Bachelor Party D'eux,24_hours,7.77K,7.77K tickets booked in last 24 hours,2026-11-21 15:40:29+05:30,change,2026-11-21 16:41:12+05:30
 2026-11-21 17:38:42+05:30,Bachelor Party D'eux,24_hours,7.47K,7.47K tickets booked in last 24 hours,2026-11-21 16:41:12+05:30,change,2026-11-21 17:38:42+05:30
+2026-11-21 18:35:45+05:30,Bachelor Party D'eux,24_hours,7.21K,7.21K tickets booked in last 24 hours,2026-11-21 17:38:42+05:30,change,2026-11-21 18:35:45+05:30
