@@ -2575,6 +2575,15 @@
   "figure": null,
   "upcoming": "2026-11-19"
  },
+ "ET00526299": {
+  "first_seen": "2026-11-21",
+  "last_listed": null,
+  "name": "Relax Aagi",
+  "page_slug": "relax-aagi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-21"
+ },
  "ET00526300": {
   "first_seen": "2026-11-16",
   "last_listed": "2026-11-19",
@@ -2690,5 +2699,23 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-19"
+ },
+ "ET00526385": {
+  "first_seen": "2026-11-21",
+  "last_listed": null,
+  "name": "Pei Pidichirukku",
+  "page_slug": "pei-pidichirukku",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-21"
+ },
+ "ET00526391": {
+  "first_seen": "2026-11-21",
+  "last_listed": null,
+  "name": "Dune Part Three 4dx",
+  "page_slug": "dune-part-three-4dx",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-21"
  }
 }

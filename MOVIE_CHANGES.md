@@ -3,6 +3,14 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-21
+- added **Relax Aagi** (ET00526299), polled hourly
+- added **Pei Pidichirukku** (ET00526385), polled hourly
+- added **Dune Part Three 4dx** (ET00526391), polled hourly
+- stopped tracking **O.M Operation Mole** (ET00504901): same counters as **Om Operation Mole (Telugu)**
+- stopped tracking **Sathyavan Savithiri** (ET00522599): same counters as **Sathyavan Savithiri (Telugu)**
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-21
 - added **Cosmic Samson** (ET00525197), polled hourly
 - added **Minnum Oar Iravu** (ET00526355), polled hourly
 - **Dada** (ET00519984): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

@@ -1518,7 +1518,9 @@
     "csv": "data/ET00504901.csv",
     "headers_csv": "data/ET00504901_headers.csv",
     "every": 3600,
-    "added": "2026-11-04"
+    "added": "2026-11-04",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00521922",
@@ -2239,7 +2241,9 @@
     "csv": "data/ET00522599.csv",
     "headers_csv": "data/ET00522599_headers.csv",
     "every": 3600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00523262",
@@ -2466,6 +2470,42 @@
     "page_slug": "minnum-oar-iravu",
     "csv": "data/ET00526355.csv",
     "headers_csv": "data/ET00526355_headers.csv",
+    "every": 3600,
+    "added": "2026-11-21"
+  },
+  {
+    "key": "et00526299",
+    "name": "Relax Aagi",
+    "eventcode": "ET00526299",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "relax-aagi",
+    "csv": "data/ET00526299.csv",
+    "headers_csv": "data/ET00526299_headers.csv",
+    "every": 3600,
+    "added": "2026-11-21"
+  },
+  {
+    "key": "et00526385",
+    "name": "Pei Pidichirukku",
+    "eventcode": "ET00526385",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "pei-pidichirukku",
+    "csv": "data/ET00526385.csv",
+    "headers_csv": "data/ET00526385_headers.csv",
+    "every": 3600,
+    "added": "2026-11-21"
+  },
+  {
+    "key": "et00526391",
+    "name": "Dune Part Three 4dx",
+    "eventcode": "ET00526391",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dune-part-three-4dx",
+    "csv": "data/ET00526391.csv",
+    "headers_csv": "data/ET00526391_headers.csv",
     "every": 3600,
     "added": "2026-11-21"
   }
