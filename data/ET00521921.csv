@@ -235,3 +235,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-21 10:33:44+05:30,Aadi Anant,24_hours,7.79K,7.79K tickets booked in last 24 hours,2026-11-21 09:34:30+05:30,change,2026-11-21 10:33:44+05:30
 2026-11-21 11:32:22+05:30,Aadi Anant,24_hours,8.16K,8.16K tickets booked in last 24 hours,2026-11-21 10:33:44+05:30,change,2026-11-21 11:32:22+05:30
 2026-11-21 12:34:25+05:30,Aadi Anant,24_hours,8.77K,8.77K tickets booked in last 24 hours,2026-11-21 11:32:22+05:30,change,2026-11-21 12:34:25+05:30
+2026-11-21 13:31:58+05:30,Aadi Anant,24_hours,9.21K,9.21K tickets booked in last 24 hours,2026-11-21 12:34:25+05:30,change,2026-11-21 13:31:58+05:30
