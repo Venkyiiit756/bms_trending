@@ -3,6 +3,11 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-22
+- added **Desamuduru** (ET00002682), polled hourly
+- **John Doe** (ET00525702): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dune Part Three 4dx** (ET00526391): every 30 min -> hourly (best hourly figure in 24 h: 1.4K)
+
+## 2026-11-22
 - stopped tracking **Bachelor Party D'eux** (ET00521598): same counters as **Bachelor Party Deux (Telugu)**
 - **Ramayana** (ET00451914): hourly -> every 30 min (best hourly figure in 24 h: 33.1K)
 - **DNK** (ET00521157): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

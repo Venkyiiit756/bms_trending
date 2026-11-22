@@ -29,6 +29,15 @@
   "release": "Feb 26, 1983",
   "book": true
  },
+ "ET00002682": {
+  "first_seen": "2026-11-22",
+  "last_listed": null,
+  "name": "Desamuduru",
+  "page_slug": "desamuduru",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-22"
+ },
  "ET00031160": {
   "first_seen": "2026-10-26",
   "last_listed": null,
@@ -584,7 +593,7 @@
  "ET00482388": {
   "first_seen": "2026-11-13",
   "last_listed": "2026-11-19",
-  "name": "Aakasamlo Oka Tara",
+  "name": "AOT - Aakasamlo Oka Tara",
   "page_slug": "aakasamlo-oka-tara",
   "last_checked": null,
   "figure": null,
@@ -1197,7 +1206,7 @@
   "page_slug": "mysaa",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03",
+  "upcoming": "2026-11-22",
   "group": "EG00511916",
   "languages": [
    "Telugu",

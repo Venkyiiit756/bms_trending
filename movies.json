@@ -1820,7 +1820,7 @@
     "page_slug": "john-doe",
     "csv": "data/ET00525702.csv",
     "headers_csv": "data/ET00525702_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-12"
   },
   {
@@ -1861,7 +1861,7 @@
   },
   {
     "key": "et00482388",
-    "name": "Aakasamlo Oka Tara",
+    "name": "AOT - Aakasamlo Oka Tara",
     "eventcode": "ET00482388",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -2508,7 +2508,19 @@
     "page_slug": "dune-part-three-4dx",
     "csv": "data/ET00526391.csv",
     "headers_csv": "data/ET00526391_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-21"
+  },
+  {
+    "key": "et00002682",
+    "name": "Desamuduru",
+    "eventcode": "ET00002682",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "desamuduru",
+    "csv": "data/ET00002682.csv",
+    "headers_csv": "data/ET00002682_headers.csv",
+    "every": 3600,
+    "added": "2026-11-22"
   }
 ]
