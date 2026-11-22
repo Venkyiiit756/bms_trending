@@ -200,3 +200,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-22 23:39:15+05:30,ENE Repeat,24_hours,80.78K,80.78K tickets booked in last 24 hours,2026-11-22 23:14:07+05:30,change,2026-11-22 23:39:15+05:30
 2026-11-23 00:09:16+05:30,ENE Repeat,24_hours,79.89K,79.89K tickets booked in last 24 hours,2026-11-22 23:39:15+05:30,change,2026-11-23 00:09:16+05:30
 2026-11-23 00:38:16+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-11-23 00:43:38+05:30,ENE Repeat,24_hours,79.32K,79.32K tickets booked in last 24 hours,2026-11-23 00:09:16+05:30,change,2026-11-23 00:43:38+05:30
