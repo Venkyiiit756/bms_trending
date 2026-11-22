@@ -466,7 +466,7 @@
     "page_slug": "namit-malhotras-ramayana",
     "csv": "data/ET00451914.csv",
     "headers_csv": "data/ET00451914_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-22"
   },
   {
@@ -868,7 +868,7 @@
     "page_slug": "donga-naa-koduku",
     "csv": "data/ET00521157.csv",
     "headers_csv": "data/ET00521157_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-10-24"
   },
   {
@@ -1124,7 +1124,7 @@
     "page_slug": "ene-repeat",
     "csv": "data/ET00506990.csv",
     "headers_csv": "data/ET00506990_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-10-29"
   },
   {
@@ -1856,7 +1856,7 @@
     "page_slug": "sadhak-bamakhyapa",
     "csv": "data/ET00438080.csv",
     "headers_csv": "data/ET00438080_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-11-13"
   },
   {
@@ -1868,7 +1868,7 @@
     "page_slug": "aakasamlo-oka-tara",
     "csv": "data/ET00482388.csv",
     "headers_csv": "data/ET00482388_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-13"
   },
   {
@@ -1893,7 +1893,9 @@
     "csv": "data/ET00521598.csv",
     "headers_csv": "data/ET00521598_headers.csv",
     "every": 3600,
-    "added": "2026-11-13"
+    "added": "2026-11-13",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00522528",
@@ -2084,7 +2086,7 @@
     "page_slug": "om-operation-mole-telugu",
     "csv": "data/ET00504904.csv",
     "headers_csv": "data/ET00504904_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-17"
   },
   {
@@ -2168,7 +2170,7 @@
     "page_slug": "the-odyssey",
     "csv": "data/ET00452034.csv",
     "headers_csv": "data/ET00452034_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2180,7 +2182,7 @@
     "page_slug": "how-to-rob-a-bank",
     "csv": "data/ET00501652.csv",
     "headers_csv": "data/ET00501652_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2192,7 +2194,7 @@
     "page_slug": "dear-astronaut",
     "csv": "data/ET00518540.csv",
     "headers_csv": "data/ET00518540_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2204,7 +2206,7 @@
     "page_slug": "party-animals",
     "csv": "data/ET00519397.csv",
     "headers_csv": "data/ET00519397_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2216,7 +2218,7 @@
     "page_slug": "kaali-kheti",
     "csv": "data/ET00519979.csv",
     "headers_csv": "data/ET00519979_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2228,7 +2230,7 @@
     "page_slug": "alias-rukmini",
     "csv": "data/ET00521603.csv",
     "headers_csv": "data/ET00521603_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2254,7 +2256,7 @@
     "page_slug": "shankarabharanna",
     "csv": "data/ET00523262.csv",
     "headers_csv": "data/ET00523262_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2266,7 +2268,7 @@
     "page_slug": "view",
     "csv": "data/ET00524728.csv",
     "headers_csv": "data/ET00524728_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2278,7 +2280,7 @@
     "page_slug": "pratap",
     "csv": "data/ET00524867.csv",
     "headers_csv": "data/ET00524867_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2290,7 +2292,7 @@
     "page_slug": "kerub",
     "csv": "data/ET00526074.csv",
     "headers_csv": "data/ET00526074_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2302,7 +2304,7 @@
     "page_slug": "nanhey-dil",
     "csv": "data/ET00526276.csv",
     "headers_csv": "data/ET00526276_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2314,7 +2316,7 @@
     "page_slug": "aot",
     "csv": "data/ET00526277.csv",
     "headers_csv": "data/ET00526277_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-19"
   },
   {
@@ -2326,7 +2328,7 @@
     "page_slug": "himalayan-gold",
     "csv": "data/ET00526363.csv",
     "headers_csv": "data/ET00526363_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2338,7 +2340,7 @@
     "page_slug": "mitha-chuingam",
     "csv": "data/ET00526376.csv",
     "headers_csv": "data/ET00526376_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2506,7 +2508,7 @@
     "page_slug": "dune-part-three-4dx",
     "csv": "data/ET00526391.csv",
     "headers_csv": "data/ET00526391_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-21"
   }
 ]

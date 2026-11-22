@@ -2,6 +2,30 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-22
+- stopped tracking **Bachelor Party D'eux** (ET00521598): same counters as **Bachelor Party Deux (Telugu)**
+- **Ramayana** (ET00451914): hourly -> every 30 min (best hourly figure in 24 h: 33.1K)
+- **DNK** (ET00521157): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **ENE Repeat** (ET00506990): hourly -> every 30 min (best hourly figure in 24 h: 7.0K)
+- **Sadhak Bamakhyapa** (ET00438080): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Aakasamlo Oka Tara** (ET00482388): hourly -> every 30 min (best hourly figure in 24 h: 6.9K)
+- **Om Operation Mole (Telugu)** (ET00504904): hourly -> every 30 min (best hourly figure in 24 h: 26.0K)
+- **The Odyssey** (ET00452034): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **How to Rob a Bank** (ET00501652): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dear Astronaut** (ET00518540): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Party Animals** (ET00519397): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Kaali Kheti** (ET00519979): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Alias Rukmini** (ET00521603): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Shankarabharanna** (ET00523262): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **View** (ET00524728): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Pratap** (ET00524867): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Kerub** (ET00526074): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Nanhey Dil** (ET00526276): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **AOT** (ET00526277): hourly -> every 30 min (best hourly figure in 24 h: 3.2K)
+- **Himalayan Gold** (ET00526363): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mitha Chuingam** (ET00526376): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dune Part Three 4dx** (ET00526391): hourly -> every 30 min (best hourly figure in 24 h: 3.3K)
+
 ## 2026-11-21
 - note: still above the 80 requests/hour budget after demotions
 
