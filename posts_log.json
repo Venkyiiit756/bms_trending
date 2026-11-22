@@ -5924,5 +5924,19 @@
   ],
   "status": "kit",
   "tweet": null
+ },
+ {
+  "slot": "2026-11-22 15:00",
+  "text": "🎟️ Tickets booked on BookMyShow, 2–3 PM (Sun 22 Nov)\n\n1. Ramayana: 33.25K\n2. Om Operation Mole (Telugu): 18.8K (▼2% vs Sat)\n3. Aakasamlo Oka Tara: 6.71K (▲2% vs Sat)\n4. ENE Repeat: 5.12K\n5. AOT: 2.33K (▼18% vs Sat)\n\n#Ramayana #OmOperationMole #BoxOffice",
+  "images": [
+   "posts/2026-11-22/1500/1.png",
+   "posts/2026-11-22/1500/2.png"
+  ],
+  "alt": [
+   "Table of tickets booked on BookMyShow in the last hour (2–3 PM, Sun 22 Nov), with change against the same hour yesterday: Ramayana 33.25K; Om Operation Mole (Telugu) 18.8K, ▼2% vs yesterday; Aakasamlo Oka Tara 6.71K, ▲2% vs yesterday; ENE Repeat 5.12K; AOT 2.33K, ▼18% vs yesterday",
+   "Table of tickets booked in the hour 2–3 PM on each of the last four days: Ramayana Thu 18.55K, Fri —, Sat —, Sun 33.25K; Om Operation Mole Thu 6.99K, Fri —, Sat 19.1K, Sun 18.8K; Aakasamlo Oka Tara Thu —, Fri —, Sat 6.59K, Sun 6.71K; ENE Repeat Thu 7.52K, Fri —, Sat —, Sun 5.12K; AOT Thu —, Fri 1.43K, Sat 2.84K, Sun 2.33K"
+  ],
+  "status": "kit",
+  "tweet": null
  }
 ]
