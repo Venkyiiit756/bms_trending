@@ -74,3 +74,5 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-22 14:58:24+05:30,AOT,1_hour,2.33K,2.33K tickets booked in last 1 hour,2026-11-22 14:33:24+05:30,change,2026-11-22 14:58:24+05:30
 2026-11-22 15:28:25+05:30,AOT,1_hour,7.48K,7.48K tickets booked in last 1 hour,2026-11-22 14:58:24+05:30,change,2026-11-22 15:28:25+05:30
 2026-11-22 15:58:14+05:30,AOT,1_hour,7.37K,7.37K tickets booked in last 1 hour,2026-11-22 15:28:25+05:30,change,2026-11-22 15:58:14+05:30
+2026-11-22 16:23:20+05:30,,error,403,HTTP 403 (failure 1),,error,
+2026-11-22 16:25:36+05:30,AOT,1_hour,6.83K,6.83K tickets booked in last 1 hour,2026-11-22 15:58:14+05:30,change,2026-11-22 16:25:36+05:30
