@@ -50,3 +50,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-22 19:03:56+05:30,Dune Part Three 4dx,24_hours,11.58K,11.58K tickets booked in last 24 hours,2026-11-22 18:35:56+05:30,change,2026-11-22 19:03:56+05:30
 2026-11-22 19:29:43+05:30,Dune Part Three 4dx,24_hours,11.34K,11.34K tickets booked in last 24 hours,2026-11-22 19:03:56+05:30,change,2026-11-22 19:29:43+05:30
 2026-11-22 20:18:46+05:30,Dune Part Three 4dx,24_hours,10.88K,10.88K tickets booked in last 24 hours,2026-11-22 19:29:43+05:30,change,2026-11-22 20:18:46+05:30
+2026-11-22 20:45:54+05:30,Dune Part Three 4dx,24_hours,10.17K,10.17K tickets booked in last 24 hours,2026-11-22 20:18:46+05:30,change,2026-11-22 20:45:54+05:30
