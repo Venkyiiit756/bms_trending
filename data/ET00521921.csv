@@ -261,3 +261,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-22 12:50:35+05:30,Aadi Anant,1_hour,1.06K,1.06K tickets booked in last 1 hour,2026-11-22 11:30:33+05:30,change,2026-11-22 12:50:35+05:30
 2026-11-22 14:15:32+05:30,Aadi Anant,1_hour,1.05K,1.05K tickets booked in last 1 hour,2026-11-22 12:50:35+05:30,change,2026-11-22 14:15:32+05:30
 2026-11-22 15:44:18+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-11-22 15:57:14+05:30,Aadi Anant,24_hours,14K,14K tickets booked in last 24 hours,2026-11-22 14:15:32+05:30,change,2026-11-22 15:57:14+05:30
