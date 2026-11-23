@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-23
+- **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): hourly -> every 30 min (best hourly figure in 24 h: 4.0K)
+
+## 2026-11-23
 - stopped tracking **Spiderman Brand New Day 3d** (ET00502600): same film as another listing
 
 ## 2026-11-23
