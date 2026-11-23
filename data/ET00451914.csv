@@ -1630,3 +1630,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-23 05:48:39+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-23 05:53:15+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-23 06:00:52+05:30,Ramayana,24_hours,461.46K,461.46K tickets booked in last 24 hours,2026-11-23 05:15:01+05:30,change,2026-11-23 06:00:52+05:30
+2026-11-23 06:30:52+05:30,Ramayana,24_hours,460.98K,460.98K tickets booked in last 24 hours,2026-11-23 06:00:52+05:30,change,2026-11-23 06:30:52+05:30
