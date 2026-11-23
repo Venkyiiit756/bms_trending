@@ -91,3 +91,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-23 11:59:08+05:30,Sathyavan Savithiri (Telugu),24_hours,6.37K,6.37K tickets booked in last 24 hours,2026-11-23 10:33:42+05:30,change,2026-11-23 11:59:08+05:30
 2026-11-23 13:24:21+05:30,Sathyavan Savithiri (Telugu),24_hours,5.55K,5.55K tickets booked in last 24 hours,2026-11-23 11:59:08+05:30,change,2026-11-23 13:24:21+05:30
 2026-11-23 14:31:46+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-23 15:44:39+05:30,,error,200,no trending widget in response (failure 1),,error,
