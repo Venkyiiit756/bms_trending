@@ -1669,7 +1669,9 @@
     "csv": "data/ET00502600.csv",
     "headers_csv": "data/ET00502600_headers.csv",
     "every": 21600,
-    "added": "2026-11-06"
+    "added": "2026-11-06",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00516269",

@@ -3,6 +3,9 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-23
+- stopped tracking **Spiderman Brand New Day 3d** (ET00502600): same film as another listing
+
+## 2026-11-23
 - stopped tracking **AOT** (ET00526277): same counters as **AOT - Aakasamlo Oka Tara**
 - **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Chandrayan** (ET00522567): every 6 h -> paused (best hourly figure in 24 h: 0.0K)

@@ -856,11 +856,22 @@
  "ET00502600": {
   "first_seen": "2026-11-06",
   "last_listed": null,
-  "name": "Spiderman Brand New Day 3d",
+  "name": "Spider-Man: Brand New Day",
   "page_slug": "spiderman-brand-new-day-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-09"
+  "upcoming": "2026-11-09",
+  "group": "EG00445652",
+  "languages": [
+   "English",
+   "Kannada",
+   "Hindi",
+   "Tamil",
+   "Telugu",
+   "Malayalam"
+  ],
+  "release": "Jul 30, 2026",
+  "book": true
  },
  "ET00504901": {
   "first_seen": "2026-11-04",
