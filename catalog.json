@@ -1216,12 +1216,12 @@
   "group": "EG00511916",
   "languages": [
    "Telugu",
-   "Hindi",
    "Malayalam",
    "Kannada",
-   "Tamil"
+   "Tamil",
+   "Hindi"
   ],
-  "release": "Nov 27, 2026",
+  "release": "Dec 31, 2027",
   "book": false,
   "listed_alert": "2026-11-02"
  },
