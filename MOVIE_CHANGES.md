@@ -2,6 +2,27 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-23
+- stopped tracking **AOT** (ET00526277): same counters as **AOT - Aakasamlo Oka Tara**
+- **Aadarsha Kutumbam House No: 47 (AK 47)** (ET00475942): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Chandrayan** (ET00522567): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Wildwood** (ET00516584): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Cat in the Hat** (ET00451881): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **G.O.A.T** (ET00476213): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **I Play Rocky** (ET00508520): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Maya Lady** (ET00524575): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **John Doe** (ET00525702): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Jayannth & the Jingo Pen** (ET00526028): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Miranda Warning** (ET00520053): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **The 1979** (ET00524643): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Mitra Rakshaka** (ET00525176): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **You Can See Everything** (ET00526232): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **BTS World Tour Arirang in Kaohsiung: Live Viewing** (ET00526257): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Samurai Vengeance** (ET00526281): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Apsara** (ET00526352): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Hail Mary** (ET00526356): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **King of Salangpur** (ET00519222): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-22
 - added **Desamuduru** (ET00002682), polled hourly
 - **John Doe** (ET00525702): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

@@ -648,7 +648,8 @@
     "csv": "data/ET00475942.csv",
     "headers_csv": "data/ET00475942_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00507314",
@@ -747,7 +748,8 @@
     "csv": "data/ET00522567.csv",
     "headers_csv": "data/ET00522567_headers.csv",
     "every": 21600,
-    "added": "2026-10-23"
+    "added": "2026-10-23",
+    "paused": true
   },
   {
     "key": "et00523104",
@@ -1004,7 +1006,8 @@
     "csv": "data/ET00516584.csv",
     "headers_csv": "data/ET00516584_headers.csv",
     "every": 21600,
-    "added": "2026-10-26"
+    "added": "2026-10-26",
+    "paused": true
   },
   {
     "key": "et00517730",
@@ -1271,7 +1274,8 @@
     "csv": "data/ET00451881.csv",
     "headers_csv": "data/ET00451881_headers.csv",
     "every": 21600,
-    "added": "2026-10-31"
+    "added": "2026-10-31",
+    "paused": true
   },
   {
     "key": "et00518647",
@@ -1444,7 +1448,8 @@
     "csv": "data/ET00476213.csv",
     "headers_csv": "data/ET00476213_headers.csv",
     "every": 21600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00518333",
@@ -1724,7 +1729,8 @@
     "csv": "data/ET00508520.csv",
     "headers_csv": "data/ET00508520_headers.csv",
     "every": 21600,
-    "added": "2026-11-08"
+    "added": "2026-11-08",
+    "paused": true
   },
   {
     "key": "et00469394",
@@ -1748,7 +1754,8 @@
     "csv": "data/ET00524575.csv",
     "headers_csv": "data/ET00524575_headers.csv",
     "every": 21600,
-    "added": "2026-11-11"
+    "added": "2026-11-11",
+    "paused": true
   },
   {
     "key": "et00525623",
@@ -1821,7 +1828,8 @@
     "csv": "data/ET00525702.csv",
     "headers_csv": "data/ET00525702_headers.csv",
     "every": 21600,
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "paused": true
   },
   {
     "key": "et00525943",
@@ -1845,7 +1853,8 @@
     "csv": "data/ET00526028.csv",
     "headers_csv": "data/ET00526028_headers.csv",
     "every": 21600,
-    "added": "2026-11-12"
+    "added": "2026-11-12",
+    "paused": true
   },
   {
     "key": "et00438080",
@@ -2317,7 +2326,9 @@
     "csv": "data/ET00526277.csv",
     "headers_csv": "data/ET00526277_headers.csv",
     "every": 1800,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "dup": true,
+    "paused": true
   },
   {
     "key": "et00526363",
@@ -2352,7 +2363,7 @@
     "page_slug": "miranda-warning",
     "csv": "data/ET00520053.csv",
     "headers_csv": "data/ET00520053_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2364,7 +2375,7 @@
     "page_slug": "the-1979",
     "csv": "data/ET00524643.csv",
     "headers_csv": "data/ET00524643_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2376,7 +2387,7 @@
     "page_slug": "mitra-rakshaka",
     "csv": "data/ET00525176.csv",
     "headers_csv": "data/ET00525176_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2388,7 +2399,7 @@
     "page_slug": "you-can-see-everything",
     "csv": "data/ET00526232.csv",
     "headers_csv": "data/ET00526232_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2400,7 +2411,7 @@
     "page_slug": "bts-world-tour-arirang-in-kaohsiung-live-viewing",
     "csv": "data/ET00526257.csv",
     "headers_csv": "data/ET00526257_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2412,7 +2423,7 @@
     "page_slug": "samurai-vengeance",
     "csv": "data/ET00526281.csv",
     "headers_csv": "data/ET00526281_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2424,7 +2435,7 @@
     "page_slug": "apsara",
     "csv": "data/ET00526352.csv",
     "headers_csv": "data/ET00526352_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2436,7 +2447,7 @@
     "page_slug": "hail-mary",
     "csv": "data/ET00526356.csv",
     "headers_csv": "data/ET00526356_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
@@ -2448,7 +2459,7 @@
     "page_slug": "king-of-salangpur",
     "csv": "data/ET00519222.csv",
     "headers_csv": "data/ET00519222_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-20"
   },
   {
