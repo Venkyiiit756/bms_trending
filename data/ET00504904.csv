@@ -285,3 +285,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-24 09:01:47+05:30,Om Operation Mole (Telugu),1_hour,2.22K,2.22K tickets booked in last 1 hour,2026-11-24 08:36:47+05:30,change,2026-11-24 09:01:47+05:30
 2026-11-24 09:31:48+05:30,Om Operation Mole (Telugu),1_hour,3.1K,3.1K tickets booked in last 1 hour,2026-11-24 09:01:47+05:30,change,2026-11-24 09:31:48+05:30
 2026-11-24 09:56:48+05:30,Om Operation Mole (Telugu),1_hour,3.34K,3.34K tickets booked in last 1 hour,2026-11-24 09:31:48+05:30,change,2026-11-24 09:56:48+05:30
+2026-11-24 10:26:48+05:30,Om Operation Mole (Telugu),1_hour,4.04K,4.04K tickets booked in last 1 hour,2026-11-24 09:56:48+05:30,change,2026-11-24 10:26:48+05:30
