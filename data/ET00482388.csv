@@ -316,3 +316,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-24 23:51:55+05:30,AOT - Aakasamlo Oka Tara,24_hours,74.28K,74.28K tickets booked in last 24 hours,2026-11-24 23:21:54+05:30,change,2026-11-24 23:51:55+05:30
 2026-11-25 00:21:15+05:30,AOT - Aakasamlo Oka Tara,24_hours,74.28K,74.28K tickets booked in last 24 hours,,heartbeat,
 2026-11-25 00:51:16+05:30,AOT - Aakasamlo Oka Tara,24_hours,74.08K,74.08K tickets booked in last 24 hours,2026-11-25 00:21:15+05:30,change,2026-11-25 00:51:16+05:30
+2026-11-25 01:18:36+05:30,,error,429,HTTP 429 (failure 1),,error,
