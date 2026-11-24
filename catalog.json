@@ -398,7 +398,14 @@
   "page_slug": "gunmaaster-g9",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-24",
+  "group": "EG00450646",
+  "languages": [
+   "Hindi"
+  ],
+  "release": "Nov 27, 2026",
+  "book": true,
+  "book_opened": "2026-11-24"
  },
  "ET00455480": {
   "first_seen": "2026-10-31",
@@ -511,6 +518,15 @@
   ],
   "release": "Feb 20, 2026",
   "book": false
+ },
+ "ET00470973": {
+  "first_seen": "2026-11-24",
+  "last_listed": null,
+  "name": "Niram",
+  "page_slug": "niram",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-24"
  },
  "ET00471138": {
   "first_seen": "2026-10-25",

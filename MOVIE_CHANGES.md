@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-24
+- added **Niram** (ET00470973), polled hourly
+- **ENE Repeat** (ET00506990): every 30 min -> hourly (best hourly figure in 24 h: 3.0K)
+
+## 2026-11-24
 - added **Gunmaaster G9** (ET00452908), polled hourly
 - added **Vrushakarma** (ET00472260), polled hourly
 
