@@ -391,6 +391,15 @@
   "release": "Dec 04, 2026",
   "book": false
  },
+ "ET00452908": {
+  "first_seen": "2026-11-24",
+  "last_listed": null,
+  "name": "Gunmaaster G9",
+  "page_slug": "gunmaaster-g9",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-24"
+ },
  "ET00455480": {
   "first_seen": "2026-10-31",
   "last_listed": null,
@@ -517,6 +526,26 @@
   ],
   "release": "Apr 07, 2027",
   "book": false
+ },
+ "ET00472260": {
+  "first_seen": "2026-11-24",
+  "last_listed": null,
+  "name": "Vrushakarma",
+  "page_slug": "vrushakarma",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-24",
+  "group": "EG00469786",
+  "languages": [
+   "Telugu",
+   "Malayalam",
+   "Kannada",
+   "Tamil",
+   "Hindi"
+  ],
+  "release": "Dec 04, 2026",
+  "book": false,
+  "listed_alert": "2026-11-24"
  },
  "ET00475942": {
   "first_seen": "2026-10-23",
@@ -1461,7 +1490,7 @@
   "page_slug": "dear-astronaut",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-23"
+  "upcoming": "2026-11-24"
  },
  "ET00518647": {
   "first_seen": "2026-10-31",

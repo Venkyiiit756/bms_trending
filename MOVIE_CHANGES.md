@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-24
+- added **Gunmaaster G9** (ET00452908), polled hourly
+- added **Vrushakarma** (ET00472260), polled hourly
+
+## 2026-11-24
 - **Cosmic Samson** (ET00525197): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Minnum Oar Iravu** (ET00526355): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
 - **Relax Aagi** (ET00526299): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

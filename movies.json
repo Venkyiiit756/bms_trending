@@ -2535,5 +2535,29 @@
     "headers_csv": "data/ET00002682_headers.csv",
     "every": 3600,
     "added": "2026-11-22"
+  },
+  {
+    "key": "et00452908",
+    "name": "Gunmaaster G9",
+    "eventcode": "ET00452908",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "gunmaaster-g9",
+    "csv": "data/ET00452908.csv",
+    "headers_csv": "data/ET00452908_headers.csv",
+    "every": 3600,
+    "added": "2026-11-24"
+  },
+  {
+    "key": "et00472260",
+    "name": "Vrushakarma",
+    "eventcode": "ET00472260",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "vrushakarma",
+    "csv": "data/ET00472260.csv",
+    "headers_csv": "data/ET00472260_headers.csv",
+    "every": 3600,
+    "added": "2026-11-24"
   }
 ]
