@@ -100,3 +100,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-24 15:09:03+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-24 15:22:26+05:30,Dune Part Three 4dx,24_hours,5.27K,5.27K tickets booked in last 24 hours,2026-11-24 14:12:30+05:30,change,2026-11-24 15:22:26+05:30
 2026-11-24 16:38:20+05:30,Dune Part Three 4dx,24_hours,5.26K,5.26K tickets booked in last 24 hours,2026-11-24 15:22:26+05:30,change,2026-11-24 16:38:20+05:30
+2026-11-24 17:37:11+05:30,Dune Part Three 4dx,24_hours,5.38K,5.38K tickets booked in last 24 hours,2026-11-24 16:38:20+05:30,change,2026-11-24 17:37:11+05:30
