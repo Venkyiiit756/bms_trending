@@ -2,6 +2,12 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-24
+- **Cosmic Samson** (ET00525197): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Minnum Oar Iravu** (ET00526355): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Relax Aagi** (ET00526299): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Pei Pidichirukku** (ET00526385): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-23
 - **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): hourly -> every 30 min (best hourly figure in 24 h: 4.0K)
 

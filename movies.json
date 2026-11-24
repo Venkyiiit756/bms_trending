@@ -2473,7 +2473,7 @@
     "page_slug": "cosmic-samson",
     "csv": "data/ET00525197.csv",
     "headers_csv": "data/ET00525197_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-21"
   },
   {
@@ -2485,7 +2485,7 @@
     "page_slug": "minnum-oar-iravu",
     "csv": "data/ET00526355.csv",
     "headers_csv": "data/ET00526355_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-21"
   },
   {
@@ -2497,7 +2497,7 @@
     "page_slug": "relax-aagi",
     "csv": "data/ET00526299.csv",
     "headers_csv": "data/ET00526299_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-21"
   },
   {
@@ -2509,7 +2509,7 @@
     "page_slug": "pei-pidichirukku",
     "csv": "data/ET00526385.csv",
     "headers_csv": "data/ET00526385_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-21"
   },
   {
