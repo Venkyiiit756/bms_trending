@@ -332,3 +332,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-25 12:50:54+05:30,Aadi Anant,24_hours,5.51K,5.51K tickets booked in last 24 hours,2026-11-25 11:54:43+05:30,change,2026-11-25 12:50:54+05:30
 2026-11-25 14:11:59+05:30,,error,200,no trending widget in response (failure 1),,error,
 2026-11-25 15:36:39+05:30,,error,200,no trending widget in response (failure 1),,error,
+2026-11-25 16:54:55+05:30,,error,200,no trending widget in response (failure 1),,error,
