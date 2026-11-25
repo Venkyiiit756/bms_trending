@@ -272,7 +272,7 @@
   "page_slug": "avengers-doomsday",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00437704",
   "languages": [
    "English",
@@ -340,7 +340,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00452034": {
   "first_seen": "2026-11-19",
@@ -383,7 +383,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -398,7 +398,7 @@
   "page_slug": "gunmaaster-g9",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00450646",
   "languages": [
    "Hindi"
@@ -414,7 +414,7 @@
   "page_slug": "king",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00453178",
   "languages": [
    "Hindi"
@@ -494,7 +494,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -526,7 +526,13 @@
   "page_slug": "niram",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25",
+  "group": "EG00468492",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Nov 27, 2026",
+  "book": false
  },
  "ET00471138": {
   "first_seen": "2026-10-25",
@@ -550,7 +556,7 @@
   "page_slug": "vrushakarma",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00469786",
   "languages": [
    "Telugu",
@@ -648,7 +654,7 @@
   "page_slug": "aakasamlo-oka-tara",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00479817",
   "languages": [
    "Telugu"
@@ -715,7 +721,7 @@
   "page_slug": "dune-part-three",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00489079",
   "languages": [
    "English",
@@ -806,6 +812,15 @@
   "book": true,
   "book_opened": "2026-11-19"
  },
+ "ET00496261": {
+  "first_seen": "2026-11-25",
+  "last_listed": null,
+  "name": "Yeh Prem Mol Liya",
+  "page_slug": "yeh-prem-mol-liya",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-25"
+ },
  "ET00496545": {
   "first_seen": "2026-10-20",
   "last_listed": "2026-11-03",
@@ -875,7 +890,7 @@
   "page_slug": "eetha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00499608",
   "languages": [
    "Hindi"
@@ -942,7 +957,7 @@
   "page_slug": "om-operation-mole-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -1017,7 +1032,7 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00503915",
   "languages": [
    "Telugu"
@@ -1268,7 +1283,7 @@
   "page_slug": "mysaa",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00511916",
   "languages": [
    "Telugu",
@@ -1602,7 +1617,7 @@
   "page_slug": "king-of-salangpur",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00519397": {
   "first_seen": "2026-11-19",
@@ -1719,7 +1734,7 @@
   "page_slug": "miranda-warning",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00520054": {
   "first_seen": "2026-10-18",
@@ -2070,7 +2085,7 @@
   "page_slug": "namit-malhotras-ramayana-3dtelugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00449671",
   "languages": [
    "Hindi",
@@ -2211,7 +2226,7 @@
   "page_slug": "godzilla-minus-zero",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24",
+  "upcoming": "2026-11-25",
   "group": "EG00522093",
   "languages": [
    "Japanese",
@@ -2270,7 +2285,7 @@
   "page_slug": "the-1979",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00524691": {
   "first_seen": "2026-11-04",
@@ -2352,7 +2367,7 @@
   "page_slug": "scene-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00525135": {
   "first_seen": "2026-11-03",
@@ -2386,7 +2401,7 @@
   "page_slug": "mitra-rakshaka",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00525197": {
   "first_seen": "2026-11-21",
@@ -2395,7 +2410,7 @@
   "page_slug": "cosmic-samson",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00525223": {
   "first_seen": "2026-11-06",
@@ -2653,7 +2668,7 @@
   "page_slug": "relax-aagi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00526300": {
   "first_seen": "2026-11-16",
@@ -2686,7 +2701,7 @@
   "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00526318": {
   "first_seen": "2026-11-17",
@@ -2728,7 +2743,7 @@
   "page_slug": "apsara",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00526355": {
   "first_seen": "2026-11-21",
@@ -2737,7 +2752,7 @@
   "page_slug": "minnum-oar-iravu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00526356": {
   "first_seen": "2026-11-20",
@@ -2778,7 +2793,7 @@
   "page_slug": "pei-pidichirukku",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-25"
  },
  "ET00526391": {
   "first_seen": "2026-11-21",

@@ -2061,7 +2061,7 @@
     "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
     "csv": "data/ET00526306.csv",
     "headers_csv": "data/ET00526306_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-17"
   },
   {
@@ -2533,7 +2533,7 @@
     "page_slug": "desamuduru",
     "csv": "data/ET00002682.csv",
     "headers_csv": "data/ET00002682_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-22"
   },
   {
@@ -2545,7 +2545,7 @@
     "page_slug": "gunmaaster-g9",
     "csv": "data/ET00452908.csv",
     "headers_csv": "data/ET00452908_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-24"
   },
   {
@@ -2571,5 +2571,17 @@
     "headers_csv": "data/ET00470973_headers.csv",
     "every": 3600,
     "added": "2026-11-24"
+  },
+  {
+    "key": "et00496261",
+    "name": "Yeh Prem Mol Liya",
+    "eventcode": "ET00496261",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "yeh-prem-mol-liya",
+    "csv": "data/ET00496261.csv",
+    "headers_csv": "data/ET00496261_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
   }
 ]
