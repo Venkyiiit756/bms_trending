@@ -3,6 +3,14 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-25
+- added **Hexed** (ET00504799), polled hourly
+- added **High** (ET00524564), polled hourly
+- added **Dads Little Friend** (ET00526414), polled hourly
+- **Wildwood** (ET00516584): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **I Play Rocky** (ET00508520): paused -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Yeh Prem Mol Liya** (ET00496261): hourly -> every 30 min (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-25
 - added **Family Pack** (ET00524729), polled hourly
 - added **Modern Missamma** (ET00526423), polled hourly
 

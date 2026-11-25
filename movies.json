@@ -1006,8 +1006,7 @@
     "csv": "data/ET00516584.csv",
     "headers_csv": "data/ET00516584_headers.csv",
     "every": 21600,
-    "added": "2026-10-26",
-    "paused": true
+    "added": "2026-10-26"
   },
   {
     "key": "et00517730",
@@ -1731,8 +1730,7 @@
     "csv": "data/ET00508520.csv",
     "headers_csv": "data/ET00508520_headers.csv",
     "every": 21600,
-    "added": "2026-11-08",
-    "paused": true
+    "added": "2026-11-08"
   },
   {
     "key": "et00469394",
@@ -2581,7 +2579,7 @@
     "page_slug": "yeh-prem-mol-liya",
     "csv": "data/ET00496261.csv",
     "headers_csv": "data/ET00496261_headers.csv",
-    "every": 3600,
+    "every": 1800,
     "added": "2026-11-25"
   },
   {
@@ -2605,6 +2603,42 @@
     "page_slug": "modern-missamma",
     "csv": "data/ET00526423.csv",
     "headers_csv": "data/ET00526423_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
+  },
+  {
+    "key": "et00504799",
+    "name": "Hexed",
+    "eventcode": "ET00504799",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hexed",
+    "csv": "data/ET00504799.csv",
+    "headers_csv": "data/ET00504799_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
+  },
+  {
+    "key": "et00524564",
+    "name": "High",
+    "eventcode": "ET00524564",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "high",
+    "csv": "data/ET00524564.csv",
+    "headers_csv": "data/ET00524564_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
+  },
+  {
+    "key": "et00526414",
+    "name": "Dads Little Friend",
+    "eventcode": "ET00526414",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dads-little-friend",
+    "csv": "data/ET00526414.csv",
+    "headers_csv": "data/ET00526414_headers.csv",
     "every": 3600,
     "added": "2026-11-25"
   }
