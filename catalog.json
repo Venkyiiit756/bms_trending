@@ -705,7 +705,7 @@
   "page_slug": "bhogi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-22",
+  "upcoming": "2026-11-25",
   "group": "EG00486433",
   "languages": [
    "Telugu"
@@ -1885,7 +1885,7 @@
   "page_slug": "alias-rukmini",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-22"
+  "upcoming": "2026-11-25"
  },
  "ET00521605": {
   "first_seen": "2026-10-23",
@@ -2318,6 +2318,15 @@
   ],
   "release": "Nov 20, 2026",
   "book": true
+ },
+ "ET00524729": {
+  "first_seen": "2026-11-25",
+  "last_listed": null,
+  "name": "Family Pack",
+  "page_slug": "family-pack",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-25"
  },
  "ET00524867": {
   "first_seen": "2026-11-19",
@@ -2803,5 +2812,14 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-21"
+ },
+ "ET00526423": {
+  "first_seen": "2026-11-25",
+  "last_listed": null,
+  "name": "Modern Missamma",
+  "page_slug": "modern-missamma",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-25"
  }
 }

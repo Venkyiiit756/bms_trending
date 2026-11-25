@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-25
+- added **Family Pack** (ET00524729), polled hourly
+- added **Modern Missamma** (ET00526423), polled hourly
+
+## 2026-11-25
 - added **Yeh Prem Mol Liya** (ET00496261), polled hourly
 - **Avengers Doomsday Msinfinity Vsn 3d** (ET00526306): every 30 min -> hourly (best hourly figure in 24 h: 2.6K)
 - **Desamuduru** (ET00002682): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

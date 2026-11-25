@@ -2583,5 +2583,29 @@
     "headers_csv": "data/ET00496261_headers.csv",
     "every": 3600,
     "added": "2026-11-25"
+  },
+  {
+    "key": "et00524729",
+    "name": "Family Pack",
+    "eventcode": "ET00524729",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "family-pack",
+    "csv": "data/ET00524729.csv",
+    "headers_csv": "data/ET00524729_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
+  },
+  {
+    "key": "et00526423",
+    "name": "Modern Missamma",
+    "eventcode": "ET00526423",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "modern-missamma",
+    "csv": "data/ET00526423.csv",
+    "headers_csv": "data/ET00526423_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
   }
 ]
