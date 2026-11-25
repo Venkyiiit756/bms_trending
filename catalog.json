@@ -367,7 +367,7 @@
   "page_slug": "spirit",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-21",
+  "upcoming": "2026-11-25",
   "group": "EG00449868",
   "languages": [
    "Hindi",
@@ -541,7 +541,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-19",
+  "upcoming": "2026-11-25",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -711,8 +711,9 @@
    "Telugu"
   ],
   "release": "Nov 27, 2026",
-  "book": false,
-  "listed_alert": "2026-11-03"
+  "book": true,
+  "listed_alert": "2026-11-03",
+  "book_opened": "2026-11-25"
  },
  "ET00491771": {
   "first_seen": "2026-10-25",
@@ -773,7 +774,7 @@
   "page_slug": "raaka",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-18",
+  "upcoming": "2026-11-25",
   "group": "EG00491817",
   "languages": [
    "Telugu"
@@ -946,7 +947,15 @@
   "name": "Hexed",
   "page_slug": "hexed",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00501800",
+  "languages": [
+   "English",
+   "Hindi"
+  ],
+  "release": "Nov 27, 2026",
+  "book": true,
+  "book_opened": "2026-11-25"
  },
  "ET00504901": {
   "first_seen": "2026-11-04",
@@ -1545,7 +1554,13 @@
   "page_slug": "appakutty",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-03"
+  "upcoming": "2026-11-03",
+  "group": "EG00515662",
+  "languages": [
+   "Tamil"
+  ],
+  "release": "Nov 20, 2026",
+  "book": true
  },
  "ET00518674": {
   "name": "Jailer 2",
@@ -2265,7 +2280,14 @@
   "name": "High",
   "page_slug": "high",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00522143",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 27, 2026",
+  "book": true,
+  "book_opened": "2026-11-25"
  },
  "ET00524575": {
   "first_seen": "2026-11-11",
@@ -2839,16 +2861,32 @@
  "ET00526414": {
   "first_seen": "2026-11-25",
   "last_listed": "2026-11-25",
-  "name": "Dads Little Friend",
+  "name": "Dad's Little Friend",
   "page_slug": "dads-little-friend",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00525952",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Nov 27, 2026",
+  "book": true,
+  "book_opened": "2026-11-25"
  },
  "ET00526423": {
   "first_seen": "2026-11-25",
   "last_listed": null,
   "name": "Modern Missamma",
   "page_slug": "modern-missamma",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-25"
+ },
+ "ET00526429": {
+  "first_seen": "2026-11-25",
+  "last_listed": null,
+  "name": "Charaibeti",
+  "page_slug": "charaibeti",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-25"

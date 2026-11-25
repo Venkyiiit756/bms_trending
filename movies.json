@@ -2119,7 +2119,7 @@
     "page_slug": "bachelor-party-deux-telugu",
     "csv": "data/ET00526328.csv",
     "headers_csv": "data/ET00526328_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-17"
   },
   {
@@ -2632,13 +2632,25 @@
   },
   {
     "key": "et00526414",
-    "name": "Dads Little Friend",
+    "name": "Dad's Little Friend",
     "eventcode": "ET00526414",
     "region_code": "HYD",
     "region_slug": "hyderabad",
     "page_slug": "dads-little-friend",
     "csv": "data/ET00526414.csv",
     "headers_csv": "data/ET00526414_headers.csv",
+    "every": 3600,
+    "added": "2026-11-25"
+  },
+  {
+    "key": "et00526429",
+    "name": "Charaibeti",
+    "eventcode": "ET00526429",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "charaibeti",
+    "csv": "data/ET00526429.csv",
+    "headers_csv": "data/ET00526429_headers.csv",
     "every": 3600,
     "added": "2026-11-25"
   }

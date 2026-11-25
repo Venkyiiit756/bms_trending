@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-25
+- added **Charaibeti** (ET00526429), polled hourly
+- **Bachelor Party Deux (Telugu)** (ET00526328): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-25
 - added **Hexed** (ET00504799), polled hourly
 - added **High** (ET00524564), polled hourly
 - added **Dads Little Friend** (ET00526414), polled hourly
