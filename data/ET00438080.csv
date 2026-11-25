@@ -126,3 +126,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-25 05:26:49+05:30,Sadhak Bamakhyapa,24_hours,12.06K,12.06K tickets booked in last 24 hours,2026-11-25 04:24:09+05:30,change,2026-11-25 05:26:49+05:30
 2026-11-25 06:23:01+05:30,Sadhak Bamakhyapa,24_hours,12.05K,12.05K tickets booked in last 24 hours,2026-11-25 05:26:49+05:30,change,2026-11-25 06:23:01+05:30
 2026-11-25 07:45:51+05:30,Sadhak Bamakhyapa,24_hours,11.99K,11.99K tickets booked in last 24 hours,2026-11-25 06:23:01+05:30,change,2026-11-25 07:45:51+05:30
+2026-11-25 08:41:47+05:30,Sadhak Bamakhyapa,24_hours,11.8K,11.8K tickets booked in last 24 hours,2026-11-25 07:45:51+05:30,change,2026-11-25 08:41:47+05:30
