@@ -17,3 +17,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-25 17:21:23+05:30,Yeh Prem Mol Liya,24_hours,5.32K,5.32K tickets booked in last 24 hours,2026-11-25 16:55:55+05:30,change,2026-11-25 17:21:23+05:30
 2026-11-25 17:51:23+05:30,Yeh Prem Mol Liya,24_hours,5.5K,5.5K tickets booked in last 24 hours,2026-11-25 17:21:23+05:30,change,2026-11-25 17:51:23+05:30
 2026-11-25 18:18:44+05:30,,error,429,HTTP 429 (failure 1),,error,
+2026-11-25 18:20:47+05:30,Yeh Prem Mol Liya,24_hours,5.73K,5.73K tickets booked in last 24 hours,2026-11-25 17:51:23+05:30,change,2026-11-25 18:20:47+05:30
