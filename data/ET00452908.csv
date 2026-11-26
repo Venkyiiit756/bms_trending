@@ -95,3 +95,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-26 22:07:17+05:30,Gunmaaster G9,1_hour,1.01K,1.01K tickets booked in last 1 hour,2026-11-26 21:37:16+05:30,change,2026-11-26 22:07:17+05:30
 2026-11-26 22:32:25+05:30,Gunmaaster G9,1_hour,1.01K,1.01K tickets booked in last 1 hour,,heartbeat,
 2026-11-26 22:58:01+05:30,Gunmaaster G9,24_hours,11.48K,11.48K tickets booked in last 24 hours,2026-11-26 22:32:25+05:30,change,2026-11-26 22:58:01+05:30
+2026-11-26 23:28:01+05:30,Gunmaaster G9,1_hour,1.14K,1.14K tickets booked in last 1 hour,2026-11-26 22:58:01+05:30,change,2026-11-26 23:28:01+05:30
