@@ -3,6 +3,10 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-26
+- added **Nellai Boys** (ET00526455), polled hourly
+- **Bouma** (ET00513613): hourly -> paused (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-26
 - added **Haindava** (ET00428393), polled hourly
 - added **Nanna Kutty** (ET00526417), polled hourly
 - added **Hexed 3d** (ET00526419), polled hourly

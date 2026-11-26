@@ -1399,7 +1399,8 @@
     "csv": "data/ET00513613.csv",
     "headers_csv": "data/ET00513613_headers.csv",
     "every": 3600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00519811",
@@ -2696,6 +2697,18 @@
     "page_slug": "hexed-3d",
     "csv": "data/ET00526419.csv",
     "headers_csv": "data/ET00526419_headers.csv",
+    "every": 3600,
+    "added": "2026-11-26"
+  },
+  {
+    "key": "et00526455",
+    "name": "Nellai Boys",
+    "eventcode": "ET00526455",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nellai-boys",
+    "csv": "data/ET00526455.csv",
+    "headers_csv": "data/ET00526455_headers.csv",
     "every": 3600,
     "added": "2026-11-26"
   }

@@ -1561,7 +1561,7 @@
   "page_slug": "dear-astronaut",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-24"
+  "upcoming": "2026-11-26"
  },
  "ET00518647": {
   "first_seen": "2026-10-31",
@@ -2921,6 +2921,15 @@
   "last_listed": null,
   "name": "Charaibeti",
   "page_slug": "charaibeti",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-26"
+ },
+ "ET00526455": {
+  "first_seen": "2026-11-26",
+  "last_listed": null,
+  "name": "Nellai Boys",
+  "page_slug": "nellai-boys",
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-26"
