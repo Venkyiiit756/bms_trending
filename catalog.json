@@ -214,6 +214,22 @@
   "release": "May 23, 2025",
   "book": true
  },
+ "ET00428393": {
+  "first_seen": "2026-11-26",
+  "last_listed": null,
+  "name": "Haindava",
+  "page_slug": "haindava",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-26",
+  "group": "EG00426488",
+  "languages": [
+   "Telugu"
+  ],
+  "release": "Dec 31, 2026",
+  "book": false,
+  "listed_alert": "2026-11-26"
+ },
  "ET00429213": {
   "name": "Rajini: The Jailer 2",
   "page_slug": "rajini-the-jailer-2",
@@ -340,7 +356,7 @@
   "release": "Nov 05, 2026",
   "book": true,
   "book_opened": "2026-10-23",
-  "upcoming": "2026-11-25"
+  "upcoming": "2026-11-26"
  },
  "ET00452034": {
   "first_seen": "2026-11-19",
@@ -383,7 +399,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-25",
+  "upcoming": "2026-11-26",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -2856,7 +2872,7 @@
   "page_slug": "dune-part-three-4dx",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-21"
+  "upcoming": "2026-11-26"
  },
  "ET00526414": {
   "first_seen": "2026-11-25",
@@ -2872,6 +2888,24 @@
   "release": "Nov 27, 2026",
   "book": true,
   "book_opened": "2026-11-25"
+ },
+ "ET00526417": {
+  "first_seen": "2026-11-26",
+  "last_listed": null,
+  "name": "Nanna Kutty",
+  "page_slug": "nanna-kutty",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-26"
+ },
+ "ET00526419": {
+  "first_seen": "2026-11-26",
+  "last_listed": null,
+  "name": "Hexed 3d",
+  "page_slug": "hexed-3d",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-26"
  },
  "ET00526423": {
   "first_seen": "2026-11-25",

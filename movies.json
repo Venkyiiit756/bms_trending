@@ -2171,7 +2171,7 @@
     "page_slug": "sathyavan-savithiri-telugu",
     "csv": "data/ET00522600.csv",
     "headers_csv": "data/ET00522600_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-19"
   },
   {
@@ -2662,5 +2662,41 @@
     "headers_csv": "data/ET00526429_headers.csv",
     "every": 3600,
     "added": "2026-11-25"
+  },
+  {
+    "key": "et00428393",
+    "name": "Haindava",
+    "eventcode": "ET00428393",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "haindava",
+    "csv": "data/ET00428393.csv",
+    "headers_csv": "data/ET00428393_headers.csv",
+    "every": 3600,
+    "added": "2026-11-26"
+  },
+  {
+    "key": "et00526417",
+    "name": "Nanna Kutty",
+    "eventcode": "ET00526417",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "nanna-kutty",
+    "csv": "data/ET00526417.csv",
+    "headers_csv": "data/ET00526417_headers.csv",
+    "every": 3600,
+    "added": "2026-11-26"
+  },
+  {
+    "key": "et00526419",
+    "name": "Hexed 3d",
+    "eventcode": "ET00526419",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hexed-3d",
+    "csv": "data/ET00526419.csv",
+    "headers_csv": "data/ET00526419_headers.csv",
+    "every": 3600,
+    "added": "2026-11-26"
   }
 ]

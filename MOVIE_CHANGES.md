@@ -3,6 +3,12 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-26
+- added **Haindava** (ET00428393), polled hourly
+- added **Nanna Kutty** (ET00526417), polled hourly
+- added **Hexed 3d** (ET00526419), polled hourly
+- **Sathyavan Savithiri (Telugu)** (ET00522600): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+
+## 2026-11-26
 - **DNK** (ET00521157): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Mahasakthi** (ET00525155): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
 - **Dark Chocolate** (ET00522245): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
