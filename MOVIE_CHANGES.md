@@ -2,6 +2,18 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-26
+- **DNK** (ET00521157): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Mahasakthi** (ET00525155): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Dark Chocolate** (ET00522245): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Mirzapur: The Movie** (ET00417686): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **The Hunger Games: Sunrise on the Reaping** (ET00496180): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Party Animals** (ET00519397): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Shankarabharanna** (ET00523262): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **View** (ET00524728): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Pratap** (ET00524867): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+- **Nanhey Dil** (ET00526276): every 6 h -> paused (best hourly figure in 24 h: 0.0K)
+
 ## 2026-11-25
 - added **Charaibeti** (ET00526429), polled hourly
 - **Bachelor Party Deux (Telugu)** (ET00526328): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)

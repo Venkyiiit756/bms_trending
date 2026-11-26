@@ -871,7 +871,8 @@
     "csv": "data/ET00521157.csv",
     "headers_csv": "data/ET00521157_headers.csv",
     "every": 21600,
-    "added": "2026-10-24"
+    "added": "2026-10-24",
+    "paused": true
   },
   {
     "key": "et00523167",
@@ -1498,7 +1499,8 @@
     "csv": "data/ET00525155.csv",
     "headers_csv": "data/ET00525155_headers.csv",
     "every": 21600,
-    "added": "2026-11-03"
+    "added": "2026-11-03",
+    "paused": true
   },
   {
     "key": "et00525031",
@@ -1632,7 +1634,8 @@
     "csv": "data/ET00522245.csv",
     "headers_csv": "data/ET00522245_headers.csv",
     "every": 21600,
-    "added": "2026-11-06"
+    "added": "2026-11-06",
+    "paused": true
   },
   {
     "key": "et00524723",
@@ -2012,7 +2015,8 @@
     "csv": "data/ET00417686.csv",
     "headers_csv": "data/ET00417686_headers.csv",
     "every": 21600,
-    "added": "2026-11-16"
+    "added": "2026-11-16",
+    "paused": true
   },
   {
     "key": "et00526282",
@@ -2083,7 +2087,7 @@
     "page_slug": "the-hunger-games-sunrise-on-the-reaping",
     "csv": "data/ET00496180.csv",
     "headers_csv": "data/ET00496180_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-17"
   },
   {
@@ -2216,7 +2220,8 @@
     "csv": "data/ET00519397.csv",
     "headers_csv": "data/ET00519397_headers.csv",
     "every": 21600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "paused": true
   },
   {
     "key": "et00519979",
@@ -2266,7 +2271,8 @@
     "csv": "data/ET00523262.csv",
     "headers_csv": "data/ET00523262_headers.csv",
     "every": 21600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "paused": true
   },
   {
     "key": "et00524728",
@@ -2278,7 +2284,8 @@
     "csv": "data/ET00524728.csv",
     "headers_csv": "data/ET00524728_headers.csv",
     "every": 21600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "paused": true
   },
   {
     "key": "et00524867",
@@ -2290,7 +2297,8 @@
     "csv": "data/ET00524867.csv",
     "headers_csv": "data/ET00524867_headers.csv",
     "every": 21600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "paused": true
   },
   {
     "key": "et00526074",
@@ -2314,7 +2322,8 @@
     "csv": "data/ET00526276.csv",
     "headers_csv": "data/ET00526276_headers.csv",
     "every": 21600,
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "paused": true
   },
   {
     "key": "et00526277",
