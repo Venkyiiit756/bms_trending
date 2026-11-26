@@ -181,3 +181,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-26 11:31:44+05:30,Godzilla Minus Zero,24_hours,6.63K,6.63K tickets booked in last 24 hours,2026-11-26 10:07:17+05:30,change,2026-11-26 11:31:44+05:30
 2026-11-26 12:55:37+05:30,Godzilla Minus Zero,24_hours,6.78K,6.78K tickets booked in last 24 hours,2026-11-26 11:31:44+05:30,change,2026-11-26 12:55:37+05:30
 2026-11-26 14:36:48+05:30,Godzilla Minus Zero,24_hours,6.84K,6.84K tickets booked in last 24 hours,2026-11-26 12:55:37+05:30,change,2026-11-26 14:36:48+05:30
+2026-11-26 15:53:21+05:30,Godzilla Minus Zero,24_hours,6.84K,6.84K tickets booked in last 24 hours,,heartbeat,
