@@ -44,6 +44,30 @@
   "release": "Jan 12, 2007",
   "book": true
  },
+ "ET00004832": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Robin Hood",
+  "page_slug": "robin-hood",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00005079": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Expendables",
+  "page_slug": "the-expendables",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00009835": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Men In Black 3",
+  "page_slug": "men-in-black-3",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00031160": {
   "first_seen": "2026-10-26",
   "last_listed": null,
@@ -59,6 +83,22 @@
   "release": "Jul 31, 2015",
   "book": false
  },
+ "ET00038221": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Poseidon Rex",
+  "page_slug": "poseidon-rex",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00087702": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Kursk",
+  "page_slug": "kursk",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00114750": {
   "first_seen": "2026-10-22",
   "last_listed": "2026-10-28",
@@ -72,6 +112,54 @@
   ],
   "release": "Oct 23, 2026",
   "book": true
+ },
+ "ET00302706": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Gatecrash",
+  "page_slug": "gatecrash",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00306876": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Trash",
+  "page_slug": "trash",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00306953": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Sum Of All Fears",
+  "page_slug": "the-sum-of-all-fears",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00306985": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Jaws 2",
+  "page_slug": "jaws-2",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00311114": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Vertical Limit",
+  "page_slug": "vertical-limit",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00311712": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Uncharted",
+  "page_slug": "uncharted",
+  "last_checked": null,
+  "figure": null
  },
  "ET00312314": {
   "name": "Varsham (Telugu)",
@@ -88,6 +176,22 @@
   "book": true,
   "upcoming": "2026-10-25"
  },
+ "ET00314240": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Night Drive",
+  "page_slug": "night-drive",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00316141": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Sister Season 1",
+  "page_slug": "the-sister-season-1",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00322950": {
   "first_seen": "2026-10-24",
   "last_listed": null,
@@ -102,6 +206,62 @@
   ],
   "release": "Sep 30, 2005",
   "book": true
+ },
+ "ET00325459": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Lost City",
+  "page_slug": "the-lost-city",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00335492": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Vivo",
+  "page_slug": "vivo",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00360023": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Swan Princess A Fairytale Is Born",
+  "page_slug": "the-swan-princess-a-fairytale-is-born",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00363558": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Lost And Found",
+  "page_slug": "lost-and-found",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00365790": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Stories Not To Be Told",
+  "page_slug": "stories-not-to-be-told",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00375433": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Wrong Place",
+  "page_slug": "wrong-place",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00386198": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Immaculate",
+  "page_slug": "immaculate",
+  "last_checked": null,
+  "figure": null
  },
  "ET00395765": {
   "first_seen": "2026-10-24",
@@ -138,6 +298,14 @@
   "release": "Dec 20, 2024",
   "book": true
  },
+ "ET00398909": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Ghostbusters Past Present And Future",
+  "page_slug": "ghostbusters-past-present-and-future",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00401459": {
   "first_seen": "2026-10-24",
   "last_listed": null,
@@ -173,7 +341,7 @@
   "page_slug": "premada-oorali",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00410984",
   "languages": [
@@ -197,6 +365,14 @@
   "release": "Sep 04, 2026",
   "book": true
  },
+ "ET00419530": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Mission Impossible The Final Reckoning",
+  "page_slug": "mission-impossible-the-final-reckoning",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00421831": {
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
@@ -213,6 +389,14 @@
   ],
   "release": "May 23, 2025",
   "book": true
+ },
+ "ET00424768": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Butchers Crossing",
+  "page_slug": "butchers-crossing",
+  "last_checked": null,
+  "figure": null
  },
  "ET00428393": {
   "first_seen": "2026-11-26",
@@ -235,7 +419,7 @@
   "page_slug": "rajini-the-jailer-2",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00427297",
   "languages": [
@@ -245,12 +429,20 @@
   "book": true,
   "upcoming": "2026-11-11"
  },
+ "ET00430332": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "The Monkey",
+  "page_slug": "the-monkey",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00436621": {
   "name": "The Paradise",
   "page_slug": "the-paradise",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00434659",
   "languages": [
@@ -283,7 +475,7 @@
  },
  "ET00439706": {
   "first_seen": "2026-10-24",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Avengers: Doomsday",
   "page_slug": "avengers-doomsday",
   "last_checked": null,
@@ -300,6 +492,14 @@
   "book": true,
   "listed_alert": "2026-10-24",
   "book_opened": "2026-11-17"
+ },
+ "ET00439747": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "A Meek One",
+  "page_slug": "a-meek-one",
+  "last_checked": null,
+  "figure": null
  },
  "ET00447840": {
   "name": "Spider-Man: Brand New Day",
@@ -321,6 +521,22 @@
   "book": true,
   "upcoming": "2026-11-10"
  },
+ "ET00448295": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Together",
+  "page_slug": "together",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00449281": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Whiteout",
+  "page_slug": "whiteout",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00451881": {
   "first_seen": "2026-10-31",
   "last_listed": "2026-11-16",
@@ -340,7 +556,7 @@
  },
  "ET00451914": {
   "first_seen": "2026-10-22",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Ramayana",
   "page_slug": "namit-malhotras-ramayana",
   "last_checked": null,
@@ -409,7 +625,7 @@
  },
  "ET00452908": {
   "first_seen": "2026-11-24",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Gunmaaster G9",
   "page_slug": "gunmaaster-g9",
   "last_checked": null,
@@ -438,6 +654,14 @@
   "release": "Dec 24, 2026",
   "book": false
  },
+ "ET00456314": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Splitsville",
+  "page_slug": "splitsville",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00460536": {
   "first_seen": "2026-11-01",
   "last_listed": null,
@@ -459,7 +683,7 @@
   "page_slug": "baa-baa-black-sheep",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00462826",
   "languages": [
@@ -618,6 +842,14 @@
   "book": true,
   "book_opened": "2026-11-11"
  },
+ "ET00476556": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Turbulence",
+  "page_slug": "turbulence",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00477243": {
   "name": "Digger",
   "page_slug": "digger",
@@ -637,7 +869,7 @@
   "page_slug": "drishyam-the-conclusion",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00475391",
   "languages": [
@@ -651,7 +883,7 @@
   "page_slug": "street-fighter",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-28",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00479093",
   "languages": [
@@ -663,9 +895,17 @@
   "release": "Oct 16, 2026",
   "book": true
  },
+ "ET00481740": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Rogue Agent",
+  "page_slug": "rogue-agent",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00482388": {
   "first_seen": "2026-11-13",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "AOT - Aakasamlo Oka Tara",
   "page_slug": "aakasamlo-oka-tara",
   "last_checked": null,
@@ -685,7 +925,7 @@
   "page_slug": "ranabaali",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00480978",
   "languages": [
@@ -716,7 +956,7 @@
  },
  "ET00489093": {
   "first_seen": "2026-11-03",
-  "last_listed": null,
+  "last_listed": "2026-11-27",
   "name": "Bhogi",
   "page_slug": "bhogi",
   "last_checked": null,
@@ -733,7 +973,7 @@
  },
  "ET00491771": {
   "first_seen": "2026-10-25",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Dune: Part Three",
   "page_slug": "dune-part-three",
   "last_checked": null,
@@ -815,7 +1055,7 @@
  },
  "ET00496180": {
   "first_seen": "2026-11-17",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "The Hunger Games: Sunrise on the Reaping",
   "page_slug": "the-hunger-games-sunrise-on-the-reaping",
   "last_checked": null,
@@ -831,7 +1071,7 @@
  },
  "ET00496261": {
   "first_seen": "2026-11-25",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Yeh Prem Mol Liya",
   "page_slug": "yeh-prem-mol-liya",
   "last_checked": null,
@@ -865,7 +1105,7 @@
   "name": "Verity",
   "page_slug": "verity",
   "first_seen": "2026-10-18",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "last_checked": null,
   "figure": null,
   "group": "EG00494473",
@@ -959,7 +1199,7 @@
  },
  "ET00504799": {
   "first_seen": "2026-11-25",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Hexed",
   "page_slug": "hexed",
   "last_checked": null,
@@ -975,7 +1215,7 @@
  },
  "ET00504901": {
   "first_seen": "2026-11-04",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "O.M Operation Mole",
   "page_slug": "om-chapter-1-udhiram",
   "last_checked": null,
@@ -1004,8 +1244,8 @@
   "page_slug": "heart-of-the-beast",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": null,
-  "figure": null,
+  "last_checked": "2026-11-27",
+  "figure": "none",
   "group": "EG00501924",
   "languages": [
    "English"
@@ -1067,7 +1307,7 @@
  },
  "ET00506990": {
   "first_seen": "2026-10-29",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "ENE Repeat",
   "page_slug": "ene-repeat",
   "last_checked": null,
@@ -1101,8 +1341,8 @@
   "name": "Doraemon: Castle of the Undersea Devil",
   "page_slug": "doraemon-castle-of-the-undersea-devil",
   "first_seen": "2026-10-18",
-  "last_listed": "2026-11-25",
-  "last_checked": "2026-11-25",
+  "last_listed": "2026-11-27",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00504262",
   "languages": [
@@ -1118,7 +1358,7 @@
   "page_slug": "hanuman-ansh",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-25",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00504662",
   "languages": [
@@ -1280,8 +1520,8 @@
   "page_slug": "avengers-endgame-encore",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": null,
-  "figure": null,
+  "last_checked": "2026-11-27",
+  "figure": "none",
   "group": "EG00511006",
   "languages": [
    "English",
@@ -1350,7 +1590,7 @@
   "page_slug": "baththa",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00512348",
   "languages": [
@@ -1386,7 +1626,7 @@
  },
  "ET00516584": {
   "first_seen": "2026-10-26",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Wildwood",
   "page_slug": "wildwood",
   "last_checked": null,
@@ -1514,7 +1754,7 @@
   "page_slug": "premane-oorilo",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-22",
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00515048",
   "languages": [
@@ -1535,7 +1775,7 @@
  },
  "ET00518333": {
   "first_seen": "2026-11-03",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Ghost Soldier",
   "page_slug": "ghost-soldier",
   "last_checked": null,
@@ -1574,7 +1814,7 @@
  },
  "ET00518647": {
   "first_seen": "2026-10-31",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Appakutty",
   "page_slug": "appakutty",
   "last_checked": null,
@@ -1592,7 +1832,7 @@
   "page_slug": "jailer-2",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-12",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00515691",
   "languages": [
@@ -1628,7 +1868,7 @@
   "page_slug": "thella-kaagitham",
   "first_seen": "2026-10-18",
   "last_listed": null,
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none"
  },
  "ET00518916": {
@@ -1702,7 +1942,7 @@
   "page_slug": "comrade-kalyan",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00516643",
   "languages": [
@@ -1716,7 +1956,7 @@
   "page_slug": "dorothy-telugu",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-21",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00516889",
   "languages": [
@@ -1742,7 +1982,7 @@
  },
  "ET00519979": {
   "first_seen": "2026-11-19",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Kaali Kheti",
   "page_slug": "kaali-kheti",
   "last_checked": null,
@@ -1791,7 +2031,7 @@
   "page_slug": "mayookha",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-19",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00517184",
   "languages": [
@@ -1842,7 +2082,7 @@
   "page_slug": "garividi-lakshmi",
   "first_seen": "2026-10-18",
   "last_listed": "2026-11-03",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "upcoming": "2026-10-29",
   "group": "EG00517795",
@@ -1886,7 +2126,7 @@
   "page_slug": "crazy-kalyanam",
   "first_seen": "2026-10-18",
   "last_listed": "2026-10-28",
-  "last_checked": "2026-11-25",
+  "last_checked": "2026-11-27",
   "figure": "none",
   "group": "EG00518328",
   "languages": [
@@ -2074,6 +2314,14 @@
   "figure": null,
   "upcoming": "2026-10-30"
  },
+ "ET00522380": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Paper Tiger",
+  "page_slug": "paper-tiger",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00522401": {
   "first_seen": "2026-11-03",
   "last_listed": "2026-11-03",
@@ -2168,6 +2416,14 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-10-29"
+ },
+ "ET00523105": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Zip Wire",
+  "page_slug": "zip-wire",
+  "last_checked": null,
+  "figure": null
  },
  "ET00523155": {
   "first_seen": "2026-10-23",
@@ -2312,7 +2568,7 @@
  },
  "ET00524518": {
   "first_seen": "2026-10-30",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Godzilla Minus Zero",
   "page_slug": "godzilla-minus-zero",
   "last_checked": null,
@@ -2337,7 +2593,7 @@
  },
  "ET00524564": {
   "first_seen": "2026-11-25",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "High",
   "page_slug": "high",
   "last_checked": null,
@@ -2520,7 +2776,7 @@
  },
  "ET00525197": {
   "first_seen": "2026-11-21",
-  "last_listed": null,
+  "last_listed": "2026-11-27",
   "name": "Cosmic Samson",
   "page_slug": "cosmic-samson",
   "last_checked": null,
@@ -2767,6 +3023,14 @@
   "release": "Nov 20, 2026",
   "book": true
  },
+ "ET00526279": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Bala 369 Atajani Kanche",
+  "page_slug": "bala-369-atajani-kanche",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00526281": {
   "first_seen": "2026-11-20",
   "last_listed": null,
@@ -2814,7 +3078,7 @@
  },
  "ET00526300": {
   "first_seen": "2026-11-16",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Badmash Pottey Returns",
   "page_slug": "badmash-pottey-returns",
   "last_checked": null,
@@ -2898,7 +3162,7 @@
  },
  "ET00526356": {
   "first_seen": "2026-11-20",
-  "last_listed": null,
+  "last_listed": "2026-11-27",
   "name": "Hail Mary",
   "page_slug": "hail-mary",
   "last_checked": null,
@@ -2946,9 +3210,25 @@
   "figure": null,
   "upcoming": "2026-11-27"
  },
+ "ET00526412": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Danger Boys",
+  "page_slug": "danger-boys",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00526413": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Aloochana",
+  "page_slug": "aloochana",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00526414": {
   "first_seen": "2026-11-25",
-  "last_listed": "2026-11-25",
+  "last_listed": "2026-11-27",
   "name": "Dad's Little Friend",
   "page_slug": "dads-little-friend",
   "last_checked": null,
@@ -2963,7 +3243,7 @@
  },
  "ET00526417": {
   "first_seen": "2026-11-26",
-  "last_listed": null,
+  "last_listed": "2026-11-27",
   "name": "Nanna Kutty",
   "page_slug": "nanna-kutty",
   "last_checked": null,
@@ -2972,7 +3252,7 @@
  },
  "ET00526418": {
   "first_seen": "2026-11-27",
-  "last_listed": null,
+  "last_listed": "2026-11-27",
   "name": "Hey Kannamma",
   "page_slug": "hey-kannamma",
   "last_checked": null,
@@ -3005,6 +3285,30 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-26"
+ },
+ "ET00526431": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Phule (Telugu)",
+  "page_slug": "phule-telugu",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00526442": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "I Hate Marriage",
+  "page_slug": "i-hate-marriage",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00526449": {
+  "first_seen": "2026-11-27",
+  "last_listed": "2026-11-27",
+  "name": "Sidhu Gadi Love Story",
+  "page_slug": "sidhu-gadi-love-story",
+  "last_checked": null,
+  "figure": null
  },
  "ET00526455": {
   "first_seen": "2026-11-26",

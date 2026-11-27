@@ -3,6 +3,50 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-27
+- added **Robin Hood** (ET00004832), polled hourly
+- added **The Expendables** (ET00005079), polled hourly
+- added **Men In Black 3** (ET00009835), polled hourly
+- added **Poseidon Rex** (ET00038221), polled hourly
+- added **Kursk** (ET00087702), polled hourly
+- added **Gatecrash** (ET00302706), polled hourly
+- added **Trash** (ET00306876), polled hourly
+- added **The Sum Of All Fears** (ET00306953), polled hourly
+- added **Jaws 2** (ET00306985), polled hourly
+- added **Vertical Limit** (ET00311114), polled hourly
+- added **Uncharted** (ET00311712), polled hourly
+- added **Night Drive** (ET00314240), polled hourly
+- added **The Sister Season 1** (ET00316141), polled hourly
+- added **The Lost City** (ET00325459), polled hourly
+- added **Vivo** (ET00335492), polled hourly
+- added **The Swan Princess A Fairytale Is Born** (ET00360023), polled hourly
+- added **Lost And Found** (ET00363558), polled hourly
+- added **Stories Not To Be Told** (ET00365790), polled hourly
+- added **Wrong Place** (ET00375433), polled hourly
+- added **Immaculate** (ET00386198), polled hourly
+- added **Ghostbusters Past Present And Future** (ET00398909), polled hourly
+- added **Mission Impossible The Final Reckoning** (ET00419530), polled hourly
+- added **Butchers Crossing** (ET00424768), polled hourly
+- added **The Monkey** (ET00430332), polled hourly
+- added **A Meek One** (ET00439747), polled hourly
+- added **Together** (ET00448295), polled hourly
+- added **Whiteout** (ET00449281), polled hourly
+- added **Splitsville** (ET00456314), polled hourly
+- added **Turbulence** (ET00476556), polled hourly
+- added **Rogue Agent** (ET00481740), polled hourly
+- added **Paper Tiger** (ET00522380), polled hourly
+- added **Zip Wire** (ET00523105), polled hourly
+- added **Bala 369 Atajani Kanche** (ET00526279), polled hourly
+- added **Danger Boys** (ET00526412), polled hourly
+- added **Aloochana** (ET00526413), polled hourly
+- added **Phule (Telugu)** (ET00526431), polled hourly
+- added **I Hate Marriage** (ET00526442), polled hourly
+- added **Sidhu Gadi Love Story** (ET00526449), polled hourly
+- **Ramayana** (ET00451914): every 30 min -> hourly (best hourly figure in 24 h: 14.9K)
+- **AOT - Aakasamlo Oka Tara** (ET00482388): every 30 min -> hourly (best hourly figure in 24 h: 6.8K)
+- **Dune Part Three 4dx** (ET00526391): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-27
 - added **Bokshi** (ET00514204), polled hourly
 - added **Devi Mahathme** (ET00518679), polled hourly
 - added **Makkal Kaavalan** (ET00519986), polled hourly
