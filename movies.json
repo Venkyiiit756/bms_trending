@@ -1436,7 +1436,7 @@
     "page_slug": "bhogi",
     "csv": "data/ET00489093.csv",
     "headers_csv": "data/ET00489093_headers.csv",
-    "every": 21600,
+    "every": 3600,
     "added": "2026-11-03"
   },
   {
@@ -2100,7 +2100,7 @@
     "page_slug": "om-operation-mole-telugu",
     "csv": "data/ET00504904.csv",
     "headers_csv": "data/ET00504904_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-17"
   },
   {
@@ -2553,7 +2553,7 @@
     "page_slug": "gunmaaster-g9",
     "csv": "data/ET00452908.csv",
     "headers_csv": "data/ET00452908_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-24"
   },
   {
@@ -2565,7 +2565,7 @@
     "page_slug": "vrushakarma",
     "csv": "data/ET00472260.csv",
     "headers_csv": "data/ET00472260_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-24"
   },
   {
@@ -2577,7 +2577,7 @@
     "page_slug": "niram",
     "csv": "data/ET00470973.csv",
     "headers_csv": "data/ET00470973_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-24"
   },
   {
@@ -2589,7 +2589,7 @@
     "page_slug": "yeh-prem-mol-liya",
     "csv": "data/ET00496261.csv",
     "headers_csv": "data/ET00496261_headers.csv",
-    "every": 1800,
+    "every": 3600,
     "added": "2026-11-25"
   },
   {
@@ -2711,5 +2711,113 @@
     "headers_csv": "data/ET00526455_headers.csv",
     "every": 3600,
     "added": "2026-11-26"
+  },
+  {
+    "key": "et00514204",
+    "name": "Bokshi",
+    "eventcode": "ET00514204",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "bokshi",
+    "csv": "data/ET00514204.csv",
+    "headers_csv": "data/ET00514204_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00518679",
+    "name": "Devi Mahathme",
+    "eventcode": "ET00518679",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "devi-mahathme",
+    "csv": "data/ET00518679.csv",
+    "headers_csv": "data/ET00518679_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00519986",
+    "name": "Makkal Kaavalan",
+    "eventcode": "ET00519986",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "makkal-kaavalan",
+    "csv": "data/ET00519986.csv",
+    "headers_csv": "data/ET00519986_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00521250",
+    "name": "3 Monkeys",
+    "eventcode": "ET00521250",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "3-monkeys",
+    "csv": "data/ET00521250.csv",
+    "headers_csv": "data/ET00521250_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00522784",
+    "name": "Sidhu",
+    "eventcode": "ET00522784",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "sidhu",
+    "csv": "data/ET00522784.csv",
+    "headers_csv": "data/ET00522784_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00525335",
+    "name": "Exam: The Biggest Scam",
+    "eventcode": "ET00525335",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "exam-the-biggest-scam",
+    "csv": "data/ET00525335.csv",
+    "headers_csv": "data/ET00525335_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00525655",
+    "name": "Mr. Jack",
+    "eventcode": "ET00525655",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mr-jack",
+    "csv": "data/ET00525655.csv",
+    "headers_csv": "data/ET00525655_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00526275",
+    "name": "Merri Boys",
+    "eventcode": "ET00526275",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "merri-boys",
+    "csv": "data/ET00526275.csv",
+    "headers_csv": "data/ET00526275_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
+  },
+  {
+    "key": "et00526418",
+    "name": "Hey Kannamma",
+    "eventcode": "ET00526418",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hey-kannamma",
+    "csv": "data/ET00526418.csv",
+    "headers_csv": "data/ET00526418_headers.csv",
+    "every": 3600,
+    "added": "2026-11-27"
   }
 ]

@@ -221,7 +221,7 @@
   "page_slug": "haindava",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00426488",
   "languages": [
    "Telugu"
@@ -288,7 +288,7 @@
   "page_slug": "avengers-doomsday",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00437704",
   "languages": [
    "English",
@@ -399,7 +399,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -414,7 +414,7 @@
   "page_slug": "gunmaaster-g9",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00450646",
   "languages": [
    "Hindi"
@@ -430,7 +430,7 @@
   "page_slug": "king",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00453178",
   "languages": [
    "Hindi"
@@ -572,7 +572,7 @@
   "page_slug": "vrushakarma",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00469786",
   "languages": [
    "Telugu",
@@ -670,7 +670,7 @@
   "page_slug": "aakasamlo-oka-tara",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00479817",
   "languages": [
    "Telugu"
@@ -721,7 +721,7 @@
   "page_slug": "bhogi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00486433",
   "languages": [
    "Telugu"
@@ -755,7 +755,7 @@
   "page_slug": "namit-malhotras-ramayana-3dhindi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00449671",
   "languages": [
    "Hindi",
@@ -836,7 +836,7 @@
   "page_slug": "yeh-prem-mol-liya",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00493494",
   "languages": [
    "Hindi"
@@ -914,7 +914,7 @@
   "page_slug": "eetha",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00499608",
   "languages": [
    "Hindi"
@@ -997,7 +997,7 @@
   "page_slug": "om-operation-mole-telugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
  },
  "ET00504928": {
   "name": "Heart of the Beast",
@@ -1072,7 +1072,7 @@
   "page_slug": "ene-repeat",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00503915",
   "languages": [
    "Telugu"
@@ -1307,6 +1307,15 @@
   "release": "Oct 25, 2026",
   "book": false
  },
+ "ET00514204": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Bokshi",
+  "page_slug": "bokshi",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
+ },
  "ET00514476": {
   "first_seen": "2026-11-17",
   "last_listed": null,
@@ -1323,7 +1332,7 @@
   "page_slug": "mysaa",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-27",
   "group": "EG00511916",
   "languages": [
    "Telugu",
@@ -1561,7 +1570,7 @@
   "page_slug": "dear-astronaut",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
  },
  "ET00518647": {
   "first_seen": "2026-10-31",
@@ -1604,6 +1613,15 @@
   "figure": null,
   "upcoming": "2026-11-11",
   "group": "EG00515691"
+ },
+ "ET00518679": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Devi Mahathme",
+  "page_slug": "devi-mahathme",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
  },
  "ET00518692": {
   "name": "Thella Kaagitham",
@@ -1744,6 +1762,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-18"
+ },
+ "ET00519986": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Makkal Kaavalan",
+  "page_slug": "makkal-kaavalan",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
  },
  "ET00520032": {
   "first_seen": "2026-10-22",
@@ -1898,6 +1925,15 @@
   "book": true,
   "book_opened": "2026-11-12"
  },
+ "ET00521250": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "3 Monkeys",
+  "page_slug": "3-monkeys",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
+ },
  "ET00521457": {
   "first_seen": "2026-10-25",
   "last_listed": null,
@@ -1931,7 +1967,7 @@
   "page_slug": "alias-rukmini",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
  },
  "ET00521605": {
   "first_seen": "2026-10-23",
@@ -2100,6 +2136,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-21"
+ },
+ "ET00522784": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Sidhu",
+  "page_slug": "sidhu",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
  },
  "ET00523016": {
   "first_seen": "2026-10-22",
@@ -2491,6 +2536,15 @@
   "figure": null,
   "upcoming": "2026-11-12"
  },
+ "ET00525335": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Exam: The Biggest Scam",
+  "page_slug": "exam-the-biggest-scam",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
+ },
  "ET00525385": {
   "first_seen": "2026-11-12",
   "last_listed": null,
@@ -2553,6 +2607,15 @@
   "last_checked": null,
   "figure": null,
   "upcoming": "2026-11-12"
+ },
+ "ET00525655": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Mr. Jack",
+  "page_slug": "mr-jack",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
  },
  "ET00525663": {
   "first_seen": "2026-11-12",
@@ -2666,6 +2729,15 @@
   "figure": null,
   "upcoming": "2026-11-20"
  },
+ "ET00526275": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Merri Boys",
+  "page_slug": "merri-boys",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
+ },
  "ET00526276": {
   "first_seen": "2026-11-19",
   "last_listed": "2026-11-19",
@@ -2771,7 +2843,7 @@
   "page_slug": "avengers-doomsday-msinfinity-vsn-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
  },
  "ET00526318": {
   "first_seen": "2026-11-17",
@@ -2872,7 +2944,7 @@
   "page_slug": "dune-part-three-4dx",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
  },
  "ET00526414": {
   "first_seen": "2026-11-25",
@@ -2896,7 +2968,16 @@
   "page_slug": "nanna-kutty",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-27"
+ },
+ "ET00526418": {
+  "first_seen": "2026-11-27",
+  "last_listed": null,
+  "name": "Hey Kannamma",
+  "page_slug": "hey-kannamma",
+  "last_checked": null,
+  "figure": null,
+  "upcoming": "2026-11-27"
  },
  "ET00526419": {
   "first_seen": "2026-11-26",

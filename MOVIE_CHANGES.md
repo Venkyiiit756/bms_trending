@@ -2,6 +2,23 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-27
+- added **Bokshi** (ET00514204), polled hourly
+- added **Devi Mahathme** (ET00518679), polled hourly
+- added **Makkal Kaavalan** (ET00519986), polled hourly
+- added **3 Monkeys** (ET00521250), polled hourly
+- added **Sidhu** (ET00522784), polled hourly
+- added **Exam: The Biggest Scam** (ET00525335), polled hourly
+- added **Mr. Jack** (ET00525655), polled hourly
+- added **Merri Boys** (ET00526275), polled hourly
+- added **Hey Kannamma** (ET00526418), polled hourly
+- **Bhogi** (ET00489093): every 6 h -> hourly (best hourly figure in 24 h: 0.0K)
+- **Om Operation Mole (Telugu)** (ET00504904): every 30 min -> hourly (best hourly figure in 24 h: 4.5K)
+- **Gunmaaster G9** (ET00452908): every 30 min -> hourly (best hourly figure in 24 h: 1.2K)
+- **Vrushakarma** (ET00472260): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Niram** (ET00470973): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Yeh Prem Mol Liya** (ET00496261): every 30 min -> hourly (best hourly figure in 24 h: 2.0K)
+
 ## 2026-11-26
 - added **Nellai Boys** (ET00526455), polled hourly
 - **Bouma** (ET00513613): hourly -> paused (best hourly figure in 24 h: 0.0K)
