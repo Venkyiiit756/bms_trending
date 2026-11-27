@@ -476,3 +476,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-27 18:10:05+05:30,AOT - Aakasamlo Oka Tara,1_hour,5.98K,5.98K tickets booked in last 1 hour,2026-11-27 17:45:05+05:30,change,2026-11-27 18:10:05+05:30
 2026-11-27 18:40:05+05:30,AOT - Aakasamlo Oka Tara,1_hour,6.15K,6.15K tickets booked in last 1 hour,2026-11-27 18:10:05+05:30,change,2026-11-27 18:40:05+05:30
 2026-11-27 19:09:23+05:30,AOT - Aakasamlo Oka Tara,1_hour,6.47K,6.47K tickets booked in last 1 hour,2026-11-27 18:40:05+05:30,change,2026-11-27 19:09:23+05:30
+2026-11-27 19:39:23+05:30,AOT - Aakasamlo Oka Tara,1_hour,6.61K,6.61K tickets booked in last 1 hour,2026-11-27 19:09:23+05:30,change,2026-11-27 19:39:23+05:30
