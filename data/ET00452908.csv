@@ -133,3 +133,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-28 00:18:54+05:30,,error,429,HTTP 429 (failure 1),,error,
 2026-11-28 00:21:11+05:30,Gunmaaster G9,1_hour,1.4K,1.4K tickets booked in last 1 hour,2026-11-27 23:23:54+05:30,change,2026-11-28 00:21:11+05:30
 2026-11-28 01:16:11+05:30,Gunmaaster G9,24_hours,51.02K,51.02K tickets booked in last 24 hours,2026-11-28 00:21:11+05:30,change,2026-11-28 01:16:11+05:30
+2026-11-28 02:11:11+05:30,Gunmaaster G9,24_hours,51.35K,51.35K tickets booked in last 24 hours,2026-11-28 01:16:11+05:30,change,2026-11-28 02:11:11+05:30
