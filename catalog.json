@@ -95,7 +95,13 @@
   "name": "Johnny English Reborn",
   "page_slug": "johnny-english-reborn",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00006939",
+  "languages": [
+   "English"
+  ],
+  "release": "Sep 23, 2011",
+  "book": false
  },
  "ET00006899": {
   "first_seen": "2026-11-28",
@@ -103,7 +109,13 @@
   "name": "Hanna",
   "page_slug": "hanna",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00007127",
+  "languages": [
+   "English"
+  ],
+  "release": "Jun 03, 2011",
+  "book": false
  },
  "ET00009835": {
   "first_seen": "2026-11-27",
@@ -125,15 +137,27 @@
   "name": "Snitch",
   "page_slug": "snitch",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00010893",
+  "languages": [
+   "English"
+  ],
+  "release": "Mar 08, 2013",
+  "book": false
  },
  "ET00015663": {
   "first_seen": "2026-11-28",
   "last_listed": "2026-11-28",
-  "name": "Jack Ryan Shadow Recruit",
+  "name": "Jack Ryan: Shadow Recruit",
   "page_slug": "jack-ryan-shadow-recruit",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00011572",
+  "languages": [
+   "English"
+  ],
+  "release": "Jan 17, 2014",
+  "book": false
  },
  "ET00031160": {
   "first_seen": "2026-10-26",
@@ -170,10 +194,16 @@
  "ET00040397": {
   "first_seen": "2026-11-28",
   "last_listed": "2026-11-28",
-  "name": "Mission Impossible Fallout",
+  "name": "Mission: Impossible - Fallout",
   "page_slug": "mission-impossible-fallout",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00021058",
+  "languages": [
+   "English"
+  ],
+  "release": "Jul 27, 2018",
+  "book": false
  },
  "ET00087702": {
   "first_seen": "2026-11-27",
@@ -195,7 +225,13 @@
   "name": "Dora And The Lost City Of Gold",
   "page_slug": "dora-and-the-lost-city-of-gold",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00077158",
+  "languages": [
+   "English"
+  ],
+  "release": "Aug 09, 2019",
+  "book": false
  },
  "ET00114750": {
   "first_seen": "2026-10-22",
@@ -210,6 +246,14 @@
   ],
   "release": "Oct 23, 2026",
   "book": true
+ },
+ "ET00302318": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Charlies Angels Full Throttle",
+  "page_slug": "charlies-angels-full-throttle",
+  "last_checked": null,
+  "figure": null
  },
  "ET00302706": {
   "first_seen": "2026-11-27",
@@ -241,7 +285,7 @@
  },
  "ET00306953": {
   "first_seen": "2026-11-27",
-  "last_listed": "2026-11-27",
+  "last_listed": "2026-11-28",
   "name": "The Sum of All Fears",
   "page_slug": "the-sum-of-all-fears",
   "last_checked": null,
@@ -266,6 +310,14 @@
   ],
   "release": "Dec 26, 1978",
   "book": false
+ },
+ "ET00309788": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Last Action Hero",
+  "page_slug": "last-action-hero",
+  "last_checked": null,
+  "figure": null
  },
  "ET00311114": {
   "first_seen": "2026-11-27",
@@ -333,7 +385,16 @@
   "name": "The Balkan Line",
   "page_slug": "the-balkan-line",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00312379",
+  "languages": [
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Mar 21, 2019",
+  "book": false
  },
  "ET00314240": {
   "first_seen": "2026-11-27",
@@ -394,7 +455,7 @@
  },
  "ET00335492": {
   "first_seen": "2026-11-27",
-  "last_listed": "2026-11-27",
+  "last_listed": "2026-11-28",
   "name": "Vivo",
   "page_slug": "vivo",
   "last_checked": null,
@@ -436,10 +497,20 @@
  "ET00365790": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
-  "name": "Stories Not To Be Told",
+  "name": "Stories Not to Be Told",
   "page_slug": "stories-not-to-be-told",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00364676",
+  "languages": [
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu",
+   "Spanish"
+  ],
+  "release": "Nov 25, 2022",
+  "book": false
  },
  "ET00375433": {
   "first_seen": "2026-11-27",
@@ -447,7 +518,14 @@
   "name": "Wrong Place",
   "page_slug": "wrong-place",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00374167",
+  "languages": [
+   "English",
+   "Hindi"
+  ],
+  "release": "Jul 15, 2022",
+  "book": false
  },
  "ET00386198": {
   "first_seen": "2026-11-27",
@@ -557,6 +635,14 @@
   "last_listed": "2026-11-28",
   "name": "Ramayana The Legend Of Prince Rama",
   "page_slug": "ramayana-the-legend-of-prince-rama",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00413291": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Gladiator Ii",
+  "page_slug": "gladiator-ii",
   "last_checked": null,
   "figure": null
  },
@@ -825,7 +911,7 @@
   "page_slug": "maatrubhumi-may-war-rest-in-peace",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-27",
+  "upcoming": "2026-11-28",
   "group": "EG00450096",
   "languages": [
    "Hindi"
@@ -944,7 +1030,7 @@
   "page_slug": "fauzi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-25",
+  "upcoming": "2026-11-28",
   "group": "EG00465477",
   "languages": [
    "Telugu"
@@ -991,7 +1077,7 @@
   "page_slug": "varanasi",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26",
+  "upcoming": "2026-11-28",
   "group": "EG00468658",
   "languages": [
    "Telugu"
@@ -1010,9 +1096,9 @@
   "group": "EG00469786",
   "languages": [
    "Telugu",
+   "Tamil",
    "Malayalam",
    "Kannada",
-   "Tamil",
    "Hindi"
   ],
   "release": "Dec 04, 2026",
@@ -2658,7 +2744,7 @@
   "page_slug": "namit-malhotras-ramayana-3dtelugu",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-27",
+  "upcoming": "2026-11-28",
   "group": "EG00449671",
   "languages": [
    "Hindi",
@@ -3492,7 +3578,7 @@
   "page_slug": "hexed-3d",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-11-26"
+  "upcoming": "2026-11-28"
  },
  "ET00526423": {
   "first_seen": "2026-11-25",

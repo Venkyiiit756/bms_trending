@@ -3027,7 +3027,7 @@
   },
   {
     "key": "et00365790",
-    "name": "Stories Not To Be Told",
+    "name": "Stories Not to Be Told",
     "eventcode": "ET00365790",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3363,7 +3363,7 @@
   },
   {
     "key": "et00015663",
-    "name": "Jack Ryan Shadow Recruit",
+    "name": "Jack Ryan: Shadow Recruit",
     "eventcode": "ET00015663",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3375,7 +3375,7 @@
   },
   {
     "key": "et00040397",
-    "name": "Mission Impossible Fallout",
+    "name": "Mission: Impossible - Fallout",
     "eventcode": "ET00040397",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3430,6 +3430,42 @@
     "page_slug": "hunting-jessica-brok",
     "csv": "data/ET00507639.csv",
     "headers_csv": "data/ET00507639_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00302318",
+    "name": "Charlies Angels Full Throttle",
+    "eventcode": "ET00302318",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "charlies-angels-full-throttle",
+    "csv": "data/ET00302318.csv",
+    "headers_csv": "data/ET00302318_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00309788",
+    "name": "Last Action Hero",
+    "eventcode": "ET00309788",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "last-action-hero",
+    "csv": "data/ET00309788.csv",
+    "headers_csv": "data/ET00309788_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00413291",
+    "name": "Gladiator Ii",
+    "eventcode": "ET00413291",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "gladiator-ii",
+    "csv": "data/ET00413291.csv",
+    "headers_csv": "data/ET00413291_headers.csv",
     "every": 3600,
     "added": "2026-11-28"
   }

@@ -3,6 +3,12 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-28
+- added **Charlies Angels Full Throttle** (ET00302318), polled hourly
+- added **Last Action Hero** (ET00309788), polled hourly
+- added **Gladiator Ii** (ET00413291), polled hourly
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-28
 - added **Johnny English Reborn** (ET00006471), polled hourly
 - added **Hanna** (ET00006899), polled hourly
 - added **Snitch** (ET00013821), polled hourly
