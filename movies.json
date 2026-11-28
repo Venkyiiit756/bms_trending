@@ -1362,7 +1362,8 @@
     "csv": "data/ET00521921.csv",
     "headers_csv": "data/ET00521921_headers.csv",
     "every": 3600,
-    "added": "2026-11-02"
+    "added": "2026-11-02",
+    "paused": true
   },
   {
     "key": "et00515083",
@@ -2966,7 +2967,7 @@
   },
   {
     "key": "et00316141",
-    "name": "The Sister Season 1",
+    "name": "The Sister - Season 1",
     "eventcode": "ET00316141",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3002,7 +3003,7 @@
   },
   {
     "key": "et00360023",
-    "name": "The Swan Princess A Fairytale Is Born",
+    "name": "The Swan Princess: A Fairytale Is Born",
     "eventcode": "ET00360023",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3014,7 +3015,7 @@
   },
   {
     "key": "et00363558",
-    "name": "Lost And Found",
+    "name": "Lost and Found",
     "eventcode": "ET00363558",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3278,7 +3279,7 @@
   },
   {
     "key": "et00003005",
-    "name": "Charlies Angels",
+    "name": "Charlie`s Angels",
     "eventcode": "ET00003005",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3290,7 +3291,7 @@
   },
   {
     "key": "et00311119",
-    "name": "The Ghost And The Darkness",
+    "name": "The Ghost and the Darkness",
     "eventcode": "ET00311119",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3321,6 +3322,114 @@
     "page_slug": "one-last-shot",
     "csv": "data/ET00519574.csv",
     "headers_csv": "data/ET00519574_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00006471",
+    "name": "Johnny English Reborn",
+    "eventcode": "ET00006471",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "johnny-english-reborn",
+    "csv": "data/ET00006471.csv",
+    "headers_csv": "data/ET00006471_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00006899",
+    "name": "Hanna",
+    "eventcode": "ET00006899",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hanna",
+    "csv": "data/ET00006899.csv",
+    "headers_csv": "data/ET00006899_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00013821",
+    "name": "Snitch",
+    "eventcode": "ET00013821",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "snitch",
+    "csv": "data/ET00013821.csv",
+    "headers_csv": "data/ET00013821_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00015663",
+    "name": "Jack Ryan Shadow Recruit",
+    "eventcode": "ET00015663",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "jack-ryan-shadow-recruit",
+    "csv": "data/ET00015663.csv",
+    "headers_csv": "data/ET00015663_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00040397",
+    "name": "Mission Impossible Fallout",
+    "eventcode": "ET00040397",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "mission-impossible-fallout",
+    "csv": "data/ET00040397.csv",
+    "headers_csv": "data/ET00040397_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00099589",
+    "name": "Dora And The Lost City Of Gold",
+    "eventcode": "ET00099589",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "dora-and-the-lost-city-of-gold",
+    "csv": "data/ET00099589.csv",
+    "headers_csv": "data/ET00099589_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00312484",
+    "name": "The Balkan Line",
+    "eventcode": "ET00312484",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-balkan-line",
+    "csv": "data/ET00312484.csv",
+    "headers_csv": "data/ET00312484_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00405822",
+    "name": "The Good The Bad The Weird",
+    "eventcode": "ET00405822",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-good-the-bad-the-weird",
+    "csv": "data/ET00405822.csv",
+    "headers_csv": "data/ET00405822_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00507639",
+    "name": "Hunting Jessica Brok",
+    "eventcode": "ET00507639",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "hunting-jessica-brok",
+    "csv": "data/ET00507639.csv",
+    "headers_csv": "data/ET00507639_headers.csv",
     "every": 3600,
     "added": "2026-11-28"
   }

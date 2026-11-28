@@ -3,6 +3,19 @@
 Written automatically by update_movies.py (daily).
 
 ## 2026-11-28
+- added **Johnny English Reborn** (ET00006471), polled hourly
+- added **Hanna** (ET00006899), polled hourly
+- added **Snitch** (ET00013821), polled hourly
+- added **Jack Ryan Shadow Recruit** (ET00015663), polled hourly
+- added **Mission Impossible Fallout** (ET00040397), polled hourly
+- added **Dora And The Lost City Of Gold** (ET00099589), polled hourly
+- added **The Balkan Line** (ET00312484), polled hourly
+- added **The Good The Bad The Weird** (ET00405822), polled hourly
+- added **Hunting Jessica Brok** (ET00507639), polled hourly
+- **Aadi Anant** (ET00521921): hourly -> paused (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
+## 2026-11-28
 - added **Charlies Angels** (ET00003005), polled hourly
 - added **The Ghost And The Darkness** (ET00311119), polled hourly
 - added **Ramayana The Legend Of Prince Rama** (ET00413205), polled hourly

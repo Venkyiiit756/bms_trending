@@ -47,10 +47,16 @@
  "ET00003005": {
   "first_seen": "2026-11-28",
   "last_listed": "2026-11-28",
-  "name": "Charlies Angels",
+  "name": "Charlie`s Angels",
   "page_slug": "charlies-angels",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00005015",
+  "languages": [
+   "English"
+  ],
+  "release": "Dec 22, 2000",
+  "book": false
  },
  "ET00004832": {
   "first_seen": "2026-11-27",
@@ -83,6 +89,22 @@
   "release": "Aug 13, 2010",
   "book": false
  },
+ "ET00006471": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Johnny English Reborn",
+  "page_slug": "johnny-english-reborn",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00006899": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Hanna",
+  "page_slug": "hanna",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00009835": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
@@ -96,6 +118,22 @@
   ],
   "release": "May 25, 2012",
   "book": false
+ },
+ "ET00013821": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Snitch",
+  "page_slug": "snitch",
+  "last_checked": null,
+  "figure": null
+ },
+ "ET00015663": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Jack Ryan Shadow Recruit",
+  "page_slug": "jack-ryan-shadow-recruit",
+  "last_checked": null,
+  "figure": null
  },
  "ET00031160": {
   "first_seen": "2026-10-26",
@@ -129,6 +167,14 @@
   "release": "Jun 06, 2014",
   "book": false
  },
+ "ET00040397": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Mission Impossible Fallout",
+  "page_slug": "mission-impossible-fallout",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00087702": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
@@ -142,6 +188,14 @@
   ],
   "release": "Jun 21, 2019",
   "book": false
+ },
+ "ET00099589": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Dora And The Lost City Of Gold",
+  "page_slug": "dora-and-the-lost-city-of-gold",
+  "last_checked": null,
+  "figure": null
  },
  "ET00114750": {
   "first_seen": "2026-10-22",
@@ -219,15 +273,27 @@
   "name": "Vertical Limit",
   "page_slug": "vertical-limit",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00311013",
+  "languages": [
+   "English"
+  ],
+  "release": "Feb 16, 2001",
+  "book": false
  },
  "ET00311119": {
   "first_seen": "2026-11-28",
   "last_listed": "2026-11-28",
-  "name": "The Ghost And The Darkness",
+  "name": "The Ghost and the Darkness",
   "page_slug": "the-ghost-and-the-darkness",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00311017",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 11, 1996",
+  "book": false
  },
  "ET00311712": {
   "first_seen": "2026-11-27",
@@ -235,7 +301,16 @@
   "name": "Uncharted",
   "page_slug": "uncharted",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00311606",
+  "languages": [
+   "English",
+   "Hindi",
+   "Telugu",
+   "Tamil"
+  ],
+  "release": "Feb 18, 2022",
+  "book": false
  },
  "ET00312314": {
   "name": "Varsham (Telugu)",
@@ -252,21 +327,41 @@
   "book": true,
   "upcoming": "2026-10-25"
  },
+ "ET00312484": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "The Balkan Line",
+  "page_slug": "the-balkan-line",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00314240": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
   "name": "Night Drive",
   "page_slug": "night-drive",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00314117",
+  "languages": [
+   "English"
+  ],
+  "release": "Aug 06, 2021",
+  "book": false
  },
  "ET00316141": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
-  "name": "The Sister Season 1",
+  "name": "The Sister - Season 1",
   "page_slug": "the-sister-season-1",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00315923",
+  "languages": [
+   "English"
+  ],
+  "release": "Oct 26, 2020",
+  "book": false
  },
  "ET00322950": {
   "first_seen": "2026-10-24",
@@ -289,7 +384,13 @@
   "name": "The Lost City",
   "page_slug": "the-lost-city",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00325050",
+  "languages": [
+   "English"
+  ],
+  "release": "Apr 08, 2022",
+  "book": false
  },
  "ET00335492": {
   "first_seen": "2026-11-27",
@@ -302,18 +403,35 @@
  "ET00360023": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
-  "name": "The Swan Princess A Fairytale Is Born",
+  "name": "The Swan Princess: A Fairytale Is Born",
   "page_slug": "the-swan-princess-a-fairytale-is-born",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00359022",
+  "languages": [
+   "English",
+   "Hindi"
+  ],
+  "release": "May 23, 2023",
+  "book": false
  },
  "ET00363558": {
   "first_seen": "2026-11-27",
   "last_listed": "2026-11-28",
-  "name": "Lost And Found",
+  "name": "Lost and Found",
   "page_slug": "lost-and-found",
   "last_checked": null,
-  "figure": null
+  "figure": null,
+  "group": "EG00362468",
+  "languages": [
+   "Spanish",
+   "English",
+   "Hindi",
+   "Tamil",
+   "Telugu"
+  ],
+  "release": "Sep 30, 2022",
+  "book": false
  },
  "ET00365790": {
   "first_seen": "2026-11-27",
@@ -411,6 +529,14 @@
   ],
   "release": "Oct 30, 2026",
   "book": true
+ },
+ "ET00405822": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "The Good The Bad The Weird",
+  "page_slug": "the-good-the-bad-the-weird",
+  "last_checked": null,
+  "figure": null
  },
  "ET00412717": {
   "name": "Premada Oorali",
@@ -1437,6 +1563,14 @@
   "release": "Oct 02, 2026",
   "book": true
  },
+ "ET00507639": {
+  "first_seen": "2026-11-28",
+  "last_listed": "2026-11-28",
+  "name": "Hunting Jessica Brok",
+  "page_slug": "hunting-jessica-brok",
+  "last_checked": null,
+  "figure": null
+ },
  "ET00507738": {
   "name": "Hanuman Ansh",
   "page_slug": "hanuman-ansh",
@@ -1623,7 +1757,7 @@
   "page_slug": "nenu-naa-lalli",
   "last_checked": null,
   "figure": null,
-  "upcoming": "2026-10-24",
+  "upcoming": "2026-11-28",
   "group": "EG00511037",
   "languages": [
    "Telugu"
