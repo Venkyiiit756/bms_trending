@@ -1,10 +1,16 @@
 {
- "generated_at": "2026-11-28T16:10+05:30",
- "as_of": "Sat 28 Nov 4:00 PM",
+ "generated_at": "2026-11-28T19:59+05:30",
+ "as_of": "Sat 28 Nov 7:00 PM",
  "mode": "template",
  "model": null,
- "headline": "No hourly forecast is available right now.",
- "bullets": [],
- "watch": [],
+ "headline": "Ramayana: busiest hour still ahead is 8–9 PM, about 17.6K expected (range 14.1K to 20.6K).",
+ "bullets": [
+  "Ramayana: 16.6K expected in 7–8 PM, about 230K for the whole day (range 208K to 259K).",
+  "Om Operation Mole (Telugu): 5.6K expected in 7–8 PM, about 67.1K for the whole day (range 60.5K to 75.4K)."
+ ],
+ "watch": [
+  "Tomorrow is Sunday: weekend.",
+  "Review and word-of-mouth information is only collected for films switched on, not this one."
+ ],
  "usage": null
 }
