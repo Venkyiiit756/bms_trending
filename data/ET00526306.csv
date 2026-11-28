@@ -362,3 +362,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-28 16:09:26+05:30,Avengers Doomsday Msinfinity Vsn 3d,24_hours,28.81K,28.81K tickets booked in last 24 hours,2026-11-28 15:14:26+05:30,change,2026-11-28 16:09:26+05:30
 2026-11-28 17:04:26+05:30,Avengers Doomsday Msinfinity Vsn 3d,24_hours,28.4K,28.4K tickets booked in last 24 hours,2026-11-28 16:09:26+05:30,change,2026-11-28 17:04:26+05:30
 2026-11-28 17:59:26+05:30,Avengers Doomsday Msinfinity Vsn 3d,24_hours,27.99K,27.99K tickets booked in last 24 hours,2026-11-28 17:04:26+05:30,change,2026-11-28 17:59:26+05:30
+2026-11-28 18:54:26+05:30,Avengers Doomsday Msinfinity Vsn 3d,1_hour,1.07K,1.07K tickets booked in last 1 hour,2026-11-28 17:59:26+05:30,change,2026-11-28 18:54:26+05:30
