@@ -2601,7 +2601,7 @@
     "page_slug": "family-pack",
     "csv": "data/ET00524729.csv",
     "headers_csv": "data/ET00524729_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2613,7 +2613,7 @@
     "page_slug": "modern-missamma",
     "csv": "data/ET00526423.csv",
     "headers_csv": "data/ET00526423_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2625,7 +2625,7 @@
     "page_slug": "hexed",
     "csv": "data/ET00504799.csv",
     "headers_csv": "data/ET00504799_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2637,7 +2637,7 @@
     "page_slug": "high",
     "csv": "data/ET00524564.csv",
     "headers_csv": "data/ET00524564_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2649,7 +2649,7 @@
     "page_slug": "dads-little-friend",
     "csv": "data/ET00526414.csv",
     "headers_csv": "data/ET00526414_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2661,7 +2661,7 @@
     "page_slug": "charaibeti",
     "csv": "data/ET00526429.csv",
     "headers_csv": "data/ET00526429_headers.csv",
-    "every": 3600,
+    "every": 21600,
     "added": "2026-11-25"
   },
   {
@@ -2906,7 +2906,7 @@
   },
   {
     "key": "et00306953",
-    "name": "The Sum Of All Fears",
+    "name": "The Sum of All Fears",
     "eventcode": "ET00306953",
     "region_code": "HYD",
     "region_slug": "hyderabad",
@@ -3275,5 +3275,53 @@
     "headers_csv": "data/ET00526449_headers.csv",
     "every": 3600,
     "added": "2026-11-27"
+  },
+  {
+    "key": "et00003005",
+    "name": "Charlies Angels",
+    "eventcode": "ET00003005",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "charlies-angels",
+    "csv": "data/ET00003005.csv",
+    "headers_csv": "data/ET00003005_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00311119",
+    "name": "The Ghost And The Darkness",
+    "eventcode": "ET00311119",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "the-ghost-and-the-darkness",
+    "csv": "data/ET00311119.csv",
+    "headers_csv": "data/ET00311119_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00413205",
+    "name": "Ramayana The Legend Of Prince Rama",
+    "eventcode": "ET00413205",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "ramayana-the-legend-of-prince-rama",
+    "csv": "data/ET00413205.csv",
+    "headers_csv": "data/ET00413205_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
+  },
+  {
+    "key": "et00519574",
+    "name": "One Last Shot",
+    "eventcode": "ET00519574",
+    "region_code": "HYD",
+    "region_slug": "hyderabad",
+    "page_slug": "one-last-shot",
+    "csv": "data/ET00519574.csv",
+    "headers_csv": "data/ET00519574_headers.csv",
+    "every": 3600,
+    "added": "2026-11-28"
   }
 ]

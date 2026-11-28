@@ -2,6 +2,19 @@
 
 Written automatically by update_movies.py (daily).
 
+## 2026-11-28
+- added **Charlies Angels** (ET00003005), polled hourly
+- added **The Ghost And The Darkness** (ET00311119), polled hourly
+- added **Ramayana The Legend Of Prince Rama** (ET00413205), polled hourly
+- added **One Last Shot** (ET00519574), polled hourly
+- **Family Pack** (ET00524729): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Modern Missamma** (ET00526423): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Hexed** (ET00504799): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **High** (ET00524564): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Dad's Little Friend** (ET00526414): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- **Charaibeti** (ET00526429): hourly -> every 6 h (best hourly figure in 24 h: 0.0K)
+- note: still above the 80 requests/hour budget after demotions
+
 ## 2026-11-27
 - added **Robin Hood** (ET00004832), polled hourly
 - added **The Expendables** (ET00005079), polled hourly
