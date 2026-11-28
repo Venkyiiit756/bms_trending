@@ -116,3 +116,4 @@ timestamp,movie_name,metric_type,metric_value,raw_text,prev_poll,kind,fresh_at
 2026-11-28 08:33:29+05:30,Bhogi,24_hours,20.07K,20.07K tickets booked in last 24 hours,2026-11-28 07:36:30+05:30,change,2026-11-28 08:33:29+05:30
 2026-11-28 09:35:17+05:30,Bhogi,24_hours,19.36K,19.36K tickets booked in last 24 hours,2026-11-28 08:33:29+05:30,change,2026-11-28 09:35:17+05:30
 2026-11-28 10:31:46+05:30,Bhogi,24_hours,18.32K,18.32K tickets booked in last 24 hours,2026-11-28 09:35:17+05:30,change,2026-11-28 10:31:46+05:30
+2026-11-28 11:33:31+05:30,Bhogi,24_hours,16.35K,16.35K tickets booked in last 24 hours,2026-11-28 10:31:46+05:30,change,2026-11-28 11:33:31+05:30
